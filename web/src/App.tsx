@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { CATEGORIES, type Data } from './types'
 import { Heatmap } from './components/Heatmap'
 import { ActivityList } from './components/ActivityList'
+import { Overview } from './components/Overview'
 import { DICTS, I18n, LOCALE, initialLang, save, type Lang } from './i18n'
 
 type Theme = 'light' | 'dark'
@@ -9,7 +10,7 @@ type Theme = 'light' | 'dark'
 export function App() {
   const [data, setData] = useState<Data | null>(null)
   const [error, setError] = useState<string | null>(null)
-  const [year, setYear] = useState(new Date().getFullYear())
+  const [year, setYear] = useState<number | 'all'>(new Date().getFullYear())
   const [lang, setLang] = useState<Lang>(initialLang)
   // index.html sets data-theme before first paint (saved choice, else the OS setting)
   const [theme, setTheme] = useState<Theme>(() => (document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light'))
@@ -39,10 +40,11 @@ export function App() {
     return [...ys].sort((a, b) => b - a)
   }, [data])
 
-  // Only categories with at least one non-zero day in the selected year get a panel.
+  // Only categories with at least one non-zero day in the selected year (or ever,
+  // for "all") get a panel.
   const visible = useMemo(() => {
     if (!data) return []
-    const prefix = String(year)
+    const prefix = year === 'all' ? '' : String(year)
     const days = Object.entries(data.daily).filter(([d]) => d.startsWith(prefix))
     return CATEGORIES.filter((c) => days.some(([, m]) => (m[c.metric] ?? 0) > 0))
   }, [data, year])
@@ -58,7 +60,7 @@ export function App() {
     save('theme', next)
   }
 
-  const yearActivities = data ? data.activities.filter((a) => a.date.startsWith(String(year))) : []
+  const yearActivities = !data ? [] : year === 'all' ? data.activities : data.activities.filter((a) => a.date.startsWith(String(year)))
 
   return (
     <I18n.Provider value={{ lang, t }}>
@@ -91,6 +93,9 @@ export function App() {
         {data && (
           <>
             <nav className="years">
+              <button className={year === 'all' ? 'on' : ''} onClick={() => setYear('all')}>
+                {t.all}
+              </button>
               {years.map((y) => (
                 <button key={y} className={y === year ? 'on' : ''} onClick={() => setYear(y)}>
                   {y}
@@ -101,9 +106,13 @@ export function App() {
             {visible.length === 0 && yearActivities.length === 0 && <p className="empty">{t.emptyYear}</p>}
 
             <div className="panels">
-              {visible.map((c) => (
-                <Heatmap key={c.key} year={year} category={c} daily={data.daily} />
-              ))}
+              {visible.map((c) =>
+                year === 'all' ? (
+                  <Overview key={c.key} category={c} daily={data.daily} />
+                ) : (
+                  <Heatmap key={c.key} year={year} category={c} daily={data.daily} />
+                ),
+              )}
             </div>
 
             {yearActivities.length > 0 && <ActivityList key={year} activities={yearActivities} />}

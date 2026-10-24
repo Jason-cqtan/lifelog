@@ -2,14 +2,13 @@ import { useEffect, useMemo, useRef, useState, type MouseEvent } from 'react'
 import type { Category, Data } from '../types'
 import { addDays, fmtNum, isoDate } from '../lib/format'
 import { useI18n } from '../i18n'
+import { Scale, levelFill, quartileLevels } from './heat'
 
 const CELL = 11
 const GAP = 2
 const STEP = CELL + GAP
 const LEFT = 26
 const TOP = 16
-// color-mix percentage of the category color per intensity level (one-hue ramp)
-const LEVEL_MIX = [0, 28, 52, 76, 100]
 
 interface Props {
   year: number
@@ -43,14 +42,9 @@ export function Heatmap({ year, category, daily }: Props) {
       const value = (daily[date]?.[category.metric] ?? 0) * category.scale
       cells.push({ date, week: Math.floor((i + offset) / 7), dow: (d.getDay() + 6) % 7, value, level: 0 })
     }
-    // Quartiles of the non-zero days pick the 4 intensity levels, so one huge
-    // day does not wash out the rest of the year.
-    const nz = cells.map((c) => c.value).filter((v) => v > 0).sort((a, b) => a - b)
-    const q = [0.25, 0.5, 0.75].map((p) => nz[Math.floor(p * (nz.length - 1))] ?? 0)
-    for (const c of cells) {
-      if (c.value <= 0) continue
-      c.level = c.value <= q[0] ? 1 : c.value <= q[1] ? 2 : c.value <= q[2] ? 3 : 4
-    }
+    const level = quartileLevels(cells.map((c) => c.value))
+    for (const c of cells) c.level = level(c.value)
+    const nz = cells.map((c) => c.value).filter((v) => v > 0)
     const goalDays = category.goalMetric
       ? cells.filter((c) => {
           const goal = daily[c.date]?.[category.goalMetric!] ?? 0
@@ -173,11 +167,7 @@ export function Heatmap({ year, category, daily }: Props) {
                 width={CELL}
                 height={CELL}
                 rx={2}
-                fill={
-                  c.level === 0
-                    ? 'var(--cell-empty)'
-                    : `color-mix(in oklab, ${category.color} ${LEVEL_MIX[c.level]}%, var(--surface))`
-                }
+                fill={levelFill(category.color, c.level)}
                 stroke={tip?.cell === c ? 'var(--text-primary)' : 'none'}
                 strokeWidth={1.5}
               />
@@ -191,18 +181,7 @@ export function Heatmap({ year, category, daily }: Props) {
           )}
         </div>
       </div>
-      <div className="scale" aria-hidden>
-        {t.less}
-        {LEVEL_MIX.map((mix, i) => (
-          <i
-            key={i}
-            style={{
-              background: i === 0 ? 'var(--cell-empty)' : `color-mix(in oklab, ${category.color} ${mix}%, var(--surface))`,
-            }}
-          />
-        ))}
-        {t.more}
-      </div>
+      <Scale color={category.color} />
     </section>
   )
 }
