@@ -1,0 +1,1498 @@
+{
+ "updated_at": "2026-10-24T11:30:25Z",
+ "ranges": {
+  "long_term": {
+   "artists": [
+    {
+     "id": "0SIXZXJCAhNU8sxK0qm7hn",
+     "name": "Stefanie Sun",
+     "image": "https://i.scdn.co/image/ab6761610000f178744989ed737112f4edbd2cc3"
+    },
+    {
+     "id": "6eUKZXaKkcviH0Ku9w2n3V",
+     "name": "Ed Sheeran",
+     "image": "https://i.scdn.co/image/ab6761610000f178d55c95ad400aed87da52daec"
+    },
+    {
+     "id": "2elBjNSdBE2Y3f0j1mjrql",
+     "name": "Jay Chou",
+     "image": "https://i.scdn.co/image/ab6761610000f17887fbbe9ed03fbb500595e720"
+    },
+    {
+     "id": "2hgxWUG24w1cFLBlPSEVcV",
+     "name": "許嵩",
+     "image": "https://i.scdn.co/image/ab6761610000f178704d08abe2a3bf0bb1c366c9"
+    },
+    {
+     "id": "5cj0lLjcoR7YOSnhnX0Po5",
+     "name": "Doja Cat",
+     "image": "https://i.scdn.co/image/ab6761610000f1788a0644455ebfa7d3976f5101"
+    },
+    {
+     "id": "0PxqaZXFW167XSUiha9eEi",
+     "name": "7and5",
+     "image": "https://i.scdn.co/image/ab6761610000f1780887284d923c88a92835e427"
+    },
+    {
+     "id": "0du5cEVh5yTK9QJze8zA0C",
+     "name": "Bruno Mars",
+     "image": "https://i.scdn.co/image/ab6761610000f178c7688aad1bf03986934d7e26"
+    },
+    {
+     "id": "30b9WulBM8sFuBo17nNq9c",
+     "name": "G-DRAGON",
+     "image": "https://i.scdn.co/image/ab6761610000f178783a6a578e8eb992bfd74765"
+    },
+    {
+     "id": "6M2wZ9GZgrQXHCFfjv46we",
+     "name": "Dua Lipa",
+     "image": "https://i.scdn.co/image/ab6761610000f1780c68f6c95232e716f0abee8d"
+    },
+    {
+     "id": "6PNEi9i2MxUgRufqYr76Xt",
+     "name": "Zhang Zhen Yue",
+     "image": "https://i.scdn.co/image/ab6761610000f17866a909756400366c24bf1568"
+    },
+    {
+     "id": "3tYJfCciy07wTBt2HpjCQw",
+     "name": "Vexento",
+     "image": "https://i.scdn.co/image/ab6761610000f17827874e04725994e5ae5d21c3"
+    },
+    {
+     "id": "1f3NYrlm9GpXxMz8XZGEP5",
+     "name": "Axero",
+     "image": "https://i.scdn.co/image/ab6761610000f178c3f0ab5f9cba94862e72542a"
+    },
+    {
+     "id": "5XMnJOQbE6OuOvcV8fn3Wg",
+     "name": "Dave Wang",
+     "image": "https://i.scdn.co/image/ab6761610000f1789ffb964ffbd8af492f1d6471"
+    },
+    {
+     "id": "3AroL2oDPiAnMpTmIQv3KP",
+     "name": "Cyndi Wang",
+     "image": "https://i.scdn.co/image/ab6761610000f1788baa4f890691b73ec50ccb70"
+    },
+    {
+     "id": "06HL4z0CvFAxyc27GXpf02",
+     "name": "Taylor Swift",
+     "image": "https://i.scdn.co/image/ab6761610000f17812184bdd29403de54cb9d9c7"
+    },
+    {
+     "id": "04gDigrS5kc9YWfZHwBETP",
+     "name": "Maroon 5",
+     "image": "https://i.scdn.co/image/ab6761610000f178f8349dfb619a7f842242de77"
+    },
+    {
+     "id": "6noxsCszBEEK04kCehugOp",
+     "name": "A-Mei Chang",
+     "image": "https://i.scdn.co/image/ab6761610000f1781b44d5d4d2e564f28f4046cf"
+    },
+    {
+     "id": "376pcuw4IgWBMOUwCr8kIm",
+     "name": "Tanya Chua",
+     "image": "https://i.scdn.co/image/ab6761610000f1786a0678a926bd4812fb8a4099"
+    },
+    {
+     "id": "7vk5e3vY1uw9plTHJAMwjN",
+     "name": "Alan Walker",
+     "image": "https://i.scdn.co/image/ab6761610000f178572a8eae56feae217f618078"
+    },
+    {
+     "id": "4BAWVaDoA2CpEdUetoYKgZ",
+     "name": "Capo Productions",
+     "image": "https://i.scdn.co/image/ab67616d00001e020d2bdfb25648a42ba50b9c41"
+    },
+    {
+     "id": "3XRhtE8W24BUgS40G9ZNkS",
+     "name": "Linear Phase",
+     "image": "https://i.scdn.co/image/ab6761610000f1789caf03c5c4b858fca6cedab4"
+    },
+    {
+     "id": "6RAx8RRxoHeJIqD2d0EjOa",
+     "name": "HVOB",
+     "image": "https://i.scdn.co/image/ab6761610000f1784432398038a3f585dd92165b"
+    },
+    {
+     "id": "5Pwc4xIPtQLFEnJriah9YJ",
+     "name": "OneRepublic",
+     "image": "https://i.scdn.co/image/ab6761610000f1783202f1bcacc6d8f581f32ffd"
+    },
+    {
+     "id": "1dfeR4HaWDbWqFHLkxsg1d",
+     "name": "Queen",
+     "image": "https://i.scdn.co/image/ab6761610000f17873e4d22612ac8d944b5789b4"
+    },
+    {
+     "id": "1r9DuPTHiQ7hnRRZ99B8nL",
+     "name": "JOLIN",
+     "image": "https://i.scdn.co/image/ab6761610000f178c4b4416e53fb403c4612a822"
+    },
+    {
+     "id": "3eVa5w3URK5duf6eyVDbu9",
+     "name": "ROSÉ",
+     "image": "https://i.scdn.co/image/ab6761610000f1783939f5ec8323cf370fc9e99e"
+    },
+    {
+     "id": "5oqLnVZzJJXE3YnzzZfRKu",
+     "name": "F.I.R.",
+     "image": "https://i.scdn.co/image/ab6761610000f178d9939d240016befcc2095b26"
+    },
+    {
+     "id": "3OKg7YbOIatODzkRIbLJR4",
+     "name": "TheFatRat",
+     "image": "https://i.scdn.co/image/ab6761610000f178c64c5f001dc3957cf5651460"
+    },
+    {
+     "id": "3aIDSTKS9yH745GUQBxDcS",
+     "name": "Fish Leong",
+     "image": "https://i.scdn.co/image/ab6761610000f17814806436e1fc9d977a3709dd"
+    },
+    {
+     "id": "66CXWjxzNUsdJxJ2JdwvnR",
+     "name": "Ariana Grande",
+     "image": "https://i.scdn.co/image/ab6761610000f17868412f2d0177a9ebc265ff58"
+    },
+    {
+     "id": "7CajNmpbOovFoOoasH2HaY",
+     "name": "Calvin Harris",
+     "image": "https://i.scdn.co/image/ab6761610000f1788ebba5e60113b48de8c11f6b"
+    },
+    {
+     "id": "2QcZxAgcs2I1q7CtCkl6MI",
+     "name": "Eason Chan",
+     "image": "https://i.scdn.co/image/ab6761610000f178438e5730e9e86121f329d2dd"
+    },
+    {
+     "id": "3FUY2gzHeIiaesXtOAdB7A",
+     "name": "Train",
+     "image": "https://i.scdn.co/image/ab6761610000f178fe613747ea3666f4c75b9884"
+    },
+    {
+     "id": "6jlz5QSUqbKE4vnzo2qfP1",
+     "name": "Karen Mok",
+     "image": "https://i.scdn.co/image/ab6761610000f1789a48f2e7dd96f09c723c887c"
+    },
+    {
+     "id": "378dH6EszOLFShpRzAQkVM",
+     "name": "Lindsey Stirling",
+     "image": "https://i.scdn.co/image/ab6761610000f17836c6fa1b8ff851988de641f8"
+    },
+    {
+     "id": "5uCktjKM1Rf9VnUvFD6j17",
+     "name": "Solar Heavy",
+     "image": "https://i.scdn.co/image/ab6761610000f1782b1c6db6ed003d0e72c160e6"
+    },
+    {
+     "id": "5WUlDfRSoLAfcVSX1WnrxN",
+     "name": "Sia",
+     "image": "https://i.scdn.co/image/ab6761610000f178cc1806f0a2f6c9e449de9d3c"
+    },
+    {
+     "id": "14bJhryXGk6H6qlGzwj3W5",
+     "name": "Hebe Tien",
+     "image": "https://i.scdn.co/image/ab6761610000f17809749491c2a434bde6cf40cc"
+    },
+    {
+     "id": "1Cs0zKBU1kc0i8ypK3B9ai",
+     "name": "David Guetta",
+     "image": "https://i.scdn.co/image/ab6761610000f178f150017ca69c8793503c2d4f"
+    },
+    {
+     "id": "2F5W6Rsxwzg0plQ0w8dSyt",
+     "name": "Leehom Wang",
+     "image": "https://i.scdn.co/image/ab6761610000f1786527b7513831feda18b2abf1"
+    },
+    {
+     "id": "7v9Il42LvvTeSfmf1bwfNx",
+     "name": "Deserts Chang",
+     "image": "https://i.scdn.co/image/ab6761610000f1784b6ba52e390871d8ef7c8f69"
+    },
+    {
+     "id": "1Xyo4u8uXC1ZmMpatF05PJ",
+     "name": "The Weeknd",
+     "image": "https://i.scdn.co/image/ab6761610000f178c1719ac9e6a75c1c25835018"
+    },
+    {
+     "id": "69GGBxA162lTqCwzJG5jLp",
+     "name": "The Chainsmokers",
+     "image": "https://i.scdn.co/image/ab6761610000f1784567279fac84a0375c3d819b"
+    },
+    {
+     "id": "6MDME20pz9RveH9rEXvrOM",
+     "name": "Clean Bandit",
+     "image": "https://i.scdn.co/image/ab6761610000f178f995542c4f68f8ae4f05b5f6"
+    },
+    {
+     "id": "3WYT2b8pOLsLsqSaoWYr7U",
+     "name": "sodagreen",
+     "image": "https://i.scdn.co/image/ab6761610000f1780b46989f88510c6eaa01e447"
+    },
+    {
+     "id": "3dI4Io8XE33J2o04ZwjR0Y",
+     "name": "LaLa Hsu",
+     "image": "https://i.scdn.co/image/ab6761610000f178144b3cc38337efa33159cd11"
+    },
+    {
+     "id": "2wY79sveU1sp5g7SokKOiI",
+     "name": "Sam Smith",
+     "image": "https://i.scdn.co/image/ab6761610000f1780e64fb94acbb752960c823e9"
+    },
+    {
+     "id": "4npEfmQ6YuiwW1GpUmaq3F",
+     "name": "Ava Max",
+     "image": "https://i.scdn.co/image/ab6761610000f178d8fa717584b01690e3919e32"
+    },
+    {
+     "id": "65NrBzD3Jnf1iqbDjuUYjD",
+     "name": "Jacoo",
+     "image": "https://i.scdn.co/image/ab6761610000f1785376113195c2e23a0152c0de"
+    },
+    {
+     "id": "53XhwfbYqKCa1cC15pYq2q",
+     "name": "Imagine Dragons",
+     "image": "https://i.scdn.co/image/ab6761610000f178ab47d8dae2b24f5afe7f9d38"
+    }
+   ],
+   "tracks": [
+    {
+     "id": "5aTsxlQlq0vIedDWZoqMWN",
+     "name": "Lights - Single Version",
+     "artist": "Ellie Goulding",
+     "album": "Bright Lights (Lights Re-pack / Bonus Version)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02512cd44d21eacbfeda4affe2"
+    },
+    {
+     "id": "24hWI7qzj3EdIeVCEk5dXW",
+     "name": "Always Remember Us This Way",
+     "artist": "Derefner",
+     "album": "Always Remember Us This Way",
+     "image": "https://i.scdn.co/image/ab67616d00001e02a76eef037c97ee5211af13fc"
+    },
+    {
+     "id": "3ojwY8dyubHnLsoHdRUpo4",
+     "name": "雅俗共賞",
+     "artist": "許嵩",
+     "album": "青年晚報",
+     "image": "https://i.scdn.co/image/ab67616d00001e029bb2441b6b192266eb47106f"
+    },
+    {
+     "id": "7EQGXaVSyEDsCWKmUcfpLk",
+     "name": "Die Young",
+     "artist": "Kesha",
+     "album": "Warrior (Expanded Edition)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02edcab0fe7cf29d17751dad18"
+    },
+    {
+     "id": "1EOWf8bsePF6QtiDUAclrJ",
+     "name": "Catch a Grenade - The Hooligans Remix",
+     "artist": "Bruno Mars",
+     "album": "The Grenade Sessions",
+     "image": "https://i.scdn.co/image/ab67616d00001e026424db824abd14306db0da44"
+    },
+    {
+     "id": "3tInTDUq8wdIMw5ftohmqJ",
+     "name": "Girls Chase Boys",
+     "artist": "Ingrid Michaelson",
+     "album": "Lights Out",
+     "image": "https://i.scdn.co/image/ab67616d00001e02ac90d708dd4cf294d5d8784e"
+    },
+    {
+     "id": "0zL9dieoCcjBWV01y73Cj1",
+     "name": "Faded",
+     "artist": "ZHU",
+     "album": "THE NIGHTDAY",
+     "image": "https://i.scdn.co/image/ab67616d00001e0230e314ad00bee99cf64c9b88"
+    },
+    {
+     "id": "5s8QrZRHt4gZclSaCds4GY",
+     "name": "Nostalgia",
+     "artist": "D33pSoul",
+     "album": "Nostalgia",
+     "image": "https://i.scdn.co/image/ab67616d00001e0244fd7df5558aa1f6cbed17a2"
+    },
+    {
+     "id": "6fNhZRFEkBfgW39W3wKARJ",
+     "name": "Pompeii",
+     "artist": "Bastille",
+     "album": "Bad Blood",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
+    },
+    {
+     "id": "44wtMjxhSguxgWSggFMyMJ",
+     "name": "Yet So Close",
+     "artist": "Vexento",
+     "album": "Yet So Close",
+     "image": "https://i.scdn.co/image/ab67616d00001e02f9e94cdcd43abe52e9e1c4c3"
+    },
+    {
+     "id": "4Tg47JDi502dD0eh4gajWf",
+     "name": "昨夜书",
+     "artist": "许嵩",
+     "album": "经典咏流传第四季 第9期",
+     "image": "https://i.scdn.co/image/ab67616d00001e02f1b39a9ad04b471a169a73fa"
+    },
+    {
+     "id": "2pUpNOgJBIBCcjyQZQ00qU",
+     "name": "Let Her Go",
+     "artist": "Passenger",
+     "album": "All the Little Lights (Deluxe)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02eb0b18cce8b7f5c9fc1579e7"
+    },
+    {
+     "id": "3LvkvzJ2jN7s8P8MMQCeKL",
+     "name": "Indian Summer",
+     "artist": "Stereophonics",
+     "album": "Graffiti On The Train (Deluxe)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02906aa2e9f33528a8222e0636"
+    },
+    {
+     "id": "3h37WcRx8FXWHZK6f7L6F1",
+     "name": "Lil Mama",
+     "artist": "Jain",
+     "album": "Zanaka (Deluxe)",
+     "image": "https://i.scdn.co/image/ab67616d00001e0264ba66f8a81c52364e55db50"
+    },
+    {
+     "id": "5kM7YqycZIBg24TY9mWsZH",
+     "name": "Can't Go for That - Extended Mix",
+     "artist": "giacca., Flores [US]",
+     "album": "Delight",
+     "image": "https://i.scdn.co/image/ab67616d00001e02a97816c82e9fcab94aba6b7d"
+    },
+    {
+     "id": "13P5rwmk2EsoFRIz9UCeh9",
+     "name": "Cool Kids",
+     "artist": "Echosmith",
+     "album": "Talking Dreams (Deluxe Edition)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02106fa02aaa287ec63af85aae"
+    },
+    {
+     "id": "2fuCquhmrzHpu5xcA1ci9x",
+     "name": "Under Pressure - Remastered 2011",
+     "artist": "Queen, David Bowie",
+     "album": "Hot Space (2011 Remaster)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02d254ca497999ae980a5a38c5"
+    },
+    {
+     "id": "2BiKGhUTfePSHv6Fe8BSCg",
+     "name": "Jack",
+     "artist": "HVOB",
+     "album": "HVOB",
+     "image": "https://i.scdn.co/image/ab67616d00001e0253f5ed36d76a59ef9d13806d"
+    },
+    {
+     "id": "6UqRGwjwYL0stXbaodTxwo",
+     "name": "Seve - Radio Edit",
+     "artist": "Tez Cadey",
+     "album": "Seve (Radio Edit)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02da0751d4a35b6af93fb3e01d"
+    },
+    {
+     "id": "6HpchlfDUQzjRYYQCvTWUH",
+     "name": "New Years End",
+     "artist": "God Is An Astronaut",
+     "album": "Far from Refuge (2011 Remastered Edition)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b58eca99da746a9a4dd019db"
+    },
+    {
+     "id": "3DarAbFujv6eYNliUTyqtz",
+     "name": "Kiss Me More (feat. SZA)",
+     "artist": "Doja Cat, SZA",
+     "album": "Planet Her",
+     "image": "https://i.scdn.co/image/ab67616d00001e0214b7b2a920a41166d53ddd49"
+    },
+    {
+     "id": "7bNACqrVn2mAs6YzYlx262",
+     "name": "Equality7-2521",
+     "artist": "7and5",
+     "album": "Oceans",
+     "image": "https://i.scdn.co/image/ab67616d00001e025042f193df4d70f08a7ba30a"
+    },
+    {
+     "id": "7om9AA7nbASF0vzS2u5cDz",
+     "name": "Turnin'",
+     "artist": "Young Rising Sons",
+     "album": "Young Rising Sons",
+     "image": "https://i.scdn.co/image/ab67616d00001e02f2a45f258f01bbd1a0e77bbc"
+    },
+    {
+     "id": "7qiZfU4dY1lWllzX7mPBI3",
+     "name": "Shape of You",
+     "artist": "Ed Sheeran",
+     "album": "÷ (Deluxe)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02ba5db46f4b838ef6027e6f96"
+    },
+    {
+     "id": "5YTtTbqxUzJHD3CpbNHerP",
+     "name": "Brighter Than The Sun",
+     "artist": "Colbie Caillat",
+     "album": "All Of You",
+     "image": "https://i.scdn.co/image/ab67616d00001e023baae0836a5b6ee9d649ed14"
+    },
+    {
+     "id": "4lZBB7P5j84VqQHf3POLdA",
+     "name": "Hold On",
+     "artist": "Bergs, Rachel Fels",
+     "album": "Hold On",
+     "image": "https://i.scdn.co/image/ab67616d00001e026aae6fbda3deab68f09c48a7"
+    },
+    {
+     "id": "75C3FLMspH2VVOVU3Mp78k",
+     "name": "Young, Wild \u0026 Free",
+     "artist": "Axero",
+     "album": "Young, Wild \u0026 Free",
+     "image": "https://i.scdn.co/image/ab67616d00001e024fcf55f78d0be786a8b382b4"
+    },
+    {
+     "id": "6LLegbVHksZ5kDC2whN1Da",
+     "name": "Adventure Time",
+     "artist": "Philter",
+     "album": "The Blossom Chronicles",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b93587221b1ce0c85a02297e"
+    },
+    {
+     "id": "15YruCqHXgIpq3rcWpYuqW",
+     "name": "Shots - Broiler Remix",
+     "artist": "Imagine Dragons, Broiler",
+     "album": "Running songs 2020",
+     "image": "https://i.scdn.co/image/ab67616d00001e02e3bf006fa33de9ffa82db64b"
+    },
+    {
+     "id": "3wo7kaVPCe4HjYqKdKIzql",
+     "name": "Walk Away",
+     "artist": "Dia Frampton",
+     "album": "Red",
+     "image": "https://i.scdn.co/image/ab67616d00001e028588252409ed634e072fd657"
+    },
+    {
+     "id": "7p2RlyF403KmPmZm2TxKl3",
+     "name": "Young Souls",
+     "artist": "Broken Back",
+     "album": "Dear Misfortune, Mother of Joy - EP",
+     "image": "https://i.scdn.co/image/ab67616d00001e0201e7dc8bb82d8d990a1f0f37"
+    },
+    {
+     "id": "6kJrS6kGU2L3nGqObzdJje",
+     "name": "Stop! Stop! Stop! - English version of S",
+     "artist": "VIA Gra",
+     "album": "Stop! Stop! Stop!",
+     "image": "https://i.scdn.co/image/ab67616d00001e02a6460e661fac0d7327c13426"
+    },
+    {
+     "id": "2hTNicFHwtKqk6uSMZU0Cx",
+     "name": "Ascension",
+     "artist": "7and5",
+     "album": "2005 - 2017",
+     "image": "https://i.scdn.co/image/ab67616d00001e0245357ee539d01d2b87c8f945"
+    },
+    {
+     "id": "3b24yvdqGL7nGL91eCNfiQ",
+     "name": "Free Orbiter",
+     "artist": "Jens Buchert",
+     "album": "Electronic Space Lounge - Three",
+     "image": "https://i.scdn.co/image/ab67616d00001e027b151820c9ddaffeb7e177ce"
+    },
+    {
+     "id": "4DxybsoSiMUW0JI2oM0SSN",
+     "name": "Patience",
+     "artist": "Take That",
+     "album": "Beautiful World",
+     "image": "https://i.scdn.co/image/ab67616d00001e0206e7629fa095158d50b73d57"
+    },
+    {
+     "id": "6q7eMARKcRpj3Fcwq5wH5k",
+     "name": "Key To Life",
+     "artist": "Laid Back",
+     "album": "Good Vibes - The Very Best of Laid Back",
+     "image": "https://i.scdn.co/image/ab67616d00001e02627869030fddec0565aa30cc"
+    },
+    {
+     "id": "6nNLW8UCaIMxH9HzIbs63N",
+     "name": "清明雨上",
+     "artist": "許嵩",
+     "album": "自定義",
+     "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
+    },
+    {
+     "id": "76hfruVvmfQbw0eYn1nmeC",
+     "name": "Cake By The Ocean",
+     "artist": "DNCE",
+     "album": "DNCE",
+     "image": "https://i.scdn.co/image/ab67616d00001e028d0a75346badc30c8b845be9"
+    },
+    {
+     "id": "5yFhb4ABfgvqQYZEK18lcc",
+     "name": "for him.",
+     "artist": "Troye Sivan, Allday",
+     "album": "Blue Neighbourhood (Deluxe)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02cc2504583eeb105a99b54cc8"
+    },
+    {
+     "id": "06XNjENyFKA9QQMUuG9CpY",
+     "name": "Mare Tranquilitatis",
+     "artist": "Oliver Scheffner",
+     "album": "Sunny Chillout Lounge",
+     "image": "https://i.scdn.co/image/ab67616d00001e026ffd17937874d8c19a240487"
+    },
+    {
+     "id": "5HOpkTTVcmZHnthgyxrIL8",
+     "name": "The Fox (What Does the Fox Say?)",
+     "artist": "Ylvis",
+     "album": "The Fox (What Does the Fox Say?)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02078f1176c3c725de8e95f490"
+    },
+    {
+     "id": "6cv0maKXFbjZRmu3Oxb4jJ",
+     "name": "We All Want The Same Thing",
+     "artist": "Rixton",
+     "album": "Let The Road",
+     "image": "https://i.scdn.co/image/ab67616d00001e02647377a36072bd08e44dd32b"
+    },
+    {
+     "id": "22RgKGppKFyQwKUX6Rvx8i",
+     "name": "Road Trippin' - Radio Mix",
+     "artist": "DBMM",
+     "album": "High Way",
+     "image": "https://i.scdn.co/image/ab67616d00001e02129acb02ff567b3e3dae5250"
+    },
+    {
+     "id": "2z5Nb9mY1GQwRP2NoCqAN6",
+     "name": "Serenade",
+     "artist": "Jim Brickman",
+     "album": "Simple Things",
+     "image": "https://i.scdn.co/image/ab67616d00001e02686d84a6dcefeda90795cfeb"
+    },
+    {
+     "id": "3p7XQpdt8Dr6oMXSvRZ9bg",
+     "name": "Eyes Closed",
+     "artist": "Ed Sheeran",
+     "album": "- (Deluxe)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02d3e632cfaf8fbee03c27fcb7"
+    },
+    {
+     "id": "4TaaBYvo3J9tNFbdEc7otk",
+     "name": "Run Away - Original Mix",
+     "artist": "Natema, Saccao",
+     "album": "Run Away",
+     "image": "https://i.scdn.co/image/ab67616d00001e02ba48109eda0f2314702ce305"
+    },
+    {
+     "id": "5Yz9vLgcDa4Dcwcy1MUksA",
+     "name": "Listen",
+     "artist": "Said The Sky",
+     "album": "Faith",
+     "image": "https://i.scdn.co/image/ab67616d00001e02a238d072fe98328627a78fb4"
+    },
+    {
+     "id": "7AoCZm5JpcgiIpQz8ClelB",
+     "name": "Can't Get Enough - Sam Padrul Remix",
+     "artist": "Yeah Boy",
+     "album": "Can't Get Enough Remixes",
+     "image": "https://i.scdn.co/image/ab67616d00001e026f4be2da23461b3a1271508c"
+    },
+    {
+     "id": "7dejKdjQxjluvCS3ZjiyyK",
+     "name": "Sunshine Girl",
+     "artist": "moumoon",
+     "album": "moumoon BEST -FULLMOON-",
+     "image": "https://i.scdn.co/image/ab67616d00001e02d5136ed356114bc40f2edcce"
+    },
+    {
+     "id": "2IGMVunIBsBLtEQyoI1Mu7",
+     "name": "Paint The Town Red",
+     "artist": "Doja Cat",
+     "album": "Paint The Town Red",
+     "image": "https://i.scdn.co/image/ab67616d00001e02e69a141e4ffe839c38c4c228"
+    }
+   ]
+  },
+  "medium_term": {
+   "artists": [
+    {
+     "id": "2hgxWUG24w1cFLBlPSEVcV",
+     "name": "許嵩",
+     "image": "https://i.scdn.co/image/ab6761610000f178704d08abe2a3bf0bb1c366c9"
+    },
+    {
+     "id": "5cj0lLjcoR7YOSnhnX0Po5",
+     "name": "Doja Cat",
+     "image": "https://i.scdn.co/image/ab6761610000f1788a0644455ebfa7d3976f5101"
+    },
+    {
+     "id": "6M2wZ9GZgrQXHCFfjv46we",
+     "name": "Dua Lipa",
+     "image": "https://i.scdn.co/image/ab6761610000f1780c68f6c95232e716f0abee8d"
+    },
+    {
+     "id": "2elBjNSdBE2Y3f0j1mjrql",
+     "name": "Jay Chou",
+     "image": "https://i.scdn.co/image/ab6761610000f17887fbbe9ed03fbb500595e720"
+    },
+    {
+     "id": "5XMnJOQbE6OuOvcV8fn3Wg",
+     "name": "Dave Wang",
+     "image": "https://i.scdn.co/image/ab6761610000f1789ffb964ffbd8af492f1d6471"
+    },
+    {
+     "id": "3AroL2oDPiAnMpTmIQv3KP",
+     "name": "Cyndi Wang",
+     "image": "https://i.scdn.co/image/ab6761610000f1788baa4f890691b73ec50ccb70"
+    },
+    {
+     "id": "0SIXZXJCAhNU8sxK0qm7hn",
+     "name": "Stefanie Sun",
+     "image": "https://i.scdn.co/image/ab6761610000f178744989ed737112f4edbd2cc3"
+    },
+    {
+     "id": "5uCktjKM1Rf9VnUvFD6j17",
+     "name": "Solar Heavy",
+     "image": "https://i.scdn.co/image/ab6761610000f1782b1c6db6ed003d0e72c160e6"
+    },
+    {
+     "id": "1Xyo4u8uXC1ZmMpatF05PJ",
+     "name": "The Weeknd",
+     "image": "https://i.scdn.co/image/ab6761610000f178c1719ac9e6a75c1c25835018"
+    },
+    {
+     "id": "4npEfmQ6YuiwW1GpUmaq3F",
+     "name": "Ava Max",
+     "image": "https://i.scdn.co/image/ab6761610000f178d8fa717584b01690e3919e32"
+    },
+    {
+     "id": "6PNEi9i2MxUgRufqYr76Xt",
+     "name": "Zhang Zhen Yue",
+     "image": "https://i.scdn.co/image/ab6761610000f17866a909756400366c24bf1568"
+    },
+    {
+     "id": "6noxsCszBEEK04kCehugOp",
+     "name": "A-Mei Chang",
+     "image": "https://i.scdn.co/image/ab6761610000f1781b44d5d4d2e564f28f4046cf"
+    },
+    {
+     "id": "7CajNmpbOovFoOoasH2HaY",
+     "name": "Calvin Harris",
+     "image": "https://i.scdn.co/image/ab6761610000f1788ebba5e60113b48de8c11f6b"
+    },
+    {
+     "id": "04gDigrS5kc9YWfZHwBETP",
+     "name": "Maroon 5",
+     "image": "https://i.scdn.co/image/ab6761610000f178f8349dfb619a7f842242de77"
+    },
+    {
+     "id": "2wY79sveU1sp5g7SokKOiI",
+     "name": "Sam Smith",
+     "image": "https://i.scdn.co/image/ab6761610000f1780e64fb94acbb752960c823e9"
+    },
+    {
+     "id": "5Pwc4xIPtQLFEnJriah9YJ",
+     "name": "OneRepublic",
+     "image": "https://i.scdn.co/image/ab6761610000f1783202f1bcacc6d8f581f32ffd"
+    },
+    {
+     "id": "6MDME20pz9RveH9rEXvrOM",
+     "name": "Clean Bandit",
+     "image": "https://i.scdn.co/image/ab6761610000f178f995542c4f68f8ae4f05b5f6"
+    },
+    {
+     "id": "6eUKZXaKkcviH0Ku9w2n3V",
+     "name": "Ed Sheeran",
+     "image": "https://i.scdn.co/image/ab6761610000f178d55c95ad400aed87da52daec"
+    },
+    {
+     "id": "4S9EykWXhStSc15wEx8QFK",
+     "name": "Céline Dion",
+     "image": "https://i.scdn.co/image/ab6761610000f178fe81f2540f9fa7564dd5e05c"
+    },
+    {
+     "id": "4iHNK0tOyZPYnBU7nGAgpQ",
+     "name": "Mariah Carey",
+     "image": "https://i.scdn.co/image/ab6761610000f17821453384a10b1f8e18877f63"
+    },
+    {
+     "id": "1r9DuPTHiQ7hnRRZ99B8nL",
+     "name": "JOLIN",
+     "image": "https://i.scdn.co/image/ab6761610000f178c4b4416e53fb403c4612a822"
+    },
+    {
+     "id": "2o5jDhtHVPhrJdv3cEQ99Z",
+     "name": "Tiësto",
+     "image": "https://i.scdn.co/image/ab6761610000f178f4973f7346a2f35e56b63d57"
+    },
+    {
+     "id": "3PhoLpVuITZKcymswpck5b",
+     "name": "Elton John",
+     "image": "https://i.scdn.co/image/ab6761610000f1780dc33a1c53bb58a84b45d6a7"
+    },
+    {
+     "id": "3aIDSTKS9yH745GUQBxDcS",
+     "name": "Fish Leong",
+     "image": "https://i.scdn.co/image/ab6761610000f17814806436e1fc9d977a3709dd"
+    },
+    {
+     "id": "6XpaIBNiVzIetEPCWDvAFP",
+     "name": "Whitney Houston",
+     "image": "https://i.scdn.co/image/ab6761610000f178cd9f60ab57585bf3b77ecc51"
+    },
+    {
+     "id": "6qzfo7jiO4OrhxrvPFPlWX",
+     "name": "Rene Liu",
+     "image": "https://i.scdn.co/image/ab6761610000f178f75583b322f92405efad85ce"
+    },
+    {
+     "id": "5H8TJITZE1sPjVR2ACzXNS",
+     "name": "Wu Bai",
+     "image": "https://i.scdn.co/image/ab6761610000f17818d5d4367366ddaa10137890"
+    },
+    {
+     "id": "5rSXSAkZ67PYJSvpUpkOr7",
+     "name": "Backstreet Boys",
+     "image": "https://i.scdn.co/image/ab6761610000f1787b3634864a78ab6bd1d77c36"
+    }
+   ],
+   "tracks": [
+    {
+     "id": "3ojwY8dyubHnLsoHdRUpo4",
+     "name": "雅俗共賞",
+     "artist": "許嵩",
+     "album": "青年晚報",
+     "image": "https://i.scdn.co/image/ab67616d00001e029bb2441b6b192266eb47106f"
+    },
+    {
+     "id": "4Tg47JDi502dD0eh4gajWf",
+     "name": "昨夜书",
+     "artist": "许嵩",
+     "album": "经典咏流传第四季 第9期",
+     "image": "https://i.scdn.co/image/ab67616d00001e02f1b39a9ad04b471a169a73fa"
+    },
+    {
+     "id": "3DarAbFujv6eYNliUTyqtz",
+     "name": "Kiss Me More (feat. SZA)",
+     "artist": "Doja Cat, SZA",
+     "album": "Planet Her",
+     "image": "https://i.scdn.co/image/ab67616d00001e0214b7b2a920a41166d53ddd49"
+    },
+    {
+     "id": "56y1jOTK0XSvJzVv9vHQBK",
+     "name": "Paint The Town Red",
+     "artist": "Doja Cat",
+     "album": "Scarlet",
+     "image": "https://i.scdn.co/image/ab67616d00001e02a54499d7ba4e9afeea91df86"
+    },
+    {
+     "id": "6nNLW8UCaIMxH9HzIbs63N",
+     "name": "清明雨上",
+     "artist": "許嵩",
+     "album": "自定義",
+     "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
+    },
+    {
+     "id": "7gUpO6td4OOnu0Lf9vhcIV",
+     "name": "Lights - Single Version",
+     "artist": "Ellie Goulding",
+     "album": "Lights",
+     "image": "https://i.scdn.co/image/ab67616d00001e02a992179a520d2eb38fa41e64"
+    },
+    {
+     "id": "5s8QrZRHt4gZclSaCds4GY",
+     "name": "Nostalgia",
+     "artist": "D33pSoul",
+     "album": "Nostalgia",
+     "image": "https://i.scdn.co/image/ab67616d00001e0244fd7df5558aa1f6cbed17a2"
+    },
+    {
+     "id": "7nDQMtLxu94xtlTR8bEqjU",
+     "name": "Faded",
+     "artist": "ZHU",
+     "album": "Faded",
+     "image": "https://i.scdn.co/image/ab67616d00001e027b730a450d048646b7472425"
+    },
+    {
+     "id": "0Id7swY6cWbvYLtVVF0wvq",
+     "name": "一場遊戲一場夢",
+     "artist": "Dave Wang",
+     "album": "一場遊戲一場夢",
+     "image": "https://i.scdn.co/image/ab67616d00001e02508f6070bbe3a4fec70e2036"
+    },
+    {
+     "id": "6LLegbVHksZ5kDC2whN1Da",
+     "name": "Adventure Time",
+     "artist": "Philter",
+     "album": "The Blossom Chronicles",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b93587221b1ce0c85a02297e"
+    },
+    {
+     "id": "2qyhy9ndo8tTGMzXeHTisR",
+     "name": "So High",
+     "artist": "Doja Cat",
+     "album": "So High",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b6d713c27625220479563dd5"
+    },
+    {
+     "id": "02BcXEH1zJYbXSabPtNlKf",
+     "name": "Lose My Mind (feat. Doja Cat) [From F1® The Movie]",
+     "artist": "Don Toliver, Doja Cat, F1 The Album",
+     "album": "Lose My Mind (feat. Doja Cat) [From F1® The Movie]",
+     "image": "https://i.scdn.co/image/ab67616d00001e02d4c0243b55cdf7394323e710"
+    },
+    {
+     "id": "5PyDJG7SQRgWXefgexqIge",
+     "name": "Agora Hills",
+     "artist": "Doja Cat",
+     "album": "Scarlet",
+     "image": "https://i.scdn.co/image/ab67616d00001e02a54499d7ba4e9afeea91df86"
+    },
+    {
+     "id": "6Uj1ctrBOjOas8xZXGqKk4",
+     "name": "Woman",
+     "artist": "Doja Cat",
+     "album": "Planet Her",
+     "image": "https://i.scdn.co/image/ab67616d00001e0214b7b2a920a41166d53ddd49"
+    },
+    {
+     "id": "2kWr3JUHOjwmGl6BDzhNdn",
+     "name": "多余的解释",
+     "artist": "許嵩",
+     "album": "自定義",
+     "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
+    },
+    {
+     "id": "4DxybsoSiMUW0JI2oM0SSN",
+     "name": "Patience",
+     "artist": "Take That",
+     "album": "Beautiful World",
+     "image": "https://i.scdn.co/image/ab67616d00001e0206e7629fa095158d50b73d57"
+    },
+    {
+     "id": "4frLb7nWtsz2ymBE6k2GRP",
+     "name": "Earned It (Fifty Shades Of Grey)",
+     "artist": "The Weeknd",
+     "album": "Beauty Behind The Madness",
+     "image": "https://i.scdn.co/image/ab67616d00001e027fcead687e99583072cc217b"
+    },
+    {
+     "id": "5rXBmcYNJYMYdhwxlMLh0s",
+     "name": "有何不可",
+     "artist": "許嵩",
+     "album": "自定義",
+     "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
+    },
+    {
+     "id": "6ldGMSejZIGokqYSzgJIP5",
+     "name": "幻聽",
+     "artist": "許嵩",
+     "album": "夢游計",
+     "image": "https://i.scdn.co/image/ab67616d00001e026c99d21a7cc536154d4c2050"
+    },
+    {
+     "id": "3PfIrDoz19wz7qK7tYeu62",
+     "name": "Don't Start Now",
+     "artist": "Dua Lipa",
+     "album": "Future Nostalgia",
+     "image": "https://i.scdn.co/image/ab67616d00001e02c88bae7846e62a8ba59ee0bd"
+    },
+    {
+     "id": "3Z4B52Fwo5l9RtFPrzoySm",
+     "name": "我想牵着你的手",
+     "artist": "許嵩",
+     "album": "我想牽著你的手",
+     "image": "https://i.scdn.co/image/ab67616d00001e021093e73a2ed86bde416259c7"
+    },
+    {
+     "id": "3Dv1eDb0MEgF93GpLXlucZ",
+     "name": "Say So",
+     "artist": "Doja Cat",
+     "album": "Hot Pink",
+     "image": "https://i.scdn.co/image/ab67616d00001e02d0bbfea6226b5c3707de92ed"
+    },
+    {
+     "id": "5b5cPscqVEMChvDqscVw26",
+     "name": "Training Season",
+     "artist": "Dua Lipa",
+     "album": "Radical Optimism",
+     "image": "https://i.scdn.co/image/ab67616d00001e022f8790ed72296c2614607575"
+    },
+    {
+     "id": "03JZr55j9bIj1d2RQJ7Yq9",
+     "name": "Jealous Type",
+     "artist": "Doja Cat",
+     "album": "Vie",
+     "image": "https://i.scdn.co/image/ab67616d00001e023b219fb53c69f313f90fd4ce"
+    },
+    {
+     "id": "3fRCAPMMZ8l8P9YKI6OCzD",
+     "name": "drop dead",
+     "artist": "Olivia Rodrigo",
+     "album": "you seem pretty sad for a girl so in love",
+     "image": "https://i.scdn.co/image/ab67616d00001e026949b83f85d782b21ce70583"
+    },
+    {
+     "id": "02W5tzWUqFYLv1GQySW2Tv",
+     "name": "安妮",
+     "artist": "Dave Wang",
+     "album": "一場遊戲一場夢",
+     "image": "https://i.scdn.co/image/ab67616d00001e02508f6070bbe3a4fec70e2036"
+    },
+    {
+     "id": "0k4d5YPDr1r7FX77VdqWez",
+     "name": "You Right",
+     "artist": "Doja Cat, The Weeknd",
+     "album": "Planet Her",
+     "image": "https://i.scdn.co/image/ab67616d00001e0214b7b2a920a41166d53ddd49"
+    },
+    {
+     "id": "1KPuohcXPmJYQfdyg9zKmR",
+     "name": "Another One Bites The Dust",
+     "artist": "Queen",
+     "album": "The Game",
+     "image": "https://i.scdn.co/image/ab67616d00001e02a4e6eac83c0fe38bf682f643"
+    },
+    {
+     "id": "1L47sHuKWNdPlGUk69HbmU",
+     "name": "The Right Path",
+     "artist": "Thomas Greenberg",
+     "album": "Age Of Innocence",
+     "image": "https://i.scdn.co/image/ab67616d00001e023b42d9a336638e90b24177ae"
+    },
+    {
+     "id": "1VJwtWR6z7SpZRwipI12be",
+     "name": "Candy",
+     "artist": "Doja Cat",
+     "album": "Amala",
+     "image": "https://i.scdn.co/image/ab67616d00001e02da95885ff9adff70c000cd2c"
+    },
+    {
+     "id": "1aygA3iZfj6ef4aq92EqCU",
+     "name": "Sunset Over Emst - Original Mix",
+     "artist": "Roald Velden",
+     "album": "As the Years Went by / Sunset Over Emst",
+     "image": "https://i.scdn.co/image/ab67616d00001e023572e164458b0e5ea6ff949d"
+    },
+    {
+     "id": "22RgKGppKFyQwKUX6Rvx8i",
+     "name": "Road Trippin' - Radio Mix",
+     "artist": "DBMM",
+     "album": "High Way",
+     "image": "https://i.scdn.co/image/ab67616d00001e02129acb02ff567b3e3dae5250"
+    },
+    {
+     "id": "2DjfjCE8rJU7FLg5pg06hY",
+     "name": "LET'S RIDE! - Drift Phonk",
+     "artist": "SXMPRA, Bone Thugs-N-Harmony, Fast \u0026 Furious: The Fast Saga",
+     "album": "LET'S RIDE! (Drift Phonk)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02569681565640ae0fa3498ea5"
+    },
+    {
+     "id": "2N1VmFyd6cV9U6tXsLKn1D",
+     "name": "大地",
+     "artist": "Beyond",
+     "album": "Beyond - 25th Anniversary",
+     "image": "https://i.scdn.co/image/ab67616d00001e028aa7def4115fe7e5a9908710"
+    },
+    {
+     "id": "2dyyOwe0KxTZTJjjXDeLmU",
+     "name": "Feelings",
+     "artist": "Maroon 5",
+     "album": "V",
+     "image": "https://i.scdn.co/image/ab67616d00001e02442b53773d50e1b5369bb16c"
+    },
+    {
+     "id": "2hz24OXjUoywWvGO3QCKDG",
+     "name": "爱情里的眼泪",
+     "artist": "許嵩, 安琪",
+     "album": "愛情裡的眼淚",
+     "image": "https://i.scdn.co/image/ab67616d00001e02d576449d08b52f960be0437f"
+    },
+    {
+     "id": "2usrT8QIbIk9y0NEtQwS4j",
+     "name": "Intro",
+     "artist": "The xx",
+     "album": "xx",
+     "image": "https://i.scdn.co/image/ab67616d00001e02a46d603701aa0342e8cca64e"
+    },
+    {
+     "id": "371ixmyel2DZ0fPKNmIxfn",
+     "name": "如果当时",
+     "artist": "許嵩",
+     "album": "自定義",
+     "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
+    },
+    {
+     "id": "42suymP38HAIBl0wiDfpst",
+     "name": "千千闋歌",
+     "artist": "Priscilla Chan",
+     "album": "永遠是你的朋友",
+     "image": "https://i.scdn.co/image/ab67616d00001e0226b31e4cf272575273cbcf11"
+    },
+    {
+     "id": "4B4vJppxKZTnqb6qyS6e8h",
+     "name": "Bleu",
+     "artist": "Worakls",
+     "album": "Good Night My Love",
+     "image": "https://i.scdn.co/image/ab67616d00001e024433ae6a319c1bf5b7269a4e"
+    },
+    {
+     "id": "4TaaBYvo3J9tNFbdEc7otk",
+     "name": "Run Away - Original Mix",
+     "artist": "Natema, Saccao",
+     "album": "Run Away",
+     "image": "https://i.scdn.co/image/ab67616d00001e02ba48109eda0f2314702ce305"
+    },
+    {
+     "id": "4Ybi2URcC1egR30Xr1UHOd",
+     "name": "再回到從前",
+     "artist": "張鎬哲",
+     "album": "我真的不是故意的",
+     "image": "https://i.scdn.co/image/ab67616d00001e021b9fa6c4bb3dc69d691c13be"
+    },
+    {
+     "id": "4va1JykAJeulnYV0uYkWhF",
+     "name": "Crazy Bird",
+     "artist": "Wild Child",
+     "album": "The Runaround",
+     "image": "https://i.scdn.co/image/ab67616d00001e022d199e320b675ca7305c6f00"
+    },
+    {
+     "id": "5Oi1UhGQq2B7me6uPpAcc2",
+     "name": "大約在冬季",
+     "artist": "Chyi Chin",
+     "album": "齊秦精選",
+     "image": "https://i.scdn.co/image/ab67616d00001e02de16d38441a186e002f7cd40"
+    },
+    {
+     "id": "5k72u9OHqyTDMylqpG0izJ",
+     "name": "敢愛敢做",
+     "artist": "George Lam, David Ling Jr",
+     "album": "十三子祥",
+     "image": "https://i.scdn.co/image/ab67616d00001e02fba1cf9d8569a6c7bc0796c1"
+    },
+    {
+     "id": "65I5kZ7gjsc4A0XHT8uGQ7",
+     "name": "粗糙",
+     "artist": "許嵩",
+     "album": "安泊猜想",
+     "image": "https://i.scdn.co/image/ab67616d00001e02031ac1c7fc7b2c6e5e3a4677"
+    },
+    {
+     "id": "65bRYkG90LpIzqLzg4firZ",
+     "name": "素颜",
+     "artist": "許嵩, 何曼婷",
+     "album": "素顏",
+     "image": "https://i.scdn.co/image/ab67616d00001e02a21d702191dcfa924f694422"
+    },
+    {
+     "id": "67wrHBNV1stVSKqN1kNsZP",
+     "name": "Chiru (Saisei no Uta)",
+     "artist": "Robert de Boron",
+     "album": "Mellow Candle",
+     "image": "https://i.scdn.co/image/ab67616d00001e0281969c51d6ef66b8def7fc5f"
+    },
+    {
+     "id": "6fNhZRFEkBfgW39W3wKARJ",
+     "name": "Pompeii",
+     "artist": "Bastille",
+     "album": "Bad Blood",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
+    },
+    {
+     "id": "7AoCZm5JpcgiIpQz8ClelB",
+     "name": "Can't Get Enough - Sam Padrul Remix",
+     "artist": "Yeah Boy",
+     "album": "Can't Get Enough Remixes",
+     "image": "https://i.scdn.co/image/ab67616d00001e026f4be2da23461b3a1271508c"
+    }
+   ]
+  },
+  "short_term": {
+   "artists": [
+    {
+     "id": "2hgxWUG24w1cFLBlPSEVcV",
+     "name": "許嵩",
+     "image": "https://i.scdn.co/image/ab6761610000f178704d08abe2a3bf0bb1c366c9"
+    },
+    {
+     "id": "5uCktjKM1Rf9VnUvFD6j17",
+     "name": "Solar Heavy",
+     "image": "https://i.scdn.co/image/ab6761610000f1782b1c6db6ed003d0e72c160e6"
+    },
+    {
+     "id": "6M2wZ9GZgrQXHCFfjv46we",
+     "name": "Dua Lipa",
+     "image": "https://i.scdn.co/image/ab6761610000f1780c68f6c95232e716f0abee8d"
+    },
+    {
+     "id": "2elBjNSdBE2Y3f0j1mjrql",
+     "name": "Jay Chou",
+     "image": "https://i.scdn.co/image/ab6761610000f17887fbbe9ed03fbb500595e720"
+    },
+    {
+     "id": "5cj0lLjcoR7YOSnhnX0Po5",
+     "name": "Doja Cat",
+     "image": "https://i.scdn.co/image/ab6761610000f1788a0644455ebfa7d3976f5101"
+    },
+    {
+     "id": "04gDigrS5kc9YWfZHwBETP",
+     "name": "Maroon 5",
+     "image": "https://i.scdn.co/image/ab6761610000f178f8349dfb619a7f842242de77"
+    },
+    {
+     "id": "4npEfmQ6YuiwW1GpUmaq3F",
+     "name": "Ava Max",
+     "image": "https://i.scdn.co/image/ab6761610000f178d8fa717584b01690e3919e32"
+    }
+   ],
+   "tracks": [
+    {
+     "id": "3ojwY8dyubHnLsoHdRUpo4",
+     "name": "雅俗共賞",
+     "artist": "許嵩",
+     "album": "青年晚報",
+     "image": "https://i.scdn.co/image/ab67616d00001e029bb2441b6b192266eb47106f"
+    },
+    {
+     "id": "4Tg47JDi502dD0eh4gajWf",
+     "name": "昨夜书",
+     "artist": "许嵩",
+     "album": "经典咏流传第四季 第9期",
+     "image": "https://i.scdn.co/image/ab67616d00001e02f1b39a9ad04b471a169a73fa"
+    },
+    {
+     "id": "6nNLW8UCaIMxH9HzIbs63N",
+     "name": "清明雨上",
+     "artist": "許嵩",
+     "album": "自定義",
+     "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
+    },
+    {
+     "id": "6LLegbVHksZ5kDC2whN1Da",
+     "name": "Adventure Time",
+     "artist": "Philter",
+     "album": "The Blossom Chronicles",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b93587221b1ce0c85a02297e"
+    },
+    {
+     "id": "7gUpO6td4OOnu0Lf9vhcIV",
+     "name": "Lights - Single Version",
+     "artist": "Ellie Goulding",
+     "album": "Lights",
+     "image": "https://i.scdn.co/image/ab67616d00001e02a992179a520d2eb38fa41e64"
+    },
+    {
+     "id": "2kWr3JUHOjwmGl6BDzhNdn",
+     "name": "多余的解释",
+     "artist": "許嵩",
+     "album": "自定義",
+     "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
+    },
+    {
+     "id": "5rXBmcYNJYMYdhwxlMLh0s",
+     "name": "有何不可",
+     "artist": "許嵩",
+     "album": "自定義",
+     "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
+    },
+    {
+     "id": "6ldGMSejZIGokqYSzgJIP5",
+     "name": "幻聽",
+     "artist": "許嵩",
+     "album": "夢游計",
+     "image": "https://i.scdn.co/image/ab67616d00001e026c99d21a7cc536154d4c2050"
+    },
+    {
+     "id": "3Z4B52Fwo5l9RtFPrzoySm",
+     "name": "我想牵着你的手",
+     "artist": "許嵩",
+     "album": "我想牽著你的手",
+     "image": "https://i.scdn.co/image/ab67616d00001e021093e73a2ed86bde416259c7"
+    },
+    {
+     "id": "1KPuohcXPmJYQfdyg9zKmR",
+     "name": "Another One Bites The Dust",
+     "artist": "Queen",
+     "album": "The Game",
+     "image": "https://i.scdn.co/image/ab67616d00001e02a4e6eac83c0fe38bf682f643"
+    },
+    {
+     "id": "2hz24OXjUoywWvGO3QCKDG",
+     "name": "爱情里的眼泪",
+     "artist": "許嵩, 安琪",
+     "album": "愛情裡的眼淚",
+     "image": "https://i.scdn.co/image/ab67616d00001e02d576449d08b52f960be0437f"
+    },
+    {
+     "id": "2usrT8QIbIk9y0NEtQwS4j",
+     "name": "Intro",
+     "artist": "The xx",
+     "album": "xx",
+     "image": "https://i.scdn.co/image/ab67616d00001e02a46d603701aa0342e8cca64e"
+    },
+    {
+     "id": "371ixmyel2DZ0fPKNmIxfn",
+     "name": "如果当时",
+     "artist": "許嵩",
+     "album": "自定義",
+     "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
+    },
+    {
+     "id": "4B4vJppxKZTnqb6qyS6e8h",
+     "name": "Bleu",
+     "artist": "Worakls",
+     "album": "Good Night My Love",
+     "image": "https://i.scdn.co/image/ab67616d00001e024433ae6a319c1bf5b7269a4e"
+    },
+    {
+     "id": "5s8QrZRHt4gZclSaCds4GY",
+     "name": "Nostalgia",
+     "artist": "D33pSoul",
+     "album": "Nostalgia",
+     "image": "https://i.scdn.co/image/ab67616d00001e0244fd7df5558aa1f6cbed17a2"
+    },
+    {
+     "id": "65I5kZ7gjsc4A0XHT8uGQ7",
+     "name": "粗糙",
+     "artist": "許嵩",
+     "album": "安泊猜想",
+     "image": "https://i.scdn.co/image/ab67616d00001e02031ac1c7fc7b2c6e5e3a4677"
+    },
+    {
+     "id": "65bRYkG90LpIzqLzg4firZ",
+     "name": "素颜",
+     "artist": "許嵩, 何曼婷",
+     "album": "素顏",
+     "image": "https://i.scdn.co/image/ab67616d00001e02a21d702191dcfa924f694422"
+    },
+    {
+     "id": "67wrHBNV1stVSKqN1kNsZP",
+     "name": "Chiru (Saisei no Uta)",
+     "artist": "Robert de Boron",
+     "album": "Mellow Candle",
+     "image": "https://i.scdn.co/image/ab67616d00001e0281969c51d6ef66b8def7fc5f"
+    },
+    {
+     "id": "6fNhZRFEkBfgW39W3wKARJ",
+     "name": "Pompeii",
+     "artist": "Bastille",
+     "album": "Bad Blood",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
+    },
+    {
+     "id": "44wtMjxhSguxgWSggFMyMJ",
+     "name": "Yet So Close",
+     "artist": "Vexento",
+     "album": "Yet So Close",
+     "image": "https://i.scdn.co/image/ab67616d00001e02f9e94cdcd43abe52e9e1c4c3"
+    },
+    {
+     "id": "4qT6j1ORWqoHhGYQHLpJGa",
+     "name": "灰色头像",
+     "artist": "許嵩",
+     "album": "尋霧啟示",
+     "image": "https://i.scdn.co/image/ab67616d00001e029e650f7adeb89c79e738bf62"
+    },
+    {
+     "id": "5tzgLJeeNHz7NNRWhR1L35",
+     "name": "暖暖",
+     "artist": "Fish Leong",
+     "album": "親親",
+     "image": "https://i.scdn.co/image/ab67616d00001e0227855459680dea347f412fec"
+    },
+    {
+     "id": "7nDQMtLxu94xtlTR8bEqjU",
+     "name": "Faded",
+     "artist": "ZHU",
+     "album": "Faded",
+     "image": "https://i.scdn.co/image/ab67616d00001e027b730a450d048646b7472425"
+    },
+    {
+     "id": "1TNw0nkGMuydC979VlPWBL",
+     "name": "千百度",
+     "artist": "許嵩",
+     "album": "蘇格拉沒有底",
+     "image": "https://i.scdn.co/image/ab67616d00001e025039b4ec0adf96960be1e408"
+    },
+    {
+     "id": "4AmlSf7hye0QVpnHCcEoEw",
+     "name": "城府",
+     "artist": "許嵩",
+     "album": "自定義",
+     "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
+    },
+    {
+     "id": "7rdtBpPpe4knfd7aD98h9X",
+     "name": "Take Me to Your Heart",
+     "artist": "Michael Learns To Rock",
+     "album": "Michael Learns To Rock",
+     "image": "https://i.scdn.co/image/ab67616d00001e024b8929ee375f3a2539bd2868"
+    },
+    {
+     "id": "04C8kycy8z2kh5BR16fZag",
+     "name": "天龍八部之宿敵",
+     "artist": "許嵩",
+     "album": "天龍八部之宿敵",
+     "image": "https://i.scdn.co/image/ab67616d00001e02c59f8b9dc13b9f00a02a2eb6"
+    },
+    {
+     "id": "0HJIpwtHwueUy1LbDXDRdv",
+     "name": "Beautiful Days Feat. Stratos Messinis - Intro Mix",
+     "artist": "Melosense",
+     "album": "Beautiful Days",
+     "image": "https://i.scdn.co/image/ab67616d00001e0246af95609183c846d72b0075"
+    },
+    {
+     "id": "0KGKZu5JuxQkgbelqms5nr",
+     "name": "洛陽紙",
+     "artist": "許嵩",
+     "album": "安泊猜想",
+     "image": "https://i.scdn.co/image/ab67616d00001e02031ac1c7fc7b2c6e5e3a4677"
+    },
+    {
+     "id": "0phl4jBlBCpPmm7IDr2RFL",
+     "name": "驚鴻一面",
+     "artist": "許嵩",
+     "album": "不如吃茶去",
+     "image": "https://i.scdn.co/image/ab67616d00001e028636b9700bbb12051402553b"
+    },
+    {
+     "id": "11wlDEdE6fV0YuRXSXMAnE",
+     "name": "Aerials",
+     "artist": "Lights \u0026 Motion",
+     "album": "Reanimation",
+     "image": "https://i.scdn.co/image/ab67616d00001e0284bee8371225201e5258bc0f"
+    },
+    {
+     "id": "17H70rNv7MFkT4MhhUZVgg",
+     "name": "Indian Summer",
+     "artist": "Stereophonics",
+     "album": "Graffiti On The Train",
+     "image": "https://i.scdn.co/image/ab67616d00001e02a8c28a1fff58bcbb94b22242"
+    },
+    {
+     "id": "1IKF4F13znwgjegbk5U7QD",
+     "name": "Ethereal Concepts - Shingo Nakamura Remix",
+     "artist": "Blugazer, Shingo Nakamura",
+     "album": "Ethereal Concepts",
+     "image": "https://i.scdn.co/image/ab67616d00001e023cfa8e13ef148bacc866f5c1"
+    },
+    {
+     "id": "1L47sHuKWNdPlGUk69HbmU",
+     "name": "The Right Path",
+     "artist": "Thomas Greenberg",
+     "album": "Age Of Innocence",
+     "image": "https://i.scdn.co/image/ab67616d00001e023b42d9a336638e90b24177ae"
+    },
+    {
+     "id": "1aygA3iZfj6ef4aq92EqCU",
+     "name": "Sunset Over Emst - Original Mix",
+     "artist": "Roald Velden",
+     "album": "As the Years Went by / Sunset Over Emst",
+     "image": "https://i.scdn.co/image/ab67616d00001e023572e164458b0e5ea6ff949d"
+    },
+    {
+     "id": "1js2YjrIqEd4n1UKAM0F42",
+     "name": "前程似錦",
+     "artist": "許嵩",
+     "album": "安泊猜想",
+     "image": "https://i.scdn.co/image/ab67616d00001e02031ac1c7fc7b2c6e5e3a4677"
+    },
+    {
+     "id": "1n2NNUMQvRAe18yFr8X85x",
+     "name": "老歌",
+     "artist": "許嵩",
+     "album": "安泊猜想",
+     "image": "https://i.scdn.co/image/ab67616d00001e02031ac1c7fc7b2c6e5e3a4677"
+    },
+    {
+     "id": "20zq8UHvScuJ1xqCAKMXAq",
+     "name": "Superman",
+     "artist": "Sunstroke, Olia Tira",
+     "album": "Superman",
+     "image": "https://i.scdn.co/image/ab67616d00001e025eb02f8a1b577ce0ae9710eb"
+    },
+    {
+     "id": "22RgKGppKFyQwKUX6Rvx8i",
+     "name": "Road Trippin' - Radio Mix",
+     "artist": "DBMM",
+     "album": "High Way",
+     "image": "https://i.scdn.co/image/ab67616d00001e02129acb02ff567b3e3dae5250"
+    },
+    {
+     "id": "2SdMEke7JCBEo8t60iyw2r",
+     "name": "Changes - Radio Mix",
+     "artist": "Faul \u0026 Wad, PNAU",
+     "album": "Changes",
+     "image": "https://i.scdn.co/image/ab67616d00001e029b484ba06fc7f37e59bd1871"
+    },
+    {
+     "id": "2Tl7unJOZm9zhZQf5UlmPq",
+     "name": "Take Flight",
+     "artist": "Lindsey Stirling",
+     "album": "Shatter Me",
+     "image": "https://i.scdn.co/image/ab67616d00001e02a1a009777816921f0b30abfb"
+    },
+    {
+     "id": "2dyyOwe0KxTZTJjjXDeLmU",
+     "name": "Feelings",
+     "artist": "Maroon 5",
+     "album": "V",
+     "image": "https://i.scdn.co/image/ab67616d00001e02442b53773d50e1b5369bb16c"
+    },
+    {
+     "id": "2ePAdzQlLhUbj6uJ9M3Yo2",
+     "name": "Lil Mama",
+     "artist": "Jain",
+     "album": "Zanaka",
+     "image": "https://i.scdn.co/image/ab67616d00001e029d3ad3a9fa90bf0dee0ae5be"
+    },
+    {
+     "id": "2ikC4ufCoWtpKBdCcoe7D5",
+     "name": "El Condor Pasa - Summer Version",
+     "artist": "Leo Rojas",
+     "album": "Leo Rojas",
+     "image": "https://i.scdn.co/image/ab67616d00001e02671121f3316dab1e38e11657"
+    },
+    {
+     "id": "3EyT8OXUYVfZe2Zkcrwnr9",
+     "name": "认错",
+     "artist": "許嵩",
+     "album": "自定義",
+     "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
+    },
+    {
+     "id": "3GWePpTs0kAONgdddL86Ly",
+     "name": "A Beautiful Farewell",
+     "artist": "Soulostar",
+     "album": "Dawn",
+     "image": "https://i.scdn.co/image/ab67616d00001e02a662d4f9caf831be1fb43438"
+    },
+    {
+     "id": "3ZG7NSnamNqcg6aum8zrC3",
+     "name": "庐州月",
+     "artist": "許嵩",
+     "album": "尋霧啟示",
+     "image": "https://i.scdn.co/image/ab67616d00001e029e650f7adeb89c79e738bf62"
+    },
+    {
+     "id": "3b24yvdqGL7nGL91eCNfiQ",
+     "name": "Free Orbiter",
+     "artist": "Jens Buchert",
+     "album": "Electronic Space Lounge - Three",
+     "image": "https://i.scdn.co/image/ab67616d00001e027b151820c9ddaffeb7e177ce"
+    },
+    {
+     "id": "3kXoKlD84c6OmIcOLfrfEs",
+     "name": "September",
+     "artist": "Earth, Wind \u0026 Fire",
+     "album": "September (sped up + slowed)",
+     "image": "https://i.scdn.co/image/ab67616d00001e020faf2fc17446651865ce2282"
+    },
+    {
+     "id": "4DxybsoSiMUW0JI2oM0SSN",
+     "name": "Patience",
+     "artist": "Take That",
+     "album": "Beautiful World",
+     "image": "https://i.scdn.co/image/ab67616d00001e0206e7629fa095158d50b73d57"
+    }
+   ]
+  }
+ }
+}
