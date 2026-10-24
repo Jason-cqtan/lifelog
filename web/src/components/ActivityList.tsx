@@ -181,7 +181,7 @@ export function ActivityList({
       {/* summary sits above the details, like running_page */}
       <div className={year === 'all' ? 'act-top single' : 'act-top'}>
         {year !== 'all' && <MonthCalendar year={year} activities={calActs} selected={period} onPick={pickPeriod} />}
-        <ActivitySummary list={list} year={year} period={period} onPick={pickPeriod} />
+        <ActivitySummary list={list} base={calActs} year={year} period={period} onPick={pickPeriod} />
       </div>
 
       {view === 'cards' ? (

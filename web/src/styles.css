@@ -1112,9 +1112,54 @@ button.cal-day {
 .cal-day.on {
   border-color: var(--day);
 }
-.summary h3 {
-  margin: 0 0 10px;
-  font-size: 15px;
+.sum-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-bottom: 12px;
+}
+.sum-head h3 {
+  margin: 0;
+  font-size: 17px;
+}
+.sum-head-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.sum-total {
+  font-size: 26px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+.sum-total small {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+.sum-chart {
+  position: relative;
+}
+.sum-chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.chart-grid {
+  stroke: var(--hairline);
+  stroke-dasharray: 3 4;
+}
+.chart-base {
+  stroke: var(--text-muted);
+  stroke-opacity: 0.5;
+}
+.chart-unit {
+  text-align: right;
+  color: var(--text-muted);
+  font-size: 12px;
 }
 .sum-grid {
   display: grid;
