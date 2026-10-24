@@ -798,3 +798,104 @@ button.pb-ride:hover {
 .activities-head {
   flex-wrap: wrap;
 }
+
+.music {
+  display: grid;
+  gap: 16px;
+  margin-top: 16px;
+}
+.music-tiles {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+.music-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+.music-tile small {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+.music-lists {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+  gap: 16px;
+}
+.rank {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  /* fixed columns: long names truncate instead of widening the table on phones */
+  table-layout: fixed;
+}
+.rank th:first-child {
+  width: 2em;
+}
+.rank th.num {
+  width: 4.6em;
+}
+.rank th,
+.rank td {
+  padding: 6px 8px;
+  text-align: left;
+  border-bottom: 1px solid var(--hairline);
+}
+.rank tbody tr:last-child td {
+  border-bottom: none;
+}
+.rank th {
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 12px;
+}
+.rank .num {
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.rank .muted {
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+.rank-name {
+  position: relative;
+  overflow: hidden;
+}
+.rank-name span,
+.rank-name small {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rank-name span {
+  font-weight: 600;
+}
+.rank-name small {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+.rank-bar {
+  display: block;
+  height: 3px;
+  margin-top: 3px;
+  border-radius: 2px;
+  background: var(--c-spotify);
+}
+.music-note {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+@media (max-width: 560px) {
+  .music-tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

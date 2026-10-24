@@ -36,6 +36,8 @@ type Output struct {
 	// Daily maps date -> metric -> value. Metrics: <type>_km, sport_min,
 	// duolingo_minutes, duolingo_xp, spotify_minutes, github_contributions ...
 	Daily map[string]map[string]float64 `json:"daily"`
+	// Music is listening stats keyed by year ("2026") and "all".
+	Music map[string]*MusicStats `json:"music,omitempty"`
 }
 
 func Build(st *store.Store, loc *time.Location) Output {
@@ -74,8 +76,12 @@ func Build(st *store.Store, loc *time.Location) Output {
 	for _, d := range st.Daily() {
 		add(d.Date, d.Source+"_"+d.Metric, d.Value)
 	}
-	for _, p := range st.Plays() {
+	plays := st.Plays()
+	for _, p := range plays {
 		add(store.DateIn(p.PlayedAt, loc), "spotify_minutes", float64(p.MsPlayed)/60000)
+	}
+	if len(plays) > 0 {
+		out.Music = Music(plays, loc)
 	}
 	for _, m := range out.Daily {
 		for k, v := range m {

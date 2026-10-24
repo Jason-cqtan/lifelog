@@ -4,13 +4,14 @@ import { Heatmap } from './components/Heatmap'
 import { ActivityList } from './components/ActivityList'
 import { Overview } from './components/Overview'
 import { PersonalBests } from './components/PersonalBests'
+import { Music } from './components/Music'
 import { DICTS, I18n, LOCALE, initialLang, save, type Lang } from './i18n'
 
 // mapbox-gl is large; load it only when the map tab opens
 const RouteMap = lazy(() => import('./components/RouteMap'))
 
 type Theme = 'light' | 'dark'
-const TABS = ['overview', 'activities', 'map'] as const
+const TABS = ['overview', 'activities', 'music', 'map'] as const
 type Tab = (typeof TABS)[number]
 
 const tabFromHash = (): Tab => {
@@ -70,7 +71,11 @@ export function App() {
   const yearsOf = (acts: Data['activities']) => [...new Set(acts.map((a) => Number(a.date.slice(0, 4))))].sort((a, b) => b - a)
   const activityYears = useMemo(() => (data ? yearsOf(data.activities) : []), [data])
   const mapYears = useMemo(() => (data ? yearsOf(data.activities.filter((a) => a.polyline)) : []), [data])
-  const tabYears = tab === 'map' ? mapYears : tab === 'activities' ? activityYears : years
+  const musicYears = useMemo(
+    () => Object.keys(data?.music ?? {}).filter((k) => k !== 'all').map(Number).sort((a, b) => b - a),
+    [data],
+  )
+  const tabYears = { overview: years, activities: activityYears, music: musicYears, map: mapYears }[tab]
   useEffect(() => {
     if (year !== 'all' && tabYears.length > 0 && !tabYears.includes(year)) setYear(tabYears[0])
   }, [year, tabYears])
@@ -154,7 +159,7 @@ export function App() {
               <nav className="tabs" role="tablist">
                 {TABS.map((k) => (
                   <button key={k} role="tab" aria-selected={tab === k} className={tab === k ? 'on' : ''} onClick={() => setTab(k)}>
-                    {{ overview: t.tabOverview, activities: t.tabActivities, map: t.tabMap }[k]}
+                    {{ overview: t.tabOverview, activities: t.tabActivities, music: t.tabMusic, map: t.tabMap }[k]}
                   </button>
                 ))}
               </nav>
@@ -206,6 +211,13 @@ export function App() {
                 />
               </Suspense>
             )}
+
+            {tab === 'music' &&
+              (data.music?.[String(year)] ? (
+                <Music key={year} stats={data.music[String(year)]} />
+              ) : (
+                <p className="empty">{t.noMusic}</p>
+              ))}
 
             {tab === 'overview' && (
               <>

@@ -29,11 +29,24 @@ export interface Weather {
   desc?: string
 }
 
+export interface MusicStats {
+  ms: number
+  plays: number
+  artists: number
+  tracks: number
+  top_artists: { name: string; ms: number; plays: number; tracks: number }[]
+  top_tracks: { track: string; artist?: string; ms: number; plays: number }[]
+  /** listening ms by weekday (0 = Monday) and hour */
+  hours: number[][]
+}
+
 export interface Data {
   generated_at: string
   timezone: string
   activities: Activity[]
   daily: Record<string, Record<string, number>>
+  /** keyed by year and "all" */
+  music?: Record<string, MusicStats>
 }
 
 /** A heatmap drill-down: show one sport's activities in a day ('YYYY-MM-DD') or month ('YYYY-MM'). */
