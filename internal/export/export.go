@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"github.com/Jason-cqtan/lifelog/internal/model"
+	"github.com/Jason-cqtan/lifelog/internal/polyline"
 	"github.com/Jason-cqtan/lifelog/internal/store"
 )
 
@@ -121,7 +122,7 @@ func Build(st *store.Store, loc *time.Location) Output {
 			MovingTime:    a.MovingTime,
 			ElevationGain: round(a.ElevationGain),
 			AvgHeartRate:  round(a.AvgHeartRate),
-			Polyline:      a.Polyline,
+			Polyline:      slim(a.Polyline),
 			Weather:       a.Weather,
 			BestEfforts:   a.BestEfforts,
 		})
@@ -248,3 +249,15 @@ func priority(source string) int {
 }
 
 func round(v float64) float64 { return math.Round(v*100) / 100 }
+
+// routeTolerance is how far (meters) a dropped route point may lie from the
+// simplified line. The site's thumbnails and city-level map can't show less,
+// and routes are over half of data.json; stored routes keep full detail.
+const routeTolerance = 4
+
+func slim(encoded string) string {
+	if encoded == "" {
+		return ""
+	}
+	return polyline.Encode(polyline.Simplify(polyline.Decode(encoded), routeTolerance))
+}

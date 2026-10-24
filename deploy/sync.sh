@@ -15,8 +15,12 @@ git pull -q --rebase --autostash || { echo "git pull failed"; exit 1; }
 "$HOME_DIR/bin/lifelog" sync
 sync_status=$?
 
-"$HOME_DIR/bin/lifelog" export -out "$HOME_DIR/www/data.json.tmp" &&
-  mv "$HOME_DIR/www/data.json.tmp" "$HOME_DIR/www/data.json"
+# export, write the compressed copies, then swap everything in
+mkdir -p "$HOME_DIR/www/.next"
+"$HOME_DIR/bin/lifelog" export -out "$HOME_DIR/www/.next/data.json" && {
+  "$HOME_DIR/bin/compress.sh" "$HOME_DIR/www/.next/data.json"
+  for ext in .br .zst .gz ""; do mv -f "$HOME_DIR/www/.next/data.json$ext" "$HOME_DIR/www/data.json$ext"; done
+}
 
 git add data
 if ! git diff --cached --quiet; then

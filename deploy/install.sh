@@ -18,7 +18,7 @@ HOME_DIR=/opt/lifelog
 
 echo "==> packages"
 apt-get update -qq
-apt-get install -y -qq git curl debian-keyring debian-archive-keyring apt-transport-https gnupg ufw rsync >/dev/null
+apt-get install -y -qq git curl debian-keyring debian-archive-keyring apt-transport-https gnupg ufw rsync brotli zstd >/dev/null
 if ! command -v caddy >/dev/null; then
   # official Caddy apt repository (https://caddyserver.com/docs/install#debian-ubuntu-raspbian)
   curl -1sLf https://dl.cloudsmith.io/public/caddy/stable/gpg.key | gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
@@ -29,7 +29,7 @@ fi
 
 echo "==> user and folders"
 id lifelog >/dev/null 2>&1 || useradd --system --create-home --home-dir "$HOME_DIR" --shell /bin/bash lifelog
-install -d -o lifelog -g lifelog "$HOME_DIR/bin" "$HOME_DIR/www" "$HOME_DIR/.ssh"
+install -d -o lifelog -g lifelog "$HOME_DIR/bin" "$HOME_DIR/www" "$HOME_DIR/www/.next" "$HOME_DIR/.ssh"
 chmod 700 "$HOME_DIR/.ssh"
 # Caddy only needs to read the site
 chmod 755 "$HOME_DIR" "$HOME_DIR/www"
@@ -67,17 +67,25 @@ systemctl enable --now caddy >/dev/null
 systemctl reload caddy
 
 echo "==> sync timer"
-install -m 755 "$(dirname "$0")/sync.sh" "$HOME_DIR/bin/sync.sh"
+install -m 755 "$(dirname "$0")/sync.sh" "$(dirname "$0")/compress.sh" "$HOME_DIR/bin/"
 install -m 644 "$(dirname "$0")/lifelog-sync.service" "$(dirname "$0")/lifelog-sync.timer" /etc/systemd/system/
 systemctl daemon-reload
 systemctl enable lifelog-sync.timer >/dev/null
 # the timer starts once deploy.sh has copied the binary and .env
 [[ -x "$HOME_DIR/bin/lifelog" && -f "$HOME_DIR/.env" ]] && systemctl start lifelog-sync.timer
 
+echo "==> network tuning (BBR etc.; the route to mainland China is long and lossy)"
+install -m 644 "$(dirname "$0")/99-lifelog-net.conf" /etc/sysctl.d/
+echo tcp_bbr > /etc/modules-load.d/bbr.conf
+modprobe tcp_bbr
+sysctl -q --system >/dev/null
+tc qdisc replace dev "$(ip route show default | awk '{print $5; exit}')" root fq
+
 echo "==> firewall"
 ufw allow OpenSSH >/dev/null
 ufw allow 80/tcp >/dev/null
 ufw allow 443/tcp >/dev/null
+ufw allow 443/udp >/dev/null # HTTP/3
 ufw --force enable >/dev/null
 
 echo "done. Next: run deploy/deploy.sh from your machine."

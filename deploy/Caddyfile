@@ -8,8 +8,12 @@
 
 {{DOMAIN}} {
 	root * /opt/lifelog/www
+	# max-strength .br/.zst/.gz written by compress.sh; anything else is compressed on the fly
+	file_server {
+		precompressed br zstd gzip
+		hide .next
+	}
 	encode zstd gzip
-	file_server
 
 	# rewritten every hour by the sync
 	header /data.json Cache-Control "no-cache"
