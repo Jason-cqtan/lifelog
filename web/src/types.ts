@@ -15,6 +15,16 @@ export interface Activity {
   elevation_gain_m?: number
   avg_hr?: number
   polyline?: string
+  weather?: Weather
+}
+
+export interface Weather {
+  temp_c: number
+  feels_like_c: number
+  humidity: number
+  wind_ms: number
+  wind_dir?: string
+  desc?: string
 }
 
 export interface Data {

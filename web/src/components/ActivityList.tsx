@@ -1,8 +1,9 @@
 import { useMemo, useState } from 'react'
-import { SPORT_LABEL, type Activity, type SportType } from '../types'
+import { SPORT_LABEL, type Activity, type SportType, type Weather } from '../types'
 import { fmtDuration, fmtNum, fmtSpeed } from '../lib/format'
 import { decodePolyline } from '../lib/polyline'
-import { useI18n } from '../i18n'
+import { useI18n, type Dict, type Lang } from '../i18n'
+import { weatherLabel, windLabel } from '../lib/weather'
 
 const PAGE = 24
 
@@ -58,6 +59,7 @@ export function ActivityList({ activities }: { activities: Activity[] }) {
                 {!!a.elevation_gain_m && <span>↑{Math.round(a.elevation_gain_m)} m</span>}
                 {!!a.avg_hr && <span>♥ {Math.round(a.avg_hr)}</span>}
               </div>
+              {a.weather && <WeatherLine w={a.weather} lang={lang} t={t} />}
             </div>
           </li>
         ))}
@@ -68,6 +70,22 @@ export function ActivityList({ activities }: { activities: Activity[] }) {
         </button>
       )}
     </section>
+  )
+}
+
+function WeatherLine({ w, lang, t }: { w: Weather; lang: Lang; t: Dict }) {
+  const { icon, text } = weatherLabel(w.desc, lang)
+  const deg = (c: number) => `${Math.round(c)}°C`
+  return (
+    <div className="card-weather">
+      <span>
+        <span aria-hidden>{icon}</span> {text && `${text} `}
+        <b>{deg(w.temp_c)}</b>
+      </span>
+      {Math.round(w.feels_like_c) !== Math.round(w.temp_c) && <span>{t.feelsLike(deg(w.feels_like_c))}</span>}
+      <span>{t.humidity(Math.round(w.humidity))}</span>
+      <span>{windLabel(w.wind_dir, w.wind_ms, lang)}</span>
+    </div>
   )
 }
 

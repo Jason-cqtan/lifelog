@@ -31,6 +31,17 @@ type Activity struct {
 	ElevationGain float64   `json:"elevation_gain_m,omitempty"`
 	AvgHeartRate  float64   `json:"avg_hr,omitempty"`
 	Polyline      string    `json:"polyline,omitempty"` // Google encoded polyline
+	Weather       *Weather  `json:"weather,omitempty"`
+}
+
+// Weather at the start of an activity, in metric units.
+type Weather struct {
+	TempC      float64 `json:"temp_c"`
+	FeelsLikeC float64 `json:"feels_like_c"`
+	Humidity   float64 `json:"humidity"` // percent
+	WindMS     float64 `json:"wind_ms"`
+	WindDir    string  `json:"wind_dir,omitempty"` // compass point, e.g. "SW"
+	Desc       string  `json:"desc,omitempty"`     // provider's English description, e.g. "Cloudy"
 }
 
 func (a Activity) Key() string { return a.Source + ":" + a.SourceID }

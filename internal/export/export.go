@@ -25,6 +25,7 @@ type Activity struct {
 	ElevationGain float64         `json:"elevation_gain_m,omitempty"`
 	AvgHeartRate  float64         `json:"avg_hr,omitempty"`
 	Polyline      string          `json:"polyline,omitempty"`
+	Weather       *model.Weather  `json:"weather,omitempty"`
 }
 
 type Output struct {
@@ -61,6 +62,7 @@ func Build(st *store.Store, loc *time.Location) Output {
 			ElevationGain: round(a.ElevationGain),
 			AvgHeartRate:  round(a.AvgHeartRate),
 			Polyline:      a.Polyline,
+			Weather:       a.Weather,
 		})
 		if a.Distance > 0 {
 			add(date, string(a.Type)+"_km", a.Distance/1000)

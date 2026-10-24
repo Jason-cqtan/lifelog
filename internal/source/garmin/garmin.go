@@ -15,6 +15,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"math"
 	"net/http"
 	"net/http/cookiejar"
 	"net/url"
@@ -262,7 +263,7 @@ func (g Garmin) Sync(ctx context.Context, env *source.Env) error {
 	}
 
 	const limit = 100
-	added, routes, routeErrs := 0, 0, 0
+	added, routes, weathers, detailErrs := 0, 0, 0, 0
 	for start := 0; ; start += limit {
 		var list []activity
 		if err := api(fmt.Sprintf("/activitylist-service/activities/search/activities?start=%d&limit=%d", start, limit), &list); err != nil {
@@ -295,18 +296,33 @@ func (g Garmin) Sync(ctx context.Context, env *source.Env) error {
 				ElevationGain: a.ElevGain,
 				AvgHeartRate:  a.AvgHR,
 			}
-			// The list has no track; fetch it once per activity (indoor ones have none),
-			// keeping a route we already have so -full does not re-download everything.
+			// The list has no track or weather; fetch them once per activity (indoor
+			// ones have neither: weather is looked up from the activity's location),
+			// keeping what we already have so -full does not re-download everything.
 			if prev, ok := env.Store.Activity(act.Key()); ok {
 				act.Polyline = prev.Polyline
+				act.Weather = prev.Weather
 			}
+			fetched := false
 			if act.Polyline == "" && a.HasPolyline {
 				if act.Polyline, err = fetchRoute(api, a.ActivityID); err != nil {
 					env.Log.Printf("garmin: route for %d: %v", a.ActivityID, err)
-					routeErrs++
+					detailErrs++
 				} else {
 					routes++
 				}
+				fetched = true
+			}
+			if act.Weather == nil && a.HasPolyline {
+				if act.Weather, err = fetchWeather(api, a.ActivityID); err != nil {
+					env.Log.Printf("garmin: weather for %d: %v", a.ActivityID, err)
+					detailErrs++
+				} else if act.Weather != nil {
+					weathers++
+				}
+				fetched = true
+			}
+			if fetched {
 				time.Sleep(200 * time.Millisecond) // be gentle with an unofficial API
 			}
 			if env.Store.UpsertActivity(act) {
@@ -317,7 +333,7 @@ func (g Garmin) Sync(ctx context.Context, env *source.Env) error {
 			break
 		}
 	}
-	env.Log.Printf("garmin: %d new activities, %d routes fetched", added, routes)
+	env.Log.Printf("garmin: %d new activities, %d routes and %d weather records fetched", added, routes, weathers)
 
 	stepDays, err := g.syncSteps(env, api)
 	if err != nil {
@@ -325,10 +341,46 @@ func (g Garmin) Sync(ctx context.Context, env *source.Env) error {
 	}
 	env.Log.Printf("garmin: %d days of steps updated", stepDays)
 
-	if routeErrs > 0 {
-		return fmt.Errorf("%d routes failed; run `lifelog sync -full garmin` to retry", routeErrs)
+	if detailErrs > 0 {
+		return fmt.Errorf("%d route/weather requests failed; run `lifelog sync -full garmin` to retry", detailErrs)
 	}
 	return nil
+}
+
+// fetchWeather returns the weather Garmin recorded from the nearest station
+// when the activity was saved, or nil if it has none. Garmin reports °F and mph.
+func fetchWeather(api func(string, any) error, id int64) (*model.Weather, error) {
+	var w struct {
+		Temp         *float64 `json:"temp"`
+		ApparentTemp *float64 `json:"apparentTemp"`
+		Humidity     float64  `json:"relativeHumidity"`
+		WindSpeed    float64  `json:"windSpeed"`
+		WindDir      string   `json:"windDirectionCompassPoint"`
+		Type         *struct {
+			Desc string `json:"desc"`
+		} `json:"weatherTypeDTO"`
+	}
+	if err := api(fmt.Sprintf("/activity-service/activity/%d/weather", id), &w); err != nil {
+		return nil, err
+	}
+	if w.Temp == nil {
+		return nil, nil
+	}
+	c := func(f float64) float64 { return math.Round((f-32)*5/9*10) / 10 }
+	out := &model.Weather{
+		TempC:    c(*w.Temp),
+		Humidity: w.Humidity,
+		WindMS:   math.Round(w.WindSpeed*0.44704*10) / 10,
+		WindDir:  strings.ToUpper(w.WindDir),
+	}
+	out.FeelsLikeC = out.TempC
+	if w.ApparentTemp != nil {
+		out.FeelsLikeC = c(*w.ApparentTemp)
+	}
+	if w.Type != nil {
+		out.Desc = w.Type.Desc
+	}
+	return out, nil
 }
 
 // stepsChunk is how many days one daily-steps request covers (garth uses 28).

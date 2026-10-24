@@ -333,6 +333,20 @@ h1 {
   color: var(--text-primary);
   font-size: 16px;
 }
+.card-weather {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 10px;
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid var(--hairline);
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+.card-weather b {
+  color: var(--text-primary);
+  font-weight: 600;
+}
 .more {
   display: block;
   margin: 16px auto 0;
