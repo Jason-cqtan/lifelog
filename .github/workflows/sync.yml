@@ -1,0 +1,99 @@
+name: Sync & Deploy
+
+on:
+  schedule:
+    # Every 2 hours: Spotify only exposes the last 50 plays, so poll often.
+    - cron: "7 */2 * * *"
+  workflow_dispatch:
+    inputs:
+      full:
+        description: "Re-fetch full history"
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths-ignore: ["data/**"]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Sync all configured sources
+        id: sync
+        # A broken source (expired token, API change) still lets the others commit and deploy.
+        continue-on-error: true
+        run: go run ./cmd/lifelog sync ${{ inputs.full && '-full' || '' }}
+        env:
+          LIFELOG_TZ: ${{ vars.LIFELOG_TZ || 'Asia/Shanghai' }}
+          STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
+          STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
+          STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
+          GARMIN_TOKEN: ${{ secrets.GARMIN_TOKEN }}
+          GARMIN_CN: ${{ vars.GARMIN_CN }}
+          COROS_ACCOUNT: ${{ secrets.COROS_ACCOUNT }}
+          COROS_PASSWORD: ${{ secrets.COROS_PASSWORD }}
+          COROS_CN: ${{ vars.COROS_CN }}
+          DUOLINGO_JWT: ${{ secrets.DUOLINGO_JWT }}
+          SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+          SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+          SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
+          GH_USERNAME: ${{ github.repository_owner }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Commit data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet || (git commit -m "sync: $(date -u +%Y-%m-%dT%H:%MZ)" && git push)
+
+      - name: Export data.json
+        run: go run ./cmd/lifelog export -out web/public/data.json
+        env:
+          LIFELOG_TZ: ${{ vars.LIFELOG_TZ || 'Asia/Shanghai' }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Build site
+        working-directory: web
+        run: npm ci && npm run build
+        env:
+          # Project pages live under /<repo>/; set vars.VITE_BASE to "/" for a custom domain.
+          VITE_BASE: ${{ vars.VITE_BASE || format('/{0}/', github.event.repository.name) }}
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web/dist
+
+      - name: Report failed sources
+        if: steps.sync.outcome == 'failure'
+        run: echo "::warning::Some sources failed to sync — see the 'Sync all configured sources' step log."
+
+  deploy:
+    needs: sync
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

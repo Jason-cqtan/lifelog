@@ -1,0 +1,77 @@
+// Package model holds the unified records every source is normalized into.
+package model
+
+import (
+	"strings"
+	"time"
+)
+
+type SportType string
+
+const (
+	Run     SportType = "run"
+	Ride    SportType = "ride"
+	Hike    SportType = "hike" // 徒步 / 爬山
+	Walk    SportType = "walk"
+	Swim    SportType = "swim"
+	Workout SportType = "workout"
+)
+
+// Activity is one sport session, whatever watch or app it came from.
+type Activity struct {
+	Source        string    `json:"source"`
+	SourceID      string    `json:"source_id"`
+	Type          SportType `json:"type"`
+	RawType       string    `json:"raw_type,omitempty"`
+	Name          string    `json:"name,omitempty"`
+	StartTime     time.Time `json:"start_time"`
+	Distance      float64   `json:"distance_m"`
+	MovingTime    int       `json:"moving_time_s"`
+	ElapsedTime   int       `json:"elapsed_time_s,omitempty"`
+	ElevationGain float64   `json:"elevation_gain_m,omitempty"`
+	AvgHeartRate  float64   `json:"avg_hr,omitempty"`
+	Polyline      string    `json:"polyline,omitempty"` // Google encoded polyline
+}
+
+func (a Activity) Key() string { return a.Source + ":" + a.SourceID }
+
+// DailyMetric is one number per day per source, e.g. duolingo/minutes or github/contributions.
+type DailyMetric struct {
+	Date   string  `json:"date"` // YYYY-MM-DD in the configured timezone
+	Source string  `json:"source"`
+	Metric string  `json:"metric"`
+	Value  float64 `json:"value"`
+}
+
+func (d DailyMetric) Key() string { return d.Date + "|" + d.Source + "|" + d.Metric }
+
+// Play is one listened track. Spotify's API only exposes the last 50, so plays are
+// accumulated over time and aggregated into daily minutes at export.
+type Play struct {
+	PlayedAt time.Time `json:"played_at"`
+	Track    string    `json:"track"`
+	Artist   string    `json:"artist,omitempty"`
+	TrackID  string    `json:"track_id,omitempty"`
+	MsPlayed int64     `json:"ms_played"`
+}
+
+func (p Play) Key() string { return p.PlayedAt.UTC().Format(time.RFC3339) + "|" + p.Track }
+
+// NormalizeType maps vendor activity types (Strava sport_type, Garmin typeKey,
+// Apple HKWorkoutActivityType...) onto our small set.
+func NormalizeType(raw string) SportType {
+	s := strings.ToLower(raw)
+	switch {
+	case strings.Contains(s, "hik"), strings.Contains(s, "mountaineer"):
+		return Hike
+	case strings.Contains(s, "swim"):
+		return Swim
+	case strings.Contains(s, "walk"):
+		return Walk
+	case strings.Contains(s, "run"):
+		return Run
+	case strings.Contains(s, "ride"), strings.Contains(s, "cycl"), strings.Contains(s, "bik"):
+		return Ride
+	}
+	return Workout
+}
