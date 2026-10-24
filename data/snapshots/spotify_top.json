@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-24T12:35:43Z",
+ "updated_at": "2026-10-24T14:17:54Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -1351,6 +1351,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e0246af95609183c846d72b0075"
     },
     {
+     "id": "0JXPxxcmJFZeZQdPVgisLg",
+     "name": "See you again - 電影 “聲之形” 主題曲",
+     "artist": "Leah Dou",
+     "album": "See you again (電影 “聲之形” 主題曲)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02c2abad8b354ae49ec0f8b17f"
+    },
+    {
      "id": "0KGKZu5JuxQkgbelqms5nr",
      "name": "洛陽紙",
      "artist": "許嵩",
@@ -1358,8 +1365,22 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02031ac1c7fc7b2c6e5e3a4677"
     },
     {
+     "id": "0Koo4irt22dfkvYgqB7HWN",
+     "name": "橘子汽水",
+     "artist": "Leah Dou",
+     "album": "春遊",
+     "image": "https://i.scdn.co/image/ab67616d00001e02f77aacc26fe8d9d24583632a"
+    },
+    {
      "id": "0VdLdZ1UQKrIi1Nxzb9UTt",
      "name": "空中飛人",
+     "artist": "Leah Dou",
+     "album": "空中飛人",
+     "image": "https://i.scdn.co/image/ab67616d00001e02d65beb03c59661d6e737b5e4"
+    },
+    {
+     "id": "0lW6BJqgnDKTF73D28O3fF",
+     "name": "我",
      "artist": "Leah Dou",
      "album": "空中飛人",
      "image": "https://i.scdn.co/image/ab67616d00001e02d65beb03c59661d6e737b5e4"
@@ -1379,11 +1400,25 @@
      "image": "https://i.scdn.co/image/ab67616d00001e028636b9700bbb12051402553b"
     },
     {
+     "id": "11arkJrAXBBkEmYslxMhzO",
+     "name": "狗熊",
+     "artist": "Leah Dou",
+     "album": "春遊",
+     "image": "https://i.scdn.co/image/ab67616d00001e02f77aacc26fe8d9d24583632a"
+    },
+    {
      "id": "11wlDEdE6fV0YuRXSXMAnE",
      "name": "Aerials",
      "artist": "Lights \u0026 Motion",
      "album": "Reanimation",
      "image": "https://i.scdn.co/image/ab67616d00001e0284bee8371225201e5258bc0f"
+    },
+    {
+     "id": "16OLHUQis8RFjWqlsImDOZ",
+     "name": "Somewhere In Winter (失重)",
+     "artist": "Radio Mars, Leah Dou",
+     "album": "失重三部曲",
+     "image": "https://i.scdn.co/image/ab67616d00001e02596c79e85556ec780956d447"
     },
     {
      "id": "17H70rNv7MFkT4MhhUZVgg",
@@ -1428,6 +1463,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02031ac1c7fc7b2c6e5e3a4677"
     },
     {
+     "id": "1yvoxoziJMjkDPUwivRRzW",
+     "name": "Blue Flamingo",
+     "artist": "Leah Dou",
+     "album": "STONE CAFE",
+     "image": "https://i.scdn.co/image/ab67616d00001e02da5ab760aaa555ffe8bb4b34"
+    },
+    {
      "id": "20zq8UHvScuJ1xqCAKMXAq",
      "name": "Superman",
      "artist": "Sunstroke, Olia Tira",
@@ -1442,60 +1484,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02129acb02ff567b3e3dae5250"
     },
     {
+     "id": "2D7nxTFo1cXTcuA29cMQXA",
+     "name": "被驯服的象 - Live|典藏",
+     "artist": "Leah Dou, Nana Ou-Yang",
+     "album": "歌手2026 第12期 (Live)",
+     "image": "https://i.scdn.co/image/ab67616d00001e022fd0a9b692c1e61b08bdaaee"
+    },
+    {
      "id": "2SdMEke7JCBEo8t60iyw2r",
      "name": "Changes - Radio Mix",
      "artist": "Faul \u0026 Wad, PNAU",
      "album": "Changes",
      "image": "https://i.scdn.co/image/ab67616d00001e029b484ba06fc7f37e59bd1871"
-    },
-    {
-     "id": "2Tl7unJOZm9zhZQf5UlmPq",
-     "name": "Take Flight",
-     "artist": "Lindsey Stirling",
-     "album": "Shatter Me",
-     "image": "https://i.scdn.co/image/ab67616d00001e02a1a009777816921f0b30abfb"
-    },
-    {
-     "id": "2dyyOwe0KxTZTJjjXDeLmU",
-     "name": "Feelings",
-     "artist": "Maroon 5",
-     "album": "V",
-     "image": "https://i.scdn.co/image/ab67616d00001e02442b53773d50e1b5369bb16c"
-    },
-    {
-     "id": "2ePAdzQlLhUbj6uJ9M3Yo2",
-     "name": "Lil Mama",
-     "artist": "Jain",
-     "album": "Zanaka",
-     "image": "https://i.scdn.co/image/ab67616d00001e029d3ad3a9fa90bf0dee0ae5be"
-    },
-    {
-     "id": "2ikC4ufCoWtpKBdCcoe7D5",
-     "name": "El Condor Pasa - Summer Version",
-     "artist": "Leo Rojas",
-     "album": "Leo Rojas",
-     "image": "https://i.scdn.co/image/ab67616d00001e02671121f3316dab1e38e11657"
-    },
-    {
-     "id": "3EyT8OXUYVfZe2Zkcrwnr9",
-     "name": "认错",
-     "artist": "許嵩",
-     "album": "自定義",
-     "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
-    },
-    {
-     "id": "3GWePpTs0kAONgdddL86Ly",
-     "name": "A Beautiful Farewell",
-     "artist": "Soulostar",
-     "album": "Dawn",
-     "image": "https://i.scdn.co/image/ab67616d00001e02a662d4f9caf831be1fb43438"
-    },
-    {
-     "id": "3WjIpnd9sfMOiLNZ7rwcbE",
-     "name": "Fruit Fly",
-     "artist": "Leah Dou, The Black Skirts",
-     "album": "Fruit Fly",
-     "image": "https://i.scdn.co/image/ab67616d00001e024fd6df486e859dac4d6ab281"
     }
    ]
   }
