@@ -1,0 +1,11 @@
+[Unit]
+Description=Run the lifelog sync every hour
+
+[Timer]
+# hourly: Spotify only exposes the last 50 plays, so more often than 2 h is safer
+OnCalendar=*-*-* *:07:00
+RandomizedDelaySec=120
+Persistent=true
+
+[Install]
+WantedBy=timers.target

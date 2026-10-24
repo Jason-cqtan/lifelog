@@ -1,0 +1,14 @@
+[Unit]
+Description=lifelog: sync all sources, export the site, push data to GitHub
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=lifelog
+Group=lifelog
+WorkingDirectory=/opt/lifelog/repo
+ExecStart=/opt/lifelog/bin/sync.sh
+TimeoutStartSec=20min
+# keep the box responsive on a 1 vCPU VPS
+Nice=10

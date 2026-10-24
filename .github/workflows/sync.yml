@@ -3,6 +3,7 @@ name: Sync & Deploy
 on:
   schedule:
     # Every 2 hours: Spotify only exposes the last 50 plays, so poll often.
+    # Once the VPS syncs (repo variable SYNC_ON_ACTIONS=false) these runs are skipped.
     - cron: "7 */2 * * *"
   workflow_dispatch:
     inputs:
@@ -10,9 +11,9 @@ on:
         description: "Re-fetch full history"
         type: boolean
         default: false
+  # also on data pushes: when the VPS is the syncer, its data commits rebuild Pages
   push:
     branches: [main]
-    paths-ignore: ["data/**"]
 
 permissions:
   contents: write
@@ -25,6 +26,7 @@ concurrency:
 
 jobs:
   sync:
+    if: github.event_name != 'schedule' || vars.SYNC_ON_ACTIONS != 'false'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -35,6 +37,7 @@ jobs:
 
       - name: Sync all configured sources
         id: sync
+        if: vars.SYNC_ON_ACTIONS != 'false'
         # A broken source (expired token, API change) still lets the others commit and deploy.
         continue-on-error: true
         run: go run ./cmd/lifelog sync ${{ inputs.full && '-full' || '' }}
@@ -56,6 +59,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN || github.token }} # built-in token sees public contributions
 
       - name: Commit data
+        if: vars.SYNC_ON_ACTIONS != 'false'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

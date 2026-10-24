@@ -59,6 +59,10 @@ cd web && npm install && npm run dev       # http://localhost:5173
 
 > ⚠️ 公开仓库会公开 `data/` 里的全部数据,包括跑步路线(可能暴露住址)。介意的话用私有仓库 + Vercel/Cloudflare Pages 部署,或在 export 时裁掉路线首尾。
 
+## 部署到自己的服务器
+
+见 [deploy/README.md](deploy/README.md):VPS 每小时同步、用自己的域名(Let's Encrypt 自动续期)提供网站，并把数据推回 GitHub,GitHub Pages 保留。
+
 ## 待验证 / 后续
 
 - Garmin、COROS、多邻国都是非官方接口,字段和登录流程以真实账号测试为准;COROS 列表字段(距离、爬升单位)尤其需要核对。
