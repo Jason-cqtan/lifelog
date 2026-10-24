@@ -16,7 +16,7 @@ func TestImport(t *testing.T) {
 	 {"run_id": 12345, "name": "", "distance": 100000, "moving_time": "1 day, 0:03:04", "type": "Run",
 	  "start_date": "2019-03-08 15:21:14", "summary_polyline": "", "average_heartrate": null}
 	]`
-	st, _ := store.Open(t.TempDir())
+	st, _ := store.Open(t.TempDir(), "")
 	n, err := Import(strings.NewReader(sample), st, "")
 	if err != nil || n != 2 {
 		t.Fatalf("Import = %d, %v", n, err)

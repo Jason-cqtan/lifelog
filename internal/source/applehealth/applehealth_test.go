@@ -20,7 +20,7 @@ const sample = `<?xml version="1.0" encoding="UTF-8"?>
 </HealthData>`
 
 func TestImport(t *testing.T) {
-	st, _ := store.Open(t.TempDir())
+	st, _ := store.Open(t.TempDir(), "")
 	n, err := Import(strings.NewReader(sample), st)
 	if err != nil || n != 2 {
 		t.Fatalf("Import = %d, %v", n, err)

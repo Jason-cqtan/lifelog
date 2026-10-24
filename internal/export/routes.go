@@ -3,15 +3,12 @@ package export
 import (
 	"bytes"
 	"compress/gzip"
-	"crypto/aes"
-	"crypto/cipher"
-	"crypto/pbkdf2"
-	"crypto/rand"
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
 	"errors"
-	"strings"
+
+	"github.com/Jason-cqtan/lifelog/internal/seal"
 )
 
 // Routes are the private part of the export: data.json only says which
@@ -19,10 +16,10 @@ import (
 // keyed by the answer to a question. The site asks the question before the map.
 //
 // RoutesFile layout: salt (16) | nonce (12) | AES-256-GCM(gzip(JSON id -> polyline)).
-// Key: PBKDF2-SHA256(NormalizeAnswer(answer), salt, RouteIter).
+// Key: PBKDF2-SHA256(seal.Normalize(answer), salt, RouteIter).
 const (
 	RoutesFile = "routes.enc"
-	RouteIter  = 300_000
+	RouteIter  = seal.Iter
 )
 
 // Lock configures route encryption; without one, routes are left out entirely.
@@ -38,15 +35,8 @@ type RouteLock struct {
 	Iter     int    `json:"iter"`
 }
 
-// NormalizeAnswer must match the frontend's: surrounding spaces and case don't count.
-func NormalizeAnswer(s string) string { return strings.ToLower(strings.TrimSpace(s)) }
-
 // SealRoutes encrypts id -> polyline for RoutesFile.
 func SealRoutes(routes map[string]string, answer string) ([]byte, error) {
-	answer = NormalizeAnswer(answer)
-	if answer == "" {
-		return nil, errors.New("empty map answer")
-	}
 	js, err := json.Marshal(routes)
 	if err != nil {
 		return nil, err
@@ -57,47 +47,26 @@ func SealRoutes(routes map[string]string, answer string) ([]byte, error) {
 	if err := zw.Close(); err != nil {
 		return nil, err
 	}
-
-	salt := make([]byte, 16)
-	nonce := make([]byte, 12)
-	rand.Read(salt)
-	rand.Read(nonce)
-	key, err := pbkdf2.Key(sha256.New, answer, salt, RouteIter, 32)
+	salt := seal.Salt()
+	aead, err := seal.Key(answer, salt, RouteIter)
 	if err != nil {
 		return nil, err
 	}
-	block, err := aes.NewCipher(key)
-	if err != nil {
-		return nil, err
-	}
-	gcm, err := cipher.NewGCM(block)
-	if err != nil {
-		return nil, err
-	}
-	out := append(append(salt, nonce...), gcm.Seal(nil, nonce, plain.Bytes(), nil)...)
-	return out, nil
+	return append(salt, seal.Seal(aead, plain.Bytes(), nil)...), nil
 }
 
 // OpenRoutes is the inverse of SealRoutes (the frontend does the same with WebCrypto).
 func OpenRoutes(blob []byte, answer string) (map[string]string, error) {
-	if len(blob) < 28 {
+	if len(blob) < 16 {
 		return nil, errors.New("routes blob too short")
 	}
-	key, err := pbkdf2.Key(sha256.New, NormalizeAnswer(answer), blob[:16], RouteIter, 32)
+	aead, err := seal.Key(answer, blob[:16], RouteIter)
 	if err != nil {
 		return nil, err
 	}
-	block, err := aes.NewCipher(key)
+	plain, err := seal.Open(aead, blob[16:], nil)
 	if err != nil {
 		return nil, err
-	}
-	gcm, err := cipher.NewGCM(block)
-	if err != nil {
-		return nil, err
-	}
-	plain, err := gcm.Open(nil, blob[16:28], blob[28:], nil)
-	if err != nil {
-		return nil, errors.New("wrong answer")
 	}
 	zr, err := gzip.NewReader(bytes.NewReader(plain))
 	if err != nil {

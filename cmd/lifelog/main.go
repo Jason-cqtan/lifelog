@@ -5,12 +5,14 @@ package main
 import (
 	"bufio"
 	"context"
+	"errors"
 	"flag"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
 	"os/signal"
+	"path/filepath"
 	"regexp"
 	"strings"
 	"time"
@@ -51,6 +53,7 @@ const usage = `lifelog — 个人数据同步工具
   lifelog import running-page activities.json [-gpx GPX_OUT]  导入 running_page 的历史记录(带 GPX 时计算分段最佳)
   lifelog export [-out PATH] [-demo]       生成前端用的 data.json
   lifelog auth strava|spotify|garmin|duolingo  一次性授权,token 写入 .env
+  lifelog seal [-old ANSWER]               把路线加密存入 data/routes.json;-old 用于更换答案(用旧答案打开,新答案重新加密)
 
 环境变量: LIFELOG_DATA(默认 data) LIFELOG_TZ(默认 Asia/Shanghai),其余见 .env.example
 `
@@ -75,6 +78,8 @@ func main() {
 		err = runExport(args)
 	case "auth":
 		err = runAuth(ctx, args)
+	case "seal":
+		err = runSeal(args)
 	default:
 		fmt.Fprintf(os.Stderr, usage, sourceNames())
 		os.Exit(2)
@@ -112,7 +117,7 @@ func runSync(ctx context.Context, args []string) error {
 	for _, n := range fs.Args() {
 		want[n] = true
 	}
-	st, err := store.Open(dataDir())
+	st, err := store.Open(dataDir(), source.Getenv("LIFELOG_MAP_ANSWER"))
 	if err != nil {
 		return err
 	}
@@ -159,7 +164,7 @@ func runImport(args []string) error {
 	if len(args) < 2 {
 		return fmt.Errorf("usage: lifelog import applehealth|spotify-history|running-page FILE...")
 	}
-	st, err := store.Open(dataDir())
+	st, err := store.Open(dataDir(), source.Getenv("LIFELOG_MAP_ANSWER"))
 	if err != nil {
 		return err
 	}
@@ -208,13 +213,47 @@ func runExport(args []string) error {
 	if *demo {
 		return export.Write(*out, export.Demo(loc), &export.Lock{Question: "演示数据，答案是 demo", Answer: "demo"})
 	}
-	st, err := store.Open(dataDir())
+	st, err := store.Open(dataDir(), source.Getenv("LIFELOG_MAP_ANSWER"))
 	if err != nil {
 		return err
 	}
 	o := export.Build(st, loc)
 	log.Printf("export: %d activities, %d days -> %s", len(o.Activities), len(o.Daily), *out)
 	return export.Write(*out, o, mapLock())
+}
+
+// runSeal rewrites data/ so every route sits sealed in routes.json: it moves
+// plain-text polylines out of activities.json, and with -old re-seals under the
+// current LIFELOG_MAP_ANSWER after the answer changed.
+func runSeal(args []string) error {
+	fs := flag.NewFlagSet("seal", flag.ExitOnError)
+	old := fs.String("old", "", "previous answer, when changing it")
+	fs.Parse(args)
+	answer := source.Getenv("LIFELOG_MAP_ANSWER")
+	if answer == "" {
+		return errors.New("set LIFELOG_MAP_ANSWER first")
+	}
+	open := answer
+	if *old != "" {
+		open = *old
+	}
+	st, err := store.Open(dataDir(), open)
+	if err != nil {
+		return err
+	}
+	if *old != "" {
+		if err := st.Rekey(answer); err != nil {
+			return err
+		}
+	}
+	n := 0
+	for _, a := range st.Activities() {
+		if a.Polyline != "" {
+			n++
+		}
+	}
+	log.Printf("seal: %d routes sealed in %s", n, filepath.Join(dataDir(), "routes.json"))
+	return st.Save()
 }
 
 // mapLock reads the map question and its answer; the answer lives only in .env
@@ -365,7 +404,7 @@ func importJoyrun() error {
 	}
 	code := ask("短信验证码: ", "")
 
-	st, err := store.Open(dataDir())
+	st, err := store.Open(dataDir(), source.Getenv("LIFELOG_MAP_ANSWER"))
 	if err != nil {
 		return err
 	}

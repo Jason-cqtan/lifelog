@@ -27,9 +27,13 @@ type Store struct {
 	// snapshots are whole documents replaced on each sync (e.g. Spotify's top
 	// lists), stored as data/snapshots/<name>.json
 	snapshots map[string]json.RawMessage
+	routes    *routeKeys
 }
 
-func Open(dir string) (*Store, error) {
+// Open reads the store under dir. answer (LIFELOG_MAP_ANSWER) opens the sealed
+// routes in routes.json; without it activities have no polylines, and Save
+// refuses to write any new ones rather than store them in plain text.
+func Open(dir, answer string) (*Store, error) {
 	s := &Store{
 		dir:        dir,
 		activities: map[string]model.Activity{},
@@ -43,6 +47,17 @@ func Open(dir string) (*Store, error) {
 	}
 	for _, a := range acts {
 		s.activities[a.Key()] = a
+	}
+	keys, routes, err := openRoutes(dir, answer)
+	if err != nil {
+		return nil, err
+	}
+	s.routes = keys
+	for id, p := range routes {
+		if a, ok := s.activities[id]; ok && a.Polyline == "" {
+			a.Polyline = p
+			s.activities[id] = a
+		}
 	}
 	daily, err := readArray[model.DailyMetric](filepath.Join(dir, "daily.json"))
 	if err != nil {
@@ -175,8 +190,23 @@ func (s *Store) LatestPlay() time.Time {
 	return latest
 }
 
+// Rekey seals every route again under a new answer on the next Save.
+func (s *Store) Rekey(answer string) error { return s.routes.rekey(answer) }
+
 func (s *Store) Save() error {
-	if err := writeArray(filepath.Join(s.dir, "activities.json"), s.Activities()); err != nil {
+	// routes go sealed into routes.json, never into activities.json
+	acts := s.Activities()
+	routes := map[string]string{}
+	for i := range acts {
+		if acts[i].Polyline != "" {
+			routes[acts[i].Key()] = acts[i].Polyline
+			acts[i].Polyline = ""
+		}
+	}
+	if err := s.routes.save(s.dir, routes); err != nil {
+		return err
+	}
+	if err := writeArray(filepath.Join(s.dir, "activities.json"), acts); err != nil {
 		return err
 	}
 	if err := writeArray(filepath.Join(s.dir, "daily.json"), s.Daily()); err != nil {
