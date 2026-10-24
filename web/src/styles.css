@@ -14,6 +14,7 @@
   --c-hike: #eda100;
   --c-spotify: #e87ba4;
   --c-github: #6250d6;
+  --c-steps: #008300;
 }
 @media (prefers-color-scheme: dark) {
   :root:where(:not([data-theme='light'])) {
@@ -31,6 +32,7 @@
     --c-hike: #c98500;
     --c-spotify: #d55181;
     --c-github: #9085e9;
+  --c-steps: #008300;
   }
 }
 :root[data-theme='dark'] {
@@ -48,6 +50,7 @@
   --c-hike: #c98500;
   --c-spotify: #d55181;
   --c-github: #9085e9;
+  --c-steps: #008300;
 }
 
 * {

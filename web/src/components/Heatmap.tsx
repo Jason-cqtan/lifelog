@@ -32,7 +32,7 @@ export function Heatmap({ year, category, daily }: Props) {
   const [tip, setTip] = useState<{ cell: Cell; x: number; y: number } | null>(null)
   const scrollRef = useRef<HTMLDivElement>(null)
 
-  const { cells, weeks, total, activeDays, streak } = useMemo(() => {
+  const { cells, weeks, total, activeDays, goalDays, streak } = useMemo(() => {
     const jan1 = new Date(year, 0, 1)
     const offset = (jan1.getDay() + 6) % 7
     const today = isoDate(new Date())
@@ -51,6 +51,12 @@ export function Heatmap({ year, category, daily }: Props) {
       if (c.value <= 0) continue
       c.level = c.value <= q[0] ? 1 : c.value <= q[1] ? 2 : c.value <= q[2] ? 3 : 4
     }
+    const goalDays = category.goalMetric
+      ? cells.filter((c) => {
+          const goal = daily[c.date]?.[category.goalMetric!] ?? 0
+          return goal > 0 && c.value >= goal * category.scale
+        }).length
+      : null
     let streak = 0
     if (year === new Date().getFullYear()) {
       let i = cells.length - 1
@@ -65,6 +71,7 @@ export function Heatmap({ year, category, daily }: Props) {
       weeks: Math.floor((offset + 365) / 7) + 1,
       total: nz.reduce((a, b) => a + b, 0),
       activeDays: nz.length,
+      goalDays,
       streak,
     }
   }, [year, category, daily])
@@ -118,6 +125,12 @@ export function Heatmap({ year, category, daily }: Props) {
             <dt>{t.activeDays}</dt>
             <dd>{activeDays}</dd>
           </div>
+          {goalDays !== null && (
+            <div>
+              <dt>{t.goalDays}</dt>
+              <dd>{goalDays}</dd>
+            </div>
+          )}
           {year === new Date().getFullYear() && (
             <div>
               <dt>{t.streak}</dt>

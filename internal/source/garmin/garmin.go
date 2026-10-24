@@ -318,10 +318,68 @@ func (g Garmin) Sync(ctx context.Context, env *source.Env) error {
 		}
 	}
 	env.Log.Printf("garmin: %d new activities, %d routes fetched", added, routes)
+
+	stepDays, err := g.syncSteps(env, api)
+	if err != nil {
+		return fmt.Errorf("daily steps: %w", err)
+	}
+	env.Log.Printf("garmin: %d days of steps updated", stepDays)
+
 	if routeErrs > 0 {
 		return fmt.Errorf("%d routes failed; run `lifelog sync -full garmin` to retry", routeErrs)
 	}
 	return nil
+}
+
+// stepsChunk is how many days one daily-steps request covers (garth uses 28).
+const stepsChunk = 28
+
+// syncSteps stores daily step totals and goals. Incremental runs re-fetch the
+// last week, since today's count keeps growing and the watch may sync late.
+// Full runs walk backwards until half a year in a row has no data.
+func (g Garmin) syncSteps(env *source.Env, api func(string, any) error) (int, error) {
+	end := time.Now().In(env.Loc)
+	oldest := end.AddDate(0, 0, -6)
+	if env.Full {
+		oldest = time.Time{}
+	}
+	days, emptyChunks := 0, 0
+	for to := end; !to.Before(oldest) && emptyChunks < 7; to = to.AddDate(0, 0, -stepsChunk) {
+		from := to.AddDate(0, 0, -(stepsChunk - 1))
+		if from.Before(oldest) {
+			from = oldest
+		}
+		var res []struct {
+			CalendarDate string `json:"calendarDate"`
+			TotalSteps   *int   `json:"totalSteps"` // null when the watch wasn't worn
+			StepGoal     int    `json:"stepGoal"`
+		}
+		if err := api(fmt.Sprintf("/usersummary-service/stats/steps/daily/%s/%s",
+			from.Format("2006-01-02"), to.Format("2006-01-02")), &res); err != nil {
+			return days, err
+		}
+		found := 0
+		for _, d := range res {
+			if d.TotalSteps == nil || *d.TotalSteps == 0 {
+				continue
+			}
+			env.Store.PutDaily(model.DailyMetric{Date: d.CalendarDate, Source: g.Name(), Metric: "steps", Value: float64(*d.TotalSteps)})
+			if d.StepGoal > 0 {
+				env.Store.PutDaily(model.DailyMetric{Date: d.CalendarDate, Source: g.Name(), Metric: "step_goal", Value: float64(d.StepGoal)})
+			}
+			found++
+		}
+		days += found
+		if found == 0 {
+			emptyChunks++
+		} else {
+			emptyChunks = 0
+		}
+		if env.Full {
+			time.Sleep(200 * time.Millisecond)
+		}
+	}
+	return days, nil
 }
 
 // fetchRoute downloads an activity's GPS track (downsampled by Garmin to at most
