@@ -8,3 +8,4 @@ web/public/data.json
 
 # tsc output must never sit next to the sources (Vite would load it first)
 web/src/**/*.js
+web/public/routes.enc

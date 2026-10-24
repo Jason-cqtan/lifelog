@@ -43,7 +43,7 @@ release)
   (cd web && VITE_BASE=/ npm run build --silent)
 
   echo "==> upload"
-  rsync -az --delete --exclude 'data.json*' --exclude .next --rsync-path="$RSYNC_PATH" web/dist/ "$HOST":/opt/lifelog/www/
+  rsync -az --delete --exclude 'data.json*' --exclude 'routes.enc' --exclude .next --rsync-path="$RSYNC_PATH" web/dist/ "$HOST":/opt/lifelog/www/
   rsync -az --rsync-path="$RSYNC_PATH" build/lifelog deploy/sync.sh deploy/compress.sh "$HOST":/opt/lifelog/bin/
   if [[ "$WITH_ENV" == "--with-env" ]]; then
     # API tokens only (no passwords, no empty or comment-only values); readable by lifelog alone

@@ -70,6 +70,9 @@ jobs:
         run: go run ./cmd/lifelog export -out web/public/data.json
         env:
           LIFELOG_TZ: ${{ vars.LIFELOG_TZ || 'Asia/Shanghai' }}
+          # routes are sealed with this answer; without it Pages gets no routes
+          LIFELOG_MAP_QUESTION: ${{ vars.LIFELOG_MAP_QUESTION }}
+          LIFELOG_MAP_ANSWER: ${{ secrets.LIFELOG_MAP_ANSWER }}
 
       - uses: actions/setup-node@v4
         with:

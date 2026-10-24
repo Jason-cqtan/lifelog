@@ -17,7 +17,10 @@ export interface Activity {
   /** steps per minute (runs, walks, hikes) or pedal rpm (rides) */
   avg_cadence?: number
   stride_m?: number
+  /** only once the map is unlocked (merged in from the sealed routes) */
   polyline?: string
+  /** whether a sealed route exists for this activity */
+  has_route?: boolean
   weather?: Weather
   /** fastest elapsed seconds over a distance inside this run, keyed by meters */
   best_efforts?: Record<string, number>
@@ -71,6 +74,16 @@ export interface Data {
   music?: Record<string, MusicStats>
   spotify_top?: SpotifyTop
   duolingo?: DuolingoData
+  /** set when the routes were exported, sealed behind a question */
+  routes?: RouteLock
+}
+
+export interface RouteLock {
+  question: string
+  /** relative to data.json */
+  file: string
+  /** PBKDF2 iterations */
+  iter: number
 }
 
 /** A heatmap drill-down: show one sport's activities in a day ('YYYY-MM-DD') or month ('YYYY-MM'). */

@@ -7,6 +7,7 @@ import { weatherLabel, windLabel } from '../lib/weather'
 import { MonthCalendar } from './MonthCalendar'
 import { ActivitySummary } from './ActivitySummary'
 import { useHeightVar } from '../lib/useHeightVar'
+import { LockIcon } from './MapLock'
 
 const PAGE = 24
 // quick "at least N km" filters
@@ -205,6 +206,13 @@ export function ActivityList({
                 <button className="route-btn" onClick={() => onShowMap(a.id)} title={t.showOnMap} aria-label={t.showOnMap}>
                   <Route polyline={a.polyline} type={a.type} label={sport[a.type]} />
                 </button>
+              ) : a.has_route ? (
+                // sealed until the map is unlocked; clicking asks the question
+                <button className="route-btn" onClick={() => onShowMap(a.id)} title={t.routeLocked} aria-label={t.routeLocked}>
+                  <span className="route route-locked">
+                    <LockIcon />
+                  </span>
+                </button>
               ) : (
                 <Route polyline={a.polyline} type={a.type} label={sport[a.type]} />
               )}
@@ -281,7 +289,7 @@ export function ActivityList({
                     </td>
                     <td className="muted">{a.source}</td>
                     <td>
-                      {a.polyline && (
+                      {a.has_route && (
                         <button className="map-link" onClick={() => onShowMap(a.id)} title={t.showOnMap} aria-label={t.showOnMap}>
                           <MapIcon />
                         </button>
@@ -421,3 +429,4 @@ function MapIcon() {
     </svg>
   )
 }
+

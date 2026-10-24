@@ -19,6 +19,12 @@ sync_status=$?
 mkdir -p "$HOME_DIR/www/.next"
 "$HOME_DIR/bin/lifelog" export -out "$HOME_DIR/www/.next/data.json" && {
   "$HOME_DIR/bin/compress.sh" "$HOME_DIR/www/.next/data.json"
+  # the sealed routes first: a data.json must never point at routes it can't open
+  if [[ -f "$HOME_DIR/www/.next/routes.enc" ]]; then
+    mv -f "$HOME_DIR/www/.next/routes.enc" "$HOME_DIR/www/routes.enc"
+  else
+    rm -f "$HOME_DIR/www/routes.enc"
+  fi
   for ext in .br .zst .gz ""; do mv -f "$HOME_DIR/www/.next/data.json$ext" "$HOME_DIR/www/data.json$ext"; done
 }
 

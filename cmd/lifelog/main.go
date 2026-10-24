@@ -206,7 +206,7 @@ func runExport(args []string) error {
 
 	loc := location()
 	if *demo {
-		return export.Write(*out, export.Demo(loc))
+		return export.Write(*out, export.Demo(loc), &export.Lock{Question: "演示数据，答案是 demo", Answer: "demo"})
 	}
 	st, err := store.Open(dataDir())
 	if err != nil {
@@ -214,7 +214,22 @@ func runExport(args []string) error {
 	}
 	o := export.Build(st, loc)
 	log.Printf("export: %d activities, %d days -> %s", len(o.Activities), len(o.Daily), *out)
-	return export.Write(*out, o)
+	return export.Write(*out, o, mapLock())
+}
+
+// mapLock reads the map question and its answer; the answer lives only in .env
+// (or a CI secret), never in the repository.
+func mapLock() *export.Lock {
+	answer := source.Getenv("LIFELOG_MAP_ANSWER")
+	if strings.TrimSpace(answer) == "" {
+		log.Printf("export: LIFELOG_MAP_ANSWER not set, routes left out")
+		return nil
+	}
+	q := source.Getenv("LIFELOG_MAP_QUESTION")
+	if q == "" {
+		q = "站长姓氏？"
+	}
+	return &export.Lock{Question: q, Answer: answer}
 }
 
 func runAuth(ctx context.Context, args []string) error {

@@ -9,6 +9,8 @@ import { SpotifyTop } from './components/SpotifyTop'
 import { DuolingoCourses } from './components/DuolingoCourses'
 import { RouteWall } from './components/RouteWall'
 import { useHeightVar } from './lib/useHeightVar'
+import { openRoutes, WrongAnswer } from './lib/routes'
+import { LockIcon, MapLock } from './components/MapLock'
 import { DICTS, I18n, LOCALE, initialLang, save, type Lang } from './i18n'
 
 // mapbox-gl is large; load it only when the map tab opens
@@ -24,7 +26,13 @@ const tabFromHash = (): Tab => {
 }
 
 export function App() {
-  const [data, setData] = useState<Data | null>(null)
+  const [raw, setRaw] = useState<Data | null>(null)
+  // routes are sealed in data.json's sibling file; they open with the map answer
+  const [routes, setRoutes] = useState<Record<string, string> | null>(null)
+  const data = useMemo(
+    () => (raw && routes ? { ...raw, activities: raw.activities.map((a) => (routes[a.id] ? { ...a, polyline: routes[a.id] } : a)) } : raw),
+    [raw, routes],
+  )
   const [error, setError] = useState<string | null>(null)
   const [year, setYear] = useState<number | 'all'>(new Date().getFullYear())
   const [lang, setLang] = useState<Lang>(initialLang)
@@ -59,7 +67,7 @@ export function App() {
     // GitHub Pages caches files for 10 min; revalidate so a fresh sync shows up at once.
     fetch(import.meta.env.BASE_URL + 'data.json', { cache: 'no-cache' })
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`${r.status} ${r.statusText}`))))
-      .then(setData)
+      .then(setRaw)
       .catch((e) => setError(String(e)))
   }, [])
 
@@ -74,7 +82,7 @@ export function App() {
   // routes; if the selected year has none there, jump to the newest that does.
   const yearsOf = (acts: Data['activities']) => [...new Set(acts.map((a) => Number(a.date.slice(0, 4))))].sort((a, b) => b - a)
   const activityYears = useMemo(() => (data ? yearsOf(data.activities) : []), [data])
-  const mapYears = useMemo(() => (data ? yearsOf(data.activities.filter((a) => a.polyline)) : []), [data])
+  const mapYears = useMemo(() => (data ? yearsOf(data.activities.filter((a) => a.has_route)) : []), [data])
   const musicYears = useMemo(
     () => Object.keys(data?.music ?? {}).filter((k) => k !== 'all').map(Number).sort((a, b) => b - a),
     [data],
@@ -83,6 +91,47 @@ export function App() {
   useEffect(() => {
     if (year !== 'all' && tabYears.length > 0 && !tabYears.includes(year)) setYear(tabYears[0])
   }, [year, tabYears])
+
+  // The map, and every way into it, waits for the answer to the map question.
+  // A right answer is kept for this browser tab only, so a reload doesn't ask again.
+  const [gate, setGate] = useState<(() => void) | null>(null)
+  const [autoTried, setAutoTried] = useState(false)
+  const unlock = async (answer: string) => {
+    if (!raw?.routes) return false
+    try {
+      setRoutes(await openRoutes(raw.routes, answer))
+    } catch (e) {
+      if (e instanceof WrongAnswer) return false
+      throw e
+    }
+    try {
+      sessionStorage.setItem('mapAnswer', answer)
+    } catch {
+      // private mode: just ask again next time
+    }
+    return true
+  }
+  const withMap = (then: () => void) => (routes ? then() : setGate(() => then))
+  useEffect(() => {
+    if (!raw?.routes) return
+    let saved: string | null = null
+    try {
+      saved = sessionStorage.getItem('mapAnswer')
+    } catch {
+      // unavailable: ask
+    }
+    if (!saved) return setAutoTried(true)
+    unlock(saved)
+      .catch(() => false)
+      .then((ok) => ok || sessionStorage.removeItem('mapAnswer'))
+      .finally(() => setAutoTried(true))
+  }, [raw])
+  // a #map link (or reload) while locked lands on the overview with the question up
+  useEffect(() => {
+    if (tab !== 'map' || routes || !raw || (raw.routes && !autoTried)) return
+    setTab('overview')
+    if (raw.routes) setGate(() => () => setTab('map'))
+  }, [tab, routes, raw, autoTried])
 
   // Header, tabs and years stay pinned, then the personal bests under them; publish
   // their heights so each next pinned bar sits right below.
@@ -132,7 +181,12 @@ export function App() {
               <h1>Lifelog</h1>
               <p className="sub">
                 {t.subtitle}
-                {data && `${lang === 'zh' ? ' —— ' : ' — '}${t.updated} ${new Date(data.generated_at).toLocaleString(LOCALE[lang])}`}
+                {data && (
+                  <span className="updated">
+                    <span className="dash">{lang === 'zh' ? ' —— ' : ' — '}</span>
+                    {t.updated} {new Date(data.generated_at).toLocaleString(LOCALE[lang])}
+                  </span>
+                )}
               </p>
             </div>
             <div className="controls">
@@ -155,11 +209,23 @@ export function App() {
           {data && (
             <>
               <nav className="tabs" role="tablist">
-                {TABS.map((k) => (
-                  <button key={k} role="tab" aria-selected={tab === k} className={tab === k ? 'on' : ''} onClick={() => setTab(k)}>
-                    {{ overview: t.tabOverview, activities: t.tabActivities, music: t.tabMusic, map: t.tabMap }[k]}
-                  </button>
-                ))}
+                {TABS.filter((k) => k !== 'map' || raw?.routes).map((k) => {
+                  // greyed with a lock until the question is answered
+                  const locked = k === 'map' && !routes
+                  return (
+                    <button
+                      key={k}
+                      role="tab"
+                      aria-selected={tab === k}
+                      className={[tab === k && 'on', locked && 'locked'].filter(Boolean).join(' ')}
+                      title={locked ? t.mapLocked : undefined}
+                      onClick={() => (k === 'map' ? withMap(() => setTab('map')) : setTab(k))}
+                    >
+                      {{ overview: t.tabOverview, activities: t.tabActivities, music: t.tabMusic, map: t.tabMap }[k]}
+                      {locked && <LockIcon size={13} />}
+                    </button>
+                  )
+                })}
               </nav>
 
               <nav className="years">
@@ -195,7 +261,7 @@ export function App() {
 
         {data && (
           <>
-            {tab === 'map' && (
+            {tab === 'map' && routes && (
               <>
               <Suspense fallback={<div className="map-wrap" />}>
                 <RouteMap
@@ -295,17 +361,31 @@ export function App() {
                     year={year}
                     focus={focus}
                     drill={drill}
-                    onShowMap={(id) => {
-                      setMapFocus(id)
-                      setTab('map')
-                      window.scrollTo(0, 0)
-                    }}
+                    onShowMap={(id) =>
+                      withMap(() => {
+                        setMapFocus(id)
+                        setTab('map')
+                        window.scrollTo(0, 0)
+                      })
+                    }
                   />
                 </>
               ))}
           </>
         )}
       </main>
+      {gate && raw?.routes && (
+        <MapLock
+          question={raw.routes.question}
+          onClose={() => setGate(null)}
+          onSubmit={async (answer) => {
+            if (!(await unlock(answer))) return false
+            setGate(null)
+            gate()
+            return true
+          }}
+        />
+      )}
       <footer className="contact">
         <span>{t.contact}</span>
         <a href="https://t.me/aeiou_93" target="_blank" rel="noopener noreferrer" title="Telegram @aeiou_93">

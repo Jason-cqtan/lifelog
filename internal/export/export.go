@@ -28,7 +28,8 @@ type Activity struct {
 	AvgHeartRate  float64            `json:"avg_hr,omitempty"`
 	AvgCadence    float64            `json:"avg_cadence,omitempty"`
 	StrideM       float64            `json:"stride_m,omitempty"`
-	Polyline      string             `json:"polyline,omitempty"`
+	Polyline      string             `json:"-"` // only in RoutesFile, sealed
+	HasRoute      bool               `json:"has_route,omitempty"`
 	Weather       *model.Weather     `json:"weather,omitempty"`
 	BestEfforts   map[string]float64 `json:"best_efforts,omitempty"`
 }
@@ -45,6 +46,8 @@ type Output struct {
 	// SpotifyTop is Spotify's own top-items ranking (not filtered by year).
 	SpotifyTop *model.SpotifyTop `json:"spotify_top,omitempty"`
 	Duolingo   *Duolingo         `json:"duolingo,omitempty"`
+	// Routes is set when the polylines were sealed into RoutesFile.
+	Routes *RouteLock `json:"routes,omitempty"`
 }
 
 // Duolingo is the course snapshot plus, per year and "all", each course's XP
@@ -161,9 +164,34 @@ func Build(st *store.Store, loc *time.Location) Output {
 	return out
 }
 
-func Write(path string, out Output) error {
+// Write writes data.json and, with a lock, the sealed routes next to it (first,
+// so a data.json never points at routes it can't open). Without a lock the site
+// gets no routes at all.
+func Write(path string, out Output, lock *Lock) error {
 	if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
 		return err
+	}
+	routes := map[string]string{}
+	for i := range out.Activities {
+		a := &out.Activities[i]
+		if a.Polyline != "" && lock != nil {
+			routes[a.ID] = a.Polyline
+		}
+		a.HasRoute = routes[a.ID] != ""
+	}
+	out.Routes = nil
+	sealed := filepath.Join(filepath.Dir(path), RoutesFile)
+	if len(routes) == 0 {
+		os.Remove(sealed) // never leave an old one behind
+	} else {
+		blob, err := SealRoutes(routes, lock.Answer)
+		if err != nil {
+			return err
+		}
+		if err := os.WriteFile(sealed, blob, 0o644); err != nil {
+			return err
+		}
+		out.Routes = &RouteLock{Question: lock.Question, File: RoutesFile + "?v=" + version(blob), Iter: RouteIter}
 	}
 	b, err := json.Marshal(out)
 	if err != nil {
