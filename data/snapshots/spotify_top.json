@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-24T14:17:54Z",
+ "updated_at": "2026-10-24T14:56:40Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -1116,6 +1116,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f1780f50807360beac5d44016b0c"
     },
     {
+     "id": "1km0aro5NJuoX5dE0Mub5C",
+     "name": "Joanna Wang",
+     "image": "https://i.scdn.co/image/ab6761610000f1788c2024e68663f46b2981398d"
+    },
+    {
      "id": "5uCktjKM1Rf9VnUvFD6j17",
      "name": "Solar Heavy",
      "image": "https://i.scdn.co/image/ab6761610000f1782b1c6db6ed003d0e72c160e6"
@@ -1253,6 +1258,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e024433ae6a319c1bf5b7269a4e"
     },
     {
+     "id": "4LThFOso6YeLtjG6TZUOdh",
+     "name": "Let's Start From Here",
+     "artist": "Joanna Wang",
+     "album": "Start From Here",
+     "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
+    },
+    {
      "id": "5s8QrZRHt4gZclSaCds4GY",
      "name": "Nostalgia",
      "artist": "D33pSoul",
@@ -1372,6 +1384,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02f77aacc26fe8d9d24583632a"
     },
     {
+     "id": "0O3amqzruMMTSz3rj3Aa1q",
+     "name": "The Best Mistake I've Ever Made",
+     "artist": "Joanna Wang",
+     "album": "Start From Here",
+     "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
+    },
+    {
      "id": "0VdLdZ1UQKrIi1Nxzb9UTt",
      "name": "空中飛人",
      "artist": "Leah Dou",
@@ -1379,11 +1398,32 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02d65beb03c59661d6e737b5e4"
     },
     {
+     "id": "0cCyZJI41K21h1feG0oGVK",
+     "name": "I Love You(OT: 愛很簡單)",
+     "artist": "Joanna Wang",
+     "album": "Start From Here",
+     "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
+    },
+    {
+     "id": "0eu2oeKxrS2H2WBKsIYg4m",
+     "name": "For No Reason",
+     "artist": "Joanna Wang",
+     "album": "Start From Here",
+     "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
+    },
+    {
      "id": "0lW6BJqgnDKTF73D28O3fF",
      "name": "我",
      "artist": "Leah Dou",
      "album": "空中飛人",
      "image": "https://i.scdn.co/image/ab67616d00001e02d65beb03c59661d6e737b5e4"
+    },
+    {
+     "id": "0npodwOWWkfh83yfGK5ZOW",
+     "name": "Lost in Paradise",
+     "artist": "Joanna Wang",
+     "album": "Start From Here",
+     "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
     },
     {
      "id": "0oEyHA3ykAxKcdbE9l6Vnp",
@@ -1461,41 +1501,6 @@
      "artist": "許嵩",
      "album": "安泊猜想",
      "image": "https://i.scdn.co/image/ab67616d00001e02031ac1c7fc7b2c6e5e3a4677"
-    },
-    {
-     "id": "1yvoxoziJMjkDPUwivRRzW",
-     "name": "Blue Flamingo",
-     "artist": "Leah Dou",
-     "album": "STONE CAFE",
-     "image": "https://i.scdn.co/image/ab67616d00001e02da5ab760aaa555ffe8bb4b34"
-    },
-    {
-     "id": "20zq8UHvScuJ1xqCAKMXAq",
-     "name": "Superman",
-     "artist": "Sunstroke, Olia Tira",
-     "album": "Superman",
-     "image": "https://i.scdn.co/image/ab67616d00001e025eb02f8a1b577ce0ae9710eb"
-    },
-    {
-     "id": "22RgKGppKFyQwKUX6Rvx8i",
-     "name": "Road Trippin' - Radio Mix",
-     "artist": "DBMM",
-     "album": "High Way",
-     "image": "https://i.scdn.co/image/ab67616d00001e02129acb02ff567b3e3dae5250"
-    },
-    {
-     "id": "2D7nxTFo1cXTcuA29cMQXA",
-     "name": "被驯服的象 - Live|典藏",
-     "artist": "Leah Dou, Nana Ou-Yang",
-     "album": "歌手2026 第12期 (Live)",
-     "image": "https://i.scdn.co/image/ab67616d00001e022fd0a9b692c1e61b08bdaaee"
-    },
-    {
-     "id": "2SdMEke7JCBEo8t60iyw2r",
-     "name": "Changes - Radio Mix",
-     "artist": "Faul \u0026 Wad, PNAU",
-     "album": "Changes",
-     "image": "https://i.scdn.co/image/ab67616d00001e029b484ba06fc7f37e59bd1871"
     }
    ]
   }
