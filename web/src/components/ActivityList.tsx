@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { SPORT_LABEL, type Activity, type Drill, type SportType, type Weather } from '../types'
-import { fmtDuration, fmtNum, fmtSpeed } from '../lib/format'
+import { fmtCadence, fmtDuration, fmtNum, fmtSpeed } from '../lib/format'
 import { decodePolyline } from '../lib/polyline'
 import { load, save, useI18n, type Dict, type Lang } from '../i18n'
 import { weatherLabel, windLabel } from '../lib/weather'
@@ -12,7 +12,7 @@ const PAGE = 24
 const MIN_KM = [10, 15, 20, 30, 50]
 
 type View = 'cards' | 'table'
-type SortKey = 'date' | 'distance' | 'time' | 'pace' | 'elev' | 'hr'
+type SortKey = 'date' | 'distance' | 'time' | 'pace' | 'elev' | 'hr' | 'cadence'
 
 // Values a column sorts by; pace sorts as seconds per km, so rides sort by speed too.
 const SORT: Record<SortKey, (a: Activity) => number> = {
@@ -22,6 +22,7 @@ const SORT: Record<SortKey, (a: Activity) => number> = {
   pace: (a) => (a.distance_m > 0 ? a.moving_time_s / a.distance_m : Infinity),
   elev: (a) => a.elevation_gain_m ?? 0,
   hr: (a) => a.avg_hr ?? 0,
+  cadence: (a) => a.avg_cadence ?? 0,
 }
 
 export function ActivityList({
@@ -168,20 +169,27 @@ export function ActivityList({
             )
           })}
         </div>
-        <div className="seg" role="group">
-          {(['cards', 'table'] as const).map((v) => (
-            <button key={v} className={view === v ? 'on' : ''} aria-pressed={view === v} onClick={() => setView(v)}>
-              {v === 'cards' ? <CardsIcon /> : <TableIcon />}
-              {v === 'cards' ? t.viewCards : t.viewTable}
-            </button>
-          ))}
-        </div>
       </div>
 
       {/* summary sits above the details, like running_page */}
       <div className={year === 'all' ? 'act-top single' : 'act-top'}>
         {year !== 'all' && <MonthCalendar year={year} activities={calActs} selected={period} onPick={pickPeriod} />}
         <ActivitySummary list={list} base={calActs} year={year} period={period} onPick={pickPeriod} />
+      </div>
+
+      {/* the view switch belongs to the list it changes, not to the summary above */}
+      <div className="list-head">
+        <h3>
+          {t.details} <span>{t.itemsCount(list.length)}</span>
+        </h3>
+          <div className="seg" role="group">
+          {(['cards', 'table'] as const).map((v) => (
+            <button key={v} className={view === v ? 'on' : ''} aria-pressed={view === v} onClick={() => setView(v)}>
+              {v === 'cards' ? <CardsIcon /> : <TableIcon />}
+              {v === 'cards' ? t.viewCards : t.viewTable}
+            </button>
+          ))}
+          </div>
       </div>
 
       {view === 'cards' ? (
@@ -213,6 +221,7 @@ export function ActivityList({
                   {fmtSpeed(a) && <span>{fmtSpeed(a)}</span>}
                   {!!a.elevation_gain_m && <span>↑{Math.round(a.elevation_gain_m)} m</span>}
                   {!!a.avg_hr && <span>♥ {Math.round(a.avg_hr)}</span>}
+                  {fmtCadence(a) && <span title={a.stride_m ? t.strideTip(a.stride_m.toFixed(2)) : undefined}>{fmtCadence(a)}</span>}
                 </div>
                 {a.weather && <WeatherLine w={a.weather} lang={lang} t={t} />}
               </div>
@@ -232,6 +241,7 @@ export function ActivityList({
                 <SortTh k="pace" label={t.cols.pace} sort={sort} setSort={setSort} t={t} num />
                 <SortTh k="elev" label={t.cols.elev} sort={sort} setSort={setSort} t={t} num />
                 <SortTh k="hr" label={t.cols.hr} sort={sort} setSort={setSort} t={t} num />
+                <SortTh k="cadence" label={t.cols.cadence} sort={sort} setSort={setSort} t={t} num />
                 <th>{t.cols.weather}</th>
                 <th>{t.cols.source}</th>
                 <th aria-label={t.showOnMap} />
@@ -252,6 +262,9 @@ export function ActivityList({
                     <td className="num">{fmtSpeed(a) ?? '—'}</td>
                     <td className="num">{a.elevation_gain_m ? `${Math.round(a.elevation_gain_m)} m` : '—'}</td>
                     <td className="num">{a.avg_hr ? Math.round(a.avg_hr) : '—'}</td>
+                    <td className="num" title={a.stride_m ? t.strideTip(a.stride_m.toFixed(2)) : undefined}>
+                      {a.avg_cadence ? Math.round(a.avg_cadence) : '—'}
+                    </td>
                     <td className="nowrap">
                       {a.weather && w ? (
                         <span title={w.text || undefined}>

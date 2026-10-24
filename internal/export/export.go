@@ -26,6 +26,8 @@ type Activity struct {
 	MovingTime    int                `json:"moving_time_s"`
 	ElevationGain float64            `json:"elevation_gain_m,omitempty"`
 	AvgHeartRate  float64            `json:"avg_hr,omitempty"`
+	AvgCadence    float64            `json:"avg_cadence,omitempty"`
+	StrideM       float64            `json:"stride_m,omitempty"`
 	Polyline      string             `json:"polyline,omitempty"`
 	Weather       *model.Weather     `json:"weather,omitempty"`
 	BestEfforts   map[string]float64 `json:"best_efforts,omitempty"`
@@ -122,6 +124,8 @@ func Build(st *store.Store, loc *time.Location) Output {
 			MovingTime:    a.MovingTime,
 			ElevationGain: round(a.ElevationGain),
 			AvgHeartRate:  round(a.AvgHeartRate),
+			AvgCadence:    a.AvgCadence,
+			StrideM:       a.StrideM,
 			Polyline:      slim(a.Polyline),
 			Weather:       a.Weather,
 			BestEfforts:   a.BestEfforts,

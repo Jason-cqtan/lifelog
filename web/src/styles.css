@@ -1305,3 +1305,21 @@ button.cal-day {
   color: var(--text-primary);
   font-weight: 600;
 }
+
+.list-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 4px 0 10px;
+}
+.list-head h3 {
+  margin: 0;
+  font-size: 15px;
+}
+.list-head h3 span {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 400;
+  margin-left: 4px;
+}

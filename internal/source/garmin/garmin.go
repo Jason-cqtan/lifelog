@@ -234,6 +234,9 @@ type activity struct {
 	ElevGain     float64 `json:"elevationGain"`
 	AvgHR        float64 `json:"averageHR"`
 	HasPolyline  bool    `json:"hasPolyline"`
+	RunCadence   float64 `json:"averageRunningCadenceInStepsPerMinute"`
+	BikeCadence  float64 `json:"averageBikingCadenceInRevPerMinute"`
+	StrideCM     float64 `json:"avgStrideLength"`
 	ActivityType struct {
 		TypeKey string `json:"typeKey"`
 	} `json:"activityType"`
@@ -296,6 +299,8 @@ func (g Garmin) Sync(ctx context.Context, env *source.Env) error {
 				ElapsedTime:   int(a.Elapsed),
 				ElevationGain: a.ElevGain,
 				AvgHeartRate:  a.AvgHR,
+				AvgCadence:    math.Round(math.Max(a.RunCadence, a.BikeCadence)),
+				StrideM:       math.Round(a.StrideCM) / 100,
 			}
 			// The list has no track or weather; fetch them once per activity (indoor
 			// ones have neither: weather is looked up from the activity's location),

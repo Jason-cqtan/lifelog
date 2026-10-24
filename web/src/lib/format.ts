@@ -38,3 +38,9 @@ export function addDays(d: Date, n: number): Date {
   out.setDate(out.getDate() + n)
   return out
 }
+
+/** "169 spm" for foot sports, "85 rpm" for rides. */
+export function fmtCadence(a: Pick<Activity, 'type' | 'avg_cadence'>): string | null {
+  if (!a.avg_cadence) return null
+  return `${Math.round(a.avg_cadence)} ${a.type === 'ride' ? 'rpm' : 'spm'}`
+}

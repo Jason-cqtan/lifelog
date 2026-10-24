@@ -14,6 +14,9 @@ export interface Activity {
   moving_time_s: number
   elevation_gain_m?: number
   avg_hr?: number
+  /** steps per minute (runs, walks, hikes) or pedal rpm (rides) */
+  avg_cadence?: number
+  stride_m?: number
   polyline?: string
   weather?: Weather
   /** fastest elapsed seconds over a distance inside this run, keyed by meters */

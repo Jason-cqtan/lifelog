@@ -10,6 +10,7 @@ interface Totals {
   secs: number
   elev: number
   hr: number | null
+  cadence: number | null
   longest: number
 }
 
@@ -20,6 +21,8 @@ function totals(list: Activity[]): Totals {
   let hrSecs = 0
   let hrSum = 0
   let longest = 0
+  let cadSecs = 0
+  let cadSum = 0
   for (const a of list) {
     meters += a.distance_m
     secs += a.moving_time_s
@@ -29,8 +32,21 @@ function totals(list: Activity[]): Totals {
       hrSecs += a.moving_time_s
       hrSum += a.avg_hr * a.moving_time_s
     }
+    if (a.avg_cadence) {
+      cadSecs += a.moving_time_s
+      cadSum += a.avg_cadence * a.moving_time_s
+    }
   }
-  return { count: list.length, meters, secs, elev, hr: hrSecs ? Math.round(hrSum / hrSecs) : null, longest }
+  return {
+    count: list.length,
+    meters,
+    secs,
+    elev,
+    hr: hrSecs ? Math.round(hrSum / hrSecs) : null,
+    // time-weighted, over activities that recorded it
+    cadence: cadSecs ? Math.round(cadSum / cadSecs) : null,
+    longest,
+  }
 }
 
 const single = (list: Activity[]) => {
@@ -128,6 +144,10 @@ export function ActivitySummary({
         <Stat label={t.fastestPace} value={fastest(list)} />
         <Stat label={t.avgDist} value={all.count ? `${fmtNum(all.meters / 1000 / all.count, 2)} km` : '—'} />
         <Stat label={t.totalElev} value={all.elev ? `${fmtNum(all.elev, 0)} m` : '—'} />
+        <Stat
+          label={t.avgCadence}
+          value={all.cadence && single(list) ? `${all.cadence} ${single(list) === 'ride' ? 'rpm' : 'spm'}` : '—'}
+        />
       </dl>
 
       {view === 'chart' ? (

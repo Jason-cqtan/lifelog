@@ -30,8 +30,11 @@ type Activity struct {
 	ElapsedTime   int       `json:"elapsed_time_s,omitempty"`
 	ElevationGain float64   `json:"elevation_gain_m,omitempty"`
 	AvgHeartRate  float64   `json:"avg_hr,omitempty"`
-	Polyline      string    `json:"polyline,omitempty"` // Google encoded polyline
-	Weather       *Weather  `json:"weather,omitempty"`
+	// steps per minute for runs/walks/hikes, pedal rpm for rides
+	AvgCadence float64  `json:"avg_cadence,omitempty"`
+	StrideM    float64  `json:"stride_m,omitempty"` // average stride length, meters
+	Polyline   string   `json:"polyline,omitempty"` // Google encoded polyline
+	Weather    *Weather `json:"weather,omitempty"`
 	// Fastest elapsed seconds over standard distances inside this activity,
 	// keyed by meters ("1000", "5000", ...); from time/distance samples.
 	BestEfforts map[string]float64 `json:"best_efforts,omitempty"`
