@@ -76,11 +76,10 @@ code {
 }
 .top {
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 h1 {
   margin: 0;
@@ -92,6 +91,35 @@ h1 {
   color: var(--text-secondary);
 }
 
+.top > div:first-child {
+  min-width: 0;
+}
+.controls {
+  flex: none;
+  display: flex;
+  gap: 8px;
+}
+.icon-btn {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.icon-btn:hover,
+.years button:hover,
+.chips button:hover {
+  border-color: var(--text-muted);
+}
+.years {
+  margin-bottom: 20px;
+}
 .years,
 .chips {
   display: flex;

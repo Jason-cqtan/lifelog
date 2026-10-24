@@ -1,14 +1,13 @@
 import type { Activity } from '../types'
+import type { Dict } from '../i18n'
 
 export function fmtNum(v: number, digits = 1): string {
-  if (v >= 1000) return Math.round(v).toLocaleString('zh-CN')
-  return Number(v.toFixed(digits)).toLocaleString('zh-CN')
+  if (v >= 1000) return Math.round(v).toLocaleString()
+  return Number(v.toFixed(digits)).toLocaleString()
 }
 
-export function fmtDuration(sec: number): string {
-  const h = Math.floor(sec / 3600)
-  const m = Math.round((sec % 3600) / 60)
-  return h > 0 ? `${h}小时${m}分` : `${m}分钟`
+export function fmtDuration(sec: number, t: Dict): string {
+  return t.duration(Math.floor(sec / 3600), Math.round((sec % 3600) / 60))
 }
 
 /** Pace for foot sports (min/km), speed for rides (km/h). */

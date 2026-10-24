@@ -2,10 +2,13 @@ import { useMemo, useState } from 'react'
 import { SPORT_LABEL, type Activity, type SportType } from '../types'
 import { fmtDuration, fmtNum, fmtSpeed } from '../lib/format'
 import { decodePolyline } from '../lib/polyline'
+import { useI18n } from '../i18n'
 
 const PAGE = 24
 
 export function ActivityList({ activities }: { activities: Activity[] }) {
+  const { lang, t } = useI18n()
+  const sport = SPORT_LABEL[lang]
   const [filter, setFilter] = useState<SportType | 'all'>('all')
   const [shown, setShown] = useState(PAGE)
 
@@ -20,27 +23,26 @@ export function ActivityList({ activities }: { activities: Activity[] }) {
   return (
     <section className="activities">
       <div className="activities-head">
-        <h2>运动记录</h2>
+        <h2>{t.activities}</h2>
         <div className="chips" role="tablist">
           <button className={filter === 'all' ? 'on' : ''} onClick={() => setFilter('all')}>
-            全部 {activities.length}
+            {t.all} {activities.length}
           </button>
-          {types.map(([t, n]) => (
-            <button key={t} className={filter === t ? 'on' : ''} onClick={() => setFilter(t)}>
-              {SPORT_LABEL[t]} {n}
+          {types.map(([type, n]) => (
+            <button key={type} className={filter === type ? 'on' : ''} onClick={() => setFilter(type)}>
+              {sport[type]} {n}
             </button>
           ))}
         </div>
       </div>
-      {list.length === 0 && <p className="empty">这一年还没有运动记录。</p>}
       <ul className="cards">
         {list.slice(0, shown).map((a) => (
           <li key={a.id} className="card">
-            <Route polyline={a.polyline} type={a.type} />
+            <Route polyline={a.polyline} type={a.type} label={sport[a.type]} />
             <div className="card-body">
               <div className="card-title">
-                <span className={`tag tag-${a.type}`}>{SPORT_LABEL[a.type]}</span>
-                <span className="name">{a.name || SPORT_LABEL[a.type]}</span>
+                <span className={`tag tag-${a.type}`}>{sport[a.type]}</span>
+                <span className="name">{a.name || sport[a.type]}</span>
               </div>
               <div className="card-meta">
                 {a.start_local} · {a.source}
@@ -51,7 +53,7 @@ export function ActivityList({ activities }: { activities: Activity[] }) {
                     <b>{fmtNum(a.distance_m / 1000, 2)}</b> km
                   </span>
                 )}
-                <span>{fmtDuration(a.moving_time_s)}</span>
+                <span>{fmtDuration(a.moving_time_s, t)}</span>
                 {fmtSpeed(a) && <span>{fmtSpeed(a)}</span>}
                 {!!a.elevation_gain_m && <span>↑{Math.round(a.elevation_gain_m)} m</span>}
                 {!!a.avg_hr && <span>♥ {Math.round(a.avg_hr)}</span>}
@@ -62,7 +64,7 @@ export function ActivityList({ activities }: { activities: Activity[] }) {
       </ul>
       {shown < list.length && (
         <button className="more" onClick={() => setShown(shown + PAGE)}>
-          加载更多(还有 {list.length - shown} 条)
+          {t.loadMore(list.length - shown)}
         </button>
       )}
     </section>
@@ -70,7 +72,7 @@ export function ActivityList({ activities }: { activities: Activity[] }) {
 }
 
 /** Route thumbnail drawn straight from the polyline — no map tiles needed. */
-function Route({ polyline, type }: { polyline?: string; type: SportType }) {
+function Route({ polyline, type, label }: { polyline?: string; type: SportType; label: string }) {
   const d = useMemo(() => {
     if (!polyline) return null
     const pts = decodePolyline(polyline)
@@ -95,7 +97,7 @@ function Route({ polyline, type }: { polyline?: string; type: SportType }) {
 
   return (
     <svg className={`route route-${type}`} viewBox="0 0 100 100" aria-hidden>
-      {d ? <path d={d} /> : <text x="50" y="56">{SPORT_LABEL[type]}</text>}
+      {d ? <path d={d} /> : <text x="50" y="56">{label}</text>}
     </svg>
   )
 }

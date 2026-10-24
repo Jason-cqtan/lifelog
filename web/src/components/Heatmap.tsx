@@ -1,13 +1,13 @@
 import { useEffect, useMemo, useRef, useState, type MouseEvent } from 'react'
 import type { Category, Data } from '../types'
 import { addDays, fmtNum, isoDate } from '../lib/format'
+import { useI18n } from '../i18n'
 
 const CELL = 11
 const GAP = 2
 const STEP = CELL + GAP
-const LEFT = 22
+const LEFT = 26
 const TOP = 16
-const MONTHS = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
 // color-mix percentage of the category color per intensity level (one-hue ramp)
 const LEVEL_MIX = [0, 28, 52, 76, 100]
 
@@ -26,6 +26,9 @@ interface Cell {
 }
 
 export function Heatmap({ year, category, daily }: Props) {
+  const { lang, t } = useI18n()
+  const label = category.label[lang]
+  const unit = category.unit[lang]
   const [tip, setTip] = useState<{ cell: Cell; x: number; y: number } | null>(null)
   const scrollRef = useRef<HTMLDivElement>(null)
 
@@ -92,7 +95,7 @@ export function Heatmap({ year, category, daily }: Props) {
     setTip({ cell, x: LEFT + cell.week * STEP + CELL / 2, y: TOP + cell.dow * STEP })
   }
 
-  const monthLabels = MONTHS.map((label, m) => {
+  const monthLabels = t.months.map((label, m) => {
     const first = cells.find((c) => Number(c.date.slice(5, 7)) === m + 1)
     return first ? { label, x: LEFT + first.week * STEP } : null
   })
@@ -102,24 +105,24 @@ export function Heatmap({ year, category, daily }: Props) {
       <header className="panel-head">
         <h3>
           <span className="swatch" style={{ background: category.color }} />
-          {category.label}
+          {label}
         </h3>
         <dl className="stats">
           <div>
-            <dt>{year} 合计</dt>
+            <dt>{t.yearTotal(year)}</dt>
             <dd>
-              {fmtNum(total)} <small>{category.unit}</small>
+              {fmtNum(total)} <small>{unit}</small>
             </dd>
           </div>
           <div>
-            <dt>活跃天数</dt>
+            <dt>{t.activeDays}</dt>
             <dd>{activeDays}</dd>
           </div>
           {year === new Date().getFullYear() && (
             <div>
-              <dt>连续</dt>
+              <dt>{t.streak}</dt>
               <dd>
-                {streak} <small>天</small>
+                {streak} <small>{t.days}</small>
               </dd>
             </div>
           )}
@@ -134,7 +137,7 @@ export function Heatmap({ year, category, daily }: Props) {
             onMouseMove={onMove}
             onMouseLeave={() => setTip(null)}
             role="img"
-            aria-label={`${year} 年${category.label}每日热力图,合计 ${fmtNum(total)} ${category.unit}`}
+            aria-label={t.heatmapLabel(year, label, fmtNum(total), unit)}
           >
             {monthLabels.map(
               (m) =>
@@ -144,7 +147,7 @@ export function Heatmap({ year, category, daily }: Props) {
                   </text>
                 ),
             )}
-            {['一', '三', '五'].map((d, i) => (
+            {t.weekdays.map((d, i) => (
               <text key={d} x={0} y={TOP + (i * 2) * STEP + CELL - 2} className="axis-label">
                 {d}
               </text>
@@ -169,14 +172,14 @@ export function Heatmap({ year, category, daily }: Props) {
           </svg>
           {tip && (
             <div className="tooltip" style={{ left: tip.x, top: tip.y }}>
-              <strong>{tip.cell.value > 0 ? `${fmtNum(tip.cell.value)} ${category.unit}` : '无记录'}</strong>
+              <strong>{tip.cell.value > 0 ? `${fmtNum(tip.cell.value)} ${unit}` : t.noRecord}</strong>
               <span>{tip.cell.date}</span>
             </div>
           )}
         </div>
       </div>
       <div className="scale" aria-hidden>
-        少
+        {t.less}
         {LEVEL_MIX.map((mix, i) => (
           <i
             key={i}
@@ -185,7 +188,7 @@ export function Heatmap({ year, category, daily }: Props) {
             }}
           />
         ))}
-        多
+        {t.more}
       </div>
     </section>
   )
