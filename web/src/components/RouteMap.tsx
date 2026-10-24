@@ -53,6 +53,9 @@ export default function RouteMap({ activities, theme, focusId, onShowInList }: P
   routesRef.current = routes
   const selectedRef = useRef(selected)
   selectedRef.current = selected
+  // countries that contain routes (ISO alpha-2), and the route starts already checked
+  const keep = useRef(new Set<string>())
+  const seen = useRef(new Map<string, string | null>())
 
   useEffect(() => {
     if (!TOKEN || !box.current) return
@@ -70,10 +73,16 @@ export default function RouteMap({ activities, theme, focusId, onShowInList }: P
     m.addControl(new mapboxgl.NavigationControl({ showCompass: false }), 'top-right')
     let first = true
     m.on('style.load', () => {
-      installLayers(m, routesRef.current)
+      installLayers(m, routesRef.current, keep.current)
       highlight(m, routesRef.current, selectedRef.current, false)
       if (first && !selectedRef.current) fitAll(m, routesRef.current)
       first = false
+    })
+    m.on('idle', () => {
+      if (classifyCountries(m, routesRef.current, seen.current, keep.current) && m.getLayer('country-mask')) {
+        m.setFilter('country-mask', maskFilter(keep.current))
+        filterLabels(m, keep.current)
+      }
     })
     m.on('click', 'routes-hit', (e) => {
       const props = (e.features?.[0] as { properties?: { id?: string } } | undefined)?.properties
@@ -155,9 +164,57 @@ export default function RouteMap({ activities, theme, focusId, onShowInList }: P
 
 type Routes = { type: 'FeatureCollection'; features: { properties: { id: string; type: string }; geometry: { coordinates: [number, number][] } }[] }
 
-function installLayers(m: mapboxgl.Map, routes: Routes) {
+// Countries with no routes are painted over with the background color, at every
+// zoom, so only places with data show. Which countries those are is worked out
+// from the loaded boundary shapes (see classifyCountries).
+const WORLDVIEW: mapboxgl.FilterSpecification = [
+  'all',
+  ['==', ['get', 'disputed'], 'false'],
+  ['any', ['==', 'all', ['get', 'worldview']], ['in', 'CN', ['get', 'worldview']]],
+]
+
+function maskFilter(keep: Set<string>): mapboxgl.FilterSpecification {
+  // until we know where the data is, mask nothing
+  if (keep.size === 0) return ['boolean', false]
+  return ['all', WORLDVIEW, ['!', ['in', ['get', 'iso_3166_1'], ['literal', [...keep]]]]]
+}
+
+// Basemap labels can still draw above the mask, so they are filtered too: label
+// features carry their country code; ones without it (e.g. oceans) stay.
+const baseFilters = new WeakMap<mapboxgl.Map, Map<string, unknown>>()
+
+function filterLabels(m: mapboxgl.Map, keep: Set<string>) {
+  if (keep.size === 0) return
+  let saved = baseFilters.get(m)
+  if (!saved) baseFilters.set(m, (saved = new Map()))
+  const clause = ['any', ['!', ['has', 'iso_3166_1']], ['in', ['get', 'iso_3166_1'], ['literal', [...keep]]]]
+  for (const layer of m.getStyle()?.layers ?? []) {
+    if (layer.type !== 'symbol' || layer.id.startsWith('routes')) continue
+    if (!saved.has(layer.id)) saved.set(layer.id, (layer as { filter?: unknown }).filter)
+    const base = saved.get(layer.id)
+    try {
+      m.setFilter(layer.id, (base ? ['all', base, clause] : clause) as mapboxgl.FilterSpecification)
+    } catch {
+      // a legacy-syntax filter can't be combined with an expression; leave it
+    }
+  }
+}
+
+function installLayers(m: mapboxgl.Map, routes: Routes, keep: Set<string>) {
+  baseFilters.delete(m) // a new style brings new label layers
+  filterLabels(m, keep)
   const css = getComputedStyle(document.documentElement)
   const color = (v: string) => css.getPropertyValue(v).trim()
+  if (!m.getSource('countries')) m.addSource('countries', { type: 'vector', url: 'mapbox://mapbox.country-boundaries-v1' })
+  // above every basemap layer (labels too), below our routes
+  m.addLayer({
+    id: 'country-mask',
+    type: 'fill',
+    source: 'countries',
+    'source-layer': 'country_boundaries',
+    filter: maskFilter(keep),
+    paint: { 'fill-color': color('--surface'), 'fill-opacity': 1 },
+  })
   if (!m.getSource('routes')) m.addSource('routes', { type: 'geojson', data: routes as mapboxgl.GeoJSONSourceSpecification['data'] })
   const lineColor: mapboxgl.ExpressionSpecification = [
     'match', ['get', 'type'],
@@ -180,6 +237,61 @@ function highlight(m: mapboxgl.Map, routes: Routes, id: string | null, animate: 
 
 function fitAll(m: mapboxgl.Map, routes: Routes) {
   fit(m, routes.features.flatMap((f) => f.geometry.coordinates), false)
+}
+
+type Ring = [number, number][]
+
+function inRing([x, y]: [number, number], ring: Ring): boolean {
+  let inside = false
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const [xi, yi] = ring[i]
+    const [xj, yj] = ring[j]
+    if (yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) inside = !inside
+  }
+  return inside
+}
+
+function inPolygon(pt: [number, number], rings: Ring[]): boolean {
+  return inRing(pt, rings[0]) && !rings.slice(1).some((h) => inRing(pt, h))
+}
+
+/**
+ * Finds the country of each route start that isn't classified yet, using the
+ * boundary shapes in the tiles loaded for the current view. Returns true when
+ * the set of countries grew.
+ */
+function classifyCountries(m: mapboxgl.Map, routes: Routes, seen: Map<string, string | null>, keep: Set<string>): boolean {
+  const pending: [string, [number, number]][] = []
+  for (const f of routes.features) {
+    const [lng, lat] = f.geometry.coordinates[0]
+    const key = `${lng.toFixed(1)},${lat.toFixed(1)}`
+    if (!seen.has(key)) pending.push([key, [lng, lat]])
+  }
+  if (pending.length === 0 || !m.getSource('countries')) return false
+  type Shape = { geometry: { type: string; coordinates: unknown }; properties?: { iso_3166_1?: string } | null }
+  const shapes = m.querySourceFeatures('countries', { sourceLayer: 'country_boundaries' }) as unknown as Shape[]
+  if (shapes.length === 0) return false
+  let grew = false
+  for (const [key, pt] of pending) {
+    if (seen.has(key)) continue
+    const bounds = m.getBounds()
+    if (!bounds || !bounds.contains(pt)) continue // its tiles may not be loaded yet
+    let iso: string | null = null
+    for (const f of shapes) {
+      const g = f.geometry
+      const polys = g.type === 'Polygon' ? [g.coordinates as Ring[]] : g.type === 'MultiPolygon' ? (g.coordinates as Ring[][]) : []
+      if (polys.some((rings) => inPolygon(pt, rings))) {
+        iso = String(f.properties?.iso_3166_1 ?? '')
+        break
+      }
+    }
+    seen.set(key, iso)
+    if (iso && !keep.has(iso)) {
+      keep.add(iso)
+      grew = true
+    }
+  }
+  return grew
 }
 
 function fit(m: mapboxgl.Map, coords: [number, number][], animate: boolean) {

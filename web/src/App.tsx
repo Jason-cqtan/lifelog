@@ -65,15 +65,15 @@ export function App() {
     return [...ys].sort((a, b) => b - a)
   }, [data])
 
-  // The map only offers years that have at least one route.
-  const mapYears = useMemo(() => {
-    if (!data) return []
-    const ys = new Set(data.activities.filter((a) => a.polyline).map((a) => Number(a.date.slice(0, 4))))
-    return [...ys].sort((a, b) => b - a)
-  }, [data])
+  // The activity list only offers years with activities, the map only years with
+  // routes; if the selected year has none there, jump to the newest that does.
+  const yearsOf = (acts: Data['activities']) => [...new Set(acts.map((a) => Number(a.date.slice(0, 4))))].sort((a, b) => b - a)
+  const activityYears = useMemo(() => (data ? yearsOf(data.activities) : []), [data])
+  const mapYears = useMemo(() => (data ? yearsOf(data.activities.filter((a) => a.polyline)) : []), [data])
+  const tabYears = tab === 'map' ? mapYears : tab === 'activities' ? activityYears : years
   useEffect(() => {
-    if (tab === 'map' && year !== 'all' && mapYears.length > 0 && !mapYears.includes(year)) setYear(mapYears[0])
-  }, [tab, year, mapYears])
+    if (year !== 'all' && tabYears.length > 0 && !tabYears.includes(year)) setYear(tabYears[0])
+  }, [year, tabYears])
 
   // Header, tabs and years stay pinned; publish their height so the personal-bests
   // bar can pin right under them.
@@ -94,6 +94,12 @@ export function App() {
     const days = Object.entries(data.daily).filter(([d]) => d.startsWith(prefix))
     return CATEGORIES.filter((c) => days.some(([, m]) => (m[c.metric] ?? 0) > 0))
   }, [data, year])
+
+  const openActivity = (id: string) => {
+    setDrill(null)
+    setTab('activities')
+    setFocus({ id, seq: Date.now() })
+  }
 
   const openDrill = (type: SportType, period: string) => {
     setFocus(null)
@@ -165,7 +171,7 @@ export function App() {
                 >
                   {t.all}
                 </button>
-                {(tab === 'map' ? mapYears : years).map((y) => (
+                {tabYears.map((y) => (
                   <button
                     key={y}
                     className={y === year ? 'on' : ''}
@@ -207,9 +213,24 @@ export function App() {
                 <div className="panels">
                   {visible.map((c) =>
                     year === 'all' ? (
-                      <Overview key={c.key} category={c} daily={data.daily} onDrill={openDrill} />
+                      <Overview
+                        key={c.key}
+                        category={c}
+                        daily={data.daily}
+                        onDrill={openDrill}
+                        activities={c.sport ? yearActivities.filter((a) => a.type === c.sport) : undefined}
+                        onOpen={openActivity}
+                      />
                     ) : (
-                      <Heatmap key={c.key} year={year} category={c} daily={data.daily} onDrill={openDrill} />
+                      <Heatmap
+                        key={c.key}
+                        year={year}
+                        category={c}
+                        daily={data.daily}
+                        onDrill={openDrill}
+                        activities={c.sport ? yearActivities.filter((a) => a.type === c.sport) : undefined}
+                        onOpen={openActivity}
+                      />
                     ),
                   )}
                 </div>

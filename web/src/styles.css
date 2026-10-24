@@ -248,7 +248,7 @@ h1 {
 .scale {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: 3px;
   font-size: 11px;
   color: var(--text-muted);
@@ -723,4 +723,78 @@ button.pb-ride:hover {
   .pb {
     padding: 6px 10px;
   }
+}
+
+.heat-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-top: 6px;
+}
+.heat-foot .scale {
+  margin-top: 0;
+}
+.mini-stats {
+  display: flex;
+  gap: 14px;
+  margin: 0;
+  font-size: 12px;
+}
+.mini-stats div {
+  display: flex;
+  gap: 5px;
+  align-items: baseline;
+}
+.mini-stats dt {
+  color: var(--text-muted);
+}
+.mini-stats dd {
+  margin: 0;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.latest {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+  width: 100%;
+  margin-top: 10px;
+  padding: 8px 12px;
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+  background: color-mix(in oklab, var(--text-primary) 3%, transparent);
+  color: var(--text-secondary);
+  font-size: 12px;
+  text-align: left;
+}
+.latest:hover {
+  border-color: var(--text-muted);
+}
+.latest b {
+  color: var(--text-primary);
+}
+.latest-label {
+  color: var(--text-muted);
+}
+.latest-name {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+.latest-go {
+  margin-left: auto;
+  color: var(--text-muted);
+}
+
+.km-chips button {
+  font-variant-numeric: tabular-nums;
+}
+.km-chips button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.activities-head {
+  flex-wrap: wrap;
 }

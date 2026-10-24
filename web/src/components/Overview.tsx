@@ -1,9 +1,10 @@
 import { useCallback, useMemo, useRef, useState, type MouseEvent } from 'react'
-import type { Category, Data, SportType } from '../types'
+import type { Activity, Category, Data, SportType } from '../types'
+import { HeatFooter } from './SportSummary'
 import { fmtNum, isoDate } from '../lib/format'
 import { categoryStats } from '../lib/stats'
 import { useI18n } from '../i18n'
-import { DownloadButton, Scale, Tooltip, downloadHeatmapPng, levelFill, quartileLevels, toViewport } from './heat'
+import { DownloadButton, Tooltip, downloadHeatmapPng, levelFill, quartileLevels, toViewport } from './heat'
 
 // All-time view: one row per year, one cell per month (the monthly total).
 const CW = 40
@@ -17,6 +18,10 @@ interface Props {
   daily: Data['daily']
   /** sport categories: open that month's activities */
   onDrill?: (type: SportType, period: string) => void
+  /** this panel's sport activities in the shown period, newest first */
+  activities?: Activity[]
+  /** open one activity in the list */
+  onOpen?: (id: string) => void
 }
 
 interface Cell {
@@ -27,7 +32,7 @@ interface Cell {
   level: number
 }
 
-export function Overview({ category, daily, onDrill }: Props) {
+export function Overview({ category, daily, onDrill, activities, onOpen }: Props) {
   const { lang, t } = useI18n()
   const label = category.label[lang]
   const unit = category.unit[lang]
@@ -195,7 +200,7 @@ export function Overview({ category, daily, onDrill }: Props) {
           )}
         </div>
       </div>
-      <Scale color={category.color} />
+      <HeatFooter category={category} activities={activities ?? []} onOpen={onOpen} />
     </section>
   )
 }

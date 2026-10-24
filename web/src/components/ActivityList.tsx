@@ -6,6 +6,8 @@ import { load, save, useI18n, type Dict, type Lang } from '../i18n'
 import { weatherLabel, windLabel } from '../lib/weather'
 
 const PAGE = 24
+// quick "at least N km" filters
+const MIN_KM = [10, 15, 20, 30, 50]
 
 type View = 'cards' | 'table'
 type SortKey = 'date' | 'distance' | 'time' | 'pace' | 'elev' | 'hr'
@@ -37,6 +39,7 @@ export function ActivityList({
   const [filter, setFilter] = useState<SportType | 'all'>('all')
   // 'YYYY-MM' or 'YYYY-MM-DD' prefix of activity dates, set by a heatmap drill-down
   const [period, setPeriod] = useState<string | null>(null)
+  const [minKm, setMinKm] = useState<number | null>(null)
   const [shown, setShown] = useState(PAGE)
   const [view, setViewState] = useState<View>(() => (load('activityView') === 'table' ? 'table' : 'cards'))
   const setView = (v: View) => {
@@ -47,8 +50,11 @@ export function ActivityList({
   const [sort, setSort] = useState<{ key: SortKey; desc: boolean }>({ key: 'date', desc: true })
 
   const inPeriod = useMemo(
-    () => (period ? activities.filter((a) => a.date.startsWith(period)) : activities),
-    [activities, period],
+    () =>
+      activities.filter(
+        (a) => (!period || a.date.startsWith(period)) && (minKm === null || a.distance_m >= minKm * 1000),
+      ),
+    [activities, period, minKm],
   )
   const types = useMemo(() => {
     const counts = new Map<SportType, number>()
@@ -72,6 +78,7 @@ export function ActivityList({
     if (idx < 0) return
     setFilter('all')
     setPeriod(null)
+    setMinKm(null)
     setSort({ key: 'date', desc: true })
     setShown((n) => Math.max(n, Math.ceil((idx + 1) / PAGE) * PAGE))
     setFlash(focus)
@@ -86,6 +93,7 @@ export function ActivityList({
     if (!drill) return
     setFilter(drill.type)
     setPeriod(drill.period)
+    setMinKm(null)
     setSort({ key: 'date', desc: true })
     setShown(PAGE)
     setFlashAll(true)
@@ -124,6 +132,23 @@ export function ActivityList({
               {sport[type]} {n}
             </button>
           ))}
+        </div>
+        <div className="chips km-chips" role="group" aria-label={t.minDistance}>
+          {MIN_KM.map((k) => {
+            const n = activities.filter((a) => (!period || a.date.startsWith(period)) && a.distance_m >= k * 1000).length
+            return (
+              <button
+                key={k}
+                className={minKm === k ? 'on' : ''}
+                aria-pressed={minKm === k}
+                disabled={n === 0 && minKm !== k}
+                onClick={() => setMinKm(minKm === k ? null : k)}
+                title={t.kmPlusTitle(k, n)}
+              >
+                {k}KM+
+              </button>
+            )
+          })}
         </div>
         <div className="seg" role="group">
           {(['cards', 'table'] as const).map((v) => (
