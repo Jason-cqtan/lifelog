@@ -44,7 +44,7 @@ const usage = `lifelog — 个人数据同步工具
   lifelog import applehealth export.xml    导入 Apple 健康导出的体能训练
   lifelog import spotify-history FILE...   导入 Spotify 隐私数据导出的播放历史
   lifelog export [-out PATH] [-demo]       生成前端用的 data.json
-  lifelog auth strava|spotify|garmin       一次性授权,打印需要保存到 Secrets 的 token
+  lifelog auth strava|spotify|garmin|duolingo  一次性授权,token 写入 .env
 
 环境变量: LIFELOG_DATA(默认 data) LIFELOG_TZ(默认 Asia/Shanghai),其余见 .env.example
 `
@@ -198,7 +198,7 @@ func runExport(args []string) error {
 
 func runAuth(ctx context.Context, args []string) error {
 	if len(args) != 1 {
-		return fmt.Errorf("usage: lifelog auth strava|spotify|garmin")
+		return fmt.Errorf("usage: lifelog auth strava|spotify|garmin|duolingo")
 	}
 	c := &http.Client{Timeout: 30 * time.Second}
 	switch args[0] {
@@ -206,6 +206,28 @@ func runAuth(ctx context.Context, args []string) error {
 		return strava.Authorize(ctx, c)
 	case "spotify":
 		return spotify.Authorize(ctx, c)
+	case "duolingo":
+		fmt.Println("在浏览器登录 duolingo.com → 开发者工具 → Application/存储 → Cookies → 复制 jwt_token 的值")
+		fmt.Print("粘贴 jwt_token(输入不显示): ")
+		b, err := term.ReadPassword(int(os.Stdin.Fd()))
+		fmt.Println()
+		if err != nil {
+			return err
+		}
+		jwt := strings.Trim(strings.TrimSpace(string(b)), `"`)
+		exp, err := duolingo.Check(ctx, c, jwt)
+		if err != nil {
+			return fmt.Errorf("token 无效: %w", err)
+		}
+		if err := setDotEnv(".env", "DUOLINGO_JWT", jwt); err != nil {
+			return err
+		}
+		if exp.IsZero() {
+			fmt.Println("验证成功,DUOLINGO_JWT 已写入 .env。")
+		} else {
+			fmt.Printf("验证成功,DUOLINGO_JWT 已写入 .env(有效期至 %s)。\n", exp.Format("2006-01-02"))
+		}
+		return nil
 	case "garmin":
 		in := bufio.NewReader(os.Stdin)
 		prompt := func(label, env string) string {

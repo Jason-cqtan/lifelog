@@ -51,22 +51,11 @@ func (d Duolingo) Sync(ctx context.Context, env *source.Env) error {
 		if to.After(end) {
 			to = end
 		}
-		q := url.Values{
-			"startDate": {from.Format("2006-01-02")},
-			"endDate":   {to.Format("2006-01-02")},
-			"timezone":  {env.Loc.String()},
-		}
-		req, _ := http.NewRequestWithContext(ctx, http.MethodGet,
-			fmt.Sprintf("https://www.duolingo.com/2017-06-30/users/%s/xp_summaries?%s", userID, q.Encode()), nil)
-		req.Header.Set("Authorization", "Bearer "+jwt)
-		req.Header.Set("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36")
-		var res struct {
-			Summaries []summary `json:"summaries"`
-		}
-		if err := source.DoJSON(env.HTTP, req, &res); err != nil {
+		summaries, err := fetch(ctx, env.HTTP, jwt, userID, from, to, env.Loc)
+		if err != nil {
 			return err
 		}
-		for _, s := range res.Summaries {
+		for _, s := range summaries {
 			if s.GainedXp == 0 && s.TotalSessionTime == 0 {
 				continue
 			}
@@ -82,6 +71,47 @@ func (d Duolingo) Sync(ctx context.Context, env *source.Env) error {
 	}
 	env.Log.Printf("duolingo: %d active days updated", days)
 	return nil
+}
+
+func fetch(ctx context.Context, c *http.Client, jwt, userID string, from, to time.Time, loc *time.Location) ([]summary, error) {
+	q := url.Values{
+		"startDate": {from.Format("2006-01-02")},
+		"endDate":   {to.Format("2006-01-02")},
+		"timezone":  {loc.String()},
+	}
+	req, _ := http.NewRequestWithContext(ctx, http.MethodGet,
+		fmt.Sprintf("https://www.duolingo.com/2017-06-30/users/%s/xp_summaries?%s", userID, q.Encode()), nil)
+	req.Header.Set("Authorization", "Bearer "+jwt)
+	req.Header.Set("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36")
+	var res struct {
+		Summaries []summary `json:"summaries"`
+	}
+	if err := source.DoJSON(c, req, &res); err != nil {
+		return nil, err
+	}
+	return res.Summaries, nil
+}
+
+// Check makes one real request with the token and returns its expiry (zero if
+// the token has none), so `lifelog auth duolingo` can reject a bad paste.
+func Check(ctx context.Context, c *http.Client, jwt string) (time.Time, error) {
+	userID, err := userIDFromJWT(jwt)
+	if err != nil {
+		return time.Time{}, err
+	}
+	now := time.Now()
+	if _, err := fetch(ctx, c, jwt, userID, now.AddDate(0, 0, -1), now, time.UTC); err != nil {
+		return time.Time{}, err
+	}
+	var claims struct {
+		Exp int64 `json:"exp"`
+	}
+	payload, _ := base64.RawURLEncoding.DecodeString(strings.Split(jwt, ".")[1])
+	json.Unmarshal(payload, &claims)
+	if claims.Exp == 0 {
+		return time.Time{}, nil
+	}
+	return time.Unix(claims.Exp, 0), nil
 }
 
 // userIDFromJWT reads the numeric user id from the token's "sub" claim.
