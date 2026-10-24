@@ -4,15 +4,19 @@ import { Heatmap } from './components/Heatmap'
 import { ActivityList } from './components/ActivityList'
 import { Overview } from './components/Overview'
 import { PersonalBests } from './components/PersonalBests'
+import { DICTS, I18n, LOCALE, initialLang, save, type Lang } from './i18n'
 
 // mapbox-gl is large; load it only when the map tab opens
 const RouteMap = lazy(() => import('./components/RouteMap'))
-import { DICTS, I18n, LOCALE, initialLang, save, type Lang } from './i18n'
 
 type Theme = 'light' | 'dark'
-type Tab = 'overview' | 'map'
+const TABS = ['overview', 'activities', 'map'] as const
+type Tab = (typeof TABS)[number]
 
-const tabFromHash = (): Tab => (location.hash === '#map' ? 'map' : 'overview')
+const tabFromHash = (): Tab => {
+  const h = location.hash.slice(1)
+  return (TABS as readonly string[]).includes(h) ? (h as Tab) : 'overview'
+}
 
 export function App() {
   const [data, setData] = useState<Data | null>(null)
@@ -28,7 +32,7 @@ export function App() {
   const [mapFocus, setMapFocus] = useState<string | null>(null)
   const setTab = (next: Tab) => {
     setTabState(next)
-    history.replaceState(null, '', next === 'map' ? '#map' : location.pathname + location.search)
+    history.replaceState(null, '', next === 'overview' ? location.pathname + location.search : `#${next}`)
   }
   useEffect(() => {
     const onHash = () => setTabState(tabFromHash())
@@ -113,54 +117,78 @@ export function App() {
         {data && (
           <>
             <nav className="tabs" role="tablist">
-              {(['overview', 'map'] as const).map((k) => (
+              {TABS.map((k) => (
                 <button key={k} role="tab" aria-selected={tab === k} className={tab === k ? 'on' : ''} onClick={() => setTab(k)}>
-                  {k === 'overview' ? t.tabOverview : t.tabMap}
+                  {{ overview: t.tabOverview, activities: t.tabActivities, map: t.tabMap }[k]}
                 </button>
               ))}
             </nav>
 
             <nav className="years">
-              <button className={year === 'all' ? 'on' : ''} onClick={() => { setYear('all'); setFocus(null); setMapFocus(null) }}>
+              <button
+                className={year === 'all' ? 'on' : ''}
+                onClick={() => {
+                  setYear('all')
+                  setFocus(null)
+                  setMapFocus(null)
+                }}
+              >
                 {t.all}
               </button>
               {years.map((y) => (
-                <button key={y} className={y === year ? 'on' : ''} onClick={() => { setYear(y); setFocus(null); setMapFocus(null) }}>
+                <button
+                  key={y}
+                  className={y === year ? 'on' : ''}
+                  onClick={() => {
+                    setYear(y)
+                    setFocus(null)
+                    setMapFocus(null)
+                  }}
+                >
                   {y}
                 </button>
               ))}
             </nav>
 
-            {tab === 'map' ? (
+            {tab === 'map' && (
               <Suspense fallback={<div className="map-wrap" />}>
                 <RouteMap
                   activities={yearActivities}
                   theme={theme}
                   focusId={mapFocus}
                   onShowInList={(id) => {
-                    setTab('overview')
+                    setTab('activities')
                     setFocus({ id, seq: Date.now() })
                   }}
                 />
               </Suspense>
-            ) : (
+            )}
+
+            {tab === 'overview' && (
               <>
+                {visible.length === 0 && <p className="empty">{t.emptyYear}</p>}
+                <div className="panels">
+                  {visible.map((c) =>
+                    year === 'all' ? (
+                      <Overview key={c.key} category={c} daily={data.daily} />
+                    ) : (
+                      <Heatmap key={c.key} year={year} category={c} daily={data.daily} />
+                    ),
+                  )}
+                </div>
+              </>
+            )}
 
-              {visible.length === 0 && yearActivities.length === 0 && <p className="empty">{t.emptyYear}</p>}
-
-              <PersonalBests activities={yearActivities} onSelect={(id) => setFocus({ id, seq: Date.now() })} />
-
-              <div className="panels">
-                {visible.map((c) =>
-                  year === 'all' ? (
-                    <Overview key={c.key} category={c} daily={data.daily} />
-                  ) : (
-                    <Heatmap key={c.key} year={year} category={c} daily={data.daily} />
-                  ),
-                )}
-              </div>
-
-              {yearActivities.length > 0 && <ActivityList
+            {tab === 'activities' &&
+              (yearActivities.length === 0 ? (
+                <p className="empty">{t.emptyYear}</p>
+              ) : (
+                <>
+                  {/* stays pinned while the list scrolls under it */}
+                  <div className="pb-sticky">
+                    <PersonalBests activities={yearActivities} onSelect={(id) => setFocus({ id, seq: Date.now() })} />
+                  </div>
+                  <ActivityList
                     key={year}
                     activities={yearActivities}
                     focus={focus}
@@ -169,9 +197,9 @@ export function App() {
                       setTab('map')
                       window.scrollTo(0, 0)
                     }}
-                  />}
-              </>
-            )}
+                  />
+                </>
+              ))}
           </>
         )}
       </main>

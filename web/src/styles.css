@@ -258,14 +258,21 @@ h1 {
 }
 
 .activities {
-  margin-top: 40px;
+  margin-top: 4px;
 }
-.pbs {
-  margin-bottom: 16px;
+/* personal bests stay visible while the activity list scrolls */
+.pb-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--page);
+  padding: 8px 0 12px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid var(--hairline);
 }
 .pbs h2 {
-  margin: 0 0 10px;
-  font-size: 16px;
+  margin: 0 0 8px;
+  font-size: 15px;
 }
 .hint {
   color: var(--text-muted);
@@ -275,8 +282,9 @@ h1 {
 }
 .pb-tiles {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
-  gap: 12px;
+  /* always one row, so the pinned bar stays short on phones */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
 }
 .pb {
   display: flex;
@@ -286,8 +294,9 @@ h1 {
   text-align: left;
   background: var(--surface);
   border: 1px solid var(--hairline);
-  border-radius: 12px;
-  padding: 12px 14px;
+  border-radius: 10px;
+  padding: 8px 12px;
+  min-width: 0;
 }
 button.pb:hover {
   border-color: var(--c-run);
@@ -297,7 +306,7 @@ button.pb:hover {
   font-size: 12px;
 }
 .pb-time {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 650;
   font-variant-numeric: tabular-nums;
 }
@@ -515,4 +524,110 @@ button.pb:hover {
   padding: 24px;
   border: 1px dashed var(--hairline);
   border-radius: 12px;
+}
+
+.seg {
+  display: inline-flex;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  padding: 2px;
+  background: var(--surface);
+}
+.seg button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: none;
+  background: none;
+  border-radius: 999px;
+  padding: 3px 10px;
+  color: var(--text-secondary);
+}
+.seg button.on {
+  background: var(--text-primary);
+  color: var(--page);
+}
+.table-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  background: var(--surface);
+}
+.act-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.act-table th,
+.act-table td {
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--hairline);
+  white-space: nowrap;
+}
+.act-table tbody tr:last-child td {
+  border-bottom: none;
+}
+.act-table th {
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 12px;
+}
+.act-table .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.act-table th.num .sort {
+  margin-left: auto;
+}
+.act-table .name-cell {
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 600;
+}
+.act-table .muted {
+  color: var(--text-muted);
+}
+.act-table tbody tr:hover {
+  background: color-mix(in oklab, var(--text-primary) 4%, transparent);
+}
+.act-table tr.flash {
+  background: color-mix(in oklab, var(--c-run) 18%, transparent);
+}
+.sort {
+  display: inline-flex;
+  border: none;
+  background: none;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+}
+.sort.on {
+  color: var(--text-primary);
+}
+.map-link {
+  display: inline-flex;
+  border: none;
+  background: none;
+  padding: 2px;
+  color: var(--text-muted);
+}
+.map-link:hover {
+  color: var(--text-primary);
+}
+@media (max-width: 560px) {
+  .pb-label,
+  .pb-meta {
+    font-size: 11px;
+  }
+  .pb-time {
+    font-size: 17px;
+  }
+  .pb-meta {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
 }

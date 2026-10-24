@@ -2,10 +2,23 @@ import { useEffect, useMemo, useState } from 'react'
 import { SPORT_LABEL, type Activity, type SportType, type Weather } from '../types'
 import { fmtDuration, fmtNum, fmtSpeed } from '../lib/format'
 import { decodePolyline } from '../lib/polyline'
-import { useI18n, type Dict, type Lang } from '../i18n'
+import { load, save, useI18n, type Dict, type Lang } from '../i18n'
 import { weatherLabel, windLabel } from '../lib/weather'
 
 const PAGE = 24
+
+type View = 'cards' | 'table'
+type SortKey = 'date' | 'distance' | 'time' | 'pace' | 'elev' | 'hr'
+
+// Values a column sorts by; pace sorts as seconds per km, so rides sort by speed too.
+const SORT: Record<SortKey, (a: Activity) => number> = {
+  date: (a) => Date.parse(a.start_local.replace(' ', 'T')),
+  distance: (a) => a.distance_m,
+  time: (a) => a.moving_time_s,
+  pace: (a) => (a.distance_m > 0 ? a.moving_time_s / a.distance_m : Infinity),
+  elev: (a) => a.elevation_gain_m ?? 0,
+  hr: (a) => a.avg_hr ?? 0,
+}
 
 export function ActivityList({
   activities,
@@ -20,6 +33,13 @@ export function ActivityList({
   const sport = SPORT_LABEL[lang]
   const [filter, setFilter] = useState<SportType | 'all'>('all')
   const [shown, setShown] = useState(PAGE)
+  const [view, setViewState] = useState<View>(() => (load('activityView') === 'table' ? 'table' : 'cards'))
+  const setView = (v: View) => {
+    setViewState(v)
+    save('activityView', v)
+  }
+  // table sort; the default (date, newest first) matches the card order
+  const [sort, setSort] = useState<{ key: SortKey; desc: boolean }>({ key: 'date', desc: true })
 
   const types = useMemo(() => {
     const counts = new Map<SportType, number>()
@@ -27,22 +47,28 @@ export function ActivityList({
     return [...counts.entries()].sort((a, b) => b[1] - a[1])
   }, [activities])
 
-  const list = filter === 'all' ? activities : activities.filter((a) => a.type === filter)
+  const list = useMemo(() => {
+    const filtered = filter === 'all' ? activities : activities.filter((a) => a.type === filter)
+    if (view === 'cards' || (sort.key === 'date' && sort.desc)) return filtered
+    const f = SORT[sort.key]
+    return [...filtered].sort((a, b) => (sort.desc ? f(b) - f(a) : f(a) - f(b)))
+  }, [activities, filter, view, sort])
 
-  // Jump to a picked activity: widen the filter and page size so its card exists,
-  // then scroll to it and flash it.
+  // Jump to a picked activity: reset filter and sort, widen the page so its row
+  // exists, then scroll to it and flash it.
   const [flash, setFlash] = useState<{ id: string; seq: number } | null>(null)
   useEffect(() => {
     if (!focus) return
     const idx = activities.findIndex((a) => a.id === focus.id)
     if (idx < 0) return
     setFilter('all')
+    setSort({ key: 'date', desc: true })
     setShown((n) => Math.max(n, Math.ceil((idx + 1) / PAGE) * PAGE))
     setFlash(focus)
     const timer = setTimeout(() => setFlash(null), 2400)
     return () => clearTimeout(timer)
   }, [focus, activities])
-  // Runs after the render that added the card, so the element exists. Long jumps
+  // Runs after the render that added the item, so the element exists. Long jumps
   // are instant (the flash shows where you landed); short ones scroll smoothly.
   useEffect(() => {
     if (!flash) return
@@ -52,10 +78,12 @@ export function ActivityList({
     el.scrollIntoView({ behavior: far ? 'auto' : 'smooth', block: 'center' })
   }, [flash])
 
+  const page = list.slice(0, shown)
+  const isFlash = (a: Activity) => a.id === flash?.id
+
   return (
     <section className="activities">
       <div className="activities-head">
-        <h2>{t.activities}</h2>
         <div className="chips" role="tablist">
           <button className={filter === 'all' ? 'on' : ''} onClick={() => setFilter('all')}>
             {t.all} {activities.length}
@@ -66,47 +94,146 @@ export function ActivityList({
             </button>
           ))}
         </div>
+        <div className="seg" role="group">
+          {(['cards', 'table'] as const).map((v) => (
+            <button key={v} className={view === v ? 'on' : ''} aria-pressed={view === v} onClick={() => setView(v)}>
+              {v === 'cards' ? <CardsIcon /> : <TableIcon />}
+              {v === 'cards' ? t.viewCards : t.viewTable}
+            </button>
+          ))}
+        </div>
       </div>
-      <ul className="cards">
-        {list.slice(0, shown).map((a) => (
-          <li key={a.id} id={`act-${a.id}`} className={a.id === flash?.id ? 'card flash' : 'card'}>
-            {a.polyline ? (
-              <button className="route-btn" onClick={() => onShowMap(a.id)} title={t.showOnMap} aria-label={t.showOnMap}>
+
+      {view === 'cards' ? (
+        <ul className="cards">
+          {page.map((a) => (
+            <li key={a.id} id={`act-${a.id}`} className={isFlash(a) ? 'card flash' : 'card'}>
+              {a.polyline ? (
+                <button className="route-btn" onClick={() => onShowMap(a.id)} title={t.showOnMap} aria-label={t.showOnMap}>
+                  <Route polyline={a.polyline} type={a.type} label={sport[a.type]} />
+                </button>
+              ) : (
                 <Route polyline={a.polyline} type={a.type} label={sport[a.type]} />
-              </button>
-            ) : (
-              <Route polyline={a.polyline} type={a.type} label={sport[a.type]} />
-            )}
-            <div className="card-body">
-              <div className="card-title">
-                <span className={`tag tag-${a.type}`}>{sport[a.type]}</span>
-                <span className="name">{a.name || sport[a.type]}</span>
+              )}
+              <div className="card-body">
+                <div className="card-title">
+                  <span className={`tag tag-${a.type}`}>{sport[a.type]}</span>
+                  <span className="name">{a.name || sport[a.type]}</span>
+                </div>
+                <div className="card-meta">
+                  {a.start_local} · {a.source}
+                </div>
+                <div className="card-nums">
+                  {a.distance_m > 0 && (
+                    <span>
+                      <b>{fmtNum(a.distance_m / 1000, 2)}</b> km
+                    </span>
+                  )}
+                  <span>{fmtDuration(a.moving_time_s, t)}</span>
+                  {fmtSpeed(a) && <span>{fmtSpeed(a)}</span>}
+                  {!!a.elevation_gain_m && <span>↑{Math.round(a.elevation_gain_m)} m</span>}
+                  {!!a.avg_hr && <span>♥ {Math.round(a.avg_hr)}</span>}
+                </div>
+                {a.weather && <WeatherLine w={a.weather} lang={lang} t={t} />}
               </div>
-              <div className="card-meta">
-                {a.start_local} · {a.source}
-              </div>
-              <div className="card-nums">
-                {a.distance_m > 0 && (
-                  <span>
-                    <b>{fmtNum(a.distance_m / 1000, 2)}</b> km
-                  </span>
-                )}
-                <span>{fmtDuration(a.moving_time_s, t)}</span>
-                {fmtSpeed(a) && <span>{fmtSpeed(a)}</span>}
-                {!!a.elevation_gain_m && <span>↑{Math.round(a.elevation_gain_m)} m</span>}
-                {!!a.avg_hr && <span>♥ {Math.round(a.avg_hr)}</span>}
-              </div>
-              {a.weather && <WeatherLine w={a.weather} lang={lang} t={t} />}
-            </div>
-          </li>
-        ))}
-      </ul>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div className="table-scroll">
+          <table className="act-table">
+            <thead>
+              <tr>
+                <SortTh k="date" label={t.cols.date} sort={sort} setSort={setSort} t={t} />
+                <th>{t.cols.type}</th>
+                <th>{t.cols.name}</th>
+                <SortTh k="distance" label={t.cols.distance} sort={sort} setSort={setSort} t={t} num />
+                <SortTh k="time" label={t.cols.time} sort={sort} setSort={setSort} t={t} num />
+                <SortTh k="pace" label={t.cols.pace} sort={sort} setSort={setSort} t={t} num />
+                <SortTh k="elev" label={t.cols.elev} sort={sort} setSort={setSort} t={t} num />
+                <SortTh k="hr" label={t.cols.hr} sort={sort} setSort={setSort} t={t} num />
+                <th>{t.cols.weather}</th>
+                <th>{t.cols.source}</th>
+                <th aria-label={t.showOnMap} />
+              </tr>
+            </thead>
+            <tbody>
+              {page.map((a) => {
+                const w = a.weather && weatherLabel(a.weather.desc, lang)
+                return (
+                  <tr key={a.id} id={`act-${a.id}`} className={isFlash(a) ? 'flash' : undefined}>
+                    <td className="nowrap">{a.start_local}</td>
+                    <td>
+                      <span className={`tag tag-${a.type}`}>{sport[a.type]}</span>
+                    </td>
+                    <td className="name-cell">{a.name || sport[a.type]}</td>
+                    <td className="num">{a.distance_m > 0 ? `${fmtNum(a.distance_m / 1000, 2)} km` : '—'}</td>
+                    <td className="num">{fmtDuration(a.moving_time_s, t)}</td>
+                    <td className="num">{fmtSpeed(a) ?? '—'}</td>
+                    <td className="num">{a.elevation_gain_m ? `${Math.round(a.elevation_gain_m)} m` : '—'}</td>
+                    <td className="num">{a.avg_hr ? Math.round(a.avg_hr) : '—'}</td>
+                    <td className="nowrap">
+                      {a.weather && w ? (
+                        <span title={w.text || undefined}>
+                          {w.icon} {Math.round(a.weather.temp_c)}°C
+                        </span>
+                      ) : (
+                        '—'
+                      )}
+                    </td>
+                    <td className="muted">{a.source}</td>
+                    <td>
+                      {a.polyline && (
+                        <button className="map-link" onClick={() => onShowMap(a.id)} title={t.showOnMap} aria-label={t.showOnMap}>
+                          <MapIcon />
+                        </button>
+                      )}
+                    </td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
+      )}
+
       {shown < list.length && (
         <button className="more" onClick={() => setShown(shown + PAGE)}>
           {t.loadMore(list.length - shown)}
         </button>
       )}
     </section>
+  )
+}
+
+function SortTh({
+  k,
+  label,
+  sort,
+  setSort,
+  t,
+  num,
+}: {
+  k: SortKey
+  label: string
+  sort: { key: SortKey; desc: boolean }
+  setSort: (s: { key: SortKey; desc: boolean }) => void
+  t: Dict
+  num?: boolean
+}) {
+  const active = sort.key === k
+  return (
+    <th className={num ? 'num' : undefined} aria-sort={active ? (sort.desc ? 'descending' : 'ascending') : 'none'}>
+      <button
+        className={active ? 'sort on' : 'sort'}
+        title={t.sortBy(label)}
+        // first click sorts the "best/biggest" end: newest, longest… fastest pace is ascending
+        onClick={() => setSort({ key: k, desc: active ? !sort.desc : k !== 'pace' })}
+      >
+        {label}
+        <span aria-hidden>{active ? (sort.desc ? ' ↓' : ' ↑') : ''}</span>
+      </button>
+    </th>
   )
 }
 
@@ -153,6 +280,46 @@ function Route({ polyline, type, label }: { polyline?: string; type: SportType; 
   return (
     <svg className={`route route-${type}`} viewBox="0 0 100 100" aria-hidden>
       {d ? <path d={d} /> : <text x="50" y="56">{label}</text>}
+    </svg>
+  )
+}
+
+const iconProps = {
+  viewBox: '0 0 24 24',
+  width: 15,
+  height: 15,
+  fill: 'none',
+  stroke: 'currentColor',
+  strokeWidth: 2,
+  strokeLinecap: 'round',
+  strokeLinejoin: 'round',
+  'aria-hidden': true,
+} as const
+
+function CardsIcon() {
+  return (
+    <svg {...iconProps}>
+      <rect x="3" y="3" width="7" height="7" rx="1.5" />
+      <rect x="14" y="3" width="7" height="7" rx="1.5" />
+      <rect x="3" y="14" width="7" height="7" rx="1.5" />
+      <rect x="14" y="14" width="7" height="7" rx="1.5" />
+    </svg>
+  )
+}
+
+function TableIcon() {
+  return (
+    <svg {...iconProps}>
+      <rect x="3" y="4" width="18" height="16" rx="2" />
+      <path d="M3 10h18M3 15h18M9 4v16" />
+    </svg>
+  )
+}
+
+function MapIcon() {
+  return (
+    <svg {...iconProps}>
+      <path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14" />
     </svg>
   )
 }
