@@ -45,7 +45,7 @@ const usage = `lifelog — 个人数据同步工具
   lifelog sync [-full] [source...]         同步已配置的数据源(默认全部): %s
   lifelog import applehealth export.xml    导入 Apple 健康导出的体能训练
   lifelog import spotify-history FILE...   导入 Spotify 隐私数据导出的播放历史
-  lifelog import running-page activities.json  导入 running_page 的历史记录
+  lifelog import running-page activities.json [-gpx GPX_OUT]  导入 running_page 的历史记录(带 GPX 时计算分段最佳)
   lifelog export [-out PATH] [-demo]       生成前端用的 data.json
   lifelog auth strava|spotify|garmin|duolingo  一次性授权,token 写入 .env
 
@@ -157,7 +157,17 @@ func runImport(args []string) error {
 	if err != nil {
 		return err
 	}
-	for _, path := range args[1:] {
+	// running-page takes an optional "-gpx DIR" (its GPX_OUT) for best efforts
+	var gpxDir string
+	files := args[1:]
+	for i := 0; i < len(files); i++ {
+		if files[i] == "-gpx" && i+1 < len(files) {
+			gpxDir = files[i+1]
+			files = append(files[:i:i], files[i+2:]...)
+			break
+		}
+	}
+	for _, path := range files {
 		f, err := os.Open(path)
 		if err != nil {
 			return err
@@ -169,7 +179,7 @@ func runImport(args []string) error {
 		case "spotify-history":
 			n, err = spotify.ImportHistory(f, st)
 		case "running-page":
-			n, err = runningpage.Import(f, st)
+			n, err = runningpage.Import(f, st, gpxDir)
 		default:
 			err = fmt.Errorf("unknown importer %q", args[0])
 		}

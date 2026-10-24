@@ -14,18 +14,19 @@ import (
 )
 
 type Activity struct {
-	ID            string          `json:"id"`
-	Source        string          `json:"source"`
-	Type          model.SportType `json:"type"`
-	Name          string          `json:"name,omitempty"`
-	Date          string          `json:"date"`
-	StartLocal    string          `json:"start_local"`
-	Distance      float64         `json:"distance_m"`
-	MovingTime    int             `json:"moving_time_s"`
-	ElevationGain float64         `json:"elevation_gain_m,omitempty"`
-	AvgHeartRate  float64         `json:"avg_hr,omitempty"`
-	Polyline      string          `json:"polyline,omitempty"`
-	Weather       *model.Weather  `json:"weather,omitempty"`
+	ID            string             `json:"id"`
+	Source        string             `json:"source"`
+	Type          model.SportType    `json:"type"`
+	Name          string             `json:"name,omitempty"`
+	Date          string             `json:"date"`
+	StartLocal    string             `json:"start_local"`
+	Distance      float64            `json:"distance_m"`
+	MovingTime    int                `json:"moving_time_s"`
+	ElevationGain float64            `json:"elevation_gain_m,omitempty"`
+	AvgHeartRate  float64            `json:"avg_hr,omitempty"`
+	Polyline      string             `json:"polyline,omitempty"`
+	Weather       *model.Weather     `json:"weather,omitempty"`
+	BestEfforts   map[string]float64 `json:"best_efforts,omitempty"`
 }
 
 type Output struct {
@@ -63,6 +64,7 @@ func Build(st *store.Store, loc *time.Location) Output {
 			AvgHeartRate:  round(a.AvgHeartRate),
 			Polyline:      a.Polyline,
 			Weather:       a.Weather,
+			BestEfforts:   a.BestEfforts,
 		})
 		if a.Distance > 0 {
 			add(date, string(a.Type)+"_km", a.Distance/1000)

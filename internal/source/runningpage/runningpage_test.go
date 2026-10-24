@@ -17,7 +17,7 @@ func TestImport(t *testing.T) {
 	  "start_date": "2019-03-08 15:21:14", "summary_polyline": "", "average_heartrate": null}
 	]`
 	st, _ := store.Open(t.TempDir())
-	n, err := Import(strings.NewReader(sample), st)
+	n, err := Import(strings.NewReader(sample), st, "")
 	if err != nil || n != 2 {
 		t.Fatalf("Import = %d, %v", n, err)
 	}

@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect, useMemo, useState } from 'react'
+import { Suspense, lazy, useEffect, useMemo, useRef, useState } from 'react'
 import { CATEGORIES, type Data, type Drill, type SportType } from './types'
 import { Heatmap } from './components/Heatmap'
 import { ActivityList } from './components/ActivityList'
@@ -65,6 +65,27 @@ export function App() {
     return [...ys].sort((a, b) => b - a)
   }, [data])
 
+  // The map only offers years that have at least one route.
+  const mapYears = useMemo(() => {
+    if (!data) return []
+    const ys = new Set(data.activities.filter((a) => a.polyline).map((a) => Number(a.date.slice(0, 4))))
+    return [...ys].sort((a, b) => b - a)
+  }, [data])
+  useEffect(() => {
+    if (tab === 'map' && year !== 'all' && mapYears.length > 0 && !mapYears.includes(year)) setYear(mapYears[0])
+  }, [tab, year, mapYears])
+
+  // Header, tabs and years stay pinned; publish their height so the personal-bests
+  // bar can pin right under them.
+  const topbar = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    const el = topbar.current
+    if (!el) return
+    const ro = new ResizeObserver(() => document.documentElement.style.setProperty('--topbar-h', `${el.offsetHeight}px`))
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [])
+
   // Only categories with at least one non-zero day in the selected year (or ever,
   // for "all") get a panel.
   const visible = useMemo(() => {
@@ -96,69 +117,75 @@ export function App() {
   return (
     <I18n.Provider value={{ lang, t }}>
       <main className="page">
-        <header className="top">
-          <div>
-            <h1>Lifelog</h1>
-            <p className="sub">
-              {t.subtitle}
-              {data && `${lang === 'zh' ? ' —— ' : ' — '}${t.updated} ${new Date(data.generated_at).toLocaleString(LOCALE[lang])}`}
-            </p>
-          </div>
-          <div className="controls">
-            <button className="icon-btn" onClick={switchLang} title={t.otherLangLabel} aria-label={t.otherLangLabel}>
-              {t.otherLang}
-            </button>
-            <button
-              className="icon-btn"
-              onClick={switchTheme}
-              title={theme === 'dark' ? t.toLight : t.toDark}
-              aria-label={theme === 'dark' ? t.toLight : t.toDark}
-            >
-              {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
-            </button>
-          </div>
-        </header>
-
-        {error && <p className="empty">{t.loadError(error)}</p>}
-
-        {data && (
-          <>
-            <nav className="tabs" role="tablist">
-              {TABS.map((k) => (
-                <button key={k} role="tab" aria-selected={tab === k} className={tab === k ? 'on' : ''} onClick={() => setTab(k)}>
-                  {{ overview: t.tabOverview, activities: t.tabActivities, map: t.tabMap }[k]}
-                </button>
-              ))}
-            </nav>
-
-            <nav className="years">
-              <button
-                className={year === 'all' ? 'on' : ''}
-                onClick={() => {
-                  setYear('all')
-                  setFocus(null)
-                  setMapFocus(null)
-                  setDrill(null)
-                }}
-              >
-                {t.all}
+        <div className="topbar" ref={topbar}>
+          <header className="top">
+            <div>
+              <h1>Lifelog</h1>
+              <p className="sub">
+                {t.subtitle}
+                {data && `${lang === 'zh' ? ' —— ' : ' — '}${t.updated} ${new Date(data.generated_at).toLocaleString(LOCALE[lang])}`}
+              </p>
+            </div>
+            <div className="controls">
+              <button className="icon-btn" onClick={switchLang} title={t.otherLangLabel} aria-label={t.otherLangLabel}>
+                {t.otherLang}
               </button>
-              {years.map((y) => (
+              <button
+                className="icon-btn"
+                onClick={switchTheme}
+                title={theme === 'dark' ? t.toLight : t.toDark}
+                aria-label={theme === 'dark' ? t.toLight : t.toDark}
+              >
+                {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+              </button>
+            </div>
+          </header>
+
+          {error && <p className="empty">{t.loadError(error)}</p>}
+
+          {data && (
+            <>
+              <nav className="tabs" role="tablist">
+                {TABS.map((k) => (
+                  <button key={k} role="tab" aria-selected={tab === k} className={tab === k ? 'on' : ''} onClick={() => setTab(k)}>
+                    {{ overview: t.tabOverview, activities: t.tabActivities, map: t.tabMap }[k]}
+                  </button>
+                ))}
+              </nav>
+
+              <nav className="years">
                 <button
-                  key={y}
-                  className={y === year ? 'on' : ''}
+                  className={year === 'all' ? 'on' : ''}
                   onClick={() => {
-                    setYear(y)
+                    setYear('all')
                     setFocus(null)
                     setMapFocus(null)
                     setDrill(null)
                   }}
                 >
-                  {y}
+                  {t.all}
                 </button>
-              ))}
-            </nav>
+                {(tab === 'map' ? mapYears : years).map((y) => (
+                  <button
+                    key={y}
+                    className={y === year ? 'on' : ''}
+                    onClick={() => {
+                      setYear(y)
+                      setFocus(null)
+                      setMapFocus(null)
+                      setDrill(null)
+                    }}
+                  >
+                    {y}
+                  </button>
+                ))}
+              </nav>
+            </>
+          )}
+        </div>
 
+        {data && (
+          <>
             {tab === 'map' && (
               <Suspense fallback={<div className="map-wrap" />}>
                 <RouteMap

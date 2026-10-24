@@ -16,6 +16,8 @@ export interface Activity {
   avg_hr?: number
   polyline?: string
   weather?: Weather
+  /** fastest elapsed seconds over a distance inside this run, keyed by meters */
+  best_efforts?: Record<string, number>
 }
 
 export interface Weather {

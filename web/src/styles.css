@@ -266,7 +266,7 @@ h1 {
 /* personal bests stay visible while the activity list scrolls */
 .pb-sticky {
   position: sticky;
-  top: 0;
+  top: var(--topbar-h, 0px);
   z-index: 5;
   background: var(--page);
   padding: 8px 0 12px;
@@ -658,5 +658,69 @@ button.pb-ride:hover {
 }
 /* the sticky bests bar would otherwise cover the list header after a jump */
 .activities-head {
-  scroll-margin-top: 240px;
+  scroll-margin-top: calc(var(--topbar-h, 0px) + 150px);
+}
+
+/* header, tabs and year filter stay pinned at the top of every tab */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--page);
+  margin: -32px -16px 0;
+  padding: 16px 16px 10px;
+  border-bottom: 1px solid var(--hairline);
+}
+.topbar .top {
+  margin-bottom: 10px;
+}
+.topbar h1 {
+  font-size: 22px;
+}
+.topbar .sub {
+  font-size: 12px;
+  margin-top: 2px;
+}
+.topbar .tabs {
+  margin-bottom: 10px;
+}
+/* one swipeable row keeps the pinned bar short */
+.topbar .years {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+  margin-bottom: 0;
+}
+.topbar .years button {
+  flex: none;
+}
+.panels,
+.map-wrap,
+.activities,
+.pb-sticky {
+  margin-top: 16px;
+}
+
+@media (max-width: 560px) {
+  /* keep the pinned bars short on phones */
+  .topbar {
+    padding-top: 12px;
+  }
+  .topbar .sub {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .topbar .tabs {
+    margin-bottom: 8px;
+  }
+  .pb-sticky {
+    padding: 6px 0 8px;
+  }
+  .pb-head {
+    margin-bottom: 6px;
+  }
+  .pb {
+    padding: 6px 10px;
+  }
 }

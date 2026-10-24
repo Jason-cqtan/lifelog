@@ -24,6 +24,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/Jason-cqtan/lifelog/internal/effort"
 	"github.com/Jason-cqtan/lifelog/internal/model"
 	"github.com/Jason-cqtan/lifelog/internal/polyline"
 	"github.com/Jason-cqtan/lifelog/internal/source"
@@ -263,7 +264,7 @@ func (g Garmin) Sync(ctx context.Context, env *source.Env) error {
 	}
 
 	const limit = 100
-	added, routes, weathers, detailErrs := 0, 0, 0, 0
+	added, routes, weathers, efforts, detailErrs := 0, 0, 0, 0, 0
 	for start := 0; ; start += limit {
 		var list []activity
 		if err := api(fmt.Sprintf("/activitylist-service/activities/search/activities?start=%d&limit=%d", start, limit), &list); err != nil {
@@ -302,6 +303,7 @@ func (g Garmin) Sync(ctx context.Context, env *source.Env) error {
 			if prev, ok := env.Store.Activity(act.Key()); ok {
 				act.Polyline = prev.Polyline
 				act.Weather = prev.Weather
+				act.BestEfforts = prev.BestEfforts
 			}
 			fetched := false
 			if act.Polyline == "" && a.HasPolyline {
@@ -322,6 +324,15 @@ func (g Garmin) Sync(ctx context.Context, env *source.Env) error {
 				}
 				fetched = true
 			}
+			if act.BestEfforts == nil && act.Type == model.Run && act.Distance >= 1000 {
+				if act.BestEfforts, err = fetchEfforts(api, a.ActivityID); err != nil {
+					env.Log.Printf("garmin: best efforts for %d: %v", a.ActivityID, err)
+					detailErrs++
+				} else if len(act.BestEfforts) > 0 {
+					efforts++
+				}
+				fetched = true
+			}
 			if fetched {
 				time.Sleep(200 * time.Millisecond) // be gentle with an unofficial API
 			}
@@ -333,7 +344,7 @@ func (g Garmin) Sync(ctx context.Context, env *source.Env) error {
 			break
 		}
 	}
-	env.Log.Printf("garmin: %d new activities, %d routes and %d weather records fetched", added, routes, weathers)
+	env.Log.Printf("garmin: %d new activities, %d routes, %d weather records and %d best-effort sets fetched", added, routes, weathers, efforts)
 
 	stepDays, err := g.syncSteps(env, api)
 	if err != nil {
@@ -381,6 +392,42 @@ func fetchWeather(api func(string, any) error, id int64) (*model.Weather, error)
 		out.Desc = w.Type.Desc
 	}
 	return out, nil
+}
+
+// fetchEfforts computes best efforts from the activity's per-second distance and
+// elapsed-time series (downsampled by Garmin to at most 4000 samples).
+func fetchEfforts(api func(string, any) error, id int64) (map[string]float64, error) {
+	var det struct {
+		Descriptors []struct {
+			Index int    `json:"metricsIndex"`
+			Key   string `json:"key"`
+		} `json:"metricDescriptors"`
+		Rows []struct {
+			M []*float64 `json:"metrics"`
+		} `json:"activityDetailMetrics"`
+	}
+	if err := api(fmt.Sprintf("/activity-service/activity/%d/details?maxChartSize=4000&maxPolylineSize=1", id), &det); err != nil {
+		return nil, err
+	}
+	dist, secs := -1, -1
+	for _, d := range det.Descriptors {
+		switch d.Key {
+		case "sumDistance":
+			dist = d.Index
+		case "sumElapsedDuration":
+			secs = d.Index
+		}
+	}
+	if dist < 0 || secs < 0 {
+		return nil, nil
+	}
+	pts := make([]effort.Point, 0, len(det.Rows))
+	for _, r := range det.Rows {
+		if dist < len(r.M) && secs < len(r.M) && r.M[dist] != nil && r.M[secs] != nil {
+			pts = append(pts, effort.Point{T: *r.M[secs], D: *r.M[dist]})
+		}
+	}
+	return effort.Best(pts), nil
 }
 
 // stepsChunk is how many days one daily-steps request covers (garth uses 28).

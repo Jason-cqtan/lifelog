@@ -32,6 +32,9 @@ type Activity struct {
 	AvgHeartRate  float64   `json:"avg_hr,omitempty"`
 	Polyline      string    `json:"polyline,omitempty"` // Google encoded polyline
 	Weather       *Weather  `json:"weather,omitempty"`
+	// Fastest elapsed seconds over standard distances inside this activity,
+	// keyed by meters ("1000", "5000", ...); from time/distance samples.
+	BestEfforts map[string]float64 `json:"best_efforts,omitempty"`
 }
 
 // Weather at the start of an activity, in metric units.

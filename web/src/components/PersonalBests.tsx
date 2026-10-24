@@ -5,15 +5,14 @@ import { fmtDuration, fmtNum, fmtPace } from '../lib/format'
 
 type Group = 'run' | 'ride'
 
-// Standard running distances. Without split data, a run qualifies when its
-// total distance is 98–110% of the target, and its time is scaled to the exact
-// distance at its average pace.
+// Standard running distances; values come from best_efforts, the fastest stretch
+// of exactly that distance inside a run (computed from its time/distance series).
 const RUN_DISTANCES = [
-  { key: 'k1', meters: 1000 },
-  { key: 'k5', meters: 5000 },
-  { key: 'k10', meters: 10000 },
-  { key: 'half', meters: 21097.5 },
-  { key: 'full', meters: 42195 },
+  { key: 'k1', meters: '1000' },
+  { key: 'k5', meters: '5000' },
+  { key: 'k10', meters: '10000' },
+  { key: 'half', meters: '21097.5' },
+  { key: 'full', meters: '42195' },
 ] as const
 
 // A ride's average speed only counts from this distance, so a short spin can't win.
@@ -54,12 +53,12 @@ export function bests(activities: Activity[], group: Group, t: Dict): Best[] {
     const efforts = RUN_DISTANCES.map(({ key, meters }): Best => {
       let best: { a: Activity; sec: number } | null = null
       for (const a of list) {
-        if (a.distance_m < meters * 0.98 || a.distance_m > meters * 1.1) continue
-        const sec = (a.moving_time_s * meters) / a.distance_m
-        if (!best || sec < best.sec) best = { a, sec }
+        const sec = a.best_efforts?.[meters]
+        if (sec && (!best || sec < best.sec)) best = { a, sec }
       }
       if (!best) return empty(key, t[key])
-      return { key, label: t[key], value: clock(best.sec), meta: `${fmtPace(best.sec / (meters / 1000))} · ${best.a.date}`, activity: best.a }
+      const pace = fmtPace(best.sec / (Number(meters) / 1000))
+      return { key, label: t[key], value: clock(best.sec), meta: `${pace} · ${best.a.date}`, activity: best.a }
     })
     return [
       ...efforts,
