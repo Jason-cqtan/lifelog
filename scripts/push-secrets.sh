@@ -16,6 +16,10 @@ while IFS= read -r line || [[ -n "$line" ]]; do
   value="$(printf '%s' "$value" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e "s/^[\"']//" -e "s/[\"']$//")"
   key="$(printf '%s' "$key" | tr -d '[:space:]')"
   [[ -z "$value" || "$skip" == *" $key "* ]] && continue
+  if [[ "$key" == VITE_MAPBOX_TOKEN && "$value" == sk.* ]]; then
+    echo "refusing VITE_MAPBOX_TOKEN: it is a secret sk.* token and would be public in the page; use a pk.* token" >&2
+    continue
+  fi
   if [[ "$variables" == *" $key "* ]]; then
     gh variable set "$key" --body "$value" >/dev/null
     echo "variable  $key"
