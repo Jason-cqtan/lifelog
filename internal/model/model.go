@@ -116,3 +116,24 @@ type TopTrack struct {
 	Album  string `json:"album,omitempty"`
 	Image  string `json:"image,omitempty"`
 }
+
+// DuolingoCourses is a snapshot of cumulative XP per course. Non-language
+// courses (chess, math, music) are not listed by Duolingo; their XP is the
+// account total minus the listed courses.
+type DuolingoCourses struct {
+	UpdatedAt     time.Time        `json:"updated_at"`
+	TrackedSince  time.Time        `json:"tracked_since"` // first snapshot; per-course daily XP starts here
+	TotalXP       int64            `json:"total_xp"`
+	CurrentCourse string           `json:"current_course,omitempty"`
+	Courses       []DuolingoCourse `json:"courses"`
+}
+
+type DuolingoCourse struct {
+	ID       string `json:"id"`
+	Title    string `json:"title"`
+	Language string `json:"language"` // learning language code, e.g. "en", "zh-HK"
+	XP       int64  `json:"xp"`
+}
+
+// OtherCourses is the pseudo-course for XP outside the listed language courses.
+const OtherCourses = "OTHER"

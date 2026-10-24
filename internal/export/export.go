@@ -7,6 +7,7 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
+	"strings"
 	"time"
 
 	"github.com/Jason-cqtan/lifelog/internal/model"
@@ -40,6 +41,60 @@ type Output struct {
 	Music map[string]*MusicStats `json:"music,omitempty"`
 	// SpotifyTop is Spotify's own top-items ranking (not filtered by year).
 	SpotifyTop *model.SpotifyTop `json:"spotify_top,omitempty"`
+	Duolingo   *Duolingo         `json:"duolingo,omitempty"`
+}
+
+// Duolingo is the course snapshot plus, per year and "all", each course's XP
+// gained and estimated minutes since per-course tracking started.
+type Duolingo struct {
+	model.DuolingoCourses
+	Periods map[string]map[string]*CourseTime `json:"periods"`
+}
+
+type CourseTime struct {
+	XP      float64 `json:"xp"`
+	Minutes float64 `json:"minutes"` // that day's minutes split by the course's share of its XP
+}
+
+const courseXPPrefix = "duolingo_course_xp:"
+
+func duolingoCourses(snap model.DuolingoCourses, daily map[string]map[string]float64) *Duolingo {
+	d := &Duolingo{DuolingoCourses: snap, Periods: map[string]map[string]*CourseTime{}}
+	for date, m := range daily {
+		var total float64
+		for k, v := range m {
+			if strings.HasPrefix(k, courseXPPrefix) {
+				total += v
+			}
+		}
+		if total == 0 {
+			continue
+		}
+		for k, v := range m {
+			if !strings.HasPrefix(k, courseXPPrefix) {
+				continue
+			}
+			id := strings.TrimPrefix(k, courseXPPrefix)
+			for _, p := range []string{date[:4], "all"} {
+				if d.Periods[p] == nil {
+					d.Periods[p] = map[string]*CourseTime{}
+				}
+				ct := d.Periods[p][id]
+				if ct == nil {
+					ct = &CourseTime{}
+					d.Periods[p][id] = ct
+				}
+				ct.XP += v
+				ct.Minutes += m["duolingo_minutes"] * v / total
+			}
+		}
+	}
+	for _, p := range d.Periods {
+		for _, ct := range p {
+			ct.Minutes = round(ct.Minutes)
+		}
+	}
+	return d
 }
 
 func Build(st *store.Store, loc *time.Location) Output {
@@ -88,6 +143,10 @@ func Build(st *store.Store, loc *time.Location) Output {
 	var top model.SpotifyTop
 	if ok, err := st.Snapshot("spotify_top", &top); ok && err == nil {
 		out.SpotifyTop = &top
+	}
+	var courses model.DuolingoCourses
+	if ok, err := st.Snapshot("duolingo_courses", &courses); ok && err == nil {
+		out.Duolingo = duolingoCourses(courses, out.Daily)
 	}
 	for _, m := range out.Daily {
 		for k, v := range m {

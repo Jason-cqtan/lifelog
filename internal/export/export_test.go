@@ -52,3 +52,18 @@ func TestNormalizeType(t *testing.T) {
 		}
 	}
 }
+
+func TestDuolingoCourses(t *testing.T) {
+	daily := map[string]map[string]float64{
+		"2026-10-24": {"duolingo_minutes": 60, courseXPPrefix + "EN": 300, courseXPPrefix + "OTHER": 100},
+		"2026-10-25": {"duolingo_minutes": 30, courseXPPrefix + "EN": 50},
+	}
+	d := duolingoCourses(model.DuolingoCourses{}, daily)
+	en, other := d.Periods["2026"]["EN"], d.Periods["all"]["OTHER"]
+	if en.XP != 350 || en.Minutes != 75 { // 60*3/4 + 30
+		t.Errorf("EN = %+v", en)
+	}
+	if other.XP != 100 || other.Minutes != 15 {
+		t.Errorf("OTHER = %+v", other)
+	}
+}

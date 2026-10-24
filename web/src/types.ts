@@ -49,6 +49,16 @@ export interface SpotifyTop {
   }>
 }
 
+export interface DuolingoData {
+  updated_at: string
+  tracked_since: string
+  total_xp: number
+  current_course?: string
+  courses: { id: string; title: string; language: string; xp: number }[]
+  /** year or "all" -> course id -> XP gained and estimated minutes */
+  periods?: Record<string, Record<string, { xp: number; minutes: number }>>
+}
+
 export interface Data {
   generated_at: string
   timezone: string
@@ -57,6 +67,7 @@ export interface Data {
   /** keyed by year and "all" */
   music?: Record<string, MusicStats>
   spotify_top?: SpotifyTop
+  duolingo?: DuolingoData
 }
 
 /** A heatmap drill-down: show one sport's activities in a day ('YYYY-MM-DD') or month ('YYYY-MM'). */

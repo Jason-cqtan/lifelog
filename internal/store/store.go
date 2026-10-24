@@ -131,6 +131,14 @@ func (s *Store) LatestActivity(source string) time.Time {
 
 func (s *Store) PutDaily(d model.DailyMetric) { s.daily[d.Key()] = d }
 
+// AddDaily adds d.Value to the stored value for the same day/source/metric.
+func (s *Store) AddDaily(d model.DailyMetric) {
+	if prev, ok := s.daily[d.Key()]; ok {
+		d.Value += prev.Value
+	}
+	s.daily[d.Key()] = d
+}
+
 func (s *Store) Daily() []model.DailyMetric {
 	out := make([]model.DailyMetric, 0, len(s.daily))
 	for _, d := range s.daily {

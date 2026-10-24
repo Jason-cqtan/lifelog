@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef, useState, type MouseEvent } from 'react'
+import { useCallback, useMemo, useRef, useState, type MouseEvent, type ReactNode } from 'react'
 import type { Activity, Category, Data, SportType } from '../types'
 import { HeatFooter } from './SportSummary'
 import { fmtNum, isoDate } from '../lib/format'
@@ -22,6 +22,8 @@ interface Props {
   activities?: Activity[]
   /** open one activity in the list */
   onOpen?: (id: string) => void
+  /** extra content under the footer (e.g. Duolingo courses) */
+  extra?: ReactNode
 }
 
 interface Cell {
@@ -32,7 +34,7 @@ interface Cell {
   level: number
 }
 
-export function Overview({ category, daily, onDrill, activities, onOpen }: Props) {
+export function Overview({ category, daily, onDrill, activities, onOpen, extra }: Props) {
   const { lang, t } = useI18n()
   const label = category.label[lang]
   const unit = category.unit[lang]
@@ -201,6 +203,7 @@ export function Overview({ category, daily, onDrill, activities, onOpen }: Props
         </div>
       </div>
       <HeatFooter category={category} activities={activities ?? []} onOpen={onOpen} />
+      {extra}
     </section>
   )
 }

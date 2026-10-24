@@ -20,6 +20,8 @@ import (
 	"github.com/Jason-cqtan/lifelog/internal/store"
 )
 
+const userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
+
 type Duolingo struct{}
 
 func (Duolingo) Name() string     { return "duolingo" }
@@ -77,7 +79,65 @@ func (d Duolingo) Sync(ctx context.Context, env *source.Env) error {
 		}
 	}
 	env.Log.Printf("duolingo: %d active days updated", days)
-	return nil
+	return d.syncCourses(ctx, env, jwt, userID)
+}
+
+// syncCourses snapshots cumulative XP per course and credits each course's
+// growth since the previous snapshot to today as daily metric "course_xp:<id>".
+// Growth between syncs is booked on the day of the sync, so XP earned just
+// before midnight can land on the next day.
+func (d Duolingo) syncCourses(ctx context.Context, env *source.Env, jwt, userID string) error {
+	req, _ := http.NewRequestWithContext(ctx, http.MethodGet,
+		"https://www.duolingo.com/2017-06-30/users/"+userID+"?fields=courses,totalXp,currentCourseId", nil)
+	req.Header.Set("Authorization", "Bearer "+jwt)
+	req.Header.Set("User-Agent", userAgent)
+	var res struct {
+		TotalXP int64  `json:"totalXp"`
+		Current string `json:"currentCourseId"`
+		Courses []struct {
+			ID       string `json:"id"`
+			Title    string `json:"title"`
+			Language string `json:"learningLanguage"`
+			XP       int64  `json:"xp"`
+		} `json:"courses"`
+	}
+	if err := source.DoJSON(env.HTTP, req, &res); err != nil {
+		return fmt.Errorf("courses: %w", err)
+	}
+	now := model.DuolingoCourses{UpdatedAt: time.Now().UTC().Truncate(time.Second), TotalXP: res.TotalXP, CurrentCourse: res.Current}
+	var listed int64
+	for _, c := range res.Courses {
+		now.Courses = append(now.Courses, model.DuolingoCourse{ID: c.ID, Title: c.Title, Language: c.Language, XP: c.XP})
+		listed += c.XP
+	}
+	if other := res.TotalXP - listed; other > 0 {
+		now.Courses = append(now.Courses, model.DuolingoCourse{ID: model.OtherCourses, XP: other})
+	}
+
+	var prev model.DuolingoCourses
+	had, err := env.Store.Snapshot("duolingo_courses", &prev)
+	if err != nil {
+		return err
+	}
+	now.TrackedSince = now.UpdatedAt
+	if had {
+		now.TrackedSince = prev.TrackedSince
+		before := map[string]int64{}
+		for _, c := range prev.Courses {
+			before[c.ID] = c.XP
+		}
+		today := store.DateIn(now.UpdatedAt, env.Loc)
+		for _, c := range now.Courses {
+			// Only courses already in the previous snapshot: a course that was
+			// missing (new, or absent from one response) must not book its whole
+			// history as today's XP.
+			old, existed := before[c.ID]
+			if gain := c.XP - old; existed && gain > 0 {
+				env.Store.AddDaily(model.DailyMetric{Date: today, Source: d.Name(), Metric: "course_xp:" + c.ID, Value: float64(gain)})
+			}
+		}
+	}
+	return env.Store.PutSnapshot("duolingo_courses", now)
 }
 
 func fetch(ctx context.Context, c *http.Client, jwt, userID string, from, to time.Time, loc *time.Location) ([]summary, error) {
@@ -89,7 +149,7 @@ func fetch(ctx context.Context, c *http.Client, jwt, userID string, from, to tim
 	req, _ := http.NewRequestWithContext(ctx, http.MethodGet,
 		fmt.Sprintf("https://www.duolingo.com/2017-06-30/users/%s/xp_summaries?%s", userID, q.Encode()), nil)
 	req.Header.Set("Authorization", "Bearer "+jwt)
-	req.Header.Set("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36")
+	req.Header.Set("User-Agent", userAgent)
 	var res struct {
 		Summaries []summary `json:"summaries"`
 	}

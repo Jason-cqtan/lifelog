@@ -974,3 +974,42 @@ button.pb-ride:hover {
 .spotify-top .music-note {
   margin-top: 8px;
 }
+
+.duo-courses {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid var(--hairline);
+}
+.duo-courses h4 {
+  margin: 0 0 4px;
+  font-size: 13px;
+}
+.duo-courses .hint {
+  margin-left: 4px;
+}
+.duo-courses .rank th.course-col {
+  width: auto;
+}
+.duo-courses .rank th.num {
+  width: 5.6em;
+}
+.duo-bar {
+  background: var(--c-duolingo);
+}
+.badge {
+  margin-left: 6px;
+  padding: 0 5px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 500;
+  color: var(--text-secondary);
+  border: 1px solid var(--hairline);
+}
+.duo-courses .music-note {
+  margin-top: 6px;
+}
+/* course names wrap instead of truncating, so the "current" badge stays visible */
+.duo-courses .rank-name span {
+  white-space: normal;
+}

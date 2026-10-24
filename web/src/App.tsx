@@ -6,6 +6,7 @@ import { Overview } from './components/Overview'
 import { PersonalBests } from './components/PersonalBests'
 import { Music } from './components/Music'
 import { SpotifyTop } from './components/SpotifyTop'
+import { DuolingoCourses } from './components/DuolingoCourses'
 import { DICTS, I18n, LOCALE, initialLang, save, type Lang } from './i18n'
 
 // mapbox-gl is large; load it only when the map tab opens
@@ -237,6 +238,11 @@ export function App() {
                         onDrill={openDrill}
                         activities={c.sport ? yearActivities.filter((a) => a.type === c.sport) : undefined}
                         onOpen={openActivity}
+                        extra={
+                          c.key === 'duolingo' && data.duolingo ? (
+                            <DuolingoCourses data={data.duolingo} period={String(year)} />
+                          ) : undefined
+                        }
                       />
                     ) : (
                       <Heatmap
@@ -247,6 +253,11 @@ export function App() {
                         onDrill={openDrill}
                         activities={c.sport ? yearActivities.filter((a) => a.type === c.sport) : undefined}
                         onOpen={openActivity}
+                        extra={
+                          c.key === 'duolingo' && data.duolingo ? (
+                            <DuolingoCourses data={data.duolingo} period={String(year)} />
+                          ) : undefined
+                        }
                       />
                     ),
                   )}
