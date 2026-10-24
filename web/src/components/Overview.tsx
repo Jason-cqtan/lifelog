@@ -1,8 +1,9 @@
-import { useCallback, useMemo, useState, type MouseEvent } from 'react'
+import { useCallback, useMemo, useRef, useState, type MouseEvent } from 'react'
 import type { Category, Data } from '../types'
-import { fmtNum } from '../lib/format'
+import { fmtNum, isoDate } from '../lib/format'
+import { categoryStats } from '../lib/stats'
 import { useI18n } from '../i18n'
-import { Scale, Tooltip, levelFill, quartileLevels, toViewport } from './heat'
+import { DownloadButton, Scale, Tooltip, downloadHeatmapPng, levelFill, quartileLevels, toViewport } from './heat'
 
 // All-time view: one row per year, one cell per month (the monthly total).
 const CW = 40
@@ -30,11 +31,11 @@ export function Overview({ category, daily }: Props) {
   const unit = category.unit[lang]
   const [tip, setTip] = useState<{ cell: Cell; x: number; y: number } | null>(null)
   const clearTip = useCallback(() => setTip(null), [])
+  const svgRef = useRef<SVGSVGElement>(null)
 
-  const { cells, years, total, activeDays, goalDays, longest } = useMemo(() => {
+  const { cells, years } = useMemo(() => {
     const byMonth = new Map<string, { value: number; days: number }>()
     const activeDates: string[] = []
-    let goalDays = 0
     for (const [date, m] of Object.entries(daily)) {
       const v = (m[category.metric] ?? 0) * category.scale
       if (v <= 0) continue
@@ -42,21 +43,8 @@ export function Overview({ category, daily }: Props) {
       const key = date.slice(0, 7)
       const cur = byMonth.get(key) ?? { value: 0, days: 0 }
       byMonth.set(key, { value: cur.value + v, days: cur.days + 1 })
-      const goal = category.goalMetric ? (m[category.goalMetric] ?? 0) : 0
-      if (goal > 0 && v >= goal * category.scale) goalDays++
     }
     activeDates.sort()
-
-    // Longest run of consecutive calendar days with data.
-    let longest = 0
-    let run = 0
-    let prev = 0
-    for (const d of activeDates) {
-      const day = Date.UTC(+d.slice(0, 4), +d.slice(5, 7) - 1, +d.slice(8, 10)) / 86400000
-      run = day - prev === 1 ? run + 1 : 1
-      prev = day
-      longest = Math.max(longest, run)
-    }
 
     const first = Number(activeDates[0]?.slice(0, 4) ?? new Date().getFullYear())
     const last = Number(activeDates[activeDates.length - 1]?.slice(0, 4) ?? first)
@@ -74,15 +62,12 @@ export function Overview({ category, daily }: Props) {
     const level = quartileLevels(cells.map((c) => c.value))
     for (const c of cells) c.level = level(c.value)
 
-    return {
-      cells,
-      years,
-      total: cells.reduce((a, c) => a + c.value, 0),
-      activeDays: activeDates.length,
-      goalDays: category.goalMetric ? goalDays : null,
-      longest,
-    }
+    return { cells, years }
   }, [category, daily])
+  const { total, activeDays, goalDays, longest, current } = useMemo(
+    () => categoryStats(daily, category, null, isoDate(new Date())),
+    [category, daily],
+  )
 
   const width = LEFT + 12 * (CW + GAP)
   const height = TOP + years.length * (CH + GAP)
@@ -104,6 +89,19 @@ export function Overview({ category, daily }: Props) {
         <h3>
           <span className="swatch" style={{ background: category.color }} />
           {label}
+          <DownloadButton
+            onClick={() =>
+              svgRef.current &&
+              downloadHeatmapPng(
+                svgRef.current,
+                `${label} · ${t.all}`,
+                [`${t.allTime} ${fmtNum(total)} ${unit}`, `${t.activeDays} ${activeDays}`, goalDays !== null && `${t.goalDays} ${goalDays}`, `${t.longestStreak} ${longest} ${t.days}`]
+                  .filter(Boolean)
+                  .join(' · '),
+                `lifelog-${category.key}-${'all'}.png`,
+              )
+            }
+          />
         </h3>
         <dl className="stats">
           <div>
@@ -128,11 +126,18 @@ export function Overview({ category, daily }: Props) {
               {longest} <small>{t.days}</small>
             </dd>
           </div>
+          <div>
+            <dt>{t.streak}</dt>
+            <dd>
+              {current} <small>{t.days}</small>
+            </dd>
+          </div>
         </dl>
       </header>
       <div className="heatmap-scroll">
         <div className="heatmap" style={{ width }}>
           <svg
+            ref={svgRef}
             viewBox={`0 0 ${width} ${height}`}
             width={width}
             height={height}

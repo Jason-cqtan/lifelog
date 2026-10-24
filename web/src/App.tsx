@@ -3,6 +3,7 @@ import { CATEGORIES, type Data } from './types'
 import { Heatmap } from './components/Heatmap'
 import { ActivityList } from './components/ActivityList'
 import { Overview } from './components/Overview'
+import { PersonalBests } from './components/PersonalBests'
 import { DICTS, I18n, LOCALE, initialLang, save, type Lang } from './i18n'
 
 type Theme = 'light' | 'dark'
@@ -15,6 +16,8 @@ export function App() {
   // index.html sets data-theme before first paint (saved choice, else the OS setting)
   const [theme, setTheme] = useState<Theme>(() => (document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light'))
   const t = DICTS[lang]
+  // activity to scroll to and highlight; seq re-triggers when the same one is picked twice
+  const [focus, setFocus] = useState<{ id: string; seq: number } | null>(null)
 
   useEffect(() => {
     document.documentElement.lang = LOCALE[lang]
@@ -93,17 +96,19 @@ export function App() {
         {data && (
           <>
             <nav className="years">
-              <button className={year === 'all' ? 'on' : ''} onClick={() => setYear('all')}>
+              <button className={year === 'all' ? 'on' : ''} onClick={() => { setYear('all'); setFocus(null) }}>
                 {t.all}
               </button>
               {years.map((y) => (
-                <button key={y} className={y === year ? 'on' : ''} onClick={() => setYear(y)}>
+                <button key={y} className={y === year ? 'on' : ''} onClick={() => { setYear(y); setFocus(null) }}>
                   {y}
                 </button>
               ))}
             </nav>
 
             {visible.length === 0 && yearActivities.length === 0 && <p className="empty">{t.emptyYear}</p>}
+
+            <PersonalBests activities={yearActivities} onSelect={(id) => setFocus({ id, seq: Date.now() })} />
 
             <div className="panels">
               {visible.map((c) =>
@@ -115,7 +120,7 @@ export function App() {
               )}
             </div>
 
-            {yearActivities.length > 0 && <ActivityList key={year} activities={yearActivities} />}
+            {yearActivities.length > 0 && <ActivityList key={year} activities={yearActivities} focus={focus} />}
           </>
         )}
       </main>

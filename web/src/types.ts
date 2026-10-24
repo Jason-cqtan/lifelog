@@ -44,6 +44,8 @@ export interface Category {
   color: string
   /** daily metric holding a per-day target; the panel then counts days that met it */
   goalMetric?: string
+  /** daily metric marking days that keep a streak alive without counting as active */
+  bridgeMetric?: string
 }
 
 // Each category gets its own heatmap (small multiples), so color only has to
@@ -55,7 +57,7 @@ export const CATEGORIES: Category[] = [
   { key: 'hike', label: { zh: '徒步 / 爬山', en: 'Hiking' }, metric: 'hike_km', scale: 1, unit: { zh: 'km', en: 'km' }, color: 'var(--c-hike)' },
   { key: 'steps', label: { zh: '步数', en: 'Steps' }, metric: 'garmin_steps', scale: 1, unit: { zh: '步', en: 'steps' }, color: 'var(--c-steps)', goalMetric: 'garmin_step_goal' },
   { key: 'spotify', label: { zh: 'Spotify', en: 'Spotify' }, metric: 'spotify_minutes', scale: 1 / 60, unit: { zh: '小时', en: 'h' }, color: 'var(--c-spotify)' },
-  { key: 'duolingo', label: { zh: '多邻国', en: 'Duolingo' }, metric: 'duolingo_minutes', scale: 1, unit: { zh: '分钟', en: 'min' }, color: 'var(--c-duolingo)' },
+  { key: 'duolingo', label: { zh: '多邻国', en: 'Duolingo' }, metric: 'duolingo_minutes', scale: 1, unit: { zh: '分钟', en: 'min' }, color: 'var(--c-duolingo)', bridgeMetric: 'duolingo_streak_protected' },
   { key: 'github', label: { zh: 'GitHub', en: 'GitHub' }, metric: 'github_contributions', scale: 1, unit: { zh: '次贡献', en: 'contributions' }, color: 'var(--c-github)' },
 ]
 

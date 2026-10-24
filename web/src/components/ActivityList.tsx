@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { SPORT_LABEL, type Activity, type SportType, type Weather } from '../types'
 import { fmtDuration, fmtNum, fmtSpeed } from '../lib/format'
 import { decodePolyline } from '../lib/polyline'
@@ -7,7 +7,7 @@ import { weatherLabel, windLabel } from '../lib/weather'
 
 const PAGE = 24
 
-export function ActivityList({ activities }: { activities: Activity[] }) {
+export function ActivityList({ activities, focus }: { activities: Activity[]; focus: { id: string; seq: number } | null }) {
   const { lang, t } = useI18n()
   const sport = SPORT_LABEL[lang]
   const [filter, setFilter] = useState<SportType | 'all'>('all')
@@ -20,6 +20,29 @@ export function ActivityList({ activities }: { activities: Activity[] }) {
   }, [activities])
 
   const list = filter === 'all' ? activities : activities.filter((a) => a.type === filter)
+
+  // Jump to a picked activity: widen the filter and page size so its card exists,
+  // then scroll to it and flash it.
+  const [flash, setFlash] = useState<{ id: string; seq: number } | null>(null)
+  useEffect(() => {
+    if (!focus) return
+    const idx = activities.findIndex((a) => a.id === focus.id)
+    if (idx < 0) return
+    setFilter('all')
+    setShown((n) => Math.max(n, Math.ceil((idx + 1) / PAGE) * PAGE))
+    setFlash(focus)
+    const timer = setTimeout(() => setFlash(null), 2400)
+    return () => clearTimeout(timer)
+  }, [focus, activities])
+  // Runs after the render that added the card, so the element exists. Long jumps
+  // are instant (the flash shows where you landed); short ones scroll smoothly.
+  useEffect(() => {
+    if (!flash) return
+    const el = document.getElementById(`act-${flash.id}`)
+    if (!el) return
+    const far = Math.abs(el.getBoundingClientRect().top) > window.innerHeight * 2
+    el.scrollIntoView({ behavior: far ? 'auto' : 'smooth', block: 'center' })
+  }, [flash])
 
   return (
     <section className="activities">
@@ -38,7 +61,7 @@ export function ActivityList({ activities }: { activities: Activity[] }) {
       </div>
       <ul className="cards">
         {list.slice(0, shown).map((a) => (
-          <li key={a.id} className="card">
+          <li key={a.id} id={`act-${a.id}`} className={a.id === flash?.id ? 'card flash' : 'card'}>
             <Route polyline={a.polyline} type={a.type} label={sport[a.type]} />
             <div className="card-body">
               <div className="card-title">

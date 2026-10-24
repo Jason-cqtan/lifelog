@@ -30,6 +30,10 @@ type summary struct {
 	GainedXp         int   `json:"gainedXp"`
 	NumSessions      int   `json:"numSessions"`
 	TotalSessionTime int   `json:"totalSessionTime"` // seconds
+	// Days kept in the streak without practice (streak freeze, shield, repair).
+	Frozen   bool `json:"frozen"`
+	Shielded bool `json:"shielded"`
+	Repaired bool `json:"repaired"`
 }
 
 func (d Duolingo) Sync(ctx context.Context, env *source.Env) error {
@@ -56,12 +60,15 @@ func (d Duolingo) Sync(ctx context.Context, env *source.Env) error {
 			return err
 		}
 		for _, s := range summaries {
-			if s.GainedXp == 0 && s.TotalSessionTime == 0 {
-				continue
-			}
 			date := store.DateIn(time.Unix(s.Date, 0), env.Loc)
 			put := func(metric string, v float64) {
 				env.Store.PutDaily(model.DailyMetric{Date: date, Source: d.Name(), Metric: metric, Value: v})
+			}
+			if s.GainedXp == 0 && s.TotalSessionTime == 0 {
+				if s.Frozen || s.Shielded || s.Repaired {
+					put("streak_protected", 1) // keeps the streak alive, but is not an active day
+				}
+				continue
 			}
 			put("minutes", float64(s.TotalSessionTime)/60)
 			put("xp", float64(s.GainedXp))

@@ -171,6 +171,23 @@ h1 {
   align-items: center;
   gap: 8px;
 }
+.dl-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  margin-left: 2px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: none;
+  color: var(--text-muted);
+}
+.dl-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--hairline);
+}
 .swatch {
   width: 10px;
   height: 10px;
@@ -178,7 +195,8 @@ h1 {
 }
 .stats {
   display: flex;
-  gap: 24px;
+  flex-wrap: wrap;
+  gap: 8px 24px;
   margin: 0;
 }
 .stats dt {
@@ -241,6 +259,58 @@ h1 {
 
 .activities {
   margin-top: 40px;
+}
+.pbs {
+  margin-bottom: 16px;
+}
+.pbs h2 {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+.hint {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 400;
+  cursor: help;
+}
+.pb-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+  gap: 12px;
+}
+.pb {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  text-align: left;
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+button.pb:hover {
+  border-color: var(--c-run);
+}
+.pb-label {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+.pb-time {
+  font-size: 24px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+.pb-meta {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+.card {
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+.card.flash {
+  border-color: var(--c-run);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--c-run) 35%, transparent);
 }
 .activities-head {
   display: flex;

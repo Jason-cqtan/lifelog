@@ -2,7 +2,8 @@ import { useCallback, useEffect, useMemo, useRef, useState, type MouseEvent } fr
 import type { Category, Data } from '../types'
 import { addDays, fmtNum, isoDate } from '../lib/format'
 import { useI18n } from '../i18n'
-import { Scale, Tooltip, levelFill, quartileLevels, toViewport } from './heat'
+import { DownloadButton, Scale, Tooltip, downloadHeatmapPng, levelFill, quartileLevels, toViewport } from './heat'
+import { categoryStats } from '../lib/stats'
 
 const CELL = 11
 const GAP = 2
@@ -30,9 +31,10 @@ export function Heatmap({ year, category, daily }: Props) {
   const unit = category.unit[lang]
   const [tip, setTip] = useState<{ cell: Cell; x: number; y: number } | null>(null)
   const clearTip = useCallback(() => setTip(null), [])
+  const svgRef = useRef<SVGSVGElement>(null)
   const scrollRef = useRef<HTMLDivElement>(null)
 
-  const { cells, weeks, total, activeDays, goalDays, streak } = useMemo(() => {
+  const { cells, weeks } = useMemo(() => {
     const jan1 = new Date(year, 0, 1)
     const offset = (jan1.getDay() + 6) % 7
     const today = isoDate(new Date())
@@ -45,31 +47,12 @@ export function Heatmap({ year, category, daily }: Props) {
     }
     const level = quartileLevels(cells.map((c) => c.value))
     for (const c of cells) c.level = level(c.value)
-    const nz = cells.map((c) => c.value).filter((v) => v > 0)
-    const goalDays = category.goalMetric
-      ? cells.filter((c) => {
-          const goal = daily[c.date]?.[category.goalMetric!] ?? 0
-          return goal > 0 && c.value >= goal * category.scale
-        }).length
-      : null
-    let streak = 0
-    if (year === new Date().getFullYear()) {
-      let i = cells.length - 1
-      if (i >= 0 && cells[i].value === 0) i-- // today not logged yet doesn't break the streak
-      while (i >= 0 && cells[i].value > 0) {
-        streak++
-        i--
-      }
-    }
-    return {
-      cells,
-      weeks: Math.floor((offset + 365) / 7) + 1,
-      total: nz.reduce((a, b) => a + b, 0),
-      activeDays: nz.length,
-      goalDays,
-      streak,
-    }
+    return { cells, weeks: Math.floor((offset + 365) / 7) + 1 }
   }, [year, category, daily])
+  const { total, activeDays, goalDays, longest, current } = useMemo(
+    () => categoryStats(daily, category, `${year}-01-01`, `${year}-12-31`),
+    [year, category, daily],
+  )
 
   const byPos = useMemo(() => {
     const m = new Map<string, Cell>()
@@ -108,6 +91,19 @@ export function Heatmap({ year, category, daily }: Props) {
         <h3>
           <span className="swatch" style={{ background: category.color }} />
           {label}
+          <DownloadButton
+            onClick={() =>
+              svgRef.current &&
+              downloadHeatmapPng(
+                svgRef.current,
+                `${label} · ${String(year)}`,
+                [`${t.yearTotal(year)} ${fmtNum(total)} ${unit}`, `${t.activeDays} ${activeDays}`, goalDays !== null && `${t.goalDays} ${goalDays}`, `${t.longestStreak} ${longest} ${t.days}`]
+                  .filter(Boolean)
+                  .join(' · '),
+                `lifelog-${category.key}-${year}.png`,
+              )
+            }
+          />
         </h3>
         <dl className="stats">
           <div>
@@ -126,11 +122,17 @@ export function Heatmap({ year, category, daily }: Props) {
               <dd>{goalDays}</dd>
             </div>
           )}
+          <div>
+            <dt>{t.longestStreak}</dt>
+            <dd>
+              {longest} <small>{t.days}</small>
+            </dd>
+          </div>
           {year === new Date().getFullYear() && (
             <div>
               <dt>{t.streak}</dt>
               <dd>
-                {streak} <small>{t.days}</small>
+                {current} <small>{t.days}</small>
               </dd>
             </div>
           )}
@@ -139,6 +141,7 @@ export function Heatmap({ year, category, daily }: Props) {
       <div className="heatmap-scroll" ref={scrollRef}>
         <div className="heatmap" style={{ width }}>
           <svg
+            ref={svgRef}
             viewBox={`0 0 ${width} ${height}`}
             width={width}
             height={height}
