@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-24T15:08:24Z",
+ "updated_at": "2026-10-24T16:09:07Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -1195,6 +1195,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
     },
     {
+     "id": "4LThFOso6YeLtjG6TZUOdh",
+     "name": "Let's Start From Here",
+     "artist": "Joanna Wang",
+     "album": "Start From Here",
+     "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
+    },
+    {
      "id": "5rXBmcYNJYMYdhwxlMLh0s",
      "name": "有何不可",
      "artist": "許嵩",
@@ -1221,6 +1228,13 @@
      "artist": "Queen",
      "album": "The Game",
      "image": "https://i.scdn.co/image/ab67616d00001e02a4e6eac83c0fe38bf682f643"
+    },
+    {
+     "id": "28RCSA0i9bdMrui3UaHSG4",
+     "name": "Now",
+     "artist": "Joanna Wang",
+     "album": "Start From Here",
+     "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
     },
     {
      "id": "2hz24OXjUoywWvGO3QCKDG",
@@ -1258,8 +1272,8 @@
      "image": "https://i.scdn.co/image/ab67616d00001e024433ae6a319c1bf5b7269a4e"
     },
     {
-     "id": "4LThFOso6YeLtjG6TZUOdh",
-     "name": "Let's Start From Here",
+     "id": "5PadgcONJhQT8FzhhLjwXA",
+     "name": "因為你愛我",
      "artist": "Joanna Wang",
      "album": "Start From Here",
      "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
@@ -1384,6 +1398,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02f77aacc26fe8d9d24583632a"
     },
     {
+     "id": "0MAfgIyuwNUCbxHKsN7BWG",
+     "name": "True",
+     "artist": "Joanna Wang",
+     "album": "Start From Here",
+     "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
+    },
+    {
      "id": "0O3amqzruMMTSz3rj3Aa1q",
      "name": "The Best Mistake I've Ever Made",
      "artist": "Joanna Wang",
@@ -1480,27 +1501,6 @@
      "artist": "Thomas Greenberg",
      "album": "Age Of Innocence",
      "image": "https://i.scdn.co/image/ab67616d00001e023b42d9a336638e90b24177ae"
-    },
-    {
-     "id": "1aygA3iZfj6ef4aq92EqCU",
-     "name": "Sunset Over Emst - Original Mix",
-     "artist": "Roald Velden",
-     "album": "As the Years Went by / Sunset Over Emst",
-     "image": "https://i.scdn.co/image/ab67616d00001e023572e164458b0e5ea6ff949d"
-    },
-    {
-     "id": "1js2YjrIqEd4n1UKAM0F42",
-     "name": "前程似錦",
-     "artist": "許嵩",
-     "album": "安泊猜想",
-     "image": "https://i.scdn.co/image/ab67616d00001e02031ac1c7fc7b2c6e5e3a4677"
-    },
-    {
-     "id": "1n2NNUMQvRAe18yFr8X85x",
-     "name": "老歌",
-     "artist": "許嵩",
-     "album": "安泊猜想",
-     "image": "https://i.scdn.co/image/ab67616d00001e02031ac1c7fc7b2c6e5e3a4677"
     }
    ]
   }
