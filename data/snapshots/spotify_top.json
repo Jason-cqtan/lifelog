@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-24T20:08:03Z",
+ "updated_at": "2026-10-24T21:07:22Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -620,9 +620,19 @@
      "image": "https://i.scdn.co/image/ab6761610000f1788a0644455ebfa7d3976f5101"
     },
     {
+     "id": "1km0aro5NJuoX5dE0Mub5C",
+     "name": "Joanna Wang",
+     "image": "https://i.scdn.co/image/ab6761610000f1788c2024e68663f46b2981398d"
+    },
+    {
      "id": "6M2wZ9GZgrQXHCFfjv46we",
      "name": "Dua Lipa",
      "image": "https://i.scdn.co/image/ab6761610000f1780c68f6c95232e716f0abee8d"
+    },
+    {
+     "id": "7mShFo2eYgVBQFZBCilhtl",
+     "name": "Leah Dou",
+     "image": "https://i.scdn.co/image/ab6761610000f1780f50807360beac5d44016b0c"
     },
     {
      "id": "2elBjNSdBE2Y3f0j1mjrql",
@@ -700,6 +710,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f178d55c95ad400aed87da52daec"
     },
     {
+     "id": "7BqRcZsHYYQeqMAOp7e532",
+     "name": "落日飛車 Sunset Rollercoaster",
+     "image": "https://i.scdn.co/image/ab6761610000f17817dd503b5c1841cd238c9aa7"
+    },
+    {
      "id": "4S9EykWXhStSc15wEx8QFK",
      "name": "Céline Dion",
      "image": "https://i.scdn.co/image/ab6761610000f178fe81f2540f9fa7564dd5e05c"
@@ -713,6 +728,11 @@
      "id": "1r9DuPTHiQ7hnRRZ99B8nL",
      "name": "JOLIN",
      "image": "https://i.scdn.co/image/ab6761610000f178c4b4416e53fb403c4612a822"
+    },
+    {
+     "id": "2OC4lXfGEKZkbmRCcf2vTq",
+     "name": "Wanting",
+     "image": "https://i.scdn.co/image/ab6761610000f17862cf72356b92b98efd61f63c"
     },
     {
      "id": "2o5jDhtHVPhrJdv3cEQ99Z",
@@ -850,6 +870,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e0214b7b2a920a41166d53ddd49"
     },
     {
+     "id": "4LThFOso6YeLtjG6TZUOdh",
+     "name": "Let's Start From Here",
+     "artist": "Joanna Wang",
+     "album": "Start From Here",
+     "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
+    },
+    {
      "id": "2kWr3JUHOjwmGl6BDzhNdn",
      "name": "多余的解释",
      "artist": "許嵩",
@@ -920,6 +947,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e023b219fb53c69f313f90fd4ce"
     },
     {
+     "id": "0k4d5YPDr1r7FX77VdqWez",
+     "name": "You Right",
+     "artist": "Doja Cat, The Weeknd",
+     "album": "Planet Her",
+     "image": "https://i.scdn.co/image/ab67616d00001e0214b7b2a920a41166d53ddd49"
+    },
+    {
      "id": "3fRCAPMMZ8l8P9YKI6OCzD",
      "name": "drop dead",
      "artist": "Olivia Rodrigo",
@@ -932,13 +966,6 @@
      "artist": "Dave Wang",
      "album": "一場遊戲一場夢",
      "image": "https://i.scdn.co/image/ab67616d00001e02508f6070bbe3a4fec70e2036"
-    },
-    {
-     "id": "0k4d5YPDr1r7FX77VdqWez",
-     "name": "You Right",
-     "artist": "Doja Cat, The Weeknd",
-     "album": "Planet Her",
-     "image": "https://i.scdn.co/image/ab67616d00001e0214b7b2a920a41166d53ddd49"
     },
     {
      "id": "1KPuohcXPmJYQfdyg9zKmR",
@@ -976,6 +1003,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02129acb02ff567b3e3dae5250"
     },
     {
+     "id": "28RCSA0i9bdMrui3UaHSG4",
+     "name": "Now",
+     "artist": "Joanna Wang",
+     "album": "Start From Here",
+     "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
+    },
+    {
      "id": "2DjfjCE8rJU7FLg5pg06hY",
      "name": "LET'S RIDE! - Drift Phonk",
      "artist": "SXMPRA, Bone Thugs-N-Harmony, Fast \u0026 Furious: The Fast Saga",
@@ -1002,6 +1036,13 @@
      "artist": "許嵩, 安琪",
      "album": "愛情裡的眼淚",
      "image": "https://i.scdn.co/image/ab67616d00001e02d576449d08b52f960be0437f"
+    },
+    {
+     "id": "2nzYi54BL2YsMJsBK9CBMZ",
+     "name": "Satellite",
+     "artist": "落日飛車 Sunset Rollercoaster, Leah Dou",
+     "album": "QUIT QUIETLY",
+     "image": "https://i.scdn.co/image/ab67616d00001e0272a2a486626ed84531f6cceb"
     },
     {
      "id": "2usrT8QIbIk9y0NEtQwS4j",
@@ -1060,6 +1101,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02de16d38441a186e002f7cd40"
     },
     {
+     "id": "5PadgcONJhQT8FzhhLjwXA",
+     "name": "因為你愛我",
+     "artist": "Joanna Wang",
+     "album": "Start From Here",
+     "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
+    },
+    {
      "id": "5k72u9OHqyTDMylqpG0izJ",
      "name": "敢愛敢做",
      "artist": "George Lam, David Ling Jr",
@@ -1072,34 +1120,6 @@
      "artist": "許嵩",
      "album": "安泊猜想",
      "image": "https://i.scdn.co/image/ab67616d00001e02031ac1c7fc7b2c6e5e3a4677"
-    },
-    {
-     "id": "65bRYkG90LpIzqLzg4firZ",
-     "name": "素颜",
-     "artist": "許嵩, 何曼婷",
-     "album": "素顏",
-     "image": "https://i.scdn.co/image/ab67616d00001e02a21d702191dcfa924f694422"
-    },
-    {
-     "id": "67wrHBNV1stVSKqN1kNsZP",
-     "name": "Chiru (Saisei no Uta)",
-     "artist": "Robert de Boron",
-     "album": "Mellow Candle",
-     "image": "https://i.scdn.co/image/ab67616d00001e0281969c51d6ef66b8def7fc5f"
-    },
-    {
-     "id": "6fNhZRFEkBfgW39W3wKARJ",
-     "name": "Pompeii",
-     "artist": "Bastille",
-     "album": "Bad Blood",
-     "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
-    },
-    {
-     "id": "7AoCZm5JpcgiIpQz8ClelB",
-     "name": "Can't Get Enough - Sam Padrul Remix",
-     "artist": "Yeah Boy",
-     "album": "Can't Get Enough Remixes",
-     "image": "https://i.scdn.co/image/ab67616d00001e026f4be2da23461b3a1271508c"
     }
    ]
   },
