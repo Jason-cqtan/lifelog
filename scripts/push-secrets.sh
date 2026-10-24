@@ -5,7 +5,7 @@
 set -euo pipefail
 
 env_file="${1:-.env}"
-variables=" GARMIN_CN COROS_CN LIFELOG_TZ VITE_BASE "
+variables=" GARMIN_CN COROS_CN LIFELOG_TZ VITE_BASE VITE_MAPBOX_TOKEN VITE_MAP_GCJ02 "
 skip=" GH_USERNAME GARMIN_EMAIL GARMIN_PASSWORD " # username comes from the repo owner; passwords never leave this machine
 
 while IFS= read -r line || [[ -n "$line" ]]; do

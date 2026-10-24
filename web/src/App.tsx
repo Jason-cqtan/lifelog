@@ -1,12 +1,18 @@
-import { useEffect, useMemo, useState } from 'react'
+import { Suspense, lazy, useEffect, useMemo, useState } from 'react'
 import { CATEGORIES, type Data } from './types'
 import { Heatmap } from './components/Heatmap'
 import { ActivityList } from './components/ActivityList'
 import { Overview } from './components/Overview'
 import { PersonalBests } from './components/PersonalBests'
+
+// mapbox-gl is large; load it only when the map tab opens
+const RouteMap = lazy(() => import('./components/RouteMap'))
 import { DICTS, I18n, LOCALE, initialLang, save, type Lang } from './i18n'
 
 type Theme = 'light' | 'dark'
+type Tab = 'overview' | 'map'
+
+const tabFromHash = (): Tab => (location.hash === '#map' ? 'map' : 'overview')
 
 export function App() {
   const [data, setData] = useState<Data | null>(null)
@@ -18,6 +24,17 @@ export function App() {
   const t = DICTS[lang]
   // activity to scroll to and highlight; seq re-triggers when the same one is picked twice
   const [focus, setFocus] = useState<{ id: string; seq: number } | null>(null)
+  const [tab, setTabState] = useState<Tab>(tabFromHash)
+  const [mapFocus, setMapFocus] = useState<string | null>(null)
+  const setTab = (next: Tab) => {
+    setTabState(next)
+    history.replaceState(null, '', next === 'map' ? '#map' : location.pathname + location.search)
+  }
+  useEffect(() => {
+    const onHash = () => setTabState(tabFromHash())
+    window.addEventListener('hashchange', onHash)
+    return () => window.removeEventListener('hashchange', onHash)
+  }, [])
 
   useEffect(() => {
     document.documentElement.lang = LOCALE[lang]
@@ -95,32 +112,66 @@ export function App() {
 
         {data && (
           <>
+            <nav className="tabs" role="tablist">
+              {(['overview', 'map'] as const).map((k) => (
+                <button key={k} role="tab" aria-selected={tab === k} className={tab === k ? 'on' : ''} onClick={() => setTab(k)}>
+                  {k === 'overview' ? t.tabOverview : t.tabMap}
+                </button>
+              ))}
+            </nav>
+
             <nav className="years">
-              <button className={year === 'all' ? 'on' : ''} onClick={() => { setYear('all'); setFocus(null) }}>
+              <button className={year === 'all' ? 'on' : ''} onClick={() => { setYear('all'); setFocus(null); setMapFocus(null) }}>
                 {t.all}
               </button>
               {years.map((y) => (
-                <button key={y} className={y === year ? 'on' : ''} onClick={() => { setYear(y); setFocus(null) }}>
+                <button key={y} className={y === year ? 'on' : ''} onClick={() => { setYear(y); setFocus(null); setMapFocus(null) }}>
                   {y}
                 </button>
               ))}
             </nav>
 
-            {visible.length === 0 && yearActivities.length === 0 && <p className="empty">{t.emptyYear}</p>}
+            {tab === 'map' ? (
+              <Suspense fallback={<div className="map-wrap" />}>
+                <RouteMap
+                  activities={yearActivities}
+                  theme={theme}
+                  focusId={mapFocus}
+                  onShowInList={(id) => {
+                    setTab('overview')
+                    setFocus({ id, seq: Date.now() })
+                  }}
+                />
+              </Suspense>
+            ) : (
+              <>
 
-            <PersonalBests activities={yearActivities} onSelect={(id) => setFocus({ id, seq: Date.now() })} />
+              {visible.length === 0 && yearActivities.length === 0 && <p className="empty">{t.emptyYear}</p>}
 
-            <div className="panels">
-              {visible.map((c) =>
-                year === 'all' ? (
-                  <Overview key={c.key} category={c} daily={data.daily} />
-                ) : (
-                  <Heatmap key={c.key} year={year} category={c} daily={data.daily} />
-                ),
-              )}
-            </div>
+              <PersonalBests activities={yearActivities} onSelect={(id) => setFocus({ id, seq: Date.now() })} />
 
-            {yearActivities.length > 0 && <ActivityList key={year} activities={yearActivities} focus={focus} />}
+              <div className="panels">
+                {visible.map((c) =>
+                  year === 'all' ? (
+                    <Overview key={c.key} category={c} daily={data.daily} />
+                  ) : (
+                    <Heatmap key={c.key} year={year} category={c} daily={data.daily} />
+                  ),
+                )}
+              </div>
+
+              {yearActivities.length > 0 && <ActivityList
+                    key={year}
+                    activities={yearActivities}
+                    focus={focus}
+                    onShowMap={(id) => {
+                      setMapFocus(id)
+                      setTab('map')
+                      window.scrollTo(0, 0)
+                    }}
+                  />}
+              </>
+            )}
           </>
         )}
       </main>

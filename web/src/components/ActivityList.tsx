@@ -7,7 +7,15 @@ import { weatherLabel, windLabel } from '../lib/weather'
 
 const PAGE = 24
 
-export function ActivityList({ activities, focus }: { activities: Activity[]; focus: { id: string; seq: number } | null }) {
+export function ActivityList({
+  activities,
+  focus,
+  onShowMap,
+}: {
+  activities: Activity[]
+  focus: { id: string; seq: number } | null
+  onShowMap: (id: string) => void
+}) {
   const { lang, t } = useI18n()
   const sport = SPORT_LABEL[lang]
   const [filter, setFilter] = useState<SportType | 'all'>('all')
@@ -62,7 +70,13 @@ export function ActivityList({ activities, focus }: { activities: Activity[]; fo
       <ul className="cards">
         {list.slice(0, shown).map((a) => (
           <li key={a.id} id={`act-${a.id}`} className={a.id === flash?.id ? 'card flash' : 'card'}>
-            <Route polyline={a.polyline} type={a.type} label={sport[a.type]} />
+            {a.polyline ? (
+              <button className="route-btn" onClick={() => onShowMap(a.id)} title={t.showOnMap} aria-label={t.showOnMap}>
+                <Route polyline={a.polyline} type={a.type} label={sport[a.type]} />
+              </button>
+            ) : (
+              <Route polyline={a.polyline} type={a.type} label={sport[a.type]} />
+            )}
             <div className="card-body">
               <div className="card-title">
                 <span className={`tag tag-${a.type}`}>{sport[a.type]}</span>
@@ -96,7 +110,7 @@ export function ActivityList({ activities, focus }: { activities: Activity[]; fo
   )
 }
 
-function WeatherLine({ w, lang, t }: { w: Weather; lang: Lang; t: Dict }) {
+export function WeatherLine({ w, lang, t }: { w: Weather; lang: Lang; t: Dict }) {
   const { icon, text } = weatherLabel(w.desc, lang)
   const deg = (c: number) => `${Math.round(c)}°C`
   return (

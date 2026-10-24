@@ -79,6 +79,9 @@ jobs:
         env:
           # Project pages live under /<repo>/; set vars.VITE_BASE to "/" for a custom domain.
           VITE_BASE: ${{ vars.VITE_BASE || format('/{0}/', github.event.repository.name) }}
+          # Mapbox public token (pk.*); it ends up in the page, so a variable, not a secret.
+          VITE_MAPBOX_TOKEN: ${{ vars.VITE_MAPBOX_TOKEN }}
+          VITE_MAP_GCJ02: ${{ vars.VITE_MAP_GCJ02 }}
 
       - uses: actions/upload-pages-artifact@v3
         with:
