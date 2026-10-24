@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Run from your machine (needs ssh access to the VPS as root or a sudo user).
 #
-#   deploy/deploy.sh setup   <ssh-host> <domain> <email>   # once: Caddy, HTTPS, user, timer, firewall
+#   deploy/deploy.sh setup   <ssh-host> <domain> [email]   # once: Caddy, HTTPS, user, timer, firewall
 #   deploy/deploy.sh release <ssh-host> [--with-env]       # build + upload; --with-env also copies .env
 #
 # release cross-compiles the Go binary for the server's CPU, builds the site for
@@ -18,11 +18,11 @@ remote() { ssh "$HOST" "$SUDO bash -c '$*'"; }
 
 case "$CMD" in
 setup)
-  DOMAIN="${3:?usage: deploy.sh setup <ssh-host> <domain> <email>}"
-  EMAIL="${4:?usage: deploy.sh setup <ssh-host> <domain> <email>}"
+  DOMAIN="${3:?usage: deploy.sh setup <ssh-host> <domain> [email]}"
+  EMAIL="${4:-}"
   ssh "$HOST" "command -v rsync >/dev/null || ($SUDO apt-get update -qq && $SUDO apt-get install -y -qq rsync >/dev/null)"
   rsync -az --delete deploy/ "$HOST":/tmp/lifelog-deploy/
-  ssh -t "$HOST" "cd /tmp/lifelog-deploy && $SUDO bash install.sh '$DOMAIN' '$EMAIL'"
+  ssh "$HOST" "cd /tmp/lifelog-deploy && $SUDO bash install.sh '$DOMAIN' '$EMAIL'"
   ;;
 
 release)
@@ -53,7 +53,7 @@ release)
   ;;
 
 *)
-  echo "usage: deploy.sh setup <ssh-host> <domain> <email> | release <ssh-host> [--with-env]" >&2
+  echo "usage: deploy.sh setup <ssh-host> <domain> [email] | release <ssh-host> [--with-env]" >&2
   exit 2
   ;;
 esac

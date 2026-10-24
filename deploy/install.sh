@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # One-time server setup for lifelog on Debian 12 / Ubuntu 22.04+ (run as root).
 #
-#   sudo bash install.sh <domain> <email>
+#   sudo bash install.sh <domain> [email]   # email: optional, for Let's Encrypt expiry notices
 #
 # Installs Caddy (HTTPS via Let's Encrypt, renewed automatically), creates the
 # `lifelog` user with an SSH deploy key for the GitHub repo, the hourly sync
@@ -9,8 +9,8 @@
 # GitHub: it then clones the repo. Safe to re-run.
 set -euo pipefail
 
-DOMAIN="${1:?usage: install.sh <domain> <email>}"
-EMAIL="${2:?usage: install.sh <domain> <email>}"
+DOMAIN="${1:?usage: install.sh <domain> [email]}"
+EMAIL="${2:-}"
 REPO="git@github.com:Jason-cqtan/lifelog.git"
 HOME_DIR=/opt/lifelog
 
@@ -56,7 +56,12 @@ if [[ -d "$HOME_DIR/repo/.git" ]]; then
 fi
 
 echo "==> caddy ($DOMAIN, Let's Encrypt)"
-sed -e "s/{{DOMAIN}}/$DOMAIN/g" -e "s/{{EMAIL}}/$EMAIL/g" "$(dirname "$0")/Caddyfile" > /etc/caddy/Caddyfile
+if [[ -n "$EMAIL" ]]; then
+  sed -e "s/{{DOMAIN}}/$DOMAIN/g" -e "s/{{EMAIL}}/$EMAIL/g" "$(dirname "$0")/Caddyfile" > /etc/caddy/Caddyfile
+else
+  # an ACME account works without a contact address; Caddy renews either way
+  sed -e "s/{{DOMAIN}}/$DOMAIN/g" -e "/email {{EMAIL}}/d" "$(dirname "$0")/Caddyfile" > /etc/caddy/Caddyfile
+fi
 caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile >/dev/null
 systemctl enable --now caddy >/dev/null
 systemctl reload caddy
