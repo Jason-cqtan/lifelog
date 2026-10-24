@@ -1,8 +1,8 @@
-import { useMemo, useState, type MouseEvent } from 'react'
+import { useCallback, useMemo, useState, type MouseEvent } from 'react'
 import type { Category, Data } from '../types'
 import { fmtNum } from '../lib/format'
 import { useI18n } from '../i18n'
-import { Scale, levelFill, quartileLevels } from './heat'
+import { Scale, Tooltip, levelFill, quartileLevels, toViewport } from './heat'
 
 // All-time view: one row per year, one cell per month (the monthly total).
 const CW = 40
@@ -29,6 +29,7 @@ export function Overview({ category, daily }: Props) {
   const label = category.label[lang]
   const unit = category.unit[lang]
   const [tip, setTip] = useState<{ cell: Cell; x: number; y: number } | null>(null)
+  const clearTip = useCallback(() => setTip(null), [])
 
   const { cells, years, total, activeDays, goalDays, longest } = useMemo(() => {
     const byMonth = new Map<string, { value: number; days: number }>()
@@ -94,7 +95,7 @@ export function Overview({ category, daily }: Props) {
     const r = Math.floor(((e.clientY - rect.top) * s - TOP) / (CH + GAP))
     const cell = cells.find((c) => c.month === col && row(c.year) === r)
     if (!cell) return setTip(null)
-    setTip({ cell, x: LEFT + col * (CW + GAP) + CW / 2, y: TOP + r * (CH + GAP) })
+    setTip({ cell, ...toViewport(e.currentTarget, width, LEFT + col * (CW + GAP) + CW / 2, TOP + r * (CH + GAP)) })
   }
 
   return (
@@ -136,7 +137,7 @@ export function Overview({ category, daily }: Props) {
             width={width}
             height={height}
             onMouseMove={onMove}
-            onMouseLeave={() => setTip(null)}
+            onMouseLeave={clearTip}
             role="img"
             aria-label={t.overviewLabel(label, fmtNum(total), unit)}
           >
@@ -165,13 +166,13 @@ export function Overview({ category, daily }: Props) {
             ))}
           </svg>
           {tip && (
-            <div className="tooltip" style={{ left: tip.x, top: tip.y }}>
+            <Tooltip x={tip.x} y={tip.y} onScroll={clearTip}>
               <strong>{tip.cell.value > 0 ? `${fmtNum(tip.cell.value)} ${unit}` : t.noRecord}</strong>
               <span>
                 {tip.cell.year}-{String(tip.cell.month + 1).padStart(2, '0')}
                 {tip.cell.days > 0 && ` · ${t.activeIn(tip.cell.days)}`}
               </span>
-            </div>
+            </Tooltip>
           )}
         </div>
       </div>

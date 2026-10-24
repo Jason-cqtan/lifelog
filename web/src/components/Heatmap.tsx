@@ -1,8 +1,8 @@
-import { useEffect, useMemo, useRef, useState, type MouseEvent } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState, type MouseEvent } from 'react'
 import type { Category, Data } from '../types'
 import { addDays, fmtNum, isoDate } from '../lib/format'
 import { useI18n } from '../i18n'
-import { Scale, levelFill, quartileLevels } from './heat'
+import { Scale, Tooltip, levelFill, quartileLevels, toViewport } from './heat'
 
 const CELL = 11
 const GAP = 2
@@ -29,6 +29,7 @@ export function Heatmap({ year, category, daily }: Props) {
   const label = category.label[lang]
   const unit = category.unit[lang]
   const [tip, setTip] = useState<{ cell: Cell; x: number; y: number } | null>(null)
+  const clearTip = useCallback(() => setTip(null), [])
   const scrollRef = useRef<HTMLDivElement>(null)
 
   const { cells, weeks, total, activeDays, goalDays, streak } = useMemo(() => {
@@ -93,7 +94,7 @@ export function Heatmap({ year, category, daily }: Props) {
     const y = (e.clientY - rect.top) * sx
     const cell = byPos.get(`${Math.floor((x - LEFT) / STEP)}:${Math.floor((y - TOP) / STEP)}`)
     if (!cell) return setTip(null)
-    setTip({ cell, x: LEFT + cell.week * STEP + CELL / 2, y: TOP + cell.dow * STEP })
+    setTip({ cell, ...toViewport(e.currentTarget, width, LEFT + cell.week * STEP + CELL / 2, TOP + cell.dow * STEP) })
   }
 
   const monthLabels = t.months.map((label, m) => {
@@ -142,7 +143,7 @@ export function Heatmap({ year, category, daily }: Props) {
             width={width}
             height={height}
             onMouseMove={onMove}
-            onMouseLeave={() => setTip(null)}
+            onMouseLeave={clearTip}
             role="img"
             aria-label={t.heatmapLabel(year, label, fmtNum(total), unit)}
           >
@@ -174,10 +175,10 @@ export function Heatmap({ year, category, daily }: Props) {
             ))}
           </svg>
           {tip && (
-            <div className="tooltip" style={{ left: tip.x, top: tip.y }}>
+            <Tooltip x={tip.x} y={tip.y} onScroll={clearTip}>
               <strong>{tip.cell.value > 0 ? `${fmtNum(tip.cell.value)} ${unit}` : t.noRecord}</strong>
               <span>{tip.cell.date}</span>
-            </div>
+            </Tooltip>
           )}
         </div>
       </div>

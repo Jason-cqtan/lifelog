@@ -1,4 +1,5 @@
 // Shared pieces of the one-hue heatmap scale used by the yearly and all-time views.
+import { useEffect, type ReactNode } from 'react'
 import { useI18n } from '../i18n'
 
 // color-mix percentage of the category color per intensity level
@@ -29,4 +30,30 @@ export function Scale({ color }: { color: string }) {
       {t.more}
     </div>
   )
+}
+
+/**
+ * Hover tooltip anchored above a point given in viewport coordinates. It is
+ * position: fixed so the heatmap's horizontal scroll container cannot clip it,
+ * and it hides on any scroll since the anchor would then be stale.
+ */
+export function Tooltip({ x, y, onScroll, children }: { x: number; y: number; onScroll: () => void; children: ReactNode }) {
+  useEffect(() => {
+    window.addEventListener('scroll', onScroll, { capture: true, passive: true })
+    return () => window.removeEventListener('scroll', onScroll, { capture: true })
+  }, [onScroll])
+  // keep the centered bubble on screen near the left/right edges
+  const left = Math.min(Math.max(x, 72), window.innerWidth - 72)
+  return (
+    <div className="tooltip" style={{ left, top: y }}>
+      {children}
+    </div>
+  )
+}
+
+/** Converts a point in an SVG's viewBox units to viewport coordinates. */
+export function toViewport(svg: SVGSVGElement, viewWidth: number, x: number, y: number) {
+  const r = svg.getBoundingClientRect()
+  const k = r.width / viewWidth
+  return { x: r.left + x * k, y: r.top + y * k }
 }

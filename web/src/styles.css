@@ -211,7 +211,8 @@ h1 {
   fill: var(--text-muted);
 }
 .tooltip {
-  position: absolute;
+  position: fixed;
+  z-index: 10;
   transform: translate(-50%, calc(-100% - 6px));
   background: var(--text-primary);
   color: var(--page);
