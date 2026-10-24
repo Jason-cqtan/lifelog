@@ -1,37 +1,30 @@
-import { useMemo } from 'react'
-import type { Activity } from '../types'
-import { useI18n } from '../i18n'
-import { fmtPace } from '../lib/format'
+import { useEffect, useMemo, useState } from 'react'
+import type { Activity, SportType } from '../types'
+import { useI18n, type Dict } from '../i18n'
+import { fmtDuration, fmtNum, fmtPace } from '../lib/format'
 
-const TARGETS = [
-  { key: 'mile', meters: 1609.344 },
+type Group = 'run' | 'ride'
+
+// Standard running distances. Without split data, a run qualifies when its
+// total distance is 98–110% of the target, and its time is scaled to the exact
+// distance at its average pace.
+const RUN_DISTANCES = [
+  { key: 'k1', meters: 1000 },
   { key: 'k5', meters: 5000 },
   { key: 'k10', meters: 10000 },
   { key: 'half', meters: 21097.5 },
   { key: 'full', meters: 42195 },
 ] as const
 
-interface Best {
-  activity: Activity
-  seconds: number
-}
+// A ride's average speed only counts from this distance, so a short spin can't win.
+const MIN_RIDE_FOR_SPEED = 10000
 
-/**
- * Fastest run per standard distance. Without split data, a run qualifies when
- * its total distance is 98–110% of the target, and its time is scaled to the
- * exact distance at its average pace.
- */
-export function bestEfforts(activities: Activity[]): Record<(typeof TARGETS)[number]['key'], Best | null> {
-  const out = Object.fromEntries(TARGETS.map((x) => [x.key, null])) as Record<(typeof TARGETS)[number]['key'], Best | null>
-  for (const t of TARGETS) {
-    for (const a of activities) {
-      if (a.type !== 'run' || !a.moving_time_s) continue
-      if (a.distance_m < t.meters * 0.98 || a.distance_m > t.meters * 1.1) continue
-      const seconds = (a.moving_time_s * t.meters) / a.distance_m
-      if (!out[t.key] || seconds < out[t.key]!.seconds) out[t.key] = { activity: a, seconds }
-    }
-  }
-  return out
+interface Best {
+  key: string
+  label: string
+  value: string
+  meta: string
+  activity: Activity | null
 }
 
 function clock(sec: number): string {
@@ -42,39 +35,98 @@ function clock(sec: number): string {
   return h > 0 ? `${h}:${String(m).padStart(2, '0')}:${ss}` : `${m}:${ss}`
 }
 
-function pace(sec: number, meters: number): string {
-  return fmtPace(sec / (meters / 1000))
+const km = (a: Activity) => `${fmtNum(a.distance_m / 1000, 2)} km`
+const kmh = (a: Activity) => (a.distance_m / 1000 / (a.moving_time_s / 3600)).toFixed(1)
+
+function maxBy(list: Activity[], f: (a: Activity) => number): Activity | null {
+  let best: Activity | null = null
+  for (const a of list) if (!best || f(a) > f(best)) best = a
+  return best
 }
 
-export function PersonalBests({ activities, onSelect }: { activities: Activity[]; onSelect: (id: string) => void }) {
-  const { t } = useI18n()
-  const bests = useMemo(() => bestEfforts(activities), [activities])
-  if (!TARGETS.some((x) => bests[x.key])) return null
+export function bests(activities: Activity[], group: Group, t: Dict): Best[] {
+  const list = activities.filter((a) => a.type === group && a.moving_time_s > 0)
+  const empty = (key: string, label: string): Best => ({ key, label, value: '—', meta: t.pbNone, activity: null })
+  const top = (key: string, label: string, a: Activity | null, value: (a: Activity) => string, meta: (a: Activity) => string): Best =>
+    a ? { key, label, value: value(a), meta: `${meta(a)} · ${a.date}`, activity: a } : empty(key, label)
+
+  if (group === 'run') {
+    const efforts = RUN_DISTANCES.map(({ key, meters }): Best => {
+      let best: { a: Activity; sec: number } | null = null
+      for (const a of list) {
+        if (a.distance_m < meters * 0.98 || a.distance_m > meters * 1.1) continue
+        const sec = (a.moving_time_s * meters) / a.distance_m
+        if (!best || sec < best.sec) best = { a, sec }
+      }
+      if (!best) return empty(key, t[key])
+      return { key, label: t[key], value: clock(best.sec), meta: `${fmtPace(best.sec / (meters / 1000))} · ${best.a.date}`, activity: best.a }
+    })
+    return [
+      ...efforts,
+      top('runDist', t.longestDist, maxBy(list, (a) => a.distance_m), km, (a) => fmtDuration(a.moving_time_s, t)),
+      top('runTime', t.longestTime, maxBy(list, (a) => a.moving_time_s), (a) => clock(a.moving_time_s), km),
+    ]
+  }
+  const speedy = list.filter((a) => a.distance_m >= MIN_RIDE_FOR_SPEED)
+  return [
+    top('rideSpeed', t.fastestSpeed, maxBy(speedy, (a) => a.distance_m / a.moving_time_s), (a) => `${kmh(a)} km/h`, km),
+    top('rideDist', t.longestDist, maxBy(list, (a) => a.distance_m), km, (a) => fmtDuration(a.moving_time_s, t)),
+    top('rideTime', t.longestTime, maxBy(list, (a) => a.moving_time_s), (a) => clock(a.moving_time_s), km),
+  ]
+}
+
+export function PersonalBests({
+  activities,
+  prefer,
+  onSelect,
+}: {
+  activities: Activity[]
+  /** sport to show, e.g. the one a heatmap drill-down picked */
+  prefer?: SportType
+  onSelect: (id: string) => void
+}) {
+  const { t, lang } = useI18n()
+  const groups = useMemo(() => (['run', 'ride'] as const).filter((g) => activities.some((a) => a.type === g)), [activities])
+  const [group, setGroup] = useState<Group>('run')
+  useEffect(() => {
+    if (prefer === 'run' || prefer === 'ride') setGroup(prefer)
+  }, [prefer])
+  const shown: Group | undefined = groups.includes(group) ? group : groups[0]
+  const list = useMemo(() => (shown ? bests(activities, shown, t) : []), [activities, shown, t])
+  if (!shown) return null
 
   return (
     <section className="pbs" aria-label={t.pb}>
-      <h2 title={t.pbNote}>
-        {t.pb} <span className="hint">ⓘ</span>
-      </h2>
+      <div className="pb-head">
+        <h2 title={shown === 'run' ? t.pbNote : t.pbRideNote}>
+          {t.pb} <span className="hint">ⓘ</span>
+        </h2>
+        {groups.length > 1 && (
+          <div className="seg seg-sm" role="group">
+            {groups.map((g) => (
+              <button key={g} className={g === shown ? 'on' : ''} aria-pressed={g === shown} onClick={() => setGroup(g)}>
+                {g === 'run' ? (lang === 'zh' ? '跑步' : 'Running') : lang === 'zh' ? '骑行' : 'Cycling'}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
       <div className="pb-tiles">
-        {TARGETS.map(({ key, meters }) => {
-          const b = bests[key]
-          return b ? (
-            <button key={key} className="pb" onClick={() => onSelect(b.activity.id)} title={t.pbJump}>
-              <span className="pb-label">{t[key]}</span>
-              <span className="pb-time">{clock(b.seconds)}</span>
-              <span className="pb-meta">
-                {pace(b.seconds, meters)} · {b.activity.date}
-              </span>
+        {list.map((b) =>
+          b.activity ? (
+            <button key={b.key} className={`pb pb-${shown}`} onClick={() => onSelect(b.activity!.id)} title={t.pbJump}>
+              <span className="pb-label">{b.label}</span>
+              <span className="pb-time">{b.value}</span>
+              <span className="pb-meta">{b.meta}</span>
             </button>
           ) : (
-            <div key={key} className="pb empty-pb">
-              <span className="pb-label">{t[key]}</span>
+            <div key={b.key} className="pb empty-pb">
+              <span className="pb-label">{b.label}</span>
               <span className="pb-time">—</span>
-              <span className="pb-meta">{t.pbNone}</span>
+              <span className="pb-meta">{b.meta}</span>
             </div>
-          )
-        })}
+          ),
+        )}
       </div>
     </section>
   )

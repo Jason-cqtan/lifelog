@@ -242,6 +242,9 @@ h1 {
   display: flex;
   gap: 8px;
 }
+.tip-hint {
+  opacity: 0.7;
+}
 .scale {
   display: flex;
   align-items: center;
@@ -270,9 +273,19 @@ h1 {
   margin-bottom: 4px;
   border-bottom: 1px solid var(--hairline);
 }
+.pb-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
 .pbs h2 {
-  margin: 0 0 8px;
+  margin: 0;
   font-size: 15px;
+}
+.seg-sm button {
+  padding: 2px 10px;
+  font-size: 12px;
 }
 .hint {
   color: var(--text-muted);
@@ -301,8 +314,11 @@ h1 {
   padding: 8px 12px;
   min-width: 0;
 }
-button.pb:hover {
+button.pb-run:hover {
   border-color: var(--c-run);
+}
+button.pb-ride:hover {
+  border-color: var(--c-ride);
 }
 .pb-label {
   color: var(--text-secondary);
@@ -633,4 +649,14 @@ button.pb:hover {
     text-overflow: ellipsis;
     max-width: 100%;
   }
+}
+
+.period-chip {
+  background: color-mix(in oklab, var(--c-run) 16%, var(--surface)) !important;
+  border-color: color-mix(in oklab, var(--c-run) 45%, transparent) !important;
+  font-weight: 600;
+}
+/* the sticky bests bar would otherwise cover the list header after a jump */
+.activities-head {
+  scroll-margin-top: 240px;
 }

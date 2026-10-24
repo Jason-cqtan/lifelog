@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useRef, useState, type MouseEvent } from 'react'
-import type { Category, Data } from '../types'
+import type { Category, Data, SportType } from '../types'
 import { fmtNum, isoDate } from '../lib/format'
 import { categoryStats } from '../lib/stats'
 import { useI18n } from '../i18n'
@@ -15,6 +15,8 @@ const TOP = 16
 interface Props {
   category: Category
   daily: Data['daily']
+  /** sport categories: open that month's activities */
+  onDrill?: (type: SportType, period: string) => void
 }
 
 interface Cell {
@@ -25,7 +27,7 @@ interface Cell {
   level: number
 }
 
-export function Overview({ category, daily }: Props) {
+export function Overview({ category, daily, onDrill }: Props) {
   const { lang, t } = useI18n()
   const label = category.label[lang]
   const unit = category.unit[lang]
@@ -73,14 +75,23 @@ export function Overview({ category, daily }: Props) {
   const height = TOP + years.length * (CH + GAP)
   const row = (y: number) => years.indexOf(y)
 
-  const onMove = (e: MouseEvent<SVGSVGElement>) => {
+  const cellAt = (e: MouseEvent<SVGSVGElement>) => {
     const rect = e.currentTarget.getBoundingClientRect()
     const s = width / rect.width
     const col = Math.floor(((e.clientX - rect.left) * s - LEFT) / (CW + GAP))
     const r = Math.floor(((e.clientY - rect.top) * s - TOP) / (CH + GAP))
-    const cell = cells.find((c) => c.month === col && row(c.year) === r)
+    return cells.find((c) => c.month === col && row(c.year) === r)
+  }
+  const onMove = (e: MouseEvent<SVGSVGElement>) => {
+    const cell = cellAt(e)
     if (!cell) return setTip(null)
-    setTip({ cell, ...toViewport(e.currentTarget, width, LEFT + col * (CW + GAP) + CW / 2, TOP + r * (CH + GAP)) })
+    setTip({ cell, ...toViewport(e.currentTarget, width, LEFT + cell.month * (CW + GAP) + CW / 2, TOP + row(cell.year) * (CH + GAP)) })
+  }
+  const ym = (c: Cell) => `${c.year}-${String(c.month + 1).padStart(2, '0')}`
+  const drillable = (c?: Cell) => !!c && c.value > 0 && !!category.sport && !!onDrill
+  const onClick = (e: MouseEvent<SVGSVGElement>) => {
+    const cell = cellAt(e)
+    if (cell && drillable(cell)) onDrill!(category.sport!, ym(cell))
   }
 
   return (
@@ -143,6 +154,8 @@ export function Overview({ category, daily }: Props) {
             height={height}
             onMouseMove={onMove}
             onMouseLeave={clearTip}
+            onClick={onClick}
+            style={{ cursor: drillable(tip?.cell) ? 'pointer' : undefined }}
             role="img"
             aria-label={t.overviewLabel(label, fmtNum(total), unit)}
           >
@@ -174,9 +187,10 @@ export function Overview({ category, daily }: Props) {
             <Tooltip x={tip.x} y={tip.y} onScroll={clearTip}>
               <strong>{tip.cell.value > 0 ? `${fmtNum(tip.cell.value)} ${unit}` : t.noRecord}</strong>
               <span>
-                {tip.cell.year}-{String(tip.cell.month + 1).padStart(2, '0')}
+                {ym(tip.cell)}
                 {tip.cell.days > 0 && ` · ${t.activeIn(tip.cell.days)}`}
               </span>
+              {drillable(tip.cell) && <span className="tip-hint">{t.drillMonth}</span>}
             </Tooltip>
           )}
         </div>

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type MouseEvent } from 'react'
-import type { Category, Data } from '../types'
+import type { Category, Data, SportType } from '../types'
 import { addDays, fmtNum, isoDate } from '../lib/format'
 import { useI18n } from '../i18n'
 import { DownloadButton, Scale, Tooltip, downloadHeatmapPng, levelFill, quartileLevels, toViewport } from './heat'
@@ -15,6 +15,8 @@ interface Props {
   year: number
   category: Category
   daily: Data['daily']
+  /** sport categories: open that day's activities */
+  onDrill?: (type: SportType, period: string) => void
 }
 
 interface Cell {
@@ -25,7 +27,7 @@ interface Cell {
   level: number
 }
 
-export function Heatmap({ year, category, daily }: Props) {
+export function Heatmap({ year, category, daily, onDrill }: Props) {
   const { lang, t } = useI18n()
   const label = category.label[lang]
   const unit = category.unit[lang]
@@ -70,14 +72,22 @@ export function Heatmap({ year, category, daily }: Props) {
   const height = TOP + 7 * STEP
 
   // One handler on the whole grid: the hit target is the full step, not just the cell.
-  const onMove = (e: MouseEvent<SVGSVGElement>) => {
+  const cellAt = (e: MouseEvent<SVGSVGElement>) => {
     const rect = e.currentTarget.getBoundingClientRect()
     const sx = width / rect.width
     const x = (e.clientX - rect.left) * sx
     const y = (e.clientY - rect.top) * sx
-    const cell = byPos.get(`${Math.floor((x - LEFT) / STEP)}:${Math.floor((y - TOP) / STEP)}`)
+    return byPos.get(`${Math.floor((x - LEFT) / STEP)}:${Math.floor((y - TOP) / STEP)}`)
+  }
+  const onMove = (e: MouseEvent<SVGSVGElement>) => {
+    const cell = cellAt(e)
     if (!cell) return setTip(null)
     setTip({ cell, ...toViewport(e.currentTarget, width, LEFT + cell.week * STEP + CELL / 2, TOP + cell.dow * STEP) })
+  }
+  const drillable = (c?: Cell) => !!c && c.value > 0 && !!category.sport && !!onDrill
+  const onClick = (e: MouseEvent<SVGSVGElement>) => {
+    const cell = cellAt(e)
+    if (cell && drillable(cell)) onDrill!(category.sport!, cell.date)
   }
 
   const monthLabels = t.months.map((label, m) => {
@@ -147,6 +157,8 @@ export function Heatmap({ year, category, daily }: Props) {
             height={height}
             onMouseMove={onMove}
             onMouseLeave={clearTip}
+            onClick={onClick}
+            style={{ cursor: drillable(tip?.cell) ? 'pointer' : undefined }}
             role="img"
             aria-label={t.heatmapLabel(year, label, fmtNum(total), unit)}
           >
@@ -181,6 +193,7 @@ export function Heatmap({ year, category, daily }: Props) {
             <Tooltip x={tip.x} y={tip.y} onScroll={clearTip}>
               <strong>{tip.cell.value > 0 ? `${fmtNum(tip.cell.value)} ${unit}` : t.noRecord}</strong>
               <span>{tip.cell.date}</span>
+              {drillable(tip.cell) && <span className="tip-hint">{t.drillDay}</span>}
             </Tooltip>
           )}
         </div>

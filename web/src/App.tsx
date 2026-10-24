@@ -1,5 +1,5 @@
 import { Suspense, lazy, useEffect, useMemo, useState } from 'react'
-import { CATEGORIES, type Data } from './types'
+import { CATEGORIES, type Data, type Drill, type SportType } from './types'
 import { Heatmap } from './components/Heatmap'
 import { ActivityList } from './components/ActivityList'
 import { Overview } from './components/Overview'
@@ -30,6 +30,7 @@ export function App() {
   const [focus, setFocus] = useState<{ id: string; seq: number } | null>(null)
   const [tab, setTabState] = useState<Tab>(tabFromHash)
   const [mapFocus, setMapFocus] = useState<string | null>(null)
+  const [drill, setDrill] = useState<Drill | null>(null)
   const setTab = (next: Tab) => {
     setTabState(next)
     history.replaceState(null, '', next === 'overview' ? location.pathname + location.search : `#${next}`)
@@ -72,6 +73,12 @@ export function App() {
     const days = Object.entries(data.daily).filter(([d]) => d.startsWith(prefix))
     return CATEGORIES.filter((c) => days.some(([, m]) => (m[c.metric] ?? 0) > 0))
   }, [data, year])
+
+  const openDrill = (type: SportType, period: string) => {
+    setFocus(null)
+    setDrill({ type, period, seq: Date.now() })
+    setTab('activities')
+  }
 
   const switchLang = () => {
     const next = lang === 'zh' ? 'en' : 'zh'
@@ -131,6 +138,7 @@ export function App() {
                   setYear('all')
                   setFocus(null)
                   setMapFocus(null)
+                  setDrill(null)
                 }}
               >
                 {t.all}
@@ -143,6 +151,7 @@ export function App() {
                     setYear(y)
                     setFocus(null)
                     setMapFocus(null)
+                    setDrill(null)
                   }}
                 >
                   {y}
@@ -158,6 +167,7 @@ export function App() {
                   focusId={mapFocus}
                   onShowInList={(id) => {
                     setTab('activities')
+                    setDrill(null)
                     setFocus({ id, seq: Date.now() })
                   }}
                 />
@@ -170,9 +180,9 @@ export function App() {
                 <div className="panels">
                   {visible.map((c) =>
                     year === 'all' ? (
-                      <Overview key={c.key} category={c} daily={data.daily} />
+                      <Overview key={c.key} category={c} daily={data.daily} onDrill={openDrill} />
                     ) : (
-                      <Heatmap key={c.key} year={year} category={c} daily={data.daily} />
+                      <Heatmap key={c.key} year={year} category={c} daily={data.daily} onDrill={openDrill} />
                     ),
                   )}
                 </div>
@@ -186,12 +196,20 @@ export function App() {
                 <>
                   {/* stays pinned while the list scrolls under it */}
                   <div className="pb-sticky">
-                    <PersonalBests activities={yearActivities} onSelect={(id) => setFocus({ id, seq: Date.now() })} />
+                    <PersonalBests
+                      activities={yearActivities}
+                      prefer={drill?.type}
+                      onSelect={(id) => {
+                        setDrill(null)
+                        setFocus({ id, seq: Date.now() })
+                      }}
+                    />
                   </div>
                   <ActivityList
                     key={year}
                     activities={yearActivities}
                     focus={focus}
+                    drill={drill}
                     onShowMap={(id) => {
                       setMapFocus(id)
                       setTab('map')

@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from 'react'
-import { SPORT_LABEL, type Activity, type SportType, type Weather } from '../types'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { SPORT_LABEL, type Activity, type Drill, type SportType, type Weather } from '../types'
 import { fmtDuration, fmtNum, fmtSpeed } from '../lib/format'
 import { decodePolyline } from '../lib/polyline'
 import { load, save, useI18n, type Dict, type Lang } from '../i18n'
@@ -23,15 +23,20 @@ const SORT: Record<SortKey, (a: Activity) => number> = {
 export function ActivityList({
   activities,
   focus,
+  drill,
   onShowMap,
 }: {
   activities: Activity[]
   focus: { id: string; seq: number } | null
+  /** from a heatmap click: show that sport in that day or month */
+  drill: Drill | null
   onShowMap: (id: string) => void
 }) {
   const { lang, t } = useI18n()
   const sport = SPORT_LABEL[lang]
   const [filter, setFilter] = useState<SportType | 'all'>('all')
+  // 'YYYY-MM' or 'YYYY-MM-DD' prefix of activity dates, set by a heatmap drill-down
+  const [period, setPeriod] = useState<string | null>(null)
   const [shown, setShown] = useState(PAGE)
   const [view, setViewState] = useState<View>(() => (load('activityView') === 'table' ? 'table' : 'cards'))
   const setView = (v: View) => {
@@ -41,18 +46,22 @@ export function ActivityList({
   // table sort; the default (date, newest first) matches the card order
   const [sort, setSort] = useState<{ key: SortKey; desc: boolean }>({ key: 'date', desc: true })
 
+  const inPeriod = useMemo(
+    () => (period ? activities.filter((a) => a.date.startsWith(period)) : activities),
+    [activities, period],
+  )
   const types = useMemo(() => {
     const counts = new Map<SportType, number>()
-    for (const a of activities) counts.set(a.type, (counts.get(a.type) ?? 0) + 1)
+    for (const a of inPeriod) counts.set(a.type, (counts.get(a.type) ?? 0) + 1)
     return [...counts.entries()].sort((a, b) => b[1] - a[1])
-  }, [activities])
+  }, [inPeriod])
 
   const list = useMemo(() => {
-    const filtered = filter === 'all' ? activities : activities.filter((a) => a.type === filter)
+    const filtered = filter === 'all' ? inPeriod : inPeriod.filter((a) => a.type === filter)
     if (view === 'cards' || (sort.key === 'date' && sort.desc)) return filtered
     const f = SORT[sort.key]
     return [...filtered].sort((a, b) => (sort.desc ? f(b) - f(a) : f(a) - f(b)))
-  }, [activities, filter, view, sort])
+  }, [inPeriod, filter, view, sort])
 
   // Jump to a picked activity: reset filter and sort, widen the page so its row
   // exists, then scroll to it and flash it.
@@ -62,12 +71,29 @@ export function ActivityList({
     const idx = activities.findIndex((a) => a.id === focus.id)
     if (idx < 0) return
     setFilter('all')
+    setPeriod(null)
     setSort({ key: 'date', desc: true })
     setShown((n) => Math.max(n, Math.ceil((idx + 1) / PAGE) * PAGE))
     setFlash(focus)
     const timer = setTimeout(() => setFlash(null), 2400)
     return () => clearTimeout(timer)
   }, [focus, activities])
+  // Heatmap drill-down: narrow to that sport and period, then bring the list into
+  // view and flash every match.
+  const [flashAll, setFlashAll] = useState(false)
+  const head = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    if (!drill) return
+    setFilter(drill.type)
+    setPeriod(drill.period)
+    setSort({ key: 'date', desc: true })
+    setShown(PAGE)
+    setFlashAll(true)
+    requestAnimationFrame(() => head.current?.scrollIntoView({ block: 'start' }))
+    const timer = setTimeout(() => setFlashAll(false), 2400)
+    return () => clearTimeout(timer)
+  }, [drill])
+
   // Runs after the render that added the item, so the element exists. Long jumps
   // are instant (the flash shows where you landed); short ones scroll smoothly.
   useEffect(() => {
@@ -79,14 +105,19 @@ export function ActivityList({
   }, [flash])
 
   const page = list.slice(0, shown)
-  const isFlash = (a: Activity) => a.id === flash?.id
+  const isFlash = (a: Activity) => a.id === flash?.id || (flashAll && !!period)
 
   return (
     <section className="activities">
-      <div className="activities-head">
+      <div className="activities-head" ref={head}>
         <div className="chips" role="tablist">
+          {period && (
+            <button className="period-chip" onClick={() => setPeriod(null)} title={t.clearPeriod} aria-label={t.clearPeriod}>
+              {t.periodChip(period, filter === 'all' ? t.all : sport[filter])} ✕
+            </button>
+          )}
           <button className={filter === 'all' ? 'on' : ''} onClick={() => setFilter('all')}>
-            {t.all} {activities.length}
+            {t.all} {inPeriod.length}
           </button>
           {types.map(([type, n]) => (
             <button key={type} className={filter === type ? 'on' : ''} onClick={() => setFilter(type)}>

@@ -34,6 +34,13 @@ export interface Data {
   daily: Record<string, Record<string, number>>
 }
 
+/** A heatmap drill-down: show one sport's activities in a day ('YYYY-MM-DD') or month ('YYYY-MM'). */
+export interface Drill {
+  type: SportType
+  period: string
+  seq: number
+}
+
 export interface Category {
   key: string
   label: Record<Lang, string>
@@ -46,15 +53,17 @@ export interface Category {
   goalMetric?: string
   /** daily metric marking days that keep a streak alive without counting as active */
   bridgeMetric?: string
+  /** sport behind the metric; its heatmap cells link to those activities */
+  sport?: SportType
 }
 
 // Each category gets its own heatmap (small multiples), so color only has to
 // identify the panel; it is never the sole label. Order keeps the two greens
 // (steps, Duolingo) apart.
 export const CATEGORIES: Category[] = [
-  { key: 'run', label: { zh: '跑步', en: 'Running' }, metric: 'run_km', scale: 1, unit: { zh: 'km', en: 'km' }, color: 'var(--c-run)' },
-  { key: 'ride', label: { zh: '骑行', en: 'Cycling' }, metric: 'ride_km', scale: 1, unit: { zh: 'km', en: 'km' }, color: 'var(--c-ride)' },
-  { key: 'hike', label: { zh: '徒步 / 爬山', en: 'Hiking' }, metric: 'hike_km', scale: 1, unit: { zh: 'km', en: 'km' }, color: 'var(--c-hike)' },
+  { key: 'run', label: { zh: '跑步', en: 'Running' }, metric: 'run_km', scale: 1, unit: { zh: 'km', en: 'km' }, color: 'var(--c-run)', sport: 'run' },
+  { key: 'ride', label: { zh: '骑行', en: 'Cycling' }, metric: 'ride_km', scale: 1, unit: { zh: 'km', en: 'km' }, color: 'var(--c-ride)', sport: 'ride' },
+  { key: 'hike', label: { zh: '徒步 / 爬山', en: 'Hiking' }, metric: 'hike_km', scale: 1, unit: { zh: 'km', en: 'km' }, color: 'var(--c-hike)', sport: 'hike' },
   { key: 'steps', label: { zh: '步数', en: 'Steps' }, metric: 'garmin_steps', scale: 1, unit: { zh: '步', en: 'steps' }, color: 'var(--c-steps)', goalMetric: 'garmin_step_goal' },
   { key: 'spotify', label: { zh: 'Spotify', en: 'Spotify' }, metric: 'spotify_minutes', scale: 1 / 60, unit: { zh: '小时', en: 'h' }, color: 'var(--c-spotify)' },
   { key: 'duolingo', label: { zh: '多邻国', en: 'Duolingo' }, metric: 'duolingo_minutes', scale: 1, unit: { zh: '分钟', en: 'min' }, color: 'var(--c-duolingo)', bridgeMetric: 'duolingo_streak_protected' },
