@@ -11,6 +11,7 @@ import { WeatherLine } from './ActivityList'
 const TOKEN = import.meta.env.VITE_MAPBOX_TOKEN as string | undefined
 // Set VITE_MAP_GCJ02=true if routes sit beside the roads on the China basemap.
 const SHIFT_GCJ02 = import.meta.env.VITE_MAP_GCJ02 === 'true'
+const MAP_LANG = { zh: 'zh-Hans', en: 'en' } as const
 const STYLE = { light: 'mapbox://styles/mapbox/light-v11', dark: 'mapbox://styles/mapbox/dark-v11' }
 
 interface Props {
@@ -56,7 +57,16 @@ export default function RouteMap({ activities, theme, focusId, onShowInList }: P
   useEffect(() => {
     if (!TOKEN || !box.current) return
     mapboxgl.accessToken = TOKEN
-    const m = new mapboxgl.Map({ container: box.current, style: STYLE[theme], center: [106.56, 29.52], zoom: 11 })
+    const m = new mapboxgl.Map({
+      container: box.current,
+      style: STYLE[theme],
+      center: [106.56, 29.52],
+      zoom: 11,
+      language: MAP_LANG[lang],
+    })
+    // follow the container, not just the window (layout changes, lazy CSS)
+    const ro = new ResizeObserver(() => m.resize())
+    ro.observe(box.current)
     m.addControl(new mapboxgl.NavigationControl({ showCompass: false }), 'top-right')
     let first = true
     m.on('style.load', () => {
@@ -73,11 +83,16 @@ export default function RouteMap({ activities, theme, focusId, onShowInList }: P
     m.on('mouseleave', 'routes-hit', () => (m.getCanvas().style.cursor = ''))
     map.current = m
     return () => {
+      ro.disconnect()
       m.remove()
       map.current = null
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  useEffect(() => {
+    map.current?.setLanguage(MAP_LANG[lang])
+  }, [lang])
 
   const styleRef = useRef(theme)
   useEffect(() => {

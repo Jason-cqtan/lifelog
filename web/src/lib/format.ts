@@ -16,10 +16,13 @@ export function fmtSpeed(a: Activity): string | null {
   const km = a.distance_m / 1000
   if (a.type === 'ride') return `${(km / (a.moving_time_s / 3600)).toFixed(1)} km/h`
   if (a.type === 'swim') return null
-  const pace = a.moving_time_s / km
-  const m = Math.floor(pace / 60)
-  const s = Math.round(pace % 60)
-  return `${m}'${String(s).padStart(2, '0')}"/km`
+  return fmtPace(a.moving_time_s / km)
+}
+
+/** Seconds per km as m'ss"/km; rounds first so 5:59.6 becomes 6'00", not 5'60". */
+export function fmtPace(secPerKm: number): string {
+  const p = Math.round(secPerKm)
+  return `${Math.floor(p / 60)}'${String(p % 60).padStart(2, '0')}"/km`
 }
 
 /** Local YYYY-MM-DD for a Date (the data is already bucketed in the export timezone). */

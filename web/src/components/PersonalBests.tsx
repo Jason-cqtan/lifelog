@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 import type { Activity } from '../types'
 import { useI18n } from '../i18n'
+import { fmtPace } from '../lib/format'
 
 const TARGETS = [
   { key: 'k5', meters: 5000 },
@@ -40,8 +41,7 @@ function clock(sec: number): string {
 }
 
 function pace(sec: number, meters: number): string {
-  const p = sec / (meters / 1000)
-  return `${Math.floor(p / 60)}'${String(Math.round(p % 60)).padStart(2, '0')}"/km`
+  return fmtPace(sec / (meters / 1000))
 }
 
 export function PersonalBests({ activities, onSelect }: { activities: Activity[]; onSelect: (id: string) => void }) {

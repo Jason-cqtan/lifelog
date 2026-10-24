@@ -463,7 +463,8 @@ button.pb:hover {
   border: 1px solid var(--hairline);
   background: var(--surface);
 }
-.map {
+/* more specific than mapbox-gl.css's .mapboxgl-map { position: relative } */
+.map-wrap .map {
   position: absolute;
   inset: 0;
 }
@@ -485,7 +486,7 @@ button.pb:hover {
 .map-card {
   position: absolute;
   left: 12px;
-  bottom: 12px;
+  bottom: 40px; /* keep Mapbox's logo (bottom-left) visible, as its terms require */
   width: min(340px, calc(100% - 24px));
   background: var(--surface);
   border: 1px solid var(--hairline);
