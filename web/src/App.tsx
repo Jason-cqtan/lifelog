@@ -9,7 +9,8 @@ export function App() {
   const [year, setYear] = useState(new Date().getFullYear())
 
   useEffect(() => {
-    fetch(import.meta.env.BASE_URL + 'data.json')
+    // GitHub Pages caches files for 10 min; revalidate so a fresh sync shows up at once.
+    fetch(import.meta.env.BASE_URL + 'data.json', { cache: 'no-cache' })
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`${r.status} ${r.statusText}`))))
       .then(setData)
       .catch((e) => setError(String(e)))
