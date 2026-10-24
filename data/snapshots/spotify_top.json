@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-24T12:08:51Z",
+ "updated_at": "2026-10-24T12:23:10Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -1111,6 +1111,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f178704d08abe2a3bf0bb1c366c9"
     },
     {
+     "id": "7mShFo2eYgVBQFZBCilhtl",
+     "name": "Leah Dou",
+     "image": "https://i.scdn.co/image/ab6761610000f1780f50807360beac5d44016b0c"
+    },
+    {
      "id": "5uCktjKM1Rf9VnUvFD6j17",
      "name": "Solar Heavy",
      "image": "https://i.scdn.co/image/ab6761610000f1782b1c6db6ed003d0e72c160e6"
@@ -1121,14 +1126,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f1780c68f6c95232e716f0abee8d"
     },
     {
-     "id": "2elBjNSdBE2Y3f0j1mjrql",
-     "name": "Jay Chou",
-     "image": "https://i.scdn.co/image/ab6761610000f17887fbbe9ed03fbb500595e720"
-    },
-    {
      "id": "5cj0lLjcoR7YOSnhnX0Po5",
      "name": "Doja Cat",
      "image": "https://i.scdn.co/image/ab6761610000f1788a0644455ebfa7d3976f5101"
+    },
+    {
+     "id": "2elBjNSdBE2Y3f0j1mjrql",
+     "name": "Jay Chou",
+     "image": "https://i.scdn.co/image/ab6761610000f17887fbbe9ed03fbb500595e720"
     },
     {
      "id": "04gDigrS5kc9YWfZHwBETP",
@@ -1218,6 +1223,13 @@
      "artist": "許嵩, 安琪",
      "album": "愛情裡的眼淚",
      "image": "https://i.scdn.co/image/ab67616d00001e02d576449d08b52f960be0437f"
+    },
+    {
+     "id": "2nzYi54BL2YsMJsBK9CBMZ",
+     "name": "Satellite",
+     "artist": "落日飛車 Sunset Rollercoaster, Leah Dou",
+     "album": "QUIT QUIETLY",
+     "image": "https://i.scdn.co/image/ab67616d00001e0272a2a486626ed84531f6cceb"
     },
     {
      "id": "2usrT8QIbIk9y0NEtQwS4j",
@@ -1346,6 +1358,20 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02031ac1c7fc7b2c6e5e3a4677"
     },
     {
+     "id": "0VdLdZ1UQKrIi1Nxzb9UTt",
+     "name": "空中飛人",
+     "artist": "Leah Dou",
+     "album": "空中飛人",
+     "image": "https://i.scdn.co/image/ab67616d00001e02d65beb03c59661d6e737b5e4"
+    },
+    {
+     "id": "0oEyHA3ykAxKcdbE9l6Vnp",
+     "name": "煙花",
+     "artist": "Leah Dou",
+     "album": "春遊",
+     "image": "https://i.scdn.co/image/ab67616d00001e02f77aacc26fe8d9d24583632a"
+    },
+    {
      "id": "0phl4jBlBCpPmm7IDr2RFL",
      "name": "驚鴻一面",
      "artist": "許嵩",
@@ -1465,32 +1491,11 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02a662d4f9caf831be1fb43438"
     },
     {
-     "id": "3ZG7NSnamNqcg6aum8zrC3",
-     "name": "庐州月",
-     "artist": "許嵩",
-     "album": "尋霧啟示",
-     "image": "https://i.scdn.co/image/ab67616d00001e029e650f7adeb89c79e738bf62"
-    },
-    {
-     "id": "3b24yvdqGL7nGL91eCNfiQ",
-     "name": "Free Orbiter",
-     "artist": "Jens Buchert",
-     "album": "Electronic Space Lounge - Three",
-     "image": "https://i.scdn.co/image/ab67616d00001e027b151820c9ddaffeb7e177ce"
-    },
-    {
-     "id": "3kXoKlD84c6OmIcOLfrfEs",
-     "name": "September",
-     "artist": "Earth, Wind \u0026 Fire",
-     "album": "September (sped up + slowed)",
-     "image": "https://i.scdn.co/image/ab67616d00001e020faf2fc17446651865ce2282"
-    },
-    {
-     "id": "4DxybsoSiMUW0JI2oM0SSN",
-     "name": "Patience",
-     "artist": "Take That",
-     "album": "Beautiful World",
-     "image": "https://i.scdn.co/image/ab67616d00001e0206e7629fa095158d50b73d57"
+     "id": "3WjIpnd9sfMOiLNZ7rwcbE",
+     "name": "Fruit Fly",
+     "artist": "Leah Dou, The Black Skirts",
+     "album": "Fruit Fly",
+     "image": "https://i.scdn.co/image/ab67616d00001e024fd6df486e859dac4d6ab281"
     }
    ]
   }
