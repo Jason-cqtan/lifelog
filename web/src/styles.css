@@ -1013,3 +1013,137 @@ button.pb-ride:hover {
 .duo-courses .rank-name span {
   white-space: normal;
 }
+
+/* calendar + summary above the activity details */
+.act-top {
+  display: grid;
+  grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+  align-items: start;
+}
+.act-top.single {
+  grid-template-columns: minmax(0, 1fr);
+}
+@media (max-width: 760px) {
+  .act-top {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.cal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cal-head h3 {
+  margin: 0;
+  font-size: 17px;
+}
+.cal-nav button,
+.cal-jump button {
+  border: none;
+  background: none;
+  color: var(--text-secondary);
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+.cal-nav button {
+  font-size: 18px;
+}
+.cal-nav button:hover:not(:disabled),
+.cal-jump button:hover:not(:disabled) {
+  background: color-mix(in oklab, var(--text-primary) 6%, transparent);
+  color: var(--text-primary);
+}
+.cal-nav button:disabled,
+.cal-jump button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.cal-sub {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+  margin: 8px 0 6px;
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+  text-align: center;
+}
+.cal-dow {
+  color: var(--text-muted);
+  font-size: 12px;
+  padding: 4px 0;
+}
+.cal-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+button.cal-day {
+  border: 1px solid transparent;
+  padding: 2px 0;
+}
+.cal-day.has {
+  background: color-mix(in oklab, var(--day) 22%, transparent);
+  color: color-mix(in oklab, var(--day) 80%, var(--text-primary));
+  font-weight: 600;
+}
+.cal-day.has small {
+  font-size: 10px;
+  font-weight: 500;
+}
+.cal-day.has:hover,
+.cal-day.on {
+  border-color: var(--day);
+}
+.summary h3 {
+  margin: 0 0 10px;
+  font-size: 15px;
+}
+.sum-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 10px 16px;
+  margin: 0 0 12px;
+}
+.sum-grid dt {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+.sum-grid dd {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.sum-table tbody tr {
+  cursor: pointer;
+}
+.sum-table tbody tr:hover {
+  background: color-mix(in oklab, var(--text-primary) 4%, transparent);
+}
+.sum-table tbody tr.on {
+  background: color-mix(in oklab, var(--c-run) 14%, transparent);
+}
+.summary .sum-table th.num {
+  width: auto;
+}
+.summary .sum-table th:first-child {
+  width: 5em;
+}
+.summary .sum-table td:first-child {
+  white-space: nowrap;
+}

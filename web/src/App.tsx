@@ -284,6 +284,7 @@ export function App() {
                   <ActivityList
                     key={year}
                     activities={yearActivities}
+                    year={year}
                     focus={focus}
                     drill={drill}
                     onShowMap={(id) => {

@@ -4,6 +4,8 @@ import { fmtDuration, fmtNum, fmtSpeed } from '../lib/format'
 import { decodePolyline } from '../lib/polyline'
 import { load, save, useI18n, type Dict, type Lang } from '../i18n'
 import { weatherLabel, windLabel } from '../lib/weather'
+import { MonthCalendar } from './MonthCalendar'
+import { ActivitySummary } from './ActivitySummary'
 
 const PAGE = 24
 // quick "at least N km" filters
@@ -24,11 +26,14 @@ const SORT: Record<SortKey, (a: Activity) => number> = {
 
 export function ActivityList({
   activities,
+  year,
   focus,
   drill,
   onShowMap,
 }: {
   activities: Activity[]
+  /** the selected year; the month calendar is hidden for 'all' */
+  year: number | 'all'
   focus: { id: string; seq: number } | null
   /** from a heatmap click: show that sport in that day or month */
   drill: Drill | null
@@ -112,6 +117,19 @@ export function ActivityList({
     el.scrollIntoView({ behavior: far ? 'auto' : 'smooth', block: 'center' })
   }, [flash])
 
+  // the calendar shows the whole month: sport and distance filters, not the date one
+  const calActs = useMemo(
+    () =>
+      activities.filter(
+        (a) => (filter === 'all' || a.type === filter) && (minKm === null || a.distance_m >= minKm * 1000),
+      ),
+    [activities, filter, minKm],
+  )
+  const pickPeriod = (p: string | null) => {
+    setPeriod(p)
+    setShown(PAGE)
+  }
+
   const page = list.slice(0, shown)
   const isFlash = (a: Activity) => a.id === flash?.id || (flashAll && !!period)
 
@@ -158,6 +176,12 @@ export function ActivityList({
             </button>
           ))}
         </div>
+      </div>
+
+      {/* summary sits above the details, like running_page */}
+      <div className={year === 'all' ? 'act-top single' : 'act-top'}>
+        {year !== 'all' && <MonthCalendar year={year} activities={calActs} selected={period} onPick={pickPeriod} />}
+        <ActivitySummary list={list} year={year} period={period} onPick={pickPeriod} />
       </div>
 
       {view === 'cards' ? (
