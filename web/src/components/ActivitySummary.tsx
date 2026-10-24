@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useState, type MouseEvent } from 'react'
 import type { Activity } from '../types'
 import { load, save, useI18n } from '../i18n'
-import { fmtDuration, fmtNum, fmtPace } from '../lib/format'
+import { cadenceName, fmtCadence, fmtDuration, fmtNum, fmtPace } from '../lib/format'
 import { Tooltip, toViewport } from './heat'
 
 interface Totals {
@@ -117,6 +117,8 @@ export function ActivitySummary({
   const label = (k: string) => (year === 'all' ? k : lang === 'zh' ? `${Number(k.slice(5))}月` : t.months[Number(k.slice(5)) - 1])
   const color = COLOR[single(base) ?? ''] ?? 'var(--c-run)'
   const pick = (k: string) => onPick(period === k ? null : k)
+  // a cadence column only makes sense for one sport (steps and pedal strokes don't mix)
+  const cadType = single(base)
 
   return (
     <section className="panel summary">
@@ -145,8 +147,8 @@ export function ActivitySummary({
         <Stat label={t.avgDist} value={all.count ? `${fmtNum(all.meters / 1000 / all.count, 2)} km` : '—'} />
         <Stat label={t.totalElev} value={all.elev ? `${fmtNum(all.elev, 0)} m` : '—'} />
         <Stat
-          label={t.avgCadence}
-          value={all.cadence && single(list) ? `${all.cadence} ${single(list) === 'ride' ? 'rpm' : 'spm'}` : '—'}
+          label={cadenceName(t, list.map((a) => a.type), true)}
+          value={(single(list) && fmtCadence({ type: single(list)!, avg_cadence: all.cadence ?? 0 })) || '—'}
         />
       </dl>
 
@@ -161,6 +163,7 @@ export function ActivitySummary({
               <th className="num">{t.cols.distance}</th>
               <th className="num">{t.totalTime}</th>
               <th className="num">{t.avgHr}</th>
+              {cadType && <th className="num">{cadenceName(t, [cadType], true)}</th>}
             </tr>
           </thead>
           <tbody>
@@ -171,6 +174,7 @@ export function ActivitySummary({
                 <td className="num">{fmtNum(tt.meters / 1000)} km</td>
                 <td className="num">{fmtDuration(tt.secs, t)}</td>
                 <td className="num">{tt.hr ?? '—'}</td>
+                {cadType && <td className="num">{tt.cadence ?? '—'}</td>}
               </tr>
             ))}
           </tbody>

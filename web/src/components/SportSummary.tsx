@@ -1,12 +1,12 @@
 import { useMemo } from 'react'
 import { SPORT_LABEL, type Activity, type Category } from '../types'
 import { useI18n } from '../i18n'
-import { fmtDuration, fmtNum, fmtSpeed } from '../lib/format'
+import { cadenceName, fmtCadence, fmtDuration, fmtNum, fmtSpeed } from '../lib/format'
 import { Scale } from './heat'
 
 /**
  * Bottom of a heatmap panel: the color legend on the left and, for sport
- * categories, count / total time / average heart rate on the right, then the
+ * categories, count / total time / average heart rate / cadence on the right, then the
  * most recent activity as a link into the activity list.
  */
 export function HeatFooter({
@@ -24,15 +24,26 @@ export function HeatFooter({
     let secs = 0
     let hrSecs = 0
     let hrWeighted = 0
+    let cadSecs = 0
+    let cadWeighted = 0
     for (const a of activities) {
       secs += a.moving_time_s
       if (a.avg_hr) {
         hrSecs += a.moving_time_s
         hrWeighted += a.avg_hr * a.moving_time_s
       }
+      if (a.avg_cadence) {
+        cadSecs += a.moving_time_s
+        cadWeighted += a.avg_cadence * a.moving_time_s
+      }
     }
     // time-weighted, so a long run counts more than a short one
-    return { count: activities.length, secs, hr: hrSecs > 0 ? Math.round(hrWeighted / hrSecs) : null }
+    return {
+      count: activities.length,
+      secs,
+      hr: hrSecs > 0 ? Math.round(hrWeighted / hrSecs) : null,
+      cadence: cadSecs > 0 ? Math.round(cadWeighted / cadSecs) : null,
+    }
   }, [activities])
 
   const latest = activities[0]
@@ -56,6 +67,12 @@ export function HeatFooter({
                 <dd>♥ {sum.hr}</dd>
               </div>
             )}
+            {sum.cadence && category.sport && (
+              <div>
+                <dt>{cadenceName(t, [category.sport], true)}</dt>
+                <dd>{fmtCadence({ type: category.sport, avg_cadence: sum.cadence })}</dd>
+              </div>
+            )}
           </dl>
         )}
       </div>
@@ -68,6 +85,7 @@ export function HeatFooter({
           <span>{fmtDuration(latest.moving_time_s, t)}</span>
           {fmtSpeed(latest) && <span>{fmtSpeed(latest)}</span>}
           {!!latest.avg_hr && <span>♥ {Math.round(latest.avg_hr)}</span>}
+          {fmtCadence(latest) && <span>{fmtCadence(latest)}</span>}
           <span className="latest-go" aria-hidden>
             →
           </span>

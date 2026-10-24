@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { SPORT_LABEL, type Activity, type Drill, type SportType, type Weather } from '../types'
-import { fmtCadence, fmtDuration, fmtNum, fmtSpeed } from '../lib/format'
+import { cadenceName, fmtCadence, fmtDuration, fmtNum, fmtSpeed } from '../lib/format'
 import { decodePolyline } from '../lib/polyline'
 import { load, save, useI18n, type Dict, type Lang } from '../i18n'
 import { weatherLabel, windLabel } from '../lib/weather'
@@ -138,6 +138,7 @@ export function ActivityList({
   }
 
   const page = list.slice(0, shown)
+  const listTypes = useMemo(() => new Set(list.map((a) => a.type)), [list])
   const isFlash = (a: Activity) => a.id === flash?.id || (flashAll && !!period)
 
   return (
@@ -234,7 +235,11 @@ export function ActivityList({
                   {fmtSpeed(a) && <span>{fmtSpeed(a)}</span>}
                   {!!a.elevation_gain_m && <span>↑{Math.round(a.elevation_gain_m)} m</span>}
                   {!!a.avg_hr && <span>♥ {Math.round(a.avg_hr)}</span>}
-                  {fmtCadence(a) && <span title={a.stride_m ? t.strideTip(a.stride_m.toFixed(2)) : undefined}>{fmtCadence(a)}</span>}
+                  {fmtCadence(a) && (
+                    <span title={[cadenceName(t, [a.type]), a.stride_m && t.strideTip(a.stride_m.toFixed(2))].filter(Boolean).join(' · ')}>
+                      {fmtCadence(a)}
+                    </span>
+                  )}
                 </div>
                 {a.weather && <WeatherLine w={a.weather} lang={lang} t={t} />}
               </div>
@@ -254,7 +259,7 @@ export function ActivityList({
                 <SortTh k="pace" label={t.cols.pace} sort={sort} setSort={setSort} t={t} num />
                 <SortTh k="elev" label={t.cols.elev} sort={sort} setSort={setSort} t={t} num />
                 <SortTh k="hr" label={t.cols.hr} sort={sort} setSort={setSort} t={t} num />
-                <SortTh k="cadence" label={t.cols.cadence} sort={sort} setSort={setSort} t={t} num />
+                <SortTh k="cadence" label={cadenceName(t, listTypes)} sort={sort} setSort={setSort} t={t} num />
                 <th>{t.cols.weather}</th>
                 <th>{t.cols.source}</th>
                 <th aria-label={t.showOnMap} />
@@ -276,7 +281,8 @@ export function ActivityList({
                     <td className="num">{a.elevation_gain_m ? `${Math.round(a.elevation_gain_m)} m` : '—'}</td>
                     <td className="num">{a.avg_hr ? Math.round(a.avg_hr) : '—'}</td>
                     <td className="num" title={a.stride_m ? t.strideTip(a.stride_m.toFixed(2)) : undefined}>
-                      {a.avg_cadence ? Math.round(a.avg_cadence) : '—'}
+                      {/* with runs and rides mixed, the unit tells steps from pedal strokes */}
+                      {a.avg_cadence ? (listTypes.size > 1 && listTypes.has('ride') ? fmtCadence(a) : Math.round(a.avg_cadence)) : '—'}
                     </td>
                     <td className="nowrap">
                       {a.weather && w ? (

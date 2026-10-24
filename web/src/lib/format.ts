@@ -1,4 +1,4 @@
-import type { Activity } from '../types'
+import type { Activity, SportType } from '../types'
 import type { Dict } from '../i18n'
 
 export function fmtNum(v: number, digits = 1): string {
@@ -37,6 +37,18 @@ export function addDays(d: Date, n: number): Date {
   const out = new Date(d)
   out.setDate(out.getDate() + n)
   return out
+}
+
+/**
+ * What cadence means for these sports: 步频 (steps) on foot, 踏频 (pedal
+ * strokes) on a bike, both when the list mixes them.
+ */
+export function cadenceName(t: Dict, types: Iterable<SportType>, avg = false): string {
+  const set = new Set(types)
+  const ride = set.has('ride')
+  if (ride && set.size > 1) return t.cadenceMixed
+  if (avg) return ride ? t.avgPedal : t.avgCadence
+  return ride ? t.cadencePedal : t.cadenceStep
 }
 
 /** "169 spm" for foot sports, "85 rpm" for rides. */
