@@ -5,6 +5,7 @@ import { ActivityList } from './components/ActivityList'
 import { Overview } from './components/Overview'
 import { PersonalBests } from './components/PersonalBests'
 import { Music } from './components/Music'
+import { SpotifyTop } from './components/SpotifyTop'
 import { DICTS, I18n, LOCALE, initialLang, save, type Lang } from './i18n'
 
 // mapbox-gl is large; load it only when the map tab opens
@@ -212,12 +213,16 @@ export function App() {
               </Suspense>
             )}
 
-            {tab === 'music' &&
-              (data.music?.[String(year)] ? (
-                <Music key={year} stats={data.music[String(year)]} />
-              ) : (
-                <p className="empty">{t.noMusic}</p>
-              ))}
+            {tab === 'music' && (
+              <>
+                {data.spotify_top && <SpotifyTop top={data.spotify_top} />}
+                {data.music?.[String(year)] ? (
+                  <Music key={year} stats={data.music[String(year)]} />
+                ) : (
+                  <p className="empty">{t.noMusic}</p>
+                )}
+              </>
+            )}
 
             {tab === 'overview' && (
               <>

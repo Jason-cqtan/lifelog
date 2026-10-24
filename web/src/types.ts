@@ -40,6 +40,15 @@ export interface MusicStats {
   hours: number[][]
 }
 
+export interface SpotifyTop {
+  updated_at: string
+  /** short_term ~4 weeks, medium_term ~6 months, long_term ~1 year */
+  ranges: Record<string, {
+    artists: { id: string; name: string; image?: string; genres?: string[] }[]
+    tracks: { id: string; name: string; artist: string; album?: string; image?: string }[]
+  }>
+}
+
 export interface Data {
   generated_at: string
   timezone: string
@@ -47,6 +56,7 @@ export interface Data {
   daily: Record<string, Record<string, number>>
   /** keyed by year and "all" */
   music?: Record<string, MusicStats>
+  spotify_top?: SpotifyTop
 }
 
 /** A heatmap drill-down: show one sport's activities in a day ('YYYY-MM-DD') or month ('YYYY-MM'). */

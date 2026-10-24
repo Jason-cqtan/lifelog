@@ -13,6 +13,7 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
+	"strings"
 	"time"
 
 	"github.com/Jason-cqtan/lifelog/internal/model"
@@ -23,6 +24,9 @@ type Store struct {
 	activities map[string]model.Activity
 	daily      map[string]model.DailyMetric
 	plays      map[string]model.Play
+	// snapshots are whole documents replaced on each sync (e.g. Spotify's top
+	// lists), stored as data/snapshots/<name>.json
+	snapshots map[string]json.RawMessage
 }
 
 func Open(dir string) (*Store, error) {
@@ -31,6 +35,7 @@ func Open(dir string) (*Store, error) {
 		activities: map[string]model.Activity{},
 		daily:      map[string]model.DailyMetric{},
 		plays:      map[string]model.Play{},
+		snapshots:  map[string]json.RawMessage{},
 	}
 	acts, err := readArray[model.Activity](filepath.Join(dir, "activities.json"))
 	if err != nil {
@@ -56,7 +61,34 @@ func Open(dir string) (*Store, error) {
 			s.plays[p.Key()] = p
 		}
 	}
+	snaps, _ := filepath.Glob(filepath.Join(dir, "snapshots", "*.json"))
+	for _, f := range snaps {
+		b, err := os.ReadFile(f)
+		if err != nil {
+			return nil, err
+		}
+		s.snapshots[strings.TrimSuffix(filepath.Base(f), ".json")] = b
+	}
 	return s, nil
+}
+
+// PutSnapshot replaces the named snapshot document.
+func (s *Store) PutSnapshot(name string, v any) error {
+	b, err := json.MarshalIndent(v, "", " ")
+	if err != nil {
+		return err
+	}
+	s.snapshots[name] = append(b, '\n')
+	return nil
+}
+
+// Snapshot decodes the named snapshot into v; ok is false if there is none.
+func (s *Store) Snapshot(name string, v any) (ok bool, err error) {
+	b, found := s.snapshots[name]
+	if !found {
+		return false, nil
+	}
+	return true, json.Unmarshal(b, v)
 }
 
 // UpsertActivity reports whether the activity is new.
@@ -141,6 +173,15 @@ func (s *Store) Save() error {
 	}
 	if err := writeArray(filepath.Join(s.dir, "daily.json"), s.Daily()); err != nil {
 		return err
+	}
+	for name, b := range s.snapshots {
+		path := filepath.Join(s.dir, "snapshots", name+".json")
+		if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
+			return err
+		}
+		if err := os.WriteFile(path, b, 0o644); err != nil {
+			return err
+		}
 	}
 	byYear := map[int][]model.Play{}
 	for _, p := range s.Plays() {

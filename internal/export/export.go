@@ -38,6 +38,8 @@ type Output struct {
 	Daily map[string]map[string]float64 `json:"daily"`
 	// Music is listening stats keyed by year ("2026") and "all".
 	Music map[string]*MusicStats `json:"music,omitempty"`
+	// SpotifyTop is Spotify's own top-items ranking (not filtered by year).
+	SpotifyTop *model.SpotifyTop `json:"spotify_top,omitempty"`
 }
 
 func Build(st *store.Store, loc *time.Location) Output {
@@ -82,6 +84,10 @@ func Build(st *store.Store, loc *time.Location) Output {
 	}
 	if len(plays) > 0 {
 		out.Music = Music(plays, loc)
+	}
+	var top model.SpotifyTop
+	if ok, err := st.Snapshot("spotify_top", &top); ok && err == nil {
+		out.SpotifyTop = &top
 	}
 	for _, m := range out.Daily {
 		for k, v := range m {

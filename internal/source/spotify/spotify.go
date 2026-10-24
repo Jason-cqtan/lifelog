@@ -5,6 +5,8 @@
 // past, request "Extended streaming history" in Spotify's privacy settings and run
 // `lifelog import spotify-history Streaming_History_Audio_*.json`.
 //
+// Also stores Spotify's own top artists / tracks (needs the user-top-read scope).
+//
 // Env: SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_REFRESH_TOKEN
 // (get the refresh token once with `lifelog auth spotify`).
 package spotify
@@ -95,7 +97,98 @@ func (s Spotify) Sync(ctx context.Context, env *source.Env) error {
 		}
 	}
 	env.Log.Printf("spotify: %d new plays", added)
+
+	// Spotify's own top artists / tracks. Tokens issued before user-top-read was
+	// requested get 403 here; plays above still sync.
+	top, err := fetchTop(ctx, env, tok.AccessToken)
+	switch {
+	case err != nil && strings.Contains(err.Error(), "403"):
+		env.Log.Printf("spotify: top lists skipped: token lacks user-top-read; re-run `lifelog auth spotify`")
+	case err != nil:
+		return fmt.Errorf("top lists: %w", err)
+	default:
+		if err := env.Store.PutSnapshot("spotify_top", top); err != nil {
+			return err
+		}
+		env.Log.Printf("spotify: top lists updated")
+	}
 	return nil
+}
+
+// TopRanges are Spotify's time ranges for /me/top: ~4 weeks, ~6 months, ~1 year.
+var TopRanges = []string{"short_term", "medium_term", "long_term"}
+
+type image struct {
+	URL   string `json:"url"`
+	Width int    `json:"width"`
+}
+
+// thumb picks the smallest image that is still at least 120px wide.
+func thumb(imgs []image) string {
+	best := ""
+	bestW := 1 << 30
+	for _, im := range imgs {
+		if im.Width >= 120 && im.Width < bestW {
+			best, bestW = im.URL, im.Width
+		}
+	}
+	if best == "" && len(imgs) > 0 {
+		best = imgs[0].URL
+	}
+	return best
+}
+
+func fetchTop(ctx context.Context, env *source.Env, access string) (*model.SpotifyTop, error) {
+	get := func(path string, out any) error {
+		req, _ := http.NewRequestWithContext(ctx, http.MethodGet, "https://api.spotify.com/v1/me/top/"+path, nil)
+		req.Header.Set("Authorization", "Bearer "+access)
+		return source.DoJSON(env.HTTP, req, out)
+	}
+	top := &model.SpotifyTop{UpdatedAt: time.Now().UTC().Truncate(time.Second), Ranges: map[string]model.TopLists{}}
+	for _, r := range TopRanges {
+		var artists struct {
+			Items []struct {
+				ID     string   `json:"id"`
+				Name   string   `json:"name"`
+				Genres []string `json:"genres"`
+				Images []image  `json:"images"`
+			} `json:"items"`
+		}
+		if err := get("artists?limit=50&time_range="+r, &artists); err != nil {
+			return nil, err
+		}
+		var tracks struct {
+			Items []struct {
+				ID      string `json:"id"`
+				Name    string `json:"name"`
+				Artists []struct {
+					Name string `json:"name"`
+				} `json:"artists"`
+				Album struct {
+					Name   string  `json:"name"`
+					Images []image `json:"images"`
+				} `json:"album"`
+			} `json:"items"`
+		}
+		if err := get("tracks?limit=50&time_range="+r, &tracks); err != nil {
+			return nil, err
+		}
+		var lists model.TopLists
+		for _, a := range artists.Items {
+			lists.Artists = append(lists.Artists, model.TopArtist{ID: a.ID, Name: a.Name, Image: thumb(a.Images), Genres: a.Genres})
+		}
+		for _, t := range tracks.Items {
+			var names []string
+			for _, a := range t.Artists {
+				names = append(names, a.Name)
+			}
+			lists.Tracks = append(lists.Tracks, model.TopTrack{
+				ID: t.ID, Name: t.Name, Artist: strings.Join(names, ", "), Album: t.Album.Name, Image: thumb(t.Album.Images),
+			})
+		}
+		top.Ranges[r] = lists
+	}
+	return top, nil
 }
 
 // ImportHistory reads a Spotify data-export file. It accepts both the
@@ -156,7 +249,7 @@ func Authorize(ctx context.Context, c *http.Client, clientID, secret string) (st
 		"client_id":     {clientID},
 		"response_type": {"code"},
 		"redirect_uri":  {oauth.RedirectURI},
-		"scope":         {"user-read-recently-played"},
+		"scope":         {"user-read-recently-played user-top-read"},
 	}.Encode()
 	code, err := oauth.WaitForCode(ctx, authURL)
 	if err != nil {

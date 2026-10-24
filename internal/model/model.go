@@ -89,3 +89,30 @@ func NormalizeType(raw string) SportType {
 	}
 	return Workout
 }
+
+// SpotifyTop is Spotify's own "top items" ranking per time range
+// (short_term ~4 weeks, medium_term ~6 months, long_term ~1 year).
+type SpotifyTop struct {
+	UpdatedAt time.Time           `json:"updated_at"`
+	Ranges    map[string]TopLists `json:"ranges"`
+}
+
+type TopLists struct {
+	Artists []TopArtist `json:"artists"`
+	Tracks  []TopTrack  `json:"tracks"`
+}
+
+type TopArtist struct {
+	ID     string   `json:"id"`
+	Name   string   `json:"name"`
+	Image  string   `json:"image,omitempty"`
+	Genres []string `json:"genres,omitempty"`
+}
+
+type TopTrack struct {
+	ID     string `json:"id"`
+	Name   string `json:"name"`
+	Artist string `json:"artist"`
+	Album  string `json:"album,omitempty"`
+	Image  string `json:"image,omitempty"`
+}
