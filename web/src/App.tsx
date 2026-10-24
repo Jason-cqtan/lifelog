@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect, useMemo, useRef, useState } from 'react'
+import { Suspense, lazy, useEffect, useMemo, useState } from 'react'
 import { CATEGORIES, type Data, type Drill, type SportType } from './types'
 import { Heatmap } from './components/Heatmap'
 import { ActivityList } from './components/ActivityList'
@@ -8,6 +8,7 @@ import { Music } from './components/Music'
 import { SpotifyTop } from './components/SpotifyTop'
 import { DuolingoCourses } from './components/DuolingoCourses'
 import { RouteWall } from './components/RouteWall'
+import { useHeightVar } from './lib/useHeightVar'
 import { DICTS, I18n, LOCALE, initialLang, save, type Lang } from './i18n'
 
 // mapbox-gl is large; load it only when the map tab opens
@@ -83,16 +84,10 @@ export function App() {
     if (year !== 'all' && tabYears.length > 0 && !tabYears.includes(year)) setYear(tabYears[0])
   }, [year, tabYears])
 
-  // Header, tabs and years stay pinned; publish their height so the personal-bests
-  // bar can pin right under them.
-  const topbar = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    const el = topbar.current
-    if (!el) return
-    const ro = new ResizeObserver(() => document.documentElement.style.setProperty('--topbar-h', `${el.offsetHeight}px`))
-    ro.observe(el)
-    return () => ro.disconnect()
-  }, [])
+  // Header, tabs and years stay pinned, then the personal bests under them; publish
+  // their heights so each next pinned bar sits right below.
+  const topbar = useHeightVar('--topbar-h')
+  const pbBar = useHeightVar('--pb-h')
 
   // Only categories with at least one non-zero day in the selected year (or ever,
   // for "all") get a panel.
@@ -284,7 +279,7 @@ export function App() {
               ) : (
                 <>
                   {/* stays pinned while the list scrolls under it */}
-                  <div className="pb-sticky">
+                  <div className="pb-sticky" ref={pbBar}>
                     <PersonalBests
                       activities={yearActivities}
                       prefer={drill?.type}
@@ -311,6 +306,17 @@ export function App() {
           </>
         )}
       </main>
+      <footer className="contact">
+        <span>{t.contact}</span>
+        <a href="https://t.me/aeiou_93" target="_blank" rel="noopener noreferrer" title="Telegram @aeiou_93">
+          <TelegramIcon />
+          <span>Telegram</span>
+        </a>
+        <a href="https://x.com/O_achengtan" target="_blank" rel="noopener noreferrer" title="X @O_achengtan">
+          <XIcon />
+          <span>X</span>
+        </a>
+      </footer>
     </I18n.Provider>
   )
 }
@@ -328,6 +334,22 @@ function MoonIcon() {
   return (
     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" aria-hidden>
       <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+    </svg>
+  )
+}
+
+function TelegramIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden>
+      <path d="M21.9 4.3 18.7 19.4c-.2 1.1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.4-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 13.1 1.4 11.6c-1-.3-1.1-1 .2-1.5L20.5 2.8c.9-.3 1.6.2 1.4 1.5z" />
+    </svg>
+  )
+}
+
+function XIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden>
+      <path d="M18.2 2.3h3.4l-7.4 8.4 8.7 11.5h-6.8l-5.3-7-6.1 7H1.3l7.9-9L.9 2.3h7l4.8 6.4 5.5-6.4zm-1.2 17.9h1.9L7.1 4.2H5.1l11.9 16z" />
     </svg>
   )
 }

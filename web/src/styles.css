@@ -349,7 +349,6 @@ button.pb-ride:hover {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 16px;
 }
 .activities h2 {
   margin: 0;
@@ -488,7 +487,7 @@ button.pb-ride:hover {
 }
 .map-wrap {
   position: relative;
-  height: max(420px, calc(100vh - 230px));
+  height: max(420px, calc(100vh - 230px - var(--footer-h)));
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--hairline);
@@ -659,9 +658,77 @@ button.pb-ride:hover {
   border-color: color-mix(in oklab, var(--c-run) 45%, transparent) !important;
   font-weight: 600;
 }
-/* the sticky bests bar would otherwise cover the list header after a jump */
+/* Under the bests bar, the sport / distance filters stay pinned, and the list
+   header (count + cards/table switch) pins under them once it is reached. */
+.activities {
+  --pinned-filters: calc(var(--topbar-h, 0px) + var(--pb-h, 0px));
+  --pinned-all: calc(var(--pinned-filters) + var(--filter-h, 0px) + var(--listhead-h, 0px));
+  scroll-margin-top: var(--pinned-filters);
+}
 .activities-head {
-  scroll-margin-top: calc(var(--topbar-h, 0px) + 150px);
+  position: sticky;
+  top: var(--pinned-filters);
+  z-index: 4;
+  background: var(--page);
+  padding: 8px 0;
+  margin-bottom: 8px;
+}
+.list-head {
+  position: sticky;
+  top: calc(var(--pinned-filters) + var(--filter-h, 0px));
+  z-index: 3;
+  background: var(--page);
+  padding: 8px 0;
+  border-bottom: 1px solid var(--hairline);
+}
+/* a jump to an activity lands it just below all the pinned bars */
+.activities .card,
+.activities tbody tr {
+  scroll-margin-top: calc(var(--pinned-all) + 12px);
+}
+
+/* contact links, fixed to the bottom of every page */
+:root {
+  --footer-h: 36px;
+}
+body {
+  padding-bottom: calc(var(--footer-h) + env(safe-area-inset-bottom, 0px));
+}
+.contact {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 15;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  height: var(--footer-h);
+  padding: 0 16px env(safe-area-inset-bottom, 0px);
+  box-sizing: content-box;
+  background: color-mix(in oklab, var(--page) 90%, transparent);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid var(--hairline);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.contact > span {
+  margin-right: 4px;
+}
+.contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+.contact a:hover,
+.contact a:focus-visible {
+  color: var(--text-primary);
+  background: var(--surface);
 }
 
 /* header, tabs and year filter stay pinned at the top of every tab */
@@ -719,6 +786,23 @@ button.pb-ride:hover {
   }
   .pb-sticky {
     padding: 6px 0 8px;
+  }
+  /* sport and distance chips share one swipeable row */
+  .activities > .activities-head {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 6px 0;
+  }
+  .activities > .activities-head .chips {
+    flex-wrap: nowrap;
+    flex: none;
+  }
+  .activities-head .chips button {
+    flex: none;
+  }
+  .list-head {
+    padding: 4px 0;
   }
   .pb-head {
     margin-bottom: 6px;
@@ -1311,7 +1395,7 @@ button.cal-day {
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  margin: 4px 0 10px;
+  margin: 4px 0 12px;
 }
 .list-head h3 {
   margin: 0;

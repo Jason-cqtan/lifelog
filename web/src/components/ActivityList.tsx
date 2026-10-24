@@ -6,6 +6,7 @@ import { load, save, useI18n, type Dict, type Lang } from '../i18n'
 import { weatherLabel, windLabel } from '../lib/weather'
 import { MonthCalendar } from './MonthCalendar'
 import { ActivitySummary } from './ActivitySummary'
+import { useHeightVar } from '../lib/useHeightVar'
 
 const PAGE = 24
 // quick "at least N km" filters
@@ -94,7 +95,10 @@ export function ActivityList({
   // Heatmap drill-down: narrow to that sport and period, then bring the list into
   // view and flash every match.
   const [flashAll, setFlashAll] = useState(false)
-  const head = useRef<HTMLDivElement>(null)
+  const top = useRef<HTMLElement>(null)
+  // the filters and the list header pin under the bests bar; publish their heights
+  const filterBar = useHeightVar('--filter-h')
+  const listBar = useHeightVar('--listhead-h')
   useEffect(() => {
     if (!drill) return
     setFilter(drill.type)
@@ -103,7 +107,7 @@ export function ActivityList({
     setSort({ key: 'date', desc: true })
     setShown(PAGE)
     setFlashAll(true)
-    requestAnimationFrame(() => head.current?.scrollIntoView({ block: 'start' }))
+    requestAnimationFrame(() => top.current?.scrollIntoView({ block: 'start' }))
     const timer = setTimeout(() => setFlashAll(false), 2400)
     return () => clearTimeout(timer)
   }, [drill])
@@ -115,7 +119,8 @@ export function ActivityList({
     const el = document.getElementById(`act-${flash.id}`)
     if (!el) return
     const far = Math.abs(el.getBoundingClientRect().top) > window.innerHeight * 2
-    el.scrollIntoView({ behavior: far ? 'auto' : 'smooth', block: 'center' })
+    // start, not center: scroll-margin-top keeps it clear of the pinned bars
+    el.scrollIntoView({ behavior: far ? 'auto' : 'smooth', block: 'start' })
   }, [flash])
 
   // the calendar shows the whole month: sport and distance filters, not the date one
@@ -135,8 +140,8 @@ export function ActivityList({
   const isFlash = (a: Activity) => a.id === flash?.id || (flashAll && !!period)
 
   return (
-    <section className="activities">
-      <div className="activities-head" ref={head}>
+    <section className="activities" ref={top}>
+      <div className="activities-head" ref={filterBar}>
         <div className="chips" role="tablist">
           {period && (
             <button className="period-chip" onClick={() => setPeriod(null)} title={t.clearPeriod} aria-label={t.clearPeriod}>
@@ -178,18 +183,18 @@ export function ActivityList({
       </div>
 
       {/* the view switch belongs to the list it changes, not to the summary above */}
-      <div className="list-head">
+      <div className="list-head" ref={listBar}>
         <h3>
           {t.details} <span>{t.itemsCount(list.length)}</span>
         </h3>
-          <div className="seg" role="group">
+        <div className="seg" role="group">
           {(['cards', 'table'] as const).map((v) => (
             <button key={v} className={view === v ? 'on' : ''} aria-pressed={view === v} onClick={() => setView(v)}>
               {v === 'cards' ? <CardsIcon /> : <TableIcon />}
               {v === 'cards' ? t.viewCards : t.viewTable}
             </button>
           ))}
-          </div>
+        </div>
       </div>
 
       {view === 'cards' ? (
