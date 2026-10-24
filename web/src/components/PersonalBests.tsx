@@ -4,7 +4,9 @@ import { useI18n } from '../i18n'
 import { fmtPace } from '../lib/format'
 
 const TARGETS = [
+  { key: 'mile', meters: 1609.344 },
   { key: 'k5', meters: 5000 },
+  { key: 'k10', meters: 10000 },
   { key: 'half', meters: 21097.5 },
   { key: 'full', meters: 42195 },
 ] as const
@@ -20,7 +22,7 @@ interface Best {
  * exact distance at its average pace.
  */
 export function bestEfforts(activities: Activity[]): Record<(typeof TARGETS)[number]['key'], Best | null> {
-  const out = { k5: null, half: null, full: null } as Record<(typeof TARGETS)[number]['key'], Best | null>
+  const out = Object.fromEntries(TARGETS.map((x) => [x.key, null])) as Record<(typeof TARGETS)[number]['key'], Best | null>
   for (const t of TARGETS) {
     for (const a of activities) {
       if (a.type !== 'run' || !a.moving_time_s) continue

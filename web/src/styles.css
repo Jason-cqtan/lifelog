@@ -282,9 +282,12 @@ h1 {
 }
 .pb-tiles {
   display: grid;
-  /* always one row, so the pinned bar stays short on phones */
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* always one row, so the pinned bar stays short; it scrolls sideways on phones */
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(118px, 1fr);
   gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
 .pb {
   display: flex;
