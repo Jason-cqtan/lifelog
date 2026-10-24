@@ -4,8 +4,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/yourname/lifelog/internal/model"
-	"github.com/yourname/lifelog/internal/store"
+	"github.com/Jason-cqtan/lifelog/internal/model"
+	"github.com/Jason-cqtan/lifelog/internal/store"
 )
 
 const sample = `<?xml version="1.0" encoding="UTF-8"?>

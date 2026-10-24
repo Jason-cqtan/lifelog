@@ -15,16 +15,16 @@ import (
 	"time"
 	_ "time/tzdata" // CI runners may lack zoneinfo
 
-	"github.com/yourname/lifelog/internal/export"
-	"github.com/yourname/lifelog/internal/source"
-	"github.com/yourname/lifelog/internal/source/applehealth"
-	"github.com/yourname/lifelog/internal/source/coros"
-	"github.com/yourname/lifelog/internal/source/duolingo"
-	"github.com/yourname/lifelog/internal/source/garmin"
-	"github.com/yourname/lifelog/internal/source/github"
-	"github.com/yourname/lifelog/internal/source/spotify"
-	"github.com/yourname/lifelog/internal/source/strava"
-	"github.com/yourname/lifelog/internal/store"
+	"github.com/Jason-cqtan/lifelog/internal/export"
+	"github.com/Jason-cqtan/lifelog/internal/source"
+	"github.com/Jason-cqtan/lifelog/internal/source/applehealth"
+	"github.com/Jason-cqtan/lifelog/internal/source/coros"
+	"github.com/Jason-cqtan/lifelog/internal/source/duolingo"
+	"github.com/Jason-cqtan/lifelog/internal/source/garmin"
+	"github.com/Jason-cqtan/lifelog/internal/source/github"
+	"github.com/Jason-cqtan/lifelog/internal/source/spotify"
+	"github.com/Jason-cqtan/lifelog/internal/source/strava"
+	"github.com/Jason-cqtan/lifelog/internal/store"
 	"golang.org/x/term"
 )
 

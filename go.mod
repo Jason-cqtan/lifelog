@@ -1,4 +1,4 @@
-module github.com/yourname/lifelog
+module github.com/Jason-cqtan/lifelog
 
 go 1.26.0
 

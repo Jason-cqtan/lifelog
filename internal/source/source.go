@@ -12,7 +12,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/yourname/lifelog/internal/store"
+	"github.com/Jason-cqtan/lifelog/internal/store"
 )
 
 // Env is what a source gets when it syncs.

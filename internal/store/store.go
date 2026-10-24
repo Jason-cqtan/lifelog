@@ -15,7 +15,7 @@ import (
 	"sort"
 	"time"
 
-	"github.com/yourname/lifelog/internal/model"
+	"github.com/Jason-cqtan/lifelog/internal/model"
 )
 
 type Store struct {

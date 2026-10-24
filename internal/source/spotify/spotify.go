@@ -20,10 +20,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/yourname/lifelog/internal/model"
-	"github.com/yourname/lifelog/internal/oauth"
-	"github.com/yourname/lifelog/internal/source"
-	"github.com/yourname/lifelog/internal/store"
+	"github.com/Jason-cqtan/lifelog/internal/model"
+	"github.com/Jason-cqtan/lifelog/internal/oauth"
+	"github.com/Jason-cqtan/lifelog/internal/source"
+	"github.com/Jason-cqtan/lifelog/internal/store"
 )
 
 const tokenURL = "https://accounts.spotify.com/api/token"

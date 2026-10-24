@@ -10,7 +10,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/yourname/lifelog/internal/source"
+	"github.com/Jason-cqtan/lifelog/internal/source"
 )
 
 // CallbackAddr must be registered as the redirect URI in the provider's app settings

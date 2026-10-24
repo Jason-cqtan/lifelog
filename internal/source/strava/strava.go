@@ -12,9 +12,9 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/yourname/lifelog/internal/model"
-	"github.com/yourname/lifelog/internal/oauth"
-	"github.com/yourname/lifelog/internal/source"
+	"github.com/Jason-cqtan/lifelog/internal/model"
+	"github.com/Jason-cqtan/lifelog/internal/oauth"
+	"github.com/Jason-cqtan/lifelog/internal/source"
 )
 
 const tokenURL = "https://www.strava.com/oauth/token"

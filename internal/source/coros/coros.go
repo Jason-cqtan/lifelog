@@ -14,8 +14,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/yourname/lifelog/internal/model"
-	"github.com/yourname/lifelog/internal/source"
+	"github.com/Jason-cqtan/lifelog/internal/model"
+	"github.com/Jason-cqtan/lifelog/internal/source"
 )
 
 type Coros struct{}

@@ -6,8 +6,8 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/yourname/lifelog/internal/model"
-	"github.com/yourname/lifelog/internal/polyline"
+	"github.com/Jason-cqtan/lifelog/internal/model"
+	"github.com/Jason-cqtan/lifelog/internal/polyline"
 )
 
 // Demo generates a year of fake data so the frontend can be developed before

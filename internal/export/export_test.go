@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yourname/lifelog/internal/model"
+	"github.com/Jason-cqtan/lifelog/internal/model"
 )
 
 func TestDedupe(t *testing.T) {

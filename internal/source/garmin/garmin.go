@@ -23,9 +23,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/yourname/lifelog/internal/model"
-	"github.com/yourname/lifelog/internal/polyline"
-	"github.com/yourname/lifelog/internal/source"
+	"github.com/Jason-cqtan/lifelog/internal/model"
+	"github.com/Jason-cqtan/lifelog/internal/polyline"
+	"github.com/Jason-cqtan/lifelog/internal/source"
 )
 
 const (
