@@ -94,13 +94,9 @@ func (s Strava) Sync(ctx context.Context, env *source.Env) error {
 	return nil
 }
 
-// Authorize runs the one-time OAuth flow and prints the refresh token.
+// Authorize runs the one-time OAuth flow and returns the refresh token.
 // The Strava app's "Authorization Callback Domain" must be 127.0.0.1.
-func Authorize(ctx context.Context, c *http.Client) error {
-	clientID, secret := source.Getenv("STRAVA_CLIENT_ID"), source.Getenv("STRAVA_CLIENT_SECRET")
-	if clientID == "" || secret == "" {
-		return fmt.Errorf("set STRAVA_CLIENT_ID and STRAVA_CLIENT_SECRET first (https://www.strava.com/settings/api)")
-	}
+func Authorize(ctx context.Context, c *http.Client, clientID, secret string) (string, error) {
 	authURL := "https://www.strava.com/oauth/authorize?" + url.Values{
 		"client_id":       {clientID},
 		"response_type":   {"code"},
@@ -110,15 +106,14 @@ func Authorize(ctx context.Context, c *http.Client) error {
 	}.Encode()
 	code, err := oauth.WaitForCode(ctx, authURL)
 	if err != nil {
-		return err
+		return "", err
 	}
 	tok, err := oauth.PostToken(ctx, c, tokenURL, url.Values{
 		"grant_type": {"authorization_code"},
 		"code":       {code},
 	}, clientID, secret, false)
 	if err != nil {
-		return err
+		return "", err
 	}
-	fmt.Println("STRAVA_REFRESH_TOKEN=" + tok.RefreshToken)
-	return nil
+	return tok.RefreshToken, nil
 }

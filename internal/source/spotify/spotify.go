@@ -149,13 +149,9 @@ func ImportHistory(r io.Reader, st *store.Store) (int, error) {
 	return added, nil
 }
 
-// Authorize runs the one-time OAuth flow and prints the refresh token. Add
+// Authorize runs the one-time OAuth flow and returns the refresh token. Add
 // http://127.0.0.1:8888/callback as a Redirect URI in the Spotify app dashboard.
-func Authorize(ctx context.Context, c *http.Client) error {
-	clientID, secret := source.Getenv("SPOTIFY_CLIENT_ID"), source.Getenv("SPOTIFY_CLIENT_SECRET")
-	if clientID == "" || secret == "" {
-		return fmt.Errorf("set SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET first (https://developer.spotify.com/dashboard)")
-	}
+func Authorize(ctx context.Context, c *http.Client, clientID, secret string) (string, error) {
 	authURL := "https://accounts.spotify.com/authorize?" + url.Values{
 		"client_id":     {clientID},
 		"response_type": {"code"},
@@ -164,7 +160,7 @@ func Authorize(ctx context.Context, c *http.Client) error {
 	}.Encode()
 	code, err := oauth.WaitForCode(ctx, authURL)
 	if err != nil {
-		return err
+		return "", err
 	}
 	tok, err := oauth.PostToken(ctx, c, tokenURL, url.Values{
 		"grant_type":   {"authorization_code"},
@@ -172,8 +168,7 @@ func Authorize(ctx context.Context, c *http.Client) error {
 		"redirect_uri": {oauth.RedirectURI},
 	}, clientID, secret, true)
 	if err != nil {
-		return err
+		return "", err
 	}
-	fmt.Println("SPOTIFY_REFRESH_TOKEN=" + tok.RefreshToken)
-	return nil
+	return tok.RefreshToken, nil
 }

@@ -8,6 +8,8 @@ import (
 	"net"
 	"net/http"
 	"net/url"
+	"os/exec"
+	"runtime"
 	"strings"
 
 	"github.com/Jason-cqtan/lifelog/internal/source"
@@ -45,6 +47,9 @@ func WaitForCode(ctx context.Context, authURL string) (string, error) {
 	defer srv.Close()
 
 	fmt.Println("在浏览器中打开以下链接完成授权:\n\n  " + authURL + "\n")
+	if runtime.GOOS == "darwin" {
+		exec.Command("open", authURL).Start() // best effort; the link above still works
+	}
 	select {
 	case code := <-codeCh:
 		return code, nil

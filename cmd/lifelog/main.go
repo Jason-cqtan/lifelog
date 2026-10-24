@@ -16,6 +16,7 @@ import (
 	_ "time/tzdata" // CI runners may lack zoneinfo
 
 	"github.com/Jason-cqtan/lifelog/internal/export"
+	"github.com/Jason-cqtan/lifelog/internal/oauth"
 	"github.com/Jason-cqtan/lifelog/internal/source"
 	"github.com/Jason-cqtan/lifelog/internal/source/applehealth"
 	"github.com/Jason-cqtan/lifelog/internal/source/coros"
@@ -203,9 +204,9 @@ func runAuth(ctx context.Context, args []string) error {
 	c := &http.Client{Timeout: 30 * time.Second}
 	switch args[0] {
 	case "strava":
-		return strava.Authorize(ctx, c)
+		return oauthApp(ctx, "STRAVA", "https://www.strava.com/settings/api", strava.Authorize)
 	case "spotify":
-		return spotify.Authorize(ctx, c)
+		return oauthApp(ctx, "SPOTIFY", "https://developer.spotify.com/dashboard", spotify.Authorize)
 	case "duolingo":
 		fmt.Println("在浏览器登录 duolingo.com → 开发者工具 → Application/存储 → Cookies → 复制 jwt_token 的值")
 		fmt.Print("粘贴 jwt_token(输入不显示): ")
@@ -273,6 +274,37 @@ func runAuth(ctx context.Context, args []string) error {
 		return nil
 	}
 	return fmt.Errorf("unknown provider %q", args[0])
+}
+
+// oauthApp asks for the developer app's credentials if .env lacks them, runs the
+// browser authorization, and saves all three values to .env without echoing them.
+func oauthApp(ctx context.Context, prefix, dashboard string, authorize func(context.Context, *http.Client, string, string) (string, error)) error {
+	id, secret := source.Getenv(prefix+"_CLIENT_ID"), source.Getenv(prefix+"_CLIENT_SECRET")
+	if id == "" || secret == "" {
+		fmt.Println("先在 " + dashboard + " 创建应用,回调地址填 " + oauth.RedirectURI)
+		fmt.Print("Client ID: ")
+		line, _ := bufio.NewReader(os.Stdin).ReadString('\n')
+		id = strings.TrimSpace(line)
+		fmt.Print("Client Secret(输入不显示): ")
+		b, err := term.ReadPassword(int(os.Stdin.Fd()))
+		fmt.Println()
+		if err != nil {
+			return err
+		}
+		secret = strings.TrimSpace(string(b))
+	}
+	c := &http.Client{Timeout: 30 * time.Second}
+	refresh, err := authorize(ctx, c, id, secret)
+	if err != nil {
+		return err
+	}
+	for k, v := range map[string]string{"_CLIENT_ID": id, "_CLIENT_SECRET": secret, "_REFRESH_TOKEN": refresh} {
+		if err := setDotEnv(".env", prefix+k, v); err != nil {
+			return err
+		}
+	}
+	fmt.Println("授权成功," + prefix + "_CLIENT_ID / _CLIENT_SECRET / _REFRESH_TOKEN 已写入 .env。")
+	return nil
 }
 
 // setDotEnv sets key=value in path, replacing an existing line for key.
