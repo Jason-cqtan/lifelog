@@ -67,3 +67,32 @@ func TestDuolingoCourses(t *testing.T) {
 		t.Errorf("OTHER = %+v", other)
 	}
 }
+
+func TestDedupeResyncedAndSameSource(t *testing.T) {
+	t0 := time.Date(2021, 5, 1, 7, 0, 0, 0, time.UTC)
+	acts := []model.Activity{
+		// Joyrun copy of a Garmin run, 8 minutes off, same distance: one workout
+		{Source: "running_page", SourceID: "j1", Type: model.Run, StartTime: t0, Distance: 10000},
+		{Source: "garmin", SourceID: "g1", Type: model.Run, StartTime: t0.Add(8 * time.Minute), Distance: 10050},
+		// two running_page records of one run (Joyrun + GPX): keep the one with efforts
+		{Source: "running_page", SourceID: "a", Type: model.Run, StartTime: t0.Add(5 * time.Hour), Distance: 5000},
+		{Source: "running_page", SourceID: "b", Type: model.Run, StartTime: t0.Add(5*time.Hour + time.Minute), Distance: 5010,
+			BestEfforts: map[string]float64{"1000": 280}},
+		// 8 minutes apart but clearly different distances: two runs
+		{Source: "running_page", SourceID: "c", Type: model.Run, StartTime: t0.Add(9 * time.Hour), Distance: 3000},
+		{Source: "garmin", SourceID: "d", Type: model.Run, StartTime: t0.Add(9*time.Hour + 8*time.Minute), Distance: 6000},
+	}
+	var keys []string
+	for _, a := range Dedupe(acts) {
+		keys = append(keys, a.Key())
+	}
+	want := []string{"garmin:g1", "running_page:b", "running_page:c", "garmin:d"}
+	if len(keys) != len(want) {
+		t.Fatalf("got %v, want %v", keys, want)
+	}
+	for i := range want {
+		if keys[i] != want[i] {
+			t.Fatalf("got %v, want %v", keys, want)
+		}
+	}
+}

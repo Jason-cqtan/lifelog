@@ -11,6 +11,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"regexp"
 	"strings"
 	"time"
 	_ "time/tzdata" // CI runners may lack zoneinfo
@@ -23,6 +24,7 @@ import (
 	"github.com/Jason-cqtan/lifelog/internal/source/duolingo"
 	"github.com/Jason-cqtan/lifelog/internal/source/garmin"
 	"github.com/Jason-cqtan/lifelog/internal/source/github"
+	"github.com/Jason-cqtan/lifelog/internal/source/joyrun"
 	"github.com/Jason-cqtan/lifelog/internal/source/runningpage"
 	"github.com/Jason-cqtan/lifelog/internal/source/spotify"
 	"github.com/Jason-cqtan/lifelog/internal/source/strava"
@@ -45,6 +47,7 @@ const usage = `lifelog — 个人数据同步工具
   lifelog sync [-full] [source...]         同步已配置的数据源(默认全部): %s
   lifelog import applehealth export.xml    导入 Apple 健康导出的体能训练
   lifelog import spotify-history FILE...   导入 Spotify 隐私数据导出的播放历史
+  lifelog import joyrun                    从悦跑圈下载轨迹，补算 running_page 导入跑步的分段最佳(短信验证码登录)
   lifelog import running-page activities.json [-gpx GPX_OUT]  导入 running_page 的历史记录(带 GPX 时计算分段最佳)
   lifelog export [-out PATH] [-demo]       生成前端用的 data.json
   lifelog auth strava|spotify|garmin|duolingo  一次性授权,token 写入 .env
@@ -150,6 +153,9 @@ func runSync(ctx context.Context, args []string) error {
 }
 
 func runImport(args []string) error {
+	if len(args) >= 1 && args[0] == "joyrun" {
+		return importJoyrun()
+	}
 	if len(args) < 2 {
 		return fmt.Errorf("usage: lifelog import applehealth|spotify-history|running-page FILE...")
 	}
@@ -319,6 +325,67 @@ func oauthApp(ctx context.Context, prefix, dashboard string, authorize func(cont
 	}
 	fmt.Println("授权成功," + prefix + "_CLIENT_ID / _CLIENT_SECRET / _REFRESH_TOKEN 已写入 .env。")
 	return nil
+}
+
+var mainlandMobile = regexp.MustCompile(`^1\d{10}$`)
+
+// importJoyrun logs in to 悦跑圈 with an SMS code and attaches best efforts from
+// its tracks to the matching runs imported from running_page (same run IDs).
+func importJoyrun() error {
+	ctx := context.Background()
+	in := bufio.NewReader(os.Stdin)
+	ask := func(label, env string) string {
+		if v := source.Getenv(env); v != "" {
+			return v
+		}
+		fmt.Print(label)
+		s, _ := in.ReadString('\n')
+		return strings.TrimSpace(s)
+	}
+	fmt.Println("先在悦跑圈 App 的登录页用手机号点「获取验证码」(不要用它登录 App),再把收到的验证码填在这里。")
+	phone := strings.TrimPrefix(strings.ReplaceAll(ask("手机号: ", "JOYRUN_PHONE"), " ", ""), "+86")
+	// a mistyped number makes Joyrun answer "Verification code error", so check first
+	if !mainlandMobile.MatchString(phone) {
+		return fmt.Errorf("手机号应为 11 位数字(以 1 开头),输入的是 %d 位", len(phone))
+	}
+	code := ask("短信验证码: ", "")
+
+	st, err := store.Open(dataDir())
+	if err != nil {
+		return err
+	}
+	c := &joyrun.Client{HTTP: &http.Client{Timeout: 60 * time.Second}}
+	if err := c.Login(ctx, phone, code); err != nil {
+		return err
+	}
+	ids, err := c.RunIDs(ctx)
+	if err != nil {
+		return err
+	}
+	log.Printf("joyrun: %d runs in the account", len(ids))
+	updated, noTrack := 0, 0
+	var unmatched []string
+	for _, id := range ids {
+		act, ok := st.Activity("running_page:" + id)
+		if !ok {
+			unmatched = append(unmatched, id)
+			continue
+		}
+		run, err := c.Run(ctx, id)
+		if err != nil {
+			return err
+		}
+		time.Sleep(300 * time.Millisecond) // be gentle with an unofficial API
+		if len(run.Efforts) == 0 {
+			noTrack++
+			continue
+		}
+		act.BestEfforts = run.Efforts
+		st.UpsertActivity(act)
+		updated++
+	}
+	log.Printf("joyrun: best efforts for %d runs; %d without a usable track; %d not in data (skipped)", updated, noTrack, len(unmatched))
+	return st.Save()
 }
 
 // setDotEnv sets key=value in path, replacing an existing line for key.

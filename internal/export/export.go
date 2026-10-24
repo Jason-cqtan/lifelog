@@ -172,16 +172,55 @@ func Write(path string, out Output) error {
 // Lower is better: the watch vendor has the most complete data.
 var sourcePriority = map[string]int{"garmin": 0, "coros": 1, "strava": 2, "applehealth": 3, "running_page": 4}
 
-const dupWindow = 3 * time.Minute
+const (
+	// copies of one workout synced between services start at (nearly) the same time
+	dupWindow = 3 * time.Minute
+	// a copy re-synced through another app (e.g. Garmin -> Joyrun) can start a few
+	// minutes off; with nearly the same distance it is still the same workout
+	dupWindowSameDistance = 15 * time.Minute
+	sameDistance          = 0.03
+)
 
-// Dedupe drops activities that start within dupWindow of a higher-priority one of
-// a compatible type. Input must be sorted by start time; output keeps that order.
+// isDup reports whether b (started earlier or at the same time) and a are the
+// same workout.
+func isDup(a, b model.Activity) bool {
+	if !compatible(a.Type, b.Type) {
+		return false
+	}
+	close := b.Distance > 0 && a.Distance > 0 && math.Abs(a.Distance-b.Distance)/math.Max(a.Distance, b.Distance) <= sameDistance
+	if a.Source == b.Source {
+		// a single service doesn't list a workout twice, except running_page,
+		// which merges several apps (Joyrun, Keep, GPX files); require the distance
+		return a.Source == "running_page" && a.StartTime.Sub(b.StartTime) <= dupWindow && close
+	}
+	gap := a.StartTime.Sub(b.StartTime)
+	return gap <= dupWindow || (gap <= dupWindowSameDistance && close)
+}
+
+// better picks which copy of a workout to keep: the higher-priority source, and
+// between equals the one with more detail (split efforts, route).
+func better(a, b model.Activity) bool {
+	if pa, pb := priority(a.Source), priority(b.Source); pa != pb {
+		return pa < pb
+	}
+	detail := func(x model.Activity) int {
+		n := len(x.BestEfforts)
+		if x.Polyline != "" {
+			n++
+		}
+		return n
+	}
+	return detail(a) > detail(b)
+}
+
+// Dedupe keeps one copy of each workout that reached us through several
+// services or apps. Input must be sorted by start time; output keeps that order.
 func Dedupe(acts []model.Activity) []model.Activity {
 	var kept []model.Activity
 	for _, a := range acts {
 		dup := -1
-		for j := len(kept) - 1; j >= 0 && a.StartTime.Sub(kept[j].StartTime) <= dupWindow; j-- {
-			if compatible(a.Type, kept[j].Type) && a.Source != kept[j].Source {
+		for j := len(kept) - 1; j >= 0 && a.StartTime.Sub(kept[j].StartTime) <= dupWindowSameDistance; j-- {
+			if isDup(a, kept[j]) {
 				dup = j
 				break
 			}
@@ -189,7 +228,7 @@ func Dedupe(acts []model.Activity) []model.Activity {
 		switch {
 		case dup < 0:
 			kept = append(kept, a)
-		case priority(a.Source) < priority(kept[dup].Source):
+		case better(a, kept[dup]):
 			kept[dup] = a
 		}
 	}
