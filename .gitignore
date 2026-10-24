@@ -5,3 +5,6 @@ web/dist
 web/public/data.json
 /build
 /lifelog-demo.gif
+
+# tsc output must never sit next to the sources (Vite would load it first)
+web/src/**/*.js
