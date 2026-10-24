@@ -7,6 +7,7 @@ import { PersonalBests } from './components/PersonalBests'
 import { Music } from './components/Music'
 import { SpotifyTop } from './components/SpotifyTop'
 import { DuolingoCourses } from './components/DuolingoCourses'
+import { RouteWall } from './components/RouteWall'
 import { DICTS, I18n, LOCALE, initialLang, save, type Lang } from './i18n'
 
 // mapbox-gl is large; load it only when the map tab opens
@@ -200,6 +201,7 @@ export function App() {
         {data && (
           <>
             {tab === 'map' && (
+              <>
               <Suspense fallback={<div className="map-wrap" />}>
                 <RouteMap
                   activities={yearActivities}
@@ -212,6 +214,17 @@ export function App() {
                   }}
                 />
               </Suspense>
+              <RouteWall
+                activities={yearActivities.filter((a) => a.polyline)}
+                label={year === 'all' ? t.all : String(year)}
+                onSelect={(id) => {
+                  // reset first so picking the same route again re-centers the map
+                  setMapFocus(null)
+                  requestAnimationFrame(() => setMapFocus(id))
+                  window.scrollTo({ top: 0, behavior: 'smooth' })
+                }}
+              />
+              </>
             )}
 
             {tab === 'music' && (
