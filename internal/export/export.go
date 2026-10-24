@@ -95,7 +95,7 @@ func Write(path string, out Output) error {
 // sourcePriority decides which copy wins when the same workout reaches us
 // through several services (e.g. Garmin watch -> Garmin Connect -> Strava).
 // Lower is better: the watch vendor has the most complete data.
-var sourcePriority = map[string]int{"garmin": 0, "coros": 1, "strava": 2, "applehealth": 3}
+var sourcePriority = map[string]int{"garmin": 0, "coros": 1, "strava": 2, "applehealth": 3, "running_page": 4}
 
 const dupWindow = 3 * time.Minute
 

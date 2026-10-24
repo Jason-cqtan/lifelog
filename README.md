@@ -44,6 +44,7 @@ cd web && npm install && npm run dev       # http://localhost:5173
 | Garmin | 非官方,同 garth 的移动端登录流程 | `lifelog auth garmin` 本地登录一次(支持两步验证),得到 `GARMIN_TOKEN`(约一年有效);中国区加 `GARMIN_CN=true` |
 | COROS 高驰 | 非官方 | 账号密码;中国区加 `COROS_CN=true` |
 | Apple 健康 | 本地导入 | 健康 App → 导出所有健康数据,`lifelog import applehealth export.xml` 后提交 `data/` |
+| running_page 历史 | 本地导入 | `lifelog import running-page <running_page 仓库>/src/static/activities.json`,与现有来源重叠的记录在导出时自动去重 |
 | 多邻国 | 非官方 `xp_summaries` | 浏览器登录 duolingo.com,复制 `jwt_token` cookie |
 | Spotify | 官方 API(只给最近 50 首) | 在 [Dashboard](https://developer.spotify.com/dashboard) 建应用,Redirect URI 填 `http://127.0.0.1:8888/callback`,`lifelog auth spotify`;历史记录在隐私设置里申请"扩展流媒体历史",用 `lifelog import spotify-history` 导入 |
 | GitHub | GraphQL 贡献日历 | 一个有 `read:user` 权限的 token |
