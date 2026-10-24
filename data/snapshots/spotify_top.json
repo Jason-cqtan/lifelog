@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-24T16:09:07Z",
+ "updated_at": "2026-10-24T16:24:34Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -1139,6 +1139,11 @@
      "id": "2elBjNSdBE2Y3f0j1mjrql",
      "name": "Jay Chou",
      "image": "https://i.scdn.co/image/ab6761610000f17887fbbe9ed03fbb500595e720"
+    },
+    {
+     "id": "7BqRcZsHYYQeqMAOp7e532",
+     "name": "落日飛車 Sunset Rollercoaster",
+     "image": "https://i.scdn.co/image/ab6761610000f17817dd503b5c1841cd238c9aa7"
     },
     {
      "id": "04gDigrS5kc9YWfZHwBETP",
