@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-25T17:09:08Z",
+ "updated_at": "2026-10-25T18:07:47Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -645,9 +645,34 @@
      "image": "https://i.scdn.co/image/ab6761610000f1789ffb964ffbd8af492f1d6471"
     },
     {
+     "id": "1Xyo4u8uXC1ZmMpatF05PJ",
+     "name": "The Weeknd",
+     "image": "https://i.scdn.co/image/ab6761610000f178c1719ac9e6a75c1c25835018"
+    },
+    {
+     "id": "2h93pZq0e7k5yf4dywlkpM",
+     "name": "Frank Ocean",
+     "image": "https://i.scdn.co/image/ab6761610000f178ee3123e593174208f9754fab"
+    },
+    {
      "id": "3AroL2oDPiAnMpTmIQv3KP",
      "name": "Cyndi Wang",
      "image": "https://i.scdn.co/image/ab6761610000f1788baa4f890691b73ec50ccb70"
+    },
+    {
+     "id": "7tYKF4w9nC0nq9CsPZTHyP",
+     "name": "SZA",
+     "image": "https://i.scdn.co/image/ab6761610000f178fd0a9fb6c252a3ba44079acf"
+    },
+    {
+     "id": "0PxqaZXFW167XSUiha9eEi",
+     "name": "7and5",
+     "image": "https://i.scdn.co/image/ab6761610000f1780887284d923c88a92835e427"
+    },
+    {
+     "id": "20wkVLutqVOYrc0kxFs7rA",
+     "name": "Daniel Caesar",
+     "image": "https://i.scdn.co/image/ab6761610000f178e4d94f7cbebb17504c25d419"
     },
     {
      "id": "0SIXZXJCAhNU8sxK0qm7hn",
@@ -658,11 +683,6 @@
      "id": "5uCktjKM1Rf9VnUvFD6j17",
      "name": "Solar Heavy",
      "image": "https://i.scdn.co/image/ab6761610000f1782b1c6db6ed003d0e72c160e6"
-    },
-    {
-     "id": "1Xyo4u8uXC1ZmMpatF05PJ",
-     "name": "The Weeknd",
-     "image": "https://i.scdn.co/image/ab6761610000f178c1719ac9e6a75c1c25835018"
     },
     {
      "id": "4npEfmQ6YuiwW1GpUmaq3F",
@@ -821,6 +841,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e0244fd7df5558aa1f6cbed17a2"
     },
     {
+     "id": "3xKsf9qdS1CyvXSMEid6g8",
+     "name": "Pink + White",
+     "artist": "Frank Ocean",
+     "album": "Blonde",
+     "image": "https://i.scdn.co/image/ab67616d00001e02c5649add07ed3720be9d5526"
+    },
+    {
      "id": "7nDQMtLxu94xtlTR8bEqjU",
      "name": "Faded",
      "artist": "ZHU",
@@ -968,6 +995,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02508f6070bbe3a4fec70e2036"
     },
     {
+     "id": "0KytSwhBMJHs0eKEUZvTei",
+     "name": "Ascent",
+     "artist": "Teminite",
+     "album": "Uprising",
+     "image": "https://i.scdn.co/image/ab67616d00001e02ca821cda751983367d750b1a"
+    },
+    {
      "id": "1KPuohcXPmJYQfdyg9zKmR",
      "name": "Another One Bites The Dust",
      "artist": "Queen",
@@ -1106,20 +1140,6 @@
      "artist": "Joanna Wang",
      "album": "Start From Here",
      "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
-    },
-    {
-     "id": "5k72u9OHqyTDMylqpG0izJ",
-     "name": "敢愛敢做",
-     "artist": "George Lam, David Ling Jr",
-     "album": "十三子祥",
-     "image": "https://i.scdn.co/image/ab67616d00001e02fba1cf9d8569a6c7bc0796c1"
-    },
-    {
-     "id": "65I5kZ7gjsc4A0XHT8uGQ7",
-     "name": "粗糙",
-     "artist": "許嵩",
-     "album": "安泊猜想",
-     "image": "https://i.scdn.co/image/ab67616d00001e02031ac1c7fc7b2c6e5e3a4677"
     }
    ]
   },
@@ -1139,6 +1159,21 @@
      "id": "1km0aro5NJuoX5dE0Mub5C",
      "name": "Joanna Wang",
      "image": "https://i.scdn.co/image/ab6761610000f1788c2024e68663f46b2981398d"
+    },
+    {
+     "id": "2h93pZq0e7k5yf4dywlkpM",
+     "name": "Frank Ocean",
+     "image": "https://i.scdn.co/image/ab6761610000f178ee3123e593174208f9754fab"
+    },
+    {
+     "id": "7tYKF4w9nC0nq9CsPZTHyP",
+     "name": "SZA",
+     "image": "https://i.scdn.co/image/ab6761610000f178fd0a9fb6c252a3ba44079acf"
+    },
+    {
+     "id": "20wkVLutqVOYrc0kxFs7rA",
+     "name": "Daniel Caesar",
+     "image": "https://i.scdn.co/image/ab6761610000f178e4d94f7cbebb17504c25d419"
     },
     {
      "id": "5uCktjKM1Rf9VnUvFD6j17",
@@ -1197,6 +1232,13 @@
      "artist": "許嵩",
      "album": "自定義",
      "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
+    },
+    {
+     "id": "3xKsf9qdS1CyvXSMEid6g8",
+     "name": "Pink + White",
+     "artist": "Frank Ocean",
+     "album": "Blonde",
+     "image": "https://i.scdn.co/image/ab67616d00001e02c5649add07ed3720be9d5526"
     },
     {
      "id": "6LLegbVHksZ5kDC2whN1Da",
@@ -1416,6 +1458,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02b7c8f5fe522c41d590c8e4e5"
     },
     {
+     "id": "06u5LrUpbosQlQ1QJFhPpG",
+     "name": "Drew Barrymore",
+     "artist": "SZA",
+     "album": "Ctrl",
+     "image": "https://i.scdn.co/image/ab67616d00001e0206d56b057cce5797538a16d5"
+    },
+    {
      "id": "0HJIpwtHwueUy1LbDXDRdv",
      "name": "Beautiful Days Feat. Stratos Messinis - Intro Mix",
      "artist": "Melosense",
@@ -1512,20 +1561,6 @@
      "artist": "Joanna Wang",
      "album": "Start From Here",
      "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
-    },
-    {
-     "id": "0oEyHA3ykAxKcdbE9l6Vnp",
-     "name": "煙花",
-     "artist": "Leah Dou",
-     "album": "春遊",
-     "image": "https://i.scdn.co/image/ab67616d00001e02f77aacc26fe8d9d24583632a"
-    },
-    {
-     "id": "0phl4jBlBCpPmm7IDr2RFL",
-     "name": "驚鴻一面",
-     "artist": "許嵩",
-     "album": "不如吃茶去",
-     "image": "https://i.scdn.co/image/ab67616d00001e028636b9700bbb12051402553b"
     }
    ]
   }
