@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-25T15:09:04Z",
+ "updated_at": "2026-10-25T16:07:27Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -1248,6 +1248,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e021093e73a2ed86bde416259c7"
     },
     {
+     "id": "0KytSwhBMJHs0eKEUZvTei",
+     "name": "Ascent",
+     "artist": "Teminite",
+     "album": "Uprising",
+     "image": "https://i.scdn.co/image/ab67616d00001e02ca821cda751983367d750b1a"
+    },
+    {
      "id": "1KPuohcXPmJYQfdyg9zKmR",
      "name": "Another One Bites The Dust",
      "artist": "Queen",
@@ -1479,6 +1486,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
     },
     {
+     "id": "0dBveAkk5GzI7a5h6s7F1U",
+     "name": "Courage",
+     "artist": "Ahrix",
+     "album": "The Beginning",
+     "image": "https://i.scdn.co/image/ab67616d00001e02fceeecd6c99d8bc84236c701"
+    },
+    {
      "id": "0eu2oeKxrS2H2WBKsIYg4m",
      "name": "For No Reason",
      "artist": "Joanna Wang",
@@ -1512,20 +1526,6 @@
      "artist": "許嵩",
      "album": "不如吃茶去",
      "image": "https://i.scdn.co/image/ab67616d00001e028636b9700bbb12051402553b"
-    },
-    {
-     "id": "11arkJrAXBBkEmYslxMhzO",
-     "name": "狗熊",
-     "artist": "Leah Dou",
-     "album": "春遊",
-     "image": "https://i.scdn.co/image/ab67616d00001e02f77aacc26fe8d9d24583632a"
-    },
-    {
-     "id": "11wlDEdE6fV0YuRXSXMAnE",
-     "name": "Aerials",
-     "artist": "Lights \u0026 Motion",
-     "album": "Reanimation",
-     "image": "https://i.scdn.co/image/ab67616d00001e0284bee8371225201e5258bc0f"
     }
    ]
   }
