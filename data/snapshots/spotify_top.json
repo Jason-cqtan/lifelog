@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-25T01:08:07Z",
+ "updated_at": "2026-10-25T02:08:44Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -19,14 +19,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f17887fbbe9ed03fbb500595e720"
     },
     {
-     "id": "2hgxWUG24w1cFLBlPSEVcV",
-     "name": "許嵩",
-     "image": "https://i.scdn.co/image/ab6761610000f178704d08abe2a3bf0bb1c366c9"
-    },
-    {
      "id": "5cj0lLjcoR7YOSnhnX0Po5",
      "name": "Doja Cat",
      "image": "https://i.scdn.co/image/ab6761610000f1788a0644455ebfa7d3976f5101"
+    },
+    {
+     "id": "2hgxWUG24w1cFLBlPSEVcV",
+     "name": "許嵩",
+     "image": "https://i.scdn.co/image/ab6761610000f178704d08abe2a3bf0bb1c366c9"
     },
     {
      "id": "0PxqaZXFW167XSUiha9eEi",
@@ -52,6 +52,16 @@
      "id": "6PNEi9i2MxUgRufqYr76Xt",
      "name": "Zhang Zhen Yue",
      "image": "https://i.scdn.co/image/ab6761610000f17866a909756400366c24bf1568"
+    },
+    {
+     "id": "7mShFo2eYgVBQFZBCilhtl",
+     "name": "Leah Dou",
+     "image": "https://i.scdn.co/image/ab6761610000f1780f50807360beac5d44016b0c"
+    },
+    {
+     "id": "1km0aro5NJuoX5dE0Mub5C",
+     "name": "Joanna Wang",
+     "image": "https://i.scdn.co/image/ab6761610000f1788c2024e68663f46b2981398d"
     },
     {
      "id": "3tYJfCciy07wTBt2HpjCQw",
@@ -184,11 +194,6 @@
      "image": "https://i.scdn.co/image/ab6761610000f1782b1c6db6ed003d0e72c160e6"
     },
     {
-     "id": "5WUlDfRSoLAfcVSX1WnrxN",
-     "name": "Sia",
-     "image": "https://i.scdn.co/image/ab6761610000f178cc1806f0a2f6c9e449de9d3c"
-    },
-    {
      "id": "14bJhryXGk6H6qlGzwj3W5",
      "name": "Hebe Tien",
      "image": "https://i.scdn.co/image/ab6761610000f17809749491c2a434bde6cf40cc"
@@ -199,6 +204,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f178f150017ca69c8793503c2d4f"
     },
     {
+     "id": "1Xyo4u8uXC1ZmMpatF05PJ",
+     "name": "The Weeknd",
+     "image": "https://i.scdn.co/image/ab6761610000f178c1719ac9e6a75c1c25835018"
+    },
+    {
      "id": "2F5W6Rsxwzg0plQ0w8dSyt",
      "name": "Leehom Wang",
      "image": "https://i.scdn.co/image/ab6761610000f1786527b7513831feda18b2abf1"
@@ -207,11 +217,6 @@
      "id": "7v9Il42LvvTeSfmf1bwfNx",
      "name": "Deserts Chang",
      "image": "https://i.scdn.co/image/ab6761610000f1784b6ba52e390871d8ef7c8f69"
-    },
-    {
-     "id": "1Xyo4u8uXC1ZmMpatF05PJ",
-     "name": "The Weeknd",
-     "image": "https://i.scdn.co/image/ab6761610000f178c1719ac9e6a75c1c25835018"
     },
     {
      "id": "69GGBxA162lTqCwzJG5jLp",
@@ -247,11 +252,6 @@
      "id": "65NrBzD3Jnf1iqbDjuUYjD",
      "name": "Jacoo",
      "image": "https://i.scdn.co/image/ab6761610000f1785376113195c2e23a0152c0de"
-    },
-    {
-     "id": "53XhwfbYqKCa1cC15pYq2q",
-     "name": "Imagine Dragons",
-     "image": "https://i.scdn.co/image/ab6761610000f178ab47d8dae2b24f5afe7f9d38"
     }
    ],
    "tracks": [
@@ -417,6 +417,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02f2a45f258f01bbd1a0e77bbc"
     },
     {
+     "id": "6LLegbVHksZ5kDC2whN1Da",
+     "name": "Adventure Time",
+     "artist": "Philter",
+     "album": "The Blossom Chronicles",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b93587221b1ce0c85a02297e"
+    },
+    {
      "id": "7qiZfU4dY1lWllzX7mPBI3",
      "name": "Shape of You",
      "artist": "Ed Sheeran",
@@ -445,11 +452,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e024fcf55f78d0be786a8b382b4"
     },
     {
-     "id": "6LLegbVHksZ5kDC2whN1Da",
-     "name": "Adventure Time",
-     "artist": "Philter",
-     "album": "The Blossom Chronicles",
-     "image": "https://i.scdn.co/image/ab67616d00001e02b93587221b1ce0c85a02297e"
+     "id": "2hTNicFHwtKqk6uSMZU0Cx",
+     "name": "Ascension",
+     "artist": "7and5",
+     "album": "2005 - 2017",
+     "image": "https://i.scdn.co/image/ab67616d00001e0245357ee539d01d2b87c8f945"
+    },
+    {
+     "id": "3b24yvdqGL7nGL91eCNfiQ",
+     "name": "Free Orbiter",
+     "artist": "Jens Buchert",
+     "album": "Electronic Space Lounge - Three",
+     "image": "https://i.scdn.co/image/ab67616d00001e027b151820c9ddaffeb7e177ce"
     },
     {
      "id": "15YruCqHXgIpq3rcWpYuqW",
@@ -478,20 +492,6 @@
      "artist": "VIA Gra",
      "album": "Stop! Stop! Stop!",
      "image": "https://i.scdn.co/image/ab67616d00001e02a6460e661fac0d7327c13426"
-    },
-    {
-     "id": "2hTNicFHwtKqk6uSMZU0Cx",
-     "name": "Ascension",
-     "artist": "7and5",
-     "album": "2005 - 2017",
-     "image": "https://i.scdn.co/image/ab67616d00001e0245357ee539d01d2b87c8f945"
-    },
-    {
-     "id": "3b24yvdqGL7nGL91eCNfiQ",
-     "name": "Free Orbiter",
-     "artist": "Jens Buchert",
-     "album": "Electronic Space Lounge - Three",
-     "image": "https://i.scdn.co/image/ab67616d00001e027b151820c9ddaffeb7e177ce"
     },
     {
      "id": "4DxybsoSiMUW0JI2oM0SSN",
