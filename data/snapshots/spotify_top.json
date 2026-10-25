@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-25T18:07:47Z",
+ "updated_at": "2026-10-25T19:08:07Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -1161,19 +1161,29 @@
      "image": "https://i.scdn.co/image/ab6761610000f1788c2024e68663f46b2981398d"
     },
     {
-     "id": "2h93pZq0e7k5yf4dywlkpM",
-     "name": "Frank Ocean",
-     "image": "https://i.scdn.co/image/ab6761610000f178ee3123e593174208f9754fab"
-    },
-    {
      "id": "7tYKF4w9nC0nq9CsPZTHyP",
      "name": "SZA",
      "image": "https://i.scdn.co/image/ab6761610000f178fd0a9fb6c252a3ba44079acf"
     },
     {
+     "id": "1Xyo4u8uXC1ZmMpatF05PJ",
+     "name": "The Weeknd",
+     "image": "https://i.scdn.co/image/ab6761610000f178c1719ac9e6a75c1c25835018"
+    },
+    {
+     "id": "2h93pZq0e7k5yf4dywlkpM",
+     "name": "Frank Ocean",
+     "image": "https://i.scdn.co/image/ab6761610000f178ee3123e593174208f9754fab"
+    },
+    {
      "id": "20wkVLutqVOYrc0kxFs7rA",
      "name": "Daniel Caesar",
      "image": "https://i.scdn.co/image/ab6761610000f178e4d94f7cbebb17504c25d419"
+    },
+    {
+     "id": "6nB0iY1cjSY1KyhYyuIIKH",
+     "name": "FKA twigs",
+     "image": "https://i.scdn.co/image/ab6761610000f1783f6b8973be0344896d8680ab"
     },
     {
      "id": "5uCktjKM1Rf9VnUvFD6j17",
@@ -1444,6 +1454,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e024b8929ee375f3a2539bd2868"
     },
     {
+     "id": "00aqkszH1FdUiJJWvX6iEl",
+     "name": "Wicked Games",
+     "artist": "The Weeknd",
+     "album": "House Of Balloons (Original)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02274b406a7e18acebcf743079"
+    },
+    {
      "id": "04C8kycy8z2kh5BR16fZag",
      "name": "天龍八部之宿敵",
      "artist": "許嵩",
@@ -1554,13 +1571,6 @@
      "artist": "Leah Dou",
      "album": "空中飛人",
      "image": "https://i.scdn.co/image/ab67616d00001e02d65beb03c59661d6e737b5e4"
-    },
-    {
-     "id": "0npodwOWWkfh83yfGK5ZOW",
-     "name": "Lost in Paradise",
-     "artist": "Joanna Wang",
-     "album": "Start From Here",
-     "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
     }
    ]
   }
