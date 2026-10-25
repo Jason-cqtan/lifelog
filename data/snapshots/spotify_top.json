@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-25T09:07:44Z",
+ "updated_at": "2026-10-25T10:07:24Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -1339,6 +1339,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
     },
     {
+     "id": "7vS3Y0IKjde7Xg85LWIEdP",
+     "name": "Problem",
+     "artist": "Ariana Grande, Iggy Azalea",
+     "album": "My Everything (Deluxe)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02deec12a28d1e336c5052e9aa"
+    },
+    {
      "id": "44wtMjxhSguxgWSggFMyMJ",
      "name": "Yet So Close",
      "artist": "Vexento",
@@ -1395,6 +1402,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02c59f8b9dc13b9f00a02a2eb6"
     },
     {
+     "id": "05MiHFmBWu81TQ1gLz7AzB",
+     "name": "Rather Be (Clean Bandit Cover)",
+     "artist": "Pentatonix",
+     "album": "PTX",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b7c8f5fe522c41d590c8e4e5"
+    },
+    {
      "id": "0HJIpwtHwueUy1LbDXDRdv",
      "name": "Beautiful Days Feat. Stratos Messinis - Intro Mix",
      "artist": "Melosense",
@@ -1402,11 +1416,25 @@
      "image": "https://i.scdn.co/image/ab67616d00001e0246af95609183c846d72b0075"
     },
     {
+     "id": "0IM7W9Uj3tDepqO2Ey042W",
+     "name": "Special",
+     "artist": "SIX60",
+     "album": "Six60 (Deluxe)",
+     "image": "https://i.scdn.co/image/ab67616d00001e0292cef38ba54ce3fc73acf31d"
+    },
+    {
      "id": "0JXPxxcmJFZeZQdPVgisLg",
      "name": "See you again - 電影 “聲之形” 主題曲",
      "artist": "Leah Dou",
      "album": "See you again (電影 “聲之形” 主題曲)",
      "image": "https://i.scdn.co/image/ab67616d00001e02c2abad8b354ae49ec0f8b17f"
+    },
+    {
+     "id": "0KAiuUOrLTIkzkpfpn9jb9",
+     "name": "Drive By",
+     "artist": "Train",
+     "album": "California 37",
+     "image": "https://i.scdn.co/image/ab67616d00001e02bde344cc54eedc35050f4c61"
     },
     {
      "id": "0KGKZu5JuxQkgbelqms5nr",
@@ -1498,34 +1526,6 @@
      "artist": "Lights \u0026 Motion",
      "album": "Reanimation",
      "image": "https://i.scdn.co/image/ab67616d00001e0284bee8371225201e5258bc0f"
-    },
-    {
-     "id": "16OLHUQis8RFjWqlsImDOZ",
-     "name": "Somewhere In Winter (失重)",
-     "artist": "Radio Mars, Leah Dou",
-     "album": "失重三部曲",
-     "image": "https://i.scdn.co/image/ab67616d00001e02596c79e85556ec780956d447"
-    },
-    {
-     "id": "17H70rNv7MFkT4MhhUZVgg",
-     "name": "Indian Summer",
-     "artist": "Stereophonics",
-     "album": "Graffiti On The Train",
-     "image": "https://i.scdn.co/image/ab67616d00001e02a8c28a1fff58bcbb94b22242"
-    },
-    {
-     "id": "1IKF4F13znwgjegbk5U7QD",
-     "name": "Ethereal Concepts - Shingo Nakamura Remix",
-     "artist": "Blugazer, Shingo Nakamura",
-     "album": "Ethereal Concepts",
-     "image": "https://i.scdn.co/image/ab67616d00001e023cfa8e13ef148bacc866f5c1"
-    },
-    {
-     "id": "1L47sHuKWNdPlGUk69HbmU",
-     "name": "The Right Path",
-     "artist": "Thomas Greenberg",
-     "album": "Age Of Innocence",
-     "image": "https://i.scdn.co/image/ab67616d00001e023b42d9a336638e90b24177ae"
     }
    ]
   }
