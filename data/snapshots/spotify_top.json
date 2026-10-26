@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-26T03:07:42Z",
+ "updated_at": "2026-10-26T04:08:12Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -640,14 +640,19 @@
      "image": "https://i.scdn.co/image/ab6761610000f17887fbbe9ed03fbb500595e720"
     },
     {
+     "id": "1Xyo4u8uXC1ZmMpatF05PJ",
+     "name": "The Weeknd",
+     "image": "https://i.scdn.co/image/ab6761610000f178c1719ac9e6a75c1c25835018"
+    },
+    {
      "id": "5XMnJOQbE6OuOvcV8fn3Wg",
      "name": "Dave Wang",
      "image": "https://i.scdn.co/image/ab6761610000f1789ffb964ffbd8af492f1d6471"
     },
     {
-     "id": "1Xyo4u8uXC1ZmMpatF05PJ",
-     "name": "The Weeknd",
-     "image": "https://i.scdn.co/image/ab6761610000f178c1719ac9e6a75c1c25835018"
+     "id": "7tYKF4w9nC0nq9CsPZTHyP",
+     "name": "SZA",
+     "image": "https://i.scdn.co/image/ab6761610000f178fd0a9fb6c252a3ba44079acf"
     },
     {
      "id": "2h93pZq0e7k5yf4dywlkpM",
@@ -660,11 +665,6 @@
      "image": "https://i.scdn.co/image/ab6761610000f1788baa4f890691b73ec50ccb70"
     },
     {
-     "id": "7tYKF4w9nC0nq9CsPZTHyP",
-     "name": "SZA",
-     "image": "https://i.scdn.co/image/ab6761610000f178fd0a9fb6c252a3ba44079acf"
-    },
-    {
      "id": "0PxqaZXFW167XSUiha9eEi",
      "name": "7and5",
      "image": "https://i.scdn.co/image/ab6761610000f1780887284d923c88a92835e427"
@@ -673,6 +673,11 @@
      "id": "20wkVLutqVOYrc0kxFs7rA",
      "name": "Daniel Caesar",
      "image": "https://i.scdn.co/image/ab6761610000f178e4d94f7cbebb17504c25d419"
+    },
+    {
+     "id": "6nB0iY1cjSY1KyhYyuIIKH",
+     "name": "FKA twigs",
+     "image": "https://i.scdn.co/image/ab6761610000f1783f6b8973be0344896d8680ab"
     },
     {
      "id": "0SIXZXJCAhNU8sxK0qm7hn",
