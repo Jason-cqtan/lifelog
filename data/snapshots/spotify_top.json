@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-26T08:08:43Z",
+ "updated_at": "2026-10-26T09:08:50Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -1333,6 +1333,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e027aa8783ad8def37cc548a9cf"
     },
     {
+     "id": "1WFgv04BZTx6gZWQNE6Sp7",
+     "name": "Freudian",
+     "artist": "Daniel Caesar",
+     "album": "Freudian",
+     "image": "https://i.scdn.co/image/ab67616d00001e027aa8783ad8def37cc548a9cf"
+    },
+    {
      "id": "28RCSA0i9bdMrui3UaHSG4",
      "name": "Now",
      "artist": "Joanna Wang",
@@ -1569,13 +1576,6 @@
      "artist": "Joanna Wang",
      "album": "Start From Here",
      "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
-    },
-    {
-     "id": "0dBveAkk5GzI7a5h6s7F1U",
-     "name": "Courage",
-     "artist": "Ahrix",
-     "album": "The Beginning",
-     "image": "https://i.scdn.co/image/ab67616d00001e02fceeecd6c99d8bc84236c701"
     }
    ]
   }
