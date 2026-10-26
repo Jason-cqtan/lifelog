@@ -81,6 +81,14 @@ modprobe tcp_bbr
 sysctl -q --system >/dev/null
 tc qdisc replace dev "$(ip route show default | awk '{print $5; exit}')" root fq
 
+echo "==> swap (1 GB boxes share RAM with the cloud vendor's agents)"
+if ! swapon --show | grep -q /swapfile; then
+  fallocate -l 1G /swapfile && chmod 600 /swapfile && mkswap -q /swapfile && swapon /swapfile
+  grep -q '^/swapfile' /etc/fstab || echo '/swapfile none swap sw 0 0' >> /etc/fstab
+fi
+echo 'vm.swappiness = 10' > /etc/sysctl.d/98-lifelog-swap.conf
+sysctl -q -p /etc/sysctl.d/98-lifelog-swap.conf
+
 echo "==> firewall"
 ufw allow OpenSSH >/dev/null
 ufw allow 80/tcp >/dev/null
