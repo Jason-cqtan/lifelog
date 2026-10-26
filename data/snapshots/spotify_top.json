@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-26T06:08:14Z",
+ "updated_at": "2026-10-26T07:07:28Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -1305,6 +1305,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e021093e73a2ed86bde416259c7"
     },
     {
+     "id": "06u5LrUpbosQlQ1QJFhPpG",
+     "name": "Drew Barrymore",
+     "artist": "SZA",
+     "album": "Ctrl",
+     "image": "https://i.scdn.co/image/ab67616d00001e0206d56b057cce5797538a16d5"
+    },
+    {
      "id": "0KytSwhBMJHs0eKEUZvTei",
      "name": "Ascent",
      "artist": "Teminite",
@@ -1317,6 +1324,13 @@
      "artist": "Queen",
      "album": "The Game",
      "image": "https://i.scdn.co/image/ab67616d00001e02a4e6eac83c0fe38bf682f643"
+    },
+    {
+     "id": "1Q7EgiMOuwDcB0PJC6AzON",
+     "name": "Best Part (feat. H.E.R.)",
+     "artist": "Daniel Caesar, H.E.R.",
+     "album": "Freudian",
+     "image": "https://i.scdn.co/image/ab67616d00001e027aa8783ad8def37cc548a9cf"
     },
     {
      "id": "28RCSA0i9bdMrui3UaHSG4",
@@ -1359,6 +1373,13 @@
      "artist": "Worakls",
      "album": "Good Night My Love",
      "image": "https://i.scdn.co/image/ab67616d00001e024433ae6a319c1bf5b7269a4e"
+    },
+    {
+     "id": "4iZ4pt7kvcaH6Yo8UoZ4s2",
+     "name": "Snooze",
+     "artist": "SZA",
+     "album": "SOS",
+     "image": "https://i.scdn.co/image/ab67616d00001e02bc18bdade69ec5ef0bb25b17"
     },
     {
      "id": "5PadgcONJhQT8FzhhLjwXA",
@@ -1480,13 +1501,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02b7c8f5fe522c41d590c8e4e5"
     },
     {
-     "id": "06u5LrUpbosQlQ1QJFhPpG",
-     "name": "Drew Barrymore",
-     "artist": "SZA",
-     "album": "Ctrl",
-     "image": "https://i.scdn.co/image/ab67616d00001e0206d56b057cce5797538a16d5"
-    },
-    {
      "id": "0HJIpwtHwueUy1LbDXDRdv",
      "name": "Beautiful Days Feat. Stratos Messinis - Intro Mix",
      "artist": "Melosense",
@@ -1562,20 +1576,6 @@
      "artist": "Ahrix",
      "album": "The Beginning",
      "image": "https://i.scdn.co/image/ab67616d00001e02fceeecd6c99d8bc84236c701"
-    },
-    {
-     "id": "0eu2oeKxrS2H2WBKsIYg4m",
-     "name": "For No Reason",
-     "artist": "Joanna Wang",
-     "album": "Start From Here",
-     "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
-    },
-    {
-     "id": "0lW6BJqgnDKTF73D28O3fF",
-     "name": "我",
-     "artist": "Leah Dou",
-     "album": "空中飛人",
-     "image": "https://i.scdn.co/image/ab67616d00001e02d65beb03c59661d6e737b5e4"
     }
    ]
   }
