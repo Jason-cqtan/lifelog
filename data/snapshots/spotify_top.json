@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-26T07:07:28Z",
+ "updated_at": "2026-10-26T08:08:43Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -99,6 +99,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f1781b44d5d4d2e564f28f4046cf"
     },
     {
+     "id": "1Xyo4u8uXC1ZmMpatF05PJ",
+     "name": "The Weeknd",
+     "image": "https://i.scdn.co/image/ab6761610000f178c1719ac9e6a75c1c25835018"
+    },
+    {
      "id": "376pcuw4IgWBMOUwCr8kIm",
      "name": "Tanya Chua",
      "image": "https://i.scdn.co/image/ab6761610000f1786a0678a926bd4812fb8a4099"
@@ -117,6 +122,16 @@
      "id": "3XRhtE8W24BUgS40G9ZNkS",
      "name": "Linear Phase",
      "image": "https://i.scdn.co/image/ab6761610000f1789caf03c5c4b858fca6cedab4"
+    },
+    {
+     "id": "7tYKF4w9nC0nq9CsPZTHyP",
+     "name": "SZA",
+     "image": "https://i.scdn.co/image/ab6761610000f178fd0a9fb6c252a3ba44079acf"
+    },
+    {
+     "id": "2h93pZq0e7k5yf4dywlkpM",
+     "name": "Frank Ocean",
+     "image": "https://i.scdn.co/image/ab6761610000f178ee3123e593174208f9754fab"
     },
     {
      "id": "6RAx8RRxoHeJIqD2d0EjOa",
@@ -157,6 +172,11 @@
      "id": "3aIDSTKS9yH745GUQBxDcS",
      "name": "Fish Leong",
      "image": "https://i.scdn.co/image/ab6761610000f17814806436e1fc9d977a3709dd"
+    },
+    {
+     "id": "20wkVLutqVOYrc0kxFs7rA",
+     "name": "Daniel Caesar",
+     "image": "https://i.scdn.co/image/ab6761610000f178e4d94f7cbebb17504c25d419"
     },
     {
      "id": "66CXWjxzNUsdJxJ2JdwvnR",
@@ -204,19 +224,9 @@
      "image": "https://i.scdn.co/image/ab6761610000f178f150017ca69c8793503c2d4f"
     },
     {
-     "id": "1Xyo4u8uXC1ZmMpatF05PJ",
-     "name": "The Weeknd",
-     "image": "https://i.scdn.co/image/ab6761610000f178c1719ac9e6a75c1c25835018"
-    },
-    {
      "id": "2F5W6Rsxwzg0plQ0w8dSyt",
      "name": "Leehom Wang",
      "image": "https://i.scdn.co/image/ab6761610000f1786527b7513831feda18b2abf1"
-    },
-    {
-     "id": "7v9Il42LvvTeSfmf1bwfNx",
-     "name": "Deserts Chang",
-     "image": "https://i.scdn.co/image/ab6761610000f1784b6ba52e390871d8ef7c8f69"
     },
     {
      "id": "69GGBxA162lTqCwzJG5jLp",
@@ -242,16 +252,6 @@
      "id": "2wY79sveU1sp5g7SokKOiI",
      "name": "Sam Smith",
      "image": "https://i.scdn.co/image/ab6761610000f1780e64fb94acbb752960c823e9"
-    },
-    {
-     "id": "4npEfmQ6YuiwW1GpUmaq3F",
-     "name": "Ava Max",
-     "image": "https://i.scdn.co/image/ab6761610000f178d8fa717584b01690e3919e32"
-    },
-    {
-     "id": "65NrBzD3Jnf1iqbDjuUYjD",
-     "name": "Jacoo",
-     "image": "https://i.scdn.co/image/ab6761610000f1785376113195c2e23a0152c0de"
     }
    ],
    "tracks": [
@@ -599,11 +599,11 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02d5136ed356114bc40f2edcce"
     },
     {
-     "id": "2IGMVunIBsBLtEQyoI1Mu7",
-     "name": "Paint The Town Red",
-     "artist": "Doja Cat",
-     "album": "Paint The Town Red",
-     "image": "https://i.scdn.co/image/ab67616d00001e02e69a141e4ffe839c38c4c228"
+     "id": "0KAiuUOrLTIkzkpfpn9jb9",
+     "name": "Drive By",
+     "artist": "Train",
+     "album": "California 37",
+     "image": "https://i.scdn.co/image/ab67616d00001e02bde344cc54eedc35050f4c61"
     }
    ]
   },
