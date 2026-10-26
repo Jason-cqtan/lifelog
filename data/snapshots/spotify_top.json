@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-26T14:08:50Z",
+ "updated_at": "2026-10-26T15:08:48Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -660,6 +660,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f178ee3123e593174208f9754fab"
     },
     {
+     "id": "20wkVLutqVOYrc0kxFs7rA",
+     "name": "Daniel Caesar",
+     "image": "https://i.scdn.co/image/ab6761610000f178e4d94f7cbebb17504c25d419"
+    },
+    {
      "id": "3AroL2oDPiAnMpTmIQv3KP",
      "name": "Cyndi Wang",
      "image": "https://i.scdn.co/image/ab6761610000f1788baa4f890691b73ec50ccb70"
@@ -668,11 +673,6 @@
      "id": "0PxqaZXFW167XSUiha9eEi",
      "name": "7and5",
      "image": "https://i.scdn.co/image/ab6761610000f1780887284d923c88a92835e427"
-    },
-    {
-     "id": "20wkVLutqVOYrc0kxFs7rA",
-     "name": "Daniel Caesar",
-     "image": "https://i.scdn.co/image/ab6761610000f178e4d94f7cbebb17504c25d419"
     },
     {
      "id": "6nB0iY1cjSY1KyhYyuIIKH",
@@ -1000,6 +1000,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02508f6070bbe3a4fec70e2036"
     },
     {
+     "id": "06u5LrUpbosQlQ1QJFhPpG",
+     "name": "Drew Barrymore",
+     "artist": "SZA",
+     "album": "Ctrl",
+     "image": "https://i.scdn.co/image/ab67616d00001e0206d56b057cce5797538a16d5"
+    },
+    {
      "id": "0KytSwhBMJHs0eKEUZvTei",
      "name": "Ascent",
      "artist": "Teminite",
@@ -1021,11 +1028,25 @@
      "image": "https://i.scdn.co/image/ab67616d00001e023b42d9a336638e90b24177ae"
     },
     {
+     "id": "1Q7EgiMOuwDcB0PJC6AzON",
+     "name": "Best Part (feat. H.E.R.)",
+     "artist": "Daniel Caesar, H.E.R.",
+     "album": "Freudian",
+     "image": "https://i.scdn.co/image/ab67616d00001e027aa8783ad8def37cc548a9cf"
+    },
+    {
      "id": "1VJwtWR6z7SpZRwipI12be",
      "name": "Candy",
      "artist": "Doja Cat",
      "album": "Amala",
      "image": "https://i.scdn.co/image/ab67616d00001e02da95885ff9adff70c000cd2c"
+    },
+    {
+     "id": "1WFgv04BZTx6gZWQNE6Sp7",
+     "name": "Freudian",
+     "artist": "Daniel Caesar",
+     "album": "Freudian",
+     "image": "https://i.scdn.co/image/ab67616d00001e027aa8783ad8def37cc548a9cf"
     },
     {
      "id": "1aygA3iZfj6ef4aq92EqCU",
@@ -1124,27 +1145,6 @@
      "artist": "張鎬哲",
      "album": "我真的不是故意的",
      "image": "https://i.scdn.co/image/ab67616d00001e021b9fa6c4bb3dc69d691c13be"
-    },
-    {
-     "id": "4va1JykAJeulnYV0uYkWhF",
-     "name": "Crazy Bird",
-     "artist": "Wild Child",
-     "album": "The Runaround",
-     "image": "https://i.scdn.co/image/ab67616d00001e022d199e320b675ca7305c6f00"
-    },
-    {
-     "id": "5Oi1UhGQq2B7me6uPpAcc2",
-     "name": "大約在冬季",
-     "artist": "Chyi Chin",
-     "album": "齊秦精選",
-     "image": "https://i.scdn.co/image/ab67616d00001e02de16d38441a186e002f7cd40"
-    },
-    {
-     "id": "5PadgcONJhQT8FzhhLjwXA",
-     "name": "因為你愛我",
-     "artist": "Joanna Wang",
-     "album": "Start From Here",
-     "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
     }
    ]
   },
