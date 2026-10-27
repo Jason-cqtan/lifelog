@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-27T12:07:42Z",
+ "updated_at": "2026-10-27T13:09:13Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -1459,6 +1459,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e0227855459680dea347f412fec"
     },
     {
+     "id": "7eqoqGkKwgOaWNNHx90uEZ",
+     "name": "Nights",
+     "artist": "Frank Ocean",
+     "album": "Blonde",
+     "image": "https://i.scdn.co/image/ab67616d00001e02c5649add07ed3720be9d5526"
+    },
+    {
      "id": "7nDQMtLxu94xtlTR8bEqjU",
      "name": "Faded",
      "artist": "ZHU",
@@ -1480,11 +1487,11 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
     },
     {
-     "id": "7rdtBpPpe4knfd7aD98h9X",
-     "name": "Take Me to Your Heart",
-     "artist": "Michael Learns To Rock",
-     "album": "Michael Learns To Rock",
-     "image": "https://i.scdn.co/image/ab67616d00001e024b8929ee375f3a2539bd2868"
+     "id": "2fXwCWkh6YG5zU1IyvQrbs",
+     "name": "Broken Clocks",
+     "artist": "SZA",
+     "album": "Ctrl",
+     "image": "https://i.scdn.co/image/ab67616d00001e0206d56b057cce5797538a16d5"
     },
     {
      "id": "00aqkszH1FdUiJJWvX6iEl",
@@ -1569,13 +1576,6 @@
      "artist": "Leah Dou",
      "album": "空中飛人",
      "image": "https://i.scdn.co/image/ab67616d00001e02d65beb03c59661d6e737b5e4"
-    },
-    {
-     "id": "0cCyZJI41K21h1feG0oGVK",
-     "name": "I Love You(OT: 愛很簡單)",
-     "artist": "Joanna Wang",
-     "album": "Start From Here",
-     "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
     }
    ]
   }
