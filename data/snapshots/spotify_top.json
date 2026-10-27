@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-27T22:09:15Z",
+ "updated_at": "2026-10-27T23:07:42Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -748,6 +748,11 @@
      "id": "4iHNK0tOyZPYnBU7nGAgpQ",
      "name": "Mariah Carey",
      "image": "https://i.scdn.co/image/ab6761610000f17821453384a10b1f8e18877f63"
+    },
+    {
+     "id": "0du5cEVh5yTK9QJze8zA0C",
+     "name": "Bruno Mars",
+     "image": "https://i.scdn.co/image/ab6761610000f178c7688aad1bf03986934d7e26"
     },
     {
      "id": "1r9DuPTHiQ7hnRRZ99B8nL",
