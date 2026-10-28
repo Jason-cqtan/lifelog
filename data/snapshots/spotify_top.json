@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-28T11:09:10Z",
+ "updated_at": "2026-10-28T12:07:23Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -119,14 +119,14 @@
      "image": "https://i.scdn.co/image/ab67616d00001e020d2bdfb25648a42ba50b9c41"
     },
     {
-     "id": "3XRhtE8W24BUgS40G9ZNkS",
-     "name": "Linear Phase",
-     "image": "https://i.scdn.co/image/ab6761610000f1789caf03c5c4b858fca6cedab4"
-    },
-    {
      "id": "7tYKF4w9nC0nq9CsPZTHyP",
      "name": "SZA",
      "image": "https://i.scdn.co/image/ab6761610000f178fd0a9fb6c252a3ba44079acf"
+    },
+    {
+     "id": "3XRhtE8W24BUgS40G9ZNkS",
+     "name": "Linear Phase",
+     "image": "https://i.scdn.co/image/ab6761610000f1789caf03c5c4b858fca6cedab4"
     },
     {
      "id": "2h93pZq0e7k5yf4dywlkpM",
@@ -284,20 +284,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02edcab0fe7cf29d17751dad18"
     },
     {
-     "id": "1EOWf8bsePF6QtiDUAclrJ",
-     "name": "Catch a Grenade - The Hooligans Remix",
-     "artist": "Bruno Mars",
-     "album": "The Grenade Sessions",
-     "image": "https://i.scdn.co/image/ab67616d00001e026424db824abd14306db0da44"
-    },
-    {
-     "id": "3tInTDUq8wdIMw5ftohmqJ",
-     "name": "Girls Chase Boys",
-     "artist": "Ingrid Michaelson",
-     "album": "Lights Out",
-     "image": "https://i.scdn.co/image/ab67616d00001e02ac90d708dd4cf294d5d8784e"
-    },
-    {
      "id": "0zL9dieoCcjBWV01y73Cj1",
      "name": "Faded",
      "artist": "ZHU",
@@ -312,6 +298,27 @@
      "image": "https://i.scdn.co/image/ab67616d00001e0244fd7df5558aa1f6cbed17a2"
     },
     {
+     "id": "1EOWf8bsePF6QtiDUAclrJ",
+     "name": "Catch a Grenade - The Hooligans Remix",
+     "artist": "Bruno Mars",
+     "album": "The Grenade Sessions",
+     "image": "https://i.scdn.co/image/ab67616d00001e026424db824abd14306db0da44"
+    },
+    {
+     "id": "3tInTDUq8wdIMw5ftohmqJ",
+     "name": "Girls Chase Boys",
+     "artist": "Ingrid Michaelson",
+     "album": "Lights Out",
+     "image": "https://i.scdn.co/image/ab67616d00001e02ac90d708dd4cf294d5d8784e"
+    },
+    {
+     "id": "4Tg47JDi502dD0eh4gajWf",
+     "name": "昨夜书",
+     "artist": "许嵩",
+     "album": "经典咏流传第四季 第9期",
+     "image": "https://i.scdn.co/image/ab67616d00001e02f1b39a9ad04b471a169a73fa"
+    },
+    {
      "id": "6fNhZRFEkBfgW39W3wKARJ",
      "name": "Pompeii",
      "artist": "Bastille",
@@ -324,13 +331,6 @@
      "artist": "Vexento",
      "album": "Yet So Close",
      "image": "https://i.scdn.co/image/ab67616d00001e02f9e94cdcd43abe52e9e1c4c3"
-    },
-    {
-     "id": "4Tg47JDi502dD0eh4gajWf",
-     "name": "昨夜书",
-     "artist": "许嵩",
-     "album": "经典咏流传第四季 第9期",
-     "image": "https://i.scdn.co/image/ab67616d00001e02f1b39a9ad04b471a169a73fa"
     },
     {
      "id": "2pUpNOgJBIBCcjyQZQ00qU",
@@ -389,18 +389,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02da0751d4a35b6af93fb3e01d"
     },
     {
-     "id": "6HpchlfDUQzjRYYQCvTWUH",
-     "name": "New Years End",
-     "artist": "God Is An Astronaut",
-     "album": "Far from Refuge (2011 Remastered Edition)",
-     "image": "https://i.scdn.co/image/ab67616d00001e02b58eca99da746a9a4dd019db"
-    },
-    {
      "id": "3DarAbFujv6eYNliUTyqtz",
      "name": "Kiss Me More (feat. SZA)",
      "artist": "Doja Cat, SZA",
      "album": "Planet Her",
      "image": "https://i.scdn.co/image/ab67616d00001e0214b7b2a920a41166d53ddd49"
+    },
+    {
+     "id": "6HpchlfDUQzjRYYQCvTWUH",
+     "name": "New Years End",
+     "artist": "God Is An Astronaut",
+     "album": "Far from Refuge (2011 Remastered Edition)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b58eca99da746a9a4dd019db"
     },
     {
      "id": "7bNACqrVn2mAs6YzYlx262",
@@ -445,13 +445,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e026aae6fbda3deab68f09c48a7"
     },
     {
-     "id": "75C3FLMspH2VVOVU3Mp78k",
-     "name": "Young, Wild \u0026 Free",
-     "artist": "Axero",
-     "album": "Young, Wild \u0026 Free",
-     "image": "https://i.scdn.co/image/ab67616d00001e024fcf55f78d0be786a8b382b4"
-    },
-    {
      "id": "2hTNicFHwtKqk6uSMZU0Cx",
      "name": "Ascension",
      "artist": "7and5",
@@ -466,6 +459,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e027b151820c9ddaffeb7e177ce"
     },
     {
+     "id": "4DxybsoSiMUW0JI2oM0SSN",
+     "name": "Patience",
+     "artist": "Take That",
+     "album": "Beautiful World",
+     "image": "https://i.scdn.co/image/ab67616d00001e0206e7629fa095158d50b73d57"
+    },
+    {
      "id": "15YruCqHXgIpq3rcWpYuqW",
      "name": "Shots - Broiler Remix",
      "artist": "Imagine Dragons, Broiler",
@@ -473,11 +473,25 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02e3bf006fa33de9ffa82db64b"
     },
     {
+     "id": "6nNLW8UCaIMxH9HzIbs63N",
+     "name": "清明雨上",
+     "artist": "許嵩",
+     "album": "自定義",
+     "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
+    },
+    {
      "id": "3wo7kaVPCe4HjYqKdKIzql",
      "name": "Walk Away",
      "artist": "Dia Frampton",
      "album": "Red",
      "image": "https://i.scdn.co/image/ab67616d00001e028588252409ed634e072fd657"
+    },
+    {
+     "id": "75C3FLMspH2VVOVU3Mp78k",
+     "name": "Young, Wild \u0026 Free",
+     "artist": "Axero",
+     "album": "Young, Wild \u0026 Free",
+     "image": "https://i.scdn.co/image/ab67616d00001e024fcf55f78d0be786a8b382b4"
     },
     {
      "id": "7p2RlyF403KmPmZm2TxKl3",
@@ -494,13 +508,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02a6460e661fac0d7327c13426"
     },
     {
-     "id": "4DxybsoSiMUW0JI2oM0SSN",
-     "name": "Patience",
-     "artist": "Take That",
-     "album": "Beautiful World",
-     "image": "https://i.scdn.co/image/ab67616d00001e0206e7629fa095158d50b73d57"
-    },
-    {
      "id": "6q7eMARKcRpj3Fcwq5wH5k",
      "name": "Key To Life",
      "artist": "Laid Back",
@@ -508,11 +515,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02627869030fddec0565aa30cc"
     },
     {
-     "id": "6nNLW8UCaIMxH9HzIbs63N",
-     "name": "清明雨上",
-     "artist": "許嵩",
-     "album": "自定義",
-     "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
+     "id": "5HOpkTTVcmZHnthgyxrIL8",
+     "name": "The Fox (What Does the Fox Say?)",
+     "artist": "Ylvis",
+     "album": "The Fox (What Does the Fox Say?)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02078f1176c3c725de8e95f490"
+    },
+    {
+     "id": "6cv0maKXFbjZRmu3Oxb4jJ",
+     "name": "We All Want The Same Thing",
+     "artist": "Rixton",
+     "album": "Let The Road",
+     "image": "https://i.scdn.co/image/ab67616d00001e02647377a36072bd08e44dd32b"
     },
     {
      "id": "76hfruVvmfQbw0eYn1nmeC",
@@ -534,20 +548,6 @@
      "artist": "Oliver Scheffner",
      "album": "Sunny Chillout Lounge",
      "image": "https://i.scdn.co/image/ab67616d00001e026ffd17937874d8c19a240487"
-    },
-    {
-     "id": "5HOpkTTVcmZHnthgyxrIL8",
-     "name": "The Fox (What Does the Fox Say?)",
-     "artist": "Ylvis",
-     "album": "The Fox (What Does the Fox Say?)",
-     "image": "https://i.scdn.co/image/ab67616d00001e02078f1176c3c725de8e95f490"
-    },
-    {
-     "id": "6cv0maKXFbjZRmu3Oxb4jJ",
-     "name": "We All Want The Same Thing",
-     "artist": "Rixton",
-     "album": "Let The Road",
-     "image": "https://i.scdn.co/image/ab67616d00001e02647377a36072bd08e44dd32b"
     },
     {
      "id": "22RgKGppKFyQwKUX6Rvx8i",
@@ -592,18 +592,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e026f4be2da23461b3a1271508c"
     },
     {
-     "id": "7dejKdjQxjluvCS3ZjiyyK",
-     "name": "Sunshine Girl",
-     "artist": "moumoon",
-     "album": "moumoon BEST -FULLMOON-",
-     "image": "https://i.scdn.co/image/ab67616d00001e02d5136ed356114bc40f2edcce"
-    },
-    {
      "id": "0KAiuUOrLTIkzkpfpn9jb9",
      "name": "Drive By",
      "artist": "Train",
      "album": "California 37",
      "image": "https://i.scdn.co/image/ab67616d00001e02bde344cc54eedc35050f4c61"
+    },
+    {
+     "id": "2IGMVunIBsBLtEQyoI1Mu7",
+     "name": "Paint The Town Red",
+     "artist": "Doja Cat",
+     "album": "Paint The Town Red",
+     "image": "https://i.scdn.co/image/ab67616d00001e02e69a141e4ffe839c38c4c228"
     }
    ]
   },
