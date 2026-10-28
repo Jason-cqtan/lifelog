@@ -1,12 +1,11 @@
 import { Suspense, lazy, useEffect, useMemo, useState } from 'react'
 import { CATEGORIES, type Data, type Drill, type SportType } from './types'
-import { Heatmap } from './components/Heatmap'
+import { HeatmapPanel } from './components/HeatmapPanel'
+import { HeatmapSkeleton, NavigationSkeleton } from './components/Loading'
 import { ActivityList } from './components/ActivityList'
-import { Overview } from './components/Overview'
 import { PersonalBests } from './components/PersonalBests'
 import { Music } from './components/Music'
 import { SpotifyTop } from './components/SpotifyTop'
-import { DuolingoCourses } from './components/DuolingoCourses'
 import { RouteWall } from './components/RouteWall'
 import { useHeightVar } from './lib/useHeightVar'
 import { openRoutes, WrongAnswer } from './lib/routes'
@@ -34,6 +33,7 @@ export function App() {
     [raw, routes],
   )
   const [error, setError] = useState<string | null>(null)
+  const [loadAttempt, setLoadAttempt] = useState(0)
   const [year, setYear] = useState<number | 'all'>(new Date().getFullYear())
   const [lang, setLang] = useState<Lang>(initialLang)
   // index.html sets data-theme before first paint (saved choice, else the OS setting)
@@ -64,12 +64,14 @@ export function App() {
   }, [theme])
 
   useEffect(() => {
+    const controller = new AbortController()
     // GitHub Pages caches files for 10 min; revalidate so a fresh sync shows up at once.
-    fetch(import.meta.env.BASE_URL + 'data.json', { cache: 'no-cache' })
+    fetch(import.meta.env.BASE_URL + 'data.json', { cache: 'no-cache', signal: controller.signal })
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`${r.status} ${r.statusText}`))))
-      .then(setRaw)
-      .catch((e) => setError(String(e)))
-  }, [])
+      .then((next: Data) => { if (!controller.signal.aborted) setRaw(next) })
+      .catch((e) => { if (!controller.signal.aborted) setError(String(e)) })
+    return () => controller.abort()
+  }, [loadAttempt])
 
   const years = useMemo(() => {
     if (!data) return []
@@ -181,12 +183,10 @@ export function App() {
               <h1>Lifelog</h1>
               <p className="sub">
                 {t.subtitle}
-                {data && (
-                  <span className="updated">
-                    <span className="dash">{lang === 'zh' ? ' —— ' : ' — '}</span>
-                    {t.updated} {new Date(data.generated_at).toLocaleString(LOCALE[lang])}
-                  </span>
-                )}
+                <span className="updated">
+                  <span className="dash">{lang === 'zh' ? ' —— ' : ' — '}</span>
+                  {data ? <>{t.updated} {new Date(data.generated_at).toLocaleString(LOCALE[lang])}</> : !error && <span className="skeleton skeleton-updated" aria-hidden="true" />}
+                </span>
               </p>
             </div>
             <div className="controls">
@@ -204,7 +204,14 @@ export function App() {
             </div>
           </header>
 
-          {error && <p className="empty">{t.loadError(error)}</p>}
+          {error && (
+            <div className="load-error" role="alert">
+              <p>{t.loadError(error)}</p>
+              <button className="more" onClick={() => { setError(null); setLoadAttempt((n) => n + 1) }}>{t.retry}</button>
+            </div>
+          )}
+
+          {!data && !error && <NavigationSkeleton />}
 
           {data && (
             <>
@@ -259,6 +266,24 @@ export function App() {
           )}
         </div>
 
+        {!error && tab === 'overview' && (
+          <>
+            {data && visible.length === 0 && <p className="empty">{t.emptyYear}</p>}
+            <div className="panels">
+              {(data ? visible : CATEGORIES).map((c) => (
+                <HeatmapPanel key={`${year}-${c.key}`} category={c} year={year} data={data} onDrill={openDrill} onOpen={openActivity} />
+              ))}
+            </div>
+          </>
+        )}
+
+        {!data && !error && tab !== 'overview' && (
+          <div className="panels">
+            <HeatmapSkeleton />
+            <HeatmapSkeleton />
+          </div>
+        )}
+
         {data && (
           <>
             {tab === 'map' && routes && (
@@ -296,46 +321,6 @@ export function App() {
                 ) : (
                   <p className="empty">{t.noMusic}</p>
                 )}
-              </>
-            )}
-
-            {tab === 'overview' && (
-              <>
-                {visible.length === 0 && <p className="empty">{t.emptyYear}</p>}
-                <div className="panels">
-                  {visible.map((c) =>
-                    year === 'all' ? (
-                      <Overview
-                        key={c.key}
-                        category={c}
-                        daily={data.daily}
-                        onDrill={openDrill}
-                        activities={c.sport ? yearActivities.filter((a) => a.type === c.sport) : undefined}
-                        onOpen={openActivity}
-                        extra={
-                          c.key === 'duolingo' && data.duolingo ? (
-                            <DuolingoCourses data={data.duolingo} period={String(year)} />
-                          ) : undefined
-                        }
-                      />
-                    ) : (
-                      <Heatmap
-                        key={c.key}
-                        year={year}
-                        category={c}
-                        daily={data.daily}
-                        onDrill={openDrill}
-                        activities={c.sport ? yearActivities.filter((a) => a.type === c.sport) : undefined}
-                        onOpen={openActivity}
-                        extra={
-                          c.key === 'duolingo' && data.duolingo ? (
-                            <DuolingoCourses data={data.duolingo} period={String(year)} />
-                          ) : undefined
-                        }
-                      />
-                    ),
-                  )}
-                </div>
               </>
             )}
 

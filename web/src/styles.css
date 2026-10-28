@@ -162,6 +162,99 @@ h1 {
   padding: 16px;
   min-width: 0;
 }
+.heatmap-panel {
+  min-width: 0;
+}
+.heatmap-panel > .panel {
+  height: 100%;
+}
+.skeleton {
+  display: block;
+  border-radius: 4px;
+  background: var(--cell-empty);
+  animation: skeleton-pulse 1.8s ease-in-out infinite;
+}
+.skeleton-updated {
+  display: inline-block;
+  vertical-align: middle;
+  width: 240px;
+  max-width: 100%;
+  height: 12px;
+}
+.skeleton-tabs {
+  gap: 8px;
+  padding: 8px 0;
+}
+.skeleton-tabs .skeleton {
+  height: 20px;
+}
+.skeleton-years .skeleton {
+  flex: 0 0 58px;
+  height: 31px;
+  border-radius: 999px;
+}
+.panel-loading .panel-head {
+  min-height: 48px;
+}
+.panel-loading h3 {
+  min-height: 26px;
+}
+.skeleton-title {
+  width: 88px;
+  height: 14px;
+}
+.loading-label {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+.skeleton-chart {
+  height: 111px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 8px 0 16px 26px;
+}
+.skeleton-chart .skeleton {
+  height: 10px;
+}
+.skeleton-chart .skeleton:nth-child(1) { width: 24%; }
+.skeleton-chart .skeleton:nth-child(2) { width: 48%; }
+.skeleton-chart .skeleton:nth-child(3) { width: 68%; }
+.skeleton-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 3px 0;
+  margin-top: 6px;
+}
+.skeleton-footer .skeleton {
+  height: 12px;
+  width: 120px;
+  max-width: 30%;
+}
+.skeleton-footer .skeleton:last-child { width: 200px; }
+.skeleton-latest {
+  width: 72%;
+  height: 36px;
+  margin-top: 10px;
+}
+.load-error {
+  padding-block: 12px;
+}
+.load-error p {
+  color: var(--text-secondary);
+}
+@keyframes skeleton-pulse {
+  50% { opacity: 0.45; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .skeleton { animation: none; }
+}
+@media (max-width: 560px) {
+  .panel-loading .panel-head { min-height: 86px; }
+  .panel-loading-sport .skeleton-footer { min-height: 62px; }
+  .skeleton-latest { height: 58px; }
+}
 .panel-head {
   display: flex;
   flex-wrap: wrap;
