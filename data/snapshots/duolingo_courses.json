@@ -1,7 +1,7 @@
 {
- "updated_at": "2026-10-28T04:08:29Z",
+ "updated_at": "2026-10-28T05:08:46Z",
  "tracked_since": "2026-10-24T11:42:54Z",
- "total_xp": 683780,
+ "total_xp": 684080,
  "current_course": "CHESS_CH",
  "courses": [
   {
@@ -38,7 +38,7 @@
    "id": "OTHER",
    "title": "",
    "language": "",
-   "xp": 290838
+   "xp": 291138
   }
  ]
 }
