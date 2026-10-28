@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-28T06:09:14Z",
+ "updated_at": "2026-10-28T07:07:49Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -1229,6 +1229,11 @@
      "id": "4npEfmQ6YuiwW1GpUmaq3F",
      "name": "Ava Max",
      "image": "https://i.scdn.co/image/ab6761610000f178d8fa717584b01690e3919e32"
+    },
+    {
+     "id": "6XpaIBNiVzIetEPCWDvAFP",
+     "name": "Whitney Houston",
+     "image": "https://i.scdn.co/image/ab6761610000f178cd9f60ab57585bf3b77ecc51"
     }
    ],
    "tracks": [
