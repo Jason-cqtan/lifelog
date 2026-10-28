@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-28T13:08:41Z",
+ "updated_at": "2026-10-28T14:08:44Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -720,6 +720,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f1780e64fb94acbb752960c823e9"
     },
     {
+     "id": "4iHNK0tOyZPYnBU7nGAgpQ",
+     "name": "Mariah Carey",
+     "image": "https://i.scdn.co/image/ab6761610000f17821453384a10b1f8e18877f63"
+    },
+    {
      "id": "5Pwc4xIPtQLFEnJriah9YJ",
      "name": "OneRepublic",
      "image": "https://i.scdn.co/image/ab6761610000f1783202f1bcacc6d8f581f32ffd"
@@ -728,6 +733,11 @@
      "id": "6MDME20pz9RveH9rEXvrOM",
      "name": "Clean Bandit",
      "image": "https://i.scdn.co/image/ab6761610000f178f995542c4f68f8ae4f05b5f6"
+    },
+    {
+     "id": "6XpaIBNiVzIetEPCWDvAFP",
+     "name": "Whitney Houston",
+     "image": "https://i.scdn.co/image/ab6761610000f178cd9f60ab57585bf3b77ecc51"
     },
     {
      "id": "6eUKZXaKkcviH0Ku9w2n3V",
@@ -743,11 +753,6 @@
      "id": "4S9EykWXhStSc15wEx8QFK",
      "name": "Céline Dion",
      "image": "https://i.scdn.co/image/ab6761610000f178fe81f2540f9fa7564dd5e05c"
-    },
-    {
-     "id": "4iHNK0tOyZPYnBU7nGAgpQ",
-     "name": "Mariah Carey",
-     "image": "https://i.scdn.co/image/ab6761610000f17821453384a10b1f8e18877f63"
     },
     {
      "id": "0du5cEVh5yTK9QJze8zA0C",
@@ -778,11 +783,6 @@
      "id": "3aIDSTKS9yH745GUQBxDcS",
      "name": "Fish Leong",
      "image": "https://i.scdn.co/image/ab6761610000f17814806436e1fc9d977a3709dd"
-    },
-    {
-     "id": "6XpaIBNiVzIetEPCWDvAFP",
-     "name": "Whitney Houston",
-     "image": "https://i.scdn.co/image/ab6761610000f178cd9f60ab57585bf3b77ecc51"
     },
     {
      "id": "6qzfo7jiO4OrhxrvPFPlWX",
