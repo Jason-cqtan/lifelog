@@ -1,9 +1,10 @@
 [Unit]
-Description=Run the lifelog sync every hour
+Description=Run the lifelog sync every day at 08:00
 
 [Timer]
-# hourly: Spotify only exposes the last 50 plays, so more often than 2 h is safer
-OnCalendar=*-*-* *:07:00
+# daily at 08:00 (server time, Asia/Shanghai). Spotify only exposes the last
+# 50 plays, so anything beyond that between runs is lost.
+OnCalendar=*-*-* 08:00:00
 RandomizedDelaySec=120
 Persistent=true
 

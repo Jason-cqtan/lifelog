@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Hourly job on the VPS (lifelog-sync.timer): pull, sync every source, export
+# Daily (08:00) job on the VPS (lifelog-sync.timer): pull, sync every source, export
 # the site's data.json, and push the data back to GitHub so GitHub Pages stays
 # in step. A failing source doesn't stop the rest (same as the Actions job).
 set -uo pipefail
