@@ -108,6 +108,9 @@ h1 {
   display: flex;
   gap: 8px;
 }
+a.icon-btn {
+  color: inherit;
+}
 .icon-btn {
   min-width: 36px;
   height: 36px;

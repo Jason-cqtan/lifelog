@@ -146,6 +146,7 @@ const zh = {
   duration: (h: number, m: number) => (h > 0 ? `${h}小时${m}分` : `${m}分钟`),
   toLight: '切换到白天模式',
   toDark: '切换到夜间模式',
+  sourceCode: '在 GitHub 查看源码',
   otherLang: 'EN',
   otherLangLabel: 'Switch to English',
 }
@@ -294,6 +295,7 @@ const en: typeof zh = {
   duration: (h: number, m: number) => (h > 0 ? `${h}h ${m}m` : `${m} min`),
   toLight: 'Switch to light mode',
   toDark: 'Switch to dark mode',
+  sourceCode: 'View source on GitHub',
   otherLang: '中',
   otherLangLabel: '切换到中文',
 }
