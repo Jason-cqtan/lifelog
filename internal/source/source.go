@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"os"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/Jason-cqtan/lifelog/internal/store"
@@ -33,8 +34,33 @@ type Source interface {
 	Sync(ctx context.Context, env *Env) error
 }
 
-// Getenv reads an environment variable, trimming whitespace pasted into secrets.
-func Getenv(key string) string { return strings.TrimSpace(os.Getenv(key)) }
+var (
+	cfgMu    sync.RWMutex
+	cfg      map[string]string
+	defaults map[string]string
+)
+
+// SetConfig installs the settings stored in the database (package settings):
+// Getenv returns them ahead of the environment, and falls back to defaults.
+func SetConfig(values, defs map[string]string) {
+	cfgMu.Lock()
+	defer cfgMu.Unlock()
+	cfg, defaults = values, defs
+}
+
+// Getenv reads a setting: the database's value, else the environment variable
+// (trimming whitespace pasted into secrets), else its default.
+func Getenv(key string) string {
+	cfgMu.RLock()
+	defer cfgMu.RUnlock()
+	if v := cfg[key]; v != "" {
+		return v
+	}
+	if v := strings.TrimSpace(os.Getenv(key)); v != "" {
+		return v
+	}
+	return defaults[key]
+}
 
 // DoJSON sends req and decodes a 2xx JSON response into out.
 func DoJSON(c *http.Client, req *http.Request, out any) error {

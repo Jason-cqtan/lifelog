@@ -15,33 +15,30 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
+	"syscall"
 	"time"
 	_ "time/tzdata" // CI runners may lack zoneinfo
 
+	"github.com/Jason-cqtan/lifelog/internal/app"
 	"github.com/Jason-cqtan/lifelog/internal/export"
 	"github.com/Jason-cqtan/lifelog/internal/oauth"
+	"github.com/Jason-cqtan/lifelog/internal/server"
+	"github.com/Jason-cqtan/lifelog/internal/settings"
 	"github.com/Jason-cqtan/lifelog/internal/source"
 	"github.com/Jason-cqtan/lifelog/internal/source/applehealth"
-	"github.com/Jason-cqtan/lifelog/internal/source/coros"
 	"github.com/Jason-cqtan/lifelog/internal/source/duolingo"
 	"github.com/Jason-cqtan/lifelog/internal/source/garmin"
-	"github.com/Jason-cqtan/lifelog/internal/source/github"
 	"github.com/Jason-cqtan/lifelog/internal/source/joyrun"
 	"github.com/Jason-cqtan/lifelog/internal/source/runningpage"
 	"github.com/Jason-cqtan/lifelog/internal/source/spotify"
 	"github.com/Jason-cqtan/lifelog/internal/source/strava"
 	"github.com/Jason-cqtan/lifelog/internal/store"
+	"github.com/jackc/pgx/v5/pgxpool"
 	"golang.org/x/term"
 )
 
-var sources = []source.Source{
-	garmin.Garmin{},
-	coros.Coros{},
-	strava.Strava{},
-	duolingo.Duolingo{},
-	spotify.Spotify{},
-	github.GitHub{},
-}
+// pool is the database when DATABASE_URL is set; nil means the JSON files in data/.
+var pool *pgxpool.Pool
 
 const usage = `lifelog — 个人数据同步工具
 
@@ -52,10 +49,14 @@ const usage = `lifelog — 个人数据同步工具
   lifelog import joyrun                    从悦跑圈下载轨迹，补算 running_page 导入跑步的分段最佳(短信验证码登录)
   lifelog import running-page activities.json [-gpx GPX_OUT]  导入 running_page 的历史记录(带 GPX 时计算分段最佳)
   lifelog export [-out PATH] [-demo]       生成前端用的 data.json
-  lifelog auth strava|spotify|garmin|duolingo  一次性授权,token 写入 .env
+  lifelog auth strava|spotify|garmin|duolingo  一次性授权,token 写入数据库(未配置数据库时写入 .env)
   lifelog seal [-old ANSWER]               把路线加密存入 data/routes.json;-old 用于更换答案(用旧答案打开,新答案重新加密)
+  lifelog serve [-addr ADDR] [-www DIR] [-repo DIR] [-compress SCRIPT]  后台管理 + 定时同步(需要数据库)
+  lifelog db import [-dir data] [-env .env]  把 data/*.json 和 .env 里的配置导入数据库(可重复运行)
+  lifelog db dump [-dir data]              把数据库导出成 data/*.json(路线用地图答案加密)
 
-环境变量: LIFELOG_DATA(默认 data) LIFELOG_TZ(默认 Asia/Shanghai),其余见 .env.example
+设置了 DATABASE_URL 时数据和配置都在 PostgreSQL 里，配置在后台管理页修改;否则用 data/ 和 .env。
+环境变量: DATABASE_URL LIFELOG_ADMIN_PASSWORD LIFELOG_DATA(默认 data) LIFELOG_TZ(默认 Asia/Shanghai),其余见 .env.example
 `
 
 func main() {
@@ -65,10 +66,13 @@ func main() {
 		fmt.Fprintf(os.Stderr, usage, sourceNames())
 		os.Exit(2)
 	}
-	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt)
+	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer cancel()
 
 	var err error
+	if pool, err = app.ConnectDB(ctx); err != nil {
+		log.Fatal("error: ", err)
+	}
 	switch cmd, args := os.Args[1], os.Args[2:]; cmd {
 	case "sync":
 		err = runSync(ctx, args)
@@ -80,6 +84,10 @@ func main() {
 		err = runAuth(ctx, args)
 	case "seal":
 		err = runSeal(args)
+	case "serve":
+		err = runServe(ctx, args)
+	case "db":
+		err = runDB(ctx, args)
 	default:
 		fmt.Fprintf(os.Stderr, usage, sourceNames())
 		os.Exit(2)
@@ -89,66 +97,27 @@ func main() {
 	}
 }
 
-func dataDir() string {
-	if d := source.Getenv("LIFELOG_DATA"); d != "" {
-		return d
-	}
-	return "data"
-}
-
 func location() *time.Location {
-	name := source.Getenv("LIFELOG_TZ")
-	if name == "" {
-		name = "Asia/Shanghai"
-	}
-	loc, err := time.LoadLocation(name)
+	loc, err := app.Location()
 	if err != nil {
-		log.Fatalf("LIFELOG_TZ: %v", err)
+		log.Fatal(err)
 	}
 	return loc
 }
+
+func openStore() (*store.Store, error) { return app.OpenStore(context.Background(), pool) }
 
 func runSync(ctx context.Context, args []string) error {
 	fs := flag.NewFlagSet("sync", flag.ExitOnError)
 	full := fs.Bool("full", false, "re-fetch full history instead of only new data")
 	fs.Parse(args)
 
-	want := map[string]bool{}
-	for _, n := range fs.Args() {
-		want[n] = true
-	}
-	st, err := store.Open(dataDir(), source.Getenv("LIFELOG_MAP_ANSWER"))
+	st, err := openStore()
 	if err != nil {
 		return err
 	}
-	env := &source.Env{
-		Store: st,
-		HTTP:  &http.Client{Timeout: 60 * time.Second},
-		Loc:   location(),
-		Full:  *full,
-		Log:   log.Default(),
-	}
-
-	var failed []string
-	for _, s := range sources {
-		if len(want) > 0 && !want[s.Name()] {
-			continue
-		}
-		if !s.Configured() {
-			if len(want) > 0 {
-				failed = append(failed, s.Name()+" (not configured)")
-			} else {
-				log.Printf("%s: skipped, not configured", s.Name())
-			}
-			continue
-		}
-		// One broken source (expired token, API change) must not block the others.
-		if err := s.Sync(ctx, env); err != nil {
-			log.Printf("%s: FAILED: %v", s.Name(), err)
-			failed = append(failed, s.Name())
-		}
-	}
-	if err := st.Save(); err != nil {
+	failed, err := app.Sync(ctx, st, fs.Args(), *full, log.Default())
+	if err != nil {
 		return err
 	}
 	if len(failed) > 0 {
@@ -164,7 +133,7 @@ func runImport(args []string) error {
 	if len(args) < 2 {
 		return fmt.Errorf("usage: lifelog import applehealth|spotify-history|running-page FILE...")
 	}
-	st, err := store.Open(dataDir(), source.Getenv("LIFELOG_MAP_ANSWER"))
+	st, err := openStore()
 	if err != nil {
 		return err
 	}
@@ -209,17 +178,14 @@ func runExport(args []string) error {
 	demo := fs.Bool("demo", false, "write generated sample data instead of real data")
 	fs.Parse(args)
 
-	loc := location()
 	if *demo {
-		return export.Write(*out, export.Demo(loc), &export.Lock{Question: "演示数据，答案是 demo", Answer: "demo"})
+		return export.Write(*out, export.Demo(location()), &export.Lock{Question: "演示数据，答案是 demo", Answer: "demo"})
 	}
-	st, err := store.Open(dataDir(), source.Getenv("LIFELOG_MAP_ANSWER"))
+	st, err := openStore()
 	if err != nil {
 		return err
 	}
-	o := export.Build(st, loc)
-	log.Printf("export: %d activities, %d days -> %s", len(o.Activities), len(o.Daily), *out)
-	return export.Write(*out, o, mapLock())
+	return app.Export(st, *out, log.Default())
 }
 
 // runSeal rewrites data/ so every route sits sealed in routes.json: it moves
@@ -229,6 +195,9 @@ func runSeal(args []string) error {
 	fs := flag.NewFlagSet("seal", flag.ExitOnError)
 	old := fs.String("old", "", "previous answer, when changing it")
 	fs.Parse(args)
+	if pool != nil {
+		return errors.New("seal works on data/ only; the database keeps routes itself and `db dump` seals them on the way out")
+	}
 	answer := source.Getenv("LIFELOG_MAP_ANSWER")
 	if answer == "" {
 		return errors.New("set LIFELOG_MAP_ANSWER first")
@@ -237,7 +206,7 @@ func runSeal(args []string) error {
 	if *old != "" {
 		open = *old
 	}
-	st, err := store.Open(dataDir(), open)
+	st, err := store.Open(app.DataDir(), open)
 	if err != nil {
 		return err
 	}
@@ -252,23 +221,8 @@ func runSeal(args []string) error {
 			n++
 		}
 	}
-	log.Printf("seal: %d routes sealed in %s", n, filepath.Join(dataDir(), "routes.json"))
+	log.Printf("seal: %d routes sealed in %s", n, filepath.Join(app.DataDir(), "routes.json"))
 	return st.Save()
-}
-
-// mapLock reads the map question and its answer; the answer lives only in .env
-// (or a CI secret), never in the repository.
-func mapLock() *export.Lock {
-	answer := source.Getenv("LIFELOG_MAP_ANSWER")
-	if strings.TrimSpace(answer) == "" {
-		log.Printf("export: LIFELOG_MAP_ANSWER not set, routes left out")
-		return nil
-	}
-	q := source.Getenv("LIFELOG_MAP_QUESTION")
-	if q == "" {
-		q = "站长姓氏？"
-	}
-	return &export.Lock{Question: q, Answer: answer}
 }
 
 func runAuth(ctx context.Context, args []string) error {
@@ -294,13 +248,13 @@ func runAuth(ctx context.Context, args []string) error {
 		if err != nil {
 			return fmt.Errorf("token 无效: %w", err)
 		}
-		if err := setDotEnv(".env", "DUOLINGO_JWT", jwt); err != nil {
+		if err := saveSetting("DUOLINGO_JWT", jwt); err != nil {
 			return err
 		}
 		if exp.IsZero() {
-			fmt.Println("验证成功,DUOLINGO_JWT 已写入 .env。")
+			fmt.Println("验证成功,DUOLINGO_JWT 已写入" + settingsHome() + "。")
 		} else {
-			fmt.Printf("验证成功,DUOLINGO_JWT 已写入 .env(有效期至 %s)。\n", exp.Format("2006-01-02"))
+			fmt.Printf("验证成功,DUOLINGO_JWT 已写入%s(有效期至 %s)。\n", settingsHome(), exp.Format("2006-01-02"))
 		}
 		return nil
 	case "garmin":
@@ -336,15 +290,15 @@ func runAuth(ctx context.Context, args []string) error {
 			return err
 		}
 		// The token is a credential: keep it out of the terminal and in the untracked .env.
-		if err := setDotEnv(".env", "GARMIN_TOKEN", tok.Encode()); err != nil {
+		if err := saveSetting("GARMIN_TOKEN", tok.Encode()); err != nil {
 			return err
 		}
 		if domain == "garmin.cn" {
-			if err := setDotEnv(".env", "GARMIN_CN", "true"); err != nil {
+			if err := saveSetting("GARMIN_CN", "true"); err != nil {
 				return err
 			}
 		}
-		fmt.Println("登录成功,GARMIN_TOKEN 已写入 .env(约一年有效)。")
+		fmt.Println("登录成功,GARMIN_TOKEN 已写入" + settingsHome() + "(约一年有效)。")
 		return nil
 	}
 	return fmt.Errorf("unknown provider %q", args[0])
@@ -373,11 +327,11 @@ func oauthApp(ctx context.Context, prefix, dashboard string, authorize func(cont
 		return err
 	}
 	for k, v := range map[string]string{"_CLIENT_ID": id, "_CLIENT_SECRET": secret, "_REFRESH_TOKEN": refresh} {
-		if err := setDotEnv(".env", prefix+k, v); err != nil {
+		if err := saveSetting(prefix+k, v); err != nil {
 			return err
 		}
 	}
-	fmt.Println("授权成功," + prefix + "_CLIENT_ID / _CLIENT_SECRET / _REFRESH_TOKEN 已写入 .env。")
+	fmt.Println("授权成功," + prefix + "_CLIENT_ID / _CLIENT_SECRET / _REFRESH_TOKEN 已写入" + settingsHome() + "。")
 	return nil
 }
 
@@ -404,7 +358,7 @@ func importJoyrun() error {
 	}
 	code := ask("短信验证码: ", "")
 
-	st, err := store.Open(dataDir(), source.Getenv("LIFELOG_MAP_ANSWER"))
+	st, err := openStore()
 	if err != nil {
 		return err
 	}
@@ -442,6 +396,22 @@ func importJoyrun() error {
 	return st.Save()
 }
 
+// saveSetting stores a credential from `lifelog auth`: in the database when
+// there is one (the admin page shows it), else in the untracked .env.
+func saveSetting(key, value string) error {
+	if pool != nil {
+		return settings.Set(context.Background(), pool, key, value)
+	}
+	return setDotEnv(".env", key, value)
+}
+
+func settingsHome() string {
+	if pool != nil {
+		return "数据库"
+	}
+	return " .env"
+}
+
 // setDotEnv sets key=value in path, replacing an existing line for key.
 func setDotEnv(path, key, value string) error {
 	b, err := os.ReadFile(path)
@@ -464,12 +434,95 @@ func setDotEnv(path, key, value string) error {
 	return os.WriteFile(path, []byte(strings.Join(lines, "\n")+"\n"), 0o600)
 }
 
-func sourceNames() string {
-	var names []string
-	for _, s := range sources {
-		names = append(names, s.Name())
+func sourceNames() string { return strings.Join(app.SourceNames(), ", ") }
+
+func runServe(ctx context.Context, args []string) error {
+	fs := flag.NewFlagSet("serve", flag.ExitOnError)
+	addr := fs.String("addr", "127.0.0.1:8080", "listen address (put Caddy in front)")
+	www := fs.String("www", "web/public", "site directory: data.json and routes.enc are written here")
+	repo := fs.String("repo", "", "git checkout to push data/ backups from (empty: no backup)")
+	compress := fs.String("compress", "", "script that writes .br/.zst/.gz copies of data.json (deploy/compress.sh)")
+	fs.Parse(args)
+	if pool == nil {
+		return errors.New("serve needs DATABASE_URL")
 	}
-	return strings.Join(names, ", ")
+	return server.New(pool, server.Options{WWW: *www, Repo: *repo, Compress: *compress}).Run(ctx, *addr)
+}
+
+func runDB(ctx context.Context, args []string) error {
+	if pool == nil {
+		return errors.New("set DATABASE_URL first")
+	}
+	if len(args) == 0 {
+		return errors.New("usage: lifelog db import|dump")
+	}
+	fs := flag.NewFlagSet("db "+args[0], flag.ExitOnError)
+	dir := fs.String("dir", app.DataDir(), "JSON data directory (import: empty to import settings only)")
+	envFile := fs.String("env", "", "also import settings from this .env file, replacing stored values")
+	fs.Parse(args[1:])
+	answer := source.Getenv("LIFELOG_MAP_ANSWER")
+	switch args[0] {
+	case "import":
+		if *envFile != "" {
+			n, err := importEnv(ctx, *envFile)
+			if err != nil {
+				return err
+			}
+			log.Printf("settings: %d imported from %s", n, *envFile)
+			answer = source.Getenv("LIFELOG_MAP_ANSWER")
+		}
+		if *dir == "" {
+			return nil
+		}
+		files, err := store.Open(*dir, answer)
+		if err != nil {
+			return err
+		}
+		st, err := files.ImportInto(ctx, pool)
+		if err != nil {
+			return err
+		}
+		routes := 0
+		for _, a := range st.Activities() {
+			if a.Polyline != "" {
+				routes++
+			}
+		}
+		log.Printf("db: %d activities (%d with routes), %d daily values, %d plays in the database",
+			len(st.Activities()), routes, len(st.Daily()), len(st.Plays()))
+		if routes == 0 && answer == "" {
+			log.Printf("db: no routes imported: set LIFELOG_MAP_ANSWER to open data/routes.json")
+		}
+		return nil
+	case "dump":
+		st, err := store.OpenDB(ctx, pool)
+		if err != nil {
+			return err
+		}
+		log.Printf("db: writing %d activities to %s", len(st.Activities()), *dir)
+		return st.WriteFiles(*dir, answer)
+	}
+	return fmt.Errorf("unknown db command %q", args[0])
+}
+
+// importEnv copies the known, non-empty settings in a .env file into the
+// database, replacing what is stored for those keys.
+func importEnv(ctx context.Context, path string) (int, error) {
+	b, err := os.ReadFile(path)
+	if err != nil {
+		return 0, err
+	}
+	n := 0
+	for k, v := range parseDotEnv(b) {
+		if _, known := settings.Lookup(k); !known || v == "" {
+			continue
+		}
+		if err := settings.Set(ctx, pool, k, v); err != nil {
+			return n, err
+		}
+		n++
+	}
+	return n, settings.Apply(ctx, pool)
 }
 
 // loadDotEnv sets KEY=VALUE lines from path without overriding real env vars,
@@ -479,6 +532,15 @@ func loadDotEnv(path string) {
 	if err != nil {
 		return
 	}
+	for k, v := range parseDotEnv(b) {
+		if _, set := os.LookupEnv(k); !set {
+			os.Setenv(k, v)
+		}
+	}
+}
+
+func parseDotEnv(b []byte) map[string]string {
+	out := map[string]string{}
 	for _, line := range strings.Split(string(b), "\n") {
 		line = strings.TrimSpace(line)
 		k, v, ok := strings.Cut(line, "=")
@@ -488,9 +550,7 @@ func loadDotEnv(path string) {
 		if i := strings.Index(v, " #"); i >= 0 {
 			v = v[:i] // inline comment
 		}
-		k, v = strings.TrimSpace(k), strings.Trim(strings.TrimSpace(v), `"'`)
-		if _, set := os.LookupEnv(k); !set {
-			os.Setenv(k, v)
-		}
+		out[strings.TrimSpace(k)] = strings.Trim(strings.TrimSpace(v), `"'`)
 	}
+	return out
 }

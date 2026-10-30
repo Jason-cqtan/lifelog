@@ -1,20 +1,23 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import mapboxgl from 'mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
-import { SPORT_LABEL, type Activity } from '../types'
+import { SPORT_LABEL, type Activity, type SiteConfig } from '../types'
 import { useI18n } from '../i18n'
 import { decodePolyline } from '../lib/polyline'
 import { fmtDuration, fmtNum, fmtSpeed } from '../lib/format'
 import { wgs84ToGcj02 } from '../lib/gcj02'
 import { WeatherLine } from './ActivityList'
 
-const TOKEN = import.meta.env.VITE_MAPBOX_TOKEN as string | undefined
-// Set VITE_MAP_GCJ02=true if routes sit beside the roads on the China basemap.
-const SHIFT_GCJ02 = import.meta.env.VITE_MAP_GCJ02 === 'true'
+// Set in the admin page and exported in data.json; the build-time VITE_* values
+// are the fallback for sites built without one (GitHub Pages).
+const ENV_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN as string | undefined
+// GCJ-02: turn on if routes sit beside the roads on the China basemap.
+const ENV_GCJ02 = import.meta.env.VITE_MAP_GCJ02 === 'true'
 const MAP_LANG = { zh: 'zh-Hans', en: 'en' } as const
 const STYLE = { light: 'mapbox://styles/mapbox/light-v11', dark: 'mapbox://styles/mapbox/dark-v11' }
 
 interface Props {
+  config?: SiteConfig
   activities: Activity[]
   theme: 'light' | 'dark'
   focusId: string | null
@@ -22,7 +25,9 @@ interface Props {
 }
 
 /** All routes of the selected period on a Mapbox map; this module is lazy-loaded. */
-export default function RouteMap({ activities, theme, focusId, onShowInList }: Props) {
+export default function RouteMap({ config, activities, theme, focusId, onShowInList }: Props) {
+  const token = config?.mapbox_token || ENV_TOKEN
+  const shiftGcj02 = config?.map_gcj02 ?? ENV_GCJ02
   const { lang, t } = useI18n()
   const box = useRef<HTMLDivElement>(null)
   const map = useRef<mapboxgl.Map | null>(null)
@@ -34,7 +39,7 @@ export default function RouteMap({ activities, theme, focusId, onShowInList }: P
       .filter((a) => a.polyline)
       .map((a) => {
         const coords = decodePolyline(a.polyline!).map(([lat, lng]) => {
-          const [la, ln] = SHIFT_GCJ02 ? wgs84ToGcj02(lat, lng) : [lat, lng]
+          const [la, ln] = shiftGcj02 ? wgs84ToGcj02(lat, lng) : [lat, lng]
           return [ln, la] as [number, number]
         })
         return {
@@ -58,8 +63,8 @@ export default function RouteMap({ activities, theme, focusId, onShowInList }: P
   const seen = useRef(new Map<string, string | null>())
 
   useEffect(() => {
-    if (!TOKEN || !box.current) return
-    mapboxgl.accessToken = TOKEN
+    if (!token || !box.current) return
+    mapboxgl.accessToken = token
     const m = new mapboxgl.Map({
       container: box.current,
       style: STYLE[theme],
@@ -124,7 +129,7 @@ export default function RouteMap({ activities, theme, focusId, onShowInList }: P
     if (m && m.isStyleLoaded()) highlight(m, routesRef.current, selected, true)
   }, [selected])
 
-  if (!TOKEN) return <p className="empty map-empty">{t.mapNoToken}</p>
+  if (!token) return <p className="empty map-empty">{t.mapNoToken}</p>
 
   const act = activities.find((a) => a.id === selected)
   return (

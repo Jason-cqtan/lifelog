@@ -4,10 +4,11 @@
 思路参考 [running_page](https://github.com/yihong0618/running_page) 和 [workouts_page](https://github.com/ben-29/workouts_page),后端用 Go 重写。
 
 ```
-GitHub Actions(每 2 小时)
-  └─ go run ./cmd/lifelog sync      各数据源 → data/*.json(提交回仓库)
-  └─ go run ./cmd/lifelog export    去重、按天汇总 → web/public/data.json
-  └─ vite build → GitHub Pages      React 静态站
+VPS: lifelog serve(每天 8/13/22 点，时间在后台可改)
+  └─ sync      各数据源 → PostgreSQL
+  └─ export    去重、按天汇总 → data.json(网站读这个静态文件)
+  └─ 备份      PostgreSQL → data/*.json 提交回仓库 → Actions 构建 GitHub Pages
+后台 /admin/  数据源 token、时区、地图、同步时间等配置;手动同步、查看同步日志
 ```
 
 ## 目录
@@ -16,13 +17,16 @@ GitHub Actions(每 2 小时)
 |---|---|
 | `cmd/lifelog` | CLI 入口:`sync` / `import` / `export` / `auth` |
 | `internal/model` | 统一的数据模型:`Activity`(运动)、`DailyMetric`(每日数值)、`Play`(听歌记录) |
-| `internal/store` | 存储:`data/` 下的 JSON 文件,一行一条记录 |
+| `internal/store` | 存储:同步时在内存里，持久化到 PostgreSQL(`DATABASE_URL`)或 `data/` 下的 JSON 文件(一行一条记录) |
+| `internal/db` | 连接 PostgreSQL、建表(`schema.sql`) |
+| `internal/settings` | 原来 `.env` 里的配置项定义，存在 `settings` 表，后台修改 |
+| `internal/server` | `lifelog serve`:后台 API(`/api/admin/`)、定时同步、导出网站、备份到 GitHub |
 | `internal/source/*` | 每个数据源一个包,实现 `source.Source` 接口 |
 | `internal/export` | 跨来源去重 + 生成 `data.json`;`-demo` 生成示例数据 |
-| `web/` | React + Vite 前端:每类一张年度热力图 + 运动记录卡片(路线缩略图) |
+| `web/` | React + Vite 前端:每类一张年度热力图 + 运动记录卡片(路线缩略图);`web/admin/` 是后台管理页 |
 
-**为什么用 JSON 而不是 SQLite:** running_page 每次同步都提交一份新的 `data.db`,二进制文件无法增量 diff,仓库会越来越大。
-这里每 2 小时同步一次,纯文本一行一条记录,每次提交只有几行变化。以后要上服务器,只需另写一个实现同样方法的 store。
+**数据在哪:** 设置了 `DATABASE_URL` 时，数据和配置都以 PostgreSQL 为准;每次同步后 `lifelog serve` 把数据库导出成 `data/*.json`
+推回 GitHub 作为备份(纯文本一行一条记录，每次提交只有几行变化;路线用地图答案加密)。没设置时 CLI 直接读写 `data/` 和 `.env`,GitHub Actions 走的就是这条路。
 
 **同一次运动被多个来源同步到时**(如 Garmin 手表 → Garmin Connect → Strava),`export` 会把开始时间相差 3 分钟内、类型相同的记录合并,
 按 garmin > coros > strava > applehealth 的优先级保留一条(见 `internal/export/export.go`)。
@@ -35,6 +39,18 @@ cd web && npm install && npm run dev       # http://localhost:5173
 ```
 
 接入真实数据:`cp .env.example .env`,填好后 `go run ./cmd/lifelog sync`,再 `export`。
+
+### 用 PostgreSQL 和后台
+
+```bash
+brew install postgresql@17 && brew services start postgresql@17 && createdb lifelog
+# .env 里加 DATABASE_URL=postgres:///lifelog 和 LIFELOG_ADMIN_PASSWORD=...
+go run ./cmd/lifelog db import -env .env   # data/*.json 和 .env 里的配置导入数据库(要导入路线需先有 LIFELOG_MAP_ANSWER)
+go run ./cmd/lifelog serve                 # 后台 API :8080,导出到 web/public/data.json
+cd web && npm run dev                      # 后台:http://localhost:5173/admin/(/api 代理到 :8080)
+```
+
+`lifelog db dump -dir DIR` 把数据库导出成 JSON 文件;`go test ./internal/store` 加上 `LIFELOG_TEST_DATABASE_URL=postgres:///lifelog_test` 会跑数据库的往返测试。
 
 ## 各数据源
 
@@ -49,7 +65,8 @@ cd web && npm install && npm run dev       # http://localhost:5173
 | Spotify | 官方 API(只给最近 50 首) | 在 [Dashboard](https://developer.spotify.com/dashboard) 建应用,Redirect URI 填 `http://127.0.0.1:8888/callback`,`lifelog auth spotify`;历史记录在隐私设置里申请"扩展流媒体历史",用 `lifelog import spotify-history` 导入 |
 | GitHub | GraphQL 贡献日历 | 一个有 `read:user` 权限的 token |
 
-没配置的来源会自动跳过。某个来源失败不影响其他来源提交和部署,Actions 页面会显示警告。
+没配置的来源会自动跳过。某个来源失败不影响其他来源，后台的同步记录里能看到每次的日志。
+用了数据库后,`lifelog auth ...` 拿到的 token 直接写进数据库;也可以在本地授权后到后台粘贴。
 
 ## 部署到 GitHub Pages
 
@@ -61,7 +78,7 @@ cd web && npm install && npm run dev       # http://localhost:5173
 
 ## 部署到自己的服务器
 
-见 [deploy/README.md](deploy/README.md):VPS 每天 8/13/22 点同步、用自己的域名(Let's Encrypt 自动续期)提供网站，并把数据推回 GitHub,GitHub Pages 保留。
+见 [deploy/README.md](deploy/README.md):VPS 上跑 PostgreSQL 和 `lifelog serve`,定时同步、提供网站和后台(Let's Encrypt 自动续期)，并把数据备份回 GitHub,GitHub Pages 保留。
 
 ## 待验证 / 后续
 

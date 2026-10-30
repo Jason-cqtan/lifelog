@@ -15,8 +15,13 @@
 	}
 	encode zstd gzip
 
-	# rewritten every hour by the sync
+	# admin API and scheduled sync: `lifelog serve` (deploy/lifelog.service).
+	# The admin page itself is static, at /admin/.
+	reverse_proxy /api/* 127.0.0.1:8080
+
+	# rewritten by every sync
 	header /data.json Cache-Control "no-cache"
+	header /admin/* Cache-Control "no-cache"
 	# Vite file names carry a content hash
 	header /assets/* Cache-Control "public, max-age=31536000, immutable"
 	header {

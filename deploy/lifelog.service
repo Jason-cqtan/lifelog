@@ -1,0 +1,21 @@
+[Unit]
+Description=lifelog: admin API, scheduled sync, site export and GitHub backup
+After=network-online.target postgresql.service
+Wants=network-online.target
+Requires=postgresql.service
+
+[Service]
+User=lifelog
+Group=lifelog
+# .env there links to /opt/lifelog/.env (DATABASE_URL, LIFELOG_ADMIN_PASSWORD)
+WorkingDirectory=/opt/lifelog/repo
+ExecStart=/opt/lifelog/bin/lifelog serve -addr 127.0.0.1:8080 -www /opt/lifelog/www -repo /opt/lifelog/repo -compress /opt/lifelog/bin/compress.sh
+Restart=on-failure
+RestartSec=5
+# a running sync is cancelled and recorded as failed on stop
+TimeoutStopSec=30
+# keep the box responsive on a 1 vCPU VPS
+Nice=10
+
+[Install]
+WantedBy=multi-user.target

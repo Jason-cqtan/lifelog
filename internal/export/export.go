@@ -48,6 +48,14 @@ type Output struct {
 	Duolingo   *Duolingo         `json:"duolingo,omitempty"`
 	// Routes is set when the polylines were sealed into RoutesFile.
 	Routes *RouteLock `json:"routes,omitempty"`
+	// Config carries page settings managed in the admin page, so changing
+	// them needs no rebuild of the site.
+	Config *SiteConfig `json:"config,omitempty"`
+}
+
+type SiteConfig struct {
+	MapboxToken string `json:"mapbox_token,omitempty"` // public pk.* token
+	MapGCJ02    bool   `json:"map_gcj02,omitempty"`
 }
 
 // Duolingo is the course snapshot plus, per year and "all", each course's XP

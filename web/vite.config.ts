@@ -1,5 +1,6 @@
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
+import { resolve } from 'node:path'
 
 // VITE_BASE is set by the workflow to "/<repo>/" for GitHub Pages project sites.
 export default defineConfig(({ mode }) => {
@@ -13,5 +14,14 @@ export default defineConfig(({ mode }) => {
     // read VITE_* from the repo-root .env (Vite exposes only VITE_-prefixed keys to the page)
     envDir: '..',
     plugins: [react()],
+    build: {
+      rollupOptions: {
+        // the admin page (admin/index.html) talks to `lifelog serve` through /api/
+        input: { main: resolve(__dirname, 'index.html'), admin: resolve(__dirname, 'admin/index.html') },
+      },
+    },
+    server: {
+      proxy: { '/api': process.env.LIFELOG_API || 'http://127.0.0.1:8080' },
+    },
   }
 })

@@ -294,6 +294,7 @@ export function App() {
               <>
               <Suspense fallback={<div className="map-wrap" />}>
                 <RouteMap
+                  config={data.config}
                   activities={yearActivities}
                   theme={theme}
                   focusId={mapFocus}

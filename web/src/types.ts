@@ -76,6 +76,13 @@ export interface Data {
   duolingo?: DuolingoData
   /** set when the routes were exported, sealed behind a question */
   routes?: RouteLock
+  /** page settings from the admin page */
+  config?: SiteConfig
+}
+
+export interface SiteConfig {
+  mapbox_token?: string
+  map_gcj02?: boolean
 }
 
 export interface RouteLock {

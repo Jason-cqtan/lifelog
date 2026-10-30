@@ -1,8 +1,9 @@
-// Package store keeps all synced records as JSON files under data/.
+// Package store keeps all synced records in memory while sources sync, and
+// persists them either in PostgreSQL (OpenDB, see pg.go) or as JSON files under
+// data/ (Open).
 //
-// Plain JSON with one record per line (instead of a SQLite file like running_page)
-// keeps the hourly commits from GitHub Actions small and diffable, so the repo
-// does not balloon with binary database snapshots.
+// The JSON files are one record per line, so the backup commits pushed to
+// GitHub stay small and diffable.
 package store
 
 import (
@@ -17,6 +18,7 @@ import (
 	"time"
 
 	"github.com/Jason-cqtan/lifelog/internal/model"
+	"github.com/jackc/pgx/v5/pgxpool"
 )
 
 type Store struct {
@@ -28,6 +30,18 @@ type Store struct {
 	// lists), stored as data/snapshots/<name>.json
 	snapshots map[string]json.RawMessage
 	routes    *routeKeys
+
+	// set by OpenDB: Save writes only what changed since it was loaded
+	pg    *pgxpool.Pool
+	dirty dirtyKeys
+}
+
+type dirtyKeys struct {
+	activities, daily, plays, snapshots map[string]bool
+}
+
+func newDirty() dirtyKeys {
+	return dirtyKeys{map[string]bool{}, map[string]bool{}, map[string]bool{}, map[string]bool{}}
 }
 
 // Open reads the store under dir. answer (LIFELOG_MAP_ANSWER) opens the sealed
@@ -40,6 +54,7 @@ func Open(dir, answer string) (*Store, error) {
 		daily:      map[string]model.DailyMetric{},
 		plays:      map[string]model.Play{},
 		snapshots:  map[string]json.RawMessage{},
+		dirty:      newDirty(),
 	}
 	acts, err := readArray[model.Activity](filepath.Join(dir, "activities.json"))
 	if err != nil {
@@ -94,6 +109,7 @@ func (s *Store) PutSnapshot(name string, v any) error {
 		return err
 	}
 	s.snapshots[name] = append(b, '\n')
+	s.dirty.snapshots[name] = true
 	return nil
 }
 
@@ -110,6 +126,7 @@ func (s *Store) Snapshot(name string, v any) (ok bool, err error) {
 func (s *Store) UpsertActivity(a model.Activity) bool {
 	_, exists := s.activities[a.Key()]
 	s.activities[a.Key()] = a
+	s.dirty.activities[a.Key()] = true
 	return !exists
 }
 
@@ -144,7 +161,10 @@ func (s *Store) LatestActivity(source string) time.Time {
 	return latest
 }
 
-func (s *Store) PutDaily(d model.DailyMetric) { s.daily[d.Key()] = d }
+func (s *Store) PutDaily(d model.DailyMetric) {
+	s.daily[d.Key()] = d
+	s.dirty.daily[d.Key()] = true
+}
 
 // AddDaily adds d.Value to the stored value for the same day/source/metric.
 func (s *Store) AddDaily(d model.DailyMetric) {
@@ -152,6 +172,7 @@ func (s *Store) AddDaily(d model.DailyMetric) {
 		d.Value += prev.Value
 	}
 	s.daily[d.Key()] = d
+	s.dirty.daily[d.Key()] = true
 }
 
 func (s *Store) Daily() []model.DailyMetric {
@@ -168,6 +189,7 @@ func (s *Store) AddPlay(p model.Play) bool {
 		return false
 	}
 	s.plays[p.Key()] = p
+	s.dirty.plays[p.Key()] = true
 	return true
 }
 
@@ -193,7 +215,15 @@ func (s *Store) LatestPlay() time.Time {
 // Rekey seals every route again under a new answer on the next Save.
 func (s *Store) Rekey(answer string) error { return s.routes.rekey(answer) }
 
+// Save writes the store back where it was opened from.
 func (s *Store) Save() error {
+	if s.pg != nil {
+		return s.savePG()
+	}
+	return s.saveFiles()
+}
+
+func (s *Store) saveFiles() error {
 	// routes go sealed into routes.json, never into activities.json
 	acts := s.Activities()
 	routes := map[string]string{}
