@@ -124,6 +124,7 @@ func Sync(ctx context.Context, st *store.Store, names []string, full bool, logge
 			continue
 		}
 		start := time.Now()
+		logger.Printf("%s: start", s.Name())
 		if err := s.Sync(ctx, env); err != nil {
 			logger.Printf("%s: FAILED: %v", s.Name(), err)
 			failed = append(failed, s.Name())

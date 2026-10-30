@@ -18,8 +18,19 @@ export default defineConfig(({ mode }) => {
       rollupOptions: {
         // the admin page (admin/index.html) talks to `lifelog serve` through /api/
         input: { main: resolve(__dirname, 'index.html'), admin: resolve(__dirname, 'admin/index.html') },
+        output: {
+          // own files: visitors re-download mapbox-gl only when it is upgraded, not with every
+          // change to the site (the preload helper moves too, or these would import from main)
+          manualChunks(id) {
+            if (id.includes('vite/preload-helper')) return 'preload-helper'
+            const part = id.match(/mapbox-gl\/dist\/esm\/(core|shared)\.js/)?.[1]
+            if (part) return `mapbox-${part}`
+          },
+        },
       },
     },
+    // mapbox-gl's worker is an ES module
+    worker: { format: 'es' },
     server: {
       proxy: { '/api': process.env.LIFELOG_API || 'http://127.0.0.1:8080' },
     },

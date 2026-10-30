@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import mapboxgl from 'mapbox-gl'
+// the ESM build is split into files that load on demand (the default build is one 1.9 MB file)
+import * as mapboxgl from 'mapbox-gl/esm'
+import mapboxWorkerUrl from 'mapbox-gl/dist/esm/worker.js?worker&url'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { SPORT_LABEL, type Activity, type SiteConfig } from '../types'
 import { useI18n } from '../i18n'
@@ -13,6 +15,9 @@ import { WeatherLine } from './ActivityList'
 const ENV_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN as string | undefined
 // GCJ-02: turn on if routes sit beside the roads on the China basemap.
 const ENV_GCJ02 = import.meta.env.VITE_MAP_GCJ02 === 'true'
+// mapbox-gl looks for its worker next to its own file; Vite bundled it elsewhere
+mapboxgl.setWorkerUrl(mapboxWorkerUrl)
+
 const MAP_LANG = { zh: 'zh-Hans', en: 'en' } as const
 const STYLE = { light: 'mapbox://styles/mapbox/light-v11', dark: 'mapbox://styles/mapbox/dark-v11' }
 
@@ -64,7 +69,7 @@ export default function RouteMap({ config, activities, theme, focusId, onShowInL
 
   useEffect(() => {
     if (!token || !box.current) return
-    mapboxgl.accessToken = token
+    mapboxgl.setAccessToken(token)
     const m = new mapboxgl.Map({
       container: box.current,
       style: STYLE[theme],

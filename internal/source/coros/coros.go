@@ -129,7 +129,10 @@ func (s Coros) Sync(ctx context.Context, env *source.Env) error {
 					env.Log.Printf("coros: route for %s: %v", a.LabelID, err)
 					routeErrs++
 				} else if act.Polyline != "" {
-					routes++
+					// a first -full download takes minutes: show it is moving
+					if routes++; routes%10 == 0 {
+						env.Log.Printf("coros: %d routes fetched so far", routes)
+					}
 				}
 			}
 			if env.Store.UpsertActivity(act) {
