@@ -120,7 +120,13 @@ func Build(st *store.Store, loc *time.Location) Output {
 		out.Daily[date][metric] += v
 	}
 
-	acts := Dedupe(st.Activities())
+	acts := st.Activities()
+	for i := range acts {
+		if placeholderRoute(acts[i].Polyline, acts[i].Distance) {
+			acts[i].Polyline = ""
+		}
+	}
+	acts = Dedupe(acts)
 	for i := len(acts) - 1; i >= 0; i-- {
 		a := acts[i]
 		date := store.DateIn(a.StartTime, loc)
@@ -270,7 +276,13 @@ func Dedupe(acts []model.Activity) []model.Activity {
 		case dup < 0:
 			kept = append(kept, a)
 		case better(a, kept[dup]):
+			// a copy without a track (COROS's list, say) keeps the route another service has
+			if a.Polyline == "" {
+				a.Polyline = kept[dup].Polyline
+			}
 			kept[dup] = a
+		case kept[dup].Polyline == "":
+			kept[dup].Polyline = a.Polyline
 		}
 	}
 	sort.SliceStable(kept, func(i, j int) bool { return kept[i].StartTime.Before(kept[j].StartTime) })
@@ -294,6 +306,32 @@ func round(v float64) float64 { return math.Round(v*100) / 100 }
 // simplified line. The site's thumbnails and city-level map can't show less,
 // and routes are over half of data.json; stored routes keep full detail.
 const routeTolerance = 4
+
+// placeholderRouteSpan is how far apart (degrees, about 100 m) a route's points
+// must get for it to be a real track of placeholderRouteMinDistance or more.
+const (
+	placeholderRouteSpan        = 0.001
+	placeholderRouteMinDistance = 1000
+)
+
+// placeholderRoute reports a route that stays on one spot although the activity
+// covers real distance. Apps without GPS data write a default location (such as
+// central Beijing), which would stretch the map from there to the real routes.
+func placeholderRoute(encoded string, distance float64) bool {
+	if encoded == "" || distance < placeholderRouteMinDistance {
+		return false
+	}
+	pts := polyline.Decode(encoded)
+	if len(pts) == 0 {
+		return false
+	}
+	lo, hi := pts[0], pts[0]
+	for _, p := range pts {
+		lo[0], hi[0] = math.Min(lo[0], p[0]), math.Max(hi[0], p[0])
+		lo[1], hi[1] = math.Min(lo[1], p[1]), math.Max(hi[1], p[1])
+	}
+	return hi[0]-lo[0] < placeholderRouteSpan && hi[1]-lo[1] < placeholderRouteSpan
+}
 
 func slim(encoded string) string {
 	if encoded == "" {

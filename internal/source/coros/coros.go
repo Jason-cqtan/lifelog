@@ -9,12 +9,16 @@ import (
 	"crypto/md5"
 	"encoding/hex"
 	"encoding/json"
+	"encoding/xml"
 	"fmt"
+	"io"
 	"net/http"
+	"net/url"
 	"strings"
 	"time"
 
 	"github.com/Jason-cqtan/lifelog/internal/model"
+	"github.com/Jason-cqtan/lifelog/internal/polyline"
 	"github.com/Jason-cqtan/lifelog/internal/source"
 )
 
@@ -83,7 +87,7 @@ func (s Coros) Sync(ctx context.Context, env *source.Env) error {
 	if !env.Full {
 		since = env.Store.LatestActivity(s.Name())
 	}
-	added := 0
+	added, routes, routeErrs := 0, 0, 0
 	for page := 1; ; page++ {
 		req, _ := http.NewRequestWithContext(ctx, http.MethodGet,
 			fmt.Sprintf("%s/activity/query?size=50&pageNumber=%d", apiBase(), page), nil)
@@ -102,7 +106,7 @@ func (s Coros) Sync(ctx context.Context, env *source.Env) error {
 				reachedKnown = true
 				continue
 			}
-			if env.Store.UpsertActivity(model.Activity{
+			act := model.Activity{
 				Source:        s.Name(),
 				SourceID:      a.LabelID,
 				Type:          sportType(a.SportType),
@@ -113,7 +117,22 @@ func (s Coros) Sync(ctx context.Context, env *source.Env) error {
 				MovingTime:    int(a.TotalTime),
 				ElevationGain: a.Ascent,
 				AvgHeartRate:  a.AvgHr,
-			}) {
+			}
+			// The list has no track; fetch it once per activity, keeping what we
+			// already have so -full does not re-download everything.
+			if prev, ok := env.Store.Activity(act.Key()); ok {
+				act.Polyline = prev.Polyline
+			}
+			if act.Polyline == "" && a.SportType != indoorRun {
+				var err error
+				if act.Polyline, err = fetchRoute(env.HTTP, apiBase(), login.AccessToken, a.LabelID, a.SportType); err != nil {
+					env.Log.Printf("coros: route for %s: %v", a.LabelID, err)
+					routeErrs++
+				} else if act.Polyline != "" {
+					routes++
+				}
+			}
+			if env.Store.UpsertActivity(act) {
 				added++
 			}
 		}
@@ -121,8 +140,66 @@ func (s Coros) Sync(ctx context.Context, env *source.Env) error {
 			break
 		}
 	}
-	env.Log.Printf("coros: %d new activities", added)
+	env.Log.Printf("coros: %d new activities, %d routes fetched", added, routes)
+	if routeErrs > 0 {
+		return fmt.Errorf("%d route requests failed; run `lifelog sync -full coros` to retry", routeErrs)
+	}
 	return nil
+}
+
+const (
+	indoorRun = 101 // has no GPX export
+	fileGPX   = 1
+)
+
+// fetchRoute downloads an activity's GPX and returns its track as an encoded
+// polyline, or "" when it has none.
+func fetchRoute(c *http.Client, base, token, labelID string, sportType int) (string, error) {
+	req, err := http.NewRequest(http.MethodPost,
+		fmt.Sprintf("%s/activity/detail/download?labelId=%s&sportType=%d&fileType=%d", base, url.QueryEscape(labelID), sportType, fileGPX), nil)
+	if err != nil {
+		return "", err
+	}
+	req.Header.Set("accesstoken", token)
+	req.Header.Set("cookie", "CPL-coros-region=2; CPL-coros-token="+token)
+	var file struct {
+		FileURL string `json:"fileUrl"`
+	}
+	if err := call(c, req, &file); err != nil {
+		return "", err
+	}
+	if file.FileURL == "" {
+		return "", nil
+	}
+	resp, err := c.Get(file.FileURL)
+	if err != nil {
+		return "", err
+	}
+	defer resp.Body.Close()
+	if resp.StatusCode/100 != 2 {
+		return "", fmt.Errorf("download GPX: %s", resp.Status)
+	}
+	return gpxRoute(resp.Body)
+}
+
+func gpxRoute(r io.Reader) (string, error) {
+	var doc struct {
+		Points []struct {
+			Lat float64 `xml:"lat,attr"`
+			Lon float64 `xml:"lon,attr"`
+		} `xml:"trk>trkseg>trkpt"`
+	}
+	if err := xml.NewDecoder(r).Decode(&doc); err != nil {
+		return "", fmt.Errorf("parse GPX: %w", err)
+	}
+	pts := make([][2]float64, 0, len(doc.Points))
+	for _, p := range doc.Points {
+		pts = append(pts, [2]float64{p.Lat, p.Lon})
+	}
+	if len(pts) < 2 {
+		return "", nil
+	}
+	return polyline.Encode(pts), nil
 }
 
 // sportType maps COROS sport codes: 1xx run/hike, 2xx bike, 3xx swim, 9xx walk.

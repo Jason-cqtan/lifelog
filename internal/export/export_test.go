@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/Jason-cqtan/lifelog/internal/model"
+	"github.com/Jason-cqtan/lifelog/internal/polyline"
 )
 
 func TestDedupe(t *testing.T) {
@@ -93,6 +94,51 @@ func TestDedupeResyncedAndSameSource(t *testing.T) {
 	for i := range want {
 		if keys[i] != want[i] {
 			t.Fatalf("got %v, want %v", keys, want)
+		}
+	}
+}
+
+func TestPlaceholderRoute(t *testing.T) {
+	beijing := polyline.Encode([][2]float64{{39.9042, 116.4074}, {39.9042, 116.4074}})
+	track := polyline.Encode([][2]float64{{29.5, 106.6}, {29.502, 106.6}, {29.502, 106.603}})
+	cases := []struct {
+		name     string
+		route    string
+		distance float64
+		want     bool
+	}{
+		{"no route", "", 5000, false},
+		{"default location", beijing, 10200, true},
+		{"real track", track, 1000, false},
+		{"short walk around one spot", beijing, 200, false},
+	}
+	for _, c := range cases {
+		if got := placeholderRoute(c.route, c.distance); got != c.want {
+			t.Errorf("%s: got %v, want %v", c.name, got, c.want)
+		}
+	}
+}
+
+func TestDedupeKeepsRoute(t *testing.T) {
+	t0 := time.Date(2023, 5, 1, 7, 0, 0, 0, time.UTC)
+	acts := []model.Activity{
+		// the kept copy comes first or second: either way the route survives
+		{Source: "running_page", SourceID: "1", Type: model.Run, StartTime: t0, Polyline: "route1"},
+		{Source: "coros", SourceID: "1", Type: model.Run, StartTime: t0.Add(time.Minute)},
+		{Source: "coros", SourceID: "2", Type: model.Run, StartTime: t0.Add(time.Hour)},
+		{Source: "running_page", SourceID: "2", Type: model.Run, StartTime: t0.Add(time.Hour + time.Minute), Polyline: "route2"},
+		// the kept copy's own route wins
+		{Source: "coros", SourceID: "3", Type: model.Run, StartTime: t0.Add(2 * time.Hour), Polyline: "own"},
+		{Source: "running_page", SourceID: "3", Type: model.Run, StartTime: t0.Add(2*time.Hour + time.Minute), Polyline: "other"},
+	}
+	got := Dedupe(acts)
+	want := map[string]string{"coros:1": "route1", "coros:2": "route2", "coros:3": "own"}
+	if len(got) != len(want) {
+		t.Fatalf("got %d activities, want %d", len(got), len(want))
+	}
+	for _, a := range got {
+		if a.Polyline != want[a.Key()] {
+			t.Errorf("%s: route %q, want %q", a.Key(), a.Polyline, want[a.Key()])
 		}
 	}
 }
