@@ -2,9 +2,10 @@ import { Component, Suspense, lazy, useEffect, useRef, useState, type ReactNode 
 import { useI18n } from '../i18n'
 import type { Category, Data, SportType } from '../types'
 import { DuolingoCourses } from './DuolingoCourses'
+import { Heatmap } from './Heatmap'
 import { HeatmapSkeleton } from './Loading'
 
-const Heatmap = lazy(() => import('./Heatmap').then((m) => ({ default: m.Heatmap })))
+// the first screen shows Heatmap, so it ships with the main bundle; "all years" is on demand
 const Overview = lazy(() => import('./Overview').then((m) => ({ default: m.Overview })))
 
 // A failed chunk request should leave the rest of the page usable.

@@ -15,6 +15,10 @@ import { DICTS, I18n, LOCALE, initialLang, save, type Lang } from './i18n'
 // mapbox-gl is large; load it only when the map tab opens
 const RouteMap = lazy(() => import('./components/RouteMap'))
 
+declare global {
+  interface Window { __dataFetch?: Promise<Response> }
+}
+
 const REPO_URL = 'https://github.com/Jason-cqtan/lifelog'
 type Theme = 'light' | 'dark'
 const TABS = ['overview', 'activities', 'music', 'map'] as const
@@ -66,8 +70,11 @@ export function App() {
 
   useEffect(() => {
     const controller = new AbortController()
-    // GitHub Pages caches files for 10 min; revalidate so a fresh sync shows up at once.
-    fetch(import.meta.env.BASE_URL + 'data.json', { cache: 'no-cache', signal: controller.signal })
+    // the first load was started by index.html; a retry starts over
+    const response = loadAttempt === 0 && window.__dataFetch
+      ? window.__dataFetch.then((r) => r.clone())
+      : fetch(import.meta.env.BASE_URL + 'data.json', { cache: 'no-cache', signal: controller.signal })
+    response
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`${r.status} ${r.statusText}`))))
       .then((next: Data) => { if (!controller.signal.aborted) setRaw(next) })
       .catch((e) => { if (!controller.signal.aborted) setError(String(e)) })

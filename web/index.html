@@ -13,6 +13,11 @@
         document.documentElement.dataset.theme = t
       })()
     </script>
+    <script>
+      // Start on data.json now rather than after the app's code has downloaded (App.tsx picks it up).
+      // GitHub Pages caches files for 10 min; revalidate so a fresh sync shows up at once.
+      window.__dataFetch = fetch('%BASE_URL%data.json', { cache: 'no-cache' })
+    </script>
   </head>
   <body>
     <div id="root"></div>
