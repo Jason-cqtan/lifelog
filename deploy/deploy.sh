@@ -59,7 +59,7 @@ release)
   rsync -az --rsync-path="$RSYNC_PATH" build/lifelog deploy/compress.sh "$HOST":/opt/lifelog/bin/
   remote "install -d -o lifelog -g lifelog /opt/lifelog/www/.next && chown -R lifelog:lifelog /opt/lifelog/www /opt/lifelog/bin && chmod 755 /opt/lifelog/bin/*"
   echo "==> precompress site files"
-  ssh "$HOST" "$AS_LIFELOG /opt/lifelog/bin/compress.sh --site /opt/lifelog/www/assets && $AS_LIFELOG /opt/lifelog/bin/compress.sh /opt/lifelog/www/index.html /opt/lifelog/www/admin/index.html"
+  ssh "$HOST" "cd /opt/lifelog && $AS_LIFELOG /opt/lifelog/bin/compress.sh --site /opt/lifelog/www/assets && $AS_LIFELOG /opt/lifelog/bin/compress.sh /opt/lifelog/www/index.html /opt/lifelog/www/admin/index.html"
 
   if [[ -n "$WITH_ENV" ]]; then
     echo "==> settings from .env -> database"
