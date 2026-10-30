@@ -61,7 +61,7 @@ cd web && npm install && npm run dev       # http://localhost:5173
 
 ## 部署到自己的服务器
 
-见 [deploy/README.md](deploy/README.md):VPS 每小时同步、用自己的域名(Let's Encrypt 自动续期)提供网站，并把数据推回 GitHub,GitHub Pages 保留。
+见 [deploy/README.md](deploy/README.md):VPS 每天 8/13/22 点同步、用自己的域名(Let's Encrypt 自动续期)提供网站，并把数据推回 GitHub,GitHub Pages 保留。
 
 ## 待验证 / 后续
 

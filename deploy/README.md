@@ -1,9 +1,9 @@
 # 部署到 VPS
 
-VPS 负责每小时同步一次、通过自己的域名提供网站，并把数据推回 GitHub;GitHub Pages 继续保留，跟着这些推送自动更新。服务器上只有 Caddy、一个 Go 二进制和静态网页，不需要安装 Go 或 Node。
+VPS 负责每天 8:00、13:00、22:00 同步、通过自己的域名提供网站，并把数据推回 GitHub;GitHub Pages 继续保留，跟着这些推送自动更新。服务器上只有 Caddy、一个 Go 二进制和静态网页，不需要安装 Go 或 Node。
 
 ```
-VPS (每小时 :07)                               GitHub
+VPS (8/13/22 点)                             GitHub
   lifelog-sync.timer → sync.sh                   Jason-cqtan/lifelog
     git pull → lifelog sync → export   ──push──▶  data/ 提交 → Actions 构建 → Pages
     /opt/lifelog/www/data.json
