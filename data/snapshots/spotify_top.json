@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-30T00:00:50Z",
+ "updated_at": "2026-10-30T06:25:33Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -109,14 +109,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f1786a0678a926bd4812fb8a4099"
     },
     {
-     "id": "7vk5e3vY1uw9plTHJAMwjN",
-     "name": "Alan Walker",
-     "image": "https://i.scdn.co/image/ab6761610000f178572a8eae56feae217f618078"
-    },
-    {
      "id": "4BAWVaDoA2CpEdUetoYKgZ",
      "name": "Capo Productions",
      "image": "https://i.scdn.co/image/ab67616d00001e020d2bdfb25648a42ba50b9c41"
+    },
+    {
+     "id": "7vk5e3vY1uw9plTHJAMwjN",
+     "name": "Alan Walker",
+     "image": "https://i.scdn.co/image/ab6761610000f178572a8eae56feae217f618078"
     },
     {
      "id": "7tYKF4w9nC0nq9CsPZTHyP",
@@ -132,6 +132,11 @@
      "id": "2h93pZq0e7k5yf4dywlkpM",
      "name": "Frank Ocean",
      "image": "https://i.scdn.co/image/ab6761610000f178ee3123e593174208f9754fab"
+    },
+    {
+     "id": "378dH6EszOLFShpRzAQkVM",
+     "name": "Lindsey Stirling",
+     "image": "https://i.scdn.co/image/ab6761610000f17836c6fa1b8ff851988de641f8"
     },
     {
      "id": "6RAx8RRxoHeJIqD2d0EjOa",
@@ -194,19 +199,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f178438e5730e9e86121f329d2dd"
     },
     {
-     "id": "3FUY2gzHeIiaesXtOAdB7A",
-     "name": "Train",
-     "image": "https://i.scdn.co/image/ab6761610000f178fe613747ea3666f4c75b9884"
-    },
-    {
      "id": "6jlz5QSUqbKE4vnzo2qfP1",
      "name": "Karen Mok",
      "image": "https://i.scdn.co/image/ab6761610000f1789a48f2e7dd96f09c723c887c"
     },
     {
-     "id": "378dH6EszOLFShpRzAQkVM",
-     "name": "Lindsey Stirling",
-     "image": "https://i.scdn.co/image/ab6761610000f17836c6fa1b8ff851988de641f8"
+     "id": "3FUY2gzHeIiaesXtOAdB7A",
+     "name": "Train",
+     "image": "https://i.scdn.co/image/ab6761610000f178fe613747ea3666f4c75b9884"
     },
     {
      "id": "5uCktjKM1Rf9VnUvFD6j17",
@@ -284,18 +284,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02edcab0fe7cf29d17751dad18"
     },
     {
-     "id": "0zL9dieoCcjBWV01y73Cj1",
-     "name": "Faded",
-     "artist": "ZHU",
-     "album": "THE NIGHTDAY",
-     "image": "https://i.scdn.co/image/ab67616d00001e0230e314ad00bee99cf64c9b88"
-    },
-    {
      "id": "5s8QrZRHt4gZclSaCds4GY",
      "name": "Nostalgia",
      "artist": "D33pSoul",
      "album": "Nostalgia",
      "image": "https://i.scdn.co/image/ab67616d00001e0244fd7df5558aa1f6cbed17a2"
+    },
+    {
+     "id": "0zL9dieoCcjBWV01y73Cj1",
+     "name": "Faded",
+     "artist": "ZHU",
+     "album": "THE NIGHTDAY",
+     "image": "https://i.scdn.co/image/ab67616d00001e0230e314ad00bee99cf64c9b88"
     },
     {
      "id": "1EOWf8bsePF6QtiDUAclrJ",
@@ -438,6 +438,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e023baae0836a5b6ee9d649ed14"
     },
     {
+     "id": "4DxybsoSiMUW0JI2oM0SSN",
+     "name": "Patience",
+     "artist": "Take That",
+     "album": "Beautiful World",
+     "image": "https://i.scdn.co/image/ab67616d00001e0206e7629fa095158d50b73d57"
+    },
+    {
      "id": "4lZBB7P5j84VqQHf3POLdA",
      "name": "Hold On",
      "artist": "Bergs, Rachel Fels",
@@ -457,13 +464,6 @@
      "artist": "Jens Buchert",
      "album": "Electronic Space Lounge - Three",
      "image": "https://i.scdn.co/image/ab67616d00001e027b151820c9ddaffeb7e177ce"
-    },
-    {
-     "id": "4DxybsoSiMUW0JI2oM0SSN",
-     "name": "Patience",
-     "artist": "Take That",
-     "album": "Beautiful World",
-     "image": "https://i.scdn.co/image/ab67616d00001e0206e7629fa095158d50b73d57"
     },
     {
      "id": "15YruCqHXgIpq3rcWpYuqW",
@@ -508,11 +508,32 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02a6460e661fac0d7327c13426"
     },
     {
+     "id": "22RgKGppKFyQwKUX6Rvx8i",
+     "name": "Road Trippin' - Radio Mix",
+     "artist": "DBMM",
+     "album": "High Way",
+     "image": "https://i.scdn.co/image/ab67616d00001e02129acb02ff567b3e3dae5250"
+    },
+    {
+     "id": "4TaaBYvo3J9tNFbdEc7otk",
+     "name": "Run Away - Original Mix",
+     "artist": "Natema, Saccao",
+     "album": "Run Away",
+     "image": "https://i.scdn.co/image/ab67616d00001e02ba48109eda0f2314702ce305"
+    },
+    {
      "id": "6q7eMARKcRpj3Fcwq5wH5k",
      "name": "Key To Life",
      "artist": "Laid Back",
      "album": "Good Vibes - The Very Best of Laid Back",
      "image": "https://i.scdn.co/image/ab67616d00001e02627869030fddec0565aa30cc"
+    },
+    {
+     "id": "7AoCZm5JpcgiIpQz8ClelB",
+     "name": "Can't Get Enough - Sam Padrul Remix",
+     "artist": "Yeah Boy",
+     "album": "Can't Get Enough Remixes",
+     "image": "https://i.scdn.co/image/ab67616d00001e026f4be2da23461b3a1271508c"
     },
     {
      "id": "5HOpkTTVcmZHnthgyxrIL8",
@@ -550,11 +571,11 @@
      "image": "https://i.scdn.co/image/ab67616d00001e026ffd17937874d8c19a240487"
     },
     {
-     "id": "22RgKGppKFyQwKUX6Rvx8i",
-     "name": "Road Trippin' - Radio Mix",
-     "artist": "DBMM",
-     "album": "High Way",
-     "image": "https://i.scdn.co/image/ab67616d00001e02129acb02ff567b3e3dae5250"
+     "id": "1aygA3iZfj6ef4aq92EqCU",
+     "name": "Sunset Over Emst - Original Mix",
+     "artist": "Roald Velden",
+     "album": "As the Years Went by / Sunset Over Emst",
+     "image": "https://i.scdn.co/image/ab67616d00001e023572e164458b0e5ea6ff949d"
     },
     {
      "id": "2z5Nb9mY1GQwRP2NoCqAN6",
@@ -571,11 +592,11 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02d3e632cfaf8fbee03c27fcb7"
     },
     {
-     "id": "4TaaBYvo3J9tNFbdEc7otk",
-     "name": "Run Away - Original Mix",
-     "artist": "Natema, Saccao",
-     "album": "Run Away",
-     "image": "https://i.scdn.co/image/ab67616d00001e02ba48109eda0f2314702ce305"
+     "id": "4va1JykAJeulnYV0uYkWhF",
+     "name": "Crazy Bird",
+     "artist": "Wild Child",
+     "album": "The Runaround",
+     "image": "https://i.scdn.co/image/ab67616d00001e022d199e320b675ca7305c6f00"
     },
     {
      "id": "5Yz9vLgcDa4Dcwcy1MUksA",
@@ -583,27 +604,6 @@
      "artist": "Said The Sky",
      "album": "Faith",
      "image": "https://i.scdn.co/image/ab67616d00001e02a238d072fe98328627a78fb4"
-    },
-    {
-     "id": "7AoCZm5JpcgiIpQz8ClelB",
-     "name": "Can't Get Enough - Sam Padrul Remix",
-     "artist": "Yeah Boy",
-     "album": "Can't Get Enough Remixes",
-     "image": "https://i.scdn.co/image/ab67616d00001e026f4be2da23461b3a1271508c"
-    },
-    {
-     "id": "0KAiuUOrLTIkzkpfpn9jb9",
-     "name": "Drive By",
-     "artist": "Train",
-     "album": "California 37",
-     "image": "https://i.scdn.co/image/ab67616d00001e02bde344cc54eedc35050f4c61"
-    },
-    {
-     "id": "2IGMVunIBsBLtEQyoI1Mu7",
-     "name": "Paint The Town Red",
-     "artist": "Doja Cat",
-     "album": "Paint The Town Red",
-     "image": "https://i.scdn.co/image/ab67616d00001e02e69a141e4ffe839c38c4c228"
     }
    ]
   },
