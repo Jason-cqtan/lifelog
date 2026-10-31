@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-31T05:00:22Z",
+ "updated_at": "2026-10-31T14:00:12Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -284,18 +284,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02edcab0fe7cf29d17751dad18"
     },
     {
-     "id": "5s8QrZRHt4gZclSaCds4GY",
-     "name": "Nostalgia",
-     "artist": "D33pSoul",
-     "album": "Nostalgia",
-     "image": "https://i.scdn.co/image/ab67616d00001e0244fd7df5558aa1f6cbed17a2"
-    },
-    {
      "id": "0zL9dieoCcjBWV01y73Cj1",
      "name": "Faded",
      "artist": "ZHU",
      "album": "THE NIGHTDAY",
      "image": "https://i.scdn.co/image/ab67616d00001e0230e314ad00bee99cf64c9b88"
+    },
+    {
+     "id": "5s8QrZRHt4gZclSaCds4GY",
+     "name": "Nostalgia",
+     "artist": "D33pSoul",
+     "album": "Nostalgia",
+     "image": "https://i.scdn.co/image/ab67616d00001e0244fd7df5558aa1f6cbed17a2"
     },
     {
      "id": "1EOWf8bsePF6QtiDUAclrJ",
@@ -487,6 +487,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e028588252409ed634e072fd657"
     },
     {
+     "id": "5HOpkTTVcmZHnthgyxrIL8",
+     "name": "The Fox (What Does the Fox Say?)",
+     "artist": "Ylvis",
+     "album": "The Fox (What Does the Fox Say?)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02078f1176c3c725de8e95f490"
+    },
+    {
      "id": "75C3FLMspH2VVOVU3Mp78k",
      "name": "Young, Wild \u0026 Free",
      "artist": "Axero",
@@ -534,13 +541,6 @@
      "artist": "Yeah Boy",
      "album": "Can't Get Enough Remixes",
      "image": "https://i.scdn.co/image/ab67616d00001e026f4be2da23461b3a1271508c"
-    },
-    {
-     "id": "5HOpkTTVcmZHnthgyxrIL8",
-     "name": "The Fox (What Does the Fox Say?)",
-     "artist": "Ylvis",
-     "album": "The Fox (What Does the Fox Say?)",
-     "image": "https://i.scdn.co/image/ab67616d00001e02078f1176c3c725de8e95f490"
     },
     {
      "id": "6cv0maKXFbjZRmu3Oxb4jJ",
@@ -670,6 +670,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f1788baa4f890691b73ec50ccb70"
     },
     {
+     "id": "4BAWVaDoA2CpEdUetoYKgZ",
+     "name": "Capo Productions",
+     "image": "https://i.scdn.co/image/ab67616d00001e020d2bdfb25648a42ba50b9c41"
+    },
+    {
      "id": "0PxqaZXFW167XSUiha9eEi",
      "name": "7and5",
      "image": "https://i.scdn.co/image/ab6761610000f1780887284d923c88a92835e427"
@@ -688,11 +693,6 @@
      "id": "0SIXZXJCAhNU8sxK0qm7hn",
      "name": "Stefanie Sun",
      "image": "https://i.scdn.co/image/ab6761610000f178744989ed737112f4edbd2cc3"
-    },
-    {
-     "id": "4BAWVaDoA2CpEdUetoYKgZ",
-     "name": "Capo Productions",
-     "image": "https://i.scdn.co/image/ab67616d00001e020d2bdfb25648a42ba50b9c41"
     },
     {
      "id": "4npEfmQ6YuiwW1GpUmaq3F",
@@ -788,6 +788,11 @@
      "id": "5H8TJITZE1sPjVR2ACzXNS",
      "name": "Wu Bai",
      "image": "https://i.scdn.co/image/ab6761610000f17818d5d4367366ddaa10137890"
+    },
+    {
+     "id": "6yTAPw3o7oDH7lhj34jvbH",
+     "name": "Elva Hsiao",
+     "image": "https://i.scdn.co/image/ab6761610000f178875f7b128d178605583338b4"
     }
    ],
    "tracks": [
@@ -827,6 +832,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e0214b7b2a920a41166d53ddd49"
     },
     {
+     "id": "7nDQMtLxu94xtlTR8bEqjU",
+     "name": "Faded",
+     "artist": "ZHU",
+     "album": "Faded",
+     "image": "https://i.scdn.co/image/ab67616d00001e027b730a450d048646b7472425"
+    },
+    {
      "id": "7gUpO6td4OOnu0Lf9vhcIV",
      "name": "Lights - Single Version",
      "artist": "Ellie Goulding",
@@ -846,13 +858,6 @@
      "artist": "Frank Ocean",
      "album": "Blonde",
      "image": "https://i.scdn.co/image/ab67616d00001e02c5649add07ed3720be9d5526"
-    },
-    {
-     "id": "7nDQMtLxu94xtlTR8bEqjU",
-     "name": "Faded",
-     "artist": "ZHU",
-     "album": "Faded",
-     "image": "https://i.scdn.co/image/ab67616d00001e027b730a450d048646b7472425"
     },
     {
      "id": "0Id7swY6cWbvYLtVVF0wvq",
@@ -995,6 +1000,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e026949b83f85d782b21ce70583"
     },
     {
+     "id": "41NzE22njxaczRSqCjoN55",
+     "name": "Young, Wild \u0026 Free",
+     "artist": "Axero",
+     "album": "Young, Wild \u0026 Free",
+     "image": "https://i.scdn.co/image/ab67616d00001e024076a1825a2f23dbef82303a"
+    },
+    {
      "id": "02W5tzWUqFYLv1GQySW2Tv",
      "name": "安妮",
      "artist": "Dave Wang",
@@ -1133,13 +1145,6 @@
      "artist": "Joanna Wang",
      "album": "Start From Here",
      "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
-    },
-    {
-     "id": "5k72u9OHqyTDMylqpG0izJ",
-     "name": "敢愛敢做",
-     "artist": "George Lam, David Ling Jr",
-     "album": "十三子祥",
-     "image": "https://i.scdn.co/image/ab67616d00001e02fba1cf9d8569a6c7bc0796c1"
     }
    ]
   },
