@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-30T14:00:26Z",
+ "updated_at": "2026-10-31T00:00:22Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -705,6 +705,16 @@
      "image": "https://i.scdn.co/image/ab6761610000f17866a909756400366c24bf1568"
     },
     {
+     "id": "4S9EykWXhStSc15wEx8QFK",
+     "name": "Céline Dion",
+     "image": "https://i.scdn.co/image/ab6761610000f178fe81f2540f9fa7564dd5e05c"
+    },
+    {
+     "id": "5rSXSAkZ67PYJSvpUpkOr7",
+     "name": "Backstreet Boys",
+     "image": "https://i.scdn.co/image/ab6761610000f1787b3634864a78ab6bd1d77c36"
+    },
+    {
      "id": "7CajNmpbOovFoOoasH2HaY",
      "name": "Calvin Harris",
      "image": "https://i.scdn.co/image/ab6761610000f1788ebba5e60113b48de8c11f6b"
@@ -743,16 +753,6 @@
      "id": "7BqRcZsHYYQeqMAOp7e532",
      "name": "落日飛車 Sunset Rollercoaster",
      "image": "https://i.scdn.co/image/ab6761610000f17817dd503b5c1841cd238c9aa7"
-    },
-    {
-     "id": "4S9EykWXhStSc15wEx8QFK",
-     "name": "Céline Dion",
-     "image": "https://i.scdn.co/image/ab6761610000f178fe81f2540f9fa7564dd5e05c"
-    },
-    {
-     "id": "5rSXSAkZ67PYJSvpUpkOr7",
-     "name": "Backstreet Boys",
-     "image": "https://i.scdn.co/image/ab6761610000f1787b3634864a78ab6bd1d77c36"
     },
     {
      "id": "0du5cEVh5yTK9QJze8zA0C",
@@ -1206,9 +1206,24 @@
      "image": "https://i.scdn.co/image/ab6761610000f17887fbbe9ed03fbb500595e720"
     },
     {
+     "id": "5rSXSAkZ67PYJSvpUpkOr7",
+     "name": "Backstreet Boys",
+     "image": "https://i.scdn.co/image/ab6761610000f1787b3634864a78ab6bd1d77c36"
+    },
+    {
      "id": "7BqRcZsHYYQeqMAOp7e532",
      "name": "落日飛車 Sunset Rollercoaster",
      "image": "https://i.scdn.co/image/ab6761610000f17817dd503b5c1841cd238c9aa7"
+    },
+    {
+     "id": "4S9EykWXhStSc15wEx8QFK",
+     "name": "Céline Dion",
+     "image": "https://i.scdn.co/image/ab6761610000f178fe81f2540f9fa7564dd5e05c"
+    },
+    {
+     "id": "4iHNK0tOyZPYnBU7nGAgpQ",
+     "name": "Mariah Carey",
+     "image": "https://i.scdn.co/image/ab6761610000f17821453384a10b1f8e18877f63"
     },
     {
      "id": "04gDigrS5kc9YWfZHwBETP",
@@ -1219,11 +1234,6 @@
      "id": "4npEfmQ6YuiwW1GpUmaq3F",
      "name": "Ava Max",
      "image": "https://i.scdn.co/image/ab6761610000f178d8fa717584b01690e3919e32"
-    },
-    {
-     "id": "5rSXSAkZ67PYJSvpUpkOr7",
-     "name": "Backstreet Boys",
-     "image": "https://i.scdn.co/image/ab6761610000f1787b3634864a78ab6bd1d77c36"
     },
     {
      "id": "6XpaIBNiVzIetEPCWDvAFP",
