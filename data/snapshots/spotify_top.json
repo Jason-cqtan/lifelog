@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-31T00:00:22Z",
+ "updated_at": "2026-10-31T05:00:22Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -1201,6 +1201,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f1788a0644455ebfa7d3976f5101"
     },
     {
+     "id": "4BAWVaDoA2CpEdUetoYKgZ",
+     "name": "Capo Productions",
+     "image": "https://i.scdn.co/image/ab67616d00001e020d2bdfb25648a42ba50b9c41"
+    },
+    {
      "id": "2elBjNSdBE2Y3f0j1mjrql",
      "name": "Jay Chou",
      "image": "https://i.scdn.co/image/ab6761610000f17887fbbe9ed03fbb500595e720"
@@ -1290,6 +1295,13 @@
      "artist": "Ellie Goulding",
      "album": "Lights",
      "image": "https://i.scdn.co/image/ab67616d00001e02a992179a520d2eb38fa41e64"
+    },
+    {
+     "id": "7nDQMtLxu94xtlTR8bEqjU",
+     "name": "Faded",
+     "artist": "ZHU",
+     "album": "Faded",
+     "image": "https://i.scdn.co/image/ab67616d00001e027b730a450d048646b7472425"
     },
     {
      "id": "2kWr3JUHOjwmGl6BDzhNdn",
@@ -1439,6 +1451,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e020faf2fc17446651865ce2282"
     },
     {
+     "id": "41NzE22njxaczRSqCjoN55",
+     "name": "Young, Wild \u0026 Free",
+     "artist": "Axero",
+     "album": "Young, Wild \u0026 Free",
+     "image": "https://i.scdn.co/image/ab67616d00001e024076a1825a2f23dbef82303a"
+    },
+    {
      "id": "4B4vJppxKZTnqb6qyS6e8h",
      "name": "Bleu",
      "artist": "Worakls",
@@ -1530,6 +1549,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e025fd86e115d70a62db949318b"
     },
     {
+     "id": "7rdtBpPpe4knfd7aD98h9X",
+     "name": "Take Me to Your Heart",
+     "artist": "Michael Learns To Rock",
+     "album": "Michael Learns To Rock",
+     "image": "https://i.scdn.co/image/ab67616d00001e024b8929ee375f3a2539bd2868"
+    },
+    {
      "id": "7vS3Y0IKjde7Xg85LWIEdP",
      "name": "Problem",
      "artist": "Ariana Grande, Iggy Azalea",
@@ -1565,32 +1591,11 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02c5649add07ed3720be9d5526"
     },
     {
-     "id": "7nDQMtLxu94xtlTR8bEqjU",
-     "name": "Faded",
-     "artist": "ZHU",
-     "album": "Faded",
-     "image": "https://i.scdn.co/image/ab67616d00001e027b730a450d048646b7472425"
-    },
-    {
      "id": "1TNw0nkGMuydC979VlPWBL",
      "name": "千百度",
      "artist": "許嵩",
      "album": "蘇格拉沒有底",
      "image": "https://i.scdn.co/image/ab67616d00001e025039b4ec0adf96960be1e408"
-    },
-    {
-     "id": "4AmlSf7hye0QVpnHCcEoEw",
-     "name": "城府",
-     "artist": "許嵩",
-     "album": "自定義",
-     "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
-    },
-    {
-     "id": "2fXwCWkh6YG5zU1IyvQrbs",
-     "name": "Broken Clocks",
-     "artist": "SZA",
-     "album": "Ctrl",
-     "image": "https://i.scdn.co/image/ab67616d00001e0206d56b057cce5797538a16d5"
     }
    ]
   }
