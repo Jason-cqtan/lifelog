@@ -42,6 +42,9 @@ const SyncHours = "LIFELOG_SYNC_HOURS"
 // GitBackup turns on pushing data/*.json to GitHub after each sync.
 const GitBackup = "LIFELOG_GIT_BACKUP"
 
+// PushToken lets the iPhone app push workouts to /api/push/applehealth.
+const PushToken = "LIFELOG_PUSH_TOKEN"
+
 var Defs = []Def{
 	{Key: "LIFELOG_TZ", Group: "通用", Label: "时区", Help: "按这个时区把记录归到日期", Kind: Text, Default: "Asia/Shanghai"},
 	{Key: SyncHours, Group: "通用", Label: "每天同步时间(点)", Help: "逗号分隔的整点，如 8,13,22;留空则不自动同步。Spotify 只保留最近 50 首，间隔别太长", Kind: Text, Default: "8,13,22"},
@@ -62,6 +65,8 @@ var Defs = []Def{
 	{Key: "COROS_ACCOUNT", Group: "COROS 高驰", Label: "账号", Kind: Text},
 	{Key: "COROS_PASSWORD", Group: "COROS 高驰", Label: "密码", Kind: Secret},
 	{Key: "COROS_CN", Group: "COROS 高驰", Label: "中国区", Kind: Bool},
+
+	{Key: PushToken, Group: "Apple 健康", Label: "推送密钥", Help: "Health Auto Export 推送时用的密钥(Authorization: Bearer ...),可用 openssl rand -hex 32 生成;留空则关闭推送", Kind: Secret},
 
 	{Key: "DUOLINGO_JWT", Group: "多邻国", Label: "jwt_token", Help: "duolingo.com 的 jwt_token cookie", Kind: Secret},
 

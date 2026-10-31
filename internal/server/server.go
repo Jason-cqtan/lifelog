@@ -11,6 +11,7 @@ import (
 	"net/http"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/Jason-cqtan/lifelog/internal/app"
@@ -31,6 +32,9 @@ type Server struct {
 	opt  Options
 	jobs *jobs
 	auth *auth
+
+	pushMu    sync.Mutex
+	pushTimer *time.Timer
 }
 
 func New(pool *pgxpool.Pool, opt Options) *Server {
@@ -68,6 +72,7 @@ func (s *Server) routes() http.Handler {
 	})
 	mux.HandleFunc("POST /api/admin/login", s.auth.login)
 	mux.HandleFunc("POST /api/admin/logout", s.auth.logout)
+	mux.HandleFunc("POST /api/push/applehealth", s.pushAppleHealth)
 
 	private := http.NewServeMux()
 	private.HandleFunc("GET /api/admin/me", func(w http.ResponseWriter, r *http.Request) {
