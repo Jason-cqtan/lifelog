@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-01T05:00:13Z",
+ "updated_at": "2026-11-01T14:00:09Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -1186,6 +1186,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f178e4d94f7cbebb17504c25d419"
     },
     {
+     "id": "5Pwc4xIPtQLFEnJriah9YJ",
+     "name": "OneRepublic",
+     "image": "https://i.scdn.co/image/ab6761610000f1783202f1bcacc6d8f581f32ffd"
+    },
+    {
      "id": "6nB0iY1cjSY1KyhYyuIIKH",
      "name": "FKA twigs",
      "image": "https://i.scdn.co/image/ab6761610000f1783f6b8973be0344896d8680ab"
@@ -1330,11 +1335,25 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
     },
     {
+     "id": "6fNhZRFEkBfgW39W3wKARJ",
+     "name": "Pompeii",
+     "artist": "Bastille",
+     "album": "Bad Blood",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
+    },
+    {
      "id": "6ldGMSejZIGokqYSzgJIP5",
      "name": "幻聽",
      "artist": "許嵩",
      "album": "夢游計",
      "image": "https://i.scdn.co/image/ab67616d00001e026c99d21a7cc536154d4c2050"
+    },
+    {
+     "id": "1SN1vSPsr4V4tIUTR3s8YW",
+     "name": "Fast Car",
+     "artist": "Jonas Blue, Dakota",
+     "album": "Blue",
+     "image": "https://i.scdn.co/image/ab67616d00001e025b6bcc59c3562a6f362344c6"
     },
     {
      "id": "3Z4B52Fwo5l9RtFPrzoySm",
@@ -1405,6 +1424,13 @@
      "artist": "Joanna Wang",
      "album": "Start From Here",
      "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
+    },
+    {
+     "id": "2CPqh63wRVscbceKcPxwvv",
+     "name": "The Ocean (feat. Shy Martin)",
+     "artist": "Mike Perry, shy martin",
+     "album": "The Ocean (feat. Shy Martin)",
+     "image": "https://i.scdn.co/image/ab67616d00001e027f401862bfe87b552a75308d"
     },
     {
      "id": "2Tl7unJOZm9zhZQf5UlmPq",
@@ -1526,13 +1552,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e0281969c51d6ef66b8def7fc5f"
     },
     {
-     "id": "6fNhZRFEkBfgW39W3wKARJ",
-     "name": "Pompeii",
-     "artist": "Bastille",
-     "album": "Bad Blood",
-     "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
-    },
-    {
      "id": "6xDxgv02LbpleHiPIaZz6Q",
      "name": "Fireflies",
      "artist": "Ryan Farish",
@@ -1568,6 +1587,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02deec12a28d1e336c5052e9aa"
     },
     {
+     "id": "3eOeuofLjOgjOCs7eWuvZ0",
+     "name": "Cool Kids",
+     "artist": "Echosmith",
+     "album": "Talking Dreams",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b098cbfb14e8cc251451ca19"
+    },
+    {
      "id": "44wtMjxhSguxgWSggFMyMJ",
      "name": "Yet So Close",
      "artist": "Vexento",
@@ -1580,27 +1606,6 @@
      "artist": "許嵩",
      "album": "尋霧啟示",
      "image": "https://i.scdn.co/image/ab67616d00001e029e650f7adeb89c79e738bf62"
-    },
-    {
-     "id": "5tzgLJeeNHz7NNRWhR1L35",
-     "name": "暖暖",
-     "artist": "Fish Leong",
-     "album": "親親",
-     "image": "https://i.scdn.co/image/ab67616d00001e0227855459680dea347f412fec"
-    },
-    {
-     "id": "7eqoqGkKwgOaWNNHx90uEZ",
-     "name": "Nights",
-     "artist": "Frank Ocean",
-     "album": "Blonde",
-     "image": "https://i.scdn.co/image/ab67616d00001e02c5649add07ed3720be9d5526"
-    },
-    {
-     "id": "1TNw0nkGMuydC979VlPWBL",
-     "name": "千百度",
-     "artist": "許嵩",
-     "album": "蘇格拉沒有底",
-     "image": "https://i.scdn.co/image/ab67616d00001e025039b4ec0adf96960be1e408"
     }
    ]
   }
