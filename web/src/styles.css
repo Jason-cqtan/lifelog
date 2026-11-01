@@ -332,7 +332,7 @@ a.icon-btn {
 }
 .tooltip {
   position: fixed;
-  z-index: 10;
+  z-index: 20;
   transform: translate(-50%, calc(-100% - 6px));
   background: var(--text-primary);
   color: var(--page);
@@ -344,8 +344,35 @@ a.icon-btn {
   display: flex;
   gap: 8px;
 }
+.tooltip-below {
+  transform: translate(-50%, 6px);
+}
+.tooltip-wrap {
+  display: block;
+  width: max-content;
+  max-width: min(280px, calc(100vw - 16px));
+  white-space: normal;
+  text-align: left;
+  font-weight: 400;
+  line-height: 1.45;
+}
 .tip-hint {
   opacity: 0.7;
+}
+.tip-btn {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  cursor: help;
+}
+/* plain values give no other sign that they can be tapped */
+.card-nums .tip-btn,
+.act-table .tip-btn {
+  text-decoration: underline dotted var(--text-muted);
+  text-underline-offset: 3px;
 }
 .scale {
   display: flex;

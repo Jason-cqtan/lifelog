@@ -1,5 +1,5 @@
 // Shared pieces of the one-hue heatmap scale used by the yearly and all-time views.
-import { useEffect, type ReactNode } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, type MouseEvent, type PointerEvent as ReactPointerEvent, type ReactNode } from 'react'
 import { useI18n } from '../i18n'
 
 // color-mix percentage of the category color per intensity level
@@ -33,21 +33,93 @@ export function Scale({ color }: { color: string }) {
 }
 
 /**
- * Hover tooltip anchored above a point given in viewport coordinates. It is
+ * Tooltip anchored above a point given in viewport coordinates. It is
  * position: fixed so the heatmap's horizontal scroll container cannot clip it,
- * and it hides on any scroll since the anchor would then be stale.
+ * and it closes on any scroll, since the anchor would then be stale, and on a
+ * press outside its parent, the only way to dismiss one opened by a tap.
+ * With `below` (the anchor's bottom edge) it opens under the anchor when there
+ * is room, since an anchor in the pinned personal-bests bar would otherwise put
+ * it behind the sticky nav; `wrap` is for sentences rather than short values.
  */
-export function Tooltip({ x, y, onScroll, children }: { x: number; y: number; onScroll: () => void; children: ReactNode }) {
+export function Tooltip({
+  x,
+  y,
+  below,
+  wrap,
+  onClose,
+  children,
+}: {
+  x: number
+  y: number
+  below?: number
+  wrap?: boolean
+  onClose: () => void
+  children: ReactNode
+}) {
+  const ref = useRef<HTMLSpanElement>(null)
   useEffect(() => {
-    window.addEventListener('scroll', onScroll, { capture: true, passive: true })
-    return () => window.removeEventListener('scroll', onScroll, { capture: true })
-  }, [onScroll])
-  // keep the centered bubble on screen near the left/right edges
-  const left = Math.min(Math.max(x, 72), window.innerWidth - 72)
+    const onPress = (e: Event) => {
+      if (!ref.current?.parentElement?.contains(e.target as Node)) onClose()
+    }
+    window.addEventListener('scroll', onClose, { capture: true, passive: true })
+    document.addEventListener('pointerdown', onPress)
+    return () => {
+      window.removeEventListener('scroll', onClose, { capture: true })
+      document.removeEventListener('pointerdown', onPress)
+    }
+  }, [onClose])
+  useLayoutEffect(() => {
+    const el = ref.current!
+    const { width, height } = el.getBoundingClientRect()
+    // keep the centered bubble on screen near the left/right edges
+    const edge = width / 2 + 8
+    el.style.left = `${Math.max(edge, Math.min(x, window.innerWidth - edge))}px`
+    const under = below !== undefined && below + height + 14 < window.innerHeight
+    el.style.top = `${under ? below : y}px`
+    el.classList.toggle('tooltip-below', under)
+  })
   return (
-    <div className="tooltip" style={{ left, top: y }}>
+    <span ref={ref} className={wrap ? 'tooltip tooltip-wrap' : 'tooltip'} role="tooltip">
       {children}
-    </div>
+    </span>
+  )
+}
+
+/**
+ * Hover handlers for a real mouse only. A tap also fires pointer and compat
+ * mouse events, which would open a tooltip just before the click and so make
+ * every tap look like a click on a tooltip that was already showing.
+ */
+export function mouseHover<E extends Element>(show: (e: ReactPointerEvent<E>) => void, hide: () => void) {
+  return {
+    onPointerMove: (e: ReactPointerEvent<E>) => {
+      if (e.pointerType === 'mouse') show(e)
+    },
+    onPointerLeave: (e: ReactPointerEvent<E>) => {
+      if (e.pointerType === 'mouse') hide()
+    },
+  }
+}
+
+/** Inline content that explains itself in a tooltip, on hover or on click/tap. */
+export function InfoTip({ text, children }: { text: string; children: ReactNode }) {
+  const [at, setAt] = useState<{ x: number; y: number; below: number } | null>(null)
+  const close = useCallback(() => setAt(null), [])
+  const open = (e: MouseEvent<HTMLElement>) => {
+    const r = e.currentTarget.getBoundingClientRect()
+    setAt({ x: r.left + r.width / 2, y: r.top, below: r.bottom })
+  }
+  return (
+    <span className="tip-anchor">
+      <button type="button" className="tip-btn" aria-description={text} {...mouseHover(open, close)} onClick={open} onBlur={close}>
+        {children}
+      </button>
+      {at && (
+        <Tooltip {...at} wrap onClose={close}>
+          {text}
+        </Tooltip>
+      )}
+    </span>
   )
 }
 

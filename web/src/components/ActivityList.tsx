@@ -8,6 +8,7 @@ import { MonthCalendar } from './MonthCalendar'
 import { ActivitySummary } from './ActivitySummary'
 import { useHeightVar } from '../lib/useHeightVar'
 import { LockIcon } from './MapLock'
+import { InfoTip } from './heat'
 
 const PAGE = 24
 // quick "at least N km" filters
@@ -236,8 +237,8 @@ export function ActivityList({
                   {!!a.elevation_gain_m && <span>↑{Math.round(a.elevation_gain_m)} m</span>}
                   {!!a.avg_hr && <span>♥ {Math.round(a.avg_hr)}</span>}
                   {fmtCadence(a) && (
-                    <span title={[cadenceName(t, [a.type]), a.stride_m && t.strideTip(a.stride_m.toFixed(2))].filter(Boolean).join(' · ')}>
-                      {fmtCadence(a)}
+                    <span>
+                      <InfoTip text={[cadenceName(t, [a.type]), a.stride_m && t.strideTip(a.stride_m.toFixed(2))].filter(Boolean).join(' · ')}>{fmtCadence(a)}</InfoTip>
                     </span>
                   )}
                 </div>
@@ -268,6 +269,9 @@ export function ActivityList({
             <tbody>
               {page.map((a) => {
                 const w = a.weather && weatherLabel(a.weather.desc, lang)
+                // with runs and rides mixed, the unit tells steps from pedal strokes
+                const cadence = a.avg_cadence ? (listTypes.size > 1 && listTypes.has('ride') ? fmtCadence(a) : Math.round(a.avg_cadence)) : '—'
+                const temp = a.weather && w && `${w.icon} ${Math.round(a.weather.temp_c)}°C`
                 return (
                   <tr key={a.id} id={`act-${a.id}`} className={isFlash(a) ? 'flash' : undefined}>
                     <td className="nowrap">{a.start_local}</td>
@@ -280,19 +284,8 @@ export function ActivityList({
                     <td className="num">{fmtSpeed(a) ?? '—'}</td>
                     <td className="num">{a.elevation_gain_m ? `${Math.round(a.elevation_gain_m)} m` : '—'}</td>
                     <td className="num">{a.avg_hr ? Math.round(a.avg_hr) : '—'}</td>
-                    <td className="num" title={a.stride_m ? t.strideTip(a.stride_m.toFixed(2)) : undefined}>
-                      {/* with runs and rides mixed, the unit tells steps from pedal strokes */}
-                      {a.avg_cadence ? (listTypes.size > 1 && listTypes.has('ride') ? fmtCadence(a) : Math.round(a.avg_cadence)) : '—'}
-                    </td>
-                    <td className="nowrap">
-                      {a.weather && w ? (
-                        <span title={w.text || undefined}>
-                          {w.icon} {Math.round(a.weather.temp_c)}°C
-                        </span>
-                      ) : (
-                        '—'
-                      )}
-                    </td>
+                    <td className="num">{a.stride_m ? <InfoTip text={t.strideTip(a.stride_m.toFixed(2))}>{cadence}</InfoTip> : cadence}</td>
+                    <td className="nowrap">{temp ? w && w.text ? <InfoTip text={w.text}>{temp}</InfoTip> : temp : '—'}</td>
                     <td className="muted">{a.source}</td>
                     <td>
                       {a.has_route && (

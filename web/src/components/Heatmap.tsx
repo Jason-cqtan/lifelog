@@ -3,7 +3,7 @@ import type { Activity, Category, Data, SportType } from '../types'
 import { HeatFooter } from './SportSummary'
 import { addDays, fmtNum, isoDate } from '../lib/format'
 import { useI18n } from '../i18n'
-import { DownloadButton, Tooltip, downloadHeatmapPng, levelFill, quartileLevels, toViewport } from './heat'
+import { DownloadButton, Tooltip, downloadHeatmapPng, levelFill, mouseHover, quartileLevels, toViewport } from './heat'
 import { categoryStats } from '../lib/stats'
 
 const CELL = 11
@@ -92,9 +92,11 @@ export function Heatmap({ year, category, daily, onDrill, activities, onOpen, ex
     setTip({ cell, ...toViewport(e.currentTarget, width, LEFT + cell.week * STEP + CELL / 2, TOP + cell.dow * STEP) })
   }
   const drillable = (c?: Cell) => !!c && c.value > 0 && !!category.sport && !!onDrill
+  // A mouse has already hovered the cell, so its click drills; a first tap only shows the tooltip.
   const onClick = (e: MouseEvent<SVGSVGElement>) => {
     const cell = cellAt(e)
-    if (cell && drillable(cell)) onDrill!(category.sport!, cell.date)
+    if (cell && tip?.cell === cell && drillable(cell)) onDrill!(category.sport!, cell.date)
+    else onMove(e)
   }
 
   const monthLabels = t.months.map((label, m) => {
@@ -162,8 +164,7 @@ export function Heatmap({ year, category, daily, onDrill, activities, onOpen, ex
             viewBox={`0 0 ${width} ${height}`}
             width={width}
             height={height}
-            onMouseMove={onMove}
-            onMouseLeave={clearTip}
+            {...mouseHover(onMove, clearTip)}
             onClick={onClick}
             style={{ cursor: drillable(tip?.cell) ? 'pointer' : undefined }}
             role="img"
@@ -197,7 +198,7 @@ export function Heatmap({ year, category, daily, onDrill, activities, onOpen, ex
             ))}
           </svg>
           {tip && (
-            <Tooltip x={tip.x} y={tip.y} onScroll={clearTip}>
+            <Tooltip x={tip.x} y={tip.y} onClose={clearTip}>
               <strong>{tip.cell.value > 0 ? `${fmtNum(tip.cell.value)} ${unit}` : t.noRecord}</strong>
               <span>{tip.cell.date}</span>
               {drillable(tip.cell) && <span className="tip-hint">{t.drillDay}</span>}

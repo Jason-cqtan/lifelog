@@ -4,7 +4,7 @@ import { HeatFooter } from './SportSummary'
 import { fmtNum, isoDate } from '../lib/format'
 import { categoryStats } from '../lib/stats'
 import { useI18n } from '../i18n'
-import { DownloadButton, Tooltip, downloadHeatmapPng, levelFill, quartileLevels, toViewport } from './heat'
+import { DownloadButton, Tooltip, downloadHeatmapPng, levelFill, mouseHover, quartileLevels, toViewport } from './heat'
 
 // All-time view: one row per year, one cell per month (the monthly total).
 const CW = 40
@@ -96,9 +96,11 @@ export function Overview({ category, daily, onDrill, activities, onOpen, extra }
   }
   const ym = (c: Cell) => `${c.year}-${String(c.month + 1).padStart(2, '0')}`
   const drillable = (c?: Cell) => !!c && c.value > 0 && !!category.sport && !!onDrill
+  // A mouse has already hovered the cell, so its click drills; a first tap only shows the tooltip.
   const onClick = (e: MouseEvent<SVGSVGElement>) => {
     const cell = cellAt(e)
-    if (cell && drillable(cell)) onDrill!(category.sport!, ym(cell))
+    if (cell && tip?.cell === cell && drillable(cell)) onDrill!(category.sport!, ym(cell))
+    else onMove(e)
   }
 
   return (
@@ -159,8 +161,7 @@ export function Overview({ category, daily, onDrill, activities, onOpen, extra }
             viewBox={`0 0 ${width} ${height}`}
             width={width}
             height={height}
-            onMouseMove={onMove}
-            onMouseLeave={clearTip}
+            {...mouseHover(onMove, clearTip)}
             onClick={onClick}
             style={{ cursor: drillable(tip?.cell) ? 'pointer' : undefined }}
             role="img"
@@ -191,7 +192,7 @@ export function Overview({ category, daily, onDrill, activities, onOpen, extra }
             ))}
           </svg>
           {tip && (
-            <Tooltip x={tip.x} y={tip.y} onScroll={clearTip}>
+            <Tooltip x={tip.x} y={tip.y} onClose={clearTip}>
               <strong>{tip.cell.value > 0 ? `${fmtNum(tip.cell.value)} ${unit}` : t.noRecord}</strong>
               <span>
                 {ym(tip.cell)}

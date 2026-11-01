@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import type { Activity, SportType } from '../types'
 import { useI18n, type Dict } from '../i18n'
 import { fmtDuration, fmtNum, fmtPace } from '../lib/format'
+import { InfoTip } from './heat'
 
 type Group = 'run' | 'ride'
 
@@ -97,8 +98,10 @@ export function PersonalBests({
   return (
     <section className="pbs" aria-label={t.pb}>
       <div className="pb-head">
-        <h2 title={shown === 'run' ? t.pbNote : t.pbRideNote}>
-          {t.pb} <span className="hint">ⓘ</span>
+        <h2>
+          <InfoTip text={shown === 'run' ? t.pbNote : t.pbRideNote}>
+            {t.pb} <span className="hint">ⓘ</span>
+          </InfoTip>
         </h2>
         {groups.length > 1 && (
           <div className="seg seg-sm" role="group">

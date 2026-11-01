@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { SpotifyTop as Top } from '../types'
 import { load, save, useI18n } from '../i18n'
+import { InfoTip } from './heat'
 
 const RANGES = ['short_term', 'medium_term', 'long_term'] as const
 type Range = (typeof RANGES)[number]
@@ -27,9 +28,9 @@ export function SpotifyTop({ top }: { top: Top }) {
         <h3>
           <span className="swatch" style={{ background: 'var(--c-spotify)' }} />
           {t.spotifyTop}
-          <span className="hint" title={t.spotifyTopNote}>
-            ⓘ
-          </span>
+          <InfoTip text={t.spotifyTopNote}>
+            <span className="hint">ⓘ</span>
+          </InfoTip>
         </h3>
         <div className="seg seg-sm" role="group">
           {RANGES.map((r) => (

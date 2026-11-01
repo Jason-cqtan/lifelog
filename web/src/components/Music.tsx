@@ -2,7 +2,7 @@ import { useCallback, useMemo, useState, type MouseEvent } from 'react'
 import type { MusicStats } from '../types'
 import { useI18n, type Dict } from '../i18n'
 import { fmtNum } from '../lib/format'
-import { Scale, Tooltip, levelFill, quartileLevels, toViewport } from './heat'
+import { Scale, Tooltip, levelFill, mouseHover, quartileLevels, toViewport } from './heat'
 
 const COLOR = 'var(--c-spotify)'
 const LIST_STEP = 20
@@ -96,8 +96,8 @@ function HourGrid({ hours }: { hours: number[][] }) {
             viewBox={`0 0 ${width} ${height}`}
             width={width}
             height={height}
-            onMouseMove={onMove}
-            onMouseLeave={clearTip}
+            {...mouseHover(onMove, clearTip)}
+            onClick={onMove}
             role="img"
             aria-label={t.whenListen}
           >
@@ -128,7 +128,7 @@ function HourGrid({ hours }: { hours: number[][] }) {
             )}
           </svg>
           {tip && (
-            <Tooltip x={tip.x} y={tip.y} onScroll={clearTip}>
+            <Tooltip x={tip.x} y={tip.y} onClose={clearTip}>
               <strong>{hours[tip.d][tip.h] > 0 ? minutes(hours[tip.d][tip.h], t) : t.noRecord}</strong>
               <span>
                 {t.weekdaysAll[tip.d]} {span(tip.h)}

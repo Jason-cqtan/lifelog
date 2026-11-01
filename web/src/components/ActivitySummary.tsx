@@ -2,7 +2,7 @@ import { useCallback, useMemo, useState, type MouseEvent } from 'react'
 import type { Activity } from '../types'
 import { load, save, useI18n } from '../i18n'
 import { cadenceName, fmtCadence, fmtDuration, fmtNum, fmtPace } from '../lib/format'
-import { Tooltip, toViewport } from './heat'
+import { Tooltip, mouseHover, toViewport } from './heat'
 
 interface Totals {
   count: number
@@ -243,6 +243,11 @@ function BarChart({
     const i = Math.floor(x / slot)
     return i >= 0 && i < buckets.length ? i : -1
   }
+  const showTip = (e: MouseEvent<SVGSVGElement>) => {
+    const i = indexAt(e)
+    if (i < 0) return setTip(null)
+    setTip({ i, ...toViewport(e.currentTarget, W, PAD_L + slot * i + slot / 2, yOf(km[i])) })
+  }
 
   return (
     <div className="sum-chart">
@@ -250,15 +255,12 @@ function BarChart({
         viewBox={`0 0 ${W} ${H}`}
         role="img"
         aria-label={unit}
-        onMouseMove={(e) => {
-          const i = indexAt(e)
-          if (i < 0) return setTip(null)
-          setTip({ i, ...toViewport(e.currentTarget, W, PAD_L + slot * i + slot / 2, yOf(km[i])) })
-        }}
-        onMouseLeave={clearTip}
+        {...mouseHover(showTip, clearTip)}
         onClick={(e) => {
+          // a mouse has already hovered the bar, so its click picks; a first tap only shows the tooltip
           const i = indexAt(e)
-          if (i >= 0 && buckets[i].tt.count > 0) onPick(buckets[i].k)
+          if (i >= 0 && tip?.i === i && buckets[i].tt.count > 0) onPick(buckets[i].k)
+          else showTip(e)
         }}
         style={{ cursor: tip && buckets[tip.i].tt.count > 0 ? 'pointer' : undefined }}
       >
@@ -286,7 +288,7 @@ function BarChart({
       </svg>
       <div className="chart-unit">{unit}</div>
       {tip && (
-        <Tooltip x={tip.x} y={tip.y} onScroll={clearTip}>
+        <Tooltip x={tip.x} y={tip.y} onClose={clearTip}>
           <strong>{fmtNum(km[tip.i], 1)} km</strong>
           <span>
             {label(buckets[tip.i].k)} · {t.barTip(buckets[tip.i].tt.count, fmtDuration(buckets[tip.i].tt.secs, t))}
