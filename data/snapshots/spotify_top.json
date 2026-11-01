@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-31T14:00:12Z",
+ "updated_at": "2026-11-01T00:00:10Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -44,14 +44,19 @@
      "image": "https://i.scdn.co/image/ab6761610000f178783a6a578e8eb992bfd74765"
     },
     {
-     "id": "6M2wZ9GZgrQXHCFfjv46we",
-     "name": "Dua Lipa",
-     "image": "https://i.scdn.co/image/ab6761610000f1780c68f6c95232e716f0abee8d"
+     "id": "1f3NYrlm9GpXxMz8XZGEP5",
+     "name": "Axero",
+     "image": "https://i.scdn.co/image/ab6761610000f178c3f0ab5f9cba94862e72542a"
     },
     {
      "id": "6PNEi9i2MxUgRufqYr76Xt",
      "name": "Zhang Zhen Yue",
      "image": "https://i.scdn.co/image/ab6761610000f17866a909756400366c24bf1568"
+    },
+    {
+     "id": "6M2wZ9GZgrQXHCFfjv46we",
+     "name": "Dua Lipa",
+     "image": "https://i.scdn.co/image/ab6761610000f1780c68f6c95232e716f0abee8d"
     },
     {
      "id": "7mShFo2eYgVBQFZBCilhtl",
@@ -67,11 +72,6 @@
      "id": "3tYJfCciy07wTBt2HpjCQw",
      "name": "Vexento",
      "image": "https://i.scdn.co/image/ab6761610000f17827874e04725994e5ae5d21c3"
-    },
-    {
-     "id": "1f3NYrlm9GpXxMz8XZGEP5",
-     "name": "Axero",
-     "image": "https://i.scdn.co/image/ab6761610000f178c3f0ab5f9cba94862e72542a"
     },
     {
      "id": "5XMnJOQbE6OuOvcV8fn3Wg",
@@ -92,6 +92,11 @@
      "id": "04gDigrS5kc9YWfZHwBETP",
      "name": "Maroon 5",
      "image": "https://i.scdn.co/image/ab6761610000f178f8349dfb619a7f842242de77"
+    },
+    {
+     "id": "3OKg7YbOIatODzkRIbLJR4",
+     "name": "TheFatRat",
+     "image": "https://i.scdn.co/image/ab6761610000f178c64c5f001dc3957cf5651460"
     },
     {
      "id": "6noxsCszBEEK04kCehugOp",
@@ -169,11 +174,6 @@
      "image": "https://i.scdn.co/image/ab6761610000f178d9939d240016befcc2095b26"
     },
     {
-     "id": "3OKg7YbOIatODzkRIbLJR4",
-     "name": "TheFatRat",
-     "image": "https://i.scdn.co/image/ab6761610000f178c64c5f001dc3957cf5651460"
-    },
-    {
      "id": "3aIDSTKS9yH745GUQBxDcS",
      "name": "Fish Leong",
      "image": "https://i.scdn.co/image/ab6761610000f17814806436e1fc9d977a3709dd"
@@ -209,14 +209,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f178fe613747ea3666f4c75b9884"
     },
     {
-     "id": "5uCktjKM1Rf9VnUvFD6j17",
-     "name": "Solar Heavy",
-     "image": "https://i.scdn.co/image/ab6761610000f1782b1c6db6ed003d0e72c160e6"
-    },
-    {
      "id": "14bJhryXGk6H6qlGzwj3W5",
      "name": "Hebe Tien",
      "image": "https://i.scdn.co/image/ab6761610000f17809749491c2a434bde6cf40cc"
+    },
+    {
+     "id": "5uCktjKM1Rf9VnUvFD6j17",
+     "name": "Solar Heavy",
+     "image": "https://i.scdn.co/image/ab6761610000f1782b1c6db6ed003d0e72c160e6"
     },
     {
      "id": "1Cs0zKBU1kc0i8ypK3B9ai",
@@ -660,14 +660,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f178ee3123e593174208f9754fab"
     },
     {
-     "id": "20wkVLutqVOYrc0kxFs7rA",
-     "name": "Daniel Caesar",
-     "image": "https://i.scdn.co/image/ab6761610000f178e4d94f7cbebb17504c25d419"
-    },
-    {
      "id": "3AroL2oDPiAnMpTmIQv3KP",
      "name": "Cyndi Wang",
      "image": "https://i.scdn.co/image/ab6761610000f1788baa4f890691b73ec50ccb70"
+    },
+    {
+     "id": "20wkVLutqVOYrc0kxFs7rA",
+     "name": "Daniel Caesar",
+     "image": "https://i.scdn.co/image/ab6761610000f178e4d94f7cbebb17504c25d419"
     },
     {
      "id": "4BAWVaDoA2CpEdUetoYKgZ",
@@ -755,6 +755,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f17817dd503b5c1841cd238c9aa7"
     },
     {
+     "id": "6noxsCszBEEK04kCehugOp",
+     "name": "A-Mei Chang",
+     "image": "https://i.scdn.co/image/ab6761610000f1781b44d5d4d2e564f28f4046cf"
+    },
+    {
      "id": "0du5cEVh5yTK9QJze8zA0C",
      "name": "Bruno Mars",
      "image": "https://i.scdn.co/image/ab6761610000f178c7688aad1bf03986934d7e26"
@@ -773,11 +778,6 @@
      "id": "3PhoLpVuITZKcymswpck5b",
      "name": "Elton John",
      "image": "https://i.scdn.co/image/ab6761610000f1780dc33a1c53bb58a84b45d6a7"
-    },
-    {
-     "id": "6noxsCszBEEK04kCehugOp",
-     "name": "A-Mei Chang",
-     "image": "https://i.scdn.co/image/ab6761610000f1781b44d5d4d2e564f28f4046cf"
     },
     {
      "id": "6qzfo7jiO4OrhxrvPFPlWX",
