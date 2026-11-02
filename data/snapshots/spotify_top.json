@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-02T05:00:07Z",
+ "updated_at": "2026-11-02T14:00:10Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -298,6 +298,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e0244fd7df5558aa1f6cbed17a2"
     },
     {
+     "id": "6fNhZRFEkBfgW39W3wKARJ",
+     "name": "Pompeii",
+     "artist": "Bastille",
+     "album": "Bad Blood",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
+    },
+    {
      "id": "1EOWf8bsePF6QtiDUAclrJ",
      "name": "Catch a Grenade - The Hooligans Remix",
      "artist": "Bruno Mars",
@@ -319,11 +326,11 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02f1b39a9ad04b471a169a73fa"
     },
     {
-     "id": "6fNhZRFEkBfgW39W3wKARJ",
-     "name": "Pompeii",
-     "artist": "Bastille",
-     "album": "Bad Blood",
-     "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
+     "id": "13P5rwmk2EsoFRIz9UCeh9",
+     "name": "Cool Kids",
+     "artist": "Echosmith",
+     "album": "Talking Dreams (Deluxe Edition)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02106fa02aaa287ec63af85aae"
     },
     {
      "id": "44wtMjxhSguxgWSggFMyMJ",
@@ -359,13 +366,6 @@
      "artist": "giacca., Flores [US]",
      "album": "Delight",
      "image": "https://i.scdn.co/image/ab67616d00001e02a97816c82e9fcab94aba6b7d"
-    },
-    {
-     "id": "13P5rwmk2EsoFRIz9UCeh9",
-     "name": "Cool Kids",
-     "artist": "Echosmith",
-     "album": "Talking Dreams (Deluxe Edition)",
-     "image": "https://i.scdn.co/image/ab67616d00001e02106fa02aaa287ec63af85aae"
     },
     {
      "id": "2fuCquhmrzHpu5xcA1ci9x",
@@ -886,6 +886,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02b93587221b1ce0c85a02297e"
     },
     {
+     "id": "6fNhZRFEkBfgW39W3wKARJ",
+     "name": "Pompeii",
+     "artist": "Bastille",
+     "album": "Bad Blood",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
+    },
+    {
      "id": "4frLb7nWtsz2ymBE6k2GRP",
      "name": "Earned It (Fifty Shades Of Grey)",
      "artist": "The Weeknd",
@@ -956,13 +963,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
     },
     {
-     "id": "6fNhZRFEkBfgW39W3wKARJ",
-     "name": "Pompeii",
-     "artist": "Bastille",
-     "album": "Bad Blood",
-     "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
-    },
-    {
      "id": "6ldGMSejZIGokqYSzgJIP5",
      "name": "幻聽",
      "artist": "許嵩",
@@ -982,6 +982,13 @@
      "artist": "Adam Lambert",
      "album": "Trespassing (Deluxe Version)",
      "image": "https://i.scdn.co/image/ab67616d00001e025fd86e115d70a62db949318b"
+    },
+    {
+     "id": "7ti4qMC7xYQeh1uRzj5XuM",
+     "name": "Pumpin Blood",
+     "artist": "NONONO",
+     "album": "We Are Only What We Feel",
+     "image": "https://i.scdn.co/image/ab67616d00001e02ca9961814136d4bd7acfd811"
     },
     {
      "id": "1SN1vSPsr4V4tIUTR3s8YW",
@@ -1040,11 +1047,32 @@
      "image": "https://i.scdn.co/image/ab67616d00001e0206d56b057cce5797538a16d5"
     },
     {
+     "id": "0GO8y8jQk1PkHzS31d699N",
+     "name": "Tongue Tied",
+     "artist": "GROUPLOVE",
+     "album": "Never Trust a Happy Song",
+     "image": "https://i.scdn.co/image/ab67616d00001e02d84a9bbcba91cb6a4a212b1b"
+    },
+    {
      "id": "0KytSwhBMJHs0eKEUZvTei",
      "name": "Ascent",
      "artist": "Teminite",
      "album": "Uprising",
      "image": "https://i.scdn.co/image/ab67616d00001e02ca821cda751983367d750b1a"
+    },
+    {
+     "id": "0UeYCHOETPfai02uskjJ3x",
+     "name": "Shooting Stars",
+     "artist": "Bag Raiders",
+     "album": "Bag Raiders (Deluxe)",
+     "image": "https://i.scdn.co/image/ab67616d00001e0250b5922bdf87ba4213b25234"
+    },
+    {
+     "id": "0qt5f5EL92o8Snzopsv0en",
+     "name": "Geronimo",
+     "artist": "Sheppard",
+     "album": "Bombs Away",
+     "image": "https://i.scdn.co/image/ab67616d00001e028a99868b5a57469de83fb9ba"
     },
     {
      "id": "1KPuohcXPmJYQfdyg9zKmR",
@@ -1066,6 +1094,13 @@
      "artist": "Daniel Caesar",
      "album": "Freudian",
      "image": "https://i.scdn.co/image/ab67616d00001e027aa8783ad8def37cc548a9cf"
+    },
+    {
+     "id": "213x4gsFDm04hSqIUkg88w",
+     "name": "On Top Of The World",
+     "artist": "Imagine Dragons",
+     "album": "Night Visions",
+     "image": "https://i.scdn.co/image/ab67616d00001e02407bd04707c463bbb3410737"
     },
     {
      "id": "28RCSA0i9bdMrui3UaHSG4",
@@ -1115,41 +1150,6 @@
      "artist": "The xx",
      "album": "xx",
      "image": "https://i.scdn.co/image/ab67616d00001e02a46d603701aa0342e8cca64e"
-    },
-    {
-     "id": "371ixmyel2DZ0fPKNmIxfn",
-     "name": "如果当时",
-     "artist": "許嵩",
-     "album": "自定義",
-     "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
-    },
-    {
-     "id": "3kXoKlD84c6OmIcOLfrfEs",
-     "name": "September",
-     "artist": "Earth, Wind \u0026 Fire",
-     "album": "September (sped up + slowed)",
-     "image": "https://i.scdn.co/image/ab67616d00001e020faf2fc17446651865ce2282"
-    },
-    {
-     "id": "42suymP38HAIBl0wiDfpst",
-     "name": "千千闋歌",
-     "artist": "Priscilla Chan",
-     "album": "永遠是你的朋友",
-     "image": "https://i.scdn.co/image/ab67616d00001e0226b31e4cf272575273cbcf11"
-    },
-    {
-     "id": "4B4vJppxKZTnqb6qyS6e8h",
-     "name": "Bleu",
-     "artist": "Worakls",
-     "album": "Good Night My Love",
-     "image": "https://i.scdn.co/image/ab67616d00001e024433ae6a319c1bf5b7269a4e"
-    },
-    {
-     "id": "4Ybi2URcC1egR30Xr1UHOd",
-     "name": "再回到從前",
-     "artist": "張鎬哲",
-     "album": "我真的不是故意的",
-     "image": "https://i.scdn.co/image/ab67616d00001e021b9fa6c4bb3dc69d691c13be"
     }
    ]
   },
@@ -1396,6 +1396,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02ca821cda751983367d750b1a"
     },
     {
+     "id": "0UeYCHOETPfai02uskjJ3x",
+     "name": "Shooting Stars",
+     "artist": "Bag Raiders",
+     "album": "Bag Raiders (Deluxe)",
+     "image": "https://i.scdn.co/image/ab67616d00001e0250b5922bdf87ba4213b25234"
+    },
+    {
      "id": "0qt5f5EL92o8Snzopsv0en",
      "name": "Geronimo",
      "artist": "Sheppard",
@@ -1436,6 +1443,13 @@
      "artist": "Roald Velden",
      "album": "As the Years Went by / Sunset Over Emst",
      "image": "https://i.scdn.co/image/ab67616d00001e023572e164458b0e5ea6ff949d"
+    },
+    {
+     "id": "213x4gsFDm04hSqIUkg88w",
+     "name": "On Top Of The World",
+     "artist": "Imagine Dragons",
+     "album": "Night Visions",
+     "image": "https://i.scdn.co/image/ab67616d00001e02407bd04707c463bbb3410737"
     },
     {
      "id": "22RgKGppKFyQwKUX6Rvx8i",
@@ -1597,20 +1611,6 @@
      "artist": "Adam Lambert",
      "album": "Trespassing (Deluxe Version)",
      "image": "https://i.scdn.co/image/ab67616d00001e025fd86e115d70a62db949318b"
-    },
-    {
-     "id": "7rdtBpPpe4knfd7aD98h9X",
-     "name": "Take Me to Your Heart",
-     "artist": "Michael Learns To Rock",
-     "album": "Michael Learns To Rock",
-     "image": "https://i.scdn.co/image/ab67616d00001e024b8929ee375f3a2539bd2868"
-    },
-    {
-     "id": "7vS3Y0IKjde7Xg85LWIEdP",
-     "name": "Problem",
-     "artist": "Ariana Grande, Iggy Azalea",
-     "album": "My Everything (Deluxe)",
-     "image": "https://i.scdn.co/image/ab67616d00001e02deec12a28d1e336c5052e9aa"
     }
    ]
   }
