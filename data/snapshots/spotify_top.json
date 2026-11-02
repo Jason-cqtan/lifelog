@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-02T00:00:06Z",
+ "updated_at": "2026-11-02T05:00:07Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -1305,6 +1305,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02b93587221b1ce0c85a02297e"
     },
     {
+     "id": "6fNhZRFEkBfgW39W3wKARJ",
+     "name": "Pompeii",
+     "artist": "Bastille",
+     "album": "Bad Blood",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
+    },
+    {
      "id": "7gUpO6td4OOnu0Lf9vhcIV",
      "name": "Lights - Single Version",
      "artist": "Ellie Goulding",
@@ -1340,18 +1347,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
     },
     {
-     "id": "6fNhZRFEkBfgW39W3wKARJ",
-     "name": "Pompeii",
-     "artist": "Bastille",
-     "album": "Bad Blood",
-     "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
-    },
-    {
      "id": "6ldGMSejZIGokqYSzgJIP5",
      "name": "幻聽",
      "artist": "許嵩",
      "album": "夢游計",
      "image": "https://i.scdn.co/image/ab67616d00001e026c99d21a7cc536154d4c2050"
+    },
+    {
+     "id": "7ti4qMC7xYQeh1uRzj5XuM",
+     "name": "Pumpin Blood",
+     "artist": "NONONO",
+     "album": "We Are Only What We Feel",
+     "image": "https://i.scdn.co/image/ab67616d00001e02ca9961814136d4bd7acfd811"
     },
     {
      "id": "1SN1vSPsr4V4tIUTR3s8YW",
@@ -1375,11 +1382,25 @@
      "image": "https://i.scdn.co/image/ab67616d00001e0206d56b057cce5797538a16d5"
     },
     {
+     "id": "0GO8y8jQk1PkHzS31d699N",
+     "name": "Tongue Tied",
+     "artist": "GROUPLOVE",
+     "album": "Never Trust a Happy Song",
+     "image": "https://i.scdn.co/image/ab67616d00001e02d84a9bbcba91cb6a4a212b1b"
+    },
+    {
      "id": "0KytSwhBMJHs0eKEUZvTei",
      "name": "Ascent",
      "artist": "Teminite",
      "album": "Uprising",
      "image": "https://i.scdn.co/image/ab67616d00001e02ca821cda751983367d750b1a"
+    },
+    {
+     "id": "0qt5f5EL92o8Snzopsv0en",
+     "name": "Geronimo",
+     "artist": "Sheppard",
+     "album": "Bombs Away",
+     "image": "https://i.scdn.co/image/ab67616d00001e028a99868b5a57469de83fb9ba"
     },
     {
      "id": "1KPuohcXPmJYQfdyg9zKmR",
@@ -1590,27 +1611,6 @@
      "artist": "Ariana Grande, Iggy Azalea",
      "album": "My Everything (Deluxe)",
      "image": "https://i.scdn.co/image/ab67616d00001e02deec12a28d1e336c5052e9aa"
-    },
-    {
-     "id": "3eOeuofLjOgjOCs7eWuvZ0",
-     "name": "Cool Kids",
-     "artist": "Echosmith",
-     "album": "Talking Dreams",
-     "image": "https://i.scdn.co/image/ab67616d00001e02b098cbfb14e8cc251451ca19"
-    },
-    {
-     "id": "44wtMjxhSguxgWSggFMyMJ",
-     "name": "Yet So Close",
-     "artist": "Vexento",
-     "album": "Yet So Close",
-     "image": "https://i.scdn.co/image/ab67616d00001e02f9e94cdcd43abe52e9e1c4c3"
-    },
-    {
-     "id": "4qT6j1ORWqoHhGYQHLpJGa",
-     "name": "灰色头像",
-     "artist": "許嵩",
-     "album": "尋霧啟示",
-     "image": "https://i.scdn.co/image/ab67616d00001e029e650f7adeb89c79e738bf62"
     }
    ]
   }
