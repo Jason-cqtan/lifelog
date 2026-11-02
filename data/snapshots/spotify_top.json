@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-01T14:00:09Z",
+ "updated_at": "2026-11-02T00:00:06Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -665,6 +665,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f1788baa4f890691b73ec50ccb70"
     },
     {
+     "id": "5Pwc4xIPtQLFEnJriah9YJ",
+     "name": "OneRepublic",
+     "image": "https://i.scdn.co/image/ab6761610000f1783202f1bcacc6d8f581f32ffd"
+    },
+    {
      "id": "20wkVLutqVOYrc0kxFs7rA",
      "name": "Daniel Caesar",
      "image": "https://i.scdn.co/image/ab6761610000f178e4d94f7cbebb17504c25d419"
@@ -730,14 +735,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f1780e64fb94acbb752960c823e9"
     },
     {
+     "id": "4gzpq5DPGxSnKTe4SA8HAU",
+     "name": "Coldplay",
+     "image": "https://i.scdn.co/image/ab6761610000f1781ba8fc5f5c73e7e9313cc6eb"
+    },
+    {
      "id": "4iHNK0tOyZPYnBU7nGAgpQ",
      "name": "Mariah Carey",
      "image": "https://i.scdn.co/image/ab6761610000f17821453384a10b1f8e18877f63"
-    },
-    {
-     "id": "5Pwc4xIPtQLFEnJriah9YJ",
-     "name": "OneRepublic",
-     "image": "https://i.scdn.co/image/ab6761610000f1783202f1bcacc6d8f581f32ffd"
     },
     {
      "id": "6MDME20pz9RveH9rEXvrOM",
@@ -951,6 +956,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
     },
     {
+     "id": "6fNhZRFEkBfgW39W3wKARJ",
+     "name": "Pompeii",
+     "artist": "Bastille",
+     "album": "Bad Blood",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
+    },
+    {
      "id": "6ldGMSejZIGokqYSzgJIP5",
      "name": "幻聽",
      "artist": "許嵩",
@@ -970,6 +982,13 @@
      "artist": "Adam Lambert",
      "album": "Trespassing (Deluxe Version)",
      "image": "https://i.scdn.co/image/ab67616d00001e025fd86e115d70a62db949318b"
+    },
+    {
+     "id": "1SN1vSPsr4V4tIUTR3s8YW",
+     "name": "Fast Car",
+     "artist": "Jonas Blue, Dakota",
+     "album": "Blue",
+     "image": "https://i.scdn.co/image/ab67616d00001e025b6bcc59c3562a6f362344c6"
     },
     {
      "id": "02BcXEH1zJYbXSabPtNlKf",
@@ -1056,6 +1075,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
     },
     {
+     "id": "2CPqh63wRVscbceKcPxwvv",
+     "name": "The Ocean (feat. Shy Martin)",
+     "artist": "Mike Perry, shy martin",
+     "album": "The Ocean (feat. Shy Martin)",
+     "image": "https://i.scdn.co/image/ab67616d00001e027f401862bfe87b552a75308d"
+    },
+    {
      "id": "2N1VmFyd6cV9U6tXsLKn1D",
      "name": "大地",
      "artist": "Beyond",
@@ -1124,27 +1150,6 @@
      "artist": "張鎬哲",
      "album": "我真的不是故意的",
      "image": "https://i.scdn.co/image/ab67616d00001e021b9fa6c4bb3dc69d691c13be"
-    },
-    {
-     "id": "4iZ4pt7kvcaH6Yo8UoZ4s2",
-     "name": "Snooze",
-     "artist": "SZA",
-     "album": "SOS",
-     "image": "https://i.scdn.co/image/ab67616d00001e02bc18bdade69ec5ef0bb25b17"
-    },
-    {
-     "id": "5Oi1UhGQq2B7me6uPpAcc2",
-     "name": "大約在冬季",
-     "artist": "Chyi Chin",
-     "album": "齊秦精選",
-     "image": "https://i.scdn.co/image/ab67616d00001e02de16d38441a186e002f7cd40"
-    },
-    {
-     "id": "5PadgcONJhQT8FzhhLjwXA",
-     "name": "因為你愛我",
-     "artist": "Joanna Wang",
-     "album": "Start From Here",
-     "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
     }
    ]
   },
