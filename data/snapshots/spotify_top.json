@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-03T05:00:09Z",
+ "updated_at": "2026-11-03T14:00:09Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -124,6 +124,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f178572a8eae56feae217f618078"
     },
     {
+     "id": "5Pwc4xIPtQLFEnJriah9YJ",
+     "name": "OneRepublic",
+     "image": "https://i.scdn.co/image/ab6761610000f1783202f1bcacc6d8f581f32ffd"
+    },
+    {
      "id": "7tYKF4w9nC0nq9CsPZTHyP",
      "name": "SZA",
      "image": "https://i.scdn.co/image/ab6761610000f178fd0a9fb6c252a3ba44079acf"
@@ -132,11 +137,6 @@
      "id": "3XRhtE8W24BUgS40G9ZNkS",
      "name": "Linear Phase",
      "image": "https://i.scdn.co/image/ab6761610000f1789caf03c5c4b858fca6cedab4"
-    },
-    {
-     "id": "5Pwc4xIPtQLFEnJriah9YJ",
-     "name": "OneRepublic",
-     "image": "https://i.scdn.co/image/ab6761610000f1783202f1bcacc6d8f581f32ffd"
     },
     {
      "id": "2h93pZq0e7k5yf4dywlkpM",
@@ -174,6 +174,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f178ab47d8dae2b24f5afe7f9d38"
     },
     {
+     "id": "7CajNmpbOovFoOoasH2HaY",
+     "name": "Calvin Harris",
+     "image": "https://i.scdn.co/image/ab6761610000f1788ebba5e60113b48de8c11f6b"
+    },
+    {
      "id": "3aIDSTKS9yH745GUQBxDcS",
      "name": "Fish Leong",
      "image": "https://i.scdn.co/image/ab6761610000f17814806436e1fc9d977a3709dd"
@@ -189,9 +194,9 @@
      "image": "https://i.scdn.co/image/ab6761610000f17868412f2d0177a9ebc265ff58"
     },
     {
-     "id": "7CajNmpbOovFoOoasH2HaY",
-     "name": "Calvin Harris",
-     "image": "https://i.scdn.co/image/ab6761610000f1788ebba5e60113b48de8c11f6b"
+     "id": "0X2BH1fck6amBIoJhDVmmJ",
+     "name": "Ellie Goulding",
+     "image": "https://i.scdn.co/image/ab6761610000f1785c461001b3489a0a523f63ee"
     },
     {
      "id": "2QcZxAgcs2I1q7CtCkl6MI",
@@ -204,9 +209,9 @@
      "image": "https://i.scdn.co/image/ab6761610000f1789a48f2e7dd96f09c723c887c"
     },
     {
-     "id": "0X2BH1fck6amBIoJhDVmmJ",
-     "name": "Ellie Goulding",
-     "image": "https://i.scdn.co/image/ab6761610000f1785c461001b3489a0a523f63ee"
+     "id": "6MDME20pz9RveH9rEXvrOM",
+     "name": "Clean Bandit",
+     "image": "https://i.scdn.co/image/ab6761610000f178f995542c4f68f8ae4f05b5f6"
     },
     {
      "id": "69GGBxA162lTqCwzJG5jLp",
@@ -229,9 +234,9 @@
      "image": "https://i.scdn.co/image/ab6761610000f17809749491c2a434bde6cf40cc"
     },
     {
-     "id": "6MDME20pz9RveH9rEXvrOM",
-     "name": "Clean Bandit",
-     "image": "https://i.scdn.co/image/ab6761610000f178f995542c4f68f8ae4f05b5f6"
+     "id": "23fqKkggKUBHNkbKtXEls4",
+     "name": "Kygo",
+     "image": "https://i.scdn.co/image/ab6761610000f178e5ea1aa1404629c12ad86658"
     },
     {
      "id": "3WYT2b8pOLsLsqSaoWYr7U",
@@ -247,11 +252,6 @@
      "id": "1dfeR4HaWDbWqFHLkxsg1d",
      "name": "Queen",
      "image": "https://i.scdn.co/image/ab6761610000f17873e4d22612ac8d944b5789b4"
-    },
-    {
-     "id": "4npEfmQ6YuiwW1GpUmaq3F",
-     "name": "Ava Max",
-     "image": "https://i.scdn.co/image/ab6761610000f178d8fa717584b01690e3919e32"
     }
    ],
    "tracks": [
@@ -660,14 +660,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f178ee3123e593174208f9754fab"
     },
     {
-     "id": "3AroL2oDPiAnMpTmIQv3KP",
-     "name": "Cyndi Wang",
-     "image": "https://i.scdn.co/image/ab6761610000f1788baa4f890691b73ec50ccb70"
-    },
-    {
      "id": "5Pwc4xIPtQLFEnJriah9YJ",
      "name": "OneRepublic",
      "image": "https://i.scdn.co/image/ab6761610000f1783202f1bcacc6d8f581f32ffd"
+    },
+    {
+     "id": "3AroL2oDPiAnMpTmIQv3KP",
+     "name": "Cyndi Wang",
+     "image": "https://i.scdn.co/image/ab6761610000f1788baa4f890691b73ec50ccb70"
     },
     {
      "id": "20wkVLutqVOYrc0kxFs7rA",
@@ -715,24 +715,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f178fe81f2540f9fa7564dd5e05c"
     },
     {
-     "id": "5rSXSAkZ67PYJSvpUpkOr7",
-     "name": "Backstreet Boys",
-     "image": "https://i.scdn.co/image/ab6761610000f1787b3634864a78ab6bd1d77c36"
-    },
-    {
      "id": "7CajNmpbOovFoOoasH2HaY",
      "name": "Calvin Harris",
      "image": "https://i.scdn.co/image/ab6761610000f1788ebba5e60113b48de8c11f6b"
     },
     {
-     "id": "04gDigrS5kc9YWfZHwBETP",
-     "name": "Maroon 5",
-     "image": "https://i.scdn.co/image/ab6761610000f178f8349dfb619a7f842242de77"
-    },
-    {
-     "id": "2wY79sveU1sp5g7SokKOiI",
-     "name": "Sam Smith",
-     "image": "https://i.scdn.co/image/ab6761610000f1780e64fb94acbb752960c823e9"
+     "id": "23fqKkggKUBHNkbKtXEls4",
+     "name": "Kygo",
+     "image": "https://i.scdn.co/image/ab6761610000f178e5ea1aa1404629c12ad86658"
     },
     {
      "id": "4gzpq5DPGxSnKTe4SA8HAU",
@@ -740,14 +730,39 @@
      "image": "https://i.scdn.co/image/ab6761610000f1781ba8fc5f5c73e7e9313cc6eb"
     },
     {
-     "id": "4iHNK0tOyZPYnBU7nGAgpQ",
-     "name": "Mariah Carey",
-     "image": "https://i.scdn.co/image/ab6761610000f17821453384a10b1f8e18877f63"
+     "id": "5rSXSAkZ67PYJSvpUpkOr7",
+     "name": "Backstreet Boys",
+     "image": "https://i.scdn.co/image/ab6761610000f1787b3634864a78ab6bd1d77c36"
     },
     {
      "id": "6MDME20pz9RveH9rEXvrOM",
      "name": "Clean Bandit",
      "image": "https://i.scdn.co/image/ab6761610000f178f995542c4f68f8ae4f05b5f6"
+    },
+    {
+     "id": "04gDigrS5kc9YWfZHwBETP",
+     "name": "Maroon 5",
+     "image": "https://i.scdn.co/image/ab6761610000f178f8349dfb619a7f842242de77"
+    },
+    {
+     "id": "0X2BH1fck6amBIoJhDVmmJ",
+     "name": "Ellie Goulding",
+     "image": "https://i.scdn.co/image/ab6761610000f1785c461001b3489a0a523f63ee"
+    },
+    {
+     "id": "2wY79sveU1sp5g7SokKOiI",
+     "name": "Sam Smith",
+     "image": "https://i.scdn.co/image/ab6761610000f1780e64fb94acbb752960c823e9"
+    },
+    {
+     "id": "3t5xRXzsuZmMDkQzgOX35S",
+     "name": "Robin Schulz",
+     "image": "https://i.scdn.co/image/ab6761610000f178869ddcc058c5ff2a459ad8d5"
+    },
+    {
+     "id": "4iHNK0tOyZPYnBU7nGAgpQ",
+     "name": "Mariah Carey",
+     "image": "https://i.scdn.co/image/ab6761610000f17821453384a10b1f8e18877f63"
     },
     {
      "id": "6XpaIBNiVzIetEPCWDvAFP",
@@ -837,18 +852,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e0214b7b2a920a41166d53ddd49"
     },
     {
-     "id": "7nDQMtLxu94xtlTR8bEqjU",
-     "name": "Faded",
-     "artist": "ZHU",
-     "album": "Faded",
-     "image": "https://i.scdn.co/image/ab67616d00001e027b730a450d048646b7472425"
-    },
-    {
      "id": "7gUpO6td4OOnu0Lf9vhcIV",
      "name": "Lights - Single Version",
      "artist": "Ellie Goulding",
      "album": "Lights",
      "image": "https://i.scdn.co/image/ab67616d00001e02a992179a520d2eb38fa41e64"
+    },
+    {
+     "id": "7nDQMtLxu94xtlTR8bEqjU",
+     "name": "Faded",
+     "artist": "ZHU",
+     "album": "Faded",
+     "image": "https://i.scdn.co/image/ab67616d00001e027b730a450d048646b7472425"
     },
     {
      "id": "56y1jOTK0XSvJzVv9vHQBK",
@@ -1186,14 +1201,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f178ee3123e593174208f9754fab"
     },
     {
-     "id": "20wkVLutqVOYrc0kxFs7rA",
-     "name": "Daniel Caesar",
-     "image": "https://i.scdn.co/image/ab6761610000f178e4d94f7cbebb17504c25d419"
-    },
-    {
      "id": "5Pwc4xIPtQLFEnJriah9YJ",
      "name": "OneRepublic",
      "image": "https://i.scdn.co/image/ab6761610000f1783202f1bcacc6d8f581f32ffd"
+    },
+    {
+     "id": "20wkVLutqVOYrc0kxFs7rA",
+     "name": "Daniel Caesar",
+     "image": "https://i.scdn.co/image/ab6761610000f178e4d94f7cbebb17504c25d419"
     },
     {
      "id": "6nB0iY1cjSY1KyhYyuIIKH",
@@ -1231,6 +1246,16 @@
      "image": "https://i.scdn.co/image/ab6761610000f178e5ea1aa1404629c12ad86658"
     },
     {
+     "id": "0X2BH1fck6amBIoJhDVmmJ",
+     "name": "Ellie Goulding",
+     "image": "https://i.scdn.co/image/ab6761610000f1785c461001b3489a0a523f63ee"
+    },
+    {
+     "id": "3t5xRXzsuZmMDkQzgOX35S",
+     "name": "Robin Schulz",
+     "image": "https://i.scdn.co/image/ab6761610000f178869ddcc058c5ff2a459ad8d5"
+    },
+    {
      "id": "5rSXSAkZ67PYJSvpUpkOr7",
      "name": "Backstreet Boys",
      "image": "https://i.scdn.co/image/ab6761610000f1787b3634864a78ab6bd1d77c36"
@@ -1259,6 +1284,11 @@
      "id": "4npEfmQ6YuiwW1GpUmaq3F",
      "name": "Ava Max",
      "image": "https://i.scdn.co/image/ab6761610000f178d8fa717584b01690e3919e32"
+    },
+    {
+     "id": "6MDME20pz9RveH9rEXvrOM",
+     "name": "Clean Bandit",
+     "image": "https://i.scdn.co/image/ab6761610000f178f995542c4f68f8ae4f05b5f6"
     },
     {
      "id": "6XpaIBNiVzIetEPCWDvAFP",
@@ -1296,6 +1326,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02c5649add07ed3720be9d5526"
     },
     {
+     "id": "7gUpO6td4OOnu0Lf9vhcIV",
+     "name": "Lights - Single Version",
+     "artist": "Ellie Goulding",
+     "album": "Lights",
+     "image": "https://i.scdn.co/image/ab67616d00001e02a992179a520d2eb38fa41e64"
+    },
+    {
      "id": "2CPqh63wRVscbceKcPxwvv",
      "name": "The Ocean (feat. Shy Martin)",
      "artist": "Mike Perry, shy martin",
@@ -1322,13 +1359,6 @@
      "artist": "Bastille",
      "album": "Bad Blood",
      "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
-    },
-    {
-     "id": "7gUpO6td4OOnu0Lf9vhcIV",
-     "name": "Lights - Single Version",
-     "artist": "Ellie Goulding",
-     "album": "Lights",
-     "image": "https://i.scdn.co/image/ab67616d00001e02a992179a520d2eb38fa41e64"
     },
     {
      "id": "7nDQMtLxu94xtlTR8bEqjU",
