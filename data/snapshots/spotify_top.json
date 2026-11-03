@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-03T00:00:07Z",
+ "updated_at": "2026-11-03T05:00:09Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -1224,6 +1224,11 @@
      "id": "2elBjNSdBE2Y3f0j1mjrql",
      "name": "Jay Chou",
      "image": "https://i.scdn.co/image/ab6761610000f17887fbbe9ed03fbb500595e720"
+    },
+    {
+     "id": "23fqKkggKUBHNkbKtXEls4",
+     "name": "Kygo",
+     "image": "https://i.scdn.co/image/ab6761610000f178e5ea1aa1404629c12ad86658"
     },
     {
      "id": "5rSXSAkZ67PYJSvpUpkOr7",
