@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-02T14:00:10Z",
+ "updated_at": "2026-11-03T00:00:07Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -89,14 +89,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f17812184bdd29403de54cb9d9c7"
     },
     {
-     "id": "04gDigrS5kc9YWfZHwBETP",
-     "name": "Maroon 5",
-     "image": "https://i.scdn.co/image/ab6761610000f178f8349dfb619a7f842242de77"
-    },
-    {
      "id": "3OKg7YbOIatODzkRIbLJR4",
      "name": "TheFatRat",
      "image": "https://i.scdn.co/image/ab6761610000f178c64c5f001dc3957cf5651460"
+    },
+    {
+     "id": "04gDigrS5kc9YWfZHwBETP",
+     "name": "Maroon 5",
+     "image": "https://i.scdn.co/image/ab6761610000f178f8349dfb619a7f842242de77"
     },
     {
      "id": "6noxsCszBEEK04kCehugOp",
@@ -134,6 +134,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f1789caf03c5c4b858fca6cedab4"
     },
     {
+     "id": "5Pwc4xIPtQLFEnJriah9YJ",
+     "name": "OneRepublic",
+     "image": "https://i.scdn.co/image/ab6761610000f1783202f1bcacc6d8f581f32ffd"
+    },
+    {
      "id": "2h93pZq0e7k5yf4dywlkpM",
      "name": "Frank Ocean",
      "image": "https://i.scdn.co/image/ab6761610000f178ee3123e593174208f9754fab"
@@ -149,16 +154,6 @@
      "image": "https://i.scdn.co/image/ab6761610000f1784432398038a3f585dd92165b"
     },
     {
-     "id": "5Pwc4xIPtQLFEnJriah9YJ",
-     "name": "OneRepublic",
-     "image": "https://i.scdn.co/image/ab6761610000f1783202f1bcacc6d8f581f32ffd"
-    },
-    {
-     "id": "1dfeR4HaWDbWqFHLkxsg1d",
-     "name": "Queen",
-     "image": "https://i.scdn.co/image/ab6761610000f17873e4d22612ac8d944b5789b4"
-    },
-    {
      "id": "1r9DuPTHiQ7hnRRZ99B8nL",
      "name": "JOLIN",
      "image": "https://i.scdn.co/image/ab6761610000f178c4b4416e53fb403c4612a822"
@@ -172,6 +167,11 @@
      "id": "5oqLnVZzJJXE3YnzzZfRKu",
      "name": "F.I.R.",
      "image": "https://i.scdn.co/image/ab6761610000f178d9939d240016befcc2095b26"
+    },
+    {
+     "id": "53XhwfbYqKCa1cC15pYq2q",
+     "name": "Imagine Dragons",
+     "image": "https://i.scdn.co/image/ab6761610000f178ab47d8dae2b24f5afe7f9d38"
     },
     {
      "id": "3aIDSTKS9yH745GUQBxDcS",
@@ -204,14 +204,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f1789a48f2e7dd96f09c723c887c"
     },
     {
-     "id": "3FUY2gzHeIiaesXtOAdB7A",
-     "name": "Train",
-     "image": "https://i.scdn.co/image/ab6761610000f178fe613747ea3666f4c75b9884"
+     "id": "0X2BH1fck6amBIoJhDVmmJ",
+     "name": "Ellie Goulding",
+     "image": "https://i.scdn.co/image/ab6761610000f1785c461001b3489a0a523f63ee"
     },
     {
-     "id": "14bJhryXGk6H6qlGzwj3W5",
-     "name": "Hebe Tien",
-     "image": "https://i.scdn.co/image/ab6761610000f17809749491c2a434bde6cf40cc"
+     "id": "69GGBxA162lTqCwzJG5jLp",
+     "name": "The Chainsmokers",
+     "image": "https://i.scdn.co/image/ab6761610000f1784567279fac84a0375c3d819b"
     },
     {
      "id": "5uCktjKM1Rf9VnUvFD6j17",
@@ -219,19 +219,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f1782b1c6db6ed003d0e72c160e6"
     },
     {
-     "id": "1Cs0zKBU1kc0i8ypK3B9ai",
-     "name": "David Guetta",
-     "image": "https://i.scdn.co/image/ab6761610000f178f150017ca69c8793503c2d4f"
-    },
-    {
      "id": "2F5W6Rsxwzg0plQ0w8dSyt",
      "name": "Leehom Wang",
      "image": "https://i.scdn.co/image/ab6761610000f1786527b7513831feda18b2abf1"
     },
     {
-     "id": "69GGBxA162lTqCwzJG5jLp",
-     "name": "The Chainsmokers",
-     "image": "https://i.scdn.co/image/ab6761610000f1784567279fac84a0375c3d819b"
+     "id": "14bJhryXGk6H6qlGzwj3W5",
+     "name": "Hebe Tien",
+     "image": "https://i.scdn.co/image/ab6761610000f17809749491c2a434bde6cf40cc"
     },
     {
      "id": "6MDME20pz9RveH9rEXvrOM",
@@ -249,9 +244,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f178144b3cc38337efa33159cd11"
     },
     {
-     "id": "2wY79sveU1sp5g7SokKOiI",
-     "name": "Sam Smith",
-     "image": "https://i.scdn.co/image/ab6761610000f1780e64fb94acbb752960c823e9"
+     "id": "1dfeR4HaWDbWqFHLkxsg1d",
+     "name": "Queen",
+     "image": "https://i.scdn.co/image/ab6761610000f17873e4d22612ac8d944b5789b4"
+    },
+    {
+     "id": "4npEfmQ6YuiwW1GpUmaq3F",
+     "name": "Ava Max",
+     "image": "https://i.scdn.co/image/ab6761610000f178d8fa717584b01690e3919e32"
     }
    ],
    "tracks": [
@@ -872,6 +872,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02508f6070bbe3a4fec70e2036"
     },
     {
+     "id": "2CPqh63wRVscbceKcPxwvv",
+     "name": "The Ocean (feat. Shy Martin)",
+     "artist": "Mike Perry, shy martin",
+     "album": "The Ocean (feat. Shy Martin)",
+     "image": "https://i.scdn.co/image/ab67616d00001e027f401862bfe87b552a75308d"
+    },
+    {
      "id": "4DxybsoSiMUW0JI2oM0SSN",
      "name": "Patience",
      "artist": "Take That",
@@ -1075,6 +1082,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e028a99868b5a57469de83fb9ba"
     },
     {
+     "id": "1I8tHoNBFTuoJAlh4hfVVE",
+     "name": "Firestone",
+     "artist": "Kygo, Conrad Sewell",
+     "album": "Cloud Nine",
+     "image": "https://i.scdn.co/image/ab67616d00001e027247979b8bc6027bf97043ef"
+    },
+    {
      "id": "1KPuohcXPmJYQfdyg9zKmR",
      "name": "Another One Bites The Dust",
      "artist": "Queen",
@@ -1110,13 +1124,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
     },
     {
-     "id": "2CPqh63wRVscbceKcPxwvv",
-     "name": "The Ocean (feat. Shy Martin)",
-     "artist": "Mike Perry, shy martin",
-     "album": "The Ocean (feat. Shy Martin)",
-     "image": "https://i.scdn.co/image/ab67616d00001e027f401862bfe87b552a75308d"
-    },
-    {
      "id": "2N1VmFyd6cV9U6tXsLKn1D",
      "name": "大地",
      "artist": "Beyond",
@@ -1143,13 +1150,6 @@
      "artist": "落日飛車 Sunset Rollercoaster, Leah Dou",
      "album": "QUIT QUIETLY",
      "image": "https://i.scdn.co/image/ab67616d00001e0272a2a486626ed84531f6cceb"
-    },
-    {
-     "id": "2usrT8QIbIk9y0NEtQwS4j",
-     "name": "Intro",
-     "artist": "The xx",
-     "album": "xx",
-     "image": "https://i.scdn.co/image/ab67616d00001e02a46d603701aa0342e8cca64e"
     }
    ]
   },
@@ -1291,6 +1291,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02c5649add07ed3720be9d5526"
     },
     {
+     "id": "2CPqh63wRVscbceKcPxwvv",
+     "name": "The Ocean (feat. Shy Martin)",
+     "artist": "Mike Perry, shy martin",
+     "album": "The Ocean (feat. Shy Martin)",
+     "image": "https://i.scdn.co/image/ab67616d00001e027f401862bfe87b552a75308d"
+    },
+    {
      "id": "5s8QrZRHt4gZclSaCds4GY",
      "name": "Nostalgia",
      "artist": "D33pSoul",
@@ -1410,6 +1417,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e028a99868b5a57469de83fb9ba"
     },
     {
+     "id": "1I8tHoNBFTuoJAlh4hfVVE",
+     "name": "Firestone",
+     "artist": "Kygo, Conrad Sewell",
+     "album": "Cloud Nine",
+     "image": "https://i.scdn.co/image/ab67616d00001e027247979b8bc6027bf97043ef"
+    },
+    {
      "id": "1KPuohcXPmJYQfdyg9zKmR",
      "name": "Another One Bites The Dust",
      "artist": "Queen",
@@ -1464,13 +1478,6 @@
      "artist": "Joanna Wang",
      "album": "Start From Here",
      "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
-    },
-    {
-     "id": "2CPqh63wRVscbceKcPxwvv",
-     "name": "The Ocean (feat. Shy Martin)",
-     "artist": "Mike Perry, shy martin",
-     "album": "The Ocean (feat. Shy Martin)",
-     "image": "https://i.scdn.co/image/ab67616d00001e027f401862bfe87b552a75308d"
     },
     {
      "id": "2Tl7unJOZm9zhZQf5UlmPq",
@@ -1604,13 +1611,6 @@
      "artist": "Yeah Boy",
      "album": "Can't Get Enough Remixes",
      "image": "https://i.scdn.co/image/ab67616d00001e026f4be2da23461b3a1271508c"
-    },
-    {
-     "id": "7d5ifJFh7asImLyxOohVUm",
-     "name": "Outlaws of Love",
-     "artist": "Adam Lambert",
-     "album": "Trespassing (Deluxe Version)",
-     "image": "https://i.scdn.co/image/ab67616d00001e025fd86e115d70a62db949318b"
     }
    ]
   }
