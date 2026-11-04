@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-04T05:01:01Z",
+ "updated_at": "2026-11-04T14:00:08Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -1186,6 +1186,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f1788c2024e68663f46b2981398d"
     },
     {
+     "id": "5Pwc4xIPtQLFEnJriah9YJ",
+     "name": "OneRepublic",
+     "image": "https://i.scdn.co/image/ab6761610000f1783202f1bcacc6d8f581f32ffd"
+    },
+    {
      "id": "7tYKF4w9nC0nq9CsPZTHyP",
      "name": "SZA",
      "image": "https://i.scdn.co/image/ab6761610000f178fd0a9fb6c252a3ba44079acf"
@@ -1199,11 +1204,6 @@
      "id": "2h93pZq0e7k5yf4dywlkpM",
      "name": "Frank Ocean",
      "image": "https://i.scdn.co/image/ab6761610000f178ee3123e593174208f9754fab"
-    },
-    {
-     "id": "5Pwc4xIPtQLFEnJriah9YJ",
-     "name": "OneRepublic",
-     "image": "https://i.scdn.co/image/ab6761610000f1783202f1bcacc6d8f581f32ffd"
     },
     {
      "id": "20wkVLutqVOYrc0kxFs7rA",
@@ -1319,6 +1319,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
     },
     {
+     "id": "2CPqh63wRVscbceKcPxwvv",
+     "name": "The Ocean (feat. Shy Martin)",
+     "artist": "Mike Perry, shy martin",
+     "album": "The Ocean (feat. Shy Martin)",
+     "image": "https://i.scdn.co/image/ab67616d00001e027f401862bfe87b552a75308d"
+    },
+    {
      "id": "3xKsf9qdS1CyvXSMEid6g8",
      "name": "Pink + White",
      "artist": "Frank Ocean",
@@ -1326,18 +1333,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02c5649add07ed3720be9d5526"
     },
     {
+     "id": "6fNhZRFEkBfgW39W3wKARJ",
+     "name": "Pompeii",
+     "artist": "Bastille",
+     "album": "Bad Blood",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
+    },
+    {
      "id": "7gUpO6td4OOnu0Lf9vhcIV",
      "name": "Lights - Single Version",
      "artist": "Ellie Goulding",
      "album": "Lights",
      "image": "https://i.scdn.co/image/ab67616d00001e02a992179a520d2eb38fa41e64"
-    },
-    {
-     "id": "2CPqh63wRVscbceKcPxwvv",
-     "name": "The Ocean (feat. Shy Martin)",
-     "artist": "Mike Perry, shy martin",
-     "album": "The Ocean (feat. Shy Martin)",
-     "image": "https://i.scdn.co/image/ab67616d00001e027f401862bfe87b552a75308d"
     },
     {
      "id": "5s8QrZRHt4gZclSaCds4GY",
@@ -1354,11 +1361,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02b93587221b1ce0c85a02297e"
     },
     {
-     "id": "6fNhZRFEkBfgW39W3wKARJ",
-     "name": "Pompeii",
-     "artist": "Bastille",
-     "album": "Bad Blood",
-     "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
+     "id": "7ti4qMC7xYQeh1uRzj5XuM",
+     "name": "Pumpin Blood",
+     "artist": "NONONO",
+     "album": "We Are Only What We Feel",
+     "image": "https://i.scdn.co/image/ab67616d00001e02ca9961814136d4bd7acfd811"
+    },
+    {
+     "id": "1SN1vSPsr4V4tIUTR3s8YW",
+     "name": "Fast Car",
+     "artist": "Jonas Blue, Dakota",
+     "album": "Blue",
+     "image": "https://i.scdn.co/image/ab67616d00001e025b6bcc59c3562a6f362344c6"
     },
     {
      "id": "7nDQMtLxu94xtlTR8bEqjU",
@@ -1366,6 +1380,27 @@
      "artist": "ZHU",
      "album": "Faded",
      "image": "https://i.scdn.co/image/ab67616d00001e027b730a450d048646b7472425"
+    },
+    {
+     "id": "0GO8y8jQk1PkHzS31d699N",
+     "name": "Tongue Tied",
+     "artist": "GROUPLOVE",
+     "album": "Never Trust a Happy Song",
+     "image": "https://i.scdn.co/image/ab67616d00001e02d84a9bbcba91cb6a4a212b1b"
+    },
+    {
+     "id": "0qt5f5EL92o8Snzopsv0en",
+     "name": "Geronimo",
+     "artist": "Sheppard",
+     "album": "Bombs Away",
+     "image": "https://i.scdn.co/image/ab67616d00001e028a99868b5a57469de83fb9ba"
+    },
+    {
+     "id": "1I8tHoNBFTuoJAlh4hfVVE",
+     "name": "Firestone",
+     "artist": "Kygo, Conrad Sewell",
+     "album": "Cloud Nine",
+     "image": "https://i.scdn.co/image/ab67616d00001e027247979b8bc6027bf97043ef"
     },
     {
      "id": "2kWr3JUHOjwmGl6BDzhNdn",
@@ -1396,20 +1431,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e026c99d21a7cc536154d4c2050"
     },
     {
-     "id": "7ti4qMC7xYQeh1uRzj5XuM",
-     "name": "Pumpin Blood",
-     "artist": "NONONO",
-     "album": "We Are Only What We Feel",
-     "image": "https://i.scdn.co/image/ab67616d00001e02ca9961814136d4bd7acfd811"
-    },
-    {
-     "id": "1SN1vSPsr4V4tIUTR3s8YW",
-     "name": "Fast Car",
-     "artist": "Jonas Blue, Dakota",
-     "album": "Blue",
-     "image": "https://i.scdn.co/image/ab67616d00001e025b6bcc59c3562a6f362344c6"
-    },
-    {
      "id": "3Z4B52Fwo5l9RtFPrzoySm",
      "name": "我想牵着你的手",
      "artist": "許嵩",
@@ -1417,18 +1438,25 @@
      "image": "https://i.scdn.co/image/ab67616d00001e021093e73a2ed86bde416259c7"
     },
     {
+     "id": "3eOeuofLjOgjOCs7eWuvZ0",
+     "name": "Cool Kids",
+     "artist": "Echosmith",
+     "album": "Talking Dreams",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b098cbfb14e8cc251451ca19"
+    },
+    {
+     "id": "2tpWsVSb9UEmDRxAl1zhX1",
+     "name": "Counting Stars",
+     "artist": "OneRepublic",
+     "album": "Native",
+     "image": "https://i.scdn.co/image/ab67616d00001e029e2f95ae77cf436017ada9cb"
+    },
+    {
      "id": "06u5LrUpbosQlQ1QJFhPpG",
      "name": "Drew Barrymore",
      "artist": "SZA",
      "album": "Ctrl",
      "image": "https://i.scdn.co/image/ab67616d00001e0206d56b057cce5797538a16d5"
-    },
-    {
-     "id": "0GO8y8jQk1PkHzS31d699N",
-     "name": "Tongue Tied",
-     "artist": "GROUPLOVE",
-     "album": "Never Trust a Happy Song",
-     "image": "https://i.scdn.co/image/ab67616d00001e02d84a9bbcba91cb6a4a212b1b"
     },
     {
      "id": "0KytSwhBMJHs0eKEUZvTei",
@@ -1445,18 +1473,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e0250b5922bdf87ba4213b25234"
     },
     {
-     "id": "0qt5f5EL92o8Snzopsv0en",
-     "name": "Geronimo",
-     "artist": "Sheppard",
-     "album": "Bombs Away",
-     "image": "https://i.scdn.co/image/ab67616d00001e028a99868b5a57469de83fb9ba"
+     "id": "0YPDp1KIxVLTdh3vnvk6wd",
+     "name": "C'mon C'mon",
+     "artist": "The Von Bondies",
+     "album": "Pawn Shoppe Heart",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b6e7a71effc5eee34843ec12"
     },
     {
-     "id": "1I8tHoNBFTuoJAlh4hfVVE",
-     "name": "Firestone",
-     "artist": "Kygo, Conrad Sewell",
-     "album": "Cloud Nine",
-     "image": "https://i.scdn.co/image/ab67616d00001e027247979b8bc6027bf97043ef"
+     "id": "0tgnTzjIkj8mVVEh0SNH0t",
+     "name": "Secrets",
+     "artist": "OneRepublic",
+     "album": "Waking Up (International Deluxe Version)",
+     "image": "https://i.scdn.co/image/ab67616d00001e025a6a08795790ccc600cc94a8"
     },
     {
      "id": "1KPuohcXPmJYQfdyg9zKmR",
@@ -1492,6 +1520,13 @@
      "artist": "Roald Velden",
      "album": "As the Years Went by / Sunset Over Emst",
      "image": "https://i.scdn.co/image/ab67616d00001e023572e164458b0e5ea6ff949d"
+    },
+    {
+     "id": "1eOJAiCKFuMda0fPRvjcuc",
+     "name": "Hold My Hand",
+     "artist": "Jess Glynne",
+     "album": "I Cry When I Laugh",
+     "image": "https://i.scdn.co/image/ab67616d00001e0239588f221861ee72b40b755c"
     },
     {
      "id": "213x4gsFDm04hSqIUkg88w",
@@ -1557,6 +1592,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
     },
     {
+     "id": "37sINbJZcFdHFAsVNsPq1i",
+     "name": "Superheroes",
+     "artist": "The Script",
+     "album": "No Sound Without Silence",
+     "image": "https://i.scdn.co/image/ab67616d00001e0259d2079e141301ab89b6cbc5"
+    },
+    {
      "id": "3kXoKlD84c6OmIcOLfrfEs",
      "name": "September",
      "artist": "Earth, Wind \u0026 Fire",
@@ -1592,60 +1634,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02ba48109eda0f2314702ce305"
     },
     {
+     "id": "4dTVgHZFPlaq9nPbLVVLSG",
+     "name": "Closer",
+     "artist": "Tegan and Sara",
+     "album": "Heartthrob",
+     "image": "https://i.scdn.co/image/ab67616d00001e0217fb5fbacce2b1a0acabce29"
+    },
+    {
      "id": "4iZ4pt7kvcaH6Yo8UoZ4s2",
      "name": "Snooze",
      "artist": "SZA",
      "album": "SOS",
      "image": "https://i.scdn.co/image/ab67616d00001e02bc18bdade69ec5ef0bb25b17"
-    },
-    {
-     "id": "4va1JykAJeulnYV0uYkWhF",
-     "name": "Crazy Bird",
-     "artist": "Wild Child",
-     "album": "The Runaround",
-     "image": "https://i.scdn.co/image/ab67616d00001e022d199e320b675ca7305c6f00"
-    },
-    {
-     "id": "5PadgcONJhQT8FzhhLjwXA",
-     "name": "因為你愛我",
-     "artist": "Joanna Wang",
-     "album": "Start From Here",
-     "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
-    },
-    {
-     "id": "65I5kZ7gjsc4A0XHT8uGQ7",
-     "name": "粗糙",
-     "artist": "許嵩",
-     "album": "安泊猜想",
-     "image": "https://i.scdn.co/image/ab67616d00001e02031ac1c7fc7b2c6e5e3a4677"
-    },
-    {
-     "id": "65bRYkG90LpIzqLzg4firZ",
-     "name": "素颜",
-     "artist": "許嵩, 何曼婷",
-     "album": "素顏",
-     "image": "https://i.scdn.co/image/ab67616d00001e02a21d702191dcfa924f694422"
-    },
-    {
-     "id": "67wrHBNV1stVSKqN1kNsZP",
-     "name": "Chiru (Saisei no Uta)",
-     "artist": "Robert de Boron",
-     "album": "Mellow Candle",
-     "image": "https://i.scdn.co/image/ab67616d00001e0281969c51d6ef66b8def7fc5f"
-    },
-    {
-     "id": "6xDxgv02LbpleHiPIaZz6Q",
-     "name": "Fireflies",
-     "artist": "Ryan Farish",
-     "album": "Life in Stereo",
-     "image": "https://i.scdn.co/image/ab67616d00001e027f388de5b84039e0e8316da4"
-    },
-    {
-     "id": "7AoCZm5JpcgiIpQz8ClelB",
-     "name": "Can't Get Enough - Sam Padrul Remix",
-     "artist": "Yeah Boy",
-     "album": "Can't Get Enough Remixes",
-     "image": "https://i.scdn.co/image/ab67616d00001e026f4be2da23461b3a1271508c"
     }
    ]
   }
