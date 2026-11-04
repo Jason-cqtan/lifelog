@@ -4932,5 +4932,9 @@
 {"date":"2026-11-03","source":"duolingo","metric":"course_xp:OTHER","value":405},
 {"date":"2026-11-03","source":"duolingo","metric":"minutes","value":14.183333333333334},
 {"date":"2026-11-03","source":"duolingo","metric":"sessions","value":4},
-{"date":"2026-11-03","source":"duolingo","metric":"xp","value":405}
+{"date":"2026-11-03","source":"duolingo","metric":"xp","value":405},
+{"date":"2026-11-04","source":"duolingo","metric":"course_xp:OTHER","value":780},
+{"date":"2026-11-04","source":"duolingo","metric":"minutes","value":18.933333333333334},
+{"date":"2026-11-04","source":"duolingo","metric":"sessions","value":7},
+{"date":"2026-11-04","source":"duolingo","metric":"xp","value":780}
 ]
