@@ -65,7 +65,8 @@ release)
     rm -rf /opt/lifelog/www/assets /opt/lifelog/www/admin /opt/lifelog/www/.next /opt/lifelog/www/data.json* /opt/lifelog/www/routes.enc*
     install -d /opt/lifelog/deploy"
   rsync -az --delete --exclude 'data.json*' --exclude 'routes.enc*' --exclude .next --rsync-path="$RSYNC_PATH" web/dist/ "$HOST":/opt/lifelog/www/lifelog/
-  rsync -az --rsync-path="$RSYNC_PATH" web/home/index.html "$HOST":/opt/lifelog/www/index.html
+  # the homepage and its images (no --delete: www/ also holds lifelog/)
+  rsync -az --rsync-path="$RSYNC_PATH" web/home/ "$HOST":/opt/lifelog/www/
   rsync -az --rsync-path="$RSYNC_PATH" build/lifelog deploy/compress.sh "$HOST":/opt/lifelog/bin/
   rsync -az --rsync-path="$RSYNC_PATH" deploy/lifelog.service deploy/Caddyfile deploy/caddy.sh "$HOST":/opt/lifelog/deploy/
   remote "install -d -o lifelog -g lifelog /opt/lifelog/www/lifelog/.next && chown -R lifelog:lifelog /opt/lifelog/www /opt/lifelog/bin && chmod 755 /opt/lifelog/bin/*

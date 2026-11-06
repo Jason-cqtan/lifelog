@@ -103,6 +103,20 @@ nav .logo b { color: var(--accent); }
 
 /* ---------- 首屏 ---------- */
 .hero { min-height: 100svh; display: grid; align-content: center; padding: 120px 0 80px; position: relative; }
+.hero-main { min-width: 0; }
+/* the pin board: tilts toward the pointer */
+.pins { margin: 8px 0 0; perspective: 900px; }
+.pins img { display: block; width: 100%; height: auto; border-radius: 22px; border: 1px solid var(--card-border);
+  box-shadow: var(--shadow), 0 0 0 6px var(--card); transform: rotate(2.5deg); transition: transform .5s cubic-bezier(.2,.8,.2,1);
+  opacity: 0; animation: pinsIn 1.1s .9s cubic-bezier(.2,.8,.2,1) forwards; }
+.pins:hover img { transition-duration: .15s; }
+@keyframes pinsIn { from { opacity: 0; translate: 0 30px; } to { opacity: 1; translate: 0 0; } }
+@media (min-width: 1000px) {
+  .hero { grid-template-columns: minmax(0, 1fr) minmax(300px, 400px); column-gap: 56px; align-items: center; }
+  .hero h1 { font-size: clamp(56px, 8vw, 128px); }
+}
+@media (max-width: 999px) { .pins { max-width: 440px; margin: 48px auto 24px; } .hero { align-content: start; } }
+@media (prefers-reduced-motion: reduce) { .pins img { animation: none; opacity: 1; } }
 .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; color: var(--muted);
   padding: 6px 14px 6px 8px; border: 1px solid var(--card-border); border-radius: 999px; background: var(--card); width: fit-content; }
 .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 0 var(--accent); animation: pulse 2s infinite; }
@@ -286,18 +300,24 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
 
 <main class="wrap" id="top">
   <header class="hero">
+   <div class="hero-main">
     <div class="eyebrow"><span class="pulse"></span><span id="status" data-i18n="statusLoading">重庆 · 正在加载最近的动态…</span></div>
     <h1 aria-label="Mind your business.">
       <span class="line" data-split>Mind your</span>
       <span class="line" data-split data-grad>business.</span>
     </h1>
     <p class="meaning mono"><b>m</b>in<b>d</b> <b>y</b>ou<b>r</b> <b>b</b>usiness → <b>mdyrbz</b><span data-i18n="meaning">：管好自己的事，把它做好。</span></p>
-    <p class="intro"><span data-i18n-html="intro">我是 <strong>Jason</strong>，一个住在重庆的程序员，主要写 Go。<br>平时在</span> <span class="rotator" id="rotator">写代码</span></p>
+    <p class="intro"><span data-i18n-html="intro">我是 <strong>Jason</strong>，住在重庆的程序员，有一只 2022 年 6 月出生的小柴犬，爱跑步、听歌。<br>平时在</span> <span class="rotator" id="rotator">写代码</span></p>
     <div class="cta">
       <a class="btn primary magnetic" href="#apps"><span data-i18n="ctaApps">看看我在做什么</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
       <a class="btn magnetic" href="/blog/" data-i18n="ctaBlog">读博客</a>
     </div>
+   </div>
+    <figure class="pins" id="pins">
+      <img src="/pins.webp" width="1122" height="1402" decoding="async" fetchpriority="high"
+        data-i18n-alt="pinsAlt" alt="一组珐琅徽章：写着 PHP、Java、Node、SQL 的笔记本电脑，在江边跑步的人，柴犬，Jason 的头像，一杯写着 Good coffee better code 的冰咖啡，新加坡夜景，写着 Jason 的山景徽章，以及 Run Explore Learn Grow。">
+    </figure>
     <div class="scroll-hint mono"><i></i>SCROLL</div>
   </header>
 
@@ -436,6 +456,7 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
       styleAnd: (a, b) => b ? `${a}和${b}` : a,
       wx: { clear: "晴", cloudy: "多云", overcast: "阴", fog: "有雾", drizzle: "毛毛雨", rain: "小雨", heavy: "大雨", storm: "雷阵雨", snow: "下雪" },
       ctaApps: "看看我在做什么", ctaBlog: "读博客",
+      pinsAlt: "一组珐琅徽章：写着 PHP、Java、Node、SQL 的笔记本电脑，在江边跑步的人，柴犬，Jason 的头像，一杯写着 Good coffee better code 的冰咖啡，新加坡夜景，写着 Jason 的山景徽章，以及 Run Explore Learn Grow。",
       statKm: "累计跑步距离", statRuns: "累计跑步次数", unitRuns: "次", statXp: "多邻国经验值", statPosts: "博客文章", unitPosts: "篇",
       yearTitle: "这一年，每天做了什么", yearDesc: "每一格是一天。数据由 Lifelog 每天三次自动同步：手表、多邻国、GitHub、Spotify。",
       tabAll: "综合", tabRun: "跑步", tabLearn: "学习", tabCode: "代码", tabMusic: "听歌", less: "少", more: "多",
@@ -474,6 +495,7 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
       styleAnd: (a, b) => b ? `${a} and ${b}` : a,
       wx: { clear: "clear", cloudy: "partly cloudy", overcast: "overcast", fog: "foggy", drizzle: "drizzle", rain: "light rain", heavy: "heavy rain", storm: "thunderstorm", snow: "snow" },
       ctaApps: "See what I'm building", ctaBlog: "Read the blog",
+      pinsAlt: "A set of enamel pins: a laptop reading PHP, Java, Node, SQL; a runner by the river; a Shiba Inu; Jason's portrait; an iced coffee reading Good coffee better code; Singapore at night; a mountain badge reading Jason; and Run Explore Learn Grow.",
       statKm: "Total running distance", statRuns: "Total runs", unitRuns: "runs", statXp: "Duolingo XP", statPosts: "Blog posts", unitPosts: "posts",
       yearTitle: "A year, one day at a time", yearDesc: "Each square is a day, synced by Lifelog three times a day from my watch, Duolingo, GitHub and Spotify.",
       tabAll: "All", tabRun: "Running", tabLearn: "Learning", tabCode: "Code", tabMusic: "Music", less: "Less", more: "More",
@@ -537,6 +559,7 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
     $$("[data-i18n]").forEach((el) => (el.textContent = t(el.dataset.i18n)));
     $$("[data-i18n-html]").forEach((el) => (el.innerHTML = t(el.dataset.i18nHtml)));
     $$("[data-i18n-label]").forEach((el) => el.setAttribute("aria-label", t(el.dataset.i18nLabel)));
+    $$("[data-i18n-alt]").forEach((el) => el.setAttribute("alt", t(el.dataset.i18nAlt)));
     $("#lang").textContent = lang === "zh" ? "EN" : "中";
     $("#lang").setAttribute("aria-label", t("langLabel"));
   }
@@ -841,6 +864,16 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
     rot.textContent = ws[wi].slice(0, ci) || " ";
     setTimeout(tick, del ? 60 : 120);
   })();
+
+  /* ---------- 徽章图:跟着指针轻微倾斜 ---------- */
+  const pins = $("#pins"), pinImg = $("#pins img");
+  if (!reduce && matchMedia("(hover: hover)").matches) {
+    pins.addEventListener("pointermove", (e) => {
+      const r = pins.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      pinImg.style.transform = `rotateY(${x * 14}deg) rotateX(${-y * 14}deg) scale(1.02)`;
+    });
+    pins.addEventListener("pointerleave", () => { pinImg.style.transform = ""; });
+  }
 
   /* ---------- 卡片聚光 + 磁吸按钮 ---------- */
   $$(".card").forEach((c) => c.addEventListener("pointermove", (e) => {
