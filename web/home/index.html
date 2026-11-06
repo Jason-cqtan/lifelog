@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jason · To be better me</title>
-<meta name="description" content="Jason 的个人主页：写代码、跑步、记录每天做了什么。">
+<title>mdyrbz · Mind your business</title>
+<meta name="description" content="mdyrbz（mind your business）：Jason 的个人主页，写代码、跑步、记录每天做了什么。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -92,6 +92,10 @@ h1 .grad { background: linear-gradient(100deg, var(--accent) 0%, var(--accent-2)
 @keyframes rise { to { transform: none; } }
 @keyframes sweep { to { background-position: -200% 0; } }
 .intro { font-size: clamp(18px, 2.2vw, 22px); color: var(--muted); max-width: 640px; }
+.meaning { margin: 0 0 14px; font-size: 14px; color: var(--muted); letter-spacing: .02em; }
+.meaning b { color: var(--fg); font-weight: 600; }
+.artists em { font-style: normal; color: var(--muted); font-size: .85em; margin-left: 2px; }
+nav .lang { font-size: 12px; font-weight: 600; letter-spacing: .04em; }
 .intro strong { color: var(--fg); font-weight: 500; }
 .rotator { display: inline-block; color: var(--accent); min-width: 4em; }
 .rotator::after { content: "▍"; animation: blink 1s steps(1) infinite; margin-left: 2px; color: var(--accent); }
@@ -230,79 +234,80 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
 <div class="tip" id="tip"></div>
 
 <nav>
-  <a class="logo" href="#top">Jason<b>.</b></a>
-  <a href="#year" class="hide-sm">这一年</a>
-  <a href="#apps">应用</a>
-  <a href="#now" class="hide-sm">现在</a>
-  <a href="/blog/">博客</a>
-  <a href="/lifelog/" class="hide-sm">生活日志</a>
-  <a href="#contact">联系</a>
-  <button id="theme" aria-label="切换明暗主题">◐</button>
+  <a class="logo" href="#top">mdyrbz<b>.</b></a>
+  <a href="#year" class="hide-sm" data-i18n="navYear">这一年</a>
+  <a href="#apps" data-i18n="navApps">应用</a>
+  <a href="#now" class="hide-sm" data-i18n="navNow">现在</a>
+  <a href="/blog/" data-i18n="navBlog">博客</a>
+  <a href="/lifelog/" class="hide-sm" data-i18n="navLifelog">生活日志</a>
+  <a href="#contact" data-i18n="navContact">联系</a>
+  <button id="lang" class="lang mono" aria-label="English">EN</button>
+  <button id="theme" data-i18n-label="themeLabel" aria-label="切换明暗主题">◐</button>
 </nav>
 
 <main class="wrap" id="top">
   <header class="hero">
-    <div class="eyebrow"><span class="pulse"></span><span id="status">重庆 · 正在加载最近的动态…</span></div>
-    <h1 aria-label="To be better me.">
-      <span class="line" data-split>To be</span>
-      <span class="line" data-split data-grad>better me.</span>
+    <div class="eyebrow"><span class="pulse"></span><span id="status" data-i18n="statusLoading">重庆 · 正在加载最近的动态…</span></div>
+    <h1 aria-label="Mind your business.">
+      <span class="line" data-split>Mind your</span>
+      <span class="line" data-split data-grad>business.</span>
     </h1>
-    <p class="intro">我是 <strong>Jason</strong>，一个住在重庆的程序员，主要写 Go。<br>
-      平时在 <span class="rotator" id="rotator">写代码</span></p>
+    <p class="meaning mono"><b>m</b>in<b>d</b> <b>y</b>ou<b>r</b> <b>b</b>usiness → <b>mdyrbz</b><span data-i18n="meaning">：管好自己的事，把它做好。</span></p>
+    <p class="intro"><span data-i18n-html="intro">我是 <strong>Jason</strong>，一个住在重庆的程序员，主要写 Go。<br>平时在</span> <span class="rotator" id="rotator">写代码</span></p>
     <div class="cta">
-      <a class="btn primary magnetic" href="#apps">看看我在做什么
+      <a class="btn primary magnetic" href="#apps"><span data-i18n="ctaApps">看看我在做什么</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
-      <a class="btn magnetic" href="/blog/">读博客</a>
+      <a class="btn magnetic" href="/blog/" data-i18n="ctaBlog">读博客</a>
     </div>
     <div class="scroll-hint mono"><i></i>SCROLL</div>
   </header>
 
   <div class="stats reveal" id="stats">
-    <div class="stat"><div class="num mono" data-count="run_km_all">0<small>km</small></div><div class="label">累计跑步距离</div></div>
-    <div class="stat"><div class="num mono" data-count="runs_all">0<small>次</small></div><div class="label">累计跑步次数</div></div>
-    <div class="stat"><div class="num mono" data-count="duolingo_xp" data-k>0<small>k XP</small></div><div class="label">多邻国经验值</div></div>
-    <div class="stat"><div class="num mono" data-count="posts">0<small>篇</small></div><div class="label">博客文章</div></div>
+    <div class="stat"><div class="num mono" data-count="run_km_all">0<small>km</small></div><div class="label" data-i18n="statKm">累计跑步距离</div></div>
+    <div class="stat"><div class="num mono" data-count="runs_all">0<small data-i18n="unitRuns">次</small></div><div class="label" data-i18n="statRuns">累计跑步次数</div></div>
+    <div class="stat"><div class="num mono" data-count="duolingo_xp" data-k>0<small>k XP</small></div><div class="label" data-i18n="statXp">多邻国经验值</div></div>
+    <div class="stat"><div class="num mono" data-count="posts">0<small data-i18n="unitPosts">篇</small></div><div class="label" data-i18n="statPosts">博客文章</div></div>
   </div>
 
   <section id="year">
     <div class="sec-head reveal">
-      <div><div class="kicker mono">01 / Lifelog</div><h2>这一年，每天做了什么</h2></div>
-      <p>每一格是一天。数据由 Lifelog 每天三次自动同步：手表、多邻国、GitHub、Spotify。</p>
+      <div><div class="kicker mono">01 / Lifelog</div><h2 data-i18n="yearTitle">这一年，每天做了什么</h2></div>
+      <p data-i18n="yearDesc">每一格是一天。数据由 Lifelog 每天三次自动同步：手表、多邻国、GitHub、Spotify。</p>
     </div>
     <div class="card heat-card reveal">
       <div class="heat-top">
         <div class="tabs" id="tabs">
-          <button data-mode="all" class="on">综合</button>
-          <button data-mode="run">跑步</button>
-          <button data-mode="learn">学习</button>
-          <button data-mode="code">代码</button>
-          <button data-mode="music">听歌</button>
+          <button data-mode="all" class="on" data-i18n="tabAll">综合</button>
+          <button data-mode="run" data-i18n="tabRun">跑步</button>
+          <button data-mode="learn" data-i18n="tabLearn">学习</button>
+          <button data-mode="code" data-i18n="tabCode">代码</button>
+          <button data-mode="music" data-i18n="tabMusic">听歌</button>
         </div>
         <div class="mono" style="color:var(--muted);font-size:13px" id="heat-sum"></div>
       </div>
       <div class="heat-scroll"><div class="heat" id="heat"></div></div>
       <div class="heat-foot">
         <span id="heat-updated" class="mono"></span>
-        <span class="legend">少 <i></i><i></i><i></i><i></i><i></i> 多</span>
+        <span class="legend"><span data-i18n="less">少</span> <i></i><i></i><i></i><i></i><i></i> <span data-i18n="more">多</span></span>
       </div>
     </div>
   </section>
 
   <section id="apps">
     <div class="sec-head reveal">
-      <div><div class="kicker mono">02 / Apps</div><h2>平台上的应用</h2></div>
-      <p>博客、Lifelog、Telegram 机器人都会挂在同一个平台下面，以后还会加新应用。</p>
+      <div><div class="kicker mono">02 / Apps</div><h2 data-i18n="appsTitle">平台上的应用</h2></div>
+      <p data-i18n="appsDesc">博客、Lifelog、Telegram 机器人都挂在同一个平台下面，以后还会加新应用。</p>
     </div>
     <div class="bento">
       <div class="card blog reveal">
         <a class="go" href="/blog/" aria-label="打开博客"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-        <h3>博客 <span class="tag mono">BLOG</span></h3>
-        <div class="sub">Go、Kubernetes、Elasticsearch、网络折腾笔记</div>
+        <h3><span data-i18n="blogTitle">博客</span> <span class="tag mono">BLOG</span></h3>
+        <div class="sub" data-i18n="blogDesc">Go、Kubernetes、Elasticsearch、网络折腾笔记</div>
         <ul class="posts" id="posts"></ul>
       </div>
       <a class="card run reveal" href="/lifelog/">
         <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-        <h3>跑步 <span class="tag mono">LIFELOG</span></h3>
+        <h3><span data-i18n="runTitle">跑步</span> <span class="tag mono">LIFELOG</span></h3>
         <div class="sub" id="run-sub">今年跑量</div>
         <div class="ring">
           <svg viewBox="0 0 120 120"><defs><linearGradient id="rg" x1="0" x2="1"><stop offset="0" stop-color="var(--accent)"/><stop offset="1" stop-color="var(--accent-2)"/></linearGradient></defs>
@@ -312,40 +317,40 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
         <div class="meta" id="run-meta"></div>
       </a>
       <div class="card music reveal">
-        <h3>在听 <span class="tag mono">SPOTIFY</span></h3>
-        <div class="sub" id="music-sub">今年听歌时长</div>
+        <h3><span data-i18n="musicTitle">最喜欢听</span> <span class="tag mono">SPOTIFY</span></h3>
+        <div class="sub" id="music-sub"></div>
         <div class="eq" id="eq" aria-hidden="true"></div>
         <div class="track" id="track"></div>
         <div class="artists" id="artists"></div>
       </div>
       <div class="card bot reveal">
-        <h3>机器人 <span class="tag mono">BOT HUB</span></h3>
-        <div class="sub">统一管理多个 Telegram 机器人，cron 定时执行</div>
+        <h3><span data-i18n="botTitle">机器人</span> <span class="tag mono">BOT HUB</span></h3>
+        <div class="sub" data-i18n="botDesc">统一管理多个 Telegram 机器人，cron 定时执行</div>
         <div class="term mono" id="term"></div>
       </div>
       <div class="card more reveal">
         <div class="plus">+</div>
-        <div><h3>下一个应用</h3><div class="sub">平台留好了接口，新应用实现一个 App 接口就能接进来。</div></div>
+        <div><h3 data-i18n="nextTitle">下一个应用</h3><div class="sub" data-i18n="nextDesc">平台留好了接口，新应用实现一个 App 接口就能接进来。</div></div>
       </div>
     </div>
   </section>
 
   <section id="now">
     <div class="sec-head reveal">
-      <div><div class="kicker mono">03 / Now</div><h2>最近在忙</h2></div>
-      <p>这一节参考 Derek Sivers 的 /now 页面，写的是此刻在做的事，会随时更新。</p>
+      <div><div class="kicker mono">03 / Now</div><h2 data-i18n="nowTitle">最近在忙</h2></div>
+      <p data-i18n="nowDesc">这一节参考 Derek Sivers 的 /now 页面，写的是此刻在做的事，会随时更新。</p>
     </div>
     <div class="now">
       <div class="card reveal">
         <ul class="now-list">
-          <li><span class="k mono">在做</span><span>把博客、Lifelog、Telegram 机器人合并成一个平台，统一登录、调度和样式</span></li>
-          <li><span class="k mono">在跑</span><span id="now-run">—</span></li>
-          <li><span class="k mono">在学</span><span id="now-learn">—</span></li>
-          <li><span class="k mono">在听</span><span id="now-listen">—</span></li>
+          <li><span class="k mono" data-i18n="nowDoing">在做</span><span data-i18n="nowDoingText">把博客、Lifelog、Telegram 机器人合并成一个平台，统一登录、调度和样式</span></li>
+          <li><span class="k mono" data-i18n="nowRunning">在跑</span><span id="now-run">—</span></li>
+          <li><span class="k mono" data-i18n="nowLearning">在学</span><span id="now-learn">—</span></li>
+          <li><span class="k mono" data-i18n="nowListening">爱听</span><span id="now-listen">—</span></li>
         </ul>
       </div>
       <div class="card reveal" style="display:grid;align-content:space-between;gap:28px">
-        <p class="motto">想清楚，写清楚，说清楚，<br>才是<em>真正的清楚</em>。</p>
+        <p class="motto" data-i18n-html="motto">想清楚，写清楚，说清楚，<br>才是<em>真正的清楚</em>。</p>
         <p class="sub mono" id="now-updated"></p>
       </div>
     </div>
@@ -353,7 +358,7 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
 
   <section class="contact" id="contact">
     <h2 class="reveal" id="hello" aria-label="Say hi.">Say hi.</h2>
-    <p class="reveal">想聊技术、跑步，或者一起做点什么，都可以找我。</p>
+    <p class="reveal" data-i18n="contactDesc">想聊技术、跑步，或者一起做点什么，都可以找我。</p>
     <div class="socials reveal">
       <a class="btn primary magnetic" href="mailto:uniqueacheng@gmail.com">Email</a>
       <a class="btn magnetic" href="https://t.me/aeiou_93">Telegram</a>
@@ -363,8 +368,8 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
   </section>
 
   <footer>
-    <span>© 2019–<span id="yr"></span> Jason · To be better me.</span>
-    <span class="mono">Made in 重庆</span>
+    <span>© 2019–<span id="yr"></span> Jason · mdyrbz — mind your business.</span>
+    <span class="mono" data-i18n="madeIn">Made in 重庆</span>
   </footer>
 </main>
 
@@ -376,8 +381,104 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
   const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
   $("#yr").textContent = new Date().getFullYear();
 
-  /* ---------- 主题 ---------- */
   const store = { get(k) { try { return localStorage.getItem(k); } catch { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch {} } };
+
+  /* ---------- 语言(与 /lifelog/ 共用 localStorage 的 lang) ---------- */
+  const I18N = {
+    zh: {
+      navYear: "这一年", navApps: "应用", navNow: "现在", navBlog: "博客", navLifelog: "生活日志", navContact: "联系",
+      themeLabel: "切换明暗主题", langLabel: "English",
+      statusLoading: "重庆 · 正在加载最近的动态…", statusFailed: "重庆 · 数据暂时没加载出来",
+      status: (ago, km) => `重庆 · ${ago}跑了 ${km} km`,
+      meaning: "：管好自己的事，把它做好。",
+      intro: "我是 <strong>Jason</strong>，一个住在重庆的程序员，主要写 Go。<br>平时在",
+      words: ["写代码", "夜跑", "学英语", "听周杰伦", "记录生活", "折腾服务器"],
+      ctaApps: "看看我在做什么", ctaBlog: "读博客",
+      statKm: "累计跑步距离", statRuns: "累计跑步次数", unitRuns: "次", statXp: "多邻国经验值", statPosts: "博客文章", unitPosts: "篇",
+      yearTitle: "这一年，每天做了什么", yearDesc: "每一格是一天。数据由 Lifelog 每天三次自动同步：手表、多邻国、GitHub、Spotify。",
+      tabAll: "综合", tabRun: "跑步", tabLearn: "学习", tabCode: "代码", tabMusic: "听歌", less: "少", more: "多",
+      appsTitle: "平台上的应用", appsDesc: "博客、Lifelog、Telegram 机器人都挂在同一个平台下面，以后还会加新应用。",
+      blogTitle: "博客", blogDesc: "Go、Kubernetes、Elasticsearch、网络折腾笔记",
+      runTitle: "跑步", runSub: (y, g) => `${y} 年跑量 / 目标 ${g} km`, runCount: (n) => `<b>${n}</b> 次`, runLatest: (km, p) => `最近 <b>${km}</b> km · <b>${p}</b>/km`,
+      musicTitle: "最喜欢听", musicSub: (all, y, h) => `累计听了 ${all} 小时 · ${y} 年 ${h} 小时`, favTrack: "听得最久的歌",
+      botTitle: "机器人", botDesc: "统一管理多个 Telegram 机器人，cron 定时执行",
+      nextTitle: "下一个应用", nextDesc: "平台留好了接口，新应用实现一个 App 接口就能接进来。",
+      nowTitle: "最近在忙", nowDesc: "这一节参考 Derek Sivers 的 /now 页面，写的是此刻在做的事，会随时更新。",
+      nowDoing: "在做", nowRunning: "在跑", nowLearning: "在学", nowListening: "爱听",
+      nowDoingText: "把博客、Lifelog、Telegram 机器人合并成一个平台，统一登录、调度和样式",
+      nowRun: (y, km, d, name, k, p) => `${y} 年已跑 ${km} km，最近一次 ${d} ${name} ${k} km，配速 ${p}`,
+      nowLearn: (y, days, xp) => `多邻国，${y} 年已经打卡 ${days} 天，总经验值 ${xp}`,
+      nowListen: (artists, track) => `${artists.join("、")}${track ? `，听得最久的一首是《${track}》` : ""}`,
+      updated: (t) => `数据更新于 ${t}`, heatUpdated: (d) => `更新于 ${d}`,
+      motto: "想清楚，写清楚，说清楚，<br>才是<em>真正的清楚</em>。",
+      contactDesc: "想聊技术、跑步，或者一起做点什么，都可以找我。", madeIn: "Made in 重庆",
+      today: "今天", yesterday: "昨天", daysAgo: (n) => `${n} 天前`, month: (m) => `${m}月`,
+      sumAll: (km, gh, h) => `${km} km · ${gh} 次提交 · ${h} 小时音乐`,
+      sumRun: (n, km) => `${n} 天有运动 · ${km} km`, sumLearn: (n, h) => `${n} 天在学习 · ${h} 小时`,
+      sumCode: (n) => `${n} 次贡献`, sumMusic: (h) => `${h} 小时音乐`,
+      tipRun: "跑步", tipLearn: "多邻国", tipCode: "GitHub", tipMusic: "听歌", tipAll: "综合",
+      tipMin: "分钟", tipCommits: "次提交", rest: "休息日",
+      termRenew: "续费提醒", termMsg: "定时消息", termPin: "发送后置顶 ✓ · 失败自动重试 ✓", termNext: "下一次执行",
+    },
+    en: {
+      navYear: "Year", navApps: "Apps", navNow: "Now", navBlog: "Blog", navLifelog: "Lifelog", navContact: "Contact",
+      themeLabel: "Toggle light/dark", langLabel: "中文",
+      statusLoading: "Chongqing · loading the latest…", statusFailed: "Chongqing · data didn't load this time",
+      status: (ago, km) => `Chongqing · ran ${km} km ${ago}`,
+      meaning: ": take care of your own things, and do them well.",
+      intro: "I'm <strong>Jason</strong>, a programmer in Chongqing, mostly writing Go.<br>Usually",
+      words: ["writing code", "running at night", "learning English", "listening to Jay Chou", "logging my days", "tinkering with servers"],
+      ctaApps: "See what I'm building", ctaBlog: "Read the blog",
+      statKm: "Total running distance", statRuns: "Total runs", unitRuns: "runs", statXp: "Duolingo XP", statPosts: "Blog posts", unitPosts: "posts",
+      yearTitle: "A year, one day at a time", yearDesc: "Each square is a day, synced by Lifelog three times a day from my watch, Duolingo, GitHub and Spotify.",
+      tabAll: "All", tabRun: "Running", tabLearn: "Learning", tabCode: "Code", tabMusic: "Music", less: "Less", more: "More",
+      appsTitle: "Apps on the platform", appsDesc: "The blog, Lifelog and the Telegram bots live under one roof, with room for more.",
+      blogTitle: "Blog", blogDesc: "Notes on Go, Kubernetes, Elasticsearch and networking",
+      runTitle: "Running", runSub: (y, g) => `${y} distance / goal ${g} km`, runCount: (n) => `<b>${n}</b> runs`, runLatest: (km, p) => `latest <b>${km}</b> km · <b>${p}</b>/km`,
+      musicTitle: "Favourites", musicSub: (all, y, h) => `${all} hours in total · ${h} hours in ${y}`, favTrack: "Most-played song",
+      botTitle: "Bots", botDesc: "Several Telegram bots in one console, run on cron schedules",
+      nextTitle: "Next app", nextDesc: "The platform has a slot ready: a new app only implements the App interface.",
+      nowTitle: "What I'm doing now", nowDesc: "Inspired by Derek Sivers' /now page: what I'm up to at the moment, updated as it changes.",
+      nowDoing: "Doing", nowRunning: "Running", nowLearning: "Learning", nowListening: "Loving",
+      nowDoingText: "Merging the blog, Lifelog and the Telegram bots into one platform with one login, scheduler and style",
+      nowRun: (y, km, d, name, k, p) => `${km} km so far in ${y}; latest ${d}, ${name}, ${k} km at ${p}`,
+      nowLearn: (y, days, xp) => `Duolingo: ${days} days in ${y}, ${xp} XP in total`,
+      nowListen: (artists, track) => `${artists.join(", ")}${track ? `; most-played song: "${track}"` : ""}`,
+      updated: (t) => `Data updated ${t}`, heatUpdated: (d) => `Updated ${d}`,
+      motto: "Think it through, write it down, say it clearly:<br>that is <em>real clarity</em>.",
+      contactDesc: "Up for a chat about code or running, or building something together? Get in touch.", madeIn: "Made in Chongqing",
+      today: "today", yesterday: "yesterday", daysAgo: (n) => `${n} days ago`, month: (m) => ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][m - 1],
+      sumAll: (km, gh, h) => `${km} km · ${gh} commits · ${h} h of music`,
+      sumRun: (n, km) => `${n} active days · ${km} km`, sumLearn: (n, h) => `${n} days learning · ${h} h`,
+      sumCode: (n) => `${n} contributions`, sumMusic: (h) => `${h} h of music`,
+      tipRun: "Running", tipLearn: "Duolingo", tipCode: "GitHub", tipMusic: "Music", tipAll: "All",
+      tipMin: "min", tipCommits: "commits", rest: "Rest day",
+      termRenew: "renewal reminder", termMsg: "scheduled message", termPin: "pin after send ✓ · auto retry ✓", termNext: "next run",
+    },
+  };
+  let lang = store.get("lang");
+  if (lang !== "zh" && lang !== "en") lang = navigator.language.toLowerCase().startsWith("zh") ? "zh" : "en";
+  const t = (k) => I18N[lang][k];
+  const LOCALE = { zh: "zh-CN", en: "en-US" };
+  function applyLang() {
+    document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+    $$("[data-i18n]").forEach((el) => (el.textContent = t(el.dataset.i18n)));
+    $$("[data-i18n-html]").forEach((el) => (el.innerHTML = t(el.dataset.i18nHtml)));
+    $$("[data-i18n-label]").forEach((el) => el.setAttribute("aria-label", t(el.dataset.i18nLabel)));
+    $("#lang").textContent = lang === "zh" ? "EN" : "中";
+    $("#lang").setAttribute("aria-label", t("langLabel"));
+  }
+  applyLang();
+  $("#lang").onclick = () => {
+    lang = lang === "zh" ? "en" : "zh"; store.set("lang", lang); applyLang();
+    wi = 0; ci = t("words")[0].length; rot.textContent = t("words")[0];
+    if (D) render(true);
+    if (termStarted) typeTerm();
+  };
+
+  var termGen = 0, termStarted = false;
+
+  /* ---------- 主题 ---------- */
   const saved = store.get("theme");
   if (saved) document.documentElement.dataset.theme = saved;
   else if (matchMedia("(prefers-color-scheme: light)").matches) document.documentElement.dataset.theme = "light";
@@ -398,11 +499,12 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
   $("#hello").innerHTML = [..."Say hi."].map((c) => `<span>${c === " " ? "&nbsp;" : c}</span>`).join("");
 
   /* ---------- 打字轮播 ---------- */
-  const words = ["写代码", "夜跑", "学英语", "听许嵩", "记录生活", "折腾服务器"];
   const rot = $("#rotator");
-  let wi = 0, ci = words[0].length, del = true;
+  rot.textContent = t("words")[0];
+  let wi = 0, ci = t("words")[0].length, del = true;
   if (!reduce) (function tick() {
-    const w = words[wi];
+    const words = t("words");
+    if (wi >= words.length) wi = 0;
     if (del) { ci--; if (ci === 0) { del = false; wi = (wi + 1) % words.length; } }
     else { ci++; if (ci === words[wi].length) { del = true; rot.textContent = words[wi]; return setTimeout(tick, 1800); } }
     rot.textContent = words[wi].slice(0, ci) || " ";
@@ -458,17 +560,17 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
   $$(".reveal").forEach((el) => io.observe(el));
 
   /* ---------- 数据 ---------- */
-  let D;
-  const fmt = (n) => n.toLocaleString("zh-CN");
+  var D; // var: the language switch above may read it before this line runs
+  const fmt = (n) => n.toLocaleString(LOCALE[lang]);
   const pace = (s) => `${Math.floor(s / 60)}'${String(s % 60).padStart(2, "0")}"`;
-  const ago = (iso) => { const d = Math.round((Date.now() - new Date(iso)) / 864e5); return d <= 0 ? "今天" : d === 1 ? "昨天" : `${d} 天前`; };
+  const ago = (iso) => { const d = Math.round((Date.now() - new Date(iso)) / 864e5); return d <= 0 ? t("today") : d === 1 ? t("yesterday") : t("daysAgo")(d); };
 
   // the lifelog export (/lifelog/data.json, rewritten by every sync) and the blog's post list
   Promise.all([
     fetch("/lifelog/data.json", { cache: "no-cache" }).then((r) => r.json()),
     fetch("/api/blog/posts?limit=5").then((r) => r.json()).catch(() => ({ total: 0, posts: [] })),
   ]).then(([life, blog]) => { D = summarize(life, blog); render(); }).catch(() => {
-    $("#status").textContent = "重庆 · 数据暂时没加载出来";
+    $("#status").textContent = t("statusFailed");
   });
 
   const isoDay = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
@@ -487,10 +589,10 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
     const runs = acts.filter((a) => a.type === "run"), runsYear = runs.filter((a) => a.date.startsWith(year));
     const sumKm = (xs) => Math.round(xs.reduce((n, a) => n + a.distance_m, 0) / 1000);
     const inYear = Object.entries(daily).filter(([k]) => k.startsWith(year));
-    const my = music[year] || {};
+    const my = music[year] || {}, mall = music.all || {};
+    // favourites: whoever was listened to longest overall (Spotify's own ranking is only recent)
+    const unknown = (n) => !n || /^[?？]+$/.test(n.trim()) || /^unknown/i.test(n);
     const latest = acts.find((a) => a.distance_m >= 1000); // skip warm-ups and other short entries
-    const ranges = (life.spotify_top && life.spotify_top.ranges) || {};
-    const top = ranges.short_term || ranges.long_term || { artists: [] };
     return {
       generated_at: life.generated_at,
       year,
@@ -498,6 +600,7 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
       stats: {
         run_km_year: sumKm(runsYear), runs_year: runsYear.length, run_km_all: sumKm(runs), runs_all: runs.length,
         music_hours_year: Math.round((my.ms || 0) / 3.6e6),
+        music_hours_all: Math.round((mall.ms || 0) / 3.6e6),
         github_year: inYear.reduce((n, [, v]) => n + (v.github_contributions || 0), 0),
         duolingo_xp: (life.duolingo && life.duolingo.total_xp) || 0,
         duolingo_days_year: inYear.filter(([, v]) => v.duolingo_minutes).length,
@@ -507,8 +610,8 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
         type: latest.type, name: latest.name || "", date: latest.date, km: +(latest.distance_m / 1000).toFixed(2),
         minutes: Math.round(latest.moving_time_s / 60), pace_s_per_km: Math.round(latest.moving_time_s / (latest.distance_m / 1000)), avg_hr: latest.avg_hr,
       },
-      music_top_track: (my.top_tracks || [])[0] || null,
-      music_top_artists: (top.artists || []).slice(0, 5).map((a) => a.name),
+      music_top_track: (mall.top_tracks || []).find((x) => !unknown(x.artist)) || null,
+      music_top_artists: (mall.top_artists || []).filter((a) => !unknown(a.name)).slice(0, 5).map((a) => ({ name: a.name, hours: Math.round(a.ms / 3.6e6) })),
       posts: (blog.posts || []).map((p) => ({ title: p.title, url: p.url, date: p.date.slice(0, 10) })),
     };
   }
@@ -521,52 +624,62 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
     (function step(t) { const p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 4); el.innerHTML = fmt(Math.round(target * e)) + small; if (p < 1) requestAnimationFrame(step); })(t0);
   }
 
-  function render() {
+  // again: re-render after a language switch, without replaying the entrance animations
+  function render(again) {
     const s = D.stats, la = D.latest_activity;
-    if (la) $("#status").textContent = `重庆 · ${ago(la.date)}跑了 ${la.km} km`;
-    $("#stats").addEventListener("inview", () => $$("[data-count]").forEach((el) => countUp(el, s[el.dataset.count], el.hasAttribute("data-k"))), { once: true });
-    if ($("#stats").classList.contains("in")) $("#stats").dispatchEvent(new Event("inview"));
+    if (la) $("#status").textContent = t("status")(ago(la.date), la.km);
+    if (again) {
+      $$("[data-count]").forEach((el) => {
+        const v = el.hasAttribute("data-k") ? Math.round(s[el.dataset.count] / 1000) : s[el.dataset.count];
+        el.innerHTML = fmt(v) + el.querySelector("small").outerHTML;
+      });
+    } else {
+      $("#stats").addEventListener("inview", () => $$("[data-count]").forEach((el) => countUp(el, s[el.dataset.count], el.hasAttribute("data-k"))), { once: true });
+      if ($("#stats").classList.contains("in")) $("#stats").dispatchEvent(new Event("inview"));
+    }
 
     // 博客
     $("#posts").innerHTML = D.posts.slice(0, 5).map((p) => `<li><a href="${esc(p.url)}"><span>${esc(p.title)}</span><span class="d mono">${p.date}</span></a></li>`).join("");
 
     // 跑步:今年跑量对比 500km 目标
     const goal = 500;
-    $("#run-sub").textContent = `${D.year} 年跑量 / 目标 ${goal} km`;
+    $("#run-sub").textContent = t("runSub")(D.year, goal);
     const runCard = $(".run");
-    runCard.addEventListener("inview", () => {
-      $("#ring").style.strokeDashoffset = 327 * (1 - Math.min(1, s.run_km_year / goal));
-      countUp(Object.assign($("#ring-num"), { innerHTML: "0<small></small>" }), s.run_km_year);
-    }, { once: true });
-    if (runCard.classList.contains("in")) runCard.dispatchEvent(new Event("inview"));
-    $("#run-meta").innerHTML = `<span><b>${s.runs_year}</b> 次</span>` + (la ? `<span>最近 <b>${la.km}</b> km · <b>${pace(la.pace_s_per_km)}</b>/km</span>` : "");
+    if (!again) {
+      runCard.addEventListener("inview", () => {
+        $("#ring").style.strokeDashoffset = 327 * (1 - Math.min(1, s.run_km_year / goal));
+        countUp(Object.assign($("#ring-num"), { innerHTML: "0<small></small>" }), s.run_km_year);
+      }, { once: true });
+      if (runCard.classList.contains("in")) runCard.dispatchEvent(new Event("inview"));
+    }
+    $("#run-meta").innerHTML = `<span>${t("runCount")(s.runs_year)}</span>` + (la ? `<span>${t("runLatest")(la.km, pace(la.pace_s_per_km))}</span>` : "");
 
-    // 音乐
-    $("#eq").innerHTML = Array.from({ length: 22 }, (_, i) => `<i style="animation-delay:${(-Math.random()).toFixed(2)}s;animation-duration:${(.5 + Math.random() * .8).toFixed(2)}s"></i>`).join("");
-    $("#music-sub").textContent = `${D.year} 年听了 ${s.music_hours_year} 小时`;
+    // 音乐:累计听得最久的歌手和歌
+    if (!again) $("#eq").innerHTML = Array.from({ length: 22 }, (_, i) => `<i style="animation-delay:${(-Math.random()).toFixed(2)}s;animation-duration:${(.5 + Math.random() * .8).toFixed(2)}s"></i>`).join("");
+    $("#music-sub").textContent = t("musicSub")(fmt(s.music_hours_all), D.year, fmt(s.music_hours_year));
     const tt = D.music_top_track;
-    if (tt) $("#track").innerHTML = `${tt.track} <span style="color:var(--muted);font-weight:400;font-size:15px">· ${tt.artist}</span>`;
-    $("#artists").innerHTML = D.music_top_artists.map((a) => `<span>${a}</span>`).join("");
+    if (tt) $("#track").innerHTML = `${esc(tt.track)} <span style="color:var(--muted);font-weight:400;font-size:15px">· ${esc(tt.artist)}</span>`;
+    $("#artists").innerHTML = D.music_top_artists.map((a) => `<span>${esc(a.name)} <em class="mono">${fmt(a.hours)}h</em></span>`).join("");
 
     // Now
-    if (la) $("#now-run").textContent = `${D.year} 年已跑 ${s.run_km_year} km，最近一次 ${la.date} ${la.name} ${la.km} km，配速 ${pace(la.pace_s_per_km)}`;
-    $("#now-learn").textContent = `多邻国，${D.year} 年已经打卡 ${s.duolingo_days_year} 天，总经验值 ${fmt(s.duolingo_xp)}`;
-    $("#now-listen").textContent = `${D.music_top_artists.slice(0, 3).join("、")}${tt ? `，今年循环最多的是《${tt.track}》` : ""}`;
-    $("#now-updated").textContent = `数据更新于 ${new Date(D.generated_at).toLocaleString("zh-CN", { hour12: false })}`;
-    $("#heat-updated").textContent = `更新于 ${D.generated_at.slice(0, 10)}`;
+    if (la) $("#now-run").textContent = t("nowRun")(D.year, s.run_km_year, la.date, la.name, la.km, pace(la.pace_s_per_km));
+    $("#now-learn").textContent = t("nowLearn")(D.year, s.duolingo_days_year, fmt(s.duolingo_xp));
+    $("#now-listen").textContent = t("nowListen")(D.music_top_artists.slice(0, 3).map((a) => a.name), tt && tt.track);
+    $("#now-updated").textContent = t("updated")(new Date(D.generated_at).toLocaleString(LOCALE[lang], { hour12: false }));
+    $("#heat-updated").textContent = t("heatUpdated")(D.generated_at.slice(0, 10));
 
     buildHeat();
   }
 
   /* ---------- 热力图 ---------- */
   const MODES = {
-    all:   { color: "--accent",   tip: "综合", score: (d) => Math.min(1, d[0] / 8) * .35 + Math.min(1, d[2] / 10) * .2 + Math.min(1, d[3] / 4) * .2 + Math.min(1, d[4] / 90) * .25, steps: [.08, .3, .5, .7], sum: () => `${D.stats.run_km_year} km · ${D.stats.github_year} 次提交 · ${D.stats.music_hours_year} 小时音乐` },
-    run:   { color: "--accent",   tip: "跑步", score: (d) => d[0], steps: [.1, 3, 6, 10], sum: (days) => `${days.filter((d) => d[0] > 0).length} 天有运动 · ${Math.round(days.reduce((a, d) => a + d[0], 0))} km` },
-    learn: { color: "--accent-2", tip: "多邻国", score: (d) => d[2], steps: [.1, 5, 10, 20], sum: (days) => `${days.filter((d) => d[2] > 0).length} 天在学习 · ${Math.round(days.reduce((a, d) => a + d[2], 0) / 60)} 小时` },
-    code:  { color: "--accent-2", tip: "GitHub", score: (d) => d[3], steps: [1, 3, 6, 10], sum: (days) => `${days.reduce((a, d) => a + d[3], 0)} 次贡献` },
-    music: { color: "--accent-3", tip: "听歌", score: (d) => d[4], steps: [1, 30, 60, 120], sum: (days) => `${Math.round(days.reduce((a, d) => a + d[4], 0) / 60)} 小时音乐` },
+    all:   { color: "--accent",   score: (d) => Math.min(1, d[0] / 8) * .35 + Math.min(1, d[2] / 10) * .2 + Math.min(1, d[3] / 4) * .2 + Math.min(1, d[4] / 90) * .25, steps: [.08, .3, .5, .7], sum: () => t("sumAll")(D.stats.run_km_year, D.stats.github_year, D.stats.music_hours_year) },
+    run:   { color: "--accent",   score: (d) => d[0], steps: [.1, 3, 6, 10], sum: (days) => t("sumRun")(days.filter((d) => d[0] > 0).length, Math.round(days.reduce((a, d) => a + d[0], 0))) },
+    learn: { color: "--accent-2", score: (d) => d[2], steps: [.1, 5, 10, 20], sum: (days) => t("sumLearn")(days.filter((d) => d[2] > 0).length, Math.round(days.reduce((a, d) => a + d[2], 0) / 60)) },
+    code:  { color: "--accent-2", score: (d) => d[3], steps: [1, 3, 6, 10], sum: (days) => t("sumCode")(days.reduce((a, d) => a + d[3], 0)) },
+    music: { color: "--accent-3", score: (d) => d[4], steps: [1, 30, 60, 120], sum: (days) => t("sumMusic")(Math.round(days.reduce((a, d) => a + d[4], 0) / 60)) },
   };
-  let mode = "all";
+  let mode = "all", heatBound = false;
   const level = (v, st) => v >= st[3] ? 4 : v >= st[2] ? 3 : v >= st[1] ? 2 : v >= st[0] ? 1 : 0;
   const shade = (base, l) => l === 0 ? "var(--cell-0)" : `color-mix(in srgb, ${base} ${[0, 30, 55, 78, 100][l]}%, transparent)`;
 
@@ -577,7 +690,7 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
     for (let w = 0; w < weeks; w++) {
       const d0 = new Date(start); d0.setDate(d0.getDate() + w * 7);
       const m = d0.getMonth();
-      html += `<span class="m mono">${m !== lastMonth && d0.getDate() <= 7 ? `${m + 1}月` : ""}</span>`;
+      html += `<span class="m mono">${m !== lastMonth && d0.getDate() <= 7 ? t("month")(m + 1) : ""}</span>`;
       if (d0.getDate() <= 7) lastMonth = m;
       for (let i = 0; i < 7; i++) {
         const idx = w * 7 + i;
@@ -587,6 +700,8 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
     h.innerHTML = html;
     paintHeat();
     h.parentElement.scrollLeft = h.parentElement.scrollWidth; // 手机上先显示最近几个月
+    if (heatBound) { h.classList.add("in"); $$(".c", h).forEach((c) => (c.style.transitionDelay = "0ms")); return; }
+    heatBound = true;
     const card = $(".heat-card");
     const show = () => setTimeout(() => { h.classList.add("in"); setTimeout(() => $$(".c", h).forEach((c) => (c.style.transitionDelay = "0ms")), 1400); }, 200);
     if (card.classList.contains("in")) show(); else card.addEventListener("inview", show, { once: true });
@@ -595,8 +710,8 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
     h.addEventListener("pointerover", (e) => {
       const c = e.target.closest(".c[data-i]"); if (!c) return;
       const i = +c.dataset.i, d = days[i], dt = new Date(start); dt.setDate(dt.getDate() + i);
-      const parts = [d[0] && `🏃 ${d[0]} km`, d[2] && `🦉 ${d[2]} 分钟`, d[3] && `⌨️ ${d[3]} 次提交`, d[4] && `🎧 ${d[4]} 分钟`].filter(Boolean);
-      tip.innerHTML = `<b>${dt.getFullYear()}-${String(dt.getMonth() + 1).padStart(2, "0")}-${String(dt.getDate()).padStart(2, "0")}</b><br>${parts.join("<br>") || "休息日"}`;
+      const parts = [d[0] && `🏃 ${d[0]} km`, d[2] && `🦉 ${d[2]} ${t("tipMin")}`, d[3] && `⌨️ ${d[3]} ${t("tipCommits")}`, d[4] && `🎧 ${d[4]} ${t("tipMin")}`].filter(Boolean);
+      tip.innerHTML = `<b>${dt.getFullYear()}-${String(dt.getMonth() + 1).padStart(2, "0")}-${String(dt.getDate()).padStart(2, "0")}</b><br>${parts.join("<br>") || t("rest")}`;
       const r = c.getBoundingClientRect(); tip.style.left = r.left + r.width / 2 + "px"; tip.style.top = r.top + "px"; tip.classList.add("on");
     });
     h.addEventListener("pointerleave", () => tip.classList.remove("on"));
@@ -616,21 +731,24 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
   });
 
   /* ---------- 机器人终端 ---------- */
-  const lines = [
+  const lines = () => [
     ["p", "$ bothub status"],
-    ["", "<span class='k'>●</span> 续费提醒   cron <span class='p'>0 9 L * *</span>"],
-    ["", "<span class='k'>●</span> 定时消息   cron <span class='p'>30 8 * * 1-5</span>"],
-    ["", "  发送后置顶 ✓ · 失败自动重试 ✓"],
+    ["", `<span class='k'>●</span> ${t("termRenew")}   cron <span class='p'>0 9 L * *</span>`],
+    ["", `<span class='k'>●</span> ${t("termMsg")}   cron <span class='p'>30 8 * * 1-5</span>`],
+    ["", "  " + t("termPin")],
     ["p", "$ bothub next"],
-    ["", "→ 下一次执行: <span class='p' id='nx'></span>"],
+    ["", `→ ${t("termNext")}: <span class='p' id='nx'></span>`],
   ];
   const term = $("#term");
-  function nextWeekday830() { const d = new Date(); d.setSeconds(0, 0); d.setHours(8, 30); do { if (d > new Date() && d.getDay() % 6) break; d.setDate(d.getDate() + 1); d.setHours(8, 30); } while (true); return d.toLocaleString("zh-CN", { month: "numeric", day: "numeric", weekday: "short", hour: "2-digit", minute: "2-digit", hour12: false }); }
+  function nextWeekday830() { const d = new Date(); d.setSeconds(0, 0); d.setHours(8, 30); do { if (d > new Date() && d.getDay() % 6) break; d.setDate(d.getDate() + 1); d.setHours(8, 30); } while (true); return d.toLocaleString(LOCALE[lang], { month: "numeric", day: "numeric", weekday: "short", hour: "2-digit", minute: "2-digit", hour12: false }); }
   function typeTerm() {
+    termStarted = true;
+    const gen = ++termGen, L = lines();
     term.innerHTML = ""; let li = 0;
     (function nextLine() {
-      if (li >= lines.length) { term.insertAdjacentHTML("beforeend", "<span class='cursor'></span>"); $("#nx").textContent = nextWeekday830(); return setTimeout(typeTerm, 6000); }
-      const [cls, txt] = lines[li++], div = document.createElement("div"); if (cls) div.className = cls; term.appendChild(div);
+      if (gen !== termGen) return; // restarted after a language switch
+      if (li >= L.length) { term.insertAdjacentHTML("beforeend", "<span class='cursor'></span>"); $("#nx").textContent = nextWeekday830(); return setTimeout(() => gen === termGen && typeTerm(), 6000); }
+      const [cls, txt] = L[li++], div = document.createElement("div"); if (cls) div.className = cls; term.appendChild(div);
       if (cls === "p" && !reduce) { let i = 0; (function t() { div.textContent = txt.slice(0, ++i); if (i < txt.length) setTimeout(t, 45); else setTimeout(nextLine, 350); })(); }
       else { div.innerHTML = txt; setTimeout(nextLine, reduce ? 0 : 220); }
     })();
