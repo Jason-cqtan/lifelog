@@ -55,8 +55,7 @@ a { color: inherit; text-decoration: none; }
 .mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
 .wrap { width: min(1180px, 100% - 32px); margin-inline: auto; }
 
-/* ---------- 背景:粒子场 + 极光 + 颗粒 ---------- */
-#field { position: fixed; inset: 0; z-index: -3; width: 100%; height: 100%; }
+/* ---------- 背景:极光 + 颗粒 + 天空 ---------- */
 /* sky: sun top-left by day, twinkling stars by night, rain/snow on #weather */
 #sky { position: fixed; inset: 0; z-index: -2; pointer-events: none; overflow: hidden; }
 #weather { position: fixed; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none; }
@@ -110,6 +109,20 @@ nav .logo b { color: var(--accent); }
 @keyframes pulse { 70% { box-shadow: 0 0 0 10px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
 h1 { font-size: clamp(56px, 11vw, 168px); line-height: .92; letter-spacing: -.055em; font-weight: 700; margin: 28px 0 28px; }
 h1 .line { display: block; overflow: hidden; padding-bottom: .06em; }
+h1.settled .line { overflow: visible; }
+h1.settled .ch { animation: none; transform: none; }
+h1.settled .grad { animation: sweep 6s linear infinite; }
+/* sunlight catching a letter: a bright band sweeps across it, a sparkle flares on its top edge */
+h1.settled .ch.glint:not(.grad) { background: linear-gradient(115deg, var(--fg) 38%, #fff6d6 47%, #ffd36b 50%, #fff6d6 53%, var(--fg) 62%);
+  background-size: 320% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: glint 1.5s ease-out forwards; }
+h1.settled .ch.glint.grad { filter: brightness(1.35) drop-shadow(0 0 10px rgba(255,214,120,.55)); transition: filter .5s; }
+@keyframes glint { from { background-position: 100% 0; } to { background-position: 0 0; } }
+#glints { position: absolute; inset: 0 auto auto 0; width: 0; height: 0; pointer-events: none; z-index: 5; }
+.spark { position: absolute; width: 36px; height: 36px; margin: -18px 0 0 -18px; filter: drop-shadow(0 0 6px rgba(255,210,110,.9)); opacity: 0; animation: spark 1.3s ease-out forwards; }
+.spark::before, .spark::after { content: ""; position: absolute; left: 50%; top: 50%; background: radial-gradient(closest-side, #fff, rgba(255,220,140,.9) 40%, transparent); border-radius: 50%; }
+.spark::before { width: 36px; height: 3px; margin: -1.5px 0 0 -18px; }
+.spark::after { width: 3px; height: 36px; margin: -18px 0 0 -1.5px; }
+@keyframes spark { 0% { opacity: 0; transform: scale(.2) rotate(0); } 35% { opacity: 1; transform: scale(1.1) rotate(25deg); } 100% { opacity: 0; transform: scale(.4) rotate(70deg); } }
 h1 .ch { display: inline-block; transform: translateY(110%); animation: rise .9s cubic-bezier(.2,.8,.2,1) forwards; }
 h1 .grad { background: linear-gradient(100deg, var(--accent) 0%, var(--accent-2) 45%, var(--accent-3) 90%);
   background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: rise .9s cubic-bezier(.2,.8,.2,1) forwards, sweep 6s linear infinite; }
@@ -255,9 +268,9 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
 <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
 <div id="sky" aria-hidden="true"><div class="sun"><i></i></div><div class="stars"></div><b class="shoot"></b></div>
 <canvas id="weather" aria-hidden="true"></canvas>
-<canvas id="field" aria-hidden="true"></canvas>
 <div class="grain" aria-hidden="true"></div>
 <div class="tip" id="tip"></div>
+<div id="glints" aria-hidden="true"></div>
 
 <nav>
   <a class="logo" href="#top">mdyrbz<b>.</b></a>
@@ -415,9 +428,9 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
       navYear: "这一年", navApps: "应用", navNow: "现在", navBlog: "博客", navLifelog: "生活日志", navContact: "联系",
       themeLabel: "切换明暗主题", langLabel: "English",
       statusLoading: "重庆 · 正在加载最近的动态…", statusFailed: "重庆 · 数据暂时没加载出来",
-      status: (ago, km) => `${ago}跑了 ${km} km`, city: "重庆",
+      status: (ago, n, km) => `${ago}跑了 ${n} 次，累计 ${km} km`, city: "重庆",
       meaning: "：管好自己的事，把它做好。",
-      intro: "我是 <strong>Jason</strong>，住在重庆的程序员，爱跑步，也爱把日子记成数据。<br>平时在",
+      intro: "我是 <strong>Jason</strong>，住在重庆的程序员，有一只 2022 年 6 月出生的小柴犬，爱跑步、听歌。<br>平时在",
       words: (style) => ["写代码", "跑步", "学英语", `听${style}`, "记录生活", "折腾服务器"],
       styles: { mandopop: "华语流行", rnb: "R&B", edm: "电子乐", pop: "欧美流行", indie: "独立音乐", kpop: "韩流", rock: "摇滚" },
       styleAnd: (a, b) => b ? `${a}和${b}` : a,
@@ -453,9 +466,9 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
       navYear: "Year", navApps: "Apps", navNow: "Now", navBlog: "Blog", navLifelog: "Lifelog", navContact: "Contact",
       themeLabel: "Toggle light/dark", langLabel: "中文",
       statusLoading: "Chongqing · loading the latest…", statusFailed: "Chongqing · data didn't load this time",
-      status: (ago, km) => `ran ${km} km ${ago}`, city: "Chongqing",
+      status: (ago, n, km) => `${n === 1 ? "one run" : `${n} runs`} ${ago}, ${km} km in total`, city: "Chongqing",
       meaning: ": take care of your own things, and do them well.",
-      intro: "I'm <strong>Jason</strong>, a programmer in Chongqing who loves running and turning everyday life into data.<br>Usually",
+      intro: "I'm <strong>Jason</strong>, a programmer in Chongqing with a little Shiba Inu born in June 2022. I love running and music.<br>Usually",
       words: (style) => ["writing code", "running", "learning English", `listening to ${style}`, "logging my days", "tinkering with servers"],
       styles: { mandopop: "Mandopop", rnb: "R&B", edm: "electronic", pop: "Western pop", indie: "indie", kpop: "K-pop", rock: "rock" },
       styleAnd: (a, b) => b ? `${a} and ${b}` : a,
@@ -570,8 +583,8 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
   function updateStatus() {
     const parts = [t("city")];
     if (WX) parts.push(`${t("wx")[kind(WX.code)]} ${Math.round(WX.temp)}°`);
-    const la = D && D.latest_activity;
-    if (la) parts.push(t("status")(ago(la.date), la.km));
+    const ld = D && D.latest_run_day;
+    if (ld) parts.push(t("status")(ago(ld.date), ld.count, ld.km));
     else if (!D) parts.push(dataFailed ? t("statusFailed").split(" · ")[1] : t("statusLoading").split(" · ")[1]);
     $("#status").textContent = parts.join(" · ");
   }
@@ -627,10 +640,155 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
     const next = wet ? k : null;
     if (next !== precip) { precip = next; sizeWeather(); seedDrops(); if (precip && !raining) { raining = true; requestAnimationFrame(rain); } }
   }
+  // The title is rasterised once (same font, same letter positions) into an alpha mask;
+  // top[x] is the first inked row of each column: the surface rain lands on.
+  const letters = {
+    w: 0, h: 0, alpha: null, top: null, water: null, drips: [], splash: [], ready: false,
+    build() {
+      const r = h1.getBoundingClientRect(), cs = getComputedStyle(h1);
+      const w = Math.ceil(r.width), h = Math.ceil(r.height) + 40;
+      if (!w || !h) return;
+      const c = document.createElement("canvas"); c.width = w; c.height = h;
+      const g = c.getContext("2d");
+      g.font = `${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+      g.textBaseline = "alphabetic"; g.fillStyle = "#000";
+      $$(".line", h1).forEach((line) => {
+        const probe = document.createElement("i");
+        probe.style.cssText = "display:inline-block;width:0;height:0;vertical-align:baseline";
+        line.appendChild(probe);
+        const base = probe.getBoundingClientRect().top - r.top;
+        probe.remove();
+        $$(".ch", line).forEach((ch) => { const cr = ch.getBoundingClientRect(); g.fillText(ch.textContent, cr.left - r.left, base); });
+      });
+      const img = g.getImageData(0, 0, w, h).data;
+      this.alpha = new Uint8Array(w * h);
+      for (let k = 0; k < w * h; k++) this.alpha[k] = img[k * 4 + 3];
+      this.top = new Int16Array(w).fill(-1);
+      for (let x = 0; x < w; x++) for (let y = 0; y < h; y++) if (this.alpha[y * w + x] > 140) { this.top[x] = y; break; }
+      if (!this.water || this.water.length !== w) this.water = new Float32Array(w);
+      this.w = w; this.h = h; this.drips = []; this.ready = true;
+    },
+    inked(x, y) { x |= 0; y |= 0; return x >= 0 && x < this.w && y >= 0 && y < this.h && this.alpha[y * this.w + x] > 140; },
+    // a raindrop at viewport (x, y), moving down by dy: does it land on a letter?
+    catch(x, y, dy, r, amount) {
+      if (!this.ready) return false;
+      const lx = Math.round(x - r.left), ly = y - r.top, tp = lx >= 0 && lx < this.w ? this.top[lx] : -1;
+      if (tp < 0 || ly < tp || ly - dy > tp + 2) return false;
+      for (let k = -2; k <= 2; k++) if (this.top[lx + k] >= 0 && Math.abs(this.top[lx + k] - tp) < 6) this.water[lx + k] += amount / 5;
+      if (Math.random() < .5) for (let k = 0; k < 2; k++) this.splash.push({ x: lx, y: tp - 1, vx: (Math.random() - .5) * 2.4, vy: -1 - Math.random() * 1.6, life: 1 });
+      return true;
+    },
+    step(snow) {
+      const w = this.w, top = this.top, water = this.water, cap = snow ? 7 : 3.2;
+      // water runs along the top edge, downhill first
+      for (let pass = 0; pass < 2; pass++) for (let x = 1; x < w - 1; x++) {
+        if (top[x] < 0 || water[x] <= 0) continue;
+        for (const n of [x - 1, x + 1]) {
+          if (top[n] < 0) continue;
+          const lvl = top[x] - water[x], nl = top[n] - water[n], diff = nl - lvl; // >0: neighbour's surface is lower
+          if (diff > .1) { const m = Math.min(water[x], diff * (snow ? .05 : .25)); water[x] -= m; water[n] += m; }
+        }
+      }
+      for (let x = 0; x < w; x++) {
+        if (top[x] < 0 || water[x] <= 0) continue;
+        if (!snow) {
+          // over an edge (next column is empty or drops away) or simply too much: it spills and runs down
+          const edge = top[x - 1] < 0 || top[x + 1] < 0 || top[x - 1] - top[x] > 8 || top[x + 1] - top[x] > 8;
+          if (water[x] > cap || (edge && water[x] > cap * .55)) {
+            const vol = Math.min(water[x], 1.8 + Math.random());
+            water[x] -= vol;
+            this.drips.push({ x, y: top[x] + 1, vol, vy: 0, falling: false, trail: [] });
+          }
+          water[x] *= .9995; // a little evaporates
+        } else water[x] = Math.min(water[x], cap);
+      }
+      for (const d of this.drips) {
+        if (!d.falling) {
+          // clings to the letter's face, slides down, then leaves the bottom of the stroke
+          d.y += .45 + Math.random() * .5;
+          if (Math.random() < .25) d.x += Math.random() < .5 ? -1 : 1;
+          if (!this.inked(d.x, d.y + 2)) {
+            // find ink a pixel to the side (a curved stroke), else let go
+            if (this.inked(d.x - 1, d.y + 2)) d.x -= 1; else if (this.inked(d.x + 1, d.y + 2)) d.x += 1; else d.falling = true;
+          }
+          d.trail.push([d.x, d.y]); if (d.trail.length > 26) d.trail.shift();
+        } else { d.vy += .32; d.y += d.vy; if (d.trail.length) d.trail.shift(); }
+      }
+      this.drips = this.drips.filter((d) => d.y < innerHeight * 2);
+      for (const p of this.splash) { p.vy += .18; p.x += p.vx; p.y += p.vy; p.life -= .045; }
+      this.splash = this.splash.filter((p) => p.life > 0);
+    },
+    draw(g, r, light, snow) {
+      const top = this.top, water = this.water;
+      const body = snow ? (light ? "rgba(255,255,255,.95)" : "rgba(240,246,255,.92)") : (light ? "rgba(80,140,215,.5)" : "rgba(150,195,255,.42)");
+      const shine = snow ? (light ? "rgba(150,165,190,.55)" : "rgba(255,255,255,.6)") : (light ? "rgba(255,255,255,.95)" : "rgba(255,255,255,.75)");
+      // a thin film along the top edge...
+      g.fillStyle = body;
+      for (let x = 0; x < this.w; x++) if (top[x] >= 0 && water[x] > .12) g.fillRect(r.left + x, r.top + top[x] - water[x], 1, water[x] + 1);
+      if (snow) {
+        g.fillStyle = shine;
+        for (let x = 0; x < this.w; x++) if (top[x] >= 0 && water[x] > .8) g.fillRect(r.left + x, r.top + top[x] - water[x], 1, .8);
+        return;
+      }
+      // ...gathering into beads where it is deepest
+      for (let x = 2; x < this.w - 2; x++) {
+        const v = water[x];
+        if (top[x] < 0 || v < .7 || v < water[x - 1] || v < water[x - 2] || v <= water[x + 1] || v <= water[x + 2]) continue;
+        const rx = 1.6 + v * 1.25, ry = .9 + v * .95, cx = r.left + x, cy = r.top + top[x] - ry + .8;
+        g.fillStyle = light ? "rgba(70,130,210,.55)" : "rgba(160,200,255,.5)";
+        g.beginPath(); g.ellipse(cx, cy, rx, ry, 0, 0, 7); g.fill();
+        g.fillStyle = shine;
+        g.beginPath(); g.ellipse(cx - rx * .35, cy - ry * .35, rx * .28, ry * .28, 0, 0, 7); g.fill();
+      }
+      for (const d of this.drips) {
+        if (d.trail.length > 1) {
+          g.strokeStyle = light ? "rgba(80,140,215,.22)" : "rgba(160,200,255,.2)"; g.lineWidth = 1.4;
+          g.beginPath(); d.trail.forEach(([x, y], k) => (k ? g.lineTo(r.left + x, r.top + y) : g.moveTo(r.left + x, r.top + y))); g.stroke();
+        }
+        const rad = 1.4 + d.vol * .7, x = r.left + d.x, y = r.top + d.y, stretch = d.falling ? Math.min(3, 1 + d.vy * .12) : 1.25;
+        g.fillStyle = light ? "rgba(70,130,210,.62)" : "rgba(170,205,255,.6)";
+        g.beginPath(); g.ellipse(x, y, rad, rad * stretch, 0, 0, 7); g.fill();
+        g.fillStyle = "rgba(255,255,255,.85)";
+        g.beginPath(); g.arc(x - rad * .35, y - rad * .4 * stretch, rad * .32, 0, 7); g.fill();
+      }
+      g.fillStyle = light ? "rgba(80,140,215,.55)" : "rgba(180,210,255,.55)";
+      for (const p of this.splash) { g.globalAlpha = p.life; g.fillRect(r.left + p.x, r.top + p.y, 1.4, 1.4); }
+      g.globalAlpha = 1;
+    },
+    dry() { if (this.water) this.water.fill(0); this.drips = []; this.splash = []; },
+  };
+  if (qs.has("sky")) window.__letters = letters; // test hook, with ?sky=
+  let rebuildT;
+  addEventListener("resize", () => { clearTimeout(rebuildT); rebuildT = setTimeout(() => h1.classList.contains("settled") && letters.build(), 250); });
+  if (document.fonts) document.fonts.ready.then(() => h1.classList.contains("settled") && letters.build());
+
+  // sunshine: every few seconds a couple of letters catch the light
+  setInterval(() => {
+    if (!$("#sky").classList.contains("sun-on") || !letters.ready || reduce || document.hidden) return;
+    const r = h1.getBoundingClientRect();
+    if (r.bottom < 0 || r.top > innerHeight) return;
+    const chs = $$(".ch", h1).filter((c) => c.textContent.trim());
+    for (let k = 0; k < 2; k++) {
+      const ch = chs[Math.floor(Math.random() * chs.length)];
+      ch.classList.remove("glint"); void ch.offsetWidth; ch.classList.add("glint");
+      setTimeout(() => ch.classList.remove("glint"), 1600);
+      // the sparkle sits on the letter's lit top edge
+      const cr = ch.getBoundingClientRect(), hr = h1.getBoundingClientRect();
+      const xs = []; for (let x = Math.floor(cr.left - hr.left); x < cr.right - hr.left; x++) if (letters.top[x] >= 0) xs.push(x);
+      if (!xs.length) continue;
+      const x = xs[Math.floor(Math.random() * Math.min(xs.length, Math.max(3, xs.length / 2)))]; // left half: the sun is top-left
+      const sp = document.createElement("i"); sp.className = "spark";
+      sp.style.left = hr.left + scrollX + x + "px"; sp.style.top = hr.top + scrollY + letters.top[x] + 2 + "px";
+      sp.style.animationDelay = Math.random() * .4 + "s";
+      $("#glints").appendChild(sp); setTimeout(() => sp.remove(), 1900);
+    }
+  }, 2300);
+
   let raining = false;
   function rain(ts) {
     wctx.clearRect(0, 0, innerWidth, innerHeight);
-    if (!precip) { raining = false; return; }
+    if (!precip) { raining = false; letters.dry(); return; }
+    const hr = h1.getBoundingClientRect(), onScreen = letters.ready && hr.bottom > -50 && hr.top < innerHeight;
     const light = document.documentElement.dataset.theme === "light";
     const rgb = light ? "70,90,130" : "190,210,255", snow = precip === "snow";
     const wind = snow ? .4 : 1.6;
@@ -644,8 +802,10 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
         wctx.strokeStyle = `rgba(${rgb},${d.a})`; wctx.lineWidth = precip === "drizzle" ? .8 : 1.1;
         wctx.beginPath(); wctx.moveTo(d.x, d.y); wctx.lineTo(d.x - wind * d.len / d.v, d.y - d.len); wctx.stroke();
       }
+      if (onScreen && letters.catch(d.x, d.y, snow ? d.v : d.v, hr, snow ? d.len * .5 : (precip === "drizzle" ? .35 : .6))) { Object.assign(d, newDrop(false)); continue; }
       if (d.y > innerHeight + 20 || d.x > innerWidth + 120) Object.assign(d, newDrop(false));
     }
+    if (letters.ready) { letters.step(snow); if (onScreen) letters.draw(wctx, hr, light, snow); }
     if (precip === "storm") {
       if (ts > flashAt + 7000 && Math.random() < .004) flashAt = ts;
       const f = ts - flashAt;
@@ -665,6 +825,8 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
       return s;
     }).join("");
   });
+  const h1 = $("h1");
+  setTimeout(() => { h1.classList.add("settled"); letters.build(); }, reduce ? 0 : 1700);
   $("#hello").innerHTML = [..."Say hi."].map((c) => `<span>${c === " " ? "&nbsp;" : c}</span>`).join("");
 
   /* ---------- 打字轮播 ---------- */
@@ -679,41 +841,6 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
     rot.textContent = ws[wi].slice(0, ci) || " ";
     setTimeout(tick, del ? 60 : 120);
   })();
-
-  /* ---------- 粒子场:点会被鼠标推开,近处连线 ---------- */
-  const cv = $("#field"), ctx = cv.getContext("2d");
-  let W, H, pts = [], mouse = { x: -9999, y: -9999 };
-  function resize() {
-    const dpr = Math.min(devicePixelRatio || 1, 2);
-    W = innerWidth; H = innerHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const n = Math.min(110, Math.floor(W * H / 14000));
-    pts = Array.from({ length: n }, () => ({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .3, vy: (Math.random() - .5) * .3 }));
-  }
-  addEventListener("resize", resize); resize();
-  addEventListener("pointermove", (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
-  addEventListener("pointerleave", () => { mouse.x = mouse.y = -9999; });
-  function frame() {
-    ctx.clearRect(0, 0, W, H);
-    const light = document.documentElement.dataset.theme === "light";
-    const rgb = light ? "20,22,40" : "200,210,255";
-    for (const p of pts) {
-      const dx = p.x - mouse.x, dy = p.y - mouse.y, d2 = dx * dx + dy * dy;
-      if (d2 < 22000) { const f = (22000 - d2) / 22000 * .6; p.vx += dx / Math.sqrt(d2 + 1) * f; p.vy += dy / Math.sqrt(d2 + 1) * f; }
-      p.vx *= .96; p.vy *= .96; p.vx += (Math.random() - .5) * .02; p.vy += (Math.random() - .5) * .02;
-      p.x += p.vx + .05; p.y += p.vy;
-      if (p.x < -10) p.x = W + 10; if (p.x > W + 10) p.x = -10; if (p.y < -10) p.y = H + 10; if (p.y > H + 10) p.y = -10;
-    }
-    for (let i = 0; i < pts.length; i++) {
-      const a = pts[i];
-      for (let j = i + 1; j < pts.length; j++) {
-        const b = pts[j], d = Math.hypot(a.x - b.x, a.y - b.y);
-        if (d < 130) { ctx.strokeStyle = `rgba(${rgb},${(1 - d / 130) * .16})`; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); }
-      }
-      ctx.fillStyle = `rgba(${rgb},.5)`; ctx.beginPath(); ctx.arc(a.x, a.y, 1.3, 0, 7); ctx.fill();
-    }
-    requestAnimationFrame(frame);
-  }
-  if (!reduce) frame();
 
   /* ---------- 卡片聚光 + 磁吸按钮 ---------- */
   $$(".card").forEach((c) => c.addEventListener("pointermove", (e) => {
@@ -775,6 +902,13 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
         duolingo_days_year: inYear.filter(([, v]) => v.duolingo_minutes).length,
         posts: blog.total || 0,
       },
+      // every run on the day of the latest one
+      latest_run_day: (() => {
+        const last = runs.find((a) => a.distance_m >= 1000) || runs[0];
+        if (!last) return null;
+        const day = runs.filter((a) => a.date === last.date);
+        return { date: last.date, count: day.length, km: +(day.reduce((n, a) => n + a.distance_m, 0) / 1000).toFixed(2) };
+      })(),
       latest_activity: latest && {
         type: latest.type, name: latest.name || "", date: latest.date, km: +(latest.distance_m / 1000).toFixed(2),
         minutes: Math.round(latest.moving_time_s / 60), pace_s_per_km: Math.round(latest.moving_time_s / (latest.distance_m / 1000)), avg_hr: latest.avg_hr,
