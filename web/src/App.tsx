@@ -29,6 +29,10 @@ const tabFromHash = (): Tab => {
   return (TABS as readonly string[]).includes(h) ? (h as Tab) : 'overview'
 }
 
+
+// served by mdyrbz.com next to the homepage and the blog (not the GitHub Pages copy)
+const ON_PLATFORM = import.meta.env.BASE_URL === '/lifelog/'
+
 export function App() {
   const [raw, setRaw] = useState<Data | null>(null)
   // routes are sealed in data.json's sibling file; they open with the map answer
@@ -188,6 +192,13 @@ export function App() {
         <div className="topbar" ref={topbar}>
           <header className="top">
             <div>
+              {ON_PLATFORM && (
+                <nav className="site-nav">
+                  <a href="/">mdyrbz</a>
+                  <a href="/blog/">{lang === 'zh' ? '博客' : 'Blog'}</a>
+                  <a href="/lifelog/" aria-current="page">{lang === 'zh' ? '生活日志' : 'Lifelog'}</a>
+                </nav>
+              )}
               <h1>Lifelog</h1>
               <p className="sub">
                 {t.subtitle}

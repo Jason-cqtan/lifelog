@@ -1,0 +1,138 @@
+{{define "head"}}<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{.Title}}</title>
+{{with .Description}}<meta name="description" content="{{.}}">{{end}}
+{{if .Preview}}<meta name="robots" content="noindex">{{end}}
+{{with .Canonical}}<link rel="canonical" href="{{.}}">{{end}}
+<link rel="alternate" type="application/rss+xml" title="To be better me." href="/blog/index.xml">
+<link rel="icon" href="/favicon.svg">
+<script>
+;(function () {
+  var t = null
+  try { t = localStorage.getItem('theme') } catch (e) {}
+  if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  document.documentElement.dataset.theme = t
+})()
+</script>
+<link rel="stylesheet" href="{{.CSS}}">
+</head>
+<body>
+<div class="page">
+<header class="topbar">
+  <a class="brand" href="/">mdyrbz</a>
+  <nav class="nav">
+    <a href="/blog/"{{if eq .Nav "blog"}} aria-current="page"{{end}}>博客</a>
+    <a href="/lifelog/">生活日志</a>
+  </nav>
+  <div class="controls">
+    <a class="icon-btn" href="/blog/index.xml" title="RSS 订阅" aria-label="RSS 订阅"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="19" r="2.2"/><path d="M3 10.5a10.5 10.5 0 0 1 10.5 10.5h-3A7.5 7.5 0 0 0 3 13.5zM3 4a17 17 0 0 1 17 17h-3A14 14 0 0 0 3 7z"/></svg></a>
+    <button class="icon-btn" id="theme" type="button" title="切换深浅色" aria-label="切换深浅色"><svg class="moon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg><svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.2M12 19.8V22M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2 12h2.2M19.8 12H22M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></svg></button>
+  </div>
+</header>
+{{end}}
+
+{{define "foot"}}
+<footer class="foot">
+  <span>© 2019–{{now}} Jason</span>
+  <span><a href="/blog/about/">关于</a> · <a href="/blog/index.xml">RSS</a> · <a href="/">首页</a></span>
+</footer>
+</div>
+<script>
+document.getElementById('theme').addEventListener('click', function () {
+  var next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'
+  document.documentElement.dataset.theme = next
+  try { localStorage.setItem('theme', next) } catch (e) {}
+})
+</script>
+</body>
+</html>
+{{end}}
+
+{{define "list"}}{{template "head" .}}
+<main class="blog-list">
+  <div class="list-head">
+    <h1>{{.Heading}}</h1>
+    <p class="sub">{{if eq .Filter "tag"}}{{.Total}} 篇文章 · <a href="/blog/">全部文章</a>{{else}}编程、工具和生活随笔 · 共 {{.Total}} 篇{{end}}</p>
+  </div>
+  {{if ne .Filter "tag"}}
+  <div class="chips" role="tablist">
+    <a href="/blog/"{{if eq .Filter ""}} class="active"{{end}}>全部</a>
+    {{range .Sections}}<a href="/blog/?s={{.Key}}"{{if eq $.Filter .Key}} class="active"{{end}}>{{.Label}}</a>{{end}}
+  </div>
+  {{end}}
+  <div class="list-grid">
+    <div class="years">
+      {{range .Years}}
+      <section class="year">
+        <h2>{{.Year}}</h2>
+        <ol>
+          {{range .Posts}}
+          <li>
+            <a class="row" href="{{.URL}}">
+              <time datetime="{{iso .Date}}">{{date .Date "01-02"}}</time>
+              <span class="row-title">{{.Title}}</span>
+              <span class="row-meta">{{with .Section}}<span class="badge badge-{{.}}">{{section .}}</span>{{end}}<span>{{.Minutes}} 分钟</span></span>
+            </a>
+          </li>
+          {{end}}
+        </ol>
+      </section>
+      {{else}}
+      <p class="empty">还没有文章。</p>
+      {{end}}
+    </div>
+    {{if .Tags}}
+    <aside class="panel tags-panel">
+      <h3>标签</h3>
+      <div class="tags">{{range .Tags}}<a href="{{tagURL .Name}}">#{{.Name}}<span>{{.Count}}</span></a>{{end}}</div>
+    </aside>
+    {{end}}
+  </div>
+</main>
+{{template "foot" .}}{{end}}
+
+{{define "post"}}{{template "head" .}}
+{{if .Preview}}<div class="preview-bar">预览 · 尚未保存{{if .Post.Draft}} · 草稿{{end}}</div>{{end}}
+<main class="post-wrap{{if .TOC}} has-toc{{end}}">
+  <article class="post">
+    <header class="post-head">
+      {{if not .Post.Page}}<a class="back" href="/blog/{{with .Post.Section}}?s={{.}}{{end}}">← {{with .Post.Section}}{{section .}}{{else}}博客{{end}}</a>{{end}}
+      <h1>{{.Post.Title}}</h1>
+      {{if not .Post.Page}}
+      <p class="post-meta">
+        <time datetime="{{iso .Post.Date}}">{{date .Post.Date "2006 年 1 月 2 日"}}</time>
+        <span>·</span><span>{{.Minutes}} 分钟读完</span>
+        {{range .Post.Categories}}<span>·</span><span>{{.}}</span>{{end}}
+      </p>
+      {{if .Post.Tags}}<p class="post-tags">{{range .Post.Tags}}<a href="{{tagURL .}}">#{{.}}</a>{{end}}</p>{{end}}
+      {{end}}
+    </header>
+    {{with .Post.Cover}}<img class="cover" src="{{.}}" alt="" loading="lazy">{{end}}
+    <div class="prose">{{.Body}}</div>
+    {{if or .Prev .Next}}
+    <nav class="pager">
+      {{with .Prev}}<a class="prev" href="{{.URL}}"><span>上一篇</span>{{.Title}}</a>{{else}}<span></span>{{end}}
+      {{with .Next}}<a class="next" href="{{.URL}}"><span>下一篇</span>{{.Title}}</a>{{end}}
+    </nav>
+    {{end}}
+  </article>
+  {{if .TOC}}
+  <aside class="toc">
+    <h3>目录</h3>
+    <ol>{{range .TOC}}<li class="l{{.Level}}"><a href="#{{.ID}}">{{.Text}}</a></li>{{end}}</ol>
+  </aside>
+  {{end}}
+</main>
+{{template "foot" .}}{{end}}
+
+{{define "notfound"}}{{template "head" .}}
+<main class="blog-list">
+  <div class="list-head">
+    <h1>{{.Heading}}</h1>
+    <p class="sub">链接可能已经变了。<a href="/blog/">回到博客</a></p>
+  </div>
+</main>
+{{template "foot" .}}{{end}}

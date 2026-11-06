@@ -74,6 +74,10 @@ var Defs = []Def{
 	{Key: "SPOTIFY_CLIENT_SECRET", Group: "Spotify", Label: "Client Secret", Kind: Secret},
 	{Key: "SPOTIFY_REFRESH_TOKEN", Group: "Spotify", Label: "Refresh token", Help: "lifelog auth spotify", Kind: Secret},
 
+	{Key: "TRAKT_CLIENT_ID", Group: "Trakt 观影", Label: "Client ID", Help: "在 trakt.tv/oauth/applications 创建应用;Netflix 观看记录用浏览器扩展 Universal Trakt Scrobbler 同步到 Trakt", Kind: Text},
+	{Key: "TRAKT_CLIENT_SECRET", Group: "Trakt 观影", Label: "Client Secret", Kind: Secret},
+	{Key: "TRAKT_REFRESH_TOKEN", Group: "Trakt 观影", Label: "Refresh token", Help: "lifelog auth trakt;每次同步会换成新的并自动保存", Kind: Secret},
+
 	{Key: "GH_USERNAME", Group: "GitHub 贡献", Label: "用户名", Kind: Text},
 	{Key: "GH_TOKEN", Group: "GitHub 贡献", Label: "Token", Help: "fine-grained token,无需仓库权限", Kind: Secret},
 }

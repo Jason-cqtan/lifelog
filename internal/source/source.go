@@ -48,6 +48,32 @@ func SetConfig(values, defs map[string]string) {
 	cfg, defaults = values, defs
 }
 
+var saver func(key, value string) error
+
+// SetSaver installs where SaveSetting persists values: the settings table, or
+// .env without a database.
+func SetSaver(f func(key, value string) error) {
+	cfgMu.Lock()
+	defer cfgMu.Unlock()
+	saver = f
+}
+
+// SaveSetting persists a value a source obtained during sync, such as a
+// rotated refresh token, and makes Getenv return it at once.
+func SaveSetting(key, value string) error {
+	cfgMu.Lock()
+	if cfg == nil {
+		cfg = map[string]string{}
+	}
+	cfg[key] = value
+	f := saver
+	cfgMu.Unlock()
+	if f == nil {
+		return fmt.Errorf("nowhere to save %s", key)
+	}
+	return f(key, value)
+}
+
 // Getenv reads a setting: the database's value, else the environment variable
 // (trimming whitespace pasted into secrets), else its default.
 func Getenv(key string) string {

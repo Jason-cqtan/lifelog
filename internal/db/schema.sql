@@ -42,6 +42,21 @@ CREATE TABLE IF NOT EXISTS plays (
 	PRIMARY KEY (played_at, track)
 );
 
+-- movies and episodes watched: Netflix data-export rows and Trakt history
+CREATE TABLE IF NOT EXISTS watches (
+	source     text NOT NULL,
+	source_id  text NOT NULL,
+	watched_at timestamptz NOT NULL,
+	kind       text NOT NULL DEFAULT '',
+	title      text NOT NULL,
+	episode    text NOT NULL DEFAULT '',
+	seconds    integer NOT NULL DEFAULT 0,
+	device     text NOT NULL DEFAULT '',
+	updated_at timestamptz NOT NULL DEFAULT now(),
+	PRIMARY KEY (source, source_id)
+);
+CREATE INDEX IF NOT EXISTS watches_watched_at ON watches (watched_at);
+
 -- whole documents replaced on each sync (Spotify top lists, Duolingo courses);
 -- json, not jsonb, keeps them byte for byte so the data/ backup doesn't churn
 CREATE TABLE IF NOT EXISTS snapshots (

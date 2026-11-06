@@ -1,6 +1,13 @@
 # Installed to /etc/caddy/Caddyfile by install.sh ({{DOMAIN}} / {{EMAIL}} filled in).
 # Caddy gets the certificate from Let's Encrypt on first request and renews it
 # by itself (about 30 days before expiry); nothing else to schedule.
+#
+#   /            homepage            /opt/lifelog/www/index.html (web/home)
+#   /lifelog/    lifelog dashboard   /opt/lifelog/www/lifelog/ (Vite, base /lifelog/)
+#   /blog/       blog                lifelog serve (posts in the repo's data/blog)
+#   /admin/      admin page          /opt/lifelog/www/lifelog/admin/
+#   /admin/bot/  Bot Hub             telegram-bot-hub on 127.0.0.1:8090 (own login)
+#   /api/        admin API, blog API, Apple Health push → lifelog serve
 {
 	email {{EMAIL}}
 	acme_ca https://acme-v02.api.letsencrypt.org/directory
@@ -8,26 +15,48 @@
 
 {{DOMAIN}} {
 	root * /opt/lifelog/www
-	# max-strength .br/.zst/.gz written by compress.sh; anything else is compressed on the fly
-	file_server {
-		precompressed br zstd gzip
-		hide .next
-	}
 	encode zstd gzip
 
-	# admin API and scheduled sync: `lifelog serve` (deploy/lifelog.service).
-	# The admin page itself is static, at /admin/.
-	reverse_proxy /api/* 127.0.0.1:8080
-
-	# rewritten by every sync
-	header /data.json Cache-Control "no-cache"
-	header /admin/* Cache-Control "no-cache"
-	# Vite file names carry a content hash
-	header /assets/* Cache-Control "public, max-age=31536000, immutable"
 	header {
 		Strict-Transport-Security "max-age=31536000"
 		X-Content-Type-Options nosniff
 		Referrer-Policy strict-origin-when-cross-origin
+	}
+
+	redir /lifelog /lifelog/ permanent
+	redir /admin /admin/ permanent
+	redir /admin/bot /admin/bot/ permanent
+	# the dashboard used to be at the root; keep old links working
+	redir /data.json /lifelog/data.json
+	redir /routes.enc /lifelog/routes.enc
+
+	handle_path /admin/bot/* {
+		reverse_proxy 127.0.0.1:8090
+	}
+	handle /admin/* {
+		header Cache-Control "no-cache"
+		rewrite * /lifelog{uri}
+		file_server {
+			precompressed br zstd gzip
+		}
+	}
+	handle /api/* {
+		reverse_proxy 127.0.0.1:8080
+	}
+	handle /blog* {
+		reverse_proxy 127.0.0.1:8080
+	}
+	handle {
+		# the homepage and data.json change with every release or sync
+		header / Cache-Control "no-cache"
+		header /lifelog/ Cache-Control "no-cache"
+		header /lifelog/data.json* Cache-Control "no-cache"
+		# Vite file names carry a content hash
+		header /lifelog/assets/* Cache-Control "public, max-age=31536000, immutable"
+		file_server {
+			precompressed br zstd gzip
+			hide .next
+		}
 	}
 }
 

@@ -1,8 +1,19 @@
 import { useCallback, useEffect, useMemo, useState, type FormEvent } from 'react'
 import { api, Unauthorized, type Overview, type Run, type Setting } from './api'
+import { BlogTab } from './BlogTab'
 
-const TABS = { overview: '概览', settings: '设置', runs: '同步记录' } as const
-type Tab = keyof typeof TABS
+// apps and their tabs; the hash is the tab, optionally followed by /... for the tab's own route
+const APPS = [
+  { label: '博客', tabs: { blog: '文章' } },
+  { label: '生活日志', tabs: { overview: '概览', settings: '设置', runs: '同步记录' } },
+  { label: '机器人', tabs: { bot: 'Bot Hub' } },
+] as const
+const TABS = Object.assign({}, ...APPS.map((a) => a.tabs)) as Record<Tab, string>
+type Tab = 'blog' | 'overview' | 'settings' | 'runs' | 'bot'
+const tabOf = (hash: string): Tab | null => {
+  const t = hash.slice(1).split('/')[0]
+  return t in TABS ? (t as Tab) : null
+}
 
 const SOURCE_LABEL: Record<string, string> = {
   garmin: 'Garmin',
@@ -10,6 +21,8 @@ const SOURCE_LABEL: Record<string, string> = {
   strava: 'Strava',
   duolingo: '多邻国',
   spotify: 'Spotify',
+  trakt: 'Trakt 观影',
+  netflix: 'Netflix',
   github: 'GitHub 贡献',
   applehealth: 'Apple 健康',
   running_page: 'running_page',
@@ -22,23 +35,24 @@ const fmtTime = (s?: string) =>
 
 export function AdminApp() {
   const [authed, setAuthed] = useState<boolean | null>(null)
-  const [tab, setTab] = useState<Tab>(() => {
-    const h = location.hash.slice(1)
-    return h in TABS ? (h as Tab) : 'overview'
-  })
+  const [tab, setTab] = useState<Tab>(() => tabOf(location.hash) ?? 'blog')
   // a run the overview just started, so the runs tab opens on it
   const [openRun, setOpenRun] = useState<number | null>(null)
 
   useEffect(() => {
     api('me').then(() => setAuthed(true), () => setAuthed(false))
     const onHash = () => {
-      const h = location.hash.slice(1)
-      if (h in TABS) setTab(h as Tab)
+      const t = tabOf(location.hash)
+      if (t) setTab(t)
     }
     window.addEventListener('hashchange', onHash)
     return () => window.removeEventListener('hashchange', onHash)
   }, [])
   const go = (t: Tab) => {
+    if (t === tab && t === 'blog') {
+      location.hash = 'blog' // back to the post list (the editor asks about unsaved changes on its own route)
+      return
+    }
     setTab(t)
     history.replaceState(null, '', '#' + t)
   }
@@ -54,12 +68,22 @@ export function AdminApp() {
   return (
     <div className="admin">
       <header className="bar">
-        <h1>Lifelog 后台</h1>
-        <nav>
-          {(Object.keys(TABS) as Tab[]).map((t) => (
-            <button key={t} className={t === tab ? 'tab active' : 'tab'} onClick={() => go(t)}>
-              {TABS[t]}
-            </button>
+        <h1>
+          <a href="/" className="brand">
+            mdyrbz
+          </a>{' '}
+          后台
+        </h1>
+        <nav className="apps">
+          {APPS.map((a) => (
+            <div key={a.label} className="app-group">
+              <span className="app-label">{a.label}</span>
+              {(Object.keys(a.tabs) as Tab[]).map((t) => (
+                <button key={t} className={t === tab ? 'tab active' : 'tab'} onClick={() => go(t)}>
+                  {TABS[t]}
+                </button>
+              ))}
+            </div>
           ))}
         </nav>
         <div className="bar-end">
@@ -69,7 +93,9 @@ export function AdminApp() {
           </button>
         </div>
       </header>
-      <main>
+      <main className={tab === 'blog' || tab === 'bot' ? 'wide' : undefined}>
+        {tab === 'blog' && <BlogTab guard={guard} />}
+        {tab === 'bot' && <BotTab />}
         {tab === 'overview' && (
           <OverviewTab
             guard={guard}
@@ -88,6 +114,19 @@ export function AdminApp() {
 
 type Guard = (e: unknown) => void
 
+// Bot Hub (telegram-renewal-bot) runs on its own and is proxied at /admin/bot/;
+// it keeps its own login.
+function BotTab() {
+  return (
+    <section className="bot">
+      <div className="muted small bot-note">
+        Telegram 机器人后台(Bot Hub)使用自己的账号登录 · <a href="/admin/bot/" target="_blank" rel="noreferrer">新窗口打开 ↗</a>
+      </div>
+      <iframe className="bot-frame card" src="/admin/bot/" title="Bot Hub" />
+    </section>
+  )
+}
+
 function Login({ onDone }: { onDone: () => void }) {
   const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
@@ -102,7 +141,7 @@ function Login({ onDone }: { onDone: () => void }) {
   }
   return (
     <form className="login card" onSubmit={submit}>
-      <h1>Lifelog 后台</h1>
+      <h1>mdyrbz 后台</h1>
       <label>
         管理员密码
         <input type="password" autoFocus autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} />
@@ -162,7 +201,7 @@ function OverviewTab({ guard, onStarted }: { guard: Guard; onStarted: (id: numbe
 
       <section className="grid">
         {data.sources.map((s) => {
-          const syncable = s.name in SOURCE_LABEL && !['applehealth', 'running_page'].includes(s.name)
+          const syncable = s.name in SOURCE_LABEL && !['applehealth', 'running_page', 'netflix'].includes(s.name)
           return (
             <article key={s.name} className="card source">
               <header>
@@ -195,7 +234,15 @@ function OverviewTab({ guard, onStarted }: { guard: Guard; onStarted: (id: numbe
                     </dd>
                   </>
                 )}
-                {s.activities === 0 && s.daily_rows === 0 && s.name !== 'spotify' && <dd className="muted">还没有数据</dd>}
+                {s.watches > 0 && (
+                  <>
+                    <dt>观看记录</dt>
+                    <dd>
+                      {s.watches.toLocaleString()} 条 · 最近 {fmtTime(s.latest_watch)}
+                    </dd>
+                  </>
+                )}
+                {s.activities === 0 && s.daily_rows === 0 && s.watches === 0 && s.name !== 'spotify' && <dd className="muted">还没有数据</dd>}
               </dl>
               {syncable && (
                 <footer>

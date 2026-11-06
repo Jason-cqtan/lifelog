@@ -37,6 +37,8 @@ export interface SourceStats {
   latest_activity?: string
   daily_rows: number
   latest_day?: string
+  watches: number
+  latest_watch?: string
 }
 
 export interface Overview {
@@ -57,4 +59,61 @@ export interface Run {
   finished_at?: string
   status: 'running' | 'ok' | 'partial' | 'failed'
   log?: string
+}
+
+// --- blog (internal/server/blog.go)
+
+export interface PostSummary {
+  slug: string
+  title: string
+  date: string
+  updated: string
+  section: string
+  tags?: string[]
+  draft?: boolean
+  page?: boolean
+}
+
+export interface Post {
+  slug: string
+  title: string
+  date: string
+  description?: string
+  tags?: string[]
+  categories?: string[]
+  series?: string[]
+  cover?: string
+  draft?: boolean
+  page?: boolean
+  body?: string
+  updated?: string
+}
+
+export interface PostList {
+  posts: PostSummary[]
+  tags: Record<string, number>
+  backup: boolean
+}
+
+// previewPost returns the post page's HTML, rendered as it will be published.
+export async function previewPost(post: Post): Promise<string> {
+  const r = await fetch('/api/admin/blog/preview', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ post }),
+    credentials: 'same-origin',
+  })
+  if (r.status === 401) throw new Unauthorized()
+  if (!r.ok) throw new Error(`${r.status} ${r.statusText}`)
+  return r.text()
+}
+
+export async function uploadMedia(file: File): Promise<string> {
+  const form = new FormData()
+  form.append('file', file)
+  const r = await fetch('/api/admin/blog/media', { method: 'POST', body: form, credentials: 'same-origin' })
+  const data = await r.json().catch(() => ({ error: `${r.status} ${r.statusText}` }))
+  if (r.status === 401) throw new Unauthorized(data.error)
+  if (!r.ok) throw new Error(data.error ?? `${r.status} ${r.statusText}`)
+  return data.url as string
 }

@@ -31,7 +31,7 @@ fi
 
 echo "==> user and folders"
 id lifelog >/dev/null 2>&1 || useradd --system --create-home --home-dir "$HOME_DIR" --shell /bin/bash lifelog
-install -d -o lifelog -g lifelog "$HOME_DIR/bin" "$HOME_DIR/www" "$HOME_DIR/www/.next" "$HOME_DIR/.ssh"
+install -d -o lifelog -g lifelog "$HOME_DIR/bin" "$HOME_DIR/www" "$HOME_DIR/www/lifelog" "$HOME_DIR/www/lifelog/.next" "$HOME_DIR/.ssh"
 chmod 700 "$HOME_DIR/.ssh"
 # Caddy only needs to read the site
 chmod 755 "$HOME_DIR" "$HOME_DIR/www"
@@ -77,15 +77,8 @@ if [[ -d "$HOME_DIR/repo/.git" ]]; then
 fi
 
 echo "==> caddy ($DOMAIN, Let's Encrypt)"
-if [[ -n "$EMAIL" ]]; then
-  sed -e "s/{{DOMAIN}}/$DOMAIN/g" -e "s/{{EMAIL}}/$EMAIL/g" "$(dirname "$0")/Caddyfile" > /etc/caddy/Caddyfile
-else
-  # an ACME account works without a contact address; Caddy renews either way
-  sed -e "s/{{DOMAIN}}/$DOMAIN/g" -e "/email {{EMAIL}}/d" "$(dirname "$0")/Caddyfile" > /etc/caddy/Caddyfile
-fi
-caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile >/dev/null
-systemctl enable --now caddy >/dev/null
-systemctl reload caddy
+# keeps other sites already in the Caddyfile (bot.<domain> ...)
+bash "$(dirname "$0")/caddy.sh" "$DOMAIN" "$EMAIL"
 
 echo "==> lifelog service"
 # the old timer + sync.sh setup; `lifelog serve` schedules syncs itself now

@@ -74,6 +74,25 @@ type Play struct {
 
 func (p Play) Key() string { return p.PlayedAt.UTC().Format(time.RFC3339) + "|" + p.Track }
 
+// Watch is one viewing of a movie or an episode: a Netflix data-export row or a
+// Trakt history entry. Both can describe the same viewing; export decides
+// which one counts (see export.Watching).
+type Watch struct {
+	Source   string `json:"source"` // netflix | trakt
+	SourceID string `json:"source_id"`
+	// Netflix: when playback started. Trakt: when it was marked watched.
+	WatchedAt time.Time `json:"watched_at"`
+	Kind      string    `json:"kind,omitempty"` // movie | episode
+	Title     string    `json:"title"`          // the movie, or the show for an episode
+	Episode   string    `json:"episode,omitempty"`
+	// Seconds actually watched (Netflix) or the runtime (Trakt); 0 when unknown,
+	// e.g. Netflix's basic viewing-history CSV, which has dates only.
+	Seconds int    `json:"seconds,omitempty"`
+	Device  string `json:"device,omitempty"`
+}
+
+func (w Watch) Key() string { return w.Source + ":" + w.SourceID }
+
 // NormalizeType maps vendor activity types (Strava sport_type, Garmin typeKey,
 // Apple HKWorkoutActivityType...) onto our small set.
 func NormalizeType(raw string) SportType {

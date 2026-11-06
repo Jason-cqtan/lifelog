@@ -20,6 +20,7 @@ import (
 	_ "time/tzdata" // CI runners may lack zoneinfo
 
 	"github.com/Jason-cqtan/lifelog/internal/app"
+	"github.com/Jason-cqtan/lifelog/internal/blog"
 	"github.com/Jason-cqtan/lifelog/internal/export"
 	"github.com/Jason-cqtan/lifelog/internal/oauth"
 	"github.com/Jason-cqtan/lifelog/internal/server"
@@ -29,9 +30,11 @@ import (
 	"github.com/Jason-cqtan/lifelog/internal/source/duolingo"
 	"github.com/Jason-cqtan/lifelog/internal/source/garmin"
 	"github.com/Jason-cqtan/lifelog/internal/source/joyrun"
+	"github.com/Jason-cqtan/lifelog/internal/source/netflix"
 	"github.com/Jason-cqtan/lifelog/internal/source/runningpage"
 	"github.com/Jason-cqtan/lifelog/internal/source/spotify"
 	"github.com/Jason-cqtan/lifelog/internal/source/strava"
+	"github.com/Jason-cqtan/lifelog/internal/source/trakt"
 	"github.com/Jason-cqtan/lifelog/internal/store"
 	"github.com/jackc/pgx/v5/pgxpool"
 	"golang.org/x/term"
@@ -46,12 +49,14 @@ const usage = `lifelog — 个人数据同步工具
   lifelog sync [-full] [source...]         同步已配置的数据源(默认全部): %s
   lifelog import applehealth export.xml    导入 Apple 健康导出的体能训练
   lifelog import spotify-history FILE...   导入 Spotify 隐私数据导出的播放历史
+  lifelog import netflix [-profile NAME] FILE...  导入 Netflix 观看记录(ViewingActivity.csv 或 NetflixViewingHistory.csv)
   lifelog import joyrun                    从悦跑圈下载轨迹，补算 running_page 导入跑步的分段最佳(短信验证码登录)
   lifelog import running-page activities.json [-gpx GPX_OUT]  导入 running_page 的历史记录(带 GPX 时计算分段最佳)
   lifelog export [-out PATH] [-demo]       生成前端用的 data.json
-  lifelog auth strava|spotify|garmin|duolingo  一次性授权,token 写入数据库(未配置数据库时写入 .env)
+  lifelog auth strava|spotify|trakt|garmin|duolingo  一次性授权,token 写入数据库(未配置数据库时写入 .env)
   lifelog seal [-old ANSWER]               把路线加密存入 data/routes.json;-old 用于更换答案(用旧答案打开,新答案重新加密)
-  lifelog serve [-addr ADDR] [-www DIR] [-repo DIR] [-compress SCRIPT]  后台管理 + 定时同步(需要数据库)
+  lifelog serve [-addr ADDR] [-www DIR] [-repo DIR] [-blog DIR] [-compress SCRIPT]  后台管理 + 博客 + 定时同步(需要数据库)
+  lifelog blog import [-dir data/blog] [-static DIR] HUGO_CONTENT  导入 Hugo 博客的文章(content/)和图片(static/images)
   lifelog db import [-dir data] [-env .env]  把 data/*.json 和 .env 里的配置导入数据库(可重复运行)
   lifelog db dump [-dir data]              把数据库导出成 data/*.json(路线用地图答案加密)
 
@@ -73,6 +78,7 @@ func main() {
 	if pool, err = app.ConnectDB(ctx); err != nil {
 		log.Fatal("error: ", err)
 	}
+	source.SetSaver(saveSetting) // sources that rotate tokens (Trakt) save the new one here
 	switch cmd, args := os.Args[1], os.Args[2:]; cmd {
 	case "sync":
 		err = runSync(ctx, args)
@@ -88,6 +94,8 @@ func main() {
 		err = runServe(ctx, args)
 	case "db":
 		err = runDB(ctx, args)
+	case "blog":
+		err = runBlog(args)
 	default:
 		fmt.Fprintf(os.Stderr, usage, sourceNames())
 		os.Exit(2)
@@ -131,20 +139,25 @@ func runImport(args []string) error {
 		return importJoyrun()
 	}
 	if len(args) < 2 {
-		return fmt.Errorf("usage: lifelog import applehealth|spotify-history|running-page FILE...")
+		return fmt.Errorf("usage: lifelog import applehealth|spotify-history|netflix|running-page FILE...")
 	}
 	st, err := openStore()
 	if err != nil {
 		return err
 	}
-	// running-page takes an optional "-gpx DIR" (its GPX_OUT) for best efforts
-	var gpxDir string
+	// running-page takes an optional "-gpx DIR" (its GPX_OUT) for best efforts,
+	// netflix "-profile NAME" for a family account's export
+	var gpxDir, profile string
 	files := args[1:]
 	for i := 0; i < len(files); i++ {
-		if files[i] == "-gpx" && i+1 < len(files) {
-			gpxDir = files[i+1]
+		if (files[i] == "-gpx" || files[i] == "-profile") && i+1 < len(files) {
+			if files[i] == "-gpx" {
+				gpxDir = files[i+1]
+			} else {
+				profile = files[i+1]
+			}
 			files = append(files[:i:i], files[i+2:]...)
-			break
+			i--
 		}
 	}
 	for _, path := range files {
@@ -158,6 +171,8 @@ func runImport(args []string) error {
 			n, err = applehealth.Import(bufio.NewReaderSize(f, 1<<20), st)
 		case "spotify-history":
 			n, err = spotify.ImportHistory(f, st)
+		case "netflix":
+			n, err = netflix.Import(f, st, profile, location())
 		case "running-page":
 			n, err = runningpage.Import(f, st, gpxDir)
 		default:
@@ -227,7 +242,7 @@ func runSeal(args []string) error {
 
 func runAuth(ctx context.Context, args []string) error {
 	if len(args) != 1 {
-		return fmt.Errorf("usage: lifelog auth strava|spotify|garmin|duolingo")
+		return fmt.Errorf("usage: lifelog auth strava|spotify|trakt|garmin|duolingo")
 	}
 	c := &http.Client{Timeout: 30 * time.Second}
 	switch args[0] {
@@ -235,6 +250,8 @@ func runAuth(ctx context.Context, args []string) error {
 		return oauthApp(ctx, "STRAVA", "https://www.strava.com/settings/api", strava.Authorize)
 	case "spotify":
 		return oauthApp(ctx, "SPOTIFY", "https://developer.spotify.com/dashboard", spotify.Authorize)
+	case "trakt":
+		return oauthApp(ctx, "TRAKT", "https://trakt.tv/oauth/applications", trakt.Authorize)
 	case "duolingo":
 		fmt.Println("在浏览器登录 duolingo.com → 开发者工具 → Application/存储 → Cookies → 复制 jwt_token 的值")
 		fmt.Print("粘贴 jwt_token(输入不显示): ")
@@ -442,11 +459,39 @@ func runServe(ctx context.Context, args []string) error {
 	www := fs.String("www", "web/public", "site directory: data.json and routes.enc are written here")
 	repo := fs.String("repo", "", "git checkout to push data/ backups from (empty: no backup)")
 	compress := fs.String("compress", "", "script that writes .br/.zst/.gz copies of data.json (deploy/compress.sh)")
+	blogDir := fs.String("blog", "data/blog", "blog posts and media, served at /blog/ (empty: no blog)")
 	fs.Parse(args)
 	if pool == nil {
 		return errors.New("serve needs DATABASE_URL")
 	}
-	return server.New(pool, server.Options{WWW: *www, Repo: *repo, Compress: *compress}).Run(ctx, *addr)
+	srv, err := server.New(pool, server.Options{WWW: *www, Repo: *repo, Compress: *compress, Blog: *blogDir})
+	if err != nil {
+		return err
+	}
+	return srv.Run(ctx, *addr)
+}
+
+func runBlog(args []string) error {
+	if len(args) == 0 || args[0] != "import" {
+		return errors.New("usage: lifelog blog import [-dir data/blog] [-static DIR] HUGO_CONTENT")
+	}
+	fs := flag.NewFlagSet("blog import", flag.ExitOnError)
+	dir := fs.String("dir", "data/blog", "blog directory")
+	static := fs.String("static", "", "the Hugo site's static/images, copied to media/images")
+	fs.Parse(args[1:])
+	if fs.NArg() != 1 {
+		return errors.New("usage: lifelog blog import [-dir data/blog] [-static DIR] HUGO_CONTENT")
+	}
+	st, err := blog.Open(*dir)
+	if err != nil {
+		return err
+	}
+	n, err := blog.ImportHugo(st, fs.Arg(0), *static, location())
+	if err != nil {
+		return err
+	}
+	log.Printf("blog: %d posts imported into %s", n, *dir)
+	return nil
 }
 
 func runDB(ctx context.Context, args []string) error {

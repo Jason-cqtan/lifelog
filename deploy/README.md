@@ -12,13 +12,27 @@ VPS                                                     GitHub
          https://<域名>/api/*    → lifelog serve
 ```
 
+## 网站结构(mdyrbz.com)
+
+| 路径 | 内容 | 由谁提供 |
+|---|---|---|
+| `/` | 个人主页(`web/home/index.html`) | Caddy 静态文件 |
+| `/lifelog/` | 生活日志(Vite 构建,`VITE_BASE=/lifelog/`) | Caddy 静态文件 |
+| `/blog/` | 博客，文章是仓库里 `data/blog/**/*.md`,图片在 `data/blog/media/` | `lifelog serve` 渲染 |
+| `/admin/` | 后台：博客编辑、生活日志、机器人 | Caddy 静态文件 + `/api/admin/` |
+| `/admin/bot/` | Bot Hub(telegram-renewal-bot),自己的登录 | 反向代理到 127.0.0.1:8090 |
+
+博客在后台保存后立即生效;开着「同步后备份到 GitHub」时，保存 2 分钟后把 `data/blog/` 提交并推送。直接在 GitHub 上改的文章，会在下一次同步(或 `release`)拉取后出现。
+从 Hugo 导入:`lifelog blog import -static ../blog/static/images ../blog/content`。
+改了 `deploy/Caddyfile` 后:`deploy/deploy.sh caddy root@<IP> <域名> [邮箱]`(保留 Caddyfile 里其他站点，如 `bot.<域名>`)。
+
 | 文件 | 作用 |
 |---|---|
 | `deploy.sh setup` | 一次性：上传并运行 `install.sh` |
 | `install.sh` | 装 Caddy 和 PostgreSQL、建 `lifelog` 用户/数据库/GitHub 部署密钥、写 Caddy 配置、装 `lifelog.service`、开防火墙 |
 | `deploy.sh release` | 本地交叉编译 + 构建网页和后台 → 上传 → 重启 `lifelog serve`;改代码后重跑 |
 | `lifelog.service` | `lifelog serve`:后台 API、定时同步、导出网站、备份到 GitHub |
-| `Caddyfile` | HTTPS、缓存头、`/api/` 反向代理、`www.` 跳转 |
+| `Caddyfile` / `caddy.sh` | HTTPS、按路径分流(见上表)、缓存头、`www.` 跳转;`caddy.sh` 写入时保留其他站点 |
 
 服务器的 `/opt/lifelog/.env` 只放两项:`DATABASE_URL`(本机 socket,peer 认证，没有密码)和 `LIFELOG_ADMIN_PASSWORD`(后台登录密码,`install.sh` 首次运行时生成并打印)。其余配置——各数据源 token、时区、同步时间、地图问题和答案、Mapbox token——都在后台的「设置」里改。
 

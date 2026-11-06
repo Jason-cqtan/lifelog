@@ -39,10 +39,14 @@ type Output struct {
 	Timezone    string     `json:"timezone"`
 	Activities  []Activity `json:"activities"` // newest first, de-duplicated
 	// Daily maps date -> metric -> value. Metrics: <type>_km, sport_min,
-	// duolingo_minutes, duolingo_xp, spotify_minutes, github_contributions ...
+	// duolingo_minutes, duolingo_xp, spotify_minutes, watch_minutes, github_contributions ...
 	Daily map[string]map[string]float64 `json:"daily"`
 	// Music is listening stats keyed by year ("2026") and "all".
 	Music map[string]*MusicStats `json:"music,omitempty"`
+	// Watching is movies and shows watched (Netflix export, Trakt), keyed by
+	// year and "all"; RecentWatches is the newest first.
+	Watching      map[string]*WatchStats `json:"watching,omitempty"`
+	RecentWatches []RecentWatch          `json:"recent_watches,omitempty"`
 	// SpotifyTop is Spotify's own top-items ranking (not filtered by year).
 	SpotifyTop *model.SpotifyTop `json:"spotify_top,omitempty"`
 	Duolingo   *Duolingo         `json:"duolingo,omitempty"`
@@ -161,6 +165,14 @@ func Build(st *store.Store, loc *time.Location) Output {
 	}
 	if len(plays) > 0 {
 		out.Music = Music(plays, loc)
+	}
+	if watches := CountedWatches(st.Watches(), loc); len(watches) > 0 {
+		for _, w := range watches {
+			if w.Seconds > 0 {
+				add(store.DateIn(w.WatchedAt, loc), watchMetric, float64(w.Seconds)/60)
+			}
+		}
+		out.Watching, out.RecentWatches = Watching(watches, loc)
 	}
 	var top model.SpotifyTop
 	if ok, err := st.Snapshot("spotify_top", &top); ok && err == nil {

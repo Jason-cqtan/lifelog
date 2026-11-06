@@ -3,6 +3,7 @@
 #
 #   deploy/deploy.sh setup   <ssh-host> <domain> [email]   # once: Caddy, HTTPS, PostgreSQL, user, service, firewall
 #   deploy/deploy.sh release <ssh-host> [--with-env] [--import-data]
+#   deploy/deploy.sh caddy   <ssh-host> <domain> [email]   # rewrite the Caddyfile from deploy/Caddyfile
 #
 # release cross-compiles the Go binary for the server's CPU, builds the site and
 # the admin page for the domain root, uploads both and restarts `lifelog serve`.
@@ -51,15 +52,28 @@ release)
   echo "==> build (linux/$GOARCH)"
   mkdir -p build
   GOOS=linux GOARCH=$GOARCH CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o build/lifelog ./cmd/lifelog
-  # served at the domain root; the Mapbox token is set in the admin page (data.json carries it)
-  (cd web && VITE_BASE=/ npm run build --silent)
+  # the dashboard is served at /lifelog/ (the admin page, built with it, is mapped to /admin/ by
+  # Caddy); the Mapbox token is set in the admin page (data.json carries it)
+  (cd web && VITE_BASE=/lifelog/ npm run build --silent)
 
   echo "==> upload"
-  rsync -az --delete --exclude 'data.json*' --exclude 'routes.enc' --exclude .next --rsync-path="$RSYNC_PATH" web/dist/ "$HOST":/opt/lifelog/www/
+  # the dashboard used to be at the root: move its live data once, drop the old build
+  remote "if [ -f /opt/lifelog/www/data.json ] && [ ! -e /opt/lifelog/www/lifelog/data.json ]; then
+      install -d -o lifelog -g lifelog /opt/lifelog/www/lifelog
+      mv /opt/lifelog/www/data.json* /opt/lifelog/www/routes.enc* /opt/lifelog/www/lifelog/ 2>/dev/null || true
+    fi
+    rm -rf /opt/lifelog/www/assets /opt/lifelog/www/admin /opt/lifelog/www/.next /opt/lifelog/www/data.json* /opt/lifelog/www/routes.enc*
+    install -d /opt/lifelog/deploy"
+  rsync -az --delete --exclude 'data.json*' --exclude 'routes.enc*' --exclude .next --rsync-path="$RSYNC_PATH" web/dist/ "$HOST":/opt/lifelog/www/lifelog/
+  rsync -az --rsync-path="$RSYNC_PATH" web/home/index.html "$HOST":/opt/lifelog/www/index.html
   rsync -az --rsync-path="$RSYNC_PATH" build/lifelog deploy/compress.sh "$HOST":/opt/lifelog/bin/
-  remote "install -d -o lifelog -g lifelog /opt/lifelog/www/.next && chown -R lifelog:lifelog /opt/lifelog/www /opt/lifelog/bin && chmod 755 /opt/lifelog/bin/*"
+  rsync -az --rsync-path="$RSYNC_PATH" deploy/lifelog.service deploy/Caddyfile deploy/caddy.sh "$HOST":/opt/lifelog/deploy/
+  remote "install -d -o lifelog -g lifelog /opt/lifelog/www/lifelog/.next && chown -R lifelog:lifelog /opt/lifelog/www /opt/lifelog/bin && chmod 755 /opt/lifelog/bin/*
+    cmp -s /opt/lifelog/deploy/lifelog.service /etc/systemd/system/lifelog.service || { install -m 644 /opt/lifelog/deploy/lifelog.service /etc/systemd/system/; systemctl daemon-reload; }"
   echo "==> precompress site files"
-  ssh "$HOST" "cd /opt/lifelog && $AS_LIFELOG /opt/lifelog/bin/compress.sh --site /opt/lifelog/www/assets && $AS_LIFELOG /opt/lifelog/bin/compress.sh /opt/lifelog/www/index.html /opt/lifelog/www/admin/index.html"
+  ssh "$HOST" "cd /opt/lifelog && $AS_LIFELOG /opt/lifelog/bin/compress.sh --site /opt/lifelog/www/lifelog/assets && $AS_LIFELOG /opt/lifelog/bin/compress.sh /opt/lifelog/www/index.html /opt/lifelog/www/lifelog/index.html /opt/lifelog/www/lifelog/admin/index.html"
+  # blog posts live in the repo (data/blog): bring in what was pushed from elsewhere
+  ssh "$HOST" "cd /opt/lifelog/repo && $AS_LIFELOG git pull -q --rebase --autostash" || echo "warning: git pull in /opt/lifelog/repo failed; the blog shows what is checked out"
 
   if [[ -n "$WITH_ENV" ]]; then
     echo "==> settings from .env -> database"
@@ -77,8 +91,16 @@ release)
   remote "systemctl restart lifelog.service; sleep 2; systemctl is-active lifelog.service; journalctl -u lifelog.service -n 10 --no-pager"
   ;;
 
+caddy)
+  DOMAIN="${3:?usage: deploy.sh caddy <ssh-host> <domain> [email]}"
+  EMAIL="${4:-}"
+  ssh "$HOST" "$SUDO install -d /opt/lifelog/deploy"
+  rsync -az --rsync-path="$RSYNC_PATH" deploy/Caddyfile deploy/caddy.sh "$HOST":/opt/lifelog/deploy/
+  ssh "$HOST" "$SUDO bash /opt/lifelog/deploy/caddy.sh '$DOMAIN' '$EMAIL'"
+  ;;
+
 *)
-  echo "usage: deploy.sh setup <ssh-host> <domain> [email] | release <ssh-host> [--with-env] [--import-data]" >&2
+  echo "usage: deploy.sh setup <ssh-host> <domain> [email] | release <ssh-host> [--with-env] [--import-data] | caddy <ssh-host> <domain> [email]" >&2
   exit 2
   ;;
 esac

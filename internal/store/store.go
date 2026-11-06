@@ -26,6 +26,7 @@ type Store struct {
 	activities map[string]model.Activity
 	daily      map[string]model.DailyMetric
 	plays      map[string]model.Play
+	watches    map[string]model.Watch
 	// snapshots are whole documents replaced on each sync (e.g. Spotify's top
 	// lists), stored as data/snapshots/<name>.json
 	snapshots map[string]json.RawMessage
@@ -37,11 +38,11 @@ type Store struct {
 }
 
 type dirtyKeys struct {
-	activities, daily, plays, snapshots map[string]bool
+	activities, daily, plays, watches, snapshots map[string]bool
 }
 
 func newDirty() dirtyKeys {
-	return dirtyKeys{map[string]bool{}, map[string]bool{}, map[string]bool{}, map[string]bool{}}
+	return dirtyKeys{map[string]bool{}, map[string]bool{}, map[string]bool{}, map[string]bool{}, map[string]bool{}}
 }
 
 // Open reads the store under dir. answer (LIFELOG_MAP_ANSWER) opens the sealed
@@ -53,6 +54,7 @@ func Open(dir, answer string) (*Store, error) {
 		activities: map[string]model.Activity{},
 		daily:      map[string]model.DailyMetric{},
 		plays:      map[string]model.Play{},
+		watches:    map[string]model.Watch{},
 		snapshots:  map[string]json.RawMessage{},
 		dirty:      newDirty(),
 	}
@@ -89,6 +91,16 @@ func Open(dir, answer string) (*Store, error) {
 		}
 		for _, p := range plays {
 			s.plays[p.Key()] = p
+		}
+	}
+	files, _ = filepath.Glob(filepath.Join(dir, "watch", "watches-*.json"))
+	for _, f := range files {
+		watches, err := readArray[model.Watch](f)
+		if err != nil {
+			return nil, err
+		}
+		for _, w := range watches {
+			s.watches[w.Key()] = w
 		}
 	}
 	snaps, _ := filepath.Glob(filepath.Join(dir, "snapshots", "*.json"))
@@ -212,6 +224,45 @@ func (s *Store) LatestPlay() time.Time {
 	return latest
 }
 
+// PutWatch stores w, replacing an earlier copy with the same key (a re-import
+// or a Trakt entry whose metadata changed), and reports whether it is new.
+func (s *Store) PutWatch(w model.Watch) bool {
+	w.WatchedAt = w.WatchedAt.UTC()
+	old, exists := s.watches[w.Key()]
+	if exists && old == w {
+		return false
+	}
+	s.watches[w.Key()] = w
+	s.dirty.watches[w.Key()] = true
+	return !exists
+}
+
+// Watches returns every watch, oldest first.
+func (s *Store) Watches() []model.Watch {
+	out := make([]model.Watch, 0, len(s.watches))
+	for _, w := range s.watches {
+		out = append(out, w)
+	}
+	sort.Slice(out, func(i, j int) bool {
+		if !out[i].WatchedAt.Equal(out[j].WatchedAt) {
+			return out[i].WatchedAt.Before(out[j].WatchedAt)
+		}
+		return out[i].Key() < out[j].Key()
+	})
+	return out
+}
+
+// LatestWatch returns the newest watch time from source, the cursor for incremental syncs.
+func (s *Store) LatestWatch(source string) time.Time {
+	var latest time.Time
+	for _, w := range s.watches {
+		if w.Source == source && w.WatchedAt.After(latest) {
+			latest = w.WatchedAt
+		}
+	}
+	return latest
+}
+
 // Rekey seals every route again under a new answer on the next Save.
 func (s *Store) Rekey(answer string) error { return s.routes.rekey(answer) }
 
@@ -258,6 +309,16 @@ func (s *Store) saveFiles() error {
 	}
 	for y, plays := range byYear {
 		if err := writeArray(filepath.Join(s.dir, "spotify", fmt.Sprintf("plays-%d.json", y)), plays); err != nil {
+			return err
+		}
+	}
+	watchesByYear := map[int][]model.Watch{}
+	for _, w := range s.Watches() {
+		y := w.WatchedAt.Year()
+		watchesByYear[y] = append(watchesByYear[y], w)
+	}
+	for y, ws := range watchesByYear {
+		if err := writeArray(filepath.Join(s.dir, "watch", fmt.Sprintf("watches-%d.json", y)), ws); err != nil {
 			return err
 		}
 	}

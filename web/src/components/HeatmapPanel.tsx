@@ -3,6 +3,7 @@ import { useI18n } from '../i18n'
 import type { Category, Data, SportType } from '../types'
 import { DuolingoCourses } from './DuolingoCourses'
 import { Heatmap } from './Heatmap'
+import { WatchTitles } from './WatchTitles'
 import { HeatmapSkeleton } from './Loading'
 
 // the first screen shows Heatmap, so it ships with the main bundle; "all years" is on demand
@@ -52,7 +53,10 @@ export function HeatmapPanel({ category, year, data, onDrill, onOpen }: Props) {
       activities: category.sport ? data.activities.filter((a) => a.type === category.sport && (year === 'all' || a.date.startsWith(String(year)))) : undefined,
       onDrill,
       onOpen,
-      extra: category.key === 'duolingo' && data.duolingo ? <DuolingoCourses data={data.duolingo} period={String(year)} /> : undefined,
+      extra:
+        category.key === 'duolingo' && data.duolingo ? <DuolingoCourses data={data.duolingo} period={String(year)} />
+        : category.key === 'watch' && data.watching?.[String(year)] ? <WatchTitles stats={data.watching[String(year)]} />
+        : undefined,
     }
     content = (
       <PanelBoundary fallback={
