@@ -57,6 +57,30 @@ a { color: inherit; text-decoration: none; }
 
 /* ---------- 背景:粒子场 + 极光 + 颗粒 ---------- */
 #field { position: fixed; inset: 0; z-index: -3; width: 100%; height: 100%; }
+/* sky: sun top-left by day, twinkling stars by night, rain/snow on #weather */
+#sky { position: fixed; inset: 0; z-index: -2; pointer-events: none; overflow: hidden; }
+#weather { position: fixed; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none; }
+.sun { position: absolute; left: -170px; top: -170px; width: 520px; height: 520px; opacity: 0; transition: opacity 1.6s ease; }
+.sun::before { content: ""; position: absolute; inset: 0; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,214,120,.95) 0 13%, rgba(255,190,90,.45) 22%, rgba(255,170,80,.16) 42%, transparent 66%); }
+.sun i { position: absolute; inset: -40%; border-radius: 50%;
+  background: repeating-conic-gradient(from 0deg, rgba(255,205,120,.20) 0deg 4deg, transparent 4deg 15deg);
+  -webkit-mask: radial-gradient(circle, transparent 14%, #000 22%, transparent 62%); mask: radial-gradient(circle, transparent 14%, #000 22%, transparent 62%);
+  animation: spin 90s linear infinite; }
+#sky.sun-on .sun { opacity: 1; }
+#sky.sun-on.sun-dim .sun { opacity: .55; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.stars { position: absolute; inset: 0; opacity: 0; transition: opacity 1.6s ease; }
+#sky.stars-on .stars { opacity: 1; }
+#sky.stars-on.stars-few .stars { opacity: .35; }
+.stars i { position: absolute; border-radius: 50%; background: #fff; animation: twinkle 3s ease-in-out infinite; }
+.stars i.big { box-shadow: 0 0 6px 1px rgba(200,215,255,.8); }
+@keyframes twinkle { 0%, 100% { opacity: .15; transform: scale(.7); } 50% { opacity: 1; transform: scale(1.15); } }
+.shoot { position: absolute; top: 12%; left: 70%; width: 120px; height: 1.5px; opacity: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,.9), transparent); transform: rotate(-24deg); }
+#sky.stars-on:not(.stars-few) .shoot { animation: shoot 11s ease-in 3s infinite; }
+@keyframes shoot { 0%, 90% { opacity: 0; translate: 0 0; } 92% { opacity: 1; } 100% { opacity: 0; translate: -340px 150px; } }
+@media (prefers-reduced-motion: reduce) { .sun i, .stars i, .shoot { animation: none !important; } }
 .aurora { position: fixed; inset: -20%; z-index: -4; filter: blur(90px); opacity: .55; pointer-events: none; }
 .aurora i { position: absolute; border-radius: 50%; animation: drift 22s ease-in-out infinite alternate; }
 .aurora i:nth-child(1) { width: 45vw; height: 45vw; left: 5%; top: 0; background: var(--accent-2); opacity: .35; }
@@ -229,6 +253,8 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
 </head>
 <body>
 <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+<div id="sky" aria-hidden="true"><div class="sun"><i></i></div><div class="stars"></div><b class="shoot"></b></div>
+<canvas id="weather" aria-hidden="true"></canvas>
 <canvas id="field" aria-hidden="true"></canvas>
 <div class="grain" aria-hidden="true"></div>
 <div class="tip" id="tip"></div>
@@ -389,10 +415,13 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
       navYear: "这一年", navApps: "应用", navNow: "现在", navBlog: "博客", navLifelog: "生活日志", navContact: "联系",
       themeLabel: "切换明暗主题", langLabel: "English",
       statusLoading: "重庆 · 正在加载最近的动态…", statusFailed: "重庆 · 数据暂时没加载出来",
-      status: (ago, km) => `重庆 · ${ago}跑了 ${km} km`,
+      status: (ago, km) => `${ago}跑了 ${km} km`, city: "重庆",
       meaning: "：管好自己的事，把它做好。",
-      intro: "我是 <strong>Jason</strong>，一个住在重庆的程序员，主要写 Go。<br>平时在",
-      words: ["写代码", "夜跑", "学英语", "听周杰伦", "记录生活", "折腾服务器"],
+      intro: "我是 <strong>Jason</strong>，住在重庆的程序员，爱跑步，也爱把日子记成数据。<br>平时在",
+      words: (style) => ["写代码", "跑步", "学英语", `听${style}`, "记录生活", "折腾服务器"],
+      styles: { mandopop: "华语流行", rnb: "R&B", edm: "电子乐", pop: "欧美流行", indie: "独立音乐", kpop: "韩流", rock: "摇滚" },
+      styleAnd: (a, b) => b ? `${a}和${b}` : a,
+      wx: { clear: "晴", cloudy: "多云", overcast: "阴", fog: "有雾", drizzle: "毛毛雨", rain: "小雨", heavy: "大雨", storm: "雷阵雨", snow: "下雪" },
       ctaApps: "看看我在做什么", ctaBlog: "读博客",
       statKm: "累计跑步距离", statRuns: "累计跑步次数", unitRuns: "次", statXp: "多邻国经验值", statPosts: "博客文章", unitPosts: "篇",
       yearTitle: "这一年，每天做了什么", yearDesc: "每一格是一天。数据由 Lifelog 每天三次自动同步：手表、多邻国、GitHub、Spotify。",
@@ -424,10 +453,13 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
       navYear: "Year", navApps: "Apps", navNow: "Now", navBlog: "Blog", navLifelog: "Lifelog", navContact: "Contact",
       themeLabel: "Toggle light/dark", langLabel: "中文",
       statusLoading: "Chongqing · loading the latest…", statusFailed: "Chongqing · data didn't load this time",
-      status: (ago, km) => `Chongqing · ran ${km} km ${ago}`,
+      status: (ago, km) => `ran ${km} km ${ago}`, city: "Chongqing",
       meaning: ": take care of your own things, and do them well.",
-      intro: "I'm <strong>Jason</strong>, a programmer in Chongqing, mostly writing Go.<br>Usually",
-      words: ["writing code", "running at night", "learning English", "listening to Jay Chou", "logging my days", "tinkering with servers"],
+      intro: "I'm <strong>Jason</strong>, a programmer in Chongqing who loves running and turning everyday life into data.<br>Usually",
+      words: (style) => ["writing code", "running", "learning English", `listening to ${style}`, "logging my days", "tinkering with servers"],
+      styles: { mandopop: "Mandopop", rnb: "R&B", edm: "electronic", pop: "Western pop", indie: "indie", kpop: "K-pop", rock: "rock" },
+      styleAnd: (a, b) => b ? `${a} and ${b}` : a,
+      wx: { clear: "clear", cloudy: "partly cloudy", overcast: "overcast", fog: "foggy", drizzle: "drizzle", rain: "light rain", heavy: "heavy rain", storm: "thunderstorm", snow: "snow" },
       ctaApps: "See what I'm building", ctaBlog: "Read the blog",
       statKm: "Total running distance", statRuns: "Total runs", unitRuns: "runs", statXp: "Duolingo XP", statPosts: "Blog posts", unitPosts: "posts",
       yearTitle: "A year, one day at a time", yearDesc: "Each square is a day, synced by Lifelog three times a day from my watch, Duolingo, GitHub and Spotify.",
@@ -459,6 +491,33 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
   let lang = store.get("lang");
   if (lang !== "zh" && lang !== "en") lang = navigator.language.toLowerCase().startsWith("zh") ? "zh" : "en";
   const t = (k) => I18N[lang][k];
+
+  // Spotify no longer gives genres, so styles come from this hand-kept list of artists
+  // he listens to (anything with a Chinese name counts as Mandopop).
+  const ARTIST_STYLE = {
+    "Jay Chou": "mandopop", "Stefanie Sun": "mandopop", "JJ Lin": "mandopop", "Joanna Wang": "mandopop", "Tanya Chua": "mandopop",
+    "A-Mei Chang": "mandopop", "Zhang Zhen Yue": "mandopop", "Bibi Zhou": "mandopop", "JOLIN": "mandopop", "Dave Wang": "mandopop", "Eason Chan": "mandopop",
+    "Leah Dou": "indie", "Solar Heavy": "indie",
+    "SZA": "rnb", "The Weeknd": "rnb", "Frank Ocean": "rnb", "Daniel Caesar": "rnb", "FKA twigs": "rnb", "Doja Cat": "rnb",
+    "Kygo": "edm", "Avicii": "edm", "ODESZA": "edm", "Robin Schulz": "edm", "Capo Productions": "edm", "Calvin Harris": "edm", "Martin Garrix": "edm",
+    "Ed Sheeran": "pop", "Dua Lipa": "pop", "OneRepublic": "pop", "Ellie Goulding": "pop", "Taylor Swift": "pop", "Bruno Mars": "pop", "Céline Dion": "pop", "Coldplay": "rock",
+    "G-DRAGON": "kpop", "BLACKPINK": "kpop", "BTS": "kpop",
+  };
+  let styles = ["mandopop"]; // until data.json arrives
+  // the two styles that weigh most among Spotify's recent top artists (higher rank, more weight)
+  function recentStyles(life) {
+    const r = (life.spotify_top && life.spotify_top.ranges) || {};
+    const artists = (r.short_term || r.medium_term || { artists: [] }).artists || [];
+    const score = {};
+    artists.slice(0, 20).forEach((a, i) => {
+      const st = ARTIST_STYLE[a.name] || (/[\u4e00-\u9fff]/.test(a.name) ? "mandopop" : null);
+      if (st) score[st] = (score[st] || 0) + (20 - i);
+    });
+    const top = Object.entries(score).sort((a, b) => b[1] - a[1]).map(([k]) => k);
+    return top.length ? top.slice(0, 2) : styles;
+  }
+  const styleText = () => t("styleAnd")(...styles.map((k) => t("styles")[k]));
+  const words = () => t("words")(styleText());
   const LOCALE = { zh: "zh-CN", en: "en-US" };
   function applyLang() {
     document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
@@ -471,21 +530,131 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
   applyLang();
   $("#lang").onclick = () => {
     lang = lang === "zh" ? "en" : "zh"; store.set("lang", lang); applyLang();
-    wi = 0; ci = t("words")[0].length; rot.textContent = t("words")[0];
+    wi = 0; ci = words()[0].length; rot.textContent = words()[0];
+    updateStatus(); paintSky();
     if (D) render(true);
     if (termStarted) typeTerm();
   };
 
   var termGen = 0, termStarted = false;
 
-  /* ---------- 主题 ---------- */
-  const saved = store.get("theme");
-  if (saved) document.documentElement.dataset.theme = saved;
-  else if (matchMedia("(prefers-color-scheme: light)").matches) document.documentElement.dataset.theme = "light";
+  /* ---------- 天空:按重庆的白天/黑夜切换主题，按重庆的天气下雨、出太阳、亮星星 ---------- */
+  const CITY = { lat: 29.56, lon: 106.55, tz: "Asia/Shanghai" };
+  let WX = null, dataFailed = false; // WX: { code, temp, isDay }
+  const session = { get(k) { try { return sessionStorage.getItem(k); } catch { return null; } }, set(k, v) { try { sessionStorage.setItem(k, v); } catch {} } };
+  // until the weather arrives: 07:00–18:00 in Chongqing counts as day
+  const cqHour = () => +new Intl.DateTimeFormat("en-US", { hour: "numeric", hourCycle: "h23", timeZone: CITY.tz }).format(new Date());
+  const isDay = () => WX ? WX.isDay : cqHour() >= 7 && cqHour() < 18;
+  function applyTheme() {
+    const manual = session.get("home-theme"); // the ◐ button wins for this visit
+    document.documentElement.dataset.theme = manual || (isDay() ? "light" : "dark");
+  }
+  applyTheme();
   $("#theme").onclick = () => {
-    const t = document.documentElement.dataset.theme === "light" ? "dark" : "light";
-    document.documentElement.dataset.theme = t; store.set("theme", t); paintHeat();
+    const next = document.documentElement.dataset.theme === "light" ? "dark" : "light";
+    session.set("home-theme", next); applyTheme(); paintHeat(); paintSky();
   };
+  // WMO weather codes → what the sky shows
+  function kind(code) {
+    if (code <= 1) return "clear";
+    if (code === 2) return "cloudy";
+    if (code === 3) return "overcast";
+    if (code === 45 || code === 48) return "fog";
+    if (code >= 51 && code <= 57) return "drizzle";
+    if (code === 61 || code === 80 || code === 66) return "rain";
+    if (code === 63 || code === 65 || code === 67 || code === 81 || code === 82) return "heavy";
+    if (code >= 71 && code <= 77 || code === 85 || code === 86) return "snow";
+    if (code >= 95) return "storm";
+    return "cloudy";
+  }
+  function updateStatus() {
+    const parts = [t("city")];
+    if (WX) parts.push(`${t("wx")[kind(WX.code)]} ${Math.round(WX.temp)}°`);
+    const la = D && D.latest_activity;
+    if (la) parts.push(t("status")(ago(la.date), la.km));
+    else if (!D) parts.push(dataFailed ? t("statusFailed").split(" · ")[1] : t("statusLoading").split(" · ")[1]);
+    $("#status").textContent = parts.join(" · ");
+  }
+  function loadWeather() {
+    const q = `latitude=${CITY.lat}&longitude=${CITY.lon}&current=weather_code,is_day,temperature_2m&timezone=${encodeURIComponent(CITY.tz)}`;
+    fetch("https://api.open-meteo.com/v1/forecast?" + q).then((r) => r.json()).then((d) => {
+      WX = { code: d.current.weather_code, temp: d.current.temperature_2m, isDay: d.current.is_day === 1 };
+      applyTheme(); updateStatus(); paintSky(); if (D) paintHeat();
+    }).catch(() => paintSky()); // no weather: day/night by the clock only
+  }
+  // test hook: /?sky=rain|heavy|storm|snow|clear|drizzle&night=1
+  const qs = new URLSearchParams(location.search);
+  if (qs.has("sky")) { WX = { code: { clear: 0, cloudy: 2, drizzle: 53, rain: 61, heavy: 65, storm: 95, snow: 73 }[qs.get("sky")] ?? 0, temp: 18, isDay: qs.get("night") !== "1" }; applyTheme(); }
+  else { loadWeather(); setInterval(loadWeather, 15 * 60e3); }
+  setInterval(() => { if (!WX) { applyTheme(); paintSky(); } }, 5 * 60e3);
+
+  // stars: fixed positions, each twinkling on its own clock
+  const starBox = $("#sky .stars");
+  starBox.innerHTML = Array.from({ length: 150 }, () => {
+    const big = Math.random() < .12, size = big ? 2.4 + Math.random() : .8 + Math.random() * 1.2;
+    return `<i class="${big ? "big" : ""}" style="left:${(Math.random() * 100).toFixed(2)}%;top:${(Math.random() * 72).toFixed(2)}%;width:${size.toFixed(1)}px;height:${size.toFixed(1)}px;animation-duration:${(2 + Math.random() * 4).toFixed(2)}s;animation-delay:${(-Math.random() * 6).toFixed(2)}s"></i>`;
+  }).join("");
+
+  const wc = $("#weather"), wctx = wc.getContext("2d");
+  let drops = [], precip = null, flashAt = 0;
+  function sizeWeather() {
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    wc.width = innerWidth * dpr; wc.height = innerHeight * dpr; wctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  addEventListener("resize", () => { sizeWeather(); seedDrops(); });
+  function seedDrops() {
+    const n = { drizzle: 70, rain: 140, heavy: 260, storm: 260, snow: 120 }[precip] || 0;
+    const scale = Math.min(1.4, innerWidth * innerHeight / 1.2e6);
+    drops = Array.from({ length: Math.round(n * Math.max(.45, scale)) }, () => newDrop(true));
+  }
+  function newDrop(anywhere) {
+    const snow = precip === "snow";
+    return {
+      x: Math.random() * (innerWidth + 200) - 100, y: anywhere ? Math.random() * innerHeight : -20 - Math.random() * 80,
+      v: snow ? .6 + Math.random() * .9 : (precip === "drizzle" ? 5 : 9) + Math.random() * 6,
+      len: snow ? 1.5 + Math.random() * 2.5 : (precip === "drizzle" ? 7 : 12) + Math.random() * 12,
+      a: .25 + Math.random() * .45, ph: Math.random() * 6.28,
+    };
+  }
+  function paintSky() {
+    const k = WX ? kind(WX.code) : null, day = isDay();
+    const wet = ["drizzle", "rain", "heavy", "storm", "snow"].includes(k);
+    const sky = $("#sky");
+    sky.classList.toggle("sun-on", day && (k === "clear" || k === "cloudy" || (!WX && day)));
+    sky.classList.toggle("sun-dim", k === "cloudy");
+    sky.classList.toggle("stars-on", !day && !wet && k !== "fog");
+    sky.classList.toggle("stars-few", k === "overcast");
+    const next = wet ? k : null;
+    if (next !== precip) { precip = next; sizeWeather(); seedDrops(); if (precip && !raining) { raining = true; requestAnimationFrame(rain); } }
+  }
+  let raining = false;
+  function rain(ts) {
+    wctx.clearRect(0, 0, innerWidth, innerHeight);
+    if (!precip) { raining = false; return; }
+    const light = document.documentElement.dataset.theme === "light";
+    const rgb = light ? "70,90,130" : "190,210,255", snow = precip === "snow";
+    const wind = snow ? .4 : 1.6;
+    for (const d of drops) {
+      if (snow) {
+        d.ph += .02; d.x += Math.sin(d.ph) * .5 + wind * .3; d.y += d.v;
+        wctx.fillStyle = `rgba(${light ? "120,135,170" : "235,242,255"},${d.a + .2})`;
+        wctx.beginPath(); wctx.arc(d.x, d.y, d.len, 0, 7); wctx.fill();
+      } else {
+        d.x += wind; d.y += d.v;
+        wctx.strokeStyle = `rgba(${rgb},${d.a})`; wctx.lineWidth = precip === "drizzle" ? .8 : 1.1;
+        wctx.beginPath(); wctx.moveTo(d.x, d.y); wctx.lineTo(d.x - wind * d.len / d.v, d.y - d.len); wctx.stroke();
+      }
+      if (d.y > innerHeight + 20 || d.x > innerWidth + 120) Object.assign(d, newDrop(false));
+    }
+    if (precip === "storm") {
+      if (ts > flashAt + 7000 && Math.random() < .004) flashAt = ts;
+      const f = ts - flashAt;
+      if (f < 380) { wctx.fillStyle = `rgba(255,255,255,${(f < 80 || (f > 160 && f < 240) ? .22 : .06)})`; wctx.fillRect(0, 0, innerWidth, innerHeight); }
+    }
+    if (reduce) { raining = false; return; } // one still frame
+    requestAnimationFrame(rain);
+  }
+  paintSky();
 
   /* ---------- 标题逐字出现 ---------- */
   let delay = 0;
@@ -500,14 +669,14 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
 
   /* ---------- 打字轮播 ---------- */
   const rot = $("#rotator");
-  rot.textContent = t("words")[0];
-  let wi = 0, ci = t("words")[0].length, del = true;
+  rot.textContent = words()[0];
+  let wi = 0, ci = words()[0].length, del = true;
   if (!reduce) (function tick() {
-    const words = t("words");
-    if (wi >= words.length) wi = 0;
-    if (del) { ci--; if (ci === 0) { del = false; wi = (wi + 1) % words.length; } }
-    else { ci++; if (ci === words[wi].length) { del = true; rot.textContent = words[wi]; return setTimeout(tick, 1800); } }
-    rot.textContent = words[wi].slice(0, ci) || " ";
+    const ws = words();
+    if (wi >= ws.length) wi = 0;
+    if (del) { ci--; if (ci === 0) { del = false; wi = (wi + 1) % ws.length; } }
+    else { ci++; if (ci === ws[wi].length) { del = true; rot.textContent = ws[wi]; return setTimeout(tick, 1800); } }
+    rot.textContent = ws[wi].slice(0, ci) || " ";
     setTimeout(tick, del ? 60 : 120);
   })();
 
@@ -569,8 +738,8 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
   Promise.all([
     fetch("/lifelog/data.json", { cache: "no-cache" }).then((r) => r.json()),
     fetch("/api/blog/posts?limit=5").then((r) => r.json()).catch(() => ({ total: 0, posts: [] })),
-  ]).then(([life, blog]) => { D = summarize(life, blog); render(); }).catch(() => {
-    $("#status").textContent = t("statusFailed");
+  ]).then(([life, blog]) => { styles = recentStyles(life); D = summarize(life, blog); render(); }).catch(() => {
+    dataFailed = true; updateStatus();
   });
 
   const isoDay = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
@@ -627,7 +796,7 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
   // again: re-render after a language switch, without replaying the entrance animations
   function render(again) {
     const s = D.stats, la = D.latest_activity;
-    if (la) $("#status").textContent = t("status")(ago(la.date), la.km);
+    updateStatus();
     if (again) {
       $$("[data-count]").forEach((el) => {
         const v = el.hasAttribute("data-k") ? Math.round(s[el.dataset.count] / 1000) : s[el.dataset.count];
