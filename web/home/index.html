@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jason · To be better me</title>
+<meta name="description" content="Jason 的个人主页：写代码、跑步、记录每天做了什么。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #07080c;
+  --bg-2: #0d0f16;
+  --card: rgba(255,255,255,.035);
+  --card-border: rgba(255,255,255,.08);
+  --fg: #eef0f6;
+  --muted: #8b90a3;
+  --faint: #4a4f61;
+  --accent: #7cf5c4;
+  --accent-2: #8b7bff;
+  --accent-3: #ff7ab6;
+  --cell-0: rgba(255,255,255,.05);
+  --grain-opacity: .07;
+  --shadow: 0 30px 80px -30px rgba(0,0,0,.8);
+  color-scheme: dark;
+}
+:root[data-theme="light"] {
+  --bg: #f6f5f1;
+  --bg-2: #ecebe5;
+  --card: rgba(255,255,255,.7);
+  --card-border: rgba(10,12,20,.09);
+  --fg: #12131a;
+  --muted: #5c6070;
+  --faint: #a4a7b3;
+  --accent: #0aa877;
+  --accent-2: #5b46f0;
+  --accent-3: #e0337f;
+  --cell-0: rgba(10,12,20,.06);
+  --grain-opacity: .04;
+  --shadow: 0 30px 60px -30px rgba(20,20,40,.25);
+  color-scheme: light;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.65 "Space Grotesk", -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background .5s, color .5s;
+}
+a { color: inherit; text-decoration: none; }
+.mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+.wrap { width: min(1180px, 100% - 32px); margin-inline: auto; }
+
+/* ---------- 背景:粒子场 + 极光 + 颗粒 ---------- */
+#field { position: fixed; inset: 0; z-index: -3; width: 100%; height: 100%; }
+.aurora { position: fixed; inset: -20%; z-index: -4; filter: blur(90px); opacity: .55; pointer-events: none; }
+.aurora i { position: absolute; border-radius: 50%; animation: drift 22s ease-in-out infinite alternate; }
+.aurora i:nth-child(1) { width: 45vw; height: 45vw; left: 5%; top: 0; background: var(--accent-2); opacity: .35; }
+.aurora i:nth-child(2) { width: 38vw; height: 38vw; right: 0; top: 20%; background: var(--accent); opacity: .22; animation-duration: 28s; }
+.aurora i:nth-child(3) { width: 30vw; height: 30vw; left: 35%; bottom: 0; background: var(--accent-3); opacity: .18; animation-duration: 34s; }
+@keyframes drift { to { transform: translate(8vw, 6vh) scale(1.15); } }
+.grain { position: fixed; inset: 0; z-index: 50; pointer-events: none; opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+/* ---------- 导航 ---------- */
+nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-index: 40;
+  display: flex; align-items: center; gap: 4px; padding: 6px; border-radius: 999px;
+  background: color-mix(in srgb, var(--bg) 70%, transparent); border: 1px solid var(--card-border);
+  backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4); }
+nav a, nav button { font: 500 14px/1 inherit; font-family: inherit; color: var(--muted); padding: 9px 14px; border-radius: 999px;
+  background: none; border: 0; cursor: pointer; transition: color .2s, background .2s; white-space: nowrap; }
+nav a:hover, nav button:hover { color: var(--fg); background: var(--card); }
+nav .logo { color: var(--fg); font-weight: 700; letter-spacing: -.02em; }
+nav .logo b { color: var(--accent); }
+@media (max-width: 640px) { nav .hide-sm { display: none; } }
+
+/* ---------- 首屏 ---------- */
+.hero { min-height: 100svh; display: grid; align-content: center; padding: 120px 0 80px; position: relative; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; color: var(--muted);
+  padding: 6px 14px 6px 8px; border: 1px solid var(--card-border); border-radius: 999px; background: var(--card); width: fit-content; }
+.pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 0 var(--accent); animation: pulse 2s infinite; }
+@keyframes pulse { 70% { box-shadow: 0 0 0 10px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+h1 { font-size: clamp(56px, 11vw, 168px); line-height: .92; letter-spacing: -.055em; font-weight: 700; margin: 28px 0 28px; }
+h1 .line { display: block; overflow: hidden; padding-bottom: .06em; }
+h1 .ch { display: inline-block; transform: translateY(110%); animation: rise .9s cubic-bezier(.2,.8,.2,1) forwards; }
+h1 .grad { background: linear-gradient(100deg, var(--accent) 0%, var(--accent-2) 45%, var(--accent-3) 90%);
+  background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: rise .9s cubic-bezier(.2,.8,.2,1) forwards, sweep 6s linear infinite; }
+@keyframes rise { to { transform: none; } }
+@keyframes sweep { to { background-position: -200% 0; } }
+.intro { font-size: clamp(18px, 2.2vw, 22px); color: var(--muted); max-width: 640px; }
+.intro strong { color: var(--fg); font-weight: 500; }
+.rotator { display: inline-block; color: var(--accent); min-width: 4em; }
+.rotator::after { content: "▍"; animation: blink 1s steps(1) infinite; margin-left: 2px; color: var(--accent); }
+@keyframes blink { 50% { opacity: 0; } }
+.cta { display: flex; gap: 12px; margin-top: 36px; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 999px; font-weight: 500;
+  border: 1px solid var(--card-border); background: var(--card); transition: transform .25s cubic-bezier(.2,.8,.2,1), background .2s; will-change: transform; }
+.btn.primary { background: var(--fg); color: var(--bg); border-color: transparent; }
+.btn:hover { background: color-mix(in srgb, var(--fg) 12%, transparent); }
+.btn.primary:hover { background: var(--accent); }
+.btn svg { width: 16px; height: 16px; }
+.scroll-hint { position: absolute; bottom: 28px; left: 0; font-size: 12px; color: var(--faint); display: flex; align-items: center; gap: 10px; }
+.scroll-hint i { width: 1px; height: 40px; background: linear-gradient(var(--faint), transparent); animation: drop 2s ease-in-out infinite; transform-origin: top; }
+@keyframes drop { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); } 100% { transform: scaleY(1); opacity: 0; } }
+
+/* ---------- 数字 ---------- */
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border); }
+.stat { padding: 32px 24px; border-right: 1px solid var(--card-border); }
+.stat:last-child { border-right: 0; }
+.stat .num { font-size: clamp(36px, 5vw, 60px); font-weight: 700; letter-spacing: -.04em; line-height: 1; }
+.stat .num small { font-size: .4em; color: var(--muted); font-weight: 500; margin-left: 4px; letter-spacing: 0; }
+.stat .label { color: var(--muted); font-size: 14px; margin-top: 10px; }
+@media (max-width: 760px) { .stats { grid-template-columns: repeat(2, 1fr); } .stat:nth-child(2) { border-right: 0; } .stat:nth-child(-n+2) { border-bottom: 1px solid var(--card-border); } .stat { padding: 24px 16px; } }
+
+/* ---------- 区块通用 ---------- */
+section { padding: 120px 0 0; }
+.sec-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 36px; flex-wrap: wrap; }
+.sec-head h2 { font-size: clamp(32px, 5vw, 56px); letter-spacing: -.04em; line-height: 1; }
+.sec-head p { color: var(--muted); max-width: 420px; }
+.kicker { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s cubic-bezier(.2,.8,.2,1), transform 1s cubic-bezier(.2,.8,.2,1); }
+.reveal.in { opacity: 1; transform: none; }
+
+/* ---------- 卡片(鼠标聚光) ---------- */
+.card { position: relative; border-radius: 24px; background: var(--card); border: 1px solid var(--card-border); padding: 28px; overflow: hidden; box-shadow: var(--shadow);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); isolation: isolate; transition: transform .4s cubic-bezier(.2,.8,.2,1), border-color .3s; }
+.card::before { content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0; transition: opacity .3s;
+  background: radial-gradient(500px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--accent) 14%, transparent), transparent 45%); }
+.card:hover::before { opacity: 1; }
+.card:hover { border-color: color-mix(in srgb, var(--accent) 35%, var(--card-border)); }
+.card h3 { font-size: 22px; letter-spacing: -.02em; display: flex; align-items: center; gap: 10px; }
+.card .tag { font-size: 11px; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--card-border); color: var(--muted); font-weight: 400; letter-spacing: .04em; }
+.card .sub { color: var(--muted); font-size: 14px; margin-top: 6px; }
+.card .go { position: absolute; top: 24px; right: 24px; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center;
+  border: 1px solid var(--card-border); transition: transform .3s, background .3s, color .3s; }
+.card:hover .go { transform: rotate(-45deg); background: var(--accent); color: #07080c; }
+.card .go svg { width: 16px; height: 16px; }
+
+/* ---------- 热力图 ---------- */
+.heat-card { padding: 28px 28px 22px; }
+.heat-top { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 22px; }
+.tabs { display: flex; gap: 4px; padding: 4px; border-radius: 999px; background: var(--cell-0); max-width: 100%; overflow-x: auto; scrollbar-width: none; }
+.tabs button { flex: none; }
+.tabs button { font: 500 13px/1 inherit; font-family: inherit; padding: 8px 14px; border-radius: 999px; border: 0; background: none; color: var(--muted); cursor: pointer; transition: all .2s; }
+.tabs button.on { background: var(--fg); color: var(--bg); }
+.heat-scroll { overflow-x: auto; padding-bottom: 6px; scrollbar-width: thin; }
+.heat { display: grid; grid-template-rows: 16px repeat(7, 1fr); grid-auto-flow: column; grid-auto-columns: minmax(11px, 1fr); gap: 4px; min-width: 700px; }
+.heat .m { font-size: 11px; color: var(--faint); white-space: nowrap; }
+.heat .c { aspect-ratio: 1; border-radius: 3px; background: var(--cell-0); transform: scale(0); transition: background .4s, transform .5s cubic-bezier(.3,1.6,.5,1); }
+.heat.in .c { transform: scale(1); }
+.heat .c:hover { outline: 2px solid var(--fg); outline-offset: 1px; }
+.heat .c.future { visibility: hidden; }
+.heat-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; font-size: 13px; color: var(--muted); gap: 12px; flex-wrap: wrap; }
+.legend { display: flex; align-items: center; gap: 4px; }
+.legend i { width: 11px; height: 11px; border-radius: 3px; }
+.tip { position: fixed; z-index: 60; pointer-events: none; padding: 10px 12px; border-radius: 12px; font-size: 12px; line-height: 1.6;
+  background: var(--fg); color: var(--bg); opacity: 0; transform: translate(-50%, -110%) translateY(-8px); transition: opacity .15s; white-space: nowrap; }
+.tip.on { opacity: 1; }
+
+/* ---------- 应用 Bento ---------- */
+.bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+.bento .blog { grid-column: span 4; }
+.bento .run { grid-column: span 2; }
+.bento .music { grid-column: span 2; }
+.bento .bot { grid-column: span 2; }
+.bento .more { grid-column: span 2; }
+@media (max-width: 960px) { .bento .blog { grid-column: span 6; } .bento .run, .bento .music, .bento .bot, .bento .more { grid-column: span 3; } }
+@media (max-width: 640px) { .bento > * { grid-column: span 6 !important; } .card { padding: 22px; } }
+.posts { list-style: none; margin-top: 22px; }
+.posts li a { display: grid; grid-template-columns: 1fr auto; gap: 16px; padding: 14px 0; border-top: 1px solid var(--card-border); transition: padding .3s, color .2s; }
+.posts li a:hover { padding-left: 10px; color: var(--accent); }
+.posts .d { color: var(--faint); font-size: 13px; }
+.big { font-size: 56px; font-weight: 700; letter-spacing: -.05em; line-height: 1; margin-top: 28px; }
+.big small { font-size: 18px; color: var(--muted); font-weight: 500; letter-spacing: 0; }
+.ring { position: relative; width: 120px; height: 120px; margin: 22px 0 6px; }
+.ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.ring circle { fill: none; stroke-width: 10; }
+.ring .bgc { stroke: var(--cell-0); }
+.ring .fgc { stroke: url(#rg); stroke-linecap: round; stroke-dasharray: 327; stroke-dashoffset: 327; transition: stroke-dashoffset 1.8s cubic-bezier(.2,.8,.2,1); }
+.ring b { position: absolute; inset: 0; display: grid; place-items: center; font-size: 22px; letter-spacing: -.03em; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px 16px; color: var(--muted); font-size: 13px; margin-top: 12px; }
+.meta span b { color: var(--fg); font-weight: 600; }
+.eq { display: flex; align-items: end; gap: 3px; height: 34px; margin-top: 26px; }
+.eq i { width: 5px; border-radius: 2px; background: linear-gradient(var(--accent-3), var(--accent-2)); animation: eq 1s ease-in-out infinite alternate; }
+@keyframes eq { from { height: 15%; } to { height: 100%; } }
+.track { margin-top: 14px; font-size: 20px; font-weight: 600; letter-spacing: -.02em; }
+.artists { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.artists span { font-size: 12px; padding: 4px 10px; border-radius: 999px; background: var(--cell-0); color: var(--muted); }
+.term { margin-top: 22px; border-radius: 14px; background: #05060a; color: #c9d1e4; padding: 14px 16px; font-size: 12.5px; line-height: 1.8; min-height: 132px; border: 1px solid rgba(255,255,255,.06); }
+.term .p { color: #7cf5c4; }
+.term .k { color: #8b7bff; }
+.term .cursor { display: inline-block; width: 7px; height: 14px; background: #7cf5c4; vertical-align: -2px; animation: blink 1s steps(1) infinite; }
+.more { display: grid; align-content: space-between; min-height: 260px; border-style: dashed !important; background: transparent !important; }
+.more .plus { font-size: 64px; line-height: 1; font-weight: 300; color: var(--faint); transition: transform .5s, color .3s; }
+.more:hover .plus { transform: rotate(90deg); color: var(--accent); }
+
+/* ---------- 现在 ---------- */
+.now { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 760px) { .now { grid-template-columns: 1fr; } }
+.now-list { list-style: none; }
+.now-list li { display: grid; grid-template-columns: 76px 1fr; gap: 16px; padding: 18px 0; border-top: 1px solid var(--card-border); }
+.now-list li:first-child { border-top: 0; padding-top: 4px; }
+.now-list .k { color: var(--muted); font-size: 13px; padding-top: 2px; }
+.motto { font-size: clamp(22px, 2.6vw, 30px); letter-spacing: -.02em; line-height: 1.4; font-weight: 500; }
+.motto em { font-style: normal; color: var(--accent); }
+
+/* ---------- 联系 ---------- */
+.contact { padding: 160px 0 60px; text-align: center; }
+.contact h2 { font-size: clamp(56px, 12vw, 180px); letter-spacing: -.06em; line-height: .9; font-weight: 700; }
+.contact h2 span { display: inline-block; transition: transform .4s cubic-bezier(.3,1.6,.5,1), color .3s; }
+.contact h2 span:hover { transform: translateY(-12px) rotate(-6deg); color: var(--accent); }
+.contact p { color: var(--muted); margin: 24px auto 40px; max-width: 460px; }
+.socials { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: var(--faint); font-size: 13px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  h1 .ch { transform: none; } .reveal { opacity: 1; transform: none; } .heat .c { transform: none; }
+}
+</style>
+</head>
+<body>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+<canvas id="field" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+<div class="tip" id="tip"></div>
+
+<nav>
+  <a class="logo" href="#top">Jason<b>.</b></a>
+  <a href="#year" class="hide-sm">这一年</a>
+  <a href="#apps">应用</a>
+  <a href="#now" class="hide-sm">现在</a>
+  <a href="/blog/">博客</a>
+  <a href="/lifelog/" class="hide-sm">生活日志</a>
+  <a href="#contact">联系</a>
+  <button id="theme" aria-label="切换明暗主题">◐</button>
+</nav>
+
+<main class="wrap" id="top">
+  <header class="hero">
+    <div class="eyebrow"><span class="pulse"></span><span id="status">重庆 · 正在加载最近的动态…</span></div>
+    <h1 aria-label="To be better me.">
+      <span class="line" data-split>To be</span>
+      <span class="line" data-split data-grad>better me.</span>
+    </h1>
+    <p class="intro">我是 <strong>Jason</strong>，一个住在重庆的程序员，主要写 Go。<br>
+      平时在 <span class="rotator" id="rotator">写代码</span></p>
+    <div class="cta">
+      <a class="btn primary magnetic" href="#apps">看看我在做什么
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
+      <a class="btn magnetic" href="/blog/">读博客</a>
+    </div>
+    <div class="scroll-hint mono"><i></i>SCROLL</div>
+  </header>
+
+  <div class="stats reveal" id="stats">
+    <div class="stat"><div class="num mono" data-count="run_km_all">0<small>km</small></div><div class="label">累计跑步距离</div></div>
+    <div class="stat"><div class="num mono" data-count="runs_all">0<small>次</small></div><div class="label">累计跑步次数</div></div>
+    <div class="stat"><div class="num mono" data-count="duolingo_xp" data-k>0<small>k XP</small></div><div class="label">多邻国经验值</div></div>
+    <div class="stat"><div class="num mono" data-count="posts">0<small>篇</small></div><div class="label">博客文章</div></div>
+  </div>
+
+  <section id="year">
+    <div class="sec-head reveal">
+      <div><div class="kicker mono">01 / Lifelog</div><h2>这一年，每天做了什么</h2></div>
+      <p>每一格是一天。数据由 Lifelog 每天三次自动同步：手表、多邻国、GitHub、Spotify。</p>
+    </div>
+    <div class="card heat-card reveal">
+      <div class="heat-top">
+        <div class="tabs" id="tabs">
+          <button data-mode="all" class="on">综合</button>
+          <button data-mode="run">跑步</button>
+          <button data-mode="learn">学习</button>
+          <button data-mode="code">代码</button>
+          <button data-mode="music">听歌</button>
+        </div>
+        <div class="mono" style="color:var(--muted);font-size:13px" id="heat-sum"></div>
+      </div>
+      <div class="heat-scroll"><div class="heat" id="heat"></div></div>
+      <div class="heat-foot">
+        <span id="heat-updated" class="mono"></span>
+        <span class="legend">少 <i></i><i></i><i></i><i></i><i></i> 多</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="apps">
+    <div class="sec-head reveal">
+      <div><div class="kicker mono">02 / Apps</div><h2>平台上的应用</h2></div>
+      <p>博客、Lifelog、Telegram 机器人都会挂在同一个平台下面，以后还会加新应用。</p>
+    </div>
+    <div class="bento">
+      <div class="card blog reveal">
+        <a class="go" href="/blog/" aria-label="打开博客"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <h3>博客 <span class="tag mono">BLOG</span></h3>
+        <div class="sub">Go、Kubernetes、Elasticsearch、网络折腾笔记</div>
+        <ul class="posts" id="posts"></ul>
+      </div>
+      <a class="card run reveal" href="/lifelog/">
+        <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        <h3>跑步 <span class="tag mono">LIFELOG</span></h3>
+        <div class="sub" id="run-sub">今年跑量</div>
+        <div class="ring">
+          <svg viewBox="0 0 120 120"><defs><linearGradient id="rg" x1="0" x2="1"><stop offset="0" stop-color="var(--accent)"/><stop offset="1" stop-color="var(--accent-2)"/></linearGradient></defs>
+            <circle class="bgc" cx="60" cy="60" r="52"/><circle class="fgc" id="ring" cx="60" cy="60" r="52"/></svg>
+          <b class="mono" id="ring-num">0</b>
+        </div>
+        <div class="meta" id="run-meta"></div>
+      </a>
+      <div class="card music reveal">
+        <h3>在听 <span class="tag mono">SPOTIFY</span></h3>
+        <div class="sub" id="music-sub">今年听歌时长</div>
+        <div class="eq" id="eq" aria-hidden="true"></div>
+        <div class="track" id="track"></div>
+        <div class="artists" id="artists"></div>
+      </div>
+      <div class="card bot reveal">
+        <h3>机器人 <span class="tag mono">BOT HUB</span></h3>
+        <div class="sub">统一管理多个 Telegram 机器人，cron 定时执行</div>
+        <div class="term mono" id="term"></div>
+      </div>
+      <div class="card more reveal">
+        <div class="plus">+</div>
+        <div><h3>下一个应用</h3><div class="sub">平台留好了接口，新应用实现一个 App 接口就能接进来。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="now">
+    <div class="sec-head reveal">
+      <div><div class="kicker mono">03 / Now</div><h2>最近在忙</h2></div>
+      <p>这一节参考 Derek Sivers 的 /now 页面，写的是此刻在做的事，会随时更新。</p>
+    </div>
+    <div class="now">
+      <div class="card reveal">
+        <ul class="now-list">
+          <li><span class="k mono">在做</span><span>把博客、Lifelog、Telegram 机器人合并成一个平台，统一登录、调度和样式</span></li>
+          <li><span class="k mono">在跑</span><span id="now-run">—</span></li>
+          <li><span class="k mono">在学</span><span id="now-learn">—</span></li>
+          <li><span class="k mono">在听</span><span id="now-listen">—</span></li>
+        </ul>
+      </div>
+      <div class="card reveal" style="display:grid;align-content:space-between;gap:28px">
+        <p class="motto">想清楚，写清楚，说清楚，<br>才是<em>真正的清楚</em>。</p>
+        <p class="sub mono" id="now-updated"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2 class="reveal" id="hello" aria-label="Say hi.">Say hi.</h2>
+    <p class="reveal">想聊技术、跑步，或者一起做点什么，都可以找我。</p>
+    <div class="socials reveal">
+      <a class="btn primary magnetic" href="mailto:uniqueacheng@gmail.com">Email</a>
+      <a class="btn magnetic" href="https://t.me/aeiou_93">Telegram</a>
+      <a class="btn magnetic" href="https://github.com/Jason-cqtan">GitHub</a>
+      <a class="btn magnetic" href="https://twitter.com/O_achengtan">X / Twitter</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2019–<span id="yr"></span> Jason · To be better me.</span>
+    <span class="mono">Made in 重庆</span>
+  </footer>
+</main>
+
+<script>
+(() => {
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const $ = (s, el = document) => el.querySelector(s);
+  const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  $("#yr").textContent = new Date().getFullYear();
+
+  /* ---------- 主题 ---------- */
+  const store = { get(k) { try { return localStorage.getItem(k); } catch { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch {} } };
+  const saved = store.get("theme");
+  if (saved) document.documentElement.dataset.theme = saved;
+  else if (matchMedia("(prefers-color-scheme: light)").matches) document.documentElement.dataset.theme = "light";
+  $("#theme").onclick = () => {
+    const t = document.documentElement.dataset.theme === "light" ? "dark" : "light";
+    document.documentElement.dataset.theme = t; store.set("theme", t); paintHeat();
+  };
+
+  /* ---------- 标题逐字出现 ---------- */
+  let delay = 0;
+  $$("[data-split]").forEach((line) => {
+    const grad = line.hasAttribute("data-grad");
+    line.innerHTML = [...line.textContent].map((c) => {
+      const s = `<span class="ch${grad ? " grad" : ""}" style="animation-delay:${(delay += 0.035).toFixed(3)}s${grad ? `,${delay.toFixed(3)}s` : ""}">${c === " " ? "&nbsp;" : c}</span>`;
+      return s;
+    }).join("");
+  });
+  $("#hello").innerHTML = [..."Say hi."].map((c) => `<span>${c === " " ? "&nbsp;" : c}</span>`).join("");
+
+  /* ---------- 打字轮播 ---------- */
+  const words = ["写代码", "夜跑", "学英语", "听许嵩", "记录生活", "折腾服务器"];
+  const rot = $("#rotator");
+  let wi = 0, ci = words[0].length, del = true;
+  if (!reduce) (function tick() {
+    const w = words[wi];
+    if (del) { ci--; if (ci === 0) { del = false; wi = (wi + 1) % words.length; } }
+    else { ci++; if (ci === words[wi].length) { del = true; rot.textContent = words[wi]; return setTimeout(tick, 1800); } }
+    rot.textContent = words[wi].slice(0, ci) || " ";
+    setTimeout(tick, del ? 60 : 120);
+  })();
+
+  /* ---------- 粒子场:点会被鼠标推开,近处连线 ---------- */
+  const cv = $("#field"), ctx = cv.getContext("2d");
+  let W, H, pts = [], mouse = { x: -9999, y: -9999 };
+  function resize() {
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    W = innerWidth; H = innerHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const n = Math.min(110, Math.floor(W * H / 14000));
+    pts = Array.from({ length: n }, () => ({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .3, vy: (Math.random() - .5) * .3 }));
+  }
+  addEventListener("resize", resize); resize();
+  addEventListener("pointermove", (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+  addEventListener("pointerleave", () => { mouse.x = mouse.y = -9999; });
+  function frame() {
+    ctx.clearRect(0, 0, W, H);
+    const light = document.documentElement.dataset.theme === "light";
+    const rgb = light ? "20,22,40" : "200,210,255";
+    for (const p of pts) {
+      const dx = p.x - mouse.x, dy = p.y - mouse.y, d2 = dx * dx + dy * dy;
+      if (d2 < 22000) { const f = (22000 - d2) / 22000 * .6; p.vx += dx / Math.sqrt(d2 + 1) * f; p.vy += dy / Math.sqrt(d2 + 1) * f; }
+      p.vx *= .96; p.vy *= .96; p.vx += (Math.random() - .5) * .02; p.vy += (Math.random() - .5) * .02;
+      p.x += p.vx + .05; p.y += p.vy;
+      if (p.x < -10) p.x = W + 10; if (p.x > W + 10) p.x = -10; if (p.y < -10) p.y = H + 10; if (p.y > H + 10) p.y = -10;
+    }
+    for (let i = 0; i < pts.length; i++) {
+      const a = pts[i];
+      for (let j = i + 1; j < pts.length; j++) {
+        const b = pts[j], d = Math.hypot(a.x - b.x, a.y - b.y);
+        if (d < 130) { ctx.strokeStyle = `rgba(${rgb},${(1 - d / 130) * .16})`; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); }
+      }
+      ctx.fillStyle = `rgba(${rgb},.5)`; ctx.beginPath(); ctx.arc(a.x, a.y, 1.3, 0, 7); ctx.fill();
+    }
+    requestAnimationFrame(frame);
+  }
+  if (!reduce) frame();
+
+  /* ---------- 卡片聚光 + 磁吸按钮 ---------- */
+  $$(".card").forEach((c) => c.addEventListener("pointermove", (e) => {
+    const r = c.getBoundingClientRect(); c.style.setProperty("--mx", e.clientX - r.left + "px"); c.style.setProperty("--my", e.clientY - r.top + "px");
+  }));
+  if (!reduce && matchMedia("(hover: hover)").matches) $$(".magnetic").forEach((b) => {
+    b.addEventListener("pointermove", (e) => { const r = b.getBoundingClientRect(); b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .25}px,${(e.clientY - r.top - r.height / 2) * .35}px)`; });
+    b.addEventListener("pointerleave", () => { b.style.transform = ""; });
+  });
+
+  /* ---------- 滚动出现 ---------- */
+  const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); e.target.dispatchEvent(new Event("inview")); io.unobserve(e.target); } }), { threshold: .15 });
+  $$(".reveal").forEach((el) => io.observe(el));
+
+  /* ---------- 数据 ---------- */
+  let D;
+  const fmt = (n) => n.toLocaleString("zh-CN");
+  const pace = (s) => `${Math.floor(s / 60)}'${String(s % 60).padStart(2, "0")}"`;
+  const ago = (iso) => { const d = Math.round((Date.now() - new Date(iso)) / 864e5); return d <= 0 ? "今天" : d === 1 ? "昨天" : `${d} 天前`; };
+
+  // the lifelog export (/lifelog/data.json, rewritten by every sync) and the blog's post list
+  Promise.all([
+    fetch("/lifelog/data.json", { cache: "no-cache" }).then((r) => r.json()),
+    fetch("/api/blog/posts?limit=5").then((r) => r.json()).catch(() => ({ total: 0, posts: [] })),
+  ]).then(([life, blog]) => { D = summarize(life, blog); render(); }).catch(() => {
+    $("#status").textContent = "重庆 · 数据暂时没加载出来";
+  });
+
+  const isoDay = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  function summarize(life, blog) {
+    const daily = life.daily || {}, music = life.music || {};
+    const acts = [...(life.activities || [])].sort((a, b) => (b.start_local || b.date).localeCompare(a.start_local || a.date));
+    const gen = new Date(life.generated_at), year = String(gen.getFullYear());
+    // the last 53 weeks from a Monday; per day: [run+ride km, sport min, duolingo min, github, music min]
+    const today = new Date(gen.getFullYear(), gen.getMonth(), gen.getDate());
+    const start = new Date(today); start.setDate(start.getDate() - ((today.getDay() + 6) % 7) - 52 * 7);
+    const days = [];
+    for (const d = new Date(start); d <= today; d.setDate(d.getDate() + 1)) {
+      const v = daily[isoDay(d)] || {};
+      days.push([+((v.run_km || 0) + (v.ride_km || 0)).toFixed(2), Math.round(v.sport_min || 0), +(v.duolingo_minutes || 0).toFixed(1), v.github_contributions || 0, Math.round(v.spotify_minutes || 0)]);
+    }
+    const runs = acts.filter((a) => a.type === "run"), runsYear = runs.filter((a) => a.date.startsWith(year));
+    const sumKm = (xs) => Math.round(xs.reduce((n, a) => n + a.distance_m, 0) / 1000);
+    const inYear = Object.entries(daily).filter(([k]) => k.startsWith(year));
+    const my = music[year] || {};
+    const latest = acts.find((a) => a.distance_m >= 1000); // skip warm-ups and other short entries
+    const ranges = (life.spotify_top && life.spotify_top.ranges) || {};
+    const top = ranges.short_term || ranges.long_term || { artists: [] };
+    return {
+      generated_at: life.generated_at,
+      year,
+      heatmap: { start: isoDay(start), days },
+      stats: {
+        run_km_year: sumKm(runsYear), runs_year: runsYear.length, run_km_all: sumKm(runs), runs_all: runs.length,
+        music_hours_year: Math.round((my.ms || 0) / 3.6e6),
+        github_year: inYear.reduce((n, [, v]) => n + (v.github_contributions || 0), 0),
+        duolingo_xp: (life.duolingo && life.duolingo.total_xp) || 0,
+        duolingo_days_year: inYear.filter(([, v]) => v.duolingo_minutes).length,
+        posts: blog.total || 0,
+      },
+      latest_activity: latest && {
+        type: latest.type, name: latest.name || "", date: latest.date, km: +(latest.distance_m / 1000).toFixed(2),
+        minutes: Math.round(latest.moving_time_s / 60), pace_s_per_km: Math.round(latest.moving_time_s / (latest.distance_m / 1000)), avg_hr: latest.avg_hr,
+      },
+      music_top_track: (my.top_tracks || [])[0] || null,
+      music_top_artists: (top.artists || []).slice(0, 5).map((a) => a.name),
+      posts: (blog.posts || []).map((p) => ({ title: p.title, url: p.url, date: p.date.slice(0, 10) })),
+    };
+  }
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+
+  function countUp(el, to, k) {
+    const small = el.querySelector("small").outerHTML, target = k ? Math.round(to / 1000) : to;
+    if (reduce) { el.innerHTML = fmt(target) + small; return; }
+    const t0 = performance.now(), dur = 1600;
+    (function step(t) { const p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 4); el.innerHTML = fmt(Math.round(target * e)) + small; if (p < 1) requestAnimationFrame(step); })(t0);
+  }
+
+  function render() {
+    const s = D.stats, la = D.latest_activity;
+    if (la) $("#status").textContent = `重庆 · ${ago(la.date)}跑了 ${la.km} km`;
+    $("#stats").addEventListener("inview", () => $$("[data-count]").forEach((el) => countUp(el, s[el.dataset.count], el.hasAttribute("data-k"))), { once: true });
+    if ($("#stats").classList.contains("in")) $("#stats").dispatchEvent(new Event("inview"));
+
+    // 博客
+    $("#posts").innerHTML = D.posts.slice(0, 5).map((p) => `<li><a href="${esc(p.url)}"><span>${esc(p.title)}</span><span class="d mono">${p.date}</span></a></li>`).join("");
+
+    // 跑步:今年跑量对比 500km 目标
+    const goal = 500;
+    $("#run-sub").textContent = `${D.year} 年跑量 / 目标 ${goal} km`;
+    const runCard = $(".run");
+    runCard.addEventListener("inview", () => {
+      $("#ring").style.strokeDashoffset = 327 * (1 - Math.min(1, s.run_km_year / goal));
+      countUp(Object.assign($("#ring-num"), { innerHTML: "0<small></small>" }), s.run_km_year);
+    }, { once: true });
+    if (runCard.classList.contains("in")) runCard.dispatchEvent(new Event("inview"));
+    $("#run-meta").innerHTML = `<span><b>${s.runs_year}</b> 次</span>` + (la ? `<span>最近 <b>${la.km}</b> km · <b>${pace(la.pace_s_per_km)}</b>/km</span>` : "");
+
+    // 音乐
+    $("#eq").innerHTML = Array.from({ length: 22 }, (_, i) => `<i style="animation-delay:${(-Math.random()).toFixed(2)}s;animation-duration:${(.5 + Math.random() * .8).toFixed(2)}s"></i>`).join("");
+    $("#music-sub").textContent = `${D.year} 年听了 ${s.music_hours_year} 小时`;
+    const tt = D.music_top_track;
+    if (tt) $("#track").innerHTML = `${tt.track} <span style="color:var(--muted);font-weight:400;font-size:15px">· ${tt.artist}</span>`;
+    $("#artists").innerHTML = D.music_top_artists.map((a) => `<span>${a}</span>`).join("");
+
+    // Now
+    if (la) $("#now-run").textContent = `${D.year} 年已跑 ${s.run_km_year} km，最近一次 ${la.date} ${la.name} ${la.km} km，配速 ${pace(la.pace_s_per_km)}`;
+    $("#now-learn").textContent = `多邻国，${D.year} 年已经打卡 ${s.duolingo_days_year} 天，总经验值 ${fmt(s.duolingo_xp)}`;
+    $("#now-listen").textContent = `${D.music_top_artists.slice(0, 3).join("、")}${tt ? `，今年循环最多的是《${tt.track}》` : ""}`;
+    $("#now-updated").textContent = `数据更新于 ${new Date(D.generated_at).toLocaleString("zh-CN", { hour12: false })}`;
+    $("#heat-updated").textContent = `更新于 ${D.generated_at.slice(0, 10)}`;
+
+    buildHeat();
+  }
+
+  /* ---------- 热力图 ---------- */
+  const MODES = {
+    all:   { color: "--accent",   tip: "综合", score: (d) => Math.min(1, d[0] / 8) * .35 + Math.min(1, d[2] / 10) * .2 + Math.min(1, d[3] / 4) * .2 + Math.min(1, d[4] / 90) * .25, steps: [.08, .3, .5, .7], sum: () => `${D.stats.run_km_year} km · ${D.stats.github_year} 次提交 · ${D.stats.music_hours_year} 小时音乐` },
+    run:   { color: "--accent",   tip: "跑步", score: (d) => d[0], steps: [.1, 3, 6, 10], sum: (days) => `${days.filter((d) => d[0] > 0).length} 天有运动 · ${Math.round(days.reduce((a, d) => a + d[0], 0))} km` },
+    learn: { color: "--accent-2", tip: "多邻国", score: (d) => d[2], steps: [.1, 5, 10, 20], sum: (days) => `${days.filter((d) => d[2] > 0).length} 天在学习 · ${Math.round(days.reduce((a, d) => a + d[2], 0) / 60)} 小时` },
+    code:  { color: "--accent-2", tip: "GitHub", score: (d) => d[3], steps: [1, 3, 6, 10], sum: (days) => `${days.reduce((a, d) => a + d[3], 0)} 次贡献` },
+    music: { color: "--accent-3", tip: "听歌", score: (d) => d[4], steps: [1, 30, 60, 120], sum: (days) => `${Math.round(days.reduce((a, d) => a + d[4], 0) / 60)} 小时音乐` },
+  };
+  let mode = "all";
+  const level = (v, st) => v >= st[3] ? 4 : v >= st[2] ? 3 : v >= st[1] ? 2 : v >= st[0] ? 1 : 0;
+  const shade = (base, l) => l === 0 ? "var(--cell-0)" : `color-mix(in srgb, ${base} ${[0, 30, 55, 78, 100][l]}%, transparent)`;
+
+  function buildHeat() {
+    const h = $("#heat"), start = new Date(D.heatmap.start + "T00:00:00"), days = D.heatmap.days;
+    const weeks = Math.ceil(days.length / 7);
+    let html = "", lastMonth = -1;
+    for (let w = 0; w < weeks; w++) {
+      const d0 = new Date(start); d0.setDate(d0.getDate() + w * 7);
+      const m = d0.getMonth();
+      html += `<span class="m mono">${m !== lastMonth && d0.getDate() <= 7 ? `${m + 1}月` : ""}</span>`;
+      if (d0.getDate() <= 7) lastMonth = m;
+      for (let i = 0; i < 7; i++) {
+        const idx = w * 7 + i;
+        html += idx < days.length ? `<i class="c" data-i="${idx}" style="transition-delay:${(w * 12 + i * 8)}ms"></i>` : `<i class="c future"></i>`;
+      }
+    }
+    h.innerHTML = html;
+    paintHeat();
+    h.parentElement.scrollLeft = h.parentElement.scrollWidth; // 手机上先显示最近几个月
+    const card = $(".heat-card");
+    const show = () => setTimeout(() => { h.classList.add("in"); setTimeout(() => $$(".c", h).forEach((c) => (c.style.transitionDelay = "0ms")), 1400); }, 200);
+    if (card.classList.contains("in")) show(); else card.addEventListener("inview", show, { once: true });
+
+    const tip = $("#tip");
+    h.addEventListener("pointerover", (e) => {
+      const c = e.target.closest(".c[data-i]"); if (!c) return;
+      const i = +c.dataset.i, d = days[i], dt = new Date(start); dt.setDate(dt.getDate() + i);
+      const parts = [d[0] && `🏃 ${d[0]} km`, d[2] && `🦉 ${d[2]} 分钟`, d[3] && `⌨️ ${d[3]} 次提交`, d[4] && `🎧 ${d[4]} 分钟`].filter(Boolean);
+      tip.innerHTML = `<b>${dt.getFullYear()}-${String(dt.getMonth() + 1).padStart(2, "0")}-${String(dt.getDate()).padStart(2, "0")}</b><br>${parts.join("<br>") || "休息日"}`;
+      const r = c.getBoundingClientRect(); tip.style.left = r.left + r.width / 2 + "px"; tip.style.top = r.top + "px"; tip.classList.add("on");
+    });
+    h.addEventListener("pointerleave", () => tip.classList.remove("on"));
+    addEventListener("scroll", () => tip.classList.remove("on"), { passive: true });
+  }
+
+  function paintHeat() {
+    if (!D) return;
+    const m = MODES[mode], base = `var(${m.color})`, days = D.heatmap.days;
+    $$("#heat .c[data-i]").forEach((c) => { c.style.background = shade(base, level(m.score(days[+c.dataset.i]), m.steps)); });
+    $$(".legend i").forEach((el, l) => (el.style.background = shade(base, l)));
+    $("#heat-sum").textContent = m.sum(days);
+  }
+  $("#tabs").addEventListener("click", (e) => {
+    const b = e.target.closest("button"); if (!b) return;
+    $$("#tabs button").forEach((x) => x.classList.toggle("on", x === b)); mode = b.dataset.mode; paintHeat();
+  });
+
+  /* ---------- 机器人终端 ---------- */
+  const lines = [
+    ["p", "$ bothub status"],
+    ["", "<span class='k'>●</span> 续费提醒   cron <span class='p'>0 9 L * *</span>"],
+    ["", "<span class='k'>●</span> 定时消息   cron <span class='p'>30 8 * * 1-5</span>"],
+    ["", "  发送后置顶 ✓ · 失败自动重试 ✓"],
+    ["p", "$ bothub next"],
+    ["", "→ 下一次执行: <span class='p' id='nx'></span>"],
+  ];
+  const term = $("#term");
+  function nextWeekday830() { const d = new Date(); d.setSeconds(0, 0); d.setHours(8, 30); do { if (d > new Date() && d.getDay() % 6) break; d.setDate(d.getDate() + 1); d.setHours(8, 30); } while (true); return d.toLocaleString("zh-CN", { month: "numeric", day: "numeric", weekday: "short", hour: "2-digit", minute: "2-digit", hour12: false }); }
+  function typeTerm() {
+    term.innerHTML = ""; let li = 0;
+    (function nextLine() {
+      if (li >= lines.length) { term.insertAdjacentHTML("beforeend", "<span class='cursor'></span>"); $("#nx").textContent = nextWeekday830(); return setTimeout(typeTerm, 6000); }
+      const [cls, txt] = lines[li++], div = document.createElement("div"); if (cls) div.className = cls; term.appendChild(div);
+      if (cls === "p" && !reduce) { let i = 0; (function t() { div.textContent = txt.slice(0, ++i); if (i < txt.length) setTimeout(t, 45); else setTimeout(nextLine, 350); })(); }
+      else { div.innerHTML = txt; setTimeout(nextLine, reduce ? 0 : 220); }
+    })();
+  }
+  const botCard = $(".bot");
+  botCard.addEventListener("inview", typeTerm, { once: true });
+})();
+</script>
+</body>
+</html>

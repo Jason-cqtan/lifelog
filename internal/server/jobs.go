@@ -144,6 +144,7 @@ func (s *Server) runJob(ctx context.Context, logger *log.Logger, names []string,
 			logger.Printf("backup: %v", err)
 			status = "partial"
 		}
+		s.reloadBlog(logger) // the pull may have brought posts edited elsewhere
 	}
 	logger.Printf("done: %s", status)
 	return status

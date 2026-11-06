@@ -20,6 +20,7 @@ import (
 	_ "time/tzdata" // CI runners may lack zoneinfo
 
 	"github.com/Jason-cqtan/lifelog/internal/app"
+	"github.com/Jason-cqtan/lifelog/internal/blog"
 	"github.com/Jason-cqtan/lifelog/internal/export"
 	"github.com/Jason-cqtan/lifelog/internal/oauth"
 	"github.com/Jason-cqtan/lifelog/internal/server"
@@ -54,7 +55,8 @@ const usage = `lifelog — 个人数据同步工具
   lifelog export [-out PATH] [-demo]       生成前端用的 data.json
   lifelog auth strava|spotify|trakt|garmin|duolingo  一次性授权,token 写入数据库(未配置数据库时写入 .env)
   lifelog seal [-old ANSWER]               把路线加密存入 data/routes.json;-old 用于更换答案(用旧答案打开,新答案重新加密)
-  lifelog serve [-addr ADDR] [-www DIR] [-repo DIR] [-compress SCRIPT]  后台管理 + 定时同步(需要数据库)
+  lifelog serve [-addr ADDR] [-www DIR] [-repo DIR] [-blog DIR] [-compress SCRIPT]  后台管理 + 博客 + 定时同步(需要数据库)
+  lifelog blog import [-dir data/blog] [-static DIR] HUGO_CONTENT  导入 Hugo 博客的文章(content/)和图片(static/images)
   lifelog db import [-dir data] [-env .env]  把 data/*.json 和 .env 里的配置导入数据库(可重复运行)
   lifelog db dump [-dir data]              把数据库导出成 data/*.json(路线用地图答案加密)
 
@@ -92,6 +94,8 @@ func main() {
 		err = runServe(ctx, args)
 	case "db":
 		err = runDB(ctx, args)
+	case "blog":
+		err = runBlog(args)
 	default:
 		fmt.Fprintf(os.Stderr, usage, sourceNames())
 		os.Exit(2)
@@ -455,11 +459,39 @@ func runServe(ctx context.Context, args []string) error {
 	www := fs.String("www", "web/public", "site directory: data.json and routes.enc are written here")
 	repo := fs.String("repo", "", "git checkout to push data/ backups from (empty: no backup)")
 	compress := fs.String("compress", "", "script that writes .br/.zst/.gz copies of data.json (deploy/compress.sh)")
+	blogDir := fs.String("blog", "data/blog", "blog posts and media, served at /blog/ (empty: no blog)")
 	fs.Parse(args)
 	if pool == nil {
 		return errors.New("serve needs DATABASE_URL")
 	}
-	return server.New(pool, server.Options{WWW: *www, Repo: *repo, Compress: *compress}).Run(ctx, *addr)
+	srv, err := server.New(pool, server.Options{WWW: *www, Repo: *repo, Compress: *compress, Blog: *blogDir})
+	if err != nil {
+		return err
+	}
+	return srv.Run(ctx, *addr)
+}
+
+func runBlog(args []string) error {
+	if len(args) == 0 || args[0] != "import" {
+		return errors.New("usage: lifelog blog import [-dir data/blog] [-static DIR] HUGO_CONTENT")
+	}
+	fs := flag.NewFlagSet("blog import", flag.ExitOnError)
+	dir := fs.String("dir", "data/blog", "blog directory")
+	static := fs.String("static", "", "the Hugo site's static/images, copied to media/images")
+	fs.Parse(args[1:])
+	if fs.NArg() != 1 {
+		return errors.New("usage: lifelog blog import [-dir data/blog] [-static DIR] HUGO_CONTENT")
+	}
+	st, err := blog.Open(*dir)
+	if err != nil {
+		return err
+	}
+	n, err := blog.ImportHugo(st, fs.Arg(0), *static, location())
+	if err != nil {
+		return err
+	}
+	log.Printf("blog: %d posts imported into %s", n, *dir)
+	return nil
 }
 
 func runDB(ctx context.Context, args []string) error {

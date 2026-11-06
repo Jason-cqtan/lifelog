@@ -25,6 +25,7 @@ type Options struct {
 	WWW      string // site directory for data.json
 	Repo     string // git checkout for the data/ backup; empty: none
 	Compress string // deploy/compress.sh, optional
+	Blog     string // blog posts and media (data/blog); empty: no blog
 }
 
 type Server struct {
@@ -32,13 +33,22 @@ type Server struct {
 	opt  Options
 	jobs *jobs
 	auth *auth
+	blog *blogApp // nil without Options.Blog
 
 	pushMu    sync.Mutex
 	pushTimer *time.Timer
 }
 
-func New(pool *pgxpool.Pool, opt Options) *Server {
-	return &Server{pool: pool, opt: opt, jobs: newJobs(), auth: &auth{pool: pool}}
+func New(pool *pgxpool.Pool, opt Options) (*Server, error) {
+	s := &Server{pool: pool, opt: opt, jobs: newJobs(), auth: &auth{pool: pool}}
+	if opt.Blog != "" {
+		b, err := newBlogApp(opt.Blog, opt.Repo)
+		if err != nil {
+			return nil, err
+		}
+		s.blog = b
+	}
+	return s, nil
 }
 
 // Run serves until ctx is done, then waits for a running sync to stop.
@@ -85,6 +95,10 @@ func (s *Server) routes() http.Handler {
 	private.HandleFunc("POST /api/admin/sync", s.postSync)
 	private.HandleFunc("GET /api/admin/runs", s.listRuns)
 	private.HandleFunc("GET /api/admin/runs/{id}", s.getRun)
+	if s.blog != nil {
+		s.blog.site.Register(mux)
+		s.blog.register(private)
+	}
 	mux.Handle("/api/admin/", s.auth.require(private))
 	return mux
 }
@@ -399,11 +413,15 @@ func writeJSON(w http.ResponseWriter, status int, v any) {
 // readJSON also guards against cross-site form posts: only a script on the
 // admin page's own origin can send application/json with the session cookie.
 func readJSON(w http.ResponseWriter, r *http.Request, v any) bool {
+	return readJSONLimit(w, r, v, 1<<20)
+}
+
+func readJSONLimit(w http.ResponseWriter, r *http.Request, v any, limit int64) bool {
 	if !strings.HasPrefix(r.Header.Get("Content-Type"), "application/json") {
 		badRequest(w, "expected application/json")
 		return false
 	}
-	if err := json.NewDecoder(http.MaxBytesReader(w, r.Body, 1<<20)).Decode(v); err != nil {
+	if err := json.NewDecoder(http.MaxBytesReader(w, r.Body, limit)).Decode(v); err != nil {
 		badRequest(w, "invalid JSON: "+err.Error())
 		return false
 	}

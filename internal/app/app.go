@@ -12,6 +12,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/Jason-cqtan/lifelog/internal/db"
@@ -219,6 +220,20 @@ func ExportSite(st *store.Store, www, compress string, logger *log.Logger) error
 // GitBackup writes the store into repo/data as JSON (routes sealed with the map
 // answer) and pushes it, so GitHub keeps a copy and Pages stays current.
 func GitBackup(ctx context.Context, st *store.Store, repo string, logger *log.Logger) error {
+	return GitPush(ctx, repo, "data", "sync: "+time.Now().UTC().Format("2006-01-02T15:04Z")+" (vps)", logger, func() error {
+		return st.WriteFiles(filepath.Join(repo, "data"), source.Getenv("LIFELOG_MAP_ANSWER"))
+	})
+}
+
+// gitMu keeps the sync backup and the blog backup from running git in the
+// same checkout at once.
+var gitMu sync.Mutex
+
+// GitPush pulls repo, runs write (may be nil), commits path (relative to repo)
+// with msg if it changed, and pushes.
+func GitPush(ctx context.Context, repo, path, msg string, logger *log.Logger, write func() error) error {
+	gitMu.Lock()
+	defer gitMu.Unlock()
 	git := func(args ...string) error {
 		cmd := exec.CommandContext(ctx, "git", append([]string{"-C", repo}, args...)...)
 		out, err := cmd.CombinedOutput()
@@ -230,17 +245,19 @@ func GitBackup(ctx context.Context, st *store.Store, repo string, logger *log.Lo
 	if err := git("pull", "-q", "--rebase", "--autostash"); err != nil {
 		return err
 	}
-	if err := st.WriteFiles(filepath.Join(repo, "data"), source.Getenv("LIFELOG_MAP_ANSWER")); err != nil {
-		return err
+	if write != nil {
+		if err := write(); err != nil {
+			return err
+		}
 	}
-	if err := git("add", "data"); err != nil {
+	if err := git("add", "-A", "--", path); err != nil {
 		return err
 	}
 	if git("diff", "--cached", "--quiet") == nil {
-		logger.Printf("backup: no changes")
+		logger.Printf("backup: no changes in %s", path)
 		return nil
 	}
-	if err := git("commit", "-q", "-m", "sync: "+time.Now().UTC().Format("2006-01-02T15:04Z")+" (vps)"); err != nil {
+	if err := git("commit", "-q", "-m", msg); err != nil {
 		return err
 	}
 	// someone else may have pushed meanwhile; data files are keyed records, so a rebase almost always applies
@@ -252,6 +269,6 @@ func GitBackup(ctx context.Context, st *store.Store, repo string, logger *log.Lo
 			return err
 		}
 	}
-	logger.Printf("backup: pushed data/ to GitHub")
+	logger.Printf("backup: pushed %s/ to GitHub", path)
 	return nil
 }

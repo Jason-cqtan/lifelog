@@ -1631,3 +1631,9 @@ button.cal-day {
 .map-lock-actions .primary:disabled {
   opacity: 0.4;
 }
+
+/* links to the rest of mdyrbz.com, when served there */
+.site-nav { display: flex; gap: 4px; margin: -4px 0 8px -10px; font-size: 13px; }
+.site-nav a { padding: 3px 10px; border-radius: 999px; color: var(--text-secondary); text-decoration: none; }
+.site-nav a:first-child { font-weight: 700; color: var(--text-primary); }
+.site-nav a:hover, .site-nav a[aria-current='page'] { background: var(--cell-empty); color: var(--text-primary); }
