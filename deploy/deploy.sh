@@ -66,10 +66,12 @@ release)
     install -d /opt/lifelog/deploy"
   rsync -az --delete --exclude 'data.json*' --exclude 'routes.enc*' --exclude .next --rsync-path="$RSYNC_PATH" web/dist/ "$HOST":/opt/lifelog/www/lifelog/
   # the homepage and its images (no --delete: www/ also holds lifelog/)
-  rsync -az --chmod=D755,F644 --rsync-path="$RSYNC_PATH" web/home/ "$HOST":/opt/lifelog/www/
+  rsync -az --rsync-path="$RSYNC_PATH" web/home/ "$HOST":/opt/lifelog/www/
   rsync -az --rsync-path="$RSYNC_PATH" build/lifelog deploy/compress.sh "$HOST":/opt/lifelog/bin/
   rsync -az --rsync-path="$RSYNC_PATH" deploy/lifelog.service deploy/Caddyfile deploy/caddy.sh "$HOST":/opt/lifelog/deploy/
+  # Caddy must read the homepage files whatever their mode was here (macOS rsync has no --chmod)
   remote "install -d -o lifelog -g lifelog /opt/lifelog/www/lifelog/.next && chown -R lifelog:lifelog /opt/lifelog/www /opt/lifelog/bin && chmod 755 /opt/lifelog/bin/*
+    find /opt/lifelog/www -maxdepth 1 -type f -exec chmod 644 {} +
     cmp -s /opt/lifelog/deploy/lifelog.service /etc/systemd/system/lifelog.service || { install -m 644 /opt/lifelog/deploy/lifelog.service /etc/systemd/system/; systemctl daemon-reload; }"
   echo "==> precompress site files"
   ssh "$HOST" "cd /opt/lifelog && $AS_LIFELOG /opt/lifelog/bin/compress.sh --site /opt/lifelog/www/lifelog/assets && $AS_LIFELOG /opt/lifelog/bin/compress.sh /opt/lifelog/www/index.html /opt/lifelog/www/lifelog/index.html /opt/lifelog/www/lifelog/admin/index.html"
