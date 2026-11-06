@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-05T14:00:09Z",
+ "updated_at": "2026-11-06T00:00:07Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -645,11 +645,6 @@
      "image": "https://i.scdn.co/image/ab6761610000f1780c68f6c95232e716f0abee8d"
     },
     {
-     "id": "2elBjNSdBE2Y3f0j1mjrql",
-     "name": "Jay Chou",
-     "image": "https://i.scdn.co/image/ab6761610000f17887fbbe9ed03fbb500595e720"
-    },
-    {
      "id": "1Xyo4u8uXC1ZmMpatF05PJ",
      "name": "The Weeknd",
      "image": "https://i.scdn.co/image/ab6761610000f178c1719ac9e6a75c1c25835018"
@@ -670,24 +665,9 @@
      "image": "https://i.scdn.co/image/ab6761610000f178ee3123e593174208f9754fab"
     },
     {
-     "id": "3AroL2oDPiAnMpTmIQv3KP",
-     "name": "Cyndi Wang",
-     "image": "https://i.scdn.co/image/ab6761610000f1788baa4f890691b73ec50ccb70"
-    },
-    {
      "id": "20wkVLutqVOYrc0kxFs7rA",
      "name": "Daniel Caesar",
      "image": "https://i.scdn.co/image/ab6761610000f178e4d94f7cbebb17504c25d419"
-    },
-    {
-     "id": "4BAWVaDoA2CpEdUetoYKgZ",
-     "name": "Capo Productions",
-     "image": "https://i.scdn.co/image/ab67616d00001e020d2bdfb25648a42ba50b9c41"
-    },
-    {
-     "id": "0PxqaZXFW167XSUiha9eEi",
-     "name": "7and5",
-     "image": "https://i.scdn.co/image/ab6761610000f1780887284d923c88a92835e427"
     },
     {
      "id": "1vCWHaC5f2uS3yhpwWbIA6",
@@ -715,9 +695,19 @@
      "image": "https://i.scdn.co/image/ab6761610000f178744989ed737112f4edbd2cc3"
     },
     {
+     "id": "2elBjNSdBE2Y3f0j1mjrql",
+     "name": "Jay Chou",
+     "image": "https://i.scdn.co/image/ab6761610000f17887fbbe9ed03fbb500595e720"
+    },
+    {
      "id": "7CajNmpbOovFoOoasH2HaY",
      "name": "Calvin Harris",
      "image": "https://i.scdn.co/image/ab6761610000f1788ebba5e60113b48de8c11f6b"
+    },
+    {
+     "id": "4BAWVaDoA2CpEdUetoYKgZ",
+     "name": "Capo Productions",
+     "image": "https://i.scdn.co/image/ab67616d00001e020d2bdfb25648a42ba50b9c41"
     },
     {
      "id": "4npEfmQ6YuiwW1GpUmaq3F",
@@ -785,11 +775,6 @@
      "image": "https://i.scdn.co/image/ab6761610000f17817dd503b5c1841cd238c9aa7"
     },
     {
-     "id": "6noxsCszBEEK04kCehugOp",
-     "name": "A-Mei Chang",
-     "image": "https://i.scdn.co/image/ab6761610000f1781b44d5d4d2e564f28f4046cf"
-    },
-    {
      "id": "0du5cEVh5yTK9QJze8zA0C",
      "name": "Bruno Mars",
      "image": "https://i.scdn.co/image/ab6761610000f178c7688aad1bf03986934d7e26"
@@ -808,6 +793,11 @@
      "id": "3PhoLpVuITZKcymswpck5b",
      "name": "Elton John",
      "image": "https://i.scdn.co/image/ab6761610000f1780dc33a1c53bb58a84b45d6a7"
+    },
+    {
+     "id": "6noxsCszBEEK04kCehugOp",
+     "name": "A-Mei Chang",
+     "image": "https://i.scdn.co/image/ab6761610000f1781b44d5d4d2e564f28f4046cf"
     },
     {
      "id": "6qzfo7jiO4OrhxrvPFPlWX",
@@ -874,13 +864,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02a992179a520d2eb38fa41e64"
     },
     {
-     "id": "7nDQMtLxu94xtlTR8bEqjU",
-     "name": "Faded",
-     "artist": "ZHU",
-     "album": "Faded",
-     "image": "https://i.scdn.co/image/ab67616d00001e027b730a450d048646b7472425"
-    },
-    {
      "id": "2CPqh63wRVscbceKcPxwvv",
      "name": "The Ocean (feat. Shy Martin)",
      "artist": "Mike Perry, shy martin",
@@ -895,11 +878,11 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
     },
     {
-     "id": "56y1jOTK0XSvJzVv9vHQBK",
-     "name": "Paint The Town Red",
-     "artist": "Doja Cat",
-     "album": "Scarlet",
-     "image": "https://i.scdn.co/image/ab67616d00001e02a54499d7ba4e9afeea91df86"
+     "id": "7nDQMtLxu94xtlTR8bEqjU",
+     "name": "Faded",
+     "artist": "ZHU",
+     "album": "Faded",
+     "image": "https://i.scdn.co/image/ab67616d00001e027b730a450d048646b7472425"
     },
     {
      "id": "3xKsf9qdS1CyvXSMEid6g8",
@@ -956,6 +939,13 @@
      "artist": "NONONO",
      "album": "We Are Only What We Feel",
      "image": "https://i.scdn.co/image/ab67616d00001e02ca9961814136d4bd7acfd811"
+    },
+    {
+     "id": "56y1jOTK0XSvJzVv9vHQBK",
+     "name": "Paint The Town Red",
+     "artist": "Doja Cat",
+     "album": "Scarlet",
+     "image": "https://i.scdn.co/image/ab67616d00001e02a54499d7ba4e9afeea91df86"
     },
     {
      "id": "1SN1vSPsr4V4tIUTR3s8YW",
