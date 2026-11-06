@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-06T00:00:07Z",
+ "updated_at": "2026-11-06T05:00:45Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -54,6 +54,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f17866a909756400366c24bf1568"
     },
     {
+     "id": "23fqKkggKUBHNkbKtXEls4",
+     "name": "Kygo",
+     "image": "https://i.scdn.co/image/ab6761610000f178e5ea1aa1404629c12ad86658"
+    },
+    {
      "id": "5Pwc4xIPtQLFEnJriah9YJ",
      "name": "OneRepublic",
      "image": "https://i.scdn.co/image/ab6761610000f1783202f1bcacc6d8f581f32ffd"
@@ -72,6 +77,11 @@
      "id": "7mShFo2eYgVBQFZBCilhtl",
      "name": "Leah Dou",
      "image": "https://i.scdn.co/image/ab6761610000f1780f50807360beac5d44016b0c"
+    },
+    {
+     "id": "3WHsy1Rq4vPEdRyo9P3a48",
+     "name": "Bibi Zhou",
+     "image": "https://i.scdn.co/image/ab6761610000f178b8b78d22300f49ee0c8bacdb"
     },
     {
      "id": "1km0aro5NJuoX5dE0Mub5C",
@@ -107,11 +117,6 @@
      "id": "04gDigrS5kc9YWfZHwBETP",
      "name": "Maroon 5",
      "image": "https://i.scdn.co/image/ab6761610000f178f8349dfb619a7f842242de77"
-    },
-    {
-     "id": "23fqKkggKUBHNkbKtXEls4",
-     "name": "Kygo",
-     "image": "https://i.scdn.co/image/ab6761610000f178e5ea1aa1404629c12ad86658"
     },
     {
      "id": "6noxsCszBEEK04kCehugOp",
@@ -247,11 +252,6 @@
      "id": "3AQRLZ9PuTAozP28Skbq8V",
      "name": "The Script",
      "image": "https://i.scdn.co/image/ab6761610000f17839cf57b090fcaefe756c91c3"
-    },
-    {
-     "id": "3WYT2b8pOLsLsqSaoWYr7U",
-     "name": "sodagreen",
-     "image": "https://i.scdn.co/image/ab6761610000f1780b46989f88510c6eaa01e447"
     }
    ],
    "tracks": [
@@ -1196,6 +1196,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f1783202f1bcacc6d8f581f32ffd"
     },
     {
+     "id": "3WHsy1Rq4vPEdRyo9P3a48",
+     "name": "Bibi Zhou",
+     "image": "https://i.scdn.co/image/ab6761610000f178b8b78d22300f49ee0c8bacdb"
+    },
+    {
      "id": "1km0aro5NJuoX5dE0Mub5C",
      "name": "Joanna Wang",
      "image": "https://i.scdn.co/image/ab6761610000f1788c2024e68663f46b2981398d"
@@ -1374,6 +1379,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02a992179a520d2eb38fa41e64"
     },
     {
+     "id": "3eR23VReFzcdmS7TYCrhCe",
+     "name": "It Ain't Me (with Selena Gomez)",
+     "artist": "Kygo, Selena Gomez",
+     "album": "It Ain't Me (with Selena Gomez)",
+     "image": "https://i.scdn.co/image/ab67616d00001e0241f289940f2e6a0d51988d77"
+    },
+    {
      "id": "0GO8y8jQk1PkHzS31d699N",
      "name": "Tongue Tied",
      "artist": "GROUPLOVE",
@@ -1416,6 +1428,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e025b6bcc59c3562a6f362344c6"
     },
     {
+     "id": "5L6oF6wViaQkaGI7c6QIv4",
+     "name": "笔记",
+     "artist": "Bibi Zhou",
+     "album": "2005超级女声终极PK",
+     "image": "https://i.scdn.co/image/ab67616d00001e028d365c88c9bdaec3720bda12"
+    },
+    {
      "id": "7nDQMtLxu94xtlTR8bEqjU",
      "name": "Faded",
      "artist": "ZHU",
@@ -1428,13 +1447,6 @@
      "artist": "Kygo, Maty Noyes",
      "album": "Cloud Nine",
      "image": "https://i.scdn.co/image/ab67616d00001e027247979b8bc6027bf97043ef"
-    },
-    {
-     "id": "3eR23VReFzcdmS7TYCrhCe",
-     "name": "It Ain't Me (with Selena Gomez)",
-     "artist": "Kygo, Selena Gomez",
-     "album": "It Ain't Me (with Selena Gomez)",
-     "image": "https://i.scdn.co/image/ab67616d00001e0241f289940f2e6a0d51988d77"
     },
     {
      "id": "5tf1VVWniHgryyumXyJM7w",
@@ -1512,6 +1524,13 @@
      "artist": "The Script",
      "album": "No Sound Without Silence",
      "image": "https://i.scdn.co/image/ab67616d00001e0259d2079e141301ab89b6cbc5"
+    },
+    {
+     "id": "4HadYIhNfy7evMUI5W6wEc",
+     "name": "Reykjavik",
+     "artist": "Joachim Pastor",
+     "album": "Reykjavik",
+     "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
     },
     {
      "id": "4LThFOso6YeLtjG6TZUOdh",
@@ -1652,20 +1671,6 @@
      "artist": "Thomas Greenberg",
      "album": "Age Of Innocence",
      "image": "https://i.scdn.co/image/ab67616d00001e023b42d9a336638e90b24177ae"
-    },
-    {
-     "id": "1Q7EgiMOuwDcB0PJC6AzON",
-     "name": "Best Part (feat. H.E.R.)",
-     "artist": "Daniel Caesar, H.E.R.",
-     "album": "Freudian",
-     "image": "https://i.scdn.co/image/ab67616d00001e027aa8783ad8def37cc548a9cf"
-    },
-    {
-     "id": "1WFgv04BZTx6gZWQNE6Sp7",
-     "name": "Freudian",
-     "artist": "Daniel Caesar",
-     "album": "Freudian",
-     "image": "https://i.scdn.co/image/ab67616d00001e027aa8783ad8def37cc548a9cf"
     }
    ]
   }
