@@ -19,6 +19,7 @@ func OpenDB(ctx context.Context, pool *pgxpool.Pool) (*Store, error) {
 		activities: map[string]model.Activity{},
 		daily:      map[string]model.DailyMetric{},
 		plays:      map[string]model.Play{},
+		watches:    map[string]model.Watch{},
 		snapshots:  map[string]json.RawMessage{},
 		pg:         pool,
 		dirty:      newDirty(),
@@ -85,6 +86,23 @@ func OpenDB(ctx context.Context, pool *pgxpool.Pool) (*Store, error) {
 		return nil, err
 	}
 
+	rows, err = pool.Query(ctx, `SELECT source, source_id, watched_at, kind, title, episode, seconds, device FROM watches`)
+	if err != nil {
+		return nil, err
+	}
+	for rows.Next() {
+		var w model.Watch
+		var secs int32
+		if err := rows.Scan(&w.Source, &w.SourceID, &w.WatchedAt, &w.Kind, &w.Title, &w.Episode, &secs, &w.Device); err != nil {
+			return nil, err
+		}
+		w.WatchedAt, w.Seconds = w.WatchedAt.UTC(), int(secs)
+		s.watches[w.Key()] = w
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+
 	rows, err = pool.Query(ctx, `SELECT name, data FROM snapshots`)
 	if err != nil {
 		return nil, err
@@ -118,6 +136,9 @@ func (s *Store) ImportInto(ctx context.Context, pool *pgxpool.Pool) (*Store, err
 	}
 	for _, p := range s.plays {
 		d.AddPlay(p)
+	}
+	for _, w := range s.watches {
+		d.PutWatch(w)
 	}
 	for name, b := range s.snapshots {
 		d.snapshots[name] = b
@@ -157,10 +178,15 @@ func (s *Store) WriteFiles(dir, answer string) error {
 			missing++
 		}
 	}
+	for k := range f.watches {
+		if _, ok := s.watches[k]; !ok {
+			missing++
+		}
+	}
 	if missing > 0 {
 		return fmt.Errorf("%s has %d records the database doesn't; run `lifelog db import -dir %s` first", dir, missing, dir)
 	}
-	f.activities, f.daily, f.plays = s.activities, s.daily, s.plays
+	f.activities, f.daily, f.plays, f.watches = s.activities, s.daily, s.plays, s.watches
 	for name, b := range s.snapshots {
 		f.snapshots[name] = b
 	}
@@ -217,6 +243,16 @@ func (s *Store) savePG() error {
 		plays = append(plays, []any{p.PlayedAt, p.Track, p.Artist, p.TrackID, p.MsPlayed})
 	}
 	if err := copyUpsert(ctx, tx, "plays", []string{"played_at", "track", "artist", "track_id", "ms_played"}, 2, false, plays); err != nil {
+		return err
+	}
+
+	var watches [][]any
+	for k := range s.dirty.watches {
+		w := s.watches[k]
+		watches = append(watches, []any{w.Source, w.SourceID, w.WatchedAt, w.Kind, w.Title, w.Episode, int32(w.Seconds), w.Device})
+	}
+	if err := copyUpsert(ctx, tx, "watches", []string{"source", "source_id", "watched_at", "kind", "title", "episode",
+		"seconds", "device"}, 2, true, watches); err != nil {
 		return err
 	}
 

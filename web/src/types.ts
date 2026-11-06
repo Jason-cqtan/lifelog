@@ -65,6 +65,22 @@ export interface DuolingoData {
   periods?: Record<string, Record<string, { xp: number; minutes: number }>>
 }
 
+export interface WatchStats {
+  minutes: number
+  sessions: number
+  titles: number
+  top: { title: string; kind: string; minutes: number; sessions: number }[]
+}
+
+export interface RecentWatch {
+  date: string
+  title: string
+  episode?: string
+  kind: string
+  source: string
+  minutes: number
+}
+
 export interface Data {
   generated_at: string
   timezone: string
@@ -74,6 +90,9 @@ export interface Data {
   music?: Record<string, MusicStats>
   spotify_top?: SpotifyTop
   duolingo?: DuolingoData
+  /** movies and shows (Netflix export, Trakt), keyed by year and "all" */
+  watching?: Record<string, WatchStats>
+  recent_watches?: RecentWatch[]
   /** set when the routes were exported, sealed behind a question */
   routes?: RouteLock
   /** page settings from the admin page */
@@ -125,6 +144,7 @@ export const CATEGORIES: Category[] = [
   { key: 'hike', label: { zh: '徒步 / 爬山', en: 'Hiking' }, metric: 'hike_km', scale: 1, unit: { zh: 'km', en: 'km' }, color: 'var(--c-hike)', sport: 'hike' },
   { key: 'steps', label: { zh: '步数', en: 'Steps' }, metric: 'garmin_steps', scale: 1, unit: { zh: '步', en: 'steps' }, color: 'var(--c-steps)', goalMetric: 'garmin_step_goal' },
   { key: 'spotify', label: { zh: 'Spotify', en: 'Spotify' }, metric: 'spotify_minutes', scale: 1 / 60, unit: { zh: '小时', en: 'h' }, color: 'var(--c-spotify)' },
+  { key: 'watch', label: { zh: '观影', en: 'Watching' }, metric: 'watch_minutes', scale: 1 / 60, unit: { zh: '小时', en: 'h' }, color: 'var(--c-watch)' },
   { key: 'duolingo', label: { zh: '多邻国', en: 'Duolingo' }, metric: 'duolingo_minutes', scale: 1, unit: { zh: '分钟', en: 'min' }, color: 'var(--c-duolingo)', bridgeMetric: 'duolingo_streak_protected' },
   { key: 'github', label: { zh: 'GitHub', en: 'GitHub' }, metric: 'github_contributions', scale: 1, unit: { zh: '次贡献', en: 'contributions' }, color: 'var(--c-github)' },
 ]

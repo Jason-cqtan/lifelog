@@ -24,7 +24,7 @@ func TestDBRoundTrip(t *testing.T) {
 		t.Fatal(err)
 	}
 	defer pool.Close()
-	for _, tbl := range []string{"activities", "daily_metrics", "plays", "snapshots"} {
+	for _, tbl := range []string{"activities", "daily_metrics", "plays", "watches", "snapshots"} {
 		if _, err := pool.Exec(ctx, "TRUNCATE "+tbl); err != nil {
 			t.Fatal(err)
 		}
@@ -39,6 +39,9 @@ func TestDBRoundTrip(t *testing.T) {
 	st.UpsertActivity(a)
 	st.AddDaily(model.DailyMetric{Date: "2026-10-30", Source: "duolingo", Metric: "minutes", Value: 5})
 	st.AddPlay(model.Play{PlayedAt: time.Unix(1e9, 5e8).UTC(), Track: "x", MsPlayed: 1000})
+	watch := model.Watch{Source: "netflix", SourceID: "w1", WatchedAt: time.Unix(1e9, 0).UTC(), Kind: "episode",
+		Title: "怪奇物语", Episode: "第 1 季: 第一章", Seconds: 2832, Device: "iPhone"}
+	st.PutWatch(watch)
 	if err := st.PutSnapshot("top", map[string]int{"b": 1, "a": 2}); err != nil {
 		t.Fatal(err)
 	}
@@ -64,6 +67,9 @@ func TestDBRoundTrip(t *testing.T) {
 	if p := got.Plays(); len(p) != 1 || !p[0].PlayedAt.Equal(time.Unix(1e9, 5e8)) {
 		t.Errorf("plays = %+v", p)
 	}
+	if w := got.Watches(); len(w) != 1 || w[0] != watch {
+		t.Errorf("watches = %+v", w)
+	}
 	if string(got.snapshots["top"]) != string(st.snapshots["top"]) {
 		t.Errorf("snapshot changed: %q", got.snapshots["top"])
 	}
@@ -82,6 +88,9 @@ func TestDBRoundTrip(t *testing.T) {
 	}
 	if g, _ := files.Activity(a.Key()); g.Polyline != route {
 		t.Errorf("backup route = %q", g.Polyline)
+	}
+	if w := files.Watches(); len(w) != 1 || w[0] != watch {
+		t.Errorf("backup watches = %+v", w)
 	}
 	if b, _ := os.ReadFile(filepath.Join(dir, "activities.json")); len(b) == 0 {
 		t.Error("no activities.json")

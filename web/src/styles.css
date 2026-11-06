@@ -14,6 +14,7 @@
   --c-duolingo: #1baf7a;
   --c-hike: #eda100;
   --c-spotify: #e87ba4;
+  --c-watch: #0b8fa3;
   --c-github: #6250d6;
   --c-steps: #008300;
   --c-run-long: #e34948;
@@ -34,6 +35,7 @@
     --c-duolingo: #199e70;
     --c-hike: #c98500;
     --c-spotify: #d55181;
+    --c-watch: #1ba7bc;
     --c-github: #9085e9;
   --c-steps: #008300;
   --c-run-long: #e66767;
@@ -54,6 +56,7 @@
   --c-duolingo: #199e70;
   --c-hike: #c98500;
   --c-spotify: #d55181;
+  --c-watch: #1ba7bc;
   --c-github: #9085e9;
   --c-steps: #008300;
   --c-run-long: #e66767;
@@ -1210,6 +1213,9 @@ body {
 }
 .duo-bar {
   background: var(--c-duolingo);
+}
+.watch-bar {
+  background: var(--c-watch);
 }
 .badge {
   margin-left: 6px;

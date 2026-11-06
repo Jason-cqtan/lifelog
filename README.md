@@ -1,6 +1,6 @@
 # Lifelog
 
-一个记录"每天都做了什么"的个人网站:跑步 / 骑行 / 爬山(手表同步)、多邻国学习时长、Spotify 听歌时长、GitHub 贡献。
+一个记录"每天都做了什么"的个人网站:跑步 / 骑行 / 爬山(手表同步)、多邻国学习时长、Spotify 听歌时长、Netflix / Trakt 观影时长、GitHub 贡献。
 思路参考 [running_page](https://github.com/yihong0618/running_page) 和 [workouts_page](https://github.com/ben-29/workouts_page),后端用 Go 重写。
 
 ```
@@ -64,6 +64,8 @@ cd web && npm run dev                      # 后台:http://localhost:5173/admin/
 | running_page 历史 | 本地导入 | `lifelog import running-page <running_page 仓库>/src/static/activities.json`,与现有来源重叠的记录在导出时自动去重 |
 | 多邻国 | 非官方 `xp_summaries` | 浏览器登录 duolingo.com,复制 `jwt_token` cookie |
 | Spotify | 官方 API(只给最近 50 首) | 在 [Dashboard](https://developer.spotify.com/dashboard) 建应用,Redirect URI 填 `http://127.0.0.1:8888/callback`,`lifelog auth spotify`;历史记录在隐私设置里申请"扩展流媒体历史",用 `lifelog import spotify-history` 导入 |
+| Netflix | 无 API,只能导入 | 推荐在 [getmyinfo](https://www.netflix.com/account/getmyinfo) 申请个人数据，用压缩包里的 `CONTENT_INTERACTION/ViewingActivity.csv`(有每次观看的时长):`lifelog import netflix -profile 你的档案名 ViewingActivity.csv`;也支持观看记录页 "Download all" 的 `NetflixViewingHistory.csv`(只有日期，不计时长) |
+| Trakt | 官方 API | 自动记录 Netflix:装浏览器扩展 Universal Trakt Scrobbler 同步到 Trakt。在 [trakt.tv/oauth/applications](https://trakt.tv/oauth/applications) 建应用,Redirect URI 填 `http://127.0.0.1:8888/callback`,`lifelog auth trakt`。Trakt 每次刷新都会换新的 refresh token,同步时自动存回数据库，所以要在 VPS(`lifelog serve`)上同步,GitHub Actions 存不下新 token。同一天 Netflix 导出里有时长时以 Netflix 为准,Trakt 补其余日期 |
 | GitHub | GraphQL 贡献日历 | 一个有 `read:user` 权限的 token |
 
 没配置的来源会自动跳过。某个来源失败不影响其他来源，后台的同步记录里能看到每次的日志。

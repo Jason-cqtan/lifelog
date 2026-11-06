@@ -37,6 +37,8 @@ export interface SourceStats {
   latest_activity?: string
   daily_rows: number
   latest_day?: string
+  watches: number
+  latest_watch?: string
 }
 
 export interface Overview {

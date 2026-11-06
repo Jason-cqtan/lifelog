@@ -10,6 +10,8 @@ const SOURCE_LABEL: Record<string, string> = {
   strava: 'Strava',
   duolingo: '多邻国',
   spotify: 'Spotify',
+  trakt: 'Trakt 观影',
+  netflix: 'Netflix',
   github: 'GitHub 贡献',
   applehealth: 'Apple 健康',
   running_page: 'running_page',
@@ -162,7 +164,7 @@ function OverviewTab({ guard, onStarted }: { guard: Guard; onStarted: (id: numbe
 
       <section className="grid">
         {data.sources.map((s) => {
-          const syncable = s.name in SOURCE_LABEL && !['applehealth', 'running_page'].includes(s.name)
+          const syncable = s.name in SOURCE_LABEL && !['applehealth', 'running_page', 'netflix'].includes(s.name)
           return (
             <article key={s.name} className="card source">
               <header>
@@ -195,7 +197,15 @@ function OverviewTab({ guard, onStarted }: { guard: Guard; onStarted: (id: numbe
                     </dd>
                   </>
                 )}
-                {s.activities === 0 && s.daily_rows === 0 && s.name !== 'spotify' && <dd className="muted">还没有数据</dd>}
+                {s.watches > 0 && (
+                  <>
+                    <dt>观看记录</dt>
+                    <dd>
+                      {s.watches.toLocaleString()} 条 · 最近 {fmtTime(s.latest_watch)}
+                    </dd>
+                  </>
+                )}
+                {s.activities === 0 && s.daily_rows === 0 && s.watches === 0 && s.name !== 'spotify' && <dd className="muted">还没有数据</dd>}
               </dl>
               {syncable && (
                 <footer>

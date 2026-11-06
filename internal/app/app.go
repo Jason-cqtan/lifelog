@@ -24,6 +24,7 @@ import (
 	"github.com/Jason-cqtan/lifelog/internal/source/github"
 	"github.com/Jason-cqtan/lifelog/internal/source/spotify"
 	"github.com/Jason-cqtan/lifelog/internal/source/strava"
+	"github.com/Jason-cqtan/lifelog/internal/source/trakt"
 	"github.com/Jason-cqtan/lifelog/internal/store"
 	"github.com/jackc/pgx/v5/pgxpool"
 )
@@ -34,6 +35,7 @@ var Sources = []source.Source{
 	strava.Strava{},
 	duolingo.Duolingo{},
 	spotify.Spotify{},
+	trakt.Trakt{},
 	github.GitHub{},
 }
 

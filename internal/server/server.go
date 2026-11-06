@@ -201,12 +201,14 @@ func parseHours(v string) ([]int, error) {
 // --- overview
 
 type sourceStats struct {
-	Name       string     `json:"name"`
-	Configured bool       `json:"configured"`
-	Activities int        `json:"activities"`
-	LatestAct  *time.Time `json:"latest_activity,omitempty"`
-	DailyRows  int        `json:"daily_rows"`
-	LatestDay  string     `json:"latest_day,omitempty"`
+	Name        string     `json:"name"`
+	Configured  bool       `json:"configured"`
+	Activities  int        `json:"activities"`
+	LatestAct   *time.Time `json:"latest_activity,omitempty"`
+	DailyRows   int        `json:"daily_rows"`
+	LatestDay   string     `json:"latest_day,omitempty"`
+	Watches     int        `json:"watches"`
+	LatestWatch *time.Time `json:"latest_watch,omitempty"`
 }
 
 func (s *Server) overview(w http.ResponseWriter, r *http.Request) {
@@ -251,6 +253,22 @@ func (s *Server) overview(w http.ResponseWriter, r *http.Request) {
 		}
 		st := get(name)
 		st.DailyRows, st.LatestDay = n, latest
+	}
+	rows, err = s.pool.Query(ctx, `SELECT source, count(*), max(watched_at) FROM watches GROUP BY source`)
+	if err != nil {
+		serverError(w, err)
+		return
+	}
+	for rows.Next() {
+		var name string
+		var n int
+		var latest time.Time
+		if err := rows.Scan(&name, &n, &latest); err != nil {
+			serverError(w, err)
+			return
+		}
+		st := get(name)
+		st.Watches, st.LatestWatch = n, &latest
 	}
 	var plays int
 	var lastPlay *time.Time
