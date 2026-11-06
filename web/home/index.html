@@ -71,14 +71,19 @@ a { color: inherit; text-decoration: none; }
 @keyframes spin { to { transform: rotate(360deg); } }
 .stars { position: absolute; inset: 0; opacity: 0; transition: opacity 1.6s ease; }
 #sky.stars-on .stars { opacity: 1; }
-#sky.stars-on.stars-few .stars { opacity: .35; }
 .stars i { position: absolute; border-radius: 50%; background: #fff; animation: twinkle 3s ease-in-out infinite; }
 .stars i.big { box-shadow: 0 0 6px 1px rgba(200,215,255,.8); }
 @keyframes twinkle { 0%, 100% { opacity: .15; transform: scale(.7); } 50% { opacity: 1; transform: scale(1.15); } }
-.shoot { position: absolute; top: 12%; left: 70%; width: 120px; height: 1.5px; opacity: 0;
-  background: linear-gradient(90deg, rgba(255,255,255,.9), transparent); transform: rotate(-24deg); }
-#sky.stars-on:not(.stars-few) .shoot { animation: shoot 11s ease-in 3s infinite; }
-@keyframes shoot { 0%, 90% { opacity: 0; translate: 0 0; } 92% { opacity: 1; } 100% { opacity: 0; translate: -340px 150px; } }
+/* meteors: a bright head trailing to the upper right, falling toward the lower left */
+.shoot { position: absolute; top: 10%; left: 72%; width: 160px; height: 2px; opacity: 0; border-radius: 2px;
+  background: linear-gradient(90deg, #fff, rgba(200,215,255,.6) 30%, transparent); transform: rotate(-28deg); transform-origin: left center;
+  filter: drop-shadow(0 0 4px rgba(200,220,255,.9)); }
+.shoot:nth-child(4) { top: 22%; left: 88%; width: 120px; }
+.shoot:nth-child(5) { top: 6%; left: 46%; width: 140px; }
+#sky.stars-on .shoot { animation: shoot 9s cubic-bezier(.3,.1,.6,1) 2s infinite; }
+#sky.stars-on .shoot:nth-child(4) { animation-duration: 13s; animation-delay: 6.5s; }
+#sky.stars-on .shoot:nth-child(5) { animation-duration: 17s; animation-delay: 11s; }
+@keyframes shoot { 0%, 88% { opacity: 0; translate: 0 0; } 89% { opacity: 1; } 96% { opacity: .9; } 100% { opacity: 0; translate: -420px 220px; } }
 @media (prefers-reduced-motion: reduce) { .sun i, .stars i, .shoot { animation: none !important; } }
 .aurora { position: fixed; inset: -20%; z-index: -4; filter: blur(90px); opacity: .55; pointer-events: none; }
 .aurora i { position: absolute; border-radius: 50%; animation: drift 22s ease-in-out infinite alternate; }
@@ -163,13 +168,14 @@ nav .lang { font-size: 12px; font-weight: 600; letter-spacing: .04em; }
 @keyframes drop { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); } 100% { transform: scaleY(1); opacity: 0; } }
 
 /* ---------- 数字 ---------- */
-.stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border); }
+.stats { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border); }
 .stat { padding: 32px 24px; border-right: 1px solid var(--card-border); }
 .stat:last-child { border-right: 0; }
-.stat .num { font-size: clamp(36px, 5vw, 60px); font-weight: 700; letter-spacing: -.04em; line-height: 1; }
+.stat .num { font-size: clamp(34px, 4.2vw, 56px); font-weight: 700; letter-spacing: -.04em; line-height: 1; }
 .stat .num small { font-size: .4em; color: var(--muted); font-weight: 500; margin-left: 4px; letter-spacing: 0; }
 .stat .label { color: var(--muted); font-size: 14px; margin-top: 10px; }
-@media (max-width: 760px) { .stats { grid-template-columns: repeat(2, 1fr); } .stat:nth-child(2) { border-right: 0; } .stat:nth-child(-n+2) { border-bottom: 1px solid var(--card-border); } .stat { padding: 24px 16px; } }
+@media (max-width: 760px) { .stats { grid-template-columns: repeat(2, 1fr); } .stat:nth-child(even) { border-right: 0; } .stat:nth-child(-n+4) { border-bottom: 1px solid var(--card-border); }
+  .stat:last-child { grid-column: span 2; } .stat { padding: 24px 16px; } }
 
 /* ---------- 区块通用 ---------- */
 section { padding: 120px 0 0; }
@@ -221,6 +227,17 @@ section { padding: 120px 0 0; }
 .bento .blog { grid-column: span 4; }
 .bento .run { grid-column: span 2; }
 .bento .music { grid-column: span 2; }
+.bento .pb { grid-column: span 6; }
+.pb-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-top: 18px; }
+.pb-item { padding: 16px; border-radius: 16px; border: 1px solid var(--card-border); background: var(--card); min-width: 0; }
+.pb-item .k { font-size: 12px; color: var(--muted); letter-spacing: .04em; }
+.pb-item .v { font-size: clamp(22px, 2.4vw, 30px); font-weight: 700; letter-spacing: -.03em; margin: 8px 0 6px; line-height: 1; }
+.pb-item .m { font-size: 12px; color: var(--muted); line-height: 1.5; }
+.pb-item.none .v { color: var(--faint); }
+.pb-item.top { border-color: color-mix(in srgb, var(--accent) 45%, transparent); }
+.pb-item.top .v { background: linear-gradient(100deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+@media (max-width: 960px) { .pb-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 520px) { .pb-grid { grid-template-columns: repeat(2, 1fr); } }
 .bento .bot { grid-column: span 2; }
 .bento .more { grid-column: span 2; }
 @media (max-width: 960px) { .bento .blog { grid-column: span 6; } .bento .run, .bento .music, .bento .bot, .bento .more { grid-column: span 3; } }
@@ -280,7 +297,7 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
 </head>
 <body>
 <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
-<div id="sky" aria-hidden="true"><div class="sun"><i></i></div><div class="stars"></div><b class="shoot"></b></div>
+<div id="sky" aria-hidden="true"><div class="sun"><i></i></div><div class="stars"></div><b class="shoot"></b><b class="shoot"></b><b class="shoot"></b></div>
 <canvas id="weather" aria-hidden="true"></canvas>
 <div class="grain" aria-hidden="true"></div>
 <div class="tip" id="tip"></div>
@@ -307,7 +324,7 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
       <span class="line" data-split data-grad>business.</span>
     </h1>
     <p class="meaning mono"><b>m</b>in<b>d</b> <b>y</b>ou<b>r</b> <b>b</b>usiness → <b>mdyrbz</b><span data-i18n="meaning">：管好自己的事，把它做好。</span></p>
-    <p class="intro"><span data-i18n-html="intro">我是 <strong>Jason</strong>，住在重庆的程序员，有一只 2022 年 6 月出生的小柴犬，爱跑步、听歌。<br>平时在</span> <span class="rotator" id="rotator">写代码</span></p>
+    <p class="intro"><span data-i18n-html="intro">我是 <strong>Jason</strong>，从 2015 年学习 PHP 并从事编程工作至今的程序员。<br>平时在</span> <span class="rotator" id="rotator">写代码</span></p>
     <div class="cta">
       <a class="btn primary magnetic" href="#apps"><span data-i18n="ctaApps">看看我在做什么</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
@@ -324,6 +341,7 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
   <div class="stats reveal" id="stats">
     <div class="stat"><div class="num mono" data-count="run_km_all">0<small>km</small></div><div class="label" data-i18n="statKm">累计跑步距离</div></div>
     <div class="stat"><div class="num mono" data-count="runs_all">0<small data-i18n="unitRuns">次</small></div><div class="label" data-i18n="statRuns">累计跑步次数</div></div>
+    <div class="stat"><div class="num mono" data-count="ride_km_all">0<small>km</small></div><div class="label" data-i18n="statRide">累计骑行距离</div></div>
     <div class="stat"><div class="num mono" data-count="duolingo_xp" data-k>0<small>k XP</small></div><div class="label" data-i18n="statXp">多邻国经验值</div></div>
     <div class="stat"><div class="num mono" data-count="posts">0<small data-i18n="unitPosts">篇</small></div><div class="label" data-i18n="statPosts">博客文章</div></div>
   </div>
@@ -374,6 +392,12 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
           <b class="mono" id="ring-num">0</b>
         </div>
         <div class="meta" id="run-meta"></div>
+      </a>
+      <a class="card pb reveal" href="/lifelog/">
+        <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        <h3><span data-i18n="pbTitle">跑步最佳成绩</span> <span class="tag mono">PB</span></h3>
+        <div class="sub" data-i18n="pbDesc">每个距离跑得最快的一段，来自手表记录的配速数据</div>
+        <div class="pb-grid" id="pb-grid"></div>
       </a>
       <div class="card music reveal">
         <h3><span data-i18n="musicTitle">最喜欢听</span> <span class="tag mono">SPOTIFY</span></h3>
@@ -450,17 +474,20 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
       statusLoading: "重庆 · 正在加载最近的动态…", statusFailed: "重庆 · 数据暂时没加载出来",
       status: (ago, n, km) => `${ago}跑了 ${n} 次，累计 ${km} km`, city: "重庆",
       meaning: "：管好自己的事，把它做好。",
-      intro: "我是 <strong>Jason</strong>，住在重庆的程序员，有一只 2022 年 6 月出生的小柴犬，爱跑步、听歌。<br>平时在",
+      intro: "我是 <strong>Jason</strong>，从 2015 年学习 PHP 并从事编程工作至今的程序员。<br>平时在",
       words: (style) => ["写代码", "跑步", "学英语", `听${style}`, "记录生活", "折腾服务器"],
       styles: { mandopop: "华语流行", rnb: "R&B", edm: "电子乐", pop: "欧美流行", indie: "独立音乐", kpop: "韩流", rock: "摇滚" },
       styleAnd: (a, b) => b ? `${a}和${b}` : a,
       wx: { clear: "晴", cloudy: "多云", overcast: "阴", fog: "有雾", drizzle: "毛毛雨", rain: "小雨", heavy: "大雨", storm: "雷阵雨", snow: "下雪" },
       ctaApps: "看看我在做什么", ctaBlog: "读博客",
       pinsAlt: "一组珐琅徽章：写着 PHP、Java、Node、SQL 的笔记本电脑，在江边跑步的人，柴犬，Jason 的头像，一杯写着 Good coffee better code 的冰咖啡，新加坡夜景，写着 Jason 的山景徽章，以及 Run Explore Learn Grow。",
-      statKm: "累计跑步距离", statRuns: "累计跑步次数", unitRuns: "次", statXp: "多邻国经验值", statPosts: "博客文章", unitPosts: "篇",
+      statKm: "累计跑步距离", statRide: "累计骑行距离", statRuns: "累计跑步次数", unitRuns: "次", statXp: "多邻国经验值", statPosts: "博客文章", unitPosts: "篇",
       yearTitle: "这一年，每天做了什么", yearDesc: "每一格是一天。数据由 Lifelog 每天三次自动同步：手表、多邻国、GitHub、Spotify。",
       tabAll: "综合", tabRun: "跑步", tabLearn: "学习", tabCode: "代码", tabMusic: "听歌", less: "少", more: "多",
       appsTitle: "平台上的应用", appsDesc: "博客、Lifelog、Telegram 机器人都挂在同一个平台下面，以后还会加新应用。",
+      pbTitle: "跑步最佳成绩", pbDesc: "每个距离跑得最快的一段，来自手表记录的配速数据",
+      pbK1: "1 公里", pbK5: "5 公里", pbK10: "10 公里", pbHalf: "半程马拉松", pbFull: "全程马拉松", pbLongest: "最长一次",
+      pbNone: "还没跑过", perKm: "/公里",
       blogTitle: "博客", blogDesc: "Go、Kubernetes、Elasticsearch、网络折腾笔记",
       runTitle: "跑步", runSub: (y, g) => `${y} 年跑量 / 目标 ${g} km`, runCount: (n) => `<b>${n}</b> 次`, runLatest: (km, p) => `最近 <b>${km}</b> km · <b>${p}</b>/km`,
       musicTitle: "最喜欢听", musicSub: (all, y, h) => `累计听了 ${all} 小时 · ${y} 年 ${h} 小时`, favTrack: "听得最久的歌",
@@ -489,17 +516,20 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
       statusLoading: "Chongqing · loading the latest…", statusFailed: "Chongqing · data didn't load this time",
       status: (ago, n, km) => `${n === 1 ? "one run" : `${n} runs`} ${ago}, ${km} km in total`, city: "Chongqing",
       meaning: ": take care of your own things, and do them well.",
-      intro: "I'm <strong>Jason</strong>, a programmer in Chongqing with a little Shiba Inu born in June 2022. I love running and music.<br>Usually",
+      intro: "I'm <strong>Jason</strong>, a programmer who started learning PHP in 2015 and has been writing code for a living ever since.<br>Usually",
       words: (style) => ["writing code", "running", "learning English", `listening to ${style}`, "logging my days", "tinkering with servers"],
       styles: { mandopop: "Mandopop", rnb: "R&B", edm: "electronic", pop: "Western pop", indie: "indie", kpop: "K-pop", rock: "rock" },
       styleAnd: (a, b) => b ? `${a} and ${b}` : a,
       wx: { clear: "clear", cloudy: "partly cloudy", overcast: "overcast", fog: "foggy", drizzle: "drizzle", rain: "light rain", heavy: "heavy rain", storm: "thunderstorm", snow: "snow" },
       ctaApps: "See what I'm building", ctaBlog: "Read the blog",
       pinsAlt: "A set of enamel pins: a laptop reading PHP, Java, Node, SQL; a runner by the river; a Shiba Inu; Jason's portrait; an iced coffee reading Good coffee better code; Singapore at night; a mountain badge reading Jason; and Run Explore Learn Grow.",
-      statKm: "Total running distance", statRuns: "Total runs", unitRuns: "runs", statXp: "Duolingo XP", statPosts: "Blog posts", unitPosts: "posts",
+      statKm: "Total running distance", statRide: "Total cycling distance", statRuns: "Total runs", unitRuns: "runs", statXp: "Duolingo XP", statPosts: "Blog posts", unitPosts: "posts",
       yearTitle: "A year, one day at a time", yearDesc: "Each square is a day, synced by Lifelog three times a day from my watch, Duolingo, GitHub and Spotify.",
       tabAll: "All", tabRun: "Running", tabLearn: "Learning", tabCode: "Code", tabMusic: "Music", less: "Less", more: "More",
       appsTitle: "Apps on the platform", appsDesc: "The blog, Lifelog and the Telegram bots live under one roof, with room for more.",
+      pbTitle: "Running personal bests", pbDesc: "The fastest stretch of each distance, from my watch's pace data",
+      pbK1: "1 km", pbK5: "5 km", pbK10: "10 km", pbHalf: "Half marathon", pbFull: "Marathon", pbLongest: "Longest run",
+      pbNone: "not yet", perKm: "/km",
       blogTitle: "Blog", blogDesc: "Notes on Go, Kubernetes, Elasticsearch and networking",
       runTitle: "Running", runSub: (y, g) => `${y} distance / goal ${g} km`, runCount: (n) => `<b>${n}</b> runs`, runLatest: (km, p) => `latest <b>${km}</b> km · <b>${p}</b>/km`,
       musicTitle: "Favourites", musicSub: (all, y, h) => `${all} hours in total · ${h} hours in ${y}`, favTrack: "Most-played song",
@@ -656,10 +686,11 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
     const k = WX ? kind(WX.code) : null, day = isDay();
     const wet = ["drizzle", "rain", "heavy", "storm", "snow"].includes(k);
     const sky = $("#sky");
-    sky.classList.toggle("sun-on", day && (k === "clear" || k === "cloudy" || (!WX && day)));
+    // follows the page as shown: a dark page gets the night sky even by day (◐), a light one the sun
+    const dark = document.documentElement.dataset.theme === "dark";
+    sky.classList.toggle("sun-on", !dark && day && (k === "clear" || k === "cloudy" || !WX));
     sky.classList.toggle("sun-dim", k === "cloudy");
-    sky.classList.toggle("stars-on", !day && !wet && k !== "fog");
-    sky.classList.toggle("stars-few", k === "overcast");
+    sky.classList.toggle("stars-on", dark && !wet && k !== "fog");
     const next = wet ? k : null;
     if (next !== precip) { precip = next; sizeWeather(); seedDrops(); if (precip && !raining) { raining = true; requestAnimationFrame(rain); } }
   }
@@ -928,6 +959,7 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
       heatmap: { start: isoDay(start), days },
       stats: {
         run_km_year: sumKm(runsYear), runs_year: runsYear.length, run_km_all: sumKm(runs), runs_all: runs.length,
+        ride_km_all: sumKm(acts.filter((a) => a.type === "ride")),
         music_hours_year: Math.round((my.ms || 0) / 3.6e6),
         music_hours_all: Math.round((mall.ms || 0) / 3.6e6),
         github_year: inYear.reduce((n, [, v]) => n + (v.github_contributions || 0), 0),
@@ -946,6 +978,13 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
         type: latest.type, name: latest.name || "", date: latest.date, km: +(latest.distance_m / 1000).toFixed(2),
         minutes: Math.round(latest.moving_time_s / 60), pace_s_per_km: Math.round(latest.moving_time_s / (latest.distance_m / 1000)), avg_hr: latest.avg_hr,
       },
+      // fastest stretch of each standard distance (best_efforts), as in /lifelog/'s personal bests
+      bests: [["pbK1", "1000"], ["pbK5", "5000"], ["pbK10", "10000"], ["pbHalf", "21097.5"], ["pbFull", "42195"]].map(([key, m]) => {
+        let best = null;
+        for (const a of runs) { const sec = a.best_efforts && a.best_efforts[m]; if (sec && (!best || sec < best.sec)) best = { sec, date: a.date }; }
+        return { key, meters: +m, ...(best || {}) };
+      }),
+      longest: runs.reduce((b, a) => (!b || a.distance_m > b.distance_m ? a : b), null),
       music_top_track: (mall.top_tracks || []).find((x) => !unknown(x.artist)) || null,
       music_top_artists: (mall.top_artists || []).filter((a) => !unknown(a.name)).slice(0, 5).map((a) => ({ name: a.name, hours: Math.round(a.ms / 3.6e6) })),
       posts: (blog.posts || []).map((p) => ({ title: p.title, url: p.url, date: p.date.slice(0, 10) })),
@@ -989,6 +1028,15 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
       if (runCard.classList.contains("in")) runCard.dispatchEvent(new Event("inview"));
     }
     $("#run-meta").innerHTML = `<span>${t("runCount")(s.runs_year)}</span>` + (la ? `<span>${t("runLatest")(la.km, pace(la.pace_s_per_km))}</span>` : "");
+
+    // 跑步最佳成绩
+    const clock = (sec) => { sec = Math.round(sec); const h = Math.floor(sec / 3600), m = Math.floor(sec % 3600 / 60), ss = String(sec % 60).padStart(2, "0"); return h ? `${h}:${String(m).padStart(2, "0")}:${ss}` : `${m}:${ss}`; };
+    const pbs = D.bests.map((b) => b.sec
+      ? `<div class="pb-item"><div class="k">${t(b.key)}</div><div class="v mono">${clock(b.sec)}</div><div class="m">${pace(Math.round(b.sec / (b.meters / 1000)))}${t("perKm")}<br>${b.date}</div></div>`
+      : `<div class="pb-item none"><div class="k">${t(b.key)}</div><div class="v mono">—</div><div class="m">${t("pbNone")}</div></div>`);
+    const lg = D.longest;
+    if (lg) pbs.push(`<div class="pb-item top"><div class="k">${t("pbLongest")}</div><div class="v mono">${(lg.distance_m / 1000).toFixed(2)}<small style="font-size:.5em"> km</small></div><div class="m">${clock(lg.moving_time_s)}<br>${lg.date}</div></div>`);
+    $("#pb-grid").innerHTML = pbs.join("");
 
     // 音乐:累计听得最久的歌手和歌
     if (!again) $("#eq").innerHTML = Array.from({ length: 22 }, (_, i) => `<i style="animation-delay:${(-Math.random()).toFixed(2)}s;animation-duration:${(.5 + Math.random() * .8).toFixed(2)}s"></i>`).join("");
