@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-06T14:00:26Z",
+ "updated_at": "2026-11-07T14:00:25Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -19,14 +19,19 @@
      "image": "https://i.scdn.co/image/ab6761610000f17887fbbe9ed03fbb500595e720"
     },
     {
-     "id": "5cj0lLjcoR7YOSnhnX0Po5",
-     "name": "Doja Cat",
-     "image": "https://i.scdn.co/image/ab6761610000f1788a0644455ebfa7d3976f5101"
+     "id": "3WHsy1Rq4vPEdRyo9P3a48",
+     "name": "Bibi Zhou",
+     "image": "https://i.scdn.co/image/ab6761610000f178b8b78d22300f49ee0c8bacdb"
     },
     {
      "id": "2hgxWUG24w1cFLBlPSEVcV",
      "name": "許嵩",
      "image": "https://i.scdn.co/image/ab6761610000f178704d08abe2a3bf0bb1c366c9"
+    },
+    {
+     "id": "5cj0lLjcoR7YOSnhnX0Po5",
+     "name": "Doja Cat",
+     "image": "https://i.scdn.co/image/ab6761610000f1788a0644455ebfa7d3976f5101"
     },
     {
      "id": "0PxqaZXFW167XSUiha9eEi",
@@ -77,11 +82,6 @@
      "id": "7mShFo2eYgVBQFZBCilhtl",
      "name": "Leah Dou",
      "image": "https://i.scdn.co/image/ab6761610000f1780f50807360beac5d44016b0c"
-    },
-    {
-     "id": "3WHsy1Rq4vPEdRyo9P3a48",
-     "name": "Bibi Zhou",
-     "image": "https://i.scdn.co/image/ab6761610000f178b8b78d22300f49ee0c8bacdb"
     },
     {
      "id": "1km0aro5NJuoX5dE0Mub5C",
@@ -277,6 +277,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e029bb2441b6b192266eb47106f"
     },
     {
+     "id": "6fNhZRFEkBfgW39W3wKARJ",
+     "name": "Pompeii",
+     "artist": "Bastille",
+     "album": "Bad Blood",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
+    },
+    {
      "id": "7EQGXaVSyEDsCWKmUcfpLk",
      "name": "Die Young",
      "artist": "Kesha",
@@ -289,13 +296,6 @@
      "artist": "D33pSoul",
      "album": "Nostalgia",
      "image": "https://i.scdn.co/image/ab67616d00001e0244fd7df5558aa1f6cbed17a2"
-    },
-    {
-     "id": "6fNhZRFEkBfgW39W3wKARJ",
-     "name": "Pompeii",
-     "artist": "Bastille",
-     "album": "Bad Blood",
-     "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
     },
     {
      "id": "13P5rwmk2EsoFRIz9UCeh9",
@@ -340,6 +340,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02f9e94cdcd43abe52e9e1c4c3"
     },
     {
+     "id": "6UqRGwjwYL0stXbaodTxwo",
+     "name": "Seve - Radio Edit",
+     "artist": "Tez Cadey",
+     "album": "Seve (Radio Edit)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02da0751d4a35b6af93fb3e01d"
+    },
+    {
      "id": "2pUpNOgJBIBCcjyQZQ00qU",
      "name": "Let Her Go",
      "artist": "Passenger",
@@ -366,13 +373,6 @@
      "artist": "giacca., Flores [US]",
      "album": "Delight",
      "image": "https://i.scdn.co/image/ab67616d00001e02a97816c82e9fcab94aba6b7d"
-    },
-    {
-     "id": "6UqRGwjwYL0stXbaodTxwo",
-     "name": "Seve - Radio Edit",
-     "artist": "Tez Cadey",
-     "album": "Seve (Radio Edit)",
-     "image": "https://i.scdn.co/image/ab67616d00001e02da0751d4a35b6af93fb3e01d"
     },
     {
      "id": "2fuCquhmrzHpu5xcA1ci9x",
@@ -610,14 +610,14 @@
   "medium_term": {
    "artists": [
     {
-     "id": "2hgxWUG24w1cFLBlPSEVcV",
-     "name": "許嵩",
-     "image": "https://i.scdn.co/image/ab6761610000f178704d08abe2a3bf0bb1c366c9"
-    },
-    {
      "id": "3WHsy1Rq4vPEdRyo9P3a48",
      "name": "Bibi Zhou",
      "image": "https://i.scdn.co/image/ab6761610000f178b8b78d22300f49ee0c8bacdb"
+    },
+    {
+     "id": "2hgxWUG24w1cFLBlPSEVcV",
+     "name": "許嵩",
+     "image": "https://i.scdn.co/image/ab6761610000f178704d08abe2a3bf0bb1c366c9"
     },
     {
      "id": "5cj0lLjcoR7YOSnhnX0Po5",
@@ -717,7 +717,7 @@
     {
      "id": "4npEfmQ6YuiwW1GpUmaq3F",
      "name": "Ava Max",
-     "image": "https://i.scdn.co/image/ab6761610000f178d8fa717584b01690e3919e32"
+     "image": "https://i.scdn.co/image/ab6761610000f178eeb78278ee29fb6bfb9010f7"
     },
     {
      "id": "6PNEi9i2MxUgRufqYr76Xt",
@@ -855,6 +855,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
     },
     {
+     "id": "6fNhZRFEkBfgW39W3wKARJ",
+     "name": "Pompeii",
+     "artist": "Bastille",
+     "album": "Bad Blood",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
+    },
+    {
      "id": "3DarAbFujv6eYNliUTyqtz",
      "name": "Kiss Me More (feat. SZA)",
      "artist": "Doja Cat, SZA",
@@ -876,46 +883,11 @@
      "image": "https://i.scdn.co/image/ab67616d00001e027f401862bfe87b552a75308d"
     },
     {
-     "id": "6fNhZRFEkBfgW39W3wKARJ",
-     "name": "Pompeii",
-     "artist": "Bastille",
-     "album": "Bad Blood",
-     "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
-    },
-    {
      "id": "7nDQMtLxu94xtlTR8bEqjU",
      "name": "Faded",
      "artist": "ZHU",
      "album": "Faded",
      "image": "https://i.scdn.co/image/ab67616d00001e027b730a450d048646b7472425"
-    },
-    {
-     "id": "3xKsf9qdS1CyvXSMEid6g8",
-     "name": "Pink + White",
-     "artist": "Frank Ocean",
-     "album": "Blonde",
-     "image": "https://i.scdn.co/image/ab67616d00001e02c5649add07ed3720be9d5526"
-    },
-    {
-     "id": "3eOeuofLjOgjOCs7eWuvZ0",
-     "name": "Cool Kids",
-     "artist": "Echosmith",
-     "album": "Talking Dreams",
-     "image": "https://i.scdn.co/image/ab67616d00001e02b098cbfb14e8cc251451ca19"
-    },
-    {
-     "id": "0Id7swY6cWbvYLtVVF0wvq",
-     "name": "一場遊戲一場夢",
-     "artist": "Dave Wang",
-     "album": "一場遊戲一場夢",
-     "image": "https://i.scdn.co/image/ab67616d00001e02508f6070bbe3a4fec70e2036"
-    },
-    {
-     "id": "3eR23VReFzcdmS7TYCrhCe",
-     "name": "It Ain't Me (with Selena Gomez)",
-     "artist": "Kygo, Selena Gomez",
-     "album": "It Ain't Me (with Selena Gomez)",
-     "image": "https://i.scdn.co/image/ab67616d00001e0241f289940f2e6a0d51988d77"
     },
     {
      "id": "0GO8y8jQk1PkHzS31d699N",
@@ -932,18 +904,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e028a99868b5a57469de83fb9ba"
     },
     {
-     "id": "4DxybsoSiMUW0JI2oM0SSN",
-     "name": "Patience",
-     "artist": "Take That",
-     "album": "Beautiful World",
-     "image": "https://i.scdn.co/image/ab67616d00001e0206e7629fa095158d50b73d57"
+     "id": "3xKsf9qdS1CyvXSMEid6g8",
+     "name": "Pink + White",
+     "artist": "Frank Ocean",
+     "album": "Blonde",
+     "image": "https://i.scdn.co/image/ab67616d00001e02c5649add07ed3720be9d5526"
     },
     {
-     "id": "6LLegbVHksZ5kDC2whN1Da",
-     "name": "Adventure Time",
-     "artist": "Philter",
-     "album": "The Blossom Chronicles",
-     "image": "https://i.scdn.co/image/ab67616d00001e02b93587221b1ce0c85a02297e"
+     "id": "69uxyAqqPIsUyTO8txoP2M",
+     "name": "Adventure of a Lifetime",
+     "artist": "Coldplay",
+     "album": "A Head Full of Dreams",
+     "image": "https://i.scdn.co/image/ab67616d00001e028ff7c3580d429c8212b9a3b6"
     },
     {
      "id": "7ti4qMC7xYQeh1uRzj5XuM",
@@ -951,6 +923,69 @@
      "artist": "NONONO",
      "album": "We Are Only What We Feel",
      "image": "https://i.scdn.co/image/ab67616d00001e02ca9961814136d4bd7acfd811"
+    },
+    {
+     "id": "3eOeuofLjOgjOCs7eWuvZ0",
+     "name": "Cool Kids",
+     "artist": "Echosmith",
+     "album": "Talking Dreams",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b098cbfb14e8cc251451ca19"
+    },
+    {
+     "id": "0Id7swY6cWbvYLtVVF0wvq",
+     "name": "一場遊戲一場夢",
+     "artist": "Dave Wang",
+     "album": "一場遊戲一場夢",
+     "image": "https://i.scdn.co/image/ab67616d00001e02508f6070bbe3a4fec70e2036"
+    },
+    {
+     "id": "2tpWsVSb9UEmDRxAl1zhX1",
+     "name": "Counting Stars",
+     "artist": "OneRepublic",
+     "album": "Native",
+     "image": "https://i.scdn.co/image/ab67616d00001e029e2f95ae77cf436017ada9cb"
+    },
+    {
+     "id": "3eR23VReFzcdmS7TYCrhCe",
+     "name": "It Ain't Me (with Selena Gomez)",
+     "artist": "Kygo, Selena Gomez",
+     "album": "It Ain't Me (with Selena Gomez)",
+     "image": "https://i.scdn.co/image/ab67616d00001e0241f289940f2e6a0d51988d77"
+    },
+    {
+     "id": "0UeYCHOETPfai02uskjJ3x",
+     "name": "Shooting Stars",
+     "artist": "Bag Raiders",
+     "album": "Bag Raiders (Deluxe)",
+     "image": "https://i.scdn.co/image/ab67616d00001e0250b5922bdf87ba4213b25234"
+    },
+    {
+     "id": "213x4gsFDm04hSqIUkg88w",
+     "name": "On Top Of The World",
+     "artist": "Imagine Dragons",
+     "album": "Night Visions",
+     "image": "https://i.scdn.co/image/ab67616d00001e02407bd04707c463bbb3410737"
+    },
+    {
+     "id": "4DxybsoSiMUW0JI2oM0SSN",
+     "name": "Patience",
+     "artist": "Take That",
+     "album": "Beautiful World",
+     "image": "https://i.scdn.co/image/ab67616d00001e0206e7629fa095158d50b73d57"
+    },
+    {
+     "id": "54RpL1P9FxOzZDE3N2XyMN",
+     "name": "偶然",
+     "artist": "Bibi Zhou",
+     "album": "黑·择·明",
+     "image": "https://i.scdn.co/image/ab67616d00001e0259120a6b8be0a60a4bbf82cd"
+    },
+    {
+     "id": "6LLegbVHksZ5kDC2whN1Da",
+     "name": "Adventure Time",
+     "artist": "Philter",
+     "album": "The Blossom Chronicles",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b93587221b1ce0c85a02297e"
     },
     {
      "id": "56y1jOTK0XSvJzVv9vHQBK",
@@ -972,13 +1007,6 @@
      "artist": "Bibi Zhou",
      "album": "2005超级女声终极PK",
      "image": "https://i.scdn.co/image/ab67616d00001e028d365c88c9bdaec3720bda12"
-    },
-    {
-     "id": "2tpWsVSb9UEmDRxAl1zhX1",
-     "name": "Counting Stars",
-     "artist": "OneRepublic",
-     "album": "Native",
-     "image": "https://i.scdn.co/image/ab67616d00001e029e2f95ae77cf436017ada9cb"
     },
     {
      "id": "2FiSTH0GYpIioUgjfzMIja",
@@ -1009,11 +1037,11 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
     },
     {
-     "id": "0UeYCHOETPfai02uskjJ3x",
-     "name": "Shooting Stars",
-     "artist": "Bag Raiders",
-     "album": "Bag Raiders (Deluxe)",
-     "image": "https://i.scdn.co/image/ab67616d00001e0250b5922bdf87ba4213b25234"
+     "id": "0euyZh7zSUmpNXVpVBdcN2",
+     "name": "Candyland",
+     "artist": "Tobu",
+     "album": "Candyland",
+     "image": "https://i.scdn.co/image/ab67616d00001e029feceff471ea209ab793ce6b"
     },
     {
      "id": "0tgnTzjIkj8mVVEh0SNH0t",
@@ -1028,6 +1056,13 @@
      "artist": "Martin Jensen",
      "album": "Solo Dance",
      "image": "https://i.scdn.co/image/ab67616d00001e02245582ce9538e3681b0d0d7e"
+    },
+    {
+     "id": "13I9qqQBL23ZPxFCUO967w",
+     "name": "The Spectre",
+     "artist": "Alan Walker",
+     "album": "Live Fast (Japan Exclusive)",
+     "image": "https://i.scdn.co/image/ab67616d00001e028270e49a0de52091e0d8eb94"
     },
     {
      "id": "1I8tHoNBFTuoJAlh4hfVVE",
@@ -1065,18 +1100,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e0239588f221861ee72b40b755c"
     },
     {
-     "id": "213x4gsFDm04hSqIUkg88w",
-     "name": "On Top Of The World",
-     "artist": "Imagine Dragons",
-     "album": "Night Visions",
-     "image": "https://i.scdn.co/image/ab67616d00001e02407bd04707c463bbb3410737"
-    },
-    {
      "id": "22RgKGppKFyQwKUX6Rvx8i",
      "name": "Road Trippin' - Radio Mix",
      "artist": "DBMM",
      "album": "High Way",
      "image": "https://i.scdn.co/image/ab67616d00001e02129acb02ff567b3e3dae5250"
+    },
+    {
+     "id": "2FpEXjGqe2dJJ9oB8c8Io2",
+     "name": "Unity",
+     "artist": "TheFatRat",
+     "album": "Unity - 10th Anniversary Compilation",
+     "image": "https://i.scdn.co/image/ab67616d00001e023b3b24d7997db331a6e841d3"
     },
     {
      "id": "2dyyOwe0KxTZTJjjXDeLmU",
@@ -1135,60 +1170,25 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02b03e92f4e7dcd9db3a06c869"
     },
     {
-     "id": "5rXBmcYNJYMYdhwxlMLh0s",
-     "name": "有何不可",
-     "artist": "許嵩",
-     "album": "自定義",
-     "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
-    },
-    {
-     "id": "5s7xgzXtmY4gMjeSlgisjy",
-     "name": "Easy Love",
-     "artist": "Sigala",
-     "album": "Brighter Days",
-     "image": "https://i.scdn.co/image/ab67616d00001e025e637584b3a504d501357557"
-    },
-    {
-     "id": "69uxyAqqPIsUyTO8txoP2M",
-     "name": "Adventure of a Lifetime",
-     "artist": "Coldplay",
-     "album": "A Head Full of Dreams",
-     "image": "https://i.scdn.co/image/ab67616d00001e028ff7c3580d429c8212b9a3b6"
-    },
-    {
-     "id": "6VrLYoQKdhu1Jruei06t65",
-     "name": "Somebody To You",
-     "artist": "The Vamps",
-     "album": "Meet The Vamps",
-     "image": "https://i.scdn.co/image/ab67616d00001e029f89b8390933e9ccb3673c89"
-    },
-    {
-     "id": "6ldGMSejZIGokqYSzgJIP5",
-     "name": "幻聽",
-     "artist": "許嵩",
-     "album": "夢游計",
-     "image": "https://i.scdn.co/image/ab67616d00001e026c99d21a7cc536154d4c2050"
-    },
-    {
-     "id": "7AoCZm5JpcgiIpQz8ClelB",
-     "name": "Can't Get Enough - Sam Padrul Remix",
-     "artist": "Yeah Boy",
-     "album": "Can't Get Enough Remixes",
-     "image": "https://i.scdn.co/image/ab67616d00001e026f4be2da23461b3a1271508c"
+     "id": "5lF0pHbsJ0QqyIrLweHJPW",
+     "name": "Burn",
+     "artist": "Ellie Goulding",
+     "album": "Halcyon Nights",
+     "image": "https://i.scdn.co/image/ab67616d00001e02a8f674745d4e6757a9b35ba0"
     }
    ]
   },
   "short_term": {
    "artists": [
     {
-     "id": "2hgxWUG24w1cFLBlPSEVcV",
-     "name": "許嵩",
-     "image": "https://i.scdn.co/image/ab6761610000f178704d08abe2a3bf0bb1c366c9"
-    },
-    {
      "id": "3WHsy1Rq4vPEdRyo9P3a48",
      "name": "Bibi Zhou",
      "image": "https://i.scdn.co/image/ab6761610000f178b8b78d22300f49ee0c8bacdb"
+    },
+    {
+     "id": "2hgxWUG24w1cFLBlPSEVcV",
+     "name": "許嵩",
+     "image": "https://i.scdn.co/image/ab6761610000f178704d08abe2a3bf0bb1c366c9"
     },
     {
      "id": "7mShFo2eYgVBQFZBCilhtl",
@@ -1281,11 +1281,6 @@
      "image": "https://i.scdn.co/image/ab6761610000f1787b3634864a78ab6bd1d77c36"
     },
     {
-     "id": "5uCktjKM1Rf9VnUvFD6j17",
-     "name": "Solar Heavy",
-     "image": "https://i.scdn.co/image/ab6761610000f1782b1c6db6ed003d0e72c160e6"
-    },
-    {
      "id": "7BqRcZsHYYQeqMAOp7e532",
      "name": "落日飛車 Sunset Rollercoaster",
      "image": "https://i.scdn.co/image/ab6761610000f17817dd503b5c1841cd238c9aa7"
@@ -1306,9 +1301,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f178f8349dfb619a7f842242de77"
     },
     {
+     "id": "0SIXZXJCAhNU8sxK0qm7hn",
+     "name": "Stefanie Sun",
+     "image": "https://i.scdn.co/image/ab6761610000f178744989ed737112f4edbd2cc3"
+    },
+    {
      "id": "4npEfmQ6YuiwW1GpUmaq3F",
      "name": "Ava Max",
-     "image": "https://i.scdn.co/image/ab6761610000f178d8fa717584b01690e3919e32"
+     "image": "https://i.scdn.co/image/ab6761610000f178eeb78278ee29fb6bfb9010f7"
     },
     {
      "id": "6MDME20pz9RveH9rEXvrOM",
@@ -1438,6 +1438,13 @@
      "artist": "Imagine Dragons",
      "album": "Night Visions",
      "image": "https://i.scdn.co/image/ab67616d00001e02407bd04707c463bbb3410737"
+    },
+    {
+     "id": "54RpL1P9FxOzZDE3N2XyMN",
+     "name": "偶然",
+     "artist": "Bibi Zhou",
+     "album": "黑·择·明",
+     "image": "https://i.scdn.co/image/ab67616d00001e0259120a6b8be0a60a4bbf82cd"
     },
     {
      "id": "5s8QrZRHt4gZclSaCds4GY",
@@ -1669,13 +1676,6 @@
      "artist": "許嵩",
      "album": "我想牽著你的手",
      "image": "https://i.scdn.co/image/ab67616d00001e021093e73a2ed86bde416259c7"
-    },
-    {
-     "id": "06u5LrUpbosQlQ1QJFhPpG",
-     "name": "Drew Barrymore",
-     "artist": "SZA",
-     "album": "Ctrl",
-     "image": "https://i.scdn.co/image/ab67616d00001e0206d56b057cce5797538a16d5"
     }
    ]
   }
