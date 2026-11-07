@@ -923,7 +923,13 @@ footer { border-top: 1px solid var(--card-border); padding: 28px 0 40px; color: 
   var D; // var: the language switch above may read it before this line runs
   const fmt = (n) => n.toLocaleString(LOCALE[lang]);
   const pace = (s) => `${Math.floor(s / 60)}'${String(s % 60).padStart(2, "0")}"`;
-  const ago = (iso) => { const d = Math.round((Date.now() - new Date(iso)) / 864e5); return d <= 0 ? t("today") : d === 1 ? t("yesterday") : t("daysAgo")(d); };
+  // calendar days between a YYYY-MM-DD date (Chongqing time, as in data.json) and today in Chongqing,
+  // not elapsed hours: a run yesterday evening is "yesterday" at any time of today
+  const ago = (ymd, now = new Date()) => {
+    const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai" }).format(now);
+    const d = Math.round((Date.parse(today) - Date.parse(ymd.slice(0, 10))) / 864e5);
+    return d <= 0 ? t("today") : d === 1 ? t("yesterday") : t("daysAgo")(d);
+  };
 
   // the lifelog export (/lifelog/data.json, rewritten by every sync) and the blog's post list
   Promise.all([
