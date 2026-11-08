@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-08T00:00:23Z",
+ "updated_at": "2026-11-08T05:00:23Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -154,6 +154,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f1789caf03c5c4b858fca6cedab4"
     },
     {
+     "id": "1vCWHaC5f2uS3yhpwWbIA6",
+     "name": "Avicii",
+     "image": "https://i.scdn.co/image/ab6761610000f178ae07171f989fb39736674113"
+    },
+    {
      "id": "2h93pZq0e7k5yf4dywlkpM",
      "name": "Frank Ocean",
      "image": "https://i.scdn.co/image/ab6761610000f178ee3123e593174208f9754fab"
@@ -192,11 +197,6 @@
      "id": "3aIDSTKS9yH745GUQBxDcS",
      "name": "Fish Leong",
      "image": "https://i.scdn.co/image/ab6761610000f17814806436e1fc9d977a3709dd"
-    },
-    {
-     "id": "1vCWHaC5f2uS3yhpwWbIA6",
-     "name": "Avicii",
-     "image": "https://i.scdn.co/image/ab6761610000f178ae07171f989fb39736674113"
     },
     {
      "id": "20wkVLutqVOYrc0kxFs7rA",
@@ -1291,6 +1291,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f178fe81f2540f9fa7564dd5e05c"
     },
     {
+     "id": "0SIXZXJCAhNU8sxK0qm7hn",
+     "name": "Stefanie Sun",
+     "image": "https://i.scdn.co/image/ab6761610000f178744989ed737112f4edbd2cc3"
+    },
+    {
      "id": "4iHNK0tOyZPYnBU7nGAgpQ",
      "name": "Mariah Carey",
      "image": "https://i.scdn.co/image/ab6761610000f17821453384a10b1f8e18877f63"
@@ -1299,11 +1304,6 @@
      "id": "04gDigrS5kc9YWfZHwBETP",
      "name": "Maroon 5",
      "image": "https://i.scdn.co/image/ab6761610000f178f8349dfb619a7f842242de77"
-    },
-    {
-     "id": "0SIXZXJCAhNU8sxK0qm7hn",
-     "name": "Stefanie Sun",
-     "image": "https://i.scdn.co/image/ab6761610000f178744989ed737112f4edbd2cc3"
     },
     {
      "id": "4npEfmQ6YuiwW1GpUmaq3F",
