@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-09T05:00:22Z",
+ "updated_at": "2026-11-09T14:00:23Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -1375,6 +1375,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e028a99868b5a57469de83fb9ba"
     },
     {
+     "id": "3B0irDyS69y5eAz15xV2Ee",
+     "name": "Wake Me Up",
+     "artist": "Avicii",
+     "album": "True",
+     "image": "https://i.scdn.co/image/ab67616d00001e02162c5d6dbf1dc3965d1a391a"
+    },
+    {
      "id": "69uxyAqqPIsUyTO8txoP2M",
      "name": "Adventure of a Lifetime",
      "artist": "Coldplay",
@@ -1403,11 +1410,25 @@
      "image": "https://i.scdn.co/image/ab67616d00001e029e2f95ae77cf436017ada9cb"
     },
     {
-     "id": "3B0irDyS69y5eAz15xV2Ee",
-     "name": "Wake Me Up",
-     "artist": "Avicii",
-     "album": "True",
-     "image": "https://i.scdn.co/image/ab67616d00001e02162c5d6dbf1dc3965d1a391a"
+     "id": "0UeYCHOETPfai02uskjJ3x",
+     "name": "Shooting Stars",
+     "artist": "Bag Raiders",
+     "album": "Bag Raiders (Deluxe)",
+     "image": "https://i.scdn.co/image/ab67616d00001e0250b5922bdf87ba4213b25234"
+    },
+    {
+     "id": "0euyZh7zSUmpNXVpVBdcN2",
+     "name": "Candyland",
+     "artist": "Tobu",
+     "album": "Candyland",
+     "image": "https://i.scdn.co/image/ab67616d00001e029feceff471ea209ab793ce6b"
+    },
+    {
+     "id": "213x4gsFDm04hSqIUkg88w",
+     "name": "On Top Of The World",
+     "artist": "Imagine Dragons",
+     "album": "Night Visions",
+     "image": "https://i.scdn.co/image/ab67616d00001e02407bd04707c463bbb3410737"
     },
     {
      "id": "3xKsf9qdS1CyvXSMEid6g8",
@@ -1415,6 +1436,20 @@
      "artist": "Frank Ocean",
      "album": "Blonde",
      "image": "https://i.scdn.co/image/ab67616d00001e02c5649add07ed3720be9d5526"
+    },
+    {
+     "id": "4HadYIhNfy7evMUI5W6wEc",
+     "name": "Reykjavik",
+     "artist": "Joachim Pastor",
+     "album": "Reykjavik",
+     "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
+    },
+    {
+     "id": "6IiuWEdYeYldZNiSxXWV5y",
+     "name": "Jubel",
+     "artist": "Klingande",
+     "album": "Jubel",
+     "image": "https://i.scdn.co/image/ab6742d3000052b7d20b7a2f3018e3d59b7cac75"
     },
     {
      "id": "4Tg47JDi502dD0eh4gajWf",
@@ -1445,25 +1480,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e0241f289940f2e6a0d51988d77"
     },
     {
-     "id": "0UeYCHOETPfai02uskjJ3x",
-     "name": "Shooting Stars",
-     "artist": "Bag Raiders",
-     "album": "Bag Raiders (Deluxe)",
-     "image": "https://i.scdn.co/image/ab67616d00001e0250b5922bdf87ba4213b25234"
-    },
-    {
-     "id": "0euyZh7zSUmpNXVpVBdcN2",
-     "name": "Candyland",
-     "artist": "Tobu",
-     "album": "Candyland",
-     "image": "https://i.scdn.co/image/ab67616d00001e029feceff471ea209ab793ce6b"
-    },
-    {
      "id": "0tgnTzjIkj8mVVEh0SNH0t",
      "name": "Secrets",
      "artist": "OneRepublic",
      "album": "Waking Up (International Deluxe Version)",
      "image": "https://i.scdn.co/image/ab67616d00001e025a6a08795790ccc600cc94a8"
+    },
+    {
+     "id": "13I9qqQBL23ZPxFCUO967w",
+     "name": "The Spectre",
+     "artist": "Alan Walker",
+     "album": "Live Fast (Japan Exclusive)",
+     "image": "https://i.scdn.co/image/ab67616d00001e028270e49a0de52091e0d8eb94"
     },
     {
      "id": "1I8tHoNBFTuoJAlh4hfVVE",
@@ -1478,13 +1506,6 @@
      "artist": "Jess Glynne",
      "album": "I Cry When I Laugh",
      "image": "https://i.scdn.co/image/ab67616d00001e0239588f221861ee72b40b755c"
-    },
-    {
-     "id": "213x4gsFDm04hSqIUkg88w",
-     "name": "On Top Of The World",
-     "artist": "Imagine Dragons",
-     "album": "Night Visions",
-     "image": "https://i.scdn.co/image/ab67616d00001e02407bd04707c463bbb3410737"
     },
     {
      "id": "2FpEXjGqe2dJJ9oB8c8Io2",
@@ -1522,6 +1543,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02b03e92f4e7dcd9db3a06c869"
     },
     {
+     "id": "5lF0pHbsJ0QqyIrLweHJPW",
+     "name": "Burn",
+     "artist": "Ellie Goulding",
+     "album": "Halcyon Nights",
+     "image": "https://i.scdn.co/image/ab67616d00001e02a8f674745d4e6757a9b35ba0"
+    },
+    {
      "id": "5s8QrZRHt4gZclSaCds4GY",
      "name": "Nostalgia",
      "artist": "D33pSoul",
@@ -1534,6 +1562,20 @@
      "artist": "Philter",
      "album": "The Blossom Chronicles",
      "image": "https://i.scdn.co/image/ab67616d00001e02b93587221b1ce0c85a02297e"
+    },
+    {
+     "id": "6RUKPb4LETWmmr3iAEQktW",
+     "name": "Something Just Like This",
+     "artist": "The Chainsmokers, Coldplay",
+     "album": "Memories...Do Not Open",
+     "image": "https://i.scdn.co/image/ab67616d00001e020c13d3d5a503c84fcc60ae94"
+    },
+    {
+     "id": "6UqRGwjwYL0stXbaodTxwo",
+     "name": "Seve - Radio Edit",
+     "artist": "Tez Cadey",
+     "album": "Seve (Radio Edit)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02da0751d4a35b6af93fb3e01d"
     },
     {
      "id": "6VrLYoQKdhu1Jruei06t65",
@@ -1592,13 +1634,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02245582ce9538e3681b0d0d7e"
     },
     {
-     "id": "13I9qqQBL23ZPxFCUO967w",
-     "name": "The Spectre",
-     "artist": "Alan Walker",
-     "album": "Live Fast (Japan Exclusive)",
-     "image": "https://i.scdn.co/image/ab67616d00001e028270e49a0de52091e0d8eb94"
-    },
-    {
      "id": "1Mys1gf9SkMBAVGGxpkJ7d",
      "name": "Reality",
      "artist": "Lost Frequencies, Janieck",
@@ -1606,18 +1641,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02c01ab1c4b2dceb2cfc89e6fa"
     },
     {
+     "id": "1kKYjjfNYxE0YYgLa7vgVY",
+     "name": "Higher Love",
+     "artist": "Kygo, Whitney Houston",
+     "album": "Golden Hour",
+     "image": "https://i.scdn.co/image/ab67616d00001e0280368f0aa8f90c51674f9dd2"
+    },
+    {
      "id": "42LDz0sTCJDPj71DDw5RAB",
      "name": "那个那个",
      "artist": "Bibi Zhou",
      "album": "谁动了我的琴弦",
      "image": "https://i.scdn.co/image/ab67616d00001e02272dfef9027ee41de02c067f"
-    },
-    {
-     "id": "4HadYIhNfy7evMUI5W6wEc",
-     "name": "Reykjavik",
-     "artist": "Joachim Pastor",
-     "album": "Reykjavik",
-     "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
     },
     {
      "id": "4LThFOso6YeLtjG6TZUOdh",
@@ -1634,13 +1669,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02ec67f6776573462a1ad9ee2d"
     },
     {
-     "id": "5lF0pHbsJ0QqyIrLweHJPW",
-     "name": "Burn",
-     "artist": "Ellie Goulding",
-     "album": "Halcyon Nights",
-     "image": "https://i.scdn.co/image/ab67616d00001e02a8f674745d4e6757a9b35ba0"
-    },
-    {
      "id": "5rXBmcYNJYMYdhwxlMLh0s",
      "name": "有何不可",
      "artist": "許嵩",
@@ -1653,34 +1681,6 @@
      "artist": "Sigala",
      "album": "Brighter Days",
      "image": "https://i.scdn.co/image/ab67616d00001e025e637584b3a504d501357557"
-    },
-    {
-     "id": "6IiuWEdYeYldZNiSxXWV5y",
-     "name": "Jubel",
-     "artist": "Klingande",
-     "album": "Jubel",
-     "image": "https://i.scdn.co/image/ab6742d3000052b7d20b7a2f3018e3d59b7cac75"
-    },
-    {
-     "id": "6RUKPb4LETWmmr3iAEQktW",
-     "name": "Something Just Like This",
-     "artist": "The Chainsmokers, Coldplay",
-     "album": "Memories...Do Not Open",
-     "image": "https://i.scdn.co/image/ab67616d00001e020c13d3d5a503c84fcc60ae94"
-    },
-    {
-     "id": "6UqRGwjwYL0stXbaodTxwo",
-     "name": "Seve - Radio Edit",
-     "artist": "Tez Cadey",
-     "album": "Seve (Radio Edit)",
-     "image": "https://i.scdn.co/image/ab67616d00001e02da0751d4a35b6af93fb3e01d"
-    },
-    {
-     "id": "6ldGMSejZIGokqYSzgJIP5",
-     "name": "幻聽",
-     "artist": "許嵩",
-     "album": "夢游計",
-     "image": "https://i.scdn.co/image/ab67616d00001e026c99d21a7cc536154d4c2050"
     }
    ]
   }
