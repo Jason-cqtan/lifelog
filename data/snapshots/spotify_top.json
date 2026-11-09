@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-09T00:00:22Z",
+ "updated_at": "2026-11-09T05:00:22Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -39,9 +39,9 @@
      "image": "https://i.scdn.co/image/ab6761610000f1780887284d923c88a92835e427"
     },
     {
-     "id": "0du5cEVh5yTK9QJze8zA0C",
-     "name": "Bruno Mars",
-     "image": "https://i.scdn.co/image/ab6761610000f178c7688aad1bf03986934d7e26"
+     "id": "5Pwc4xIPtQLFEnJriah9YJ",
+     "name": "OneRepublic",
+     "image": "https://i.scdn.co/image/ab6761610000f1783202f1bcacc6d8f581f32ffd"
     },
     {
      "id": "30b9WulBM8sFuBo17nNq9c",
@@ -54,24 +54,29 @@
      "image": "https://i.scdn.co/image/ab6761610000f178c3f0ab5f9cba94862e72542a"
     },
     {
-     "id": "6PNEi9i2MxUgRufqYr76Xt",
-     "name": "Zhang Zhen Yue",
-     "image": "https://i.scdn.co/image/ab6761610000f17866a909756400366c24bf1568"
-    },
-    {
      "id": "23fqKkggKUBHNkbKtXEls4",
      "name": "Kygo",
      "image": "https://i.scdn.co/image/ab6761610000f178e5ea1aa1404629c12ad86658"
     },
     {
-     "id": "5Pwc4xIPtQLFEnJriah9YJ",
-     "name": "OneRepublic",
-     "image": "https://i.scdn.co/image/ab6761610000f1783202f1bcacc6d8f581f32ffd"
+     "id": "0du5cEVh5yTK9QJze8zA0C",
+     "name": "Bruno Mars",
+     "image": "https://i.scdn.co/image/ab6761610000f178c7688aad1bf03986934d7e26"
+    },
+    {
+     "id": "6PNEi9i2MxUgRufqYr76Xt",
+     "name": "Zhang Zhen Yue",
+     "image": "https://i.scdn.co/image/ab6761610000f17866a909756400366c24bf1568"
     },
     {
      "id": "3OKg7YbOIatODzkRIbLJR4",
      "name": "TheFatRat",
      "image": "https://i.scdn.co/image/ab6761610000f178c64c5f001dc3957cf5651460"
+    },
+    {
+     "id": "1vCWHaC5f2uS3yhpwWbIA6",
+     "name": "Avicii",
+     "image": "https://i.scdn.co/image/ab6761610000f178ae07171f989fb39736674113"
     },
     {
      "id": "6M2wZ9GZgrQXHCFfjv46we",
@@ -124,14 +129,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f1781b44d5d4d2e564f28f4046cf"
     },
     {
-     "id": "1Xyo4u8uXC1ZmMpatF05PJ",
-     "name": "The Weeknd",
-     "image": "https://i.scdn.co/image/ab6761610000f178c1719ac9e6a75c1c25835018"
-    },
-    {
      "id": "7CajNmpbOovFoOoasH2HaY",
      "name": "Calvin Harris",
      "image": "https://i.scdn.co/image/ab6761610000f1788ebba5e60113b48de8c11f6b"
+    },
+    {
+     "id": "1Xyo4u8uXC1ZmMpatF05PJ",
+     "name": "The Weeknd",
+     "image": "https://i.scdn.co/image/ab6761610000f178c1719ac9e6a75c1c25835018"
     },
     {
      "id": "376pcuw4IgWBMOUwCr8kIm",
@@ -152,11 +157,6 @@
      "id": "3XRhtE8W24BUgS40G9ZNkS",
      "name": "Linear Phase",
      "image": "https://i.scdn.co/image/ab6761610000f1789caf03c5c4b858fca6cedab4"
-    },
-    {
-     "id": "1vCWHaC5f2uS3yhpwWbIA6",
-     "name": "Avicii",
-     "image": "https://i.scdn.co/image/ab6761610000f178ae07171f989fb39736674113"
     },
     {
      "id": "2h93pZq0e7k5yf4dywlkpM",
@@ -438,6 +438,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02b93587221b1ce0c85a02297e"
     },
     {
+     "id": "2CPqh63wRVscbceKcPxwvv",
+     "name": "The Ocean (feat. Shy Martin)",
+     "artist": "Mike Perry, shy martin",
+     "album": "The Ocean (feat. Shy Martin)",
+     "image": "https://i.scdn.co/image/ab67616d00001e027f401862bfe87b552a75308d"
+    },
+    {
      "id": "5YTtTbqxUzJHD3CpbNHerP",
      "name": "Brighter Than The Sun",
      "artist": "Colbie Caillat",
@@ -536,18 +543,25 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02a6460e661fac0d7327c13426"
     },
     {
+     "id": "0GO8y8jQk1PkHzS31d699N",
+     "name": "Tongue Tied",
+     "artist": "GROUPLOVE",
+     "album": "Never Trust a Happy Song",
+     "image": "https://i.scdn.co/image/ab67616d00001e02d84a9bbcba91cb6a4a212b1b"
+    },
+    {
+     "id": "0qt5f5EL92o8Snzopsv0en",
+     "name": "Geronimo",
+     "artist": "Sheppard",
+     "album": "Bombs Away",
+     "image": "https://i.scdn.co/image/ab67616d00001e028a99868b5a57469de83fb9ba"
+    },
+    {
      "id": "1aygA3iZfj6ef4aq92EqCU",
      "name": "Sunset Over Emst - Original Mix",
      "artist": "Roald Velden",
      "album": "As the Years Went by / Sunset Over Emst",
      "image": "https://i.scdn.co/image/ab67616d00001e023572e164458b0e5ea6ff949d"
-    },
-    {
-     "id": "2CPqh63wRVscbceKcPxwvv",
-     "name": "The Ocean (feat. Shy Martin)",
-     "artist": "Mike Perry, shy martin",
-     "album": "The Ocean (feat. Shy Martin)",
-     "image": "https://i.scdn.co/image/ab67616d00001e027f401862bfe87b552a75308d"
     },
     {
      "id": "3p7XQpdt8Dr6oMXSvRZ9bg",
@@ -564,6 +578,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e022d199e320b675ca7305c6f00"
     },
     {
+     "id": "69uxyAqqPIsUyTO8txoP2M",
+     "name": "Adventure of a Lifetime",
+     "artist": "Coldplay",
+     "album": "A Head Full of Dreams",
+     "image": "https://i.scdn.co/image/ab67616d00001e028ff7c3580d429c8212b9a3b6"
+    },
+    {
      "id": "6q7eMARKcRpj3Fcwq5wH5k",
      "name": "Key To Life",
      "artist": "Laid Back",
@@ -578,32 +599,11 @@
      "image": "https://i.scdn.co/image/ab67616d00001e025fd86e115d70a62db949318b"
     },
     {
-     "id": "2IGMVunIBsBLtEQyoI1Mu7",
-     "name": "Paint The Town Red",
-     "artist": "Doja Cat",
-     "album": "Paint The Town Red",
-     "image": "https://i.scdn.co/image/ab67616d00001e02e69a141e4ffe839c38c4c228"
-    },
-    {
-     "id": "75C3FLMspH2VVOVU3Mp78k",
-     "name": "Young, Wild \u0026 Free",
-     "artist": "Axero",
-     "album": "Young, Wild \u0026 Free",
-     "image": "https://i.scdn.co/image/ab67616d00001e024fcf55f78d0be786a8b382b4"
-    },
-    {
-     "id": "79ZtsillaizKccHAME7aRG",
-     "name": "Baba Yetu - The Flute Radio Edit",
-     "artist": "SupaNova",
-     "album": "Baba Yetu (The Remixes)",
-     "image": "https://i.scdn.co/image/ab67616d00001e0221381361d8126218ef94f7fa"
-    },
-    {
-     "id": "5r1IMAnf7iHeULwDUIbMc6",
-     "name": "Aspire",
-     "artist": "CelDro",
-     "album": "Aspire",
-     "image": "https://i.scdn.co/image/ab67616d00001e026e5c6898346acf634eb8fada"
+     "id": "7ti4qMC7xYQeh1uRzj5XuM",
+     "name": "Pumpin Blood",
+     "artist": "NONONO",
+     "album": "We Are Only What We Feel",
+     "image": "https://i.scdn.co/image/ab67616d00001e02ca9961814136d4bd7acfd811"
     }
    ]
   },
@@ -1340,13 +1340,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e029bb2441b6b192266eb47106f"
     },
     {
-     "id": "4Tg47JDi502dD0eh4gajWf",
-     "name": "昨夜书",
-     "artist": "许嵩",
-     "album": "经典咏流传第四季 第9期",
-     "image": "https://i.scdn.co/image/ab67616d00001e02f1b39a9ad04b471a169a73fa"
-    },
-    {
      "id": "2CPqh63wRVscbceKcPxwvv",
      "name": "The Ocean (feat. Shy Martin)",
      "artist": "Mike Perry, shy martin",
@@ -1424,6 +1417,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02c5649add07ed3720be9d5526"
     },
     {
+     "id": "4Tg47JDi502dD0eh4gajWf",
+     "name": "昨夜书",
+     "artist": "许嵩",
+     "album": "经典咏流传第四季 第9期",
+     "image": "https://i.scdn.co/image/ab67616d00001e02f1b39a9ad04b471a169a73fa"
+    },
+    {
      "id": "1SN1vSPsr4V4tIUTR3s8YW",
      "name": "Fast Car",
      "artist": "Jonas Blue, Dakota",
@@ -1450,6 +1450,13 @@
      "artist": "Bag Raiders",
      "album": "Bag Raiders (Deluxe)",
      "image": "https://i.scdn.co/image/ab67616d00001e0250b5922bdf87ba4213b25234"
+    },
+    {
+     "id": "0euyZh7zSUmpNXVpVBdcN2",
+     "name": "Candyland",
+     "artist": "Tobu",
+     "album": "Candyland",
+     "image": "https://i.scdn.co/image/ab67616d00001e029feceff471ea209ab793ce6b"
     },
     {
      "id": "0tgnTzjIkj8mVVEh0SNH0t",
@@ -1578,13 +1585,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e0270dd2ebd8a41b3cab44f0c7b"
     },
     {
-     "id": "0euyZh7zSUmpNXVpVBdcN2",
-     "name": "Candyland",
-     "artist": "Tobu",
-     "album": "Candyland",
-     "image": "https://i.scdn.co/image/ab67616d00001e029feceff471ea209ab793ce6b"
-    },
-    {
      "id": "10AsRVRdU07cMAFHeGYO3c",
      "name": "Solo Dance",
      "artist": "Martin Jensen",
@@ -1604,13 +1604,6 @@
      "artist": "Lost Frequencies, Janieck",
      "album": "Less Is More",
      "image": "https://i.scdn.co/image/ab67616d00001e02c01ab1c4b2dceb2cfc89e6fa"
-    },
-    {
-     "id": "2kWr3JUHOjwmGl6BDzhNdn",
-     "name": "多余的解释",
-     "artist": "許嵩",
-     "album": "自定義",
-     "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
     },
     {
      "id": "42LDz0sTCJDPj71DDw5RAB",
@@ -1681,6 +1674,13 @@
      "artist": "Tez Cadey",
      "album": "Seve (Radio Edit)",
      "image": "https://i.scdn.co/image/ab67616d00001e02da0751d4a35b6af93fb3e01d"
+    },
+    {
+     "id": "6ldGMSejZIGokqYSzgJIP5",
+     "name": "幻聽",
+     "artist": "許嵩",
+     "album": "夢游計",
+     "image": "https://i.scdn.co/image/ab67616d00001e026c99d21a7cc536154d4c2050"
     }
    ]
   }
