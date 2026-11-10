@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-10T05:00:22Z",
+ "updated_at": "2026-11-10T14:00:24Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -39,6 +39,16 @@
      "image": "https://i.scdn.co/image/ab6761610000f1780887284d923c88a92835e427"
     },
     {
+     "id": "1vCWHaC5f2uS3yhpwWbIA6",
+     "name": "Avicii",
+     "image": "https://i.scdn.co/image/ab6761610000f178ae07171f989fb39736674113"
+    },
+    {
+     "id": "23fqKkggKUBHNkbKtXEls4",
+     "name": "Kygo",
+     "image": "https://i.scdn.co/image/ab6761610000f178e5ea1aa1404629c12ad86658"
+    },
+    {
      "id": "5Pwc4xIPtQLFEnJriah9YJ",
      "name": "OneRepublic",
      "image": "https://i.scdn.co/image/ab6761610000f1783202f1bcacc6d8f581f32ffd"
@@ -54,11 +64,6 @@
      "image": "https://i.scdn.co/image/ab6761610000f178c3f0ab5f9cba94862e72542a"
     },
     {
-     "id": "23fqKkggKUBHNkbKtXEls4",
-     "name": "Kygo",
-     "image": "https://i.scdn.co/image/ab6761610000f178e5ea1aa1404629c12ad86658"
-    },
-    {
      "id": "0du5cEVh5yTK9QJze8zA0C",
      "name": "Bruno Mars",
      "image": "https://i.scdn.co/image/ab6761610000f178c7688aad1bf03986934d7e26"
@@ -72,11 +77,6 @@
      "id": "3OKg7YbOIatODzkRIbLJR4",
      "name": "TheFatRat",
      "image": "https://i.scdn.co/image/ab6761610000f178c64c5f001dc3957cf5651460"
-    },
-    {
-     "id": "1vCWHaC5f2uS3yhpwWbIA6",
-     "name": "Avicii",
-     "image": "https://i.scdn.co/image/ab6761610000f178ae07171f989fb39736674113"
     },
     {
      "id": "6M2wZ9GZgrQXHCFfjv46we",
@@ -99,6 +99,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f17827874e04725994e5ae5d21c3"
     },
     {
+     "id": "3AroL2oDPiAnMpTmIQv3KP",
+     "name": "Cyndi Wang",
+     "image": "https://i.scdn.co/image/ab6761610000f1788baa4f890691b73ec50ccb70"
+    },
+    {
      "id": "5XMnJOQbE6OuOvcV8fn3Wg",
      "name": "Dave Wang",
      "image": "https://i.scdn.co/image/ab6761610000f1789ffb964ffbd8af492f1d6471"
@@ -107,11 +112,6 @@
      "id": "7vk5e3vY1uw9plTHJAMwjN",
      "name": "Alan Walker",
      "image": "https://i.scdn.co/image/ab6761610000f178572a8eae56feae217f618078"
-    },
-    {
-     "id": "3AroL2oDPiAnMpTmIQv3KP",
-     "name": "Cyndi Wang",
-     "image": "https://i.scdn.co/image/ab6761610000f1788baa4f890691b73ec50ccb70"
     },
     {
      "id": "06HL4z0CvFAxyc27GXpf02",
@@ -159,6 +159,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f1789caf03c5c4b858fca6cedab4"
     },
     {
+     "id": "53XhwfbYqKCa1cC15pYq2q",
+     "name": "Imagine Dragons",
+     "image": "https://i.scdn.co/image/ab6761610000f178ab47d8dae2b24f5afe7f9d38"
+    },
+    {
      "id": "2h93pZq0e7k5yf4dywlkpM",
      "name": "Frank Ocean",
      "image": "https://i.scdn.co/image/ab6761610000f178ee3123e593174208f9754fab"
@@ -189,11 +194,6 @@
      "image": "https://i.scdn.co/image/ab6761610000f178d9939d240016befcc2095b26"
     },
     {
-     "id": "53XhwfbYqKCa1cC15pYq2q",
-     "name": "Imagine Dragons",
-     "image": "https://i.scdn.co/image/ab6761610000f178ab47d8dae2b24f5afe7f9d38"
-    },
-    {
      "id": "3aIDSTKS9yH745GUQBxDcS",
      "name": "Fish Leong",
      "image": "https://i.scdn.co/image/ab6761610000f17814806436e1fc9d977a3709dd"
@@ -202,6 +202,11 @@
      "id": "20wkVLutqVOYrc0kxFs7rA",
      "name": "Daniel Caesar",
      "image": "https://i.scdn.co/image/ab6761610000f178e4d94f7cbebb17504c25d419"
+    },
+    {
+     "id": "21mKp7DqtSNHhCAU2ugvUw",
+     "name": "ODESZA",
+     "image": "https://i.scdn.co/image/ab6761610000f1789f4a0cbfcc9b274344681ccb"
     },
     {
      "id": "0X2BH1fck6amBIoJhDVmmJ",
@@ -219,6 +224,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f1789a48f2e7dd96f09c723c887c"
     },
     {
+     "id": "69GGBxA162lTqCwzJG5jLp",
+     "name": "The Chainsmokers",
+     "image": "https://i.scdn.co/image/ab6761610000f1784567279fac84a0375c3d819b"
+    },
+    {
      "id": "5UmeRtxfJxx9iUnyUP8dFm",
      "name": "Ronald Jenkees",
      "image": "https://i.scdn.co/image/ab6761610000f1781cafdee014cd9d3d711e1692"
@@ -227,11 +237,6 @@
      "id": "6MDME20pz9RveH9rEXvrOM",
      "name": "Clean Bandit",
      "image": "https://i.scdn.co/image/ab6761610000f178f995542c4f68f8ae4f05b5f6"
-    },
-    {
-     "id": "69GGBxA162lTqCwzJG5jLp",
-     "name": "The Chainsmokers",
-     "image": "https://i.scdn.co/image/ab6761610000f1784567279fac84a0375c3d819b"
     },
     {
      "id": "5uCktjKM1Rf9VnUvFD6j17",
@@ -247,11 +252,6 @@
      "id": "14bJhryXGk6H6qlGzwj3W5",
      "name": "Hebe Tien",
      "image": "https://i.scdn.co/image/ab6761610000f17809749491c2a434bde6cf40cc"
-    },
-    {
-     "id": "3AQRLZ9PuTAozP28Skbq8V",
-     "name": "The Script",
-     "image": "https://i.scdn.co/image/ab6761610000f17839cf57b090fcaefe756c91c3"
     }
    ],
    "tracks": [
@@ -333,18 +333,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02ac90d708dd4cf294d5d8784e"
     },
     {
-     "id": "44wtMjxhSguxgWSggFMyMJ",
-     "name": "Yet So Close",
-     "artist": "Vexento",
-     "album": "Yet So Close",
-     "image": "https://i.scdn.co/image/ab67616d00001e02f9e94cdcd43abe52e9e1c4c3"
-    },
-    {
      "id": "6UqRGwjwYL0stXbaodTxwo",
      "name": "Seve - Radio Edit",
      "artist": "Tez Cadey",
      "album": "Seve (Radio Edit)",
      "image": "https://i.scdn.co/image/ab67616d00001e02da0751d4a35b6af93fb3e01d"
+    },
+    {
+     "id": "44wtMjxhSguxgWSggFMyMJ",
+     "name": "Yet So Close",
+     "artist": "Vexento",
+     "album": "Yet So Close",
+     "image": "https://i.scdn.co/image/ab67616d00001e02f9e94cdcd43abe52e9e1c4c3"
     },
     {
      "id": "2pUpNOgJBIBCcjyQZQ00qU",
@@ -457,6 +457,13 @@
      "artist": "許嵩",
      "album": "自定義",
      "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
+    },
+    {
+     "id": "4HadYIhNfy7evMUI5W6wEc",
+     "name": "Reykjavik",
+     "artist": "Joachim Pastor",
+     "album": "Reykjavik",
+     "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
     },
     {
      "id": "22RgKGppKFyQwKUX6Rvx8i",
@@ -597,13 +604,6 @@
      "artist": "Adam Lambert",
      "album": "Trespassing (Deluxe Version)",
      "image": "https://i.scdn.co/image/ab67616d00001e025fd86e115d70a62db949318b"
-    },
-    {
-     "id": "7ti4qMC7xYQeh1uRzj5XuM",
-     "name": "Pumpin Blood",
-     "artist": "NONONO",
-     "album": "We Are Only What We Feel",
-     "image": "https://i.scdn.co/image/ab67616d00001e02ca9961814136d4bd7acfd811"
     }
    ]
   },
@@ -1321,14 +1321,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f1788ebba5e60113b48de8c11f6b"
     },
     {
-     "id": "4S9EykWXhStSc15wEx8QFK",
-     "name": "Céline Dion",
-     "image": "https://i.scdn.co/image/ab6761610000f178fe81f2540f9fa7564dd5e05c"
-    },
-    {
      "id": "0SIXZXJCAhNU8sxK0qm7hn",
      "name": "Stefanie Sun",
      "image": "https://i.scdn.co/image/ab6761610000f178744989ed737112f4edbd2cc3"
+    },
+    {
+     "id": "4S9EykWXhStSc15wEx8QFK",
+     "name": "Céline Dion",
+     "image": "https://i.scdn.co/image/ab6761610000f178fe81f2540f9fa7564dd5e05c"
     },
     {
      "id": "4iHNK0tOyZPYnBU7nGAgpQ",
@@ -1339,6 +1339,11 @@
      "id": "04gDigrS5kc9YWfZHwBETP",
      "name": "Maroon 5",
      "image": "https://i.scdn.co/image/ab6761610000f178f8349dfb619a7f842242de77"
+    },
+    {
+     "id": "2OC4lXfGEKZkbmRCcf2vTq",
+     "name": "Wanting",
+     "image": "https://i.scdn.co/image/ab6761610000f17862cf72356b92b98efd61f63c"
     },
     {
      "id": "4npEfmQ6YuiwW1GpUmaq3F",
@@ -1370,18 +1375,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e029bb2441b6b192266eb47106f"
     },
     {
-     "id": "2CPqh63wRVscbceKcPxwvv",
-     "name": "The Ocean (feat. Shy Martin)",
-     "artist": "Mike Perry, shy martin",
-     "album": "The Ocean (feat. Shy Martin)",
-     "image": "https://i.scdn.co/image/ab67616d00001e027f401862bfe87b552a75308d"
-    },
-    {
      "id": "6fNhZRFEkBfgW39W3wKARJ",
      "name": "Pompeii",
      "artist": "Bastille",
      "album": "Bad Blood",
      "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
+    },
+    {
+     "id": "2CPqh63wRVscbceKcPxwvv",
+     "name": "The Ocean (feat. Shy Martin)",
+     "artist": "Mike Perry, shy martin",
+     "album": "The Ocean (feat. Shy Martin)",
+     "image": "https://i.scdn.co/image/ab67616d00001e027f401862bfe87b552a75308d"
     },
     {
      "id": "6nNLW8UCaIMxH9HzIbs63N",
@@ -1405,13 +1410,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e028a99868b5a57469de83fb9ba"
     },
     {
-     "id": "3B0irDyS69y5eAz15xV2Ee",
-     "name": "Wake Me Up",
-     "artist": "Avicii",
-     "album": "True",
-     "image": "https://i.scdn.co/image/ab67616d00001e02162c5d6dbf1dc3965d1a391a"
-    },
-    {
      "id": "69uxyAqqPIsUyTO8txoP2M",
      "name": "Adventure of a Lifetime",
      "artist": "Coldplay",
@@ -1426,13 +1424,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02ca9961814136d4bd7acfd811"
     },
     {
-     "id": "3eOeuofLjOgjOCs7eWuvZ0",
-     "name": "Cool Kids",
-     "artist": "Echosmith",
-     "album": "Talking Dreams",
-     "image": "https://i.scdn.co/image/ab67616d00001e02b098cbfb14e8cc251451ca19"
-    },
-    {
      "id": "2tpWsVSb9UEmDRxAl1zhX1",
      "name": "Counting Stars",
      "artist": "OneRepublic",
@@ -1440,11 +1431,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e029e2f95ae77cf436017ada9cb"
     },
     {
-     "id": "0UeYCHOETPfai02uskjJ3x",
-     "name": "Shooting Stars",
-     "artist": "Bag Raiders",
-     "album": "Bag Raiders (Deluxe)",
-     "image": "https://i.scdn.co/image/ab67616d00001e0250b5922bdf87ba4213b25234"
+     "id": "1eOJAiCKFuMda0fPRvjcuc",
+     "name": "Hold My Hand",
+     "artist": "Jess Glynne",
+     "album": "I Cry When I Laugh",
+     "image": "https://i.scdn.co/image/ab67616d00001e0239588f221861ee72b40b755c"
+    },
+    {
+     "id": "3B0irDyS69y5eAz15xV2Ee",
+     "name": "Wake Me Up",
+     "artist": "Avicii",
+     "album": "True",
+     "image": "https://i.scdn.co/image/ab67616d00001e02162c5d6dbf1dc3965d1a391a"
     },
     {
      "id": "0euyZh7zSUmpNXVpVBdcN2",
@@ -1454,11 +1452,32 @@
      "image": "https://i.scdn.co/image/ab67616d00001e029feceff471ea209ab793ce6b"
     },
     {
+     "id": "3eOeuofLjOgjOCs7eWuvZ0",
+     "name": "Cool Kids",
+     "artist": "Echosmith",
+     "album": "Talking Dreams",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b098cbfb14e8cc251451ca19"
+    },
+    {
+     "id": "0UeYCHOETPfai02uskjJ3x",
+     "name": "Shooting Stars",
+     "artist": "Bag Raiders",
+     "album": "Bag Raiders (Deluxe)",
+     "image": "https://i.scdn.co/image/ab67616d00001e0250b5922bdf87ba4213b25234"
+    },
+    {
      "id": "213x4gsFDm04hSqIUkg88w",
      "name": "On Top Of The World",
      "artist": "Imagine Dragons",
      "album": "Night Visions",
      "image": "https://i.scdn.co/image/ab67616d00001e02407bd04707c463bbb3410737"
+    },
+    {
+     "id": "2FpEXjGqe2dJJ9oB8c8Io2",
+     "name": "Unity",
+     "artist": "TheFatRat",
+     "album": "Unity - 10th Anniversary Compilation",
+     "image": "https://i.scdn.co/image/ab67616d00001e023b3b24d7997db331a6e841d3"
     },
     {
      "id": "3xKsf9qdS1CyvXSMEid6g8",
@@ -1475,6 +1494,20 @@
      "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
     },
     {
+     "id": "4dTVgHZFPlaq9nPbLVVLSG",
+     "name": "Closer",
+     "artist": "Tegan and Sara",
+     "album": "Heartthrob",
+     "image": "https://i.scdn.co/image/ab67616d00001e0217fb5fbacce2b1a0acabce29"
+    },
+    {
+     "id": "5JVbvCHX10U2pLa5DEqGav",
+     "name": "Safe and Sound",
+     "artist": "Capital Cities",
+     "album": "In A Tidal Wave of Mystery",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b03e92f4e7dcd9db3a06c869"
+    },
+    {
      "id": "6IiuWEdYeYldZNiSxXWV5y",
      "name": "Jubel",
      "artist": "Klingande",
@@ -1482,11 +1515,25 @@
      "image": "https://i.scdn.co/image/ab6742d3000052b7d20b7a2f3018e3d59b7cac75"
     },
     {
-     "id": "4Tg47JDi502dD0eh4gajWf",
-     "name": "昨夜书",
-     "artist": "许嵩",
-     "album": "经典咏流传第四季 第9期",
-     "image": "https://i.scdn.co/image/ab67616d00001e02f1b39a9ad04b471a169a73fa"
+     "id": "6VrLYoQKdhu1Jruei06t65",
+     "name": "Somebody To You",
+     "artist": "The Vamps",
+     "album": "Meet The Vamps",
+     "image": "https://i.scdn.co/image/ab67616d00001e029f89b8390933e9ccb3673c89"
+    },
+    {
+     "id": "7oOfd5BP16mS0Vrh1PdRHt",
+     "name": "Good Life",
+     "artist": "OneRepublic",
+     "album": "Waking Up (Deluxe)",
+     "image": "https://i.scdn.co/image/ab67616d00001e021315cfbb494b981b3e7f1627"
+    },
+    {
+     "id": "0YPDp1KIxVLTdh3vnvk6wd",
+     "name": "C'mon C'mon",
+     "artist": "The Von Bondies",
+     "album": "Pawn Shoppe Heart",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b6e7a71effc5eee34843ec12"
     },
     {
      "id": "1SN1vSPsr4V4tIUTR3s8YW",
@@ -1531,20 +1578,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e027247979b8bc6027bf97043ef"
     },
     {
-     "id": "1eOJAiCKFuMda0fPRvjcuc",
-     "name": "Hold My Hand",
-     "artist": "Jess Glynne",
-     "album": "I Cry When I Laugh",
-     "image": "https://i.scdn.co/image/ab67616d00001e0239588f221861ee72b40b755c"
-    },
-    {
-     "id": "2FpEXjGqe2dJJ9oB8c8Io2",
-     "name": "Unity",
-     "artist": "TheFatRat",
-     "album": "Unity - 10th Anniversary Compilation",
-     "image": "https://i.scdn.co/image/ab67616d00001e023b3b24d7997db331a6e841d3"
-    },
-    {
      "id": "37sINbJZcFdHFAsVNsPq1i",
      "name": "Superheroes",
      "artist": "The Script",
@@ -1552,25 +1585,11 @@
      "image": "https://i.scdn.co/image/ab67616d00001e0259d2079e141301ab89b6cbc5"
     },
     {
-     "id": "4dTVgHZFPlaq9nPbLVVLSG",
-     "name": "Closer",
-     "artist": "Tegan and Sara",
-     "album": "Heartthrob",
-     "image": "https://i.scdn.co/image/ab67616d00001e0217fb5fbacce2b1a0acabce29"
-    },
-    {
      "id": "54RpL1P9FxOzZDE3N2XyMN",
      "name": "偶然",
      "artist": "Bibi Zhou",
      "album": "黑·择·明",
      "image": "https://i.scdn.co/image/ab67616d00001e0259120a6b8be0a60a4bbf82cd"
-    },
-    {
-     "id": "5JVbvCHX10U2pLa5DEqGav",
-     "name": "Safe and Sound",
-     "artist": "Capital Cities",
-     "album": "In A Tidal Wave of Mystery",
-     "image": "https://i.scdn.co/image/ab67616d00001e02b03e92f4e7dcd9db3a06c869"
     },
     {
      "id": "5lF0pHbsJ0QqyIrLweHJPW",
@@ -1608,27 +1627,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02da0751d4a35b6af93fb3e01d"
     },
     {
-     "id": "6VrLYoQKdhu1Jruei06t65",
-     "name": "Somebody To You",
-     "artist": "The Vamps",
-     "album": "Meet The Vamps",
-     "image": "https://i.scdn.co/image/ab67616d00001e029f89b8390933e9ccb3673c89"
-    },
-    {
-     "id": "7oOfd5BP16mS0Vrh1PdRHt",
-     "name": "Good Life",
-     "artist": "OneRepublic",
-     "album": "Waking Up (Deluxe)",
-     "image": "https://i.scdn.co/image/ab67616d00001e021315cfbb494b981b3e7f1627"
-    },
-    {
-     "id": "0YPDp1KIxVLTdh3vnvk6wd",
-     "name": "C'mon C'mon",
-     "artist": "The Von Bondies",
-     "album": "Pawn Shoppe Heart",
-     "image": "https://i.scdn.co/image/ab67616d00001e02b6e7a71effc5eee34843ec12"
-    },
-    {
      "id": "5L6oF6wViaQkaGI7c6QIv4",
      "name": "笔记",
      "artist": "Bibi Zhou",
@@ -1655,6 +1653,13 @@
      "artist": "Robin Schulz, Francesco Yates",
      "album": "Sugar",
      "image": "https://i.scdn.co/image/ab67616d00001e0270dd2ebd8a41b3cab44f0c7b"
+    },
+    {
+     "id": "5rXBmcYNJYMYdhwxlMLh0s",
+     "name": "有何不可",
+     "artist": "許嵩",
+     "album": "自定義",
+     "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
     },
     {
      "id": "10AsRVRdU07cMAFHeGYO3c",
@@ -1699,18 +1704,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02ec67f6776573462a1ad9ee2d"
     },
     {
-     "id": "5rXBmcYNJYMYdhwxlMLh0s",
-     "name": "有何不可",
-     "artist": "許嵩",
-     "album": "自定義",
-     "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
-    },
-    {
      "id": "5s7xgzXtmY4gMjeSlgisjy",
      "name": "Easy Love",
      "artist": "Sigala",
      "album": "Brighter Days",
      "image": "https://i.scdn.co/image/ab67616d00001e025e637584b3a504d501357557"
+    },
+    {
+     "id": "2kWr3JUHOjwmGl6BDzhNdn",
+     "name": "多余的解释",
+     "artist": "許嵩",
+     "album": "自定義",
+     "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
     }
    ]
   }
