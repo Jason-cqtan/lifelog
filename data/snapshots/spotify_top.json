@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-09T14:00:23Z",
+ "updated_at": "2026-11-10T00:00:22Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -620,6 +620,16 @@
      "image": "https://i.scdn.co/image/ab6761610000f178704d08abe2a3bf0bb1c366c9"
     },
     {
+     "id": "1vCWHaC5f2uS3yhpwWbIA6",
+     "name": "Avicii",
+     "image": "https://i.scdn.co/image/ab6761610000f178ae07171f989fb39736674113"
+    },
+    {
+     "id": "23fqKkggKUBHNkbKtXEls4",
+     "name": "Kygo",
+     "image": "https://i.scdn.co/image/ab6761610000f178e5ea1aa1404629c12ad86658"
+    },
+    {
      "id": "5cj0lLjcoR7YOSnhnX0Po5",
      "name": "Doja Cat",
      "image": "https://i.scdn.co/image/ab6761610000f1788a0644455ebfa7d3976f5101"
@@ -628,11 +638,6 @@
      "id": "1km0aro5NJuoX5dE0Mub5C",
      "name": "Joanna Wang",
      "image": "https://i.scdn.co/image/ab6761610000f1788c2024e68663f46b2981398d"
-    },
-    {
-     "id": "23fqKkggKUBHNkbKtXEls4",
-     "name": "Kygo",
-     "image": "https://i.scdn.co/image/ab6761610000f178e5ea1aa1404629c12ad86658"
     },
     {
      "id": "5Pwc4xIPtQLFEnJriah9YJ",
@@ -648,11 +653,6 @@
      "id": "6M2wZ9GZgrQXHCFfjv46we",
      "name": "Dua Lipa",
      "image": "https://i.scdn.co/image/ab6761610000f1780c68f6c95232e716f0abee8d"
-    },
-    {
-     "id": "1vCWHaC5f2uS3yhpwWbIA6",
-     "name": "Avicii",
-     "image": "https://i.scdn.co/image/ab6761610000f178ae07171f989fb39736674113"
     },
     {
      "id": "1Xyo4u8uXC1ZmMpatF05PJ",
@@ -755,6 +755,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f1785c461001b3489a0a523f63ee"
     },
     {
+     "id": "1HBjj22wzbscIZ9sEb5dyf",
+     "name": "Jonas Blue",
+     "image": "https://i.scdn.co/image/ab6761610000f178932efe5392a48f64e5bd54d8"
+    },
+    {
      "id": "2wY79sveU1sp5g7SokKOiI",
      "name": "Sam Smith",
      "image": "https://i.scdn.co/image/ab6761610000f1780e64fb94acbb752960c823e9"
@@ -768,6 +773,16 @@
      "id": "4iHNK0tOyZPYnBU7nGAgpQ",
      "name": "Mariah Carey",
      "image": "https://i.scdn.co/image/ab6761610000f17821453384a10b1f8e18877f63"
+    },
+    {
+     "id": "53XhwfbYqKCa1cC15pYq2q",
+     "name": "Imagine Dragons",
+     "image": "https://i.scdn.co/image/ab6761610000f178ab47d8dae2b24f5afe7f9d38"
+    },
+    {
+     "id": "69GGBxA162lTqCwzJG5jLp",
+     "name": "The Chainsmokers",
+     "image": "https://i.scdn.co/image/ab6761610000f1784567279fac84a0375c3d819b"
     },
     {
      "id": "6XpaIBNiVzIetEPCWDvAFP",
@@ -897,6 +912,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e028a99868b5a57469de83fb9ba"
     },
     {
+     "id": "3B0irDyS69y5eAz15xV2Ee",
+     "name": "Wake Me Up",
+     "artist": "Avicii",
+     "album": "True",
+     "image": "https://i.scdn.co/image/ab67616d00001e02162c5d6dbf1dc3965d1a391a"
+    },
+    {
      "id": "69uxyAqqPIsUyTO8txoP2M",
      "name": "Adventure of a Lifetime",
      "artist": "Coldplay",
@@ -932,11 +954,25 @@
      "image": "https://i.scdn.co/image/ab67616d00001e029e2f95ae77cf436017ada9cb"
     },
     {
-     "id": "3B0irDyS69y5eAz15xV2Ee",
-     "name": "Wake Me Up",
-     "artist": "Avicii",
-     "album": "True",
-     "image": "https://i.scdn.co/image/ab67616d00001e02162c5d6dbf1dc3965d1a391a"
+     "id": "0UeYCHOETPfai02uskjJ3x",
+     "name": "Shooting Stars",
+     "artist": "Bag Raiders",
+     "album": "Bag Raiders (Deluxe)",
+     "image": "https://i.scdn.co/image/ab67616d00001e0250b5922bdf87ba4213b25234"
+    },
+    {
+     "id": "0euyZh7zSUmpNXVpVBdcN2",
+     "name": "Candyland",
+     "artist": "Tobu",
+     "album": "Candyland",
+     "image": "https://i.scdn.co/image/ab67616d00001e029feceff471ea209ab793ce6b"
+    },
+    {
+     "id": "213x4gsFDm04hSqIUkg88w",
+     "name": "On Top Of The World",
+     "artist": "Imagine Dragons",
+     "album": "Night Visions",
+     "image": "https://i.scdn.co/image/ab67616d00001e02407bd04707c463bbb3410737"
     },
     {
      "id": "3xKsf9qdS1CyvXSMEid6g8",
@@ -944,6 +980,13 @@
      "artist": "Frank Ocean",
      "album": "Blonde",
      "image": "https://i.scdn.co/image/ab67616d00001e02c5649add07ed3720be9d5526"
+    },
+    {
+     "id": "6IiuWEdYeYldZNiSxXWV5y",
+     "name": "Jubel",
+     "artist": "Klingande",
+     "album": "Jubel",
+     "image": "https://i.scdn.co/image/ab6742d3000052b7d20b7a2f3018e3d59b7cac75"
     },
     {
      "id": "1SN1vSPsr4V4tIUTR3s8YW",
@@ -967,6 +1010,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e0241f289940f2e6a0d51988d77"
     },
     {
+     "id": "4HadYIhNfy7evMUI5W6wEc",
+     "name": "Reykjavik",
+     "artist": "Joachim Pastor",
+     "album": "Reykjavik",
+     "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
+    },
+    {
      "id": "56y1jOTK0XSvJzVv9vHQBK",
      "name": "Paint The Town Red",
      "artist": "Doja Cat",
@@ -974,18 +1024,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02a54499d7ba4e9afeea91df86"
     },
     {
-     "id": "0UeYCHOETPfai02uskjJ3x",
-     "name": "Shooting Stars",
-     "artist": "Bag Raiders",
-     "album": "Bag Raiders (Deluxe)",
-     "image": "https://i.scdn.co/image/ab67616d00001e0250b5922bdf87ba4213b25234"
-    },
-    {
      "id": "0tgnTzjIkj8mVVEh0SNH0t",
      "name": "Secrets",
      "artist": "OneRepublic",
      "album": "Waking Up (International Deluxe Version)",
      "image": "https://i.scdn.co/image/ab67616d00001e025a6a08795790ccc600cc94a8"
+    },
+    {
+     "id": "13I9qqQBL23ZPxFCUO967w",
+     "name": "The Spectre",
+     "artist": "Alan Walker",
+     "album": "Live Fast (Japan Exclusive)",
+     "image": "https://i.scdn.co/image/ab67616d00001e028270e49a0de52091e0d8eb94"
     },
     {
      "id": "1I8tHoNBFTuoJAlh4hfVVE",
@@ -1000,13 +1050,6 @@
      "artist": "Jess Glynne",
      "album": "I Cry When I Laugh",
      "image": "https://i.scdn.co/image/ab67616d00001e0239588f221861ee72b40b755c"
-    },
-    {
-     "id": "213x4gsFDm04hSqIUkg88w",
-     "name": "On Top Of The World",
-     "artist": "Imagine Dragons",
-     "album": "Night Visions",
-     "image": "https://i.scdn.co/image/ab67616d00001e02407bd04707c463bbb3410737"
     },
     {
      "id": "2FpEXjGqe2dJJ9oB8c8Io2",
@@ -1051,11 +1094,32 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02b03e92f4e7dcd9db3a06c869"
     },
     {
+     "id": "5lF0pHbsJ0QqyIrLweHJPW",
+     "name": "Burn",
+     "artist": "Ellie Goulding",
+     "album": "Halcyon Nights",
+     "image": "https://i.scdn.co/image/ab67616d00001e02a8f674745d4e6757a9b35ba0"
+    },
+    {
      "id": "6LLegbVHksZ5kDC2whN1Da",
      "name": "Adventure Time",
      "artist": "Philter",
      "album": "The Blossom Chronicles",
      "image": "https://i.scdn.co/image/ab67616d00001e02b93587221b1ce0c85a02297e"
+    },
+    {
+     "id": "6RUKPb4LETWmmr3iAEQktW",
+     "name": "Something Just Like This",
+     "artist": "The Chainsmokers, Coldplay",
+     "album": "Memories...Do Not Open",
+     "image": "https://i.scdn.co/image/ab67616d00001e020c13d3d5a503c84fcc60ae94"
+    },
+    {
+     "id": "6UqRGwjwYL0stXbaodTxwo",
+     "name": "Seve - Radio Edit",
+     "artist": "Tez Cadey",
+     "album": "Seve (Radio Edit)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02da0751d4a35b6af93fb3e01d"
     },
     {
      "id": "6VrLYoQKdhu1Jruei06t65",
@@ -1114,13 +1178,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
     },
     {
-     "id": "0euyZh7zSUmpNXVpVBdcN2",
-     "name": "Candyland",
-     "artist": "Tobu",
-     "album": "Candyland",
-     "image": "https://i.scdn.co/image/ab67616d00001e029feceff471ea209ab793ce6b"
-    },
-    {
      "id": "10AsRVRdU07cMAFHeGYO3c",
      "name": "Solo Dance",
      "artist": "Martin Jensen",
@@ -1128,53 +1185,11 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02245582ce9538e3681b0d0d7e"
     },
     {
-     "id": "13I9qqQBL23ZPxFCUO967w",
-     "name": "The Spectre",
-     "artist": "Alan Walker",
-     "album": "Live Fast (Japan Exclusive)",
-     "image": "https://i.scdn.co/image/ab67616d00001e028270e49a0de52091e0d8eb94"
-    },
-    {
      "id": "1L47sHuKWNdPlGUk69HbmU",
      "name": "The Right Path",
      "artist": "Thomas Greenberg",
      "album": "Age Of Innocence",
      "image": "https://i.scdn.co/image/ab67616d00001e023b42d9a336638e90b24177ae"
-    },
-    {
-     "id": "1Mys1gf9SkMBAVGGxpkJ7d",
-     "name": "Reality",
-     "artist": "Lost Frequencies, Janieck",
-     "album": "Less Is More",
-     "image": "https://i.scdn.co/image/ab67616d00001e02c01ab1c4b2dceb2cfc89e6fa"
-    },
-    {
-     "id": "1aygA3iZfj6ef4aq92EqCU",
-     "name": "Sunset Over Emst - Original Mix",
-     "artist": "Roald Velden",
-     "album": "As the Years Went by / Sunset Over Emst",
-     "image": "https://i.scdn.co/image/ab67616d00001e023572e164458b0e5ea6ff949d"
-    },
-    {
-     "id": "22RgKGppKFyQwKUX6Rvx8i",
-     "name": "Road Trippin' - Radio Mix",
-     "artist": "DBMM",
-     "album": "High Way",
-     "image": "https://i.scdn.co/image/ab67616d00001e02129acb02ff567b3e3dae5250"
-    },
-    {
-     "id": "2dyyOwe0KxTZTJjjXDeLmU",
-     "name": "Feelings",
-     "artist": "Maroon 5",
-     "album": "V",
-     "image": "https://i.scdn.co/image/ab67616d00001e02442b53773d50e1b5369bb16c"
-    },
-    {
-     "id": "2kWr3JUHOjwmGl6BDzhNdn",
-     "name": "多余的解释",
-     "artist": "許嵩",
-     "album": "自定義",
-     "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
     }
    ]
   },
@@ -1189,6 +1204,11 @@
      "id": "2hgxWUG24w1cFLBlPSEVcV",
      "name": "許嵩",
      "image": "https://i.scdn.co/image/ab6761610000f178704d08abe2a3bf0bb1c366c9"
+    },
+    {
+     "id": "1vCWHaC5f2uS3yhpwWbIA6",
+     "name": "Avicii",
+     "image": "https://i.scdn.co/image/ab6761610000f178ae07171f989fb39736674113"
     },
     {
      "id": "23fqKkggKUBHNkbKtXEls4",
@@ -1206,24 +1226,19 @@
      "image": "https://i.scdn.co/image/ab6761610000f1780f50807360beac5d44016b0c"
     },
     {
-     "id": "1vCWHaC5f2uS3yhpwWbIA6",
-     "name": "Avicii",
-     "image": "https://i.scdn.co/image/ab6761610000f178ae07171f989fb39736674113"
-    },
-    {
      "id": "1km0aro5NJuoX5dE0Mub5C",
      "name": "Joanna Wang",
      "image": "https://i.scdn.co/image/ab6761610000f1788c2024e68663f46b2981398d"
     },
     {
-     "id": "7tYKF4w9nC0nq9CsPZTHyP",
-     "name": "SZA",
-     "image": "https://i.scdn.co/image/ab6761610000f178fd0a9fb6c252a3ba44079acf"
-    },
-    {
      "id": "1Xyo4u8uXC1ZmMpatF05PJ",
      "name": "The Weeknd",
      "image": "https://i.scdn.co/image/ab6761610000f178c1719ac9e6a75c1c25835018"
+    },
+    {
+     "id": "7tYKF4w9nC0nq9CsPZTHyP",
+     "name": "SZA",
+     "image": "https://i.scdn.co/image/ab6761610000f178fd0a9fb6c252a3ba44079acf"
     },
     {
      "id": "2h93pZq0e7k5yf4dywlkpM",
@@ -1271,14 +1286,29 @@
      "image": "https://i.scdn.co/image/ab6761610000f1785c461001b3489a0a523f63ee"
     },
     {
+     "id": "1HBjj22wzbscIZ9sEb5dyf",
+     "name": "Jonas Blue",
+     "image": "https://i.scdn.co/image/ab6761610000f178932efe5392a48f64e5bd54d8"
+    },
+    {
      "id": "3t5xRXzsuZmMDkQzgOX35S",
      "name": "Robin Schulz",
      "image": "https://i.scdn.co/image/ab6761610000f178869ddcc058c5ff2a459ad8d5"
     },
     {
+     "id": "4gzpq5DPGxSnKTe4SA8HAU",
+     "name": "Coldplay",
+     "image": "https://i.scdn.co/image/ab6761610000f1781ba8fc5f5c73e7e9313cc6eb"
+    },
+    {
      "id": "5rSXSAkZ67PYJSvpUpkOr7",
      "name": "Backstreet Boys",
      "image": "https://i.scdn.co/image/ab6761610000f1787b3634864a78ab6bd1d77c36"
+    },
+    {
+     "id": "69GGBxA162lTqCwzJG5jLp",
+     "name": "The Chainsmokers",
+     "image": "https://i.scdn.co/image/ab6761610000f1784567279fac84a0375c3d819b"
     },
     {
      "id": "7BqRcZsHYYQeqMAOp7e532",
