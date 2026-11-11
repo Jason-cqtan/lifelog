@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-11T05:00:23Z",
+ "updated_at": "2026-11-11T14:00:25Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -59,6 +59,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f178783a6a578e8eb992bfd74765"
     },
     {
+     "id": "6PNEi9i2MxUgRufqYr76Xt",
+     "name": "Zhang Zhen Yue",
+     "image": "https://i.scdn.co/image/ab6761610000f17866a909756400366c24bf1568"
+    },
+    {
      "id": "1f3NYrlm9GpXxMz8XZGEP5",
      "name": "Axero",
      "image": "https://i.scdn.co/image/ab6761610000f178c3f0ab5f9cba94862e72542a"
@@ -67,11 +72,6 @@
      "id": "0du5cEVh5yTK9QJze8zA0C",
      "name": "Bruno Mars",
      "image": "https://i.scdn.co/image/ab6761610000f178c7688aad1bf03986934d7e26"
-    },
-    {
-     "id": "6PNEi9i2MxUgRufqYr76Xt",
-     "name": "Zhang Zhen Yue",
-     "image": "https://i.scdn.co/image/ab6761610000f17866a909756400366c24bf1568"
     },
     {
      "id": "3OKg7YbOIatODzkRIbLJR4",
@@ -270,18 +270,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02a76eef037c97ee5211af13fc"
     },
     {
-     "id": "3ojwY8dyubHnLsoHdRUpo4",
-     "name": "雅俗共賞",
-     "artist": "許嵩",
-     "album": "青年晚報",
-     "image": "https://i.scdn.co/image/ab67616d00001e029bb2441b6b192266eb47106f"
-    },
-    {
      "id": "6fNhZRFEkBfgW39W3wKARJ",
      "name": "Pompeii",
      "artist": "Bastille",
      "album": "Bad Blood",
      "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
+    },
+    {
+     "id": "3ojwY8dyubHnLsoHdRUpo4",
+     "name": "雅俗共賞",
+     "artist": "許嵩",
+     "album": "青年晚報",
+     "image": "https://i.scdn.co/image/ab67616d00001e029bb2441b6b192266eb47106f"
     },
     {
      "id": "7EQGXaVSyEDsCWKmUcfpLk",
@@ -466,6 +466,20 @@
      "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
     },
     {
+     "id": "0GO8y8jQk1PkHzS31d699N",
+     "name": "Tongue Tied",
+     "artist": "GROUPLOVE",
+     "album": "Never Trust a Happy Song",
+     "image": "https://i.scdn.co/image/ab67616d00001e02d84a9bbcba91cb6a4a212b1b"
+    },
+    {
+     "id": "0qt5f5EL92o8Snzopsv0en",
+     "name": "Geronimo",
+     "artist": "Sheppard",
+     "album": "Bombs Away",
+     "image": "https://i.scdn.co/image/ab67616d00001e028a99868b5a57469de83fb9ba"
+    },
+    {
      "id": "22RgKGppKFyQwKUX6Rvx8i",
      "name": "Road Trippin' - Radio Mix",
      "artist": "DBMM",
@@ -494,11 +508,32 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02ba48109eda0f2314702ce305"
     },
     {
+     "id": "69uxyAqqPIsUyTO8txoP2M",
+     "name": "Adventure of a Lifetime",
+     "artist": "Coldplay",
+     "album": "A Head Full of Dreams",
+     "image": "https://i.scdn.co/image/ab67616d00001e028ff7c3580d429c8212b9a3b6"
+    },
+    {
      "id": "7AoCZm5JpcgiIpQz8ClelB",
      "name": "Can't Get Enough - Sam Padrul Remix",
      "artist": "Yeah Boy",
      "album": "Can't Get Enough Remixes",
      "image": "https://i.scdn.co/image/ab67616d00001e026f4be2da23461b3a1271508c"
+    },
+    {
+     "id": "7ti4qMC7xYQeh1uRzj5XuM",
+     "name": "Pumpin Blood",
+     "artist": "NONONO",
+     "album": "We Are Only What We Feel",
+     "image": "https://i.scdn.co/image/ab67616d00001e02ca9961814136d4bd7acfd811"
+    },
+    {
+     "id": "2tpWsVSb9UEmDRxAl1zhX1",
+     "name": "Counting Stars",
+     "artist": "OneRepublic",
+     "album": "Native",
+     "image": "https://i.scdn.co/image/ab67616d00001e029e2f95ae77cf436017ada9cb"
     },
     {
      "id": "15YruCqHXgIpq3rcWpYuqW",
@@ -550,20 +585,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02a6460e661fac0d7327c13426"
     },
     {
-     "id": "0GO8y8jQk1PkHzS31d699N",
-     "name": "Tongue Tied",
-     "artist": "GROUPLOVE",
-     "album": "Never Trust a Happy Song",
-     "image": "https://i.scdn.co/image/ab67616d00001e02d84a9bbcba91cb6a4a212b1b"
-    },
-    {
-     "id": "0qt5f5EL92o8Snzopsv0en",
-     "name": "Geronimo",
-     "artist": "Sheppard",
-     "album": "Bombs Away",
-     "image": "https://i.scdn.co/image/ab67616d00001e028a99868b5a57469de83fb9ba"
-    },
-    {
      "id": "1aygA3iZfj6ef4aq92EqCU",
      "name": "Sunset Over Emst - Original Mix",
      "artist": "Roald Velden",
@@ -571,39 +592,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e023572e164458b0e5ea6ff949d"
     },
     {
+     "id": "1eOJAiCKFuMda0fPRvjcuc",
+     "name": "Hold My Hand",
+     "artist": "Jess Glynne",
+     "album": "I Cry When I Laugh",
+     "image": "https://i.scdn.co/image/ab67616d00001e0239588f221861ee72b40b755c"
+    },
+    {
      "id": "3p7XQpdt8Dr6oMXSvRZ9bg",
      "name": "Eyes Closed",
      "artist": "Ed Sheeran",
      "album": "- (Deluxe)",
      "image": "https://i.scdn.co/image/ab67616d00001e02d3e632cfaf8fbee03c27fcb7"
-    },
-    {
-     "id": "4va1JykAJeulnYV0uYkWhF",
-     "name": "Crazy Bird",
-     "artist": "Wild Child",
-     "album": "The Runaround",
-     "image": "https://i.scdn.co/image/ab67616d00001e022d199e320b675ca7305c6f00"
-    },
-    {
-     "id": "69uxyAqqPIsUyTO8txoP2M",
-     "name": "Adventure of a Lifetime",
-     "artist": "Coldplay",
-     "album": "A Head Full of Dreams",
-     "image": "https://i.scdn.co/image/ab67616d00001e028ff7c3580d429c8212b9a3b6"
-    },
-    {
-     "id": "6q7eMARKcRpj3Fcwq5wH5k",
-     "name": "Key To Life",
-     "artist": "Laid Back",
-     "album": "Good Vibes - The Very Best of Laid Back",
-     "image": "https://i.scdn.co/image/ab67616d00001e02627869030fddec0565aa30cc"
-    },
-    {
-     "id": "7d5ifJFh7asImLyxOohVUm",
-     "name": "Outlaws of Love",
-     "artist": "Adam Lambert",
-     "album": "Trespassing (Deluxe Version)",
-     "image": "https://i.scdn.co/image/ab67616d00001e025fd86e115d70a62db949318b"
     }
    ]
   },
@@ -705,6 +705,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f1782b1c6db6ed003d0e72c160e6"
     },
     {
+     "id": "4gzpq5DPGxSnKTe4SA8HAU",
+     "name": "Coldplay",
+     "image": "https://i.scdn.co/image/ab6761610000f1781ba8fc5f5c73e7e9313cc6eb"
+    },
+    {
      "id": "7CajNmpbOovFoOoasH2HaY",
      "name": "Calvin Harris",
      "image": "https://i.scdn.co/image/ab6761610000f1788ebba5e60113b48de8c11f6b"
@@ -728,11 +733,6 @@
      "id": "4S9EykWXhStSc15wEx8QFK",
      "name": "Céline Dion",
      "image": "https://i.scdn.co/image/ab6761610000f178fe81f2540f9fa7564dd5e05c"
-    },
-    {
-     "id": "4gzpq5DPGxSnKTe4SA8HAU",
-     "name": "Coldplay",
-     "image": "https://i.scdn.co/image/ab6761610000f1781ba8fc5f5c73e7e9313cc6eb"
     },
     {
      "id": "5rSXSAkZ67PYJSvpUpkOr7",
@@ -884,25 +884,11 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
     },
     {
-     "id": "0GO8y8jQk1PkHzS31d699N",
-     "name": "Tongue Tied",
-     "artist": "GROUPLOVE",
-     "album": "Never Trust a Happy Song",
-     "image": "https://i.scdn.co/image/ab67616d00001e02d84a9bbcba91cb6a4a212b1b"
-    },
-    {
      "id": "0qt5f5EL92o8Snzopsv0en",
      "name": "Geronimo",
      "artist": "Sheppard",
      "album": "Bombs Away",
      "image": "https://i.scdn.co/image/ab67616d00001e028a99868b5a57469de83fb9ba"
-    },
-    {
-     "id": "69uxyAqqPIsUyTO8txoP2M",
-     "name": "Adventure of a Lifetime",
-     "artist": "Coldplay",
-     "album": "A Head Full of Dreams",
-     "image": "https://i.scdn.co/image/ab67616d00001e028ff7c3580d429c8212b9a3b6"
     },
     {
      "id": "7ti4qMC7xYQeh1uRzj5XuM",
@@ -1024,13 +1010,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e029f89b8390933e9ccb3673c89"
     },
     {
-     "id": "7oOfd5BP16mS0Vrh1PdRHt",
-     "name": "Good Life",
-     "artist": "OneRepublic",
-     "album": "Waking Up (Deluxe)",
-     "image": "https://i.scdn.co/image/ab67616d00001e021315cfbb494b981b3e7f1627"
-    },
-    {
      "id": "1SN1vSPsr4V4tIUTR3s8YW",
      "name": "Fast Car",
      "artist": "Jonas Blue, Dakota",
@@ -1073,11 +1052,11 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02a54499d7ba4e9afeea91df86"
     },
     {
-     "id": "0tgnTzjIkj8mVVEh0SNH0t",
-     "name": "Secrets",
-     "artist": "OneRepublic",
-     "album": "Waking Up (International Deluxe Version)",
-     "image": "https://i.scdn.co/image/ab67616d00001e025a6a08795790ccc600cc94a8"
+     "id": "0GO8y8jQk1PkHzS31d699N",
+     "name": "Tongue Tied",
+     "artist": "GROUPLOVE",
+     "album": "Never Trust a Happy Song",
+     "image": "https://i.scdn.co/image/ab67616d00001e02d84a9bbcba91cb6a4a212b1b"
     },
     {
      "id": "13I9qqQBL23ZPxFCUO967w",
@@ -1092,6 +1071,13 @@
      "artist": "Kygo, Conrad Sewell",
      "album": "Cloud Nine",
      "image": "https://i.scdn.co/image/ab67616d00001e027247979b8bc6027bf97043ef"
+    },
+    {
+     "id": "2gS6LJHhMDn5FPARE1LVtG",
+     "name": "Adventure of a Lifetime",
+     "artist": "Coldplay",
+     "album": "A Head Full of Dreams",
+     "image": "https://i.scdn.co/image/ab67616d00001e028c098c981c8743d8493e52fc"
     },
     {
      "id": "37sINbJZcFdHFAsVNsPq1i",
@@ -1185,11 +1171,25 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
     },
     {
+     "id": "0tgnTzjIkj8mVVEh0SNH0t",
+     "name": "Secrets",
+     "artist": "OneRepublic",
+     "album": "Waking Up (International Deluxe Version)",
+     "image": "https://i.scdn.co/image/ab67616d00001e025a6a08795790ccc600cc94a8"
+    },
+    {
      "id": "10AsRVRdU07cMAFHeGYO3c",
      "name": "Solo Dance",
      "artist": "Martin Jensen",
      "album": "Solo Dance",
      "image": "https://i.scdn.co/image/ab67616d00001e02245582ce9538e3681b0d0d7e"
+    },
+    {
+     "id": "1L47sHuKWNdPlGUk69HbmU",
+     "name": "The Right Path",
+     "artist": "Thomas Greenberg",
+     "album": "Age Of Innocence",
+     "image": "https://i.scdn.co/image/ab67616d00001e023b42d9a336638e90b24177ae"
     }
    ]
   },
@@ -1201,11 +1201,6 @@
      "image": "https://i.scdn.co/image/ab6761610000f178b8b78d22300f49ee0c8bacdb"
     },
     {
-     "id": "2hgxWUG24w1cFLBlPSEVcV",
-     "name": "許嵩",
-     "image": "https://i.scdn.co/image/ab6761610000f178704d08abe2a3bf0bb1c366c9"
-    },
-    {
      "id": "1vCWHaC5f2uS3yhpwWbIA6",
      "name": "Avicii",
      "image": "https://i.scdn.co/image/ab6761610000f178ae07171f989fb39736674113"
@@ -1214,6 +1209,11 @@
      "id": "23fqKkggKUBHNkbKtXEls4",
      "name": "Kygo",
      "image": "https://i.scdn.co/image/ab6761610000f178e5ea1aa1404629c12ad86658"
+    },
+    {
+     "id": "2hgxWUG24w1cFLBlPSEVcV",
+     "name": "許嵩",
+     "image": "https://i.scdn.co/image/ab6761610000f178704d08abe2a3bf0bb1c366c9"
     },
     {
      "id": "5Pwc4xIPtQLFEnJriah9YJ",
@@ -1281,6 +1281,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f17887fbbe9ed03fbb500595e720"
     },
     {
+     "id": "0SIXZXJCAhNU8sxK0qm7hn",
+     "name": "Stefanie Sun",
+     "image": "https://i.scdn.co/image/ab6761610000f178744989ed737112f4edbd2cc3"
+    },
+    {
      "id": "0X2BH1fck6amBIoJhDVmmJ",
      "name": "Ellie Goulding",
      "image": "https://i.scdn.co/image/ab6761610000f1785c461001b3489a0a523f63ee"
@@ -1321,11 +1326,6 @@
      "image": "https://i.scdn.co/image/ab6761610000f1788ebba5e60113b48de8c11f6b"
     },
     {
-     "id": "0SIXZXJCAhNU8sxK0qm7hn",
-     "name": "Stefanie Sun",
-     "image": "https://i.scdn.co/image/ab6761610000f178744989ed737112f4edbd2cc3"
-    },
-    {
      "id": "4S9EykWXhStSc15wEx8QFK",
      "name": "Céline Dion",
      "image": "https://i.scdn.co/image/ab6761610000f178fe81f2540f9fa7564dd5e05c"
@@ -1339,6 +1339,11 @@
      "id": "04gDigrS5kc9YWfZHwBETP",
      "name": "Maroon 5",
      "image": "https://i.scdn.co/image/ab6761610000f178f8349dfb619a7f842242de77"
+    },
+    {
+     "id": "1IueXOQyABrMOprrzwQJWN",
+     "name": "Sigala",
+     "image": "https://i.scdn.co/image/ab6761610000f1782287136f17708c9d01fa538c"
     },
     {
      "id": "2OC4lXfGEKZkbmRCcf2vTq",
@@ -1389,20 +1394,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e027f401862bfe87b552a75308d"
     },
     {
-     "id": "6nNLW8UCaIMxH9HzIbs63N",
-     "name": "清明雨上",
-     "artist": "許嵩",
-     "album": "自定義",
-     "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
-    },
-    {
-     "id": "0GO8y8jQk1PkHzS31d699N",
-     "name": "Tongue Tied",
-     "artist": "GROUPLOVE",
-     "album": "Never Trust a Happy Song",
-     "image": "https://i.scdn.co/image/ab67616d00001e02d84a9bbcba91cb6a4a212b1b"
-    },
-    {
      "id": "0qt5f5EL92o8Snzopsv0en",
      "name": "Geronimo",
      "artist": "Sheppard",
@@ -1410,11 +1401,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e028a99868b5a57469de83fb9ba"
     },
     {
-     "id": "69uxyAqqPIsUyTO8txoP2M",
+     "id": "2gS6LJHhMDn5FPARE1LVtG",
      "name": "Adventure of a Lifetime",
      "artist": "Coldplay",
      "album": "A Head Full of Dreams",
-     "image": "https://i.scdn.co/image/ab67616d00001e028ff7c3580d429c8212b9a3b6"
+     "image": "https://i.scdn.co/image/ab67616d00001e028c098c981c8743d8493e52fc"
+    },
+    {
+     "id": "36ijlvGvOx8iOJSlwn7mcf",
+     "name": "Tongue Tied",
+     "artist": "GROUPLOVE",
+     "album": "Never Trust a Happy Song",
+     "image": "https://i.scdn.co/image/ab67616d00001e02373857bc42fa2719cde34881"
     },
     {
      "id": "7ti4qMC7xYQeh1uRzj5XuM",
@@ -1422,6 +1420,13 @@
      "artist": "NONONO",
      "album": "We Are Only What We Feel",
      "image": "https://i.scdn.co/image/ab67616d00001e02ca9961814136d4bd7acfd811"
+    },
+    {
+     "id": "6nNLW8UCaIMxH9HzIbs63N",
+     "name": "清明雨上",
+     "artist": "許嵩",
+     "album": "自定義",
+     "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
     },
     {
      "id": "2tpWsVSb9UEmDRxAl1zhX1",
@@ -1464,6 +1469,13 @@
      "artist": "Bag Raiders",
      "album": "Bag Raiders (Deluxe)",
      "image": "https://i.scdn.co/image/ab67616d00001e0250b5922bdf87ba4213b25234"
+    },
+    {
+     "id": "0gjA6a2SaJjC4dsNQlU8gK",
+     "name": "Good Life - 2026 Remastered",
+     "artist": "OneRepublic",
+     "album": "Waking Up (2026 Remastered)",
+     "image": "https://i.scdn.co/image/ab67616d00001e026823e3a4f0a685140701fcf2"
     },
     {
      "id": "213x4gsFDm04hSqIUkg88w",
@@ -1522,13 +1534,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e029f89b8390933e9ccb3673c89"
     },
     {
-     "id": "7oOfd5BP16mS0Vrh1PdRHt",
-     "name": "Good Life",
-     "artist": "OneRepublic",
-     "album": "Waking Up (Deluxe)",
-     "image": "https://i.scdn.co/image/ab67616d00001e021315cfbb494b981b3e7f1627"
-    },
-    {
      "id": "0YPDp1KIxVLTdh3vnvk6wd",
      "name": "C'mon C'mon",
      "artist": "The Von Bondies",
@@ -1555,13 +1560,6 @@
      "artist": "Kygo, Selena Gomez",
      "album": "It Ain't Me (with Selena Gomez)",
      "image": "https://i.scdn.co/image/ab67616d00001e0241f289940f2e6a0d51988d77"
-    },
-    {
-     "id": "0tgnTzjIkj8mVVEh0SNH0t",
-     "name": "Secrets",
-     "artist": "OneRepublic",
-     "album": "Waking Up (International Deluxe Version)",
-     "image": "https://i.scdn.co/image/ab67616d00001e025a6a08795790ccc600cc94a8"
     },
     {
      "id": "13I9qqQBL23ZPxFCUO967w",
@@ -1627,6 +1625,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02da0751d4a35b6af93fb3e01d"
     },
     {
+     "id": "7jMHa752w5Wvpe3PzC1zJD",
+     "name": "Secrets - 2026 Remastered",
+     "artist": "OneRepublic",
+     "album": "Waking Up (2026 Remastered)",
+     "image": "https://i.scdn.co/image/ab67616d00001e026823e3a4f0a685140701fcf2"
+    },
+    {
      "id": "5L6oF6wViaQkaGI7c6QIv4",
      "name": "笔记",
      "artist": "Bibi Zhou",
@@ -1641,25 +1646,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e027b730a450d048646b7472425"
     },
     {
+     "id": "1ySawdDRh3NEy0kNFzacOp",
+     "name": "Sugar (feat. Francesco Yates)",
+     "artist": "Robin Schulz, Francesco Yates",
+     "album": "Sugar",
+     "image": "https://i.scdn.co/image/ab67616d00001e0242f9cd115743fccf6b8a531d"
+    },
+    {
      "id": "2FiSTH0GYpIioUgjfzMIja",
      "name": "Stay (feat. Maty Noyes)",
      "artist": "Kygo, Maty Noyes",
      "album": "Cloud Nine",
      "image": "https://i.scdn.co/image/ab67616d00001e027247979b8bc6027bf97043ef"
-    },
-    {
-     "id": "5tf1VVWniHgryyumXyJM7w",
-     "name": "Sugar (feat. Francesco Yates)",
-     "artist": "Robin Schulz, Francesco Yates",
-     "album": "Sugar",
-     "image": "https://i.scdn.co/image/ab67616d00001e0270dd2ebd8a41b3cab44f0c7b"
-    },
-    {
-     "id": "5rXBmcYNJYMYdhwxlMLh0s",
-     "name": "有何不可",
-     "artist": "許嵩",
-     "album": "自定義",
-     "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
     },
     {
      "id": "10AsRVRdU07cMAFHeGYO3c",
@@ -1716,6 +1714,13 @@
      "artist": "OneRepublic",
      "album": "Native",
      "image": "https://i.scdn.co/image/ab67616d00001e029e2f95ae77cf436017ada9cb"
+    },
+    {
+     "id": "0QjpQP1w7apeMXzioL8sqN",
+     "name": "The Nights",
+     "artist": "Avicii",
+     "album": "Stories",
+     "image": "https://i.scdn.co/image/ab67616d00001e0230aa949449ea897b801fd5b2"
     }
    ]
   }
