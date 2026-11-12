@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-12T05:00:23Z",
+ "updated_at": "2026-11-12T14:00:26Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -305,13 +305,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02106fa02aaa287ec63af85aae"
     },
     {
-     "id": "0zL9dieoCcjBWV01y73Cj1",
-     "name": "Faded",
-     "artist": "ZHU",
-     "album": "THE NIGHTDAY",
-     "image": "https://i.scdn.co/image/ab67616d00001e0230e314ad00bee99cf64c9b88"
-    },
-    {
      "id": "4Tg47JDi502dD0eh4gajWf",
      "name": "昨夜书",
      "artist": "许嵩",
@@ -338,6 +331,13 @@
      "artist": "Tez Cadey",
      "album": "Seve (Radio Edit)",
      "image": "https://i.scdn.co/image/ab67616d00001e02da0751d4a35b6af93fb3e01d"
+    },
+    {
+     "id": "0zL9dieoCcjBWV01y73Cj1",
+     "name": "Faded",
+     "artist": "ZHU",
+     "album": "THE NIGHTDAY",
+     "image": "https://i.scdn.co/image/ab67616d00001e0230e314ad00bee99cf64c9b88"
     },
     {
      "id": "44wtMjxhSguxgWSggFMyMJ",
@@ -459,13 +459,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
     },
     {
-     "id": "4HadYIhNfy7evMUI5W6wEc",
-     "name": "Reykjavik",
-     "artist": "Joachim Pastor",
-     "album": "Reykjavik",
-     "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
-    },
-    {
      "id": "0GO8y8jQk1PkHzS31d699N",
      "name": "Tongue Tied",
      "artist": "GROUPLOVE",
@@ -543,18 +536,11 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02e3bf006fa33de9ffa82db64b"
     },
     {
-     "id": "6cv0maKXFbjZRmu3Oxb4jJ",
-     "name": "We All Want The Same Thing",
-     "artist": "Rixton",
-     "album": "Let The Road",
-     "image": "https://i.scdn.co/image/ab67616d00001e02647377a36072bd08e44dd32b"
-    },
-    {
-     "id": "3wo7kaVPCe4HjYqKdKIzql",
-     "name": "Walk Away",
-     "artist": "Dia Frampton",
-     "album": "Red",
-     "image": "https://i.scdn.co/image/ab67616d00001e028588252409ed634e072fd657"
+     "id": "4HadYIhNfy7evMUI5W6wEc",
+     "name": "Reykjavik",
+     "artist": "Joachim Pastor",
+     "album": "Reykjavik",
+     "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
     },
     {
      "id": "4lZBB7P5j84VqQHf3POLdA",
@@ -562,13 +548,6 @@
      "artist": "Bergs, Rachel Fels",
      "album": "Hold On",
      "image": "https://i.scdn.co/image/ab67616d00001e026aae6fbda3deab68f09c48a7"
-    },
-    {
-     "id": "5HOpkTTVcmZHnthgyxrIL8",
-     "name": "The Fox (What Does the Fox Say?)",
-     "artist": "Ylvis",
-     "album": "The Fox (What Does the Fox Say?)",
-     "image": "https://i.scdn.co/image/ab67616d00001e02078f1176c3c725de8e95f490"
     },
     {
      "id": "7p2RlyF403KmPmZm2TxKl3",
@@ -604,6 +583,27 @@
      "artist": "Ed Sheeran",
      "album": "- (Deluxe)",
      "image": "https://i.scdn.co/image/ab67616d00001e02d3e632cfaf8fbee03c27fcb7"
+    },
+    {
+     "id": "3wo7kaVPCe4HjYqKdKIzql",
+     "name": "Walk Away",
+     "artist": "Dia Frampton",
+     "album": "Red",
+     "image": "https://i.scdn.co/image/ab67616d00001e028588252409ed634e072fd657"
+    },
+    {
+     "id": "4va1JykAJeulnYV0uYkWhF",
+     "name": "Crazy Bird",
+     "artist": "Wild Child",
+     "album": "The Runaround",
+     "image": "https://i.scdn.co/image/ab67616d00001e022d199e320b675ca7305c6f00"
+    },
+    {
+     "id": "6q7eMARKcRpj3Fcwq5wH5k",
+     "name": "Key To Life",
+     "artist": "Laid Back",
+     "album": "Good Vibes - The Very Best of Laid Back",
+     "image": "https://i.scdn.co/image/ab67616d00001e02627869030fddec0565aa30cc"
     }
    ]
   },
@@ -1206,19 +1206,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f178b8b78d22300f49ee0c8bacdb"
     },
     {
-     "id": "1vCWHaC5f2uS3yhpwWbIA6",
-     "name": "Avicii",
-     "image": "https://i.scdn.co/image/ab6761610000f178ae07171f989fb39736674113"
-    },
-    {
      "id": "23fqKkggKUBHNkbKtXEls4",
      "name": "Kygo",
      "image": "https://i.scdn.co/image/ab6761610000f178e5ea1aa1404629c12ad86658"
     },
     {
-     "id": "2hgxWUG24w1cFLBlPSEVcV",
-     "name": "許嵩",
-     "image": "https://i.scdn.co/image/ab6761610000f178704d08abe2a3bf0bb1c366c9"
+     "id": "1vCWHaC5f2uS3yhpwWbIA6",
+     "name": "Avicii",
+     "image": "https://i.scdn.co/image/ab6761610000f178ae07171f989fb39736674113"
     },
     {
      "id": "5Pwc4xIPtQLFEnJriah9YJ",
@@ -1234,6 +1229,11 @@
      "id": "1km0aro5NJuoX5dE0Mub5C",
      "name": "Joanna Wang",
      "image": "https://i.scdn.co/image/ab6761610000f1788c2024e68663f46b2981398d"
+    },
+    {
+     "id": "2hgxWUG24w1cFLBlPSEVcV",
+     "name": "許嵩",
+     "image": "https://i.scdn.co/image/ab6761610000f178704d08abe2a3bf0bb1c366c9"
     },
     {
      "id": "1Xyo4u8uXC1ZmMpatF05PJ",
@@ -1427,13 +1427,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02ca9961814136d4bd7acfd811"
     },
     {
-     "id": "6nNLW8UCaIMxH9HzIbs63N",
-     "name": "清明雨上",
-     "artist": "許嵩",
-     "album": "自定義",
-     "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
-    },
-    {
      "id": "2tpWsVSb9UEmDRxAl1zhX1",
      "name": "Counting Stars",
      "artist": "OneRepublic",
@@ -1455,6 +1448,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02162c5d6dbf1dc3965d1a391a"
     },
     {
+     "id": "4HadYIhNfy7evMUI5W6wEc",
+     "name": "Reykjavik",
+     "artist": "Joachim Pastor",
+     "album": "Reykjavik",
+     "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
+    },
+    {
      "id": "0euyZh7zSUmpNXVpVBdcN2",
      "name": "Candyland",
      "artist": "Tobu",
@@ -1467,6 +1467,27 @@
      "artist": "Echosmith",
      "album": "Talking Dreams",
      "image": "https://i.scdn.co/image/ab67616d00001e02b098cbfb14e8cc251451ca19"
+    },
+    {
+     "id": "6nNLW8UCaIMxH9HzIbs63N",
+     "name": "清明雨上",
+     "artist": "許嵩",
+     "album": "自定義",
+     "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
+    },
+    {
+     "id": "2FiSTH0GYpIioUgjfzMIja",
+     "name": "Stay (feat. Maty Noyes)",
+     "artist": "Kygo, Maty Noyes",
+     "album": "Cloud Nine",
+     "image": "https://i.scdn.co/image/ab67616d00001e027247979b8bc6027bf97043ef"
+    },
+    {
+     "id": "3eR23VReFzcdmS7TYCrhCe",
+     "name": "It Ain't Me (with Selena Gomez)",
+     "artist": "Kygo, Selena Gomez",
+     "album": "It Ain't Me (with Selena Gomez)",
+     "image": "https://i.scdn.co/image/ab67616d00001e0241f289940f2e6a0d51988d77"
     },
     {
      "id": "0UeYCHOETPfai02uskjJ3x",
@@ -1502,13 +1523,6 @@
      "artist": "Frank Ocean",
      "album": "Blonde",
      "image": "https://i.scdn.co/image/ab67616d00001e02c5649add07ed3720be9d5526"
-    },
-    {
-     "id": "4HadYIhNfy7evMUI5W6wEc",
-     "name": "Reykjavik",
-     "artist": "Joachim Pastor",
-     "album": "Reykjavik",
-     "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
     },
     {
      "id": "4dTVgHZFPlaq9nPbLVVLSG",
@@ -1558,13 +1572,6 @@
      "artist": "Ellie Goulding",
      "album": "Lights",
      "image": "https://i.scdn.co/image/ab67616d00001e02a992179a520d2eb38fa41e64"
-    },
-    {
-     "id": "3eR23VReFzcdmS7TYCrhCe",
-     "name": "It Ain't Me (with Selena Gomez)",
-     "artist": "Kygo, Selena Gomez",
-     "album": "It Ain't Me (with Selena Gomez)",
-     "image": "https://i.scdn.co/image/ab67616d00001e0241f289940f2e6a0d51988d77"
     },
     {
      "id": "13I9qqQBL23ZPxFCUO967w",
@@ -1658,11 +1665,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e0242f9cd115743fccf6b8a531d"
     },
     {
-     "id": "2FiSTH0GYpIioUgjfzMIja",
-     "name": "Stay (feat. Maty Noyes)",
-     "artist": "Kygo, Maty Noyes",
-     "album": "Cloud Nine",
-     "image": "https://i.scdn.co/image/ab67616d00001e027247979b8bc6027bf97043ef"
+     "id": "3c8iiZGfEammKJuWTErE5x",
+     "name": "Ain't Nobody (Loves Me Better) (feat. Jasmine Thompson)",
+     "artist": "felix jaehn, Jasmine Thompson",
+     "album": "I",
+     "image": "https://i.scdn.co/image/ab67616d00001e029713f1939e377cf85a2a5b16"
+    },
+    {
+     "id": "0GSU6yLOJqO10ziQuBLWOE",
+     "name": "One Day (Vandaag) - Radio Edit",
+     "artist": "Bakermat",
+     "album": "One Day (Vandaag) [Radio Edit]",
+     "image": "https://i.scdn.co/image/ab67616d00001e0244b7277d2d6247722b26e2a3"
     },
     {
      "id": "10AsRVRdU07cMAFHeGYO3c",
@@ -1670,6 +1684,13 @@
      "artist": "Martin Jensen",
      "album": "Solo Dance",
      "image": "https://i.scdn.co/image/ab67616d00001e02245582ce9538e3681b0d0d7e"
+    },
+    {
+     "id": "1A8j067qyiNwQnZT0bzUpZ",
+     "name": "This Girl (Kungs Vs. Cookin' On 3 Burners)",
+     "artist": "Kungs, Cookin' On 3 Burners",
+     "album": "Layers",
+     "image": "https://i.scdn.co/image/ab67616d00001e02af72d0856c5527dc97f3ea08"
     },
     {
      "id": "1Mys1gf9SkMBAVGGxpkJ7d",
@@ -1686,46 +1707,25 @@
      "image": "https://i.scdn.co/image/ab67616d00001e0280368f0aa8f90c51674f9dd2"
     },
     {
-     "id": "42LDz0sTCJDPj71DDw5RAB",
-     "name": "那个那个",
-     "artist": "Bibi Zhou",
-     "album": "谁动了我的琴弦",
-     "image": "https://i.scdn.co/image/ab67616d00001e02272dfef9027ee41de02c067f"
+     "id": "2Gl0FzuLxflY6nPifJp5Dr",
+     "name": "First Time",
+     "artist": "Kygo, Ellie Goulding",
+     "album": "First Time",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b6d86ca196b697ee0f640118"
     },
     {
-     "id": "4LThFOso6YeLtjG6TZUOdh",
-     "name": "Let's Start From Here",
-     "artist": "Joanna Wang",
-     "album": "Start From Here",
-     "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
+     "id": "2Vhd5uZB4brKHmM0MNxkZo",
+     "name": "Raging (feat. Kodaline)",
+     "artist": "Kygo, Kodaline",
+     "album": "Cloud Nine",
+     "image": "https://i.scdn.co/image/ab67616d00001e027247979b8bc6027bf97043ef"
     },
     {
-     "id": "4zLBcDtvYNVtF9fnG6lme3",
-     "name": "Sun Goes Down (feat. Jasmine Thompson) - Radio Mix",
-     "artist": "Robin Schulz, Jasmine Thompson",
-     "album": "Prayer",
-     "image": "https://i.scdn.co/image/ab67616d00001e02ec67f6776573462a1ad9ee2d"
-    },
-    {
-     "id": "5s7xgzXtmY4gMjeSlgisjy",
-     "name": "Easy Love",
-     "artist": "Sigala",
-     "album": "Brighter Days",
-     "image": "https://i.scdn.co/image/ab67616d00001e025e637584b3a504d501357557"
-    },
-    {
-     "id": "3IQF4xCQUPicbA4hWfTxPo",
-     "name": "I Lived",
-     "artist": "OneRepublic",
-     "album": "Native",
-     "image": "https://i.scdn.co/image/ab67616d00001e029e2f95ae77cf436017ada9cb"
-    },
-    {
-     "id": "0QjpQP1w7apeMXzioL8sqN",
-     "name": "The Nights",
-     "artist": "Avicii",
-     "album": "Stories",
-     "image": "https://i.scdn.co/image/ab67616d00001e0230aa949449ea897b801fd5b2"
+     "id": "3FZEv9JddkjHNFiMVxJYpS",
+     "name": "Carry Me (feat. Julia Michaels)",
+     "artist": "Kygo, Julia Michaels",
+     "album": "Cloud Nine",
+     "image": "https://i.scdn.co/image/ab67616d00001e027247979b8bc6027bf97043ef"
     }
    ]
   }
