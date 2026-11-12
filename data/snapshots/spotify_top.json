@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-11T14:00:25Z",
+ "updated_at": "2026-11-12T00:00:23Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -803,6 +803,11 @@
      "id": "0du5cEVh5yTK9QJze8zA0C",
      "name": "Bruno Mars",
      "image": "https://i.scdn.co/image/ab6761610000f178c7688aad1bf03986934d7e26"
+    },
+    {
+     "id": "1IueXOQyABrMOprrzwQJWN",
+     "name": "Sigala",
+     "image": "https://i.scdn.co/image/ab6761610000f1782287136f17708c9d01fa538c"
     },
     {
      "id": "2o5jDhtHVPhrJdv3cEQ99Z",
