@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-13T05:00:22Z",
+ "updated_at": "2026-11-13T14:00:23Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -39,14 +39,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f1780887284d923c88a92835e427"
     },
     {
-     "id": "1vCWHaC5f2uS3yhpwWbIA6",
-     "name": "Avicii",
-     "image": "https://i.scdn.co/image/ab6761610000f178ae07171f989fb39736674113"
-    },
-    {
      "id": "23fqKkggKUBHNkbKtXEls4",
      "name": "Kygo",
      "image": "https://i.scdn.co/image/ab6761610000f178e5ea1aa1404629c12ad86658"
+    },
+    {
+     "id": "1vCWHaC5f2uS3yhpwWbIA6",
+     "name": "Avicii",
+     "image": "https://i.scdn.co/image/ab6761610000f178ae07171f989fb39736674113"
     },
     {
      "id": "5Pwc4xIPtQLFEnJriah9YJ",
@@ -459,6 +459,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
     },
     {
+     "id": "4HadYIhNfy7evMUI5W6wEc",
+     "name": "Reykjavik",
+     "artist": "Joachim Pastor",
+     "album": "Reykjavik",
+     "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
+    },
+    {
      "id": "0GO8y8jQk1PkHzS31d699N",
      "name": "Tongue Tied",
      "artist": "GROUPLOVE",
@@ -534,13 +541,6 @@
      "artist": "Imagine Dragons, Broiler",
      "album": "Running songs 2020",
      "image": "https://i.scdn.co/image/ab67616d00001e02e3bf006fa33de9ffa82db64b"
-    },
-    {
-     "id": "4HadYIhNfy7evMUI5W6wEc",
-     "name": "Reykjavik",
-     "artist": "Joachim Pastor",
-     "album": "Reykjavik",
-     "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
     },
     {
      "id": "4lZBB7P5j84VqQHf3POLdA",
@@ -1241,6 +1241,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f178c1719ac9e6a75c1c25835018"
     },
     {
+     "id": "21mKp7DqtSNHhCAU2ugvUw",
+     "name": "ODESZA",
+     "image": "https://i.scdn.co/image/ab6761610000f1789f4a0cbfcc9b274344681ccb"
+    },
+    {
      "id": "7tYKF4w9nC0nq9CsPZTHyP",
      "name": "SZA",
      "image": "https://i.scdn.co/image/ab6761610000f178fd0a9fb6c252a3ba44079acf"
@@ -1254,11 +1259,6 @@
      "id": "20wkVLutqVOYrc0kxFs7rA",
      "name": "Daniel Caesar",
      "image": "https://i.scdn.co/image/ab6761610000f178e4d94f7cbebb17504c25d419"
-    },
-    {
-     "id": "21mKp7DqtSNHhCAU2ugvUw",
-     "name": "ODESZA",
-     "image": "https://i.scdn.co/image/ab6761610000f1789f4a0cbfcc9b274344681ccb"
     },
     {
      "id": "6nB0iY1cjSY1KyhYyuIIKH",
@@ -1378,18 +1378,18 @@
    ],
    "tracks": [
     {
-     "id": "3ojwY8dyubHnLsoHdRUpo4",
-     "name": "雅俗共賞",
-     "artist": "許嵩",
-     "album": "青年晚報",
-     "image": "https://i.scdn.co/image/ab67616d00001e029bb2441b6b192266eb47106f"
-    },
-    {
      "id": "6fNhZRFEkBfgW39W3wKARJ",
      "name": "Pompeii",
      "artist": "Bastille",
      "album": "Bad Blood",
      "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
+    },
+    {
+     "id": "3ojwY8dyubHnLsoHdRUpo4",
+     "name": "雅俗共賞",
+     "artist": "許嵩",
+     "album": "青年晚報",
+     "image": "https://i.scdn.co/image/ab67616d00001e029bb2441b6b192266eb47106f"
     },
     {
      "id": "2CPqh63wRVscbceKcPxwvv",
@@ -1427,6 +1427,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02ca9961814136d4bd7acfd811"
     },
     {
+     "id": "0euyZh7zSUmpNXVpVBdcN2",
+     "name": "Candyland",
+     "artist": "Tobu",
+     "album": "Candyland",
+     "image": "https://i.scdn.co/image/ab67616d00001e029feceff471ea209ab793ce6b"
+    },
+    {
      "id": "2tpWsVSb9UEmDRxAl1zhX1",
      "name": "Counting Stars",
      "artist": "OneRepublic",
@@ -1441,6 +1448,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e0239588f221861ee72b40b755c"
     },
     {
+     "id": "2FpEXjGqe2dJJ9oB8c8Io2",
+     "name": "Unity",
+     "artist": "TheFatRat",
+     "album": "Unity - 10th Anniversary Compilation",
+     "image": "https://i.scdn.co/image/ab67616d00001e023b3b24d7997db331a6e841d3"
+    },
+    {
      "id": "3B0irDyS69y5eAz15xV2Ee",
      "name": "Wake Me Up",
      "artist": "Avicii",
@@ -1453,13 +1467,6 @@
      "artist": "Joachim Pastor",
      "album": "Reykjavik",
      "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
-    },
-    {
-     "id": "0euyZh7zSUmpNXVpVBdcN2",
-     "name": "Candyland",
-     "artist": "Tobu",
-     "album": "Candyland",
-     "image": "https://i.scdn.co/image/ab67616d00001e029feceff471ea209ab793ce6b"
     },
     {
      "id": "3eOeuofLjOgjOCs7eWuvZ0",
@@ -1509,13 +1516,6 @@
      "artist": "Imagine Dragons",
      "album": "Night Visions",
      "image": "https://i.scdn.co/image/ab67616d00001e02407bd04707c463bbb3410737"
-    },
-    {
-     "id": "2FpEXjGqe2dJJ9oB8c8Io2",
-     "name": "Unity",
-     "artist": "TheFatRat",
-     "album": "Unity - 10th Anniversary Compilation",
-     "image": "https://i.scdn.co/image/ab67616d00001e023b3b24d7997db331a6e841d3"
     },
     {
      "id": "3xKsf9qdS1CyvXSMEid6g8",
@@ -1572,6 +1572,13 @@
      "artist": "Ellie Goulding",
      "album": "Lights",
      "image": "https://i.scdn.co/image/ab67616d00001e02a992179a520d2eb38fa41e64"
+    },
+    {
+     "id": "12LOYGBr0T0IqyuhEILYFh",
+     "name": "La clé des champs",
+     "artist": "NTO",
+     "album": "La clé des champs",
+     "image": "https://i.scdn.co/image/ab67616d00001e025e04fccc811e35cf8d8f4c61"
     },
     {
      "id": "13I9qqQBL23ZPxFCUO967w",
@@ -1658,6 +1665,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e027b730a450d048646b7472425"
     },
     {
+     "id": "1LeItUMezKA1HdCHxYICed",
+     "name": "Say My Name",
+     "artist": "ODESZA, Zyra",
+     "album": "In Return",
+     "image": "https://i.scdn.co/image/ab67616d00001e02dbd801e562b7a9474ce8bae2"
+    },
+    {
      "id": "1ySawdDRh3NEy0kNFzacOp",
      "name": "Sugar (feat. Francesco Yates)",
      "artist": "Robin Schulz, Francesco Yates",
@@ -1712,20 +1726,6 @@
      "artist": "Kygo, Ellie Goulding",
      "album": "First Time",
      "image": "https://i.scdn.co/image/ab67616d00001e02b6d86ca196b697ee0f640118"
-    },
-    {
-     "id": "2Vhd5uZB4brKHmM0MNxkZo",
-     "name": "Raging (feat. Kodaline)",
-     "artist": "Kygo, Kodaline",
-     "album": "Cloud Nine",
-     "image": "https://i.scdn.co/image/ab67616d00001e027247979b8bc6027bf97043ef"
-    },
-    {
-     "id": "3FZEv9JddkjHNFiMVxJYpS",
-     "name": "Carry Me (feat. Julia Michaels)",
-     "artist": "Kygo, Julia Michaels",
-     "album": "Cloud Nine",
-     "image": "https://i.scdn.co/image/ab67616d00001e027247979b8bc6027bf97043ef"
     }
    ]
   }
