@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-12T14:00:26Z",
+ "updated_at": "2026-11-13T00:00:22Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -620,14 +620,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f178704d08abe2a3bf0bb1c366c9"
     },
     {
-     "id": "1vCWHaC5f2uS3yhpwWbIA6",
-     "name": "Avicii",
-     "image": "https://i.scdn.co/image/ab6761610000f178ae07171f989fb39736674113"
-    },
-    {
      "id": "23fqKkggKUBHNkbKtXEls4",
      "name": "Kygo",
      "image": "https://i.scdn.co/image/ab6761610000f178e5ea1aa1404629c12ad86658"
+    },
+    {
+     "id": "1vCWHaC5f2uS3yhpwWbIA6",
+     "name": "Avicii",
+     "image": "https://i.scdn.co/image/ab6761610000f178ae07171f989fb39736674113"
     },
     {
      "id": "5cj0lLjcoR7YOSnhnX0Po5",
@@ -705,11 +705,6 @@
      "image": "https://i.scdn.co/image/ab6761610000f1782b1c6db6ed003d0e72c160e6"
     },
     {
-     "id": "4gzpq5DPGxSnKTe4SA8HAU",
-     "name": "Coldplay",
-     "image": "https://i.scdn.co/image/ab6761610000f1781ba8fc5f5c73e7e9313cc6eb"
-    },
-    {
      "id": "7CajNmpbOovFoOoasH2HaY",
      "name": "Calvin Harris",
      "image": "https://i.scdn.co/image/ab6761610000f1788ebba5e60113b48de8c11f6b"
@@ -733,6 +728,11 @@
      "id": "4S9EykWXhStSc15wEx8QFK",
      "name": "Céline Dion",
      "image": "https://i.scdn.co/image/ab6761610000f178fe81f2540f9fa7564dd5e05c"
+    },
+    {
+     "id": "4gzpq5DPGxSnKTe4SA8HAU",
+     "name": "Coldplay",
+     "image": "https://i.scdn.co/image/ab6761610000f1781ba8fc5f5c73e7e9313cc6eb"
     },
     {
      "id": "5rSXSAkZ67PYJSvpUpkOr7",
@@ -896,6 +896,20 @@
      "image": "https://i.scdn.co/image/ab67616d00001e028a99868b5a57469de83fb9ba"
     },
     {
+     "id": "2gS6LJHhMDn5FPARE1LVtG",
+     "name": "Adventure of a Lifetime",
+     "artist": "Coldplay",
+     "album": "A Head Full of Dreams",
+     "image": "https://i.scdn.co/image/ab67616d00001e028c098c981c8743d8493e52fc"
+    },
+    {
+     "id": "36ijlvGvOx8iOJSlwn7mcf",
+     "name": "Tongue Tied",
+     "artist": "GROUPLOVE",
+     "album": "Never Trust a Happy Song",
+     "image": "https://i.scdn.co/image/ab67616d00001e02373857bc42fa2719cde34881"
+    },
+    {
      "id": "7ti4qMC7xYQeh1uRzj5XuM",
      "name": "Pumpin Blood",
      "artist": "NONONO",
@@ -922,6 +936,13 @@
      "artist": "OneRepublic",
      "album": "Native",
      "image": "https://i.scdn.co/image/ab67616d00001e029e2f95ae77cf436017ada9cb"
+    },
+    {
+     "id": "4HadYIhNfy7evMUI5W6wEc",
+     "name": "Reykjavik",
+     "artist": "Joachim Pastor",
+     "album": "Reykjavik",
+     "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
     },
     {
      "id": "1eOJAiCKFuMda0fPRvjcuc",
@@ -959,11 +980,32 @@
      "image": "https://i.scdn.co/image/ab67616d00001e027b730a450d048646b7472425"
     },
     {
+     "id": "2FiSTH0GYpIioUgjfzMIja",
+     "name": "Stay (feat. Maty Noyes)",
+     "artist": "Kygo, Maty Noyes",
+     "album": "Cloud Nine",
+     "image": "https://i.scdn.co/image/ab67616d00001e027247979b8bc6027bf97043ef"
+    },
+    {
+     "id": "3eR23VReFzcdmS7TYCrhCe",
+     "name": "It Ain't Me (with Selena Gomez)",
+     "artist": "Kygo, Selena Gomez",
+     "album": "It Ain't Me (with Selena Gomez)",
+     "image": "https://i.scdn.co/image/ab67616d00001e0241f289940f2e6a0d51988d77"
+    },
+    {
      "id": "0UeYCHOETPfai02uskjJ3x",
      "name": "Shooting Stars",
      "artist": "Bag Raiders",
      "album": "Bag Raiders (Deluxe)",
      "image": "https://i.scdn.co/image/ab67616d00001e0250b5922bdf87ba4213b25234"
+    },
+    {
+     "id": "0gjA6a2SaJjC4dsNQlU8gK",
+     "name": "Good Life - 2026 Remastered",
+     "artist": "OneRepublic",
+     "album": "Waking Up (2026 Remastered)",
+     "image": "https://i.scdn.co/image/ab67616d00001e026823e3a4f0a685140701fcf2"
     },
     {
      "id": "213x4gsFDm04hSqIUkg88w",
@@ -1036,32 +1078,11 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02508f6070bbe3a4fec70e2036"
     },
     {
-     "id": "3eR23VReFzcdmS7TYCrhCe",
-     "name": "It Ain't Me (with Selena Gomez)",
-     "artist": "Kygo, Selena Gomez",
-     "album": "It Ain't Me (with Selena Gomez)",
-     "image": "https://i.scdn.co/image/ab67616d00001e0241f289940f2e6a0d51988d77"
-    },
-    {
-     "id": "4HadYIhNfy7evMUI5W6wEc",
-     "name": "Reykjavik",
-     "artist": "Joachim Pastor",
-     "album": "Reykjavik",
-     "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
-    },
-    {
      "id": "56y1jOTK0XSvJzVv9vHQBK",
      "name": "Paint The Town Red",
      "artist": "Doja Cat",
      "album": "Scarlet",
      "image": "https://i.scdn.co/image/ab67616d00001e02a54499d7ba4e9afeea91df86"
-    },
-    {
-     "id": "0GO8y8jQk1PkHzS31d699N",
-     "name": "Tongue Tied",
-     "artist": "GROUPLOVE",
-     "album": "Never Trust a Happy Song",
-     "image": "https://i.scdn.co/image/ab67616d00001e02d84a9bbcba91cb6a4a212b1b"
     },
     {
      "id": "13I9qqQBL23ZPxFCUO967w",
@@ -1076,13 +1097,6 @@
      "artist": "Kygo, Conrad Sewell",
      "album": "Cloud Nine",
      "image": "https://i.scdn.co/image/ab67616d00001e027247979b8bc6027bf97043ef"
-    },
-    {
-     "id": "2gS6LJHhMDn5FPARE1LVtG",
-     "name": "Adventure of a Lifetime",
-     "artist": "Coldplay",
-     "album": "A Head Full of Dreams",
-     "image": "https://i.scdn.co/image/ab67616d00001e028c098c981c8743d8493e52fc"
     },
     {
      "id": "37sINbJZcFdHFAsVNsPq1i",
@@ -1134,6 +1148,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02da0751d4a35b6af93fb3e01d"
     },
     {
+     "id": "7jMHa752w5Wvpe3PzC1zJD",
+     "name": "Secrets - 2026 Remastered",
+     "artist": "OneRepublic",
+     "album": "Waking Up (2026 Remastered)",
+     "image": "https://i.scdn.co/image/ab67616d00001e026823e3a4f0a685140701fcf2"
+    },
+    {
      "id": "5L6oF6wViaQkaGI7c6QIv4",
      "name": "笔记",
      "artist": "Bibi Zhou",
@@ -1141,11 +1162,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e028d365c88c9bdaec3720bda12"
     },
     {
-     "id": "2FiSTH0GYpIioUgjfzMIja",
-     "name": "Stay (feat. Maty Noyes)",
-     "artist": "Kygo, Maty Noyes",
-     "album": "Cloud Nine",
-     "image": "https://i.scdn.co/image/ab67616d00001e027247979b8bc6027bf97043ef"
+     "id": "1ySawdDRh3NEy0kNFzacOp",
+     "name": "Sugar (feat. Francesco Yates)",
+     "artist": "Robin Schulz, Francesco Yates",
+     "album": "Sugar",
+     "image": "https://i.scdn.co/image/ab67616d00001e0242f9cd115743fccf6b8a531d"
+    },
+    {
+     "id": "3c8iiZGfEammKJuWTErE5x",
+     "name": "Ain't Nobody (Loves Me Better) (feat. Jasmine Thompson)",
+     "artist": "felix jaehn, Jasmine Thompson",
+     "album": "I",
+     "image": "https://i.scdn.co/image/ab67616d00001e029713f1939e377cf85a2a5b16"
     },
     {
      "id": "4frLb7nWtsz2ymBE6k2GRP",
@@ -1155,11 +1183,11 @@
      "image": "https://i.scdn.co/image/ab67616d00001e027fcead687e99583072cc217b"
     },
     {
-     "id": "5tf1VVWniHgryyumXyJM7w",
-     "name": "Sugar (feat. Francesco Yates)",
-     "artist": "Robin Schulz, Francesco Yates",
-     "album": "Sugar",
-     "image": "https://i.scdn.co/image/ab67616d00001e0270dd2ebd8a41b3cab44f0c7b"
+     "id": "1A8j067qyiNwQnZT0bzUpZ",
+     "name": "This Girl (Kungs Vs. Cookin' On 3 Burners)",
+     "artist": "Kungs, Cookin' On 3 Burners",
+     "album": "Layers",
+     "image": "https://i.scdn.co/image/ab67616d00001e02af72d0856c5527dc97f3ea08"
     },
     {
      "id": "4LThFOso6YeLtjG6TZUOdh",
@@ -1167,34 +1195,6 @@
      "artist": "Joanna Wang",
      "album": "Start From Here",
      "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
-    },
-    {
-     "id": "5rXBmcYNJYMYdhwxlMLh0s",
-     "name": "有何不可",
-     "artist": "許嵩",
-     "album": "自定義",
-     "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
-    },
-    {
-     "id": "0tgnTzjIkj8mVVEh0SNH0t",
-     "name": "Secrets",
-     "artist": "OneRepublic",
-     "album": "Waking Up (International Deluxe Version)",
-     "image": "https://i.scdn.co/image/ab67616d00001e025a6a08795790ccc600cc94a8"
-    },
-    {
-     "id": "10AsRVRdU07cMAFHeGYO3c",
-     "name": "Solo Dance",
-     "artist": "Martin Jensen",
-     "album": "Solo Dance",
-     "image": "https://i.scdn.co/image/ab67616d00001e02245582ce9538e3681b0d0d7e"
-    },
-    {
-     "id": "1L47sHuKWNdPlGUk69HbmU",
-     "name": "The Right Path",
-     "artist": "Thomas Greenberg",
-     "album": "Age Of Innocence",
-     "image": "https://i.scdn.co/image/ab67616d00001e023b42d9a336638e90b24177ae"
     }
    ]
   },
