@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-14T00:00:22Z",
+ "updated_at": "2026-11-14T05:00:25Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -1286,14 +1286,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f17887fbbe9ed03fbb500595e720"
     },
     {
-     "id": "0SIXZXJCAhNU8sxK0qm7hn",
-     "name": "Stefanie Sun",
-     "image": "https://i.scdn.co/image/ab6761610000f178744989ed737112f4edbd2cc3"
-    },
-    {
      "id": "0X2BH1fck6amBIoJhDVmmJ",
      "name": "Ellie Goulding",
      "image": "https://i.scdn.co/image/ab6761610000f1785c461001b3489a0a523f63ee"
+    },
+    {
+     "id": "0SIXZXJCAhNU8sxK0qm7hn",
+     "name": "Stefanie Sun",
+     "image": "https://i.scdn.co/image/ab6761610000f178744989ed737112f4edbd2cc3"
     },
     {
      "id": "1HBjj22wzbscIZ9sEb5dyf",
@@ -1344,6 +1344,11 @@
      "id": "04gDigrS5kc9YWfZHwBETP",
      "name": "Maroon 5",
      "image": "https://i.scdn.co/image/ab6761610000f178f8349dfb619a7f842242de77"
+    },
+    {
+     "id": "0du5cEVh5yTK9QJze8zA0C",
+     "name": "Bruno Mars",
+     "image": "https://i.scdn.co/image/ab6761610000f178c7688aad1bf03986934d7e26"
     },
     {
      "id": "1IueXOQyABrMOprrzwQJWN",
@@ -1434,6 +1439,20 @@
      "image": "https://i.scdn.co/image/ab67616d00001e029feceff471ea209ab793ce6b"
     },
     {
+     "id": "3eOeuofLjOgjOCs7eWuvZ0",
+     "name": "Cool Kids",
+     "artist": "Echosmith",
+     "album": "Talking Dreams",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b098cbfb14e8cc251451ca19"
+    },
+    {
+     "id": "7gUpO6td4OOnu0Lf9vhcIV",
+     "name": "Lights - Single Version",
+     "artist": "Ellie Goulding",
+     "album": "Lights",
+     "image": "https://i.scdn.co/image/ab67616d00001e02a992179a520d2eb38fa41e64"
+    },
+    {
      "id": "2tpWsVSb9UEmDRxAl1zhX1",
      "name": "Counting Stars",
      "artist": "OneRepublic",
@@ -1467,13 +1486,6 @@
      "artist": "Joachim Pastor",
      "album": "Reykjavik",
      "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
-    },
-    {
-     "id": "3eOeuofLjOgjOCs7eWuvZ0",
-     "name": "Cool Kids",
-     "artist": "Echosmith",
-     "album": "Talking Dreams",
-     "image": "https://i.scdn.co/image/ab67616d00001e02b098cbfb14e8cc251451ca19"
     },
     {
      "id": "6nNLW8UCaIMxH9HzIbs63N",
@@ -1546,6 +1558,13 @@
      "image": "https://i.scdn.co/image/ab6742d3000052b7d20b7a2f3018e3d59b7cac75"
     },
     {
+     "id": "6UqRGwjwYL0stXbaodTxwo",
+     "name": "Seve - Radio Edit",
+     "artist": "Tez Cadey",
+     "album": "Seve (Radio Edit)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02da0751d4a35b6af93fb3e01d"
+    },
+    {
      "id": "6VrLYoQKdhu1Jruei06t65",
      "name": "Somebody To You",
      "artist": "The Vamps",
@@ -1565,13 +1584,6 @@
      "artist": "Jonas Blue, Dakota",
      "album": "Blue",
      "image": "https://i.scdn.co/image/ab67616d00001e025b6bcc59c3562a6f362344c6"
-    },
-    {
-     "id": "7gUpO6td4OOnu0Lf9vhcIV",
-     "name": "Lights - Single Version",
-     "artist": "Ellie Goulding",
-     "album": "Lights",
-     "image": "https://i.scdn.co/image/ab67616d00001e02a992179a520d2eb38fa41e64"
     },
     {
      "id": "12LOYGBr0T0IqyuhEILYFh",
@@ -1637,13 +1649,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e020c13d3d5a503c84fcc60ae94"
     },
     {
-     "id": "6UqRGwjwYL0stXbaodTxwo",
-     "name": "Seve - Radio Edit",
-     "artist": "Tez Cadey",
-     "album": "Seve (Radio Edit)",
-     "image": "https://i.scdn.co/image/ab67616d00001e02da0751d4a35b6af93fb3e01d"
-    },
-    {
      "id": "7jMHa752w5Wvpe3PzC1zJD",
      "name": "Secrets - 2026 Remastered",
      "artist": "OneRepublic",
@@ -1700,6 +1705,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02245582ce9538e3681b0d0d7e"
     },
     {
+     "id": "11wlDEdE6fV0YuRXSXMAnE",
+     "name": "Aerials",
+     "artist": "Lights \u0026 Motion",
+     "album": "Reanimation",
+     "image": "https://i.scdn.co/image/ab67616d00001e0284bee8371225201e5258bc0f"
+    },
+    {
      "id": "1A8j067qyiNwQnZT0bzUpZ",
      "name": "This Girl (Kungs Vs. Cookin' On 3 Burners)",
      "artist": "Kungs, Cookin' On 3 Burners",
@@ -1719,13 +1731,6 @@
      "artist": "Kygo, Whitney Houston",
      "album": "Golden Hour",
      "image": "https://i.scdn.co/image/ab67616d00001e0280368f0aa8f90c51674f9dd2"
-    },
-    {
-     "id": "2Gl0FzuLxflY6nPifJp5Dr",
-     "name": "First Time",
-     "artist": "Kygo, Ellie Goulding",
-     "album": "First Time",
-     "image": "https://i.scdn.co/image/ab67616d00001e02b6d86ca196b697ee0f640118"
     }
    ]
   }
