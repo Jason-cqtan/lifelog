@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-13T14:00:23Z",
+ "updated_at": "2026-11-14T00:00:22Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -665,6 +665,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f1789ffb964ffbd8af492f1d6471"
     },
     {
+     "id": "21mKp7DqtSNHhCAU2ugvUw",
+     "name": "ODESZA",
+     "image": "https://i.scdn.co/image/ab6761610000f1789f4a0cbfcc9b274344681ccb"
+    },
+    {
      "id": "7tYKF4w9nC0nq9CsPZTHyP",
      "name": "SZA",
      "image": "https://i.scdn.co/image/ab6761610000f178fd0a9fb6c252a3ba44079acf"
@@ -678,11 +683,6 @@
      "id": "20wkVLutqVOYrc0kxFs7rA",
      "name": "Daniel Caesar",
      "image": "https://i.scdn.co/image/ab6761610000f178e4d94f7cbebb17504c25d419"
-    },
-    {
-     "id": "21mKp7DqtSNHhCAU2ugvUw",
-     "name": "ODESZA",
-     "image": "https://i.scdn.co/image/ab6761610000f1789f4a0cbfcc9b274344681ccb"
     },
     {
      "id": "2elBjNSdBE2Y3f0j1mjrql",
@@ -924,6 +924,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e0214b7b2a920a41166d53ddd49"
     },
     {
+     "id": "0euyZh7zSUmpNXVpVBdcN2",
+     "name": "Candyland",
+     "artist": "Tobu",
+     "album": "Candyland",
+     "image": "https://i.scdn.co/image/ab67616d00001e029feceff471ea209ab793ce6b"
+    },
+    {
      "id": "7gUpO6td4OOnu0Lf9vhcIV",
      "name": "Lights - Single Version",
      "artist": "Ellie Goulding",
@@ -952,18 +959,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e0239588f221861ee72b40b755c"
     },
     {
+     "id": "2FpEXjGqe2dJJ9oB8c8Io2",
+     "name": "Unity",
+     "artist": "TheFatRat",
+     "album": "Unity - 10th Anniversary Compilation",
+     "image": "https://i.scdn.co/image/ab67616d00001e023b3b24d7997db331a6e841d3"
+    },
+    {
      "id": "3B0irDyS69y5eAz15xV2Ee",
      "name": "Wake Me Up",
      "artist": "Avicii",
      "album": "True",
      "image": "https://i.scdn.co/image/ab67616d00001e02162c5d6dbf1dc3965d1a391a"
-    },
-    {
-     "id": "0euyZh7zSUmpNXVpVBdcN2",
-     "name": "Candyland",
-     "artist": "Tobu",
-     "album": "Candyland",
-     "image": "https://i.scdn.co/image/ab67616d00001e029feceff471ea209ab793ce6b"
     },
     {
      "id": "3eOeuofLjOgjOCs7eWuvZ0",
@@ -1013,13 +1020,6 @@
      "artist": "Imagine Dragons",
      "album": "Night Visions",
      "image": "https://i.scdn.co/image/ab67616d00001e02407bd04707c463bbb3410737"
-    },
-    {
-     "id": "2FpEXjGqe2dJJ9oB8c8Io2",
-     "name": "Unity",
-     "artist": "TheFatRat",
-     "album": "Unity - 10th Anniversary Compilation",
-     "image": "https://i.scdn.co/image/ab67616d00001e023b3b24d7997db331a6e841d3"
     },
     {
      "id": "3xKsf9qdS1CyvXSMEid6g8",
@@ -1083,6 +1083,13 @@
      "artist": "Doja Cat",
      "album": "Scarlet",
      "image": "https://i.scdn.co/image/ab67616d00001e02a54499d7ba4e9afeea91df86"
+    },
+    {
+     "id": "12LOYGBr0T0IqyuhEILYFh",
+     "name": "La clé des champs",
+     "artist": "NTO",
+     "album": "La clé des champs",
+     "image": "https://i.scdn.co/image/ab67616d00001e025e04fccc811e35cf8d8f4c61"
     },
     {
      "id": "13I9qqQBL23ZPxFCUO967w",
@@ -1162,6 +1169,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e028d365c88c9bdaec3720bda12"
     },
     {
+     "id": "1LeItUMezKA1HdCHxYICed",
+     "name": "Say My Name",
+     "artist": "ODESZA, Zyra",
+     "album": "In Return",
+     "image": "https://i.scdn.co/image/ab67616d00001e02dbd801e562b7a9474ce8bae2"
+    },
+    {
      "id": "1ySawdDRh3NEy0kNFzacOp",
      "name": "Sugar (feat. Francesco Yates)",
      "artist": "Robin Schulz, Francesco Yates",
@@ -1181,20 +1195,6 @@
      "artist": "The Weeknd",
      "album": "Beauty Behind The Madness",
      "image": "https://i.scdn.co/image/ab67616d00001e027fcead687e99583072cc217b"
-    },
-    {
-     "id": "1A8j067qyiNwQnZT0bzUpZ",
-     "name": "This Girl (Kungs Vs. Cookin' On 3 Burners)",
-     "artist": "Kungs, Cookin' On 3 Burners",
-     "album": "Layers",
-     "image": "https://i.scdn.co/image/ab67616d00001e02af72d0856c5527dc97f3ea08"
-    },
-    {
-     "id": "4LThFOso6YeLtjG6TZUOdh",
-     "name": "Let's Start From Here",
-     "artist": "Joanna Wang",
-     "album": "Start From Here",
-     "image": "https://i.scdn.co/image/ab67616d00001e02fd06c734c681939f44be01da"
     }
    ]
   },
