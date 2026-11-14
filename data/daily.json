@@ -4990,6 +4990,10 @@
 {"date":"2026-11-13","source":"duolingo","metric":"xp","value":282},
 {"date":"2026-11-13","source":"garmin","metric":"step_goal","value":7970},
 {"date":"2026-11-13","source":"garmin","metric":"steps","value":8444},
+{"date":"2026-11-14","source":"duolingo","metric":"course_xp:OTHER","value":40},
+{"date":"2026-11-14","source":"duolingo","metric":"minutes","value":4.65},
+{"date":"2026-11-14","source":"duolingo","metric":"sessions","value":1},
+{"date":"2026-11-14","source":"duolingo","metric":"xp","value":40},
 {"date":"2026-11-14","source":"garmin","metric":"step_goal","value":8070},
-{"date":"2026-11-14","source":"garmin","metric":"steps","value":6088}
+{"date":"2026-11-14","source":"garmin","metric":"steps","value":8478}
 ]

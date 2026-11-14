@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-14T05:00:25Z",
+ "updated_at": "2026-11-14T14:00:23Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -74,14 +74,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f178c7688aad1bf03986934d7e26"
     },
     {
-     "id": "3OKg7YbOIatODzkRIbLJR4",
-     "name": "TheFatRat",
-     "image": "https://i.scdn.co/image/ab6761610000f178c64c5f001dc3957cf5651460"
-    },
-    {
      "id": "6M2wZ9GZgrQXHCFfjv46we",
      "name": "Dua Lipa",
      "image": "https://i.scdn.co/image/ab6761610000f1780c68f6c95232e716f0abee8d"
+    },
+    {
+     "id": "3OKg7YbOIatODzkRIbLJR4",
+     "name": "TheFatRat",
+     "image": "https://i.scdn.co/image/ab6761610000f178c64c5f001dc3957cf5651460"
     },
     {
      "id": "7mShFo2eYgVBQFZBCilhtl",
@@ -114,14 +114,19 @@
      "image": "https://i.scdn.co/image/ab6761610000f178572a8eae56feae217f618078"
     },
     {
+     "id": "04gDigrS5kc9YWfZHwBETP",
+     "name": "Maroon 5",
+     "image": "https://i.scdn.co/image/ab6761610000f178f8349dfb619a7f842242de77"
+    },
+    {
      "id": "06HL4z0CvFAxyc27GXpf02",
      "name": "Taylor Swift",
      "image": "https://i.scdn.co/image/ab6761610000f17812184bdd29403de54cb9d9c7"
     },
     {
-     "id": "04gDigrS5kc9YWfZHwBETP",
-     "name": "Maroon 5",
-     "image": "https://i.scdn.co/image/ab6761610000f178f8349dfb619a7f842242de77"
+     "id": "1Xyo4u8uXC1ZmMpatF05PJ",
+     "name": "The Weeknd",
+     "image": "https://i.scdn.co/image/ab6761610000f178c1719ac9e6a75c1c25835018"
     },
     {
      "id": "6noxsCszBEEK04kCehugOp",
@@ -134,11 +139,6 @@
      "image": "https://i.scdn.co/image/ab6761610000f1788ebba5e60113b48de8c11f6b"
     },
     {
-     "id": "1Xyo4u8uXC1ZmMpatF05PJ",
-     "name": "The Weeknd",
-     "image": "https://i.scdn.co/image/ab6761610000f178c1719ac9e6a75c1c25835018"
-    },
-    {
      "id": "376pcuw4IgWBMOUwCr8kIm",
      "name": "Tanya Chua",
      "image": "https://i.scdn.co/image/ab6761610000f1786a0678a926bd4812fb8a4099"
@@ -147,6 +147,11 @@
      "id": "4BAWVaDoA2CpEdUetoYKgZ",
      "name": "Capo Productions",
      "image": "https://i.scdn.co/image/ab67616d00001e020d2bdfb25648a42ba50b9c41"
+    },
+    {
+     "id": "21mKp7DqtSNHhCAU2ugvUw",
+     "name": "ODESZA",
+     "image": "https://i.scdn.co/image/ab6761610000f1789f4a0cbfcc9b274344681ccb"
     },
     {
      "id": "7tYKF4w9nC0nq9CsPZTHyP",
@@ -194,19 +199,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f178d9939d240016befcc2095b26"
     },
     {
+     "id": "1dfeR4HaWDbWqFHLkxsg1d",
+     "name": "Queen",
+     "image": "https://i.scdn.co/image/ab6761610000f17873e4d22612ac8d944b5789b4"
+    },
+    {
      "id": "3aIDSTKS9yH745GUQBxDcS",
      "name": "Fish Leong",
      "image": "https://i.scdn.co/image/ab6761610000f17814806436e1fc9d977a3709dd"
-    },
-    {
-     "id": "20wkVLutqVOYrc0kxFs7rA",
-     "name": "Daniel Caesar",
-     "image": "https://i.scdn.co/image/ab6761610000f178e4d94f7cbebb17504c25d419"
-    },
-    {
-     "id": "21mKp7DqtSNHhCAU2ugvUw",
-     "name": "ODESZA",
-     "image": "https://i.scdn.co/image/ab6761610000f1789f4a0cbfcc9b274344681ccb"
     },
     {
      "id": "0X2BH1fck6amBIoJhDVmmJ",
@@ -214,9 +214,19 @@
      "image": "https://i.scdn.co/image/ab6761610000f1785c461001b3489a0a523f63ee"
     },
     {
+     "id": "20wkVLutqVOYrc0kxFs7rA",
+     "name": "Daniel Caesar",
+     "image": "https://i.scdn.co/image/ab6761610000f178e4d94f7cbebb17504c25d419"
+    },
+    {
      "id": "2QcZxAgcs2I1q7CtCkl6MI",
      "name": "Eason Chan",
      "image": "https://i.scdn.co/image/ab6761610000f178438e5730e9e86121f329d2dd"
+    },
+    {
+     "id": "6MDME20pz9RveH9rEXvrOM",
+     "name": "Clean Bandit",
+     "image": "https://i.scdn.co/image/ab6761610000f178f995542c4f68f8ae4f05b5f6"
     },
     {
      "id": "6jlz5QSUqbKE4vnzo2qfP1",
@@ -234,11 +244,6 @@
      "image": "https://i.scdn.co/image/ab6761610000f1781cafdee014cd9d3d711e1692"
     },
     {
-     "id": "6MDME20pz9RveH9rEXvrOM",
-     "name": "Clean Bandit",
-     "image": "https://i.scdn.co/image/ab6761610000f178f995542c4f68f8ae4f05b5f6"
-    },
-    {
      "id": "5uCktjKM1Rf9VnUvFD6j17",
      "name": "Solar Heavy",
      "image": "https://i.scdn.co/image/ab6761610000f1782b1c6db6ed003d0e72c160e6"
@@ -247,11 +252,6 @@
      "id": "2F5W6Rsxwzg0plQ0w8dSyt",
      "name": "Leehom Wang",
      "image": "https://i.scdn.co/image/ab6761610000f1786527b7513831feda18b2abf1"
-    },
-    {
-     "id": "14bJhryXGk6H6qlGzwj3W5",
-     "name": "Hebe Tien",
-     "image": "https://i.scdn.co/image/ab6761610000f17809749491c2a434bde6cf40cc"
     }
    ],
    "tracks": [
@@ -263,18 +263,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02512cd44d21eacbfeda4affe2"
     },
     {
-     "id": "24hWI7qzj3EdIeVCEk5dXW",
-     "name": "Always Remember Us This Way",
-     "artist": "Derefner",
-     "album": "Always Remember Us This Way",
-     "image": "https://i.scdn.co/image/ab67616d00001e02a76eef037c97ee5211af13fc"
-    },
-    {
      "id": "6fNhZRFEkBfgW39W3wKARJ",
      "name": "Pompeii",
      "artist": "Bastille",
      "album": "Bad Blood",
      "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
+    },
+    {
+     "id": "24hWI7qzj3EdIeVCEk5dXW",
+     "name": "Always Remember Us This Way",
+     "artist": "Derefner",
+     "album": "Always Remember Us This Way",
+     "image": "https://i.scdn.co/image/ab67616d00001e02a76eef037c97ee5211af13fc"
     },
     {
      "id": "3ojwY8dyubHnLsoHdRUpo4",
@@ -291,13 +291,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02edcab0fe7cf29d17751dad18"
     },
     {
-     "id": "5s8QrZRHt4gZclSaCds4GY",
-     "name": "Nostalgia",
-     "artist": "D33pSoul",
-     "album": "Nostalgia",
-     "image": "https://i.scdn.co/image/ab67616d00001e0244fd7df5558aa1f6cbed17a2"
-    },
-    {
      "id": "13P5rwmk2EsoFRIz9UCeh9",
      "name": "Cool Kids",
      "artist": "Echosmith",
@@ -305,11 +298,11 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02106fa02aaa287ec63af85aae"
     },
     {
-     "id": "4Tg47JDi502dD0eh4gajWf",
-     "name": "昨夜书",
-     "artist": "许嵩",
-     "album": "经典咏流传第四季 第9期",
-     "image": "https://i.scdn.co/image/ab67616d00001e02f1b39a9ad04b471a169a73fa"
+     "id": "5s8QrZRHt4gZclSaCds4GY",
+     "name": "Nostalgia",
+     "artist": "D33pSoul",
+     "album": "Nostalgia",
+     "image": "https://i.scdn.co/image/ab67616d00001e0244fd7df5558aa1f6cbed17a2"
     },
     {
      "id": "1EOWf8bsePF6QtiDUAclrJ",
@@ -326,6 +319,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02ac90d708dd4cf294d5d8784e"
     },
     {
+     "id": "4Tg47JDi502dD0eh4gajWf",
+     "name": "昨夜书",
+     "artist": "许嵩",
+     "album": "经典咏流传第四季 第9期",
+     "image": "https://i.scdn.co/image/ab67616d00001e02f1b39a9ad04b471a169a73fa"
+    },
+    {
      "id": "6UqRGwjwYL0stXbaodTxwo",
      "name": "Seve - Radio Edit",
      "artist": "Tez Cadey",
@@ -333,25 +333,11 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02da0751d4a35b6af93fb3e01d"
     },
     {
-     "id": "0zL9dieoCcjBWV01y73Cj1",
-     "name": "Faded",
-     "artist": "ZHU",
-     "album": "THE NIGHTDAY",
-     "image": "https://i.scdn.co/image/ab67616d00001e0230e314ad00bee99cf64c9b88"
-    },
-    {
      "id": "44wtMjxhSguxgWSggFMyMJ",
      "name": "Yet So Close",
      "artist": "Vexento",
      "album": "Yet So Close",
      "image": "https://i.scdn.co/image/ab67616d00001e02f9e94cdcd43abe52e9e1c4c3"
-    },
-    {
-     "id": "2pUpNOgJBIBCcjyQZQ00qU",
-     "name": "Let Her Go",
-     "artist": "Passenger",
-     "album": "All the Little Lights (Deluxe)",
-     "image": "https://i.scdn.co/image/ab67616d00001e02eb0b18cce8b7f5c9fc1579e7"
     },
     {
      "id": "3LvkvzJ2jN7s8P8MMQCeKL",
@@ -375,11 +361,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02a97816c82e9fcab94aba6b7d"
     },
     {
-     "id": "2fuCquhmrzHpu5xcA1ci9x",
-     "name": "Under Pressure - Remastered 2011",
-     "artist": "Queen, David Bowie",
-     "album": "Hot Space (2011 Remaster)",
-     "image": "https://i.scdn.co/image/ab67616d00001e02d254ca497999ae980a5a38c5"
+     "id": "0zL9dieoCcjBWV01y73Cj1",
+     "name": "Faded",
+     "artist": "ZHU",
+     "album": "THE NIGHTDAY",
+     "image": "https://i.scdn.co/image/ab67616d00001e0230e314ad00bee99cf64c9b88"
+    },
+    {
+     "id": "2pUpNOgJBIBCcjyQZQ00qU",
+     "name": "Let Her Go",
+     "artist": "Passenger",
+     "album": "All the Little Lights (Deluxe)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02eb0b18cce8b7f5c9fc1579e7"
     },
     {
      "id": "2BiKGhUTfePSHv6Fe8BSCg",
@@ -387,6 +380,13 @@
      "artist": "HVOB",
      "album": "HVOB",
      "image": "https://i.scdn.co/image/ab67616d00001e0253f5ed36d76a59ef9d13806d"
+    },
+    {
+     "id": "2fuCquhmrzHpu5xcA1ci9x",
+     "name": "Under Pressure - Remastered 2011",
+     "artist": "Queen, David Bowie",
+     "album": "Hot Space (2011 Remaster)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02d254ca497999ae980a5a38c5"
     },
     {
      "id": "3DarAbFujv6eYNliUTyqtz",
@@ -543,6 +543,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02e3bf006fa33de9ffa82db64b"
     },
     {
+     "id": "0euyZh7zSUmpNXVpVBdcN2",
+     "name": "Candyland",
+     "artist": "Tobu",
+     "album": "Candyland",
+     "image": "https://i.scdn.co/image/ab67616d00001e029feceff471ea209ab793ce6b"
+    },
+    {
      "id": "4lZBB7P5j84VqQHf3POLdA",
      "name": "Hold On",
      "artist": "Bergs, Rachel Fels",
@@ -592,18 +599,11 @@
      "image": "https://i.scdn.co/image/ab67616d00001e028588252409ed634e072fd657"
     },
     {
-     "id": "4va1JykAJeulnYV0uYkWhF",
-     "name": "Crazy Bird",
-     "artist": "Wild Child",
-     "album": "The Runaround",
-     "image": "https://i.scdn.co/image/ab67616d00001e022d199e320b675ca7305c6f00"
-    },
-    {
-     "id": "6q7eMARKcRpj3Fcwq5wH5k",
-     "name": "Key To Life",
-     "artist": "Laid Back",
-     "album": "Good Vibes - The Very Best of Laid Back",
-     "image": "https://i.scdn.co/image/ab67616d00001e02627869030fddec0565aa30cc"
+     "id": "4QLjLmiBMEprh7NaGUWxl9",
+     "name": "Unity",
+     "artist": "TheFatRat",
+     "album": "Unity",
+     "image": "https://i.scdn.co/image/ab67616d00001e02f9a0d20aa3c161b3bbac364d"
     }
    ]
   },
@@ -710,6 +710,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f1788ebba5e60113b48de8c11f6b"
     },
     {
+     "id": "0X2BH1fck6amBIoJhDVmmJ",
+     "name": "Ellie Goulding",
+     "image": "https://i.scdn.co/image/ab6761610000f1785c461001b3489a0a523f63ee"
+    },
+    {
      "id": "4BAWVaDoA2CpEdUetoYKgZ",
      "name": "Capo Productions",
      "image": "https://i.scdn.co/image/ab67616d00001e020d2bdfb25648a42ba50b9c41"
@@ -718,6 +723,11 @@
      "id": "4npEfmQ6YuiwW1GpUmaq3F",
      "name": "Ava Max",
      "image": "https://i.scdn.co/image/ab6761610000f178eeb78278ee29fb6bfb9010f7"
+    },
+    {
+     "id": "6MDME20pz9RveH9rEXvrOM",
+     "name": "Clean Bandit",
+     "image": "https://i.scdn.co/image/ab6761610000f178f995542c4f68f8ae4f05b5f6"
     },
     {
      "id": "6PNEi9i2MxUgRufqYr76Xt",
@@ -735,24 +745,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f1781ba8fc5f5c73e7e9313cc6eb"
     },
     {
-     "id": "5rSXSAkZ67PYJSvpUpkOr7",
-     "name": "Backstreet Boys",
-     "image": "https://i.scdn.co/image/ab6761610000f1787b3634864a78ab6bd1d77c36"
-    },
-    {
-     "id": "6MDME20pz9RveH9rEXvrOM",
-     "name": "Clean Bandit",
-     "image": "https://i.scdn.co/image/ab6761610000f178f995542c4f68f8ae4f05b5f6"
-    },
-    {
      "id": "04gDigrS5kc9YWfZHwBETP",
      "name": "Maroon 5",
      "image": "https://i.scdn.co/image/ab6761610000f178f8349dfb619a7f842242de77"
     },
     {
-     "id": "0X2BH1fck6amBIoJhDVmmJ",
-     "name": "Ellie Goulding",
-     "image": "https://i.scdn.co/image/ab6761610000f1785c461001b3489a0a523f63ee"
+     "id": "5rSXSAkZ67PYJSvpUpkOr7",
+     "name": "Backstreet Boys",
+     "image": "https://i.scdn.co/image/ab6761610000f1787b3634864a78ab6bd1d77c36"
     },
     {
      "id": "1HBjj22wzbscIZ9sEb5dyf",
@@ -830,6 +830,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f178f75583b322f92405efad85ce"
     },
     {
+     "id": "7gAppWoH7pcYmphCVTXkzs",
+     "name": "The Vamps",
+     "image": "https://i.scdn.co/image/ab6761610000f17877ef80571a40d9d19cf52208"
+    },
+    {
      "id": "3AQRLZ9PuTAozP28Skbq8V",
      "name": "The Script",
      "image": "https://i.scdn.co/image/ab6761610000f17839cf57b090fcaefe756c91c3"
@@ -866,6 +871,13 @@
      "artist": "Bastille",
      "album": "Bad Blood",
      "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
+    },
+    {
+     "id": "7gUpO6td4OOnu0Lf9vhcIV",
+     "name": "Lights - Single Version",
+     "artist": "Ellie Goulding",
+     "album": "Lights",
+     "image": "https://i.scdn.co/image/ab67616d00001e02a992179a520d2eb38fa41e64"
     },
     {
      "id": "2CPqh63wRVscbceKcPxwvv",
@@ -910,18 +922,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02373857bc42fa2719cde34881"
     },
     {
-     "id": "7ti4qMC7xYQeh1uRzj5XuM",
-     "name": "Pumpin Blood",
-     "artist": "NONONO",
-     "album": "We Are Only What We Feel",
-     "image": "https://i.scdn.co/image/ab67616d00001e02ca9961814136d4bd7acfd811"
-    },
-    {
      "id": "3DarAbFujv6eYNliUTyqtz",
      "name": "Kiss Me More (feat. SZA)",
      "artist": "Doja Cat, SZA",
      "album": "Planet Her",
      "image": "https://i.scdn.co/image/ab67616d00001e0214b7b2a920a41166d53ddd49"
+    },
+    {
+     "id": "7ti4qMC7xYQeh1uRzj5XuM",
+     "name": "Pumpin Blood",
+     "artist": "NONONO",
+     "album": "We Are Only What We Feel",
+     "image": "https://i.scdn.co/image/ab67616d00001e02ca9961814136d4bd7acfd811"
     },
     {
      "id": "0euyZh7zSUmpNXVpVBdcN2",
@@ -931,11 +943,11 @@
      "image": "https://i.scdn.co/image/ab67616d00001e029feceff471ea209ab793ce6b"
     },
     {
-     "id": "7gUpO6td4OOnu0Lf9vhcIV",
-     "name": "Lights - Single Version",
-     "artist": "Ellie Goulding",
-     "album": "Lights",
-     "image": "https://i.scdn.co/image/ab67616d00001e02a992179a520d2eb38fa41e64"
+     "id": "3eOeuofLjOgjOCs7eWuvZ0",
+     "name": "Cool Kids",
+     "artist": "Echosmith",
+     "album": "Talking Dreams",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b098cbfb14e8cc251451ca19"
     },
     {
      "id": "2tpWsVSb9UEmDRxAl1zhX1",
@@ -971,13 +983,6 @@
      "artist": "Avicii",
      "album": "True",
      "image": "https://i.scdn.co/image/ab67616d00001e02162c5d6dbf1dc3965d1a391a"
-    },
-    {
-     "id": "3eOeuofLjOgjOCs7eWuvZ0",
-     "name": "Cool Kids",
-     "artist": "Echosmith",
-     "album": "Talking Dreams",
-     "image": "https://i.scdn.co/image/ab67616d00001e02b098cbfb14e8cc251451ca19"
     },
     {
      "id": "7nDQMtLxu94xtlTR8bEqjU",
@@ -1048,6 +1053,13 @@
      "artist": "Klingande",
      "album": "Jubel",
      "image": "https://i.scdn.co/image/ab6742d3000052b7d20b7a2f3018e3d59b7cac75"
+    },
+    {
+     "id": "6UqRGwjwYL0stXbaodTxwo",
+     "name": "Seve - Radio Edit",
+     "artist": "Tez Cadey",
+     "album": "Seve (Radio Edit)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02da0751d4a35b6af93fb3e01d"
     },
     {
      "id": "6VrLYoQKdhu1Jruei06t65",
@@ -1146,13 +1158,6 @@
      "artist": "The Chainsmokers, Coldplay",
      "album": "Memories...Do Not Open",
      "image": "https://i.scdn.co/image/ab67616d00001e020c13d3d5a503c84fcc60ae94"
-    },
-    {
-     "id": "6UqRGwjwYL0stXbaodTxwo",
-     "name": "Seve - Radio Edit",
-     "artist": "Tez Cadey",
-     "album": "Seve (Radio Edit)",
-     "image": "https://i.scdn.co/image/ab67616d00001e02da0751d4a35b6af93fb3e01d"
     },
     {
      "id": "7jMHa752w5Wvpe3PzC1zJD",
@@ -1261,14 +1266,19 @@
      "image": "https://i.scdn.co/image/ab6761610000f178e4d94f7cbebb17504c25d419"
     },
     {
+     "id": "6M2wZ9GZgrQXHCFfjv46we",
+     "name": "Dua Lipa",
+     "image": "https://i.scdn.co/image/ab6761610000f1780c68f6c95232e716f0abee8d"
+    },
+    {
      "id": "6nB0iY1cjSY1KyhYyuIIKH",
      "name": "FKA twigs",
      "image": "https://i.scdn.co/image/ab6761610000f1783f6b8973be0344896d8680ab"
     },
     {
-     "id": "6M2wZ9GZgrQXHCFfjv46we",
-     "name": "Dua Lipa",
-     "image": "https://i.scdn.co/image/ab6761610000f1780c68f6c95232e716f0abee8d"
+     "id": "0X2BH1fck6amBIoJhDVmmJ",
+     "name": "Ellie Goulding",
+     "image": "https://i.scdn.co/image/ab6761610000f1785c461001b3489a0a523f63ee"
     },
     {
      "id": "5cj0lLjcoR7YOSnhnX0Po5",
@@ -1284,11 +1294,6 @@
      "id": "2elBjNSdBE2Y3f0j1mjrql",
      "name": "Jay Chou",
      "image": "https://i.scdn.co/image/ab6761610000f17887fbbe9ed03fbb500595e720"
-    },
-    {
-     "id": "0X2BH1fck6amBIoJhDVmmJ",
-     "name": "Ellie Goulding",
-     "image": "https://i.scdn.co/image/ab6761610000f1785c461001b3489a0a523f63ee"
     },
     {
      "id": "0SIXZXJCAhNU8sxK0qm7hn",
@@ -1336,14 +1341,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f178fe81f2540f9fa7564dd5e05c"
     },
     {
-     "id": "4iHNK0tOyZPYnBU7nGAgpQ",
-     "name": "Mariah Carey",
-     "image": "https://i.scdn.co/image/ab6761610000f17821453384a10b1f8e18877f63"
-    },
-    {
      "id": "04gDigrS5kc9YWfZHwBETP",
      "name": "Maroon 5",
      "image": "https://i.scdn.co/image/ab6761610000f178f8349dfb619a7f842242de77"
+    },
+    {
+     "id": "4iHNK0tOyZPYnBU7nGAgpQ",
+     "name": "Mariah Carey",
+     "image": "https://i.scdn.co/image/ab6761610000f17821453384a10b1f8e18877f63"
     },
     {
      "id": "0du5cEVh5yTK9QJze8zA0C",
@@ -1361,6 +1366,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f17862cf72356b92b98efd61f63c"
     },
     {
+     "id": "3PhoLpVuITZKcymswpck5b",
+     "name": "Elton John",
+     "image": "https://i.scdn.co/image/ab6761610000f1780dc33a1c53bb58a84b45d6a7"
+    },
+    {
      "id": "4npEfmQ6YuiwW1GpUmaq3F",
      "name": "Ava Max",
      "image": "https://i.scdn.co/image/ab6761610000f178eeb78278ee29fb6bfb9010f7"
@@ -1374,6 +1384,11 @@
      "id": "6XpaIBNiVzIetEPCWDvAFP",
      "name": "Whitney Houston",
      "image": "https://i.scdn.co/image/ab6761610000f178cd9f60ab57585bf3b77ecc51"
+    },
+    {
+     "id": "7gAppWoH7pcYmphCVTXkzs",
+     "name": "The Vamps",
+     "image": "https://i.scdn.co/image/ab6761610000f17877ef80571a40d9d19cf52208"
     },
     {
      "id": "3AQRLZ9PuTAozP28Skbq8V",
@@ -1411,11 +1426,11 @@
      "image": "https://i.scdn.co/image/ab67616d00001e028a99868b5a57469de83fb9ba"
     },
     {
-     "id": "2gS6LJHhMDn5FPARE1LVtG",
+     "id": "1KMv5lt9b8vGtO408QM8tr",
      "name": "Adventure of a Lifetime",
      "artist": "Coldplay",
-     "album": "A Head Full of Dreams",
-     "image": "https://i.scdn.co/image/ab67616d00001e028c098c981c8743d8493e52fc"
+     "album": "A Head Full of Dreams Tour Edition",
+     "image": "https://i.scdn.co/image/ab67616d00001e0220ad8aa561006ba6a3d7f7bd"
     },
     {
      "id": "36ijlvGvOx8iOJSlwn7mcf",
