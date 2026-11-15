@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-14T14:00:23Z",
+ "updated_at": "2026-11-15T00:00:23Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -1296,6 +1296,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f17887fbbe9ed03fbb500595e720"
     },
     {
+     "id": "7CajNmpbOovFoOoasH2HaY",
+     "name": "Calvin Harris",
+     "image": "https://i.scdn.co/image/ab6761610000f1788ebba5e60113b48de8c11f6b"
+    },
+    {
      "id": "0SIXZXJCAhNU8sxK0qm7hn",
      "name": "Stefanie Sun",
      "image": "https://i.scdn.co/image/ab6761610000f178744989ed737112f4edbd2cc3"
@@ -1331,11 +1336,6 @@
      "image": "https://i.scdn.co/image/ab6761610000f17817dd503b5c1841cd238c9aa7"
     },
     {
-     "id": "7CajNmpbOovFoOoasH2HaY",
-     "name": "Calvin Harris",
-     "image": "https://i.scdn.co/image/ab6761610000f1788ebba5e60113b48de8c11f6b"
-    },
-    {
      "id": "4S9EykWXhStSc15wEx8QFK",
      "name": "Céline Dion",
      "image": "https://i.scdn.co/image/ab6761610000f178fe81f2540f9fa7564dd5e05c"
@@ -1349,6 +1349,11 @@
      "id": "4iHNK0tOyZPYnBU7nGAgpQ",
      "name": "Mariah Carey",
      "image": "https://i.scdn.co/image/ab6761610000f17821453384a10b1f8e18877f63"
+    },
+    {
+     "id": "4npEfmQ6YuiwW1GpUmaq3F",
+     "name": "Ava Max",
+     "image": "https://i.scdn.co/image/ab6761610000f178eeb78278ee29fb6bfb9010f7"
     },
     {
      "id": "0du5cEVh5yTK9QJze8zA0C",
@@ -1369,11 +1374,6 @@
      "id": "3PhoLpVuITZKcymswpck5b",
      "name": "Elton John",
      "image": "https://i.scdn.co/image/ab6761610000f1780dc33a1c53bb58a84b45d6a7"
-    },
-    {
-     "id": "4npEfmQ6YuiwW1GpUmaq3F",
-     "name": "Ava Max",
-     "image": "https://i.scdn.co/image/ab6761610000f178eeb78278ee29fb6bfb9010f7"
     },
     {
      "id": "6MDME20pz9RveH9rEXvrOM",
