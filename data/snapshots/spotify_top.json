@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-15T05:00:25Z",
+ "updated_at": "2026-11-15T14:00:23Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -438,6 +438,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02b93587221b1ce0c85a02297e"
     },
     {
+     "id": "4HadYIhNfy7evMUI5W6wEc",
+     "name": "Reykjavik",
+     "artist": "Joachim Pastor",
+     "album": "Reykjavik",
+     "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
+    },
+    {
      "id": "2CPqh63wRVscbceKcPxwvv",
      "name": "The Ocean (feat. Shy Martin)",
      "artist": "Mike Perry, shy martin",
@@ -457,13 +464,6 @@
      "artist": "許嵩",
      "album": "自定義",
      "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
-    },
-    {
-     "id": "4HadYIhNfy7evMUI5W6wEc",
-     "name": "Reykjavik",
-     "artist": "Joachim Pastor",
-     "album": "Reykjavik",
-     "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
     },
     {
      "id": "0GO8y8jQk1PkHzS31d699N",
@@ -715,14 +715,19 @@
      "image": "https://i.scdn.co/image/ab6761610000f1785c461001b3489a0a523f63ee"
     },
     {
+     "id": "4npEfmQ6YuiwW1GpUmaq3F",
+     "name": "Ava Max",
+     "image": "https://i.scdn.co/image/ab6761610000f178eeb78278ee29fb6bfb9010f7"
+    },
+    {
      "id": "4BAWVaDoA2CpEdUetoYKgZ",
      "name": "Capo Productions",
      "image": "https://i.scdn.co/image/ab67616d00001e020d2bdfb25648a42ba50b9c41"
     },
     {
-     "id": "4npEfmQ6YuiwW1GpUmaq3F",
-     "name": "Ava Max",
-     "image": "https://i.scdn.co/image/ab6761610000f178eeb78278ee29fb6bfb9010f7"
+     "id": "4gzpq5DPGxSnKTe4SA8HAU",
+     "name": "Coldplay",
+     "image": "https://i.scdn.co/image/ab6761610000f1781ba8fc5f5c73e7e9313cc6eb"
     },
     {
      "id": "6MDME20pz9RveH9rEXvrOM",
@@ -735,19 +740,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f17866a909756400366c24bf1568"
     },
     {
-     "id": "4S9EykWXhStSc15wEx8QFK",
-     "name": "Céline Dion",
-     "image": "https://i.scdn.co/image/ab6761610000f178fe81f2540f9fa7564dd5e05c"
-    },
-    {
-     "id": "4gzpq5DPGxSnKTe4SA8HAU",
-     "name": "Coldplay",
-     "image": "https://i.scdn.co/image/ab6761610000f1781ba8fc5f5c73e7e9313cc6eb"
-    },
-    {
      "id": "04gDigrS5kc9YWfZHwBETP",
      "name": "Maroon 5",
      "image": "https://i.scdn.co/image/ab6761610000f178f8349dfb619a7f842242de77"
+    },
+    {
+     "id": "4S9EykWXhStSc15wEx8QFK",
+     "name": "Céline Dion",
+     "image": "https://i.scdn.co/image/ab6761610000f178fe81f2540f9fa7564dd5e05c"
     },
     {
      "id": "5rSXSAkZ67PYJSvpUpkOr7",
@@ -901,6 +901,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
     },
     {
+     "id": "4HadYIhNfy7evMUI5W6wEc",
+     "name": "Reykjavik",
+     "artist": "Joachim Pastor",
+     "album": "Reykjavik",
+     "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
+    },
+    {
      "id": "0qt5f5EL92o8Snzopsv0en",
      "name": "Geronimo",
      "artist": "Sheppard",
@@ -955,13 +962,6 @@
      "artist": "OneRepublic",
      "album": "Native",
      "image": "https://i.scdn.co/image/ab67616d00001e029e2f95ae77cf436017ada9cb"
-    },
-    {
-     "id": "4HadYIhNfy7evMUI5W6wEc",
-     "name": "Reykjavik",
-     "artist": "Joachim Pastor",
-     "album": "Reykjavik",
-     "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
     },
     {
      "id": "1eOJAiCKFuMda0fPRvjcuc",
@@ -1236,11 +1236,6 @@
      "image": "https://i.scdn.co/image/ab6761610000f1788c2024e68663f46b2981398d"
     },
     {
-     "id": "2hgxWUG24w1cFLBlPSEVcV",
-     "name": "許嵩",
-     "image": "https://i.scdn.co/image/ab6761610000f178704d08abe2a3bf0bb1c366c9"
-    },
-    {
      "id": "1Xyo4u8uXC1ZmMpatF05PJ",
      "name": "The Weeknd",
      "image": "https://i.scdn.co/image/ab6761610000f178c1719ac9e6a75c1c25835018"
@@ -1296,9 +1291,19 @@
      "image": "https://i.scdn.co/image/ab6761610000f17887fbbe9ed03fbb500595e720"
     },
     {
+     "id": "2hgxWUG24w1cFLBlPSEVcV",
+     "name": "許嵩",
+     "image": "https://i.scdn.co/image/ab6761610000f178704d08abe2a3bf0bb1c366c9"
+    },
+    {
      "id": "7CajNmpbOovFoOoasH2HaY",
      "name": "Calvin Harris",
      "image": "https://i.scdn.co/image/ab6761610000f1788ebba5e60113b48de8c11f6b"
+    },
+    {
+     "id": "4gzpq5DPGxSnKTe4SA8HAU",
+     "name": "Coldplay",
+     "image": "https://i.scdn.co/image/ab6761610000f1781ba8fc5f5c73e7e9313cc6eb"
     },
     {
      "id": "0SIXZXJCAhNU8sxK0qm7hn",
@@ -1314,11 +1319,6 @@
      "id": "3t5xRXzsuZmMDkQzgOX35S",
      "name": "Robin Schulz",
      "image": "https://i.scdn.co/image/ab6761610000f178869ddcc058c5ff2a459ad8d5"
-    },
-    {
-     "id": "4gzpq5DPGxSnKTe4SA8HAU",
-     "name": "Coldplay",
-     "image": "https://i.scdn.co/image/ab6761610000f1781ba8fc5f5c73e7e9313cc6eb"
     },
     {
      "id": "5rSXSAkZ67PYJSvpUpkOr7",
@@ -1346,14 +1346,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f178fe81f2540f9fa7564dd5e05c"
     },
     {
-     "id": "4iHNK0tOyZPYnBU7nGAgpQ",
-     "name": "Mariah Carey",
-     "image": "https://i.scdn.co/image/ab6761610000f17821453384a10b1f8e18877f63"
-    },
-    {
      "id": "4npEfmQ6YuiwW1GpUmaq3F",
      "name": "Ava Max",
      "image": "https://i.scdn.co/image/ab6761610000f178eeb78278ee29fb6bfb9010f7"
+    },
+    {
+     "id": "4iHNK0tOyZPYnBU7nGAgpQ",
+     "name": "Mariah Carey",
+     "image": "https://i.scdn.co/image/ab6761610000f17821453384a10b1f8e18877f63"
     },
     {
      "id": "0du5cEVh5yTK9QJze8zA0C",
@@ -1398,25 +1398,18 @@
    ],
    "tracks": [
     {
-     "id": "6fNhZRFEkBfgW39W3wKARJ",
-     "name": "Pompeii",
-     "artist": "Bastille",
-     "album": "Bad Blood",
-     "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
-    },
-    {
-     "id": "3ojwY8dyubHnLsoHdRUpo4",
-     "name": "雅俗共賞",
-     "artist": "許嵩",
-     "album": "青年晚報",
-     "image": "https://i.scdn.co/image/ab67616d00001e029bb2441b6b192266eb47106f"
-    },
-    {
      "id": "2CPqh63wRVscbceKcPxwvv",
      "name": "The Ocean (feat. Shy Martin)",
      "artist": "Mike Perry, shy martin",
      "album": "The Ocean (feat. Shy Martin)",
      "image": "https://i.scdn.co/image/ab67616d00001e027f401862bfe87b552a75308d"
+    },
+    {
+     "id": "6fNhZRFEkBfgW39W3wKARJ",
+     "name": "Pompeii",
+     "artist": "Bastille",
+     "album": "Bad Blood",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
     },
     {
      "id": "0qt5f5EL92o8Snzopsv0en",
@@ -1440,6 +1433,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02373857bc42fa2719cde34881"
     },
     {
+     "id": "4HadYIhNfy7evMUI5W6wEc",
+     "name": "Reykjavik",
+     "artist": "Joachim Pastor",
+     "album": "Reykjavik",
+     "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
+    },
+    {
      "id": "7ti4qMC7xYQeh1uRzj5XuM",
      "name": "Pumpin Blood",
      "artist": "NONONO",
@@ -1459,13 +1459,6 @@
      "artist": "Echosmith",
      "album": "Talking Dreams",
      "image": "https://i.scdn.co/image/ab67616d00001e02b098cbfb14e8cc251451ca19"
-    },
-    {
-     "id": "7gUpO6td4OOnu0Lf9vhcIV",
-     "name": "Lights - Single Version",
-     "artist": "Ellie Goulding",
-     "album": "Lights",
-     "image": "https://i.scdn.co/image/ab67616d00001e02a992179a520d2eb38fa41e64"
     },
     {
      "id": "2tpWsVSb9UEmDRxAl1zhX1",
@@ -1494,20 +1487,6 @@
      "artist": "Avicii",
      "album": "True",
      "image": "https://i.scdn.co/image/ab67616d00001e02162c5d6dbf1dc3965d1a391a"
-    },
-    {
-     "id": "4HadYIhNfy7evMUI5W6wEc",
-     "name": "Reykjavik",
-     "artist": "Joachim Pastor",
-     "album": "Reykjavik",
-     "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
-    },
-    {
-     "id": "6nNLW8UCaIMxH9HzIbs63N",
-     "name": "清明雨上",
-     "artist": "許嵩",
-     "album": "自定義",
-     "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
     },
     {
      "id": "2FiSTH0GYpIioUgjfzMIja",
@@ -1601,6 +1580,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e025b6bcc59c3562a6f362344c6"
     },
     {
+     "id": "7gUpO6td4OOnu0Lf9vhcIV",
+     "name": "Lights - Single Version",
+     "artist": "Ellie Goulding",
+     "album": "Lights",
+     "image": "https://i.scdn.co/image/ab67616d00001e02a992179a520d2eb38fa41e64"
+    },
+    {
      "id": "12LOYGBr0T0IqyuhEILYFh",
      "name": "La clé des champs",
      "artist": "NTO",
@@ -1662,6 +1648,13 @@
      "artist": "The Chainsmokers, Coldplay",
      "album": "Memories...Do Not Open",
      "image": "https://i.scdn.co/image/ab67616d00001e020c13d3d5a503c84fcc60ae94"
+    },
+    {
+     "id": "6nNLW8UCaIMxH9HzIbs63N",
+     "name": "清明雨上",
+     "artist": "許嵩",
+     "album": "自定義",
+     "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
     },
     {
      "id": "7jMHa752w5Wvpe3PzC1zJD",
@@ -1746,6 +1739,13 @@
      "artist": "Kygo, Whitney Houston",
      "album": "Golden Hour",
      "image": "https://i.scdn.co/image/ab67616d00001e0280368f0aa8f90c51674f9dd2"
+    },
+    {
+     "id": "2Gl0FzuLxflY6nPifJp5Dr",
+     "name": "First Time",
+     "artist": "Kygo, Ellie Goulding",
+     "album": "First Time",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b6d86ca196b697ee0f640118"
     }
    ]
   }
