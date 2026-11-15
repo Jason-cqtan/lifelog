@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-15T00:00:23Z",
+ "updated_at": "2026-11-15T05:00:25Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -1276,14 +1276,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f1783f6b8973be0344896d8680ab"
     },
     {
-     "id": "0X2BH1fck6amBIoJhDVmmJ",
-     "name": "Ellie Goulding",
-     "image": "https://i.scdn.co/image/ab6761610000f1785c461001b3489a0a523f63ee"
-    },
-    {
      "id": "5cj0lLjcoR7YOSnhnX0Po5",
      "name": "Doja Cat",
      "image": "https://i.scdn.co/image/ab6761610000f1788a0644455ebfa7d3976f5101"
+    },
+    {
+     "id": "0X2BH1fck6amBIoJhDVmmJ",
+     "name": "Ellie Goulding",
+     "image": "https://i.scdn.co/image/ab6761610000f1785c461001b3489a0a523f63ee"
     },
     {
      "id": "4BAWVaDoA2CpEdUetoYKgZ",
@@ -1336,14 +1336,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f17817dd503b5c1841cd238c9aa7"
     },
     {
-     "id": "4S9EykWXhStSc15wEx8QFK",
-     "name": "Céline Dion",
-     "image": "https://i.scdn.co/image/ab6761610000f178fe81f2540f9fa7564dd5e05c"
-    },
-    {
      "id": "04gDigrS5kc9YWfZHwBETP",
      "name": "Maroon 5",
      "image": "https://i.scdn.co/image/ab6761610000f178f8349dfb619a7f842242de77"
+    },
+    {
+     "id": "4S9EykWXhStSc15wEx8QFK",
+     "name": "Céline Dion",
+     "image": "https://i.scdn.co/image/ab6761610000f178fe81f2540f9fa7564dd5e05c"
     },
     {
      "id": "4iHNK0tOyZPYnBU7nGAgpQ",
