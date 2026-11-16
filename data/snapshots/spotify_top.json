@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-16T05:00:23Z",
+ "updated_at": "2026-11-16T14:00:23Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -1251,6 +1251,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f178fd0a9fb6c252a3ba44079acf"
     },
     {
+     "id": "6eUKZXaKkcviH0Ku9w2n3V",
+     "name": "Ed Sheeran",
+     "image": "https://i.scdn.co/image/ab6761610000f178d55c95ad400aed87da52daec"
+    },
+    {
      "id": "2h93pZq0e7k5yf4dywlkpM",
      "name": "Frank Ocean",
      "image": "https://i.scdn.co/image/ab6761610000f178ee3123e593174208f9754fab"
@@ -1281,19 +1286,24 @@
      "image": "https://i.scdn.co/image/ab6761610000f1785c461001b3489a0a523f63ee"
     },
     {
-     "id": "4BAWVaDoA2CpEdUetoYKgZ",
-     "name": "Capo Productions",
-     "image": "https://i.scdn.co/image/ab67616d00001e020d2bdfb25648a42ba50b9c41"
-    },
-    {
      "id": "2elBjNSdBE2Y3f0j1mjrql",
      "name": "Jay Chou",
      "image": "https://i.scdn.co/image/ab6761610000f17887fbbe9ed03fbb500595e720"
     },
     {
+     "id": "4BAWVaDoA2CpEdUetoYKgZ",
+     "name": "Capo Productions",
+     "image": "https://i.scdn.co/image/ab67616d00001e020d2bdfb25648a42ba50b9c41"
+    },
+    {
      "id": "2hgxWUG24w1cFLBlPSEVcV",
      "name": "許嵩",
      "image": "https://i.scdn.co/image/ab6761610000f178704d08abe2a3bf0bb1c366c9"
+    },
+    {
+     "id": "6PNEi9i2MxUgRufqYr76Xt",
+     "name": "Zhang Zhen Yue",
+     "image": "https://i.scdn.co/image/ab6761610000f17866a909756400366c24bf1568"
     },
     {
      "id": "7CajNmpbOovFoOoasH2HaY",
@@ -1454,13 +1464,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e029feceff471ea209ab793ce6b"
     },
     {
-     "id": "3eOeuofLjOgjOCs7eWuvZ0",
-     "name": "Cool Kids",
-     "artist": "Echosmith",
-     "album": "Talking Dreams",
-     "image": "https://i.scdn.co/image/ab67616d00001e02b098cbfb14e8cc251451ca19"
-    },
-    {
      "id": "2tpWsVSb9UEmDRxAl1zhX1",
      "name": "Counting Stars",
      "artist": "OneRepublic",
@@ -1487,6 +1490,13 @@
      "artist": "Avicii",
      "album": "True",
      "image": "https://i.scdn.co/image/ab67616d00001e02162c5d6dbf1dc3965d1a391a"
+    },
+    {
+     "id": "3eOeuofLjOgjOCs7eWuvZ0",
+     "name": "Cool Kids",
+     "artist": "Echosmith",
+     "album": "Talking Dreams",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b098cbfb14e8cc251451ca19"
     },
     {
      "id": "2FiSTH0GYpIioUgjfzMIja",
@@ -1650,13 +1660,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e020c13d3d5a503c84fcc60ae94"
     },
     {
-     "id": "6nNLW8UCaIMxH9HzIbs63N",
-     "name": "清明雨上",
-     "artist": "許嵩",
-     "album": "自定義",
-     "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
-    },
-    {
      "id": "7jMHa752w5Wvpe3PzC1zJD",
      "name": "Secrets - 2026 Remastered",
      "artist": "OneRepublic",
@@ -1676,6 +1679,13 @@
      "artist": "ZHU",
      "album": "Faded",
      "image": "https://i.scdn.co/image/ab67616d00001e027b730a450d048646b7472425"
+    },
+    {
+     "id": "7qiZfU4dY1lWllzX7mPBI3",
+     "name": "Shape of You",
+     "artist": "Ed Sheeran",
+     "album": "÷ (Deluxe)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02ba5db46f4b838ef6027e6f96"
     },
     {
      "id": "1LeItUMezKA1HdCHxYICed",
