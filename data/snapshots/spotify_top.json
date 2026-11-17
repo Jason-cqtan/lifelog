@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-17T05:00:22Z",
+ "updated_at": "2026-11-17T14:00:24Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -39,6 +39,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f1780887284d923c88a92835e427"
     },
     {
+     "id": "6PNEi9i2MxUgRufqYr76Xt",
+     "name": "Zhang Zhen Yue",
+     "image": "https://i.scdn.co/image/ab6761610000f17866a909756400366c24bf1568"
+    },
+    {
      "id": "23fqKkggKUBHNkbKtXEls4",
      "name": "Kygo",
      "image": "https://i.scdn.co/image/ab6761610000f178e5ea1aa1404629c12ad86658"
@@ -57,11 +62,6 @@
      "id": "30b9WulBM8sFuBo17nNq9c",
      "name": "G-DRAGON",
      "image": "https://i.scdn.co/image/ab6761610000f178783a6a578e8eb992bfd74765"
-    },
-    {
-     "id": "6PNEi9i2MxUgRufqYr76Xt",
-     "name": "Zhang Zhen Yue",
-     "image": "https://i.scdn.co/image/ab6761610000f17866a909756400366c24bf1568"
     },
     {
      "id": "1f3NYrlm9GpXxMz8XZGEP5",
@@ -263,6 +263,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02512cd44d21eacbfeda4affe2"
     },
     {
+     "id": "7xqCJCrlpRSIHDDJsLeT0U",
+     "name": "A Little More",
+     "artist": "Ed Sheeran",
+     "album": "Play",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b07c28bb3192bdfb585fb438"
+    },
+    {
      "id": "6fNhZRFEkBfgW39W3wKARJ",
      "name": "Pompeii",
      "artist": "Bastille",
@@ -389,6 +396,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02d254ca497999ae980a5a38c5"
     },
     {
+     "id": "7qiZfU4dY1lWllzX7mPBI3",
+     "name": "Shape of You",
+     "artist": "Ed Sheeran",
+     "album": "÷ (Deluxe)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02ba5db46f4b838ef6027e6f96"
+    },
+    {
      "id": "3DarAbFujv6eYNliUTyqtz",
      "name": "Kiss Me More (feat. SZA)",
      "artist": "Doja Cat, SZA",
@@ -401,13 +415,6 @@
      "artist": "God Is An Astronaut",
      "album": "Far from Refuge (2011 Remastered Edition)",
      "image": "https://i.scdn.co/image/ab67616d00001e02b58eca99da746a9a4dd019db"
-    },
-    {
-     "id": "7qiZfU4dY1lWllzX7mPBI3",
-     "name": "Shape of You",
-     "artist": "Ed Sheeran",
-     "album": "÷ (Deluxe)",
-     "image": "https://i.scdn.co/image/ab67616d00001e02ba5db46f4b838ef6027e6f96"
     },
     {
      "id": "7bNACqrVn2mAs6YzYlx262",
@@ -459,6 +466,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e023baae0836a5b6ee9d649ed14"
     },
     {
+     "id": "3rmo8F54jFF8OgYsqTxm5d",
+     "name": "Bad Habits",
+     "artist": "Ed Sheeran",
+     "album": "=",
+     "image": "https://i.scdn.co/image/ab67616d00001e02dc806722f6802a8ea9953c89"
+    },
+    {
      "id": "6nNLW8UCaIMxH9HzIbs63N",
      "name": "清明雨上",
      "artist": "許嵩",
@@ -499,6 +513,13 @@
      "artist": "Jens Buchert",
      "album": "Electronic Space Lounge - Three",
      "image": "https://i.scdn.co/image/ab67616d00001e027b151820c9ddaffeb7e177ce"
+    },
+    {
+     "id": "3p7XQpdt8Dr6oMXSvRZ9bg",
+     "name": "Eyes Closed",
+     "artist": "Ed Sheeran",
+     "album": "- (Deluxe)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02d3e632cfaf8fbee03c27fcb7"
     },
     {
      "id": "4TaaBYvo3J9tNFbdEc7otk",
@@ -550,6 +571,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e029feceff471ea209ab793ce6b"
     },
     {
+     "id": "6K8qKeWo5MsFED7wCR6Kop",
+     "name": "Sing",
+     "artist": "Ed Sheeran",
+     "album": "x (Deluxe Edition)",
+     "image": "https://i.scdn.co/image/ab67616d00001e0213b3e37318a0c247b550bccd"
+    },
+    {
      "id": "4lZBB7P5j84VqQHf3POLdA",
      "name": "Hold On",
      "artist": "Bergs, Rachel Fels",
@@ -576,39 +604,16 @@
      "artist": "Roald Velden",
      "album": "As the Years Went by / Sunset Over Emst",
      "image": "https://i.scdn.co/image/ab67616d00001e023572e164458b0e5ea6ff949d"
-    },
-    {
-     "id": "1eOJAiCKFuMda0fPRvjcuc",
-     "name": "Hold My Hand",
-     "artist": "Jess Glynne",
-     "album": "I Cry When I Laugh",
-     "image": "https://i.scdn.co/image/ab67616d00001e0239588f221861ee72b40b755c"
-    },
-    {
-     "id": "3p7XQpdt8Dr6oMXSvRZ9bg",
-     "name": "Eyes Closed",
-     "artist": "Ed Sheeran",
-     "album": "- (Deluxe)",
-     "image": "https://i.scdn.co/image/ab67616d00001e02d3e632cfaf8fbee03c27fcb7"
-    },
-    {
-     "id": "3wo7kaVPCe4HjYqKdKIzql",
-     "name": "Walk Away",
-     "artist": "Dia Frampton",
-     "album": "Red",
-     "image": "https://i.scdn.co/image/ab67616d00001e028588252409ed634e072fd657"
-    },
-    {
-     "id": "4QLjLmiBMEprh7NaGUWxl9",
-     "name": "Unity",
-     "artist": "TheFatRat",
-     "album": "Unity",
-     "image": "https://i.scdn.co/image/ab67616d00001e02f9a0d20aa3c161b3bbac364d"
     }
    ]
   },
   "medium_term": {
    "artists": [
+    {
+     "id": "6eUKZXaKkcviH0Ku9w2n3V",
+     "name": "Ed Sheeran",
+     "image": "https://i.scdn.co/image/ab6761610000f178d55c95ad400aed87da52daec"
+    },
     {
      "id": "3WHsy1Rq4vPEdRyo9P3a48",
      "name": "Bibi Zhou",
@@ -618,11 +623,6 @@
      "id": "2hgxWUG24w1cFLBlPSEVcV",
      "name": "許嵩",
      "image": "https://i.scdn.co/image/ab6761610000f178704d08abe2a3bf0bb1c366c9"
-    },
-    {
-     "id": "6eUKZXaKkcviH0Ku9w2n3V",
-     "name": "Ed Sheeran",
-     "image": "https://i.scdn.co/image/ab6761610000f178d55c95ad400aed87da52daec"
     },
     {
      "id": "23fqKkggKUBHNkbKtXEls4",
@@ -857,6 +857,13 @@
    ],
    "tracks": [
     {
+     "id": "7xqCJCrlpRSIHDDJsLeT0U",
+     "name": "A Little More",
+     "artist": "Ed Sheeran",
+     "album": "Play",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b07c28bb3192bdfb585fb438"
+    },
+    {
      "id": "3ojwY8dyubHnLsoHdRUpo4",
      "name": "雅俗共賞",
      "artist": "許嵩",
@@ -869,13 +876,6 @@
      "artist": "许嵩",
      "album": "经典咏流传第四季 第9期",
      "image": "https://i.scdn.co/image/ab67616d00001e02f1b39a9ad04b471a169a73fa"
-    },
-    {
-     "id": "7xqCJCrlpRSIHDDJsLeT0U",
-     "name": "A Little More",
-     "artist": "Ed Sheeran",
-     "album": "Play",
-     "image": "https://i.scdn.co/image/ab67616d00001e02b07c28bb3192bdfb585fb438"
     },
     {
      "id": "6fNhZRFEkBfgW39W3wKARJ",
@@ -955,6 +955,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02ca9961814136d4bd7acfd811"
     },
     {
+     "id": "6ex1Pz3pntgy4NPtxHXN2V",
+     "name": "Bad Habits",
+     "artist": "Ed Sheeran",
+     "album": "= (Tour Edition)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02452eab95b1147fd8376f2006"
+    },
+    {
      "id": "0euyZh7zSUmpNXVpVBdcN2",
      "name": "Candyland",
      "artist": "Tobu",
@@ -967,6 +974,13 @@
      "artist": "Echosmith",
      "album": "Talking Dreams",
      "image": "https://i.scdn.co/image/ab67616d00001e02b098cbfb14e8cc251451ca19"
+    },
+    {
+     "id": "7qiZfU4dY1lWllzX7mPBI3",
+     "name": "Shape of You",
+     "artist": "Ed Sheeran",
+     "album": "÷ (Deluxe)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02ba5db46f4b838ef6027e6f96"
     },
     {
      "id": "2tpWsVSb9UEmDRxAl1zhX1",
@@ -995,6 +1009,13 @@
      "artist": "Avicii",
      "album": "True",
      "image": "https://i.scdn.co/image/ab67616d00001e02162c5d6dbf1dc3965d1a391a"
+    },
+    {
+     "id": "6u0oHknFYrnUd42A6rvFly",
+     "name": "Sing",
+     "artist": "Ed Sheeran",
+     "album": "x (Wembley Edition)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02d08209944468440145f01524"
     },
     {
      "id": "7nDQMtLxu94xtlTR8bEqjU",
@@ -1030,6 +1051,13 @@
      "artist": "OneRepublic",
      "album": "Waking Up (2026 Remastered)",
      "image": "https://i.scdn.co/image/ab67616d00001e026823e3a4f0a685140701fcf2"
+    },
+    {
+     "id": "1VdZ0vKfR5jneCmWIUAMxK",
+     "name": "The A Team",
+     "artist": "Ed Sheeran",
+     "album": "+",
+     "image": "https://i.scdn.co/image/ab67616d00001e02e6d489d359c546fea254f440"
     },
     {
      "id": "213x4gsFDm04hSqIUkg88w",
@@ -1079,6 +1107,13 @@
      "artist": "The Vamps",
      "album": "Meet The Vamps",
      "image": "https://i.scdn.co/image/ab67616d00001e029f89b8390933e9ccb3673c89"
+    },
+    {
+     "id": "6fxVffaTuwjgEk5h9QyRjy",
+     "name": "Photograph",
+     "artist": "Ed Sheeran",
+     "album": "x (Wembley Edition)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02d08209944468440145f01524"
     },
     {
      "id": "1SN1vSPsr4V4tIUTR3s8YW",
@@ -1170,55 +1205,20 @@
      "artist": "The Chainsmokers, Coldplay",
      "album": "Memories...Do Not Open",
      "image": "https://i.scdn.co/image/ab67616d00001e020c13d3d5a503c84fcc60ae94"
-    },
-    {
-     "id": "7jMHa752w5Wvpe3PzC1zJD",
-     "name": "Secrets - 2026 Remastered",
-     "artist": "OneRepublic",
-     "album": "Waking Up (2026 Remastered)",
-     "image": "https://i.scdn.co/image/ab67616d00001e026823e3a4f0a685140701fcf2"
-    },
-    {
-     "id": "5L6oF6wViaQkaGI7c6QIv4",
-     "name": "笔记",
-     "artist": "Bibi Zhou",
-     "album": "2005超级女声终极PK",
-     "image": "https://i.scdn.co/image/ab67616d00001e028d365c88c9bdaec3720bda12"
-    },
-    {
-     "id": "7qiZfU4dY1lWllzX7mPBI3",
-     "name": "Shape of You",
-     "artist": "Ed Sheeran",
-     "album": "÷ (Deluxe)",
-     "image": "https://i.scdn.co/image/ab67616d00001e02ba5db46f4b838ef6027e6f96"
-    },
-    {
-     "id": "1LeItUMezKA1HdCHxYICed",
-     "name": "Say My Name",
-     "artist": "ODESZA, Zyra",
-     "album": "In Return",
-     "image": "https://i.scdn.co/image/ab67616d00001e02dbd801e562b7a9474ce8bae2"
-    },
-    {
-     "id": "1ySawdDRh3NEy0kNFzacOp",
-     "name": "Sugar (feat. Francesco Yates)",
-     "artist": "Robin Schulz, Francesco Yates",
-     "album": "Sugar",
-     "image": "https://i.scdn.co/image/ab67616d00001e0242f9cd115743fccf6b8a531d"
     }
    ]
   },
   "short_term": {
    "artists": [
     {
-     "id": "3WHsy1Rq4vPEdRyo9P3a48",
-     "name": "Bibi Zhou",
-     "image": "https://i.scdn.co/image/ab6761610000f178b8b78d22300f49ee0c8bacdb"
-    },
-    {
      "id": "6eUKZXaKkcviH0Ku9w2n3V",
      "name": "Ed Sheeran",
      "image": "https://i.scdn.co/image/ab6761610000f178d55c95ad400aed87da52daec"
+    },
+    {
+     "id": "3WHsy1Rq4vPEdRyo9P3a48",
+     "name": "Bibi Zhou",
+     "image": "https://i.scdn.co/image/ab6761610000f178b8b78d22300f49ee0c8bacdb"
     },
     {
      "id": "23fqKkggKUBHNkbKtXEls4",
@@ -1271,11 +1271,6 @@
      "image": "https://i.scdn.co/image/ab6761610000f178e4d94f7cbebb17504c25d419"
     },
     {
-     "id": "6M2wZ9GZgrQXHCFfjv46we",
-     "name": "Dua Lipa",
-     "image": "https://i.scdn.co/image/ab6761610000f1780c68f6c95232e716f0abee8d"
-    },
-    {
      "id": "6nB0iY1cjSY1KyhYyuIIKH",
      "name": "FKA twigs",
      "image": "https://i.scdn.co/image/ab6761610000f1783f6b8973be0344896d8680ab"
@@ -1299,6 +1294,11 @@
      "id": "4BAWVaDoA2CpEdUetoYKgZ",
      "name": "Capo Productions",
      "image": "https://i.scdn.co/image/ab67616d00001e020d2bdfb25648a42ba50b9c41"
+    },
+    {
+     "id": "6M2wZ9GZgrQXHCFfjv46we",
+     "name": "Dua Lipa",
+     "image": "https://i.scdn.co/image/ab6761610000f1780c68f6c95232e716f0abee8d"
     },
     {
      "id": "2hgxWUG24w1cFLBlPSEVcV",
@@ -1386,11 +1386,6 @@
      "image": "https://i.scdn.co/image/ab6761610000f17862cf72356b92b98efd61f63c"
     },
     {
-     "id": "3PhoLpVuITZKcymswpck5b",
-     "name": "Elton John",
-     "image": "https://i.scdn.co/image/ab6761610000f1780dc33a1c53bb58a84b45d6a7"
-    },
-    {
      "id": "6MDME20pz9RveH9rEXvrOM",
      "name": "Clean Bandit",
      "image": "https://i.scdn.co/image/ab6761610000f178f995542c4f68f8ae4f05b5f6"
@@ -1469,11 +1464,25 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02ca9961814136d4bd7acfd811"
     },
     {
+     "id": "6ex1Pz3pntgy4NPtxHXN2V",
+     "name": "Bad Habits",
+     "artist": "Ed Sheeran",
+     "album": "= (Tour Edition)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02452eab95b1147fd8376f2006"
+    },
+    {
      "id": "0euyZh7zSUmpNXVpVBdcN2",
      "name": "Candyland",
      "artist": "Tobu",
      "album": "Candyland",
      "image": "https://i.scdn.co/image/ab67616d00001e029feceff471ea209ab793ce6b"
+    },
+    {
+     "id": "7qiZfU4dY1lWllzX7mPBI3",
+     "name": "Shape of You",
+     "artist": "Ed Sheeran",
+     "album": "÷ (Deluxe)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02ba5db46f4b838ef6027e6f96"
     },
     {
      "id": "2tpWsVSb9UEmDRxAl1zhX1",
@@ -1511,6 +1520,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02b098cbfb14e8cc251451ca19"
     },
     {
+     "id": "6u0oHknFYrnUd42A6rvFly",
+     "name": "Sing",
+     "artist": "Ed Sheeran",
+     "album": "x (Wembley Edition)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02d08209944468440145f01524"
+    },
+    {
      "id": "2FiSTH0GYpIioUgjfzMIja",
      "name": "Stay (feat. Maty Noyes)",
      "artist": "Kygo, Maty Noyes",
@@ -1537,6 +1553,13 @@
      "artist": "OneRepublic",
      "album": "Waking Up (2026 Remastered)",
      "image": "https://i.scdn.co/image/ab67616d00001e026823e3a4f0a685140701fcf2"
+    },
+    {
+     "id": "1VdZ0vKfR5jneCmWIUAMxK",
+     "name": "The A Team",
+     "artist": "Ed Sheeran",
+     "album": "+",
+     "image": "https://i.scdn.co/image/ab67616d00001e02e6d489d359c546fea254f440"
     },
     {
      "id": "213x4gsFDm04hSqIUkg88w",
@@ -1586,6 +1609,13 @@
      "artist": "The Vamps",
      "album": "Meet The Vamps",
      "image": "https://i.scdn.co/image/ab67616d00001e029f89b8390933e9ccb3673c89"
+    },
+    {
+     "id": "6fxVffaTuwjgEk5h9QyRjy",
+     "name": "Photograph",
+     "artist": "Ed Sheeran",
+     "album": "x (Wembley Edition)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02d08209944468440145f01524"
     },
     {
      "id": "0YPDp1KIxVLTdh3vnvk6wd",
@@ -1672,6 +1702,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e020c13d3d5a503c84fcc60ae94"
     },
     {
+     "id": "6cQay9EHT7Rc2iLxBrOhIh",
+     "name": "Le bonheur",
+     "artist": "Joyce Jonathan",
+     "album": "Une place pour moi",
+     "image": "https://i.scdn.co/image/ab67616d00001e02d2398a64e4801a8feab7643a"
+    },
+    {
      "id": "7jMHa752w5Wvpe3PzC1zJD",
      "name": "Secrets - 2026 Remastered",
      "artist": "OneRepublic",
@@ -1691,13 +1728,6 @@
      "artist": "ZHU",
      "album": "Faded",
      "image": "https://i.scdn.co/image/ab67616d00001e027b730a450d048646b7472425"
-    },
-    {
-     "id": "7qiZfU4dY1lWllzX7mPBI3",
-     "name": "Shape of You",
-     "artist": "Ed Sheeran",
-     "album": "÷ (Deluxe)",
-     "image": "https://i.scdn.co/image/ab67616d00001e02ba5db46f4b838ef6027e6f96"
     },
     {
      "id": "1LeItUMezKA1HdCHxYICed",
@@ -1726,41 +1756,6 @@
      "artist": "Bakermat",
      "album": "One Day (Vandaag) [Radio Edit]",
      "image": "https://i.scdn.co/image/ab67616d00001e0244b7277d2d6247722b26e2a3"
-    },
-    {
-     "id": "10AsRVRdU07cMAFHeGYO3c",
-     "name": "Solo Dance",
-     "artist": "Martin Jensen",
-     "album": "Solo Dance",
-     "image": "https://i.scdn.co/image/ab67616d00001e02245582ce9538e3681b0d0d7e"
-    },
-    {
-     "id": "11wlDEdE6fV0YuRXSXMAnE",
-     "name": "Aerials",
-     "artist": "Lights \u0026 Motion",
-     "album": "Reanimation",
-     "image": "https://i.scdn.co/image/ab67616d00001e0284bee8371225201e5258bc0f"
-    },
-    {
-     "id": "1A8j067qyiNwQnZT0bzUpZ",
-     "name": "This Girl (Kungs Vs. Cookin' On 3 Burners)",
-     "artist": "Kungs, Cookin' On 3 Burners",
-     "album": "Layers",
-     "image": "https://i.scdn.co/image/ab67616d00001e02af72d0856c5527dc97f3ea08"
-    },
-    {
-     "id": "1Mys1gf9SkMBAVGGxpkJ7d",
-     "name": "Reality",
-     "artist": "Lost Frequencies, Janieck",
-     "album": "Less Is More",
-     "image": "https://i.scdn.co/image/ab67616d00001e02c01ab1c4b2dceb2cfc89e6fa"
-    },
-    {
-     "id": "1kKYjjfNYxE0YYgLa7vgVY",
-     "name": "Higher Love",
-     "artist": "Kygo, Whitney Houston",
-     "album": "Golden Hour",
-     "image": "https://i.scdn.co/image/ab67616d00001e0280368f0aa8f90c51674f9dd2"
     }
    ]
   }
