@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-16T14:00:23Z",
+ "updated_at": "2026-11-17T00:00:23Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -620,6 +620,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f178704d08abe2a3bf0bb1c366c9"
     },
     {
+     "id": "6eUKZXaKkcviH0Ku9w2n3V",
+     "name": "Ed Sheeran",
+     "image": "https://i.scdn.co/image/ab6761610000f178d55c95ad400aed87da52daec"
+    },
+    {
      "id": "23fqKkggKUBHNkbKtXEls4",
      "name": "Kygo",
      "image": "https://i.scdn.co/image/ab6761610000f178e5ea1aa1404629c12ad86658"
@@ -673,6 +678,11 @@
      "id": "7tYKF4w9nC0nq9CsPZTHyP",
      "name": "SZA",
      "image": "https://i.scdn.co/image/ab6761610000f178fd0a9fb6c252a3ba44079acf"
+    },
+    {
+     "id": "6PNEi9i2MxUgRufqYr76Xt",
+     "name": "Zhang Zhen Yue",
+     "image": "https://i.scdn.co/image/ab6761610000f17866a909756400366c24bf1568"
     },
     {
      "id": "2h93pZq0e7k5yf4dywlkpM",
@@ -735,11 +745,6 @@
      "image": "https://i.scdn.co/image/ab6761610000f178f995542c4f68f8ae4f05b5f6"
     },
     {
-     "id": "6PNEi9i2MxUgRufqYr76Xt",
-     "name": "Zhang Zhen Yue",
-     "image": "https://i.scdn.co/image/ab6761610000f17866a909756400366c24bf1568"
-    },
-    {
      "id": "04gDigrS5kc9YWfZHwBETP",
      "name": "Maroon 5",
      "image": "https://i.scdn.co/image/ab6761610000f178f8349dfb619a7f842242de77"
@@ -800,6 +805,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f17817dd503b5c1841cd238c9aa7"
     },
     {
+     "id": "5H8TJITZE1sPjVR2ACzXNS",
+     "name": "Wu Bai",
+     "image": "https://i.scdn.co/image/ab6761610000f17818d5d4367366ddaa10137890"
+    },
+    {
      "id": "0du5cEVh5yTK9QJze8zA0C",
      "name": "Bruno Mars",
      "image": "https://i.scdn.co/image/ab6761610000f178c7688aad1bf03986934d7e26"
@@ -840,11 +850,6 @@
      "image": "https://i.scdn.co/image/ab6761610000f17839cf57b090fcaefe756c91c3"
     },
     {
-     "id": "5H8TJITZE1sPjVR2ACzXNS",
-     "name": "Wu Bai",
-     "image": "https://i.scdn.co/image/ab6761610000f17818d5d4367366ddaa10137890"
-    },
-    {
      "id": "6yTAPw3o7oDH7lhj34jvbH",
      "name": "Elva Hsiao",
      "image": "https://i.scdn.co/image/ab6761610000f178875f7b128d178605583338b4"
@@ -864,6 +869,13 @@
      "artist": "许嵩",
      "album": "经典咏流传第四季 第9期",
      "image": "https://i.scdn.co/image/ab67616d00001e02f1b39a9ad04b471a169a73fa"
+    },
+    {
+     "id": "7xqCJCrlpRSIHDDJsLeT0U",
+     "name": "A Little More",
+     "artist": "Ed Sheeran",
+     "album": "Play",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b07c28bb3192bdfb585fb438"
     },
     {
      "id": "6fNhZRFEkBfgW39W3wKARJ",
@@ -1174,6 +1186,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e028d365c88c9bdaec3720bda12"
     },
     {
+     "id": "7qiZfU4dY1lWllzX7mPBI3",
+     "name": "Shape of You",
+     "artist": "Ed Sheeran",
+     "album": "÷ (Deluxe)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02ba5db46f4b838ef6027e6f96"
+    },
+    {
      "id": "1LeItUMezKA1HdCHxYICed",
      "name": "Say My Name",
      "artist": "ODESZA, Zyra",
@@ -1186,20 +1205,6 @@
      "artist": "Robin Schulz, Francesco Yates",
      "album": "Sugar",
      "image": "https://i.scdn.co/image/ab67616d00001e0242f9cd115743fccf6b8a531d"
-    },
-    {
-     "id": "3c8iiZGfEammKJuWTErE5x",
-     "name": "Ain't Nobody (Loves Me Better) (feat. Jasmine Thompson)",
-     "artist": "felix jaehn, Jasmine Thompson",
-     "album": "I",
-     "image": "https://i.scdn.co/image/ab67616d00001e029713f1939e377cf85a2a5b16"
-    },
-    {
-     "id": "4frLb7nWtsz2ymBE6k2GRP",
-     "name": "Earned It (Fifty Shades Of Grey)",
-     "artist": "The Weeknd",
-     "album": "Beauty Behind The Madness",
-     "image": "https://i.scdn.co/image/ab67616d00001e027fcead687e99583072cc217b"
     }
    ]
   },
@@ -1209,6 +1214,11 @@
      "id": "3WHsy1Rq4vPEdRyo9P3a48",
      "name": "Bibi Zhou",
      "image": "https://i.scdn.co/image/ab6761610000f178b8b78d22300f49ee0c8bacdb"
+    },
+    {
+     "id": "6eUKZXaKkcviH0Ku9w2n3V",
+     "name": "Ed Sheeran",
+     "image": "https://i.scdn.co/image/ab6761610000f178d55c95ad400aed87da52daec"
     },
     {
      "id": "23fqKkggKUBHNkbKtXEls4",
@@ -1249,11 +1259,6 @@
      "id": "7tYKF4w9nC0nq9CsPZTHyP",
      "name": "SZA",
      "image": "https://i.scdn.co/image/ab6761610000f178fd0a9fb6c252a3ba44079acf"
-    },
-    {
-     "id": "6eUKZXaKkcviH0Ku9w2n3V",
-     "name": "Ed Sheeran",
-     "image": "https://i.scdn.co/image/ab6761610000f178d55c95ad400aed87da52daec"
     },
     {
      "id": "2h93pZq0e7k5yf4dywlkpM",
@@ -1407,6 +1412,13 @@
     }
    ],
    "tracks": [
+    {
+     "id": "7xqCJCrlpRSIHDDJsLeT0U",
+     "name": "A Little More",
+     "artist": "Ed Sheeran",
+     "album": "Play",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b07c28bb3192bdfb585fb438"
+    },
     {
      "id": "2CPqh63wRVscbceKcPxwvv",
      "name": "The Ocean (feat. Shy Martin)",
@@ -1749,13 +1761,6 @@
      "artist": "Kygo, Whitney Houston",
      "album": "Golden Hour",
      "image": "https://i.scdn.co/image/ab67616d00001e0280368f0aa8f90c51674f9dd2"
-    },
-    {
-     "id": "2Gl0FzuLxflY6nPifJp5Dr",
-     "name": "First Time",
-     "artist": "Kygo, Ellie Goulding",
-     "album": "First Time",
-     "image": "https://i.scdn.co/image/ab67616d00001e02b6d86ca196b697ee0f640118"
     }
    ]
   }
