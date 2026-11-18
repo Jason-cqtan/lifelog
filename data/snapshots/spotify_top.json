@@ -1,17 +1,17 @@
 {
- "updated_at": "2026-11-18T05:00:22Z",
+ "updated_at": "2026-11-18T14:00:24Z",
  "ranges": {
   "long_term": {
    "artists": [
     {
-     "id": "0SIXZXJCAhNU8sxK0qm7hn",
-     "name": "Stefanie Sun",
-     "image": "https://i.scdn.co/image/ab6761610000f178744989ed737112f4edbd2cc3"
-    },
-    {
      "id": "6eUKZXaKkcviH0Ku9w2n3V",
      "name": "Ed Sheeran",
      "image": "https://i.scdn.co/image/ab6761610000f178d55c95ad400aed87da52daec"
+    },
+    {
+     "id": "0SIXZXJCAhNU8sxK0qm7hn",
+     "name": "Stefanie Sun",
+     "image": "https://i.scdn.co/image/ab6761610000f178744989ed737112f4edbd2cc3"
     },
     {
      "id": "2elBjNSdBE2Y3f0j1mjrql",
@@ -347,6 +347,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02f9e94cdcd43abe52e9e1c4c3"
     },
     {
+     "id": "7qiZfU4dY1lWllzX7mPBI3",
+     "name": "Shape of You",
+     "artist": "Ed Sheeran",
+     "album": "÷ (Deluxe)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02ba5db46f4b838ef6027e6f96"
+    },
+    {
      "id": "3LvkvzJ2jN7s8P8MMQCeKL",
      "name": "Indian Summer",
      "artist": "Stereophonics",
@@ -396,13 +403,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02d254ca497999ae980a5a38c5"
     },
     {
-     "id": "7qiZfU4dY1lWllzX7mPBI3",
-     "name": "Shape of You",
-     "artist": "Ed Sheeran",
-     "album": "÷ (Deluxe)",
-     "image": "https://i.scdn.co/image/ab67616d00001e02ba5db46f4b838ef6027e6f96"
-    },
-    {
      "id": "3DarAbFujv6eYNliUTyqtz",
      "name": "Kiss Me More (feat. SZA)",
      "artist": "Doja Cat, SZA",
@@ -410,11 +410,25 @@
      "image": "https://i.scdn.co/image/ab67616d00001e0214b7b2a920a41166d53ddd49"
     },
     {
+     "id": "3rmo8F54jFF8OgYsqTxm5d",
+     "name": "Bad Habits",
+     "artist": "Ed Sheeran",
+     "album": "=",
+     "image": "https://i.scdn.co/image/ab67616d00001e02dc806722f6802a8ea9953c89"
+    },
+    {
      "id": "6HpchlfDUQzjRYYQCvTWUH",
      "name": "New Years End",
      "artist": "God Is An Astronaut",
      "album": "Far from Refuge (2011 Remastered Edition)",
      "image": "https://i.scdn.co/image/ab67616d00001e02b58eca99da746a9a4dd019db"
+    },
+    {
+     "id": "6K8qKeWo5MsFED7wCR6Kop",
+     "name": "Sing",
+     "artist": "Ed Sheeran",
+     "album": "x (Deluxe Edition)",
+     "image": "https://i.scdn.co/image/ab67616d00001e0213b3e37318a0c247b550bccd"
     },
     {
      "id": "7bNACqrVn2mAs6YzYlx262",
@@ -429,6 +443,13 @@
      "artist": "Young Rising Sons",
      "album": "Young Rising Sons",
      "image": "https://i.scdn.co/image/ab67616d00001e02f2a45f258f01bbd1a0e77bbc"
+    },
+    {
+     "id": "1HNkqx9Ahdgi1Ixy2xkKkL",
+     "name": "Photograph",
+     "artist": "Ed Sheeran",
+     "album": "x (Deluxe Edition)",
+     "image": "https://i.scdn.co/image/ab67616d00001e0213b3e37318a0c247b550bccd"
     },
     {
      "id": "4DxybsoSiMUW0JI2oM0SSN",
@@ -466,13 +487,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e023baae0836a5b6ee9d649ed14"
     },
     {
-     "id": "3rmo8F54jFF8OgYsqTxm5d",
-     "name": "Bad Habits",
-     "artist": "Ed Sheeran",
-     "album": "=",
-     "image": "https://i.scdn.co/image/ab67616d00001e02dc806722f6802a8ea9953c89"
-    },
-    {
      "id": "6nNLW8UCaIMxH9HzIbs63N",
      "name": "清明雨上",
      "artist": "許嵩",
@@ -492,6 +506,13 @@
      "artist": "Sheppard",
      "album": "Bombs Away",
      "image": "https://i.scdn.co/image/ab67616d00001e028a99868b5a57469de83fb9ba"
+    },
+    {
+     "id": "0tgVpDi06FyKpA1z0VMD4v",
+     "name": "Perfect",
+     "artist": "Ed Sheeran",
+     "album": "÷ (Deluxe)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02ba5db46f4b838ef6027e6f96"
     },
     {
      "id": "22RgKGppKFyQwKUX6Rvx8i",
@@ -571,11 +592,11 @@
      "image": "https://i.scdn.co/image/ab67616d00001e029feceff471ea209ab793ce6b"
     },
     {
-     "id": "6K8qKeWo5MsFED7wCR6Kop",
-     "name": "Sing",
+     "id": "1VdZ0vKfR5jneCmWIUAMxK",
+     "name": "The A Team",
      "artist": "Ed Sheeran",
-     "album": "x (Deluxe Edition)",
-     "image": "https://i.scdn.co/image/ab67616d00001e0213b3e37318a0c247b550bccd"
+     "album": "+",
+     "image": "https://i.scdn.co/image/ab67616d00001e02e6d489d359c546fea254f440"
     },
     {
      "id": "4lZBB7P5j84VqQHf3POLdA",
@@ -583,27 +604,6 @@
      "artist": "Bergs, Rachel Fels",
      "album": "Hold On",
      "image": "https://i.scdn.co/image/ab67616d00001e026aae6fbda3deab68f09c48a7"
-    },
-    {
-     "id": "7p2RlyF403KmPmZm2TxKl3",
-     "name": "Young Souls",
-     "artist": "Broken Back",
-     "album": "Dear Misfortune, Mother of Joy - EP",
-     "image": "https://i.scdn.co/image/ab67616d00001e0201e7dc8bb82d8d990a1f0f37"
-    },
-    {
-     "id": "6kJrS6kGU2L3nGqObzdJje",
-     "name": "Stop! Stop! Stop! - English version of S",
-     "artist": "VIA Gra",
-     "album": "Stop! Stop! Stop!",
-     "image": "https://i.scdn.co/image/ab67616d00001e02a6460e661fac0d7327c13426"
-    },
-    {
-     "id": "1aygA3iZfj6ef4aq92EqCU",
-     "name": "Sunset Over Emst - Original Mix",
-     "artist": "Roald Velden",
-     "album": "As the Years Went by / Sunset Over Emst",
-     "image": "https://i.scdn.co/image/ab67616d00001e023572e164458b0e5ea6ff949d"
     }
    ]
   },
@@ -1286,24 +1286,19 @@
      "image": "https://i.scdn.co/image/ab6761610000f1785c461001b3489a0a523f63ee"
     },
     {
-     "id": "2elBjNSdBE2Y3f0j1mjrql",
-     "name": "Jay Chou",
-     "image": "https://i.scdn.co/image/ab6761610000f17887fbbe9ed03fbb500595e720"
-    },
-    {
      "id": "4BAWVaDoA2CpEdUetoYKgZ",
      "name": "Capo Productions",
      "image": "https://i.scdn.co/image/ab67616d00001e020d2bdfb25648a42ba50b9c41"
     },
     {
+     "id": "2elBjNSdBE2Y3f0j1mjrql",
+     "name": "Jay Chou",
+     "image": "https://i.scdn.co/image/ab6761610000f17887fbbe9ed03fbb500595e720"
+    },
+    {
      "id": "6M2wZ9GZgrQXHCFfjv46we",
      "name": "Dua Lipa",
      "image": "https://i.scdn.co/image/ab6761610000f1780c68f6c95232e716f0abee8d"
-    },
-    {
-     "id": "2hgxWUG24w1cFLBlPSEVcV",
-     "name": "許嵩",
-     "image": "https://i.scdn.co/image/ab6761610000f178704d08abe2a3bf0bb1c366c9"
     },
     {
      "id": "6PNEi9i2MxUgRufqYr76Xt",
@@ -1422,11 +1417,25 @@
      "image": "https://i.scdn.co/image/ab67616d00001e027f401862bfe87b552a75308d"
     },
     {
+     "id": "4HadYIhNfy7evMUI5W6wEc",
+     "name": "Reykjavik",
+     "artist": "Joachim Pastor",
+     "album": "Reykjavik",
+     "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
+    },
+    {
      "id": "6fNhZRFEkBfgW39W3wKARJ",
      "name": "Pompeii",
      "artist": "Bastille",
      "album": "Bad Blood",
      "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
+    },
+    {
+     "id": "6fxVffaTuwjgEk5h9QyRjy",
+     "name": "Photograph",
+     "artist": "Ed Sheeran",
+     "album": "x (Wembley Edition)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02d08209944468440145f01524"
     },
     {
      "id": "0qt5f5EL92o8Snzopsv0en",
@@ -1450,11 +1459,11 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02373857bc42fa2719cde34881"
     },
     {
-     "id": "4HadYIhNfy7evMUI5W6wEc",
-     "name": "Reykjavik",
-     "artist": "Joachim Pastor",
-     "album": "Reykjavik",
-     "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
+     "id": "6u0oHknFYrnUd42A6rvFly",
+     "name": "Sing",
+     "artist": "Ed Sheeran",
+     "album": "x (Wembley Edition)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02d08209944468440145f01524"
     },
     {
      "id": "7ti4qMC7xYQeh1uRzj5XuM",
@@ -1492,6 +1501,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e029e2f95ae77cf436017ada9cb"
     },
     {
+     "id": "1VdZ0vKfR5jneCmWIUAMxK",
+     "name": "The A Team",
+     "artist": "Ed Sheeran",
+     "album": "+",
+     "image": "https://i.scdn.co/image/ab67616d00001e02e6d489d359c546fea254f440"
+    },
+    {
      "id": "1eOJAiCKFuMda0fPRvjcuc",
      "name": "Hold My Hand",
      "artist": "Jess Glynne",
@@ -1518,13 +1534,6 @@
      "artist": "Echosmith",
      "album": "Talking Dreams",
      "image": "https://i.scdn.co/image/ab67616d00001e02b098cbfb14e8cc251451ca19"
-    },
-    {
-     "id": "6u0oHknFYrnUd42A6rvFly",
-     "name": "Sing",
-     "artist": "Ed Sheeran",
-     "album": "x (Wembley Edition)",
-     "image": "https://i.scdn.co/image/ab67616d00001e02d08209944468440145f01524"
     },
     {
      "id": "2FiSTH0GYpIioUgjfzMIja",
@@ -1555,11 +1564,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e026823e3a4f0a685140701fcf2"
     },
     {
-     "id": "1VdZ0vKfR5jneCmWIUAMxK",
-     "name": "The A Team",
+     "id": "1Slwb6dOYkBlWal1PGtnNg",
+     "name": "Thinking out Loud",
      "artist": "Ed Sheeran",
-     "album": "+",
-     "image": "https://i.scdn.co/image/ab67616d00001e02e6d489d359c546fea254f440"
+     "album": "x (Wembley Edition)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02d08209944468440145f01524"
+    },
+    {
+     "id": "1fu5IQSRgPxJL2OTP7FVLW",
+     "name": "I See Fire",
+     "artist": "Ed Sheeran",
+     "album": "The Hobbit: The Desolation of Smaug (Original Motion Picture Soundtrack)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b5b40c88bb9cdd8d872ce774"
     },
     {
      "id": "213x4gsFDm04hSqIUkg88w",
@@ -1611,13 +1627,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e029f89b8390933e9ccb3673c89"
     },
     {
-     "id": "6fxVffaTuwjgEk5h9QyRjy",
-     "name": "Photograph",
-     "artist": "Ed Sheeran",
-     "album": "x (Wembley Edition)",
-     "image": "https://i.scdn.co/image/ab67616d00001e02d08209944468440145f01524"
-    },
-    {
      "id": "0YPDp1KIxVLTdh3vnvk6wd",
      "name": "C'mon C'mon",
      "artist": "The Von Bondies",
@@ -1630,13 +1639,6 @@
      "artist": "Jonas Blue, Dakota",
      "album": "Blue",
      "image": "https://i.scdn.co/image/ab67616d00001e025b6bcc59c3562a6f362344c6"
-    },
-    {
-     "id": "7gUpO6td4OOnu0Lf9vhcIV",
-     "name": "Lights - Single Version",
-     "artist": "Ellie Goulding",
-     "album": "Lights",
-     "image": "https://i.scdn.co/image/ab67616d00001e02a992179a520d2eb38fa41e64"
     },
     {
      "id": "12LOYGBr0T0IqyuhEILYFh",
@@ -1667,6 +1669,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e0259d2079e141301ab89b6cbc5"
     },
     {
+     "id": "41NzE22njxaczRSqCjoN55",
+     "name": "Young, Wild \u0026 Free",
+     "artist": "Axero",
+     "album": "Young, Wild \u0026 Free",
+     "image": "https://i.scdn.co/image/ab67616d00001e024076a1825a2f23dbef82303a"
+    },
+    {
      "id": "54RpL1P9FxOzZDE3N2XyMN",
      "name": "偶然",
      "artist": "Bibi Zhou",
@@ -1681,11 +1690,11 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02a8f674745d4e6757a9b35ba0"
     },
     {
-     "id": "5s8QrZRHt4gZclSaCds4GY",
-     "name": "Nostalgia",
-     "artist": "D33pSoul",
-     "album": "Nostalgia",
-     "image": "https://i.scdn.co/image/ab67616d00001e0244fd7df5558aa1f6cbed17a2"
+     "id": "698ItKASDavgwZ3WjaWjtz",
+     "name": "Faded",
+     "artist": "Alan Walker",
+     "album": "Different World",
+     "image": "https://i.scdn.co/image/ab67616d00001e02a108e07c661f9fc54de9c43a"
     },
     {
      "id": "6LLegbVHksZ5kDC2whN1Da",
@@ -1709,6 +1718,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02d2398a64e4801a8feab7643a"
     },
     {
+     "id": "70eFcWOvlMObDhURTqT4Fv",
+     "name": "Beautiful People (feat. Khalid)",
+     "artist": "Ed Sheeran, Khalid",
+     "album": "No.6 Collaborations Project",
+     "image": "https://i.scdn.co/image/ab67616d00001e02f528fc2d5d8b26e4e3413715"
+    },
+    {
      "id": "7jMHa752w5Wvpe3PzC1zJD",
      "name": "Secrets - 2026 Remastered",
      "artist": "OneRepublic",
@@ -1723,13 +1739,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e028d365c88c9bdaec3720bda12"
     },
     {
-     "id": "7nDQMtLxu94xtlTR8bEqjU",
-     "name": "Faded",
-     "artist": "ZHU",
-     "album": "Faded",
-     "image": "https://i.scdn.co/image/ab67616d00001e027b730a450d048646b7472425"
-    },
-    {
      "id": "1LeItUMezKA1HdCHxYICed",
      "name": "Say My Name",
      "artist": "ODESZA, Zyra",
@@ -1742,20 +1751,6 @@
      "artist": "Robin Schulz, Francesco Yates",
      "album": "Sugar",
      "image": "https://i.scdn.co/image/ab67616d00001e0242f9cd115743fccf6b8a531d"
-    },
-    {
-     "id": "3c8iiZGfEammKJuWTErE5x",
-     "name": "Ain't Nobody (Loves Me Better) (feat. Jasmine Thompson)",
-     "artist": "felix jaehn, Jasmine Thompson",
-     "album": "I",
-     "image": "https://i.scdn.co/image/ab67616d00001e029713f1939e377cf85a2a5b16"
-    },
-    {
-     "id": "0GSU6yLOJqO10ziQuBLWOE",
-     "name": "One Day (Vandaag) - Radio Edit",
-     "artist": "Bakermat",
-     "album": "One Day (Vandaag) [Radio Edit]",
-     "image": "https://i.scdn.co/image/ab67616d00001e0244b7277d2d6247722b26e2a3"
     }
    ]
   }
