@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-19T00:00:22Z",
+ "updated_at": "2026-11-19T05:00:22Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -820,6 +820,16 @@
      "image": "https://i.scdn.co/image/ab6761610000f178c7688aad1bf03986934d7e26"
     },
     {
+     "id": "0qmPs7q4bykvrS8NMZk7ud",
+     "name": "Penny Tai",
+     "image": "https://i.scdn.co/image/ab6761610000f178436ac1bb13ccbb62598d9dda"
+    },
+    {
+     "id": "14bJhryXGk6H6qlGzwj3W5",
+     "name": "Hebe Tien",
+     "image": "https://i.scdn.co/image/ab6761610000f17809749491c2a434bde6cf40cc"
+    },
+    {
      "id": "1IueXOQyABrMOprrzwQJWN",
      "name": "Sigala",
      "image": "https://i.scdn.co/image/ab6761610000f1782287136f17708c9d01fa538c"
@@ -848,16 +858,6 @@
      "id": "7gAppWoH7pcYmphCVTXkzs",
      "name": "The Vamps",
      "image": "https://i.scdn.co/image/ab6761610000f17877ef80571a40d9d19cf52208"
-    },
-    {
-     "id": "3AQRLZ9PuTAozP28Skbq8V",
-     "name": "The Script",
-     "image": "https://i.scdn.co/image/ab6761610000f17839cf57b090fcaefe756c91c3"
-    },
-    {
-     "id": "6yTAPw3o7oDH7lhj34jvbH",
-     "name": "Elva Hsiao",
-     "image": "https://i.scdn.co/image/ab6761610000f178875f7b128d178605583338b4"
     }
    ],
    "tracks": [
@@ -1291,9 +1291,9 @@
      "image": "https://i.scdn.co/image/ab6761610000f1785c461001b3489a0a523f63ee"
     },
     {
-     "id": "4BAWVaDoA2CpEdUetoYKgZ",
-     "name": "Capo Productions",
-     "image": "https://i.scdn.co/image/ab67616d00001e020d2bdfb25648a42ba50b9c41"
+     "id": "0SIXZXJCAhNU8sxK0qm7hn",
+     "name": "Stefanie Sun",
+     "image": "https://i.scdn.co/image/ab6761610000f178744989ed737112f4edbd2cc3"
     },
     {
      "id": "2elBjNSdBE2Y3f0j1mjrql",
@@ -1301,14 +1301,19 @@
      "image": "https://i.scdn.co/image/ab6761610000f17887fbbe9ed03fbb500595e720"
     },
     {
-     "id": "6M2wZ9GZgrQXHCFfjv46we",
-     "name": "Dua Lipa",
-     "image": "https://i.scdn.co/image/ab6761610000f1780c68f6c95232e716f0abee8d"
+     "id": "4BAWVaDoA2CpEdUetoYKgZ",
+     "name": "Capo Productions",
+     "image": "https://i.scdn.co/image/ab67616d00001e020d2bdfb25648a42ba50b9c41"
     },
     {
      "id": "6PNEi9i2MxUgRufqYr76Xt",
      "name": "Zhang Zhen Yue",
      "image": "https://i.scdn.co/image/ab6761610000f17866a909756400366c24bf1568"
+    },
+    {
+     "id": "6M2wZ9GZgrQXHCFfjv46we",
+     "name": "Dua Lipa",
+     "image": "https://i.scdn.co/image/ab6761610000f1780c68f6c95232e716f0abee8d"
     },
     {
      "id": "7CajNmpbOovFoOoasH2HaY",
@@ -1319,11 +1324,6 @@
      "id": "4gzpq5DPGxSnKTe4SA8HAU",
      "name": "Coldplay",
      "image": "https://i.scdn.co/image/ab6761610000f1781ba8fc5f5c73e7e9313cc6eb"
-    },
-    {
-     "id": "0SIXZXJCAhNU8sxK0qm7hn",
-     "name": "Stefanie Sun",
-     "image": "https://i.scdn.co/image/ab6761610000f178744989ed737112f4edbd2cc3"
     },
     {
      "id": "1HBjj22wzbscIZ9sEb5dyf",
@@ -1371,6 +1371,16 @@
      "image": "https://i.scdn.co/image/ab6761610000f178eeb78278ee29fb6bfb9010f7"
     },
     {
+     "id": "14bJhryXGk6H6qlGzwj3W5",
+     "name": "Hebe Tien",
+     "image": "https://i.scdn.co/image/ab6761610000f17809749491c2a434bde6cf40cc"
+    },
+    {
+     "id": "3AroL2oDPiAnMpTmIQv3KP",
+     "name": "Cyndi Wang",
+     "image": "https://i.scdn.co/image/ab6761610000f1788baa4f890691b73ec50ccb70"
+    },
+    {
      "id": "4iHNK0tOyZPYnBU7nGAgpQ",
      "name": "Mariah Carey",
      "image": "https://i.scdn.co/image/ab6761610000f17821453384a10b1f8e18877f63"
@@ -1386,19 +1396,9 @@
      "image": "https://i.scdn.co/image/ab6761610000f178436ac1bb13ccbb62598d9dda"
     },
     {
-     "id": "14bJhryXGk6H6qlGzwj3W5",
-     "name": "Hebe Tien",
-     "image": "https://i.scdn.co/image/ab6761610000f17809749491c2a434bde6cf40cc"
-    },
-    {
      "id": "1IueXOQyABrMOprrzwQJWN",
      "name": "Sigala",
      "image": "https://i.scdn.co/image/ab6761610000f1782287136f17708c9d01fa538c"
-    },
-    {
-     "id": "3AroL2oDPiAnMpTmIQv3KP",
-     "name": "Cyndi Wang",
-     "image": "https://i.scdn.co/image/ab6761610000f1788baa4f890691b73ec50ccb70"
     },
     {
      "id": "6MDME20pz9RveH9rEXvrOM",
