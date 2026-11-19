@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-19T05:00:22Z",
+ "updated_at": "2026-11-19T14:00:22Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -44,6 +44,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f17866a909756400366c24bf1568"
     },
     {
+     "id": "1f3NYrlm9GpXxMz8XZGEP5",
+     "name": "Axero",
+     "image": "https://i.scdn.co/image/ab6761610000f178c3f0ab5f9cba94862e72542a"
+    },
+    {
      "id": "23fqKkggKUBHNkbKtXEls4",
      "name": "Kygo",
      "image": "https://i.scdn.co/image/ab6761610000f178e5ea1aa1404629c12ad86658"
@@ -52,6 +57,11 @@
      "id": "1vCWHaC5f2uS3yhpwWbIA6",
      "name": "Avicii",
      "image": "https://i.scdn.co/image/ab6761610000f178ae07171f989fb39736674113"
+    },
+    {
+     "id": "3OKg7YbOIatODzkRIbLJR4",
+     "name": "TheFatRat",
+     "image": "https://i.scdn.co/image/ab6761610000f178c64c5f001dc3957cf5651460"
     },
     {
      "id": "5Pwc4xIPtQLFEnJriah9YJ",
@@ -64,11 +74,6 @@
      "image": "https://i.scdn.co/image/ab6761610000f178783a6a578e8eb992bfd74765"
     },
     {
-     "id": "1f3NYrlm9GpXxMz8XZGEP5",
-     "name": "Axero",
-     "image": "https://i.scdn.co/image/ab6761610000f178c3f0ab5f9cba94862e72542a"
-    },
-    {
      "id": "0du5cEVh5yTK9QJze8zA0C",
      "name": "Bruno Mars",
      "image": "https://i.scdn.co/image/ab6761610000f178c7688aad1bf03986934d7e26"
@@ -77,11 +82,6 @@
      "id": "6M2wZ9GZgrQXHCFfjv46we",
      "name": "Dua Lipa",
      "image": "https://i.scdn.co/image/ab6761610000f1780c68f6c95232e716f0abee8d"
-    },
-    {
-     "id": "3OKg7YbOIatODzkRIbLJR4",
-     "name": "TheFatRat",
-     "image": "https://i.scdn.co/image/ab6761610000f178c64c5f001dc3957cf5651460"
     },
     {
      "id": "7mShFo2eYgVBQFZBCilhtl",
@@ -94,14 +94,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f1788c2024e68663f46b2981398d"
     },
     {
-     "id": "3tYJfCciy07wTBt2HpjCQw",
-     "name": "Vexento",
-     "image": "https://i.scdn.co/image/ab6761610000f17827874e04725994e5ae5d21c3"
-    },
-    {
      "id": "3AroL2oDPiAnMpTmIQv3KP",
      "name": "Cyndi Wang",
      "image": "https://i.scdn.co/image/ab6761610000f1788baa4f890691b73ec50ccb70"
+    },
+    {
+     "id": "3tYJfCciy07wTBt2HpjCQw",
+     "name": "Vexento",
+     "image": "https://i.scdn.co/image/ab6761610000f17827874e04725994e5ae5d21c3"
     },
     {
      "id": "5XMnJOQbE6OuOvcV8fn3Wg",
@@ -340,18 +340,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02da0751d4a35b6af93fb3e01d"
     },
     {
-     "id": "44wtMjxhSguxgWSggFMyMJ",
-     "name": "Yet So Close",
-     "artist": "Vexento",
-     "album": "Yet So Close",
-     "image": "https://i.scdn.co/image/ab67616d00001e02f9e94cdcd43abe52e9e1c4c3"
-    },
-    {
      "id": "7qiZfU4dY1lWllzX7mPBI3",
      "name": "Shape of You",
      "artist": "Ed Sheeran",
      "album": "÷ (Deluxe)",
      "image": "https://i.scdn.co/image/ab67616d00001e02ba5db46f4b838ef6027e6f96"
+    },
+    {
+     "id": "44wtMjxhSguxgWSggFMyMJ",
+     "name": "Yet So Close",
+     "artist": "Vexento",
+     "album": "Yet So Close",
+     "image": "https://i.scdn.co/image/ab67616d00001e02f9e94cdcd43abe52e9e1c4c3"
     },
     {
      "id": "3LvkvzJ2jN7s8P8MMQCeKL",
@@ -410,6 +410,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e0214b7b2a920a41166d53ddd49"
     },
     {
+     "id": "1HNkqx9Ahdgi1Ixy2xkKkL",
+     "name": "Photograph",
+     "artist": "Ed Sheeran",
+     "album": "x (Deluxe Edition)",
+     "image": "https://i.scdn.co/image/ab67616d00001e0213b3e37318a0c247b550bccd"
+    },
+    {
      "id": "3rmo8F54jFF8OgYsqTxm5d",
      "name": "Bad Habits",
      "artist": "Ed Sheeran",
@@ -431,6 +438,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e0213b3e37318a0c247b550bccd"
     },
     {
+     "id": "4HadYIhNfy7evMUI5W6wEc",
+     "name": "Reykjavik",
+     "artist": "Joachim Pastor",
+     "album": "Reykjavik",
+     "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
+    },
+    {
      "id": "7bNACqrVn2mAs6YzYlx262",
      "name": "Equality7-2521",
      "artist": "7and5",
@@ -443,13 +457,6 @@
      "artist": "Young Rising Sons",
      "album": "Young Rising Sons",
      "image": "https://i.scdn.co/image/ab67616d00001e02f2a45f258f01bbd1a0e77bbc"
-    },
-    {
-     "id": "1HNkqx9Ahdgi1Ixy2xkKkL",
-     "name": "Photograph",
-     "artist": "Ed Sheeran",
-     "album": "x (Deluxe Edition)",
-     "image": "https://i.scdn.co/image/ab67616d00001e0213b3e37318a0c247b550bccd"
     },
     {
      "id": "4DxybsoSiMUW0JI2oM0SSN",
@@ -466,13 +473,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02b93587221b1ce0c85a02297e"
     },
     {
-     "id": "4HadYIhNfy7evMUI5W6wEc",
-     "name": "Reykjavik",
-     "artist": "Joachim Pastor",
-     "album": "Reykjavik",
-     "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
-    },
-    {
      "id": "2CPqh63wRVscbceKcPxwvv",
      "name": "The Ocean (feat. Shy Martin)",
      "artist": "Mike Perry, shy martin",
@@ -480,11 +480,25 @@
      "image": "https://i.scdn.co/image/ab67616d00001e027f401862bfe87b552a75308d"
     },
     {
+     "id": "34gCuhDGsG4bRPIf9bb02f",
+     "name": "Thinking out Loud",
+     "artist": "Ed Sheeran",
+     "album": "x (Deluxe Edition)",
+     "image": "https://i.scdn.co/image/ab67616d00001e0213b3e37318a0c247b550bccd"
+    },
+    {
      "id": "5YTtTbqxUzJHD3CpbNHerP",
      "name": "Brighter Than The Sun",
      "artist": "Colbie Caillat",
      "album": "All Of You",
      "image": "https://i.scdn.co/image/ab67616d00001e023baae0836a5b6ee9d649ed14"
+    },
+    {
+     "id": "1VdZ0vKfR5jneCmWIUAMxK",
+     "name": "The A Team",
+     "artist": "Ed Sheeran",
+     "album": "+",
+     "image": "https://i.scdn.co/image/ab67616d00001e02e6d489d359c546fea254f440"
     },
     {
      "id": "6nNLW8UCaIMxH9HzIbs63N",
@@ -590,20 +604,6 @@
      "artist": "Tobu",
      "album": "Candyland",
      "image": "https://i.scdn.co/image/ab67616d00001e029feceff471ea209ab793ce6b"
-    },
-    {
-     "id": "1VdZ0vKfR5jneCmWIUAMxK",
-     "name": "The A Team",
-     "artist": "Ed Sheeran",
-     "album": "+",
-     "image": "https://i.scdn.co/image/ab67616d00001e02e6d489d359c546fea254f440"
-    },
-    {
-     "id": "4lZBB7P5j84VqQHf3POLdA",
-     "name": "Hold On",
-     "artist": "Bergs, Rachel Fels",
-     "album": "Hold On",
-     "image": "https://i.scdn.co/image/ab67616d00001e026aae6fbda3deab68f09c48a7"
     }
    ]
   },
@@ -690,14 +690,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f178ee3123e593174208f9754fab"
     },
     {
-     "id": "20wkVLutqVOYrc0kxFs7rA",
-     "name": "Daniel Caesar",
-     "image": "https://i.scdn.co/image/ab6761610000f178e4d94f7cbebb17504c25d419"
-    },
-    {
      "id": "2elBjNSdBE2Y3f0j1mjrql",
      "name": "Jay Chou",
      "image": "https://i.scdn.co/image/ab6761610000f17887fbbe9ed03fbb500595e720"
+    },
+    {
+     "id": "20wkVLutqVOYrc0kxFs7rA",
+     "name": "Daniel Caesar",
+     "image": "https://i.scdn.co/image/ab6761610000f178e4d94f7cbebb17504c25d419"
     },
     {
      "id": "0SIXZXJCAhNU8sxK0qm7hn",
@@ -805,6 +805,16 @@
      "image": "https://i.scdn.co/image/ab6761610000f17817dd503b5c1841cd238c9aa7"
     },
     {
+     "id": "14bJhryXGk6H6qlGzwj3W5",
+     "name": "Hebe Tien",
+     "image": "https://i.scdn.co/image/ab6761610000f17809749491c2a434bde6cf40cc"
+    },
+    {
+     "id": "3AroL2oDPiAnMpTmIQv3KP",
+     "name": "Cyndi Wang",
+     "image": "https://i.scdn.co/image/ab6761610000f1788baa4f890691b73ec50ccb70"
+    },
+    {
      "id": "5H8TJITZE1sPjVR2ACzXNS",
      "name": "Wu Bai",
      "image": "https://i.scdn.co/image/ab6761610000f17818d5d4367366ddaa10137890"
@@ -825,11 +835,6 @@
      "image": "https://i.scdn.co/image/ab6761610000f178436ac1bb13ccbb62598d9dda"
     },
     {
-     "id": "14bJhryXGk6H6qlGzwj3W5",
-     "name": "Hebe Tien",
-     "image": "https://i.scdn.co/image/ab6761610000f17809749491c2a434bde6cf40cc"
-    },
-    {
      "id": "1IueXOQyABrMOprrzwQJWN",
      "name": "Sigala",
      "image": "https://i.scdn.co/image/ab6761610000f1782287136f17708c9d01fa538c"
@@ -838,11 +843,6 @@
      "id": "2o5jDhtHVPhrJdv3cEQ99Z",
      "name": "Tiësto",
      "image": "https://i.scdn.co/image/ab6761610000f178f4973f7346a2f35e56b63d57"
-    },
-    {
-     "id": "3AroL2oDPiAnMpTmIQv3KP",
-     "name": "Cyndi Wang",
-     "image": "https://i.scdn.co/image/ab6761610000f1788baa4f890691b73ec50ccb70"
     },
     {
      "id": "3PhoLpVuITZKcymswpck5b",
@@ -890,6 +890,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
     },
     {
+     "id": "6fxVffaTuwjgEk5h9QyRjy",
+     "name": "Photograph",
+     "artist": "Ed Sheeran",
+     "album": "x (Wembley Edition)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02d08209944468440145f01524"
+    },
+    {
      "id": "7gUpO6td4OOnu0Lf9vhcIV",
      "name": "Lights - Single Version",
      "artist": "Ellie Goulding",
@@ -916,13 +923,6 @@
      "artist": "D33pSoul",
      "album": "Nostalgia",
      "image": "https://i.scdn.co/image/ab67616d00001e0244fd7df5558aa1f6cbed17a2"
-    },
-    {
-     "id": "6fxVffaTuwjgEk5h9QyRjy",
-     "name": "Photograph",
-     "artist": "Ed Sheeran",
-     "album": "x (Wembley Edition)",
-     "image": "https://i.scdn.co/image/ab67616d00001e02d08209944468440145f01524"
     },
     {
      "id": "6nNLW8UCaIMxH9HzIbs63N",
@@ -1430,20 +1430,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02b07c28bb3192bdfb585fb438"
     },
     {
-     "id": "2CPqh63wRVscbceKcPxwvv",
-     "name": "The Ocean (feat. Shy Martin)",
-     "artist": "Mike Perry, shy martin",
-     "album": "The Ocean (feat. Shy Martin)",
-     "image": "https://i.scdn.co/image/ab67616d00001e027f401862bfe87b552a75308d"
-    },
-    {
-     "id": "4HadYIhNfy7evMUI5W6wEc",
-     "name": "Reykjavik",
-     "artist": "Joachim Pastor",
-     "album": "Reykjavik",
-     "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
-    },
-    {
      "id": "6fNhZRFEkBfgW39W3wKARJ",
      "name": "Pompeii",
      "artist": "Bastille",
@@ -1456,6 +1442,20 @@
      "artist": "Ed Sheeran",
      "album": "x (Wembley Edition)",
      "image": "https://i.scdn.co/image/ab67616d00001e02d08209944468440145f01524"
+    },
+    {
+     "id": "2CPqh63wRVscbceKcPxwvv",
+     "name": "The Ocean (feat. Shy Martin)",
+     "artist": "Mike Perry, shy martin",
+     "album": "The Ocean (feat. Shy Martin)",
+     "image": "https://i.scdn.co/image/ab67616d00001e027f401862bfe87b552a75308d"
+    },
+    {
+     "id": "4HadYIhNfy7evMUI5W6wEc",
+     "name": "Reykjavik",
+     "artist": "Joachim Pastor",
+     "album": "Reykjavik",
+     "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
     },
     {
      "id": "0qt5f5EL92o8Snzopsv0en",
@@ -1661,6 +1661,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e025b6bcc59c3562a6f362344c6"
     },
     {
+     "id": "7gUpO6td4OOnu0Lf9vhcIV",
+     "name": "Lights - Single Version",
+     "artist": "Ellie Goulding",
+     "album": "Lights",
+     "image": "https://i.scdn.co/image/ab67616d00001e02a992179a520d2eb38fa41e64"
+    },
+    {
      "id": "12LOYGBr0T0IqyuhEILYFh",
      "name": "La clé des champs",
      "artist": "NTO",
@@ -1715,13 +1722,6 @@
      "artist": "Alan Walker",
      "album": "Different World",
      "image": "https://i.scdn.co/image/ab67616d00001e02a108e07c661f9fc54de9c43a"
-    },
-    {
-     "id": "6LLegbVHksZ5kDC2whN1Da",
-     "name": "Adventure Time",
-     "artist": "Philter",
-     "album": "The Blossom Chronicles",
-     "image": "https://i.scdn.co/image/ab67616d00001e02b93587221b1ce0c85a02297e"
     },
     {
      "id": "6RUKPb4LETWmmr3iAEQktW",
