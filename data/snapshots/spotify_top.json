@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-18T14:00:24Z",
+ "updated_at": "2026-11-19T00:00:22Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -700,14 +700,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f17887fbbe9ed03fbb500595e720"
     },
     {
-     "id": "6nB0iY1cjSY1KyhYyuIIKH",
-     "name": "FKA twigs",
-     "image": "https://i.scdn.co/image/ab6761610000f1783f6b8973be0344896d8680ab"
-    },
-    {
      "id": "0SIXZXJCAhNU8sxK0qm7hn",
      "name": "Stefanie Sun",
      "image": "https://i.scdn.co/image/ab6761610000f178744989ed737112f4edbd2cc3"
+    },
+    {
+     "id": "6nB0iY1cjSY1KyhYyuIIKH",
+     "name": "FKA twigs",
+     "image": "https://i.scdn.co/image/ab6761610000f1783f6b8973be0344896d8680ab"
     },
     {
      "id": "5uCktjKM1Rf9VnUvFD6j17",
@@ -810,6 +810,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f17818d5d4367366ddaa10137890"
     },
     {
+     "id": "6noxsCszBEEK04kCehugOp",
+     "name": "A-Mei Chang",
+     "image": "https://i.scdn.co/image/ab6761610000f1781b44d5d4d2e564f28f4046cf"
+    },
+    {
      "id": "0du5cEVh5yTK9QJze8zA0C",
      "name": "Bruno Mars",
      "image": "https://i.scdn.co/image/ab6761610000f178c7688aad1bf03986934d7e26"
@@ -825,14 +830,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f178f4973f7346a2f35e56b63d57"
     },
     {
+     "id": "3AroL2oDPiAnMpTmIQv3KP",
+     "name": "Cyndi Wang",
+     "image": "https://i.scdn.co/image/ab6761610000f1788baa4f890691b73ec50ccb70"
+    },
+    {
      "id": "3PhoLpVuITZKcymswpck5b",
      "name": "Elton John",
      "image": "https://i.scdn.co/image/ab6761610000f1780dc33a1c53bb58a84b45d6a7"
-    },
-    {
-     "id": "6noxsCszBEEK04kCehugOp",
-     "name": "A-Mei Chang",
-     "image": "https://i.scdn.co/image/ab6761610000f1781b44d5d4d2e564f28f4046cf"
     },
     {
      "id": "6qzfo7jiO4OrhxrvPFPlWX",
@@ -892,6 +897,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02a992179a520d2eb38fa41e64"
     },
     {
+     "id": "4HadYIhNfy7evMUI5W6wEc",
+     "name": "Reykjavik",
+     "artist": "Joachim Pastor",
+     "album": "Reykjavik",
+     "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
+    },
+    {
      "id": "2CPqh63wRVscbceKcPxwvv",
      "name": "The Ocean (feat. Shy Martin)",
      "artist": "Mike Perry, shy martin",
@@ -906,18 +918,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e0244fd7df5558aa1f6cbed17a2"
     },
     {
+     "id": "6fxVffaTuwjgEk5h9QyRjy",
+     "name": "Photograph",
+     "artist": "Ed Sheeran",
+     "album": "x (Wembley Edition)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02d08209944468440145f01524"
+    },
+    {
      "id": "6nNLW8UCaIMxH9HzIbs63N",
      "name": "清明雨上",
      "artist": "許嵩",
      "album": "自定義",
      "image": "https://i.scdn.co/image/ab67616d00001e02190d0f6366aee5bace080984"
-    },
-    {
-     "id": "4HadYIhNfy7evMUI5W6wEc",
-     "name": "Reykjavik",
-     "artist": "Joachim Pastor",
-     "album": "Reykjavik",
-     "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
     },
     {
      "id": "0qt5f5EL92o8Snzopsv0en",
@@ -946,6 +958,13 @@
      "artist": "Doja Cat, SZA",
      "album": "Planet Her",
      "image": "https://i.scdn.co/image/ab67616d00001e0214b7b2a920a41166d53ddd49"
+    },
+    {
+     "id": "6u0oHknFYrnUd42A6rvFly",
+     "name": "Sing",
+     "artist": "Ed Sheeran",
+     "album": "x (Wembley Edition)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02d08209944468440145f01524"
     },
     {
      "id": "7ti4qMC7xYQeh1uRzj5XuM",
@@ -990,6 +1009,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e029e2f95ae77cf436017ada9cb"
     },
     {
+     "id": "1VdZ0vKfR5jneCmWIUAMxK",
+     "name": "The A Team",
+     "artist": "Ed Sheeran",
+     "album": "+",
+     "image": "https://i.scdn.co/image/ab67616d00001e02e6d489d359c546fea254f440"
+    },
+    {
      "id": "1eOJAiCKFuMda0fPRvjcuc",
      "name": "Hold My Hand",
      "artist": "Jess Glynne",
@@ -1009,13 +1035,6 @@
      "artist": "Avicii",
      "album": "True",
      "image": "https://i.scdn.co/image/ab67616d00001e02162c5d6dbf1dc3965d1a391a"
-    },
-    {
-     "id": "6u0oHknFYrnUd42A6rvFly",
-     "name": "Sing",
-     "artist": "Ed Sheeran",
-     "album": "x (Wembley Edition)",
-     "image": "https://i.scdn.co/image/ab67616d00001e02d08209944468440145f01524"
     },
     {
      "id": "7nDQMtLxu94xtlTR8bEqjU",
@@ -1053,11 +1072,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e026823e3a4f0a685140701fcf2"
     },
     {
-     "id": "1VdZ0vKfR5jneCmWIUAMxK",
-     "name": "The A Team",
+     "id": "1Slwb6dOYkBlWal1PGtnNg",
+     "name": "Thinking out Loud",
      "artist": "Ed Sheeran",
-     "album": "+",
-     "image": "https://i.scdn.co/image/ab67616d00001e02e6d489d359c546fea254f440"
+     "album": "x (Wembley Edition)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02d08209944468440145f01524"
+    },
+    {
+     "id": "1fu5IQSRgPxJL2OTP7FVLW",
+     "name": "I See Fire",
+     "artist": "Ed Sheeran",
+     "album": "The Hobbit: The Desolation of Smaug (Original Motion Picture Soundtrack)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b5b40c88bb9cdd8d872ce774"
     },
     {
      "id": "213x4gsFDm04hSqIUkg88w",
@@ -1109,13 +1135,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e029f89b8390933e9ccb3673c89"
     },
     {
-     "id": "6fxVffaTuwjgEk5h9QyRjy",
-     "name": "Photograph",
-     "artist": "Ed Sheeran",
-     "album": "x (Wembley Edition)",
-     "image": "https://i.scdn.co/image/ab67616d00001e02d08209944468440145f01524"
-    },
-    {
      "id": "1SN1vSPsr4V4tIUTR3s8YW",
      "name": "Fast Car",
      "artist": "Jonas Blue, Dakota",
@@ -1137,11 +1156,25 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02508f6070bbe3a4fec70e2036"
     },
     {
+     "id": "41NzE22njxaczRSqCjoN55",
+     "name": "Young, Wild \u0026 Free",
+     "artist": "Axero",
+     "album": "Young, Wild \u0026 Free",
+     "image": "https://i.scdn.co/image/ab67616d00001e024076a1825a2f23dbef82303a"
+    },
+    {
      "id": "56y1jOTK0XSvJzVv9vHQBK",
      "name": "Paint The Town Red",
      "artist": "Doja Cat",
      "album": "Scarlet",
      "image": "https://i.scdn.co/image/ab67616d00001e02a54499d7ba4e9afeea91df86"
+    },
+    {
+     "id": "698ItKASDavgwZ3WjaWjtz",
+     "name": "Faded",
+     "artist": "Alan Walker",
+     "album": "Different World",
+     "image": "https://i.scdn.co/image/ab67616d00001e02a108e07c661f9fc54de9c43a"
     },
     {
      "id": "12LOYGBr0T0IqyuhEILYFh",
@@ -1177,34 +1210,6 @@
      "artist": "Take That",
      "album": "Beautiful World",
      "image": "https://i.scdn.co/image/ab67616d00001e0206e7629fa095158d50b73d57"
-    },
-    {
-     "id": "54RpL1P9FxOzZDE3N2XyMN",
-     "name": "偶然",
-     "artist": "Bibi Zhou",
-     "album": "黑·择·明",
-     "image": "https://i.scdn.co/image/ab67616d00001e0259120a6b8be0a60a4bbf82cd"
-    },
-    {
-     "id": "5lF0pHbsJ0QqyIrLweHJPW",
-     "name": "Burn",
-     "artist": "Ellie Goulding",
-     "album": "Halcyon Nights",
-     "image": "https://i.scdn.co/image/ab67616d00001e02a8f674745d4e6757a9b35ba0"
-    },
-    {
-     "id": "6LLegbVHksZ5kDC2whN1Da",
-     "name": "Adventure Time",
-     "artist": "Philter",
-     "album": "The Blossom Chronicles",
-     "image": "https://i.scdn.co/image/ab67616d00001e02b93587221b1ce0c85a02297e"
-    },
-    {
-     "id": "6RUKPb4LETWmmr3iAEQktW",
-     "name": "Something Just Like This",
-     "artist": "The Chainsmokers, Coldplay",
-     "album": "Memories...Do Not Open",
-     "image": "https://i.scdn.co/image/ab67616d00001e020c13d3d5a503c84fcc60ae94"
     }
    ]
   },
@@ -1326,6 +1331,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f178932efe5392a48f64e5bd54d8"
     },
     {
+     "id": "2OC4lXfGEKZkbmRCcf2vTq",
+     "name": "Wanting",
+     "image": "https://i.scdn.co/image/ab6761610000f17862cf72356b92b98efd61f63c"
+    },
+    {
      "id": "3t5xRXzsuZmMDkQzgOX35S",
      "name": "Robin Schulz",
      "image": "https://i.scdn.co/image/ab6761610000f178869ddcc058c5ff2a459ad8d5"
@@ -1371,14 +1381,24 @@
      "image": "https://i.scdn.co/image/ab6761610000f178c7688aad1bf03986934d7e26"
     },
     {
+     "id": "0qmPs7q4bykvrS8NMZk7ud",
+     "name": "Penny Tai",
+     "image": "https://i.scdn.co/image/ab6761610000f178436ac1bb13ccbb62598d9dda"
+    },
+    {
+     "id": "14bJhryXGk6H6qlGzwj3W5",
+     "name": "Hebe Tien",
+     "image": "https://i.scdn.co/image/ab6761610000f17809749491c2a434bde6cf40cc"
+    },
+    {
      "id": "1IueXOQyABrMOprrzwQJWN",
      "name": "Sigala",
      "image": "https://i.scdn.co/image/ab6761610000f1782287136f17708c9d01fa538c"
     },
     {
-     "id": "2OC4lXfGEKZkbmRCcf2vTq",
-     "name": "Wanting",
-     "image": "https://i.scdn.co/image/ab6761610000f17862cf72356b92b98efd61f63c"
+     "id": "3AroL2oDPiAnMpTmIQv3KP",
+     "name": "Cyndi Wang",
+     "image": "https://i.scdn.co/image/ab6761610000f1788baa4f890691b73ec50ccb70"
     },
     {
      "id": "6MDME20pz9RveH9rEXvrOM",
