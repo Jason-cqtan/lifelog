@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-21T05:00:24Z",
+ "updated_at": "2026-11-21T14:00:24Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -508,6 +508,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e028a99868b5a57469de83fb9ba"
     },
     {
+     "id": "69uxyAqqPIsUyTO8txoP2M",
+     "name": "Adventure of a Lifetime",
+     "artist": "Coldplay",
+     "album": "A Head Full of Dreams",
+     "image": "https://i.scdn.co/image/ab67616d00001e028ff7c3580d429c8212b9a3b6"
+    },
+    {
      "id": "0GO8y8jQk1PkHzS31d699N",
      "name": "Tongue Tied",
      "artist": "GROUPLOVE",
@@ -555,13 +562,6 @@
      "artist": "Natema, Saccao",
      "album": "Run Away",
      "image": "https://i.scdn.co/image/ab67616d00001e02ba48109eda0f2314702ce305"
-    },
-    {
-     "id": "69uxyAqqPIsUyTO8txoP2M",
-     "name": "Adventure of a Lifetime",
-     "artist": "Coldplay",
-     "album": "A Head Full of Dreams",
-     "image": "https://i.scdn.co/image/ab67616d00001e028ff7c3580d429c8212b9a3b6"
     },
     {
      "id": "7AoCZm5JpcgiIpQz8ClelB",
