@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-22T00:00:22Z",
+ "updated_at": "2026-11-22T05:00:23Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -1316,6 +1316,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f1788ebba5e60113b48de8c11f6b"
     },
     {
+     "id": "1feoGrmmD8QmNqtK2Gdwy8",
+     "name": "Tobu",
+     "image": "https://i.scdn.co/image/ab6761610000f17830eb9bf041aecb5295605632"
+    },
+    {
      "id": "4gzpq5DPGxSnKTe4SA8HAU",
      "name": "Coldplay",
      "image": "https://i.scdn.co/image/ab6761610000f1781ba8fc5f5c73e7e9313cc6eb"
@@ -1334,6 +1339,11 @@
      "id": "7f5Zgnp2spUuuzKplmRkt7",
      "name": "Lost Frequencies",
      "image": "https://i.scdn.co/image/ab6761610000f178983c9d4a7428701043498acd"
+    },
+    {
+     "id": "7vk5e3vY1uw9plTHJAMwjN",
+     "name": "Alan Walker",
+     "image": "https://i.scdn.co/image/ab6761610000f178572a8eae56feae217f618078"
     },
     {
      "id": "04gDigrS5kc9YWfZHwBETP",
@@ -1386,6 +1396,21 @@
      "image": "https://i.scdn.co/image/ab6761610000f1782287136f17708c9d01fa538c"
     },
     {
+     "id": "2hfZs6m89sNBt2zKcsBRj9",
+     "name": "Fredji",
+     "image": "https://i.scdn.co/image/ab6761610000f1781c33b77b52bc8d7def760220"
+    },
+    {
+     "id": "3OKg7YbOIatODzkRIbLJR4",
+     "name": "TheFatRat",
+     "image": "https://i.scdn.co/image/ab6761610000f178c64c5f001dc3957cf5651460"
+    },
+    {
+     "id": "3tYJfCciy07wTBt2HpjCQw",
+     "name": "Vexento",
+     "image": "https://i.scdn.co/image/ab6761610000f17827874e04725994e5ae5d21c3"
+    },
+    {
      "id": "53XhwfbYqKCa1cC15pYq2q",
      "name": "Imagine Dragons",
      "image": "https://i.scdn.co/image/ab6761610000f178ab47d8dae2b24f5afe7f9d38"
@@ -1404,6 +1429,11 @@
      "id": "6MDME20pz9RveH9rEXvrOM",
      "name": "Clean Bandit",
      "image": "https://i.scdn.co/image/ab6761610000f178f995542c4f68f8ae4f05b5f6"
+    },
+    {
+     "id": "7qgorhDacy1FRz5HkAhDtu",
+     "name": "Elektronomia",
+     "image": "https://i.scdn.co/image/ab6761610000f178bd83cf91e7780f4b0a4f0687"
     },
     {
      "id": "3AQRLZ9PuTAozP28Skbq8V",
@@ -1483,18 +1513,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02ca9961814136d4bd7acfd811"
     },
     {
-     "id": "6ex1Pz3pntgy4NPtxHXN2V",
-     "name": "Bad Habits",
-     "artist": "Ed Sheeran",
-     "album": "= (Tour Edition)",
-     "image": "https://i.scdn.co/image/ab67616d00001e02452eab95b1147fd8376f2006"
-    },
-    {
      "id": "0euyZh7zSUmpNXVpVBdcN2",
      "name": "Candyland",
      "artist": "Tobu",
      "album": "Candyland",
      "image": "https://i.scdn.co/image/ab67616d00001e029feceff471ea209ab793ce6b"
+    },
+    {
+     "id": "6ex1Pz3pntgy4NPtxHXN2V",
+     "name": "Bad Habits",
+     "artist": "Ed Sheeran",
+     "album": "= (Tour Edition)",
+     "image": "https://i.scdn.co/image/ab67616d00001e02452eab95b1147fd8376f2006"
     },
     {
      "id": "7qiZfU4dY1lWllzX7mPBI3",
