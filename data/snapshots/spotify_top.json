@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-22T14:00:23Z",
+ "updated_at": "2026-11-23T00:00:23Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -1261,11 +1261,6 @@
      "image": "https://i.scdn.co/image/ab6761610000f178ee3123e593174208f9754fab"
     },
     {
-     "id": "20wkVLutqVOYrc0kxFs7rA",
-     "name": "Daniel Caesar",
-     "image": "https://i.scdn.co/image/ab6761610000f178e4d94f7cbebb17504c25d419"
-    },
-    {
      "id": "0X2BH1fck6amBIoJhDVmmJ",
      "name": "Ellie Goulding",
      "image": "https://i.scdn.co/image/ab6761610000f1785c461001b3489a0a523f63ee"
@@ -1331,14 +1326,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f17877ef80571a40d9d19cf52208"
     },
     {
-     "id": "3AQRLZ9PuTAozP28Skbq8V",
-     "name": "The Script",
-     "image": "https://i.scdn.co/image/ab6761610000f17839cf57b090fcaefe756c91c3"
-    },
-    {
      "id": "04gDigrS5kc9YWfZHwBETP",
      "name": "Maroon 5",
      "image": "https://i.scdn.co/image/ab6761610000f178f8349dfb619a7f842242de77"
+    },
+    {
+     "id": "3AQRLZ9PuTAozP28Skbq8V",
+     "name": "The Script",
+     "image": "https://i.scdn.co/image/ab6761610000f17839cf57b090fcaefe756c91c3"
     },
     {
      "id": "4ScCswdRlyA23odg9thgIO",
@@ -1634,13 +1629,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02b5b40c88bb9cdd8d872ce774"
     },
     {
-     "id": "3xKsf9qdS1CyvXSMEid6g8",
-     "name": "Pink + White",
-     "artist": "Frank Ocean",
-     "album": "Blonde",
-     "image": "https://i.scdn.co/image/ab67616d00001e02c5649add07ed3720be9d5526"
-    },
-    {
      "id": "4dTVgHZFPlaq9nPbLVVLSG",
      "name": "Closer",
      "artist": "Tegan and Sara",
@@ -1786,6 +1774,13 @@
      "artist": "ODESZA, Zyra",
      "album": "In Return",
      "image": "https://i.scdn.co/image/ab67616d00001e02dbd801e562b7a9474ce8bae2"
+    },
+    {
+     "id": "3c8iiZGfEammKJuWTErE5x",
+     "name": "Ain't Nobody (Loves Me Better) (feat. Jasmine Thompson)",
+     "artist": "felix jaehn, Jasmine Thompson",
+     "album": "I",
+     "image": "https://i.scdn.co/image/ab67616d00001e029713f1939e377cf85a2a5b16"
     }
    ]
   }
