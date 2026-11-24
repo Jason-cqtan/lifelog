@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-23T14:00:26Z",
+ "updated_at": "2026-11-24T00:00:24Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -44,6 +44,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f17866a909756400366c24bf1568"
     },
     {
+     "id": "1vCWHaC5f2uS3yhpwWbIA6",
+     "name": "Avicii",
+     "image": "https://i.scdn.co/image/ab6761610000f178ae07171f989fb39736674113"
+    },
+    {
      "id": "1f3NYrlm9GpXxMz8XZGEP5",
      "name": "Axero",
      "image": "https://i.scdn.co/image/ab6761610000f178c3f0ab5f9cba94862e72542a"
@@ -52,11 +57,6 @@
      "id": "23fqKkggKUBHNkbKtXEls4",
      "name": "Kygo",
      "image": "https://i.scdn.co/image/ab6761610000f178e5ea1aa1404629c12ad86658"
-    },
-    {
-     "id": "1vCWHaC5f2uS3yhpwWbIA6",
-     "name": "Avicii",
-     "image": "https://i.scdn.co/image/ab6761610000f178ae07171f989fb39736674113"
     },
     {
      "id": "3OKg7YbOIatODzkRIbLJR4",
@@ -625,14 +625,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f178704d08abe2a3bf0bb1c366c9"
     },
     {
-     "id": "23fqKkggKUBHNkbKtXEls4",
-     "name": "Kygo",
-     "image": "https://i.scdn.co/image/ab6761610000f178e5ea1aa1404629c12ad86658"
-    },
-    {
      "id": "1vCWHaC5f2uS3yhpwWbIA6",
      "name": "Avicii",
      "image": "https://i.scdn.co/image/ab6761610000f178ae07171f989fb39736674113"
+    },
+    {
+     "id": "23fqKkggKUBHNkbKtXEls4",
+     "name": "Kygo",
+     "image": "https://i.scdn.co/image/ab6761610000f178e5ea1aa1404629c12ad86658"
     },
     {
      "id": "5cj0lLjcoR7YOSnhnX0Po5",
@@ -785,6 +785,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f17877ef80571a40d9d19cf52208"
     },
     {
+     "id": "4ScCswdRlyA23odg9thgIO",
+     "name": "Jess Glynne",
+     "image": "https://i.scdn.co/image/ab6761610000f178954fa7ee5108a613c3f27edc"
+    },
+    {
      "id": "5rSXSAkZ67PYJSvpUpkOr7",
      "name": "Backstreet Boys",
      "image": "https://i.scdn.co/image/ab6761610000f1787b3634864a78ab6bd1d77c36"
@@ -798,11 +803,6 @@
      "id": "2wY79sveU1sp5g7SokKOiI",
      "name": "Sam Smith",
      "image": "https://i.scdn.co/image/ab6761610000f1780e64fb94acbb752960c823e9"
-    },
-    {
-     "id": "4ScCswdRlyA23odg9thgIO",
-     "name": "Jess Glynne",
-     "image": "https://i.scdn.co/image/ab6761610000f178954fa7ee5108a613c3f27edc"
     },
     {
      "id": "4iHNK0tOyZPYnBU7nGAgpQ",
