@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-24T05:00:23Z",
+ "updated_at": "2026-11-24T14:00:23Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -1306,11 +1306,6 @@
      "image": "https://i.scdn.co/image/ab6761610000f17877ef80571a40d9d19cf52208"
     },
     {
-     "id": "1Xyo4u8uXC1ZmMpatF05PJ",
-     "name": "The Weeknd",
-     "image": "https://i.scdn.co/image/ab6761610000f178c1719ac9e6a75c1c25835018"
-    },
-    {
      "id": "4ScCswdRlyA23odg9thgIO",
      "name": "Jess Glynne",
      "image": "https://i.scdn.co/image/ab6761610000f178954fa7ee5108a613c3f27edc"
@@ -1366,11 +1361,6 @@
      "image": "https://i.scdn.co/image/ab6761610000f1788baa4f890691b73ec50ccb70"
     },
     {
-     "id": "4iHNK0tOyZPYnBU7nGAgpQ",
-     "name": "Mariah Carey",
-     "image": "https://i.scdn.co/image/ab6761610000f17821453384a10b1f8e18877f63"
-    },
-    {
      "id": "7qgorhDacy1FRz5HkAhDtu",
      "name": "Elektronomia",
      "image": "https://i.scdn.co/image/ab6761610000f178bd83cf91e7780f4b0a4f0687"
@@ -1386,6 +1376,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f1782287136f17708c9d01fa538c"
     },
     {
+     "id": "1Xyo4u8uXC1ZmMpatF05PJ",
+     "name": "The Weeknd",
+     "image": "https://i.scdn.co/image/ab6761610000f178c1719ac9e6a75c1c25835018"
+    },
+    {
      "id": "2hfZs6m89sNBt2zKcsBRj9",
      "name": "Fredji",
      "image": "https://i.scdn.co/image/ab6761610000f1781c33b77b52bc8d7def760220"
@@ -1399,6 +1394,11 @@
      "id": "3tYJfCciy07wTBt2HpjCQw",
      "name": "Vexento",
      "image": "https://i.scdn.co/image/ab6761610000f17827874e04725994e5ae5d21c3"
+    },
+    {
+     "id": "4iHNK0tOyZPYnBU7nGAgpQ",
+     "name": "Mariah Carey",
+     "image": "https://i.scdn.co/image/ab6761610000f17821453384a10b1f8e18877f63"
     },
     {
      "id": "5cj0lLjcoR7YOSnhnX0Po5",
