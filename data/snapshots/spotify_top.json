@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-25T05:00:23Z",
+ "updated_at": "2026-11-25T14:00:23Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -39,6 +39,11 @@
      "image": "https://i.scdn.co/image/ab6761610000f1780887284d923c88a92835e427"
     },
     {
+     "id": "23fqKkggKUBHNkbKtXEls4",
+     "name": "Kygo",
+     "image": "https://i.scdn.co/image/ab6761610000f178e5ea1aa1404629c12ad86658"
+    },
+    {
      "id": "6PNEi9i2MxUgRufqYr76Xt",
      "name": "Zhang Zhen Yue",
      "image": "https://i.scdn.co/image/ab6761610000f17866a909756400366c24bf1568"
@@ -52,11 +57,6 @@
      "id": "1f3NYrlm9GpXxMz8XZGEP5",
      "name": "Axero",
      "image": "https://i.scdn.co/image/ab6761610000f178c3f0ab5f9cba94862e72542a"
-    },
-    {
-     "id": "23fqKkggKUBHNkbKtXEls4",
-     "name": "Kygo",
-     "image": "https://i.scdn.co/image/ab6761610000f178e5ea1aa1404629c12ad86658"
     },
     {
      "id": "3OKg7YbOIatODzkRIbLJR4",
@@ -452,6 +452,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02f2a45f258f01bbd1a0e77bbc"
     },
     {
+     "id": "2CPqh63wRVscbceKcPxwvv",
+     "name": "The Ocean (feat. Shy Martin)",
+     "artist": "Mike Perry, shy martin",
+     "album": "The Ocean (feat. Shy Martin)",
+     "image": "https://i.scdn.co/image/ab67616d00001e027f401862bfe87b552a75308d"
+    },
+    {
      "id": "34gCuhDGsG4bRPIf9bb02f",
      "name": "Thinking out Loud",
      "artist": "Ed Sheeran",
@@ -478,13 +485,6 @@
      "artist": "Joachim Pastor",
      "album": "Reykjavik",
      "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
-    },
-    {
-     "id": "2CPqh63wRVscbceKcPxwvv",
-     "name": "The Ocean (feat. Shy Martin)",
-     "artist": "Mike Perry, shy martin",
-     "album": "The Ocean (feat. Shy Martin)",
-     "image": "https://i.scdn.co/image/ab67616d00001e027f401862bfe87b552a75308d"
     },
     {
      "id": "0qt5f5EL92o8Snzopsv0en",
@@ -967,6 +967,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e0214b7b2a920a41166d53ddd49"
     },
     {
+     "id": "3eOeuofLjOgjOCs7eWuvZ0",
+     "name": "Cool Kids",
+     "artist": "Echosmith",
+     "album": "Talking Dreams",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b098cbfb14e8cc251451ca19"
+    },
+    {
      "id": "6u0oHknFYrnUd42A6rvFly",
      "name": "Sing",
      "artist": "Ed Sheeran",
@@ -1002,18 +1009,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e029e2f95ae77cf436017ada9cb"
     },
     {
-     "id": "3eOeuofLjOgjOCs7eWuvZ0",
-     "name": "Cool Kids",
-     "artist": "Echosmith",
-     "album": "Talking Dreams",
-     "image": "https://i.scdn.co/image/ab67616d00001e02b098cbfb14e8cc251451ca19"
-    },
-    {
      "id": "7qiZfU4dY1lWllzX7mPBI3",
      "name": "Shape of You",
      "artist": "Ed Sheeran",
      "album": "÷ (Deluxe)",
      "image": "https://i.scdn.co/image/ab67616d00001e02ba5db46f4b838ef6027e6f96"
+    },
+    {
+     "id": "1I8tHoNBFTuoJAlh4hfVVE",
+     "name": "Firestone",
+     "artist": "Kygo, Conrad Sewell",
+     "album": "Cloud Nine",
+     "image": "https://i.scdn.co/image/ab67616d00001e027247979b8bc6027bf97043ef"
     },
     {
      "id": "1eOJAiCKFuMda0fPRvjcuc",
@@ -1056,6 +1063,13 @@
      "artist": "TheFatRat",
      "album": "Unity - 10th Anniversary Compilation",
      "image": "https://i.scdn.co/image/ab67616d00001e023b3b24d7997db331a6e841d3"
+    },
+    {
+     "id": "1SN1vSPsr4V4tIUTR3s8YW",
+     "name": "Fast Car",
+     "artist": "Jonas Blue, Dakota",
+     "album": "Blue",
+     "image": "https://i.scdn.co/image/ab67616d00001e025b6bcc59c3562a6f362344c6"
     },
     {
      "id": "7nDQMtLxu94xtlTR8bEqjU",
@@ -1114,11 +1128,25 @@
      "image": "https://i.scdn.co/image/ab67616d00001e026823e3a4f0a685140701fcf2"
     },
     {
+     "id": "12LOYGBr0T0IqyuhEILYFh",
+     "name": "La clé des champs",
+     "artist": "NTO",
+     "album": "La clé des champs",
+     "image": "https://i.scdn.co/image/ab67616d00001e025e04fccc811e35cf8d8f4c61"
+    },
+    {
      "id": "1Slwb6dOYkBlWal1PGtnNg",
      "name": "Thinking out Loud",
      "artist": "Ed Sheeran",
      "album": "x (Wembley Edition)",
      "image": "https://i.scdn.co/image/ab67616d00001e02d08209944468440145f01524"
+    },
+    {
+     "id": "3FZEv9JddkjHNFiMVxJYpS",
+     "name": "Carry Me (feat. Julia Michaels)",
+     "artist": "Kygo, Julia Michaels",
+     "album": "Cloud Nine",
+     "image": "https://i.scdn.co/image/ab67616d00001e027247979b8bc6027bf97043ef"
     },
     {
      "id": "3xKsf9qdS1CyvXSMEid6g8",
@@ -1149,13 +1177,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02da0751d4a35b6af93fb3e01d"
     },
     {
-     "id": "1SN1vSPsr4V4tIUTR3s8YW",
-     "name": "Fast Car",
-     "artist": "Jonas Blue, Dakota",
-     "album": "Blue",
-     "image": "https://i.scdn.co/image/ab67616d00001e025b6bcc59c3562a6f362344c6"
-    },
-    {
      "id": "0YPDp1KIxVLTdh3vnvk6wd",
      "name": "C'mon C'mon",
      "artist": "The Von Bondies",
@@ -1170,46 +1191,25 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02508f6070bbe3a4fec70e2036"
     },
     {
-     "id": "1I8tHoNBFTuoJAlh4hfVVE",
-     "name": "Firestone",
-     "artist": "Kygo, Conrad Sewell",
-     "album": "Cloud Nine",
-     "image": "https://i.scdn.co/image/ab67616d00001e027247979b8bc6027bf97043ef"
+     "id": "1LeItUMezKA1HdCHxYICed",
+     "name": "Say My Name",
+     "artist": "ODESZA, Zyra",
+     "album": "In Return",
+     "image": "https://i.scdn.co/image/ab67616d00001e02dbd801e562b7a9474ce8bae2"
     },
     {
-     "id": "1kKYjjfNYxE0YYgLa7vgVY",
-     "name": "Higher Love",
-     "artist": "Kygo, Whitney Houston",
-     "album": "Golden Hour",
-     "image": "https://i.scdn.co/image/ab67616d00001e0280368f0aa8f90c51674f9dd2"
+     "id": "3c8iiZGfEammKJuWTErE5x",
+     "name": "Ain't Nobody (Loves Me Better) (feat. Jasmine Thompson)",
+     "artist": "felix jaehn, Jasmine Thompson",
+     "album": "I",
+     "image": "https://i.scdn.co/image/ab67616d00001e029713f1939e377cf85a2a5b16"
     },
     {
-     "id": "37sINbJZcFdHFAsVNsPq1i",
-     "name": "Superheroes",
-     "artist": "The Script",
-     "album": "No Sound Without Silence",
-     "image": "https://i.scdn.co/image/ab67616d00001e0259d2079e141301ab89b6cbc5"
-    },
-    {
-     "id": "41NzE22njxaczRSqCjoN55",
-     "name": "Young, Wild \u0026 Free",
-     "artist": "Axero",
-     "album": "Young, Wild \u0026 Free",
-     "image": "https://i.scdn.co/image/ab67616d00001e024076a1825a2f23dbef82303a"
-    },
-    {
-     "id": "56y1jOTK0XSvJzVv9vHQBK",
-     "name": "Paint The Town Red",
-     "artist": "Doja Cat",
-     "album": "Scarlet",
-     "image": "https://i.scdn.co/image/ab67616d00001e02a54499d7ba4e9afeea91df86"
-    },
-    {
-     "id": "698ItKASDavgwZ3WjaWjtz",
-     "name": "Faded",
-     "artist": "Alan Walker",
-     "album": "Different World",
-     "image": "https://i.scdn.co/image/ab67616d00001e02a108e07c661f9fc54de9c43a"
+     "id": "4zLBcDtvYNVtF9fnG6lme3",
+     "name": "Sun Goes Down (feat. Jasmine Thompson) - Radio Mix",
+     "artist": "Robin Schulz, Jasmine Thompson",
+     "album": "Prayer",
+     "image": "https://i.scdn.co/image/ab67616d00001e02ec67f6776573462a1ad9ee2d"
     }
    ]
   },
@@ -1336,11 +1336,6 @@
      "image": "https://i.scdn.co/image/ab6761610000f178655ca8f3196953554b479452"
     },
     {
-     "id": "4S9EykWXhStSc15wEx8QFK",
-     "name": "Céline Dion",
-     "image": "https://i.scdn.co/image/ab6761610000f178fe81f2540f9fa7564dd5e05c"
-    },
-    {
      "id": "4npEfmQ6YuiwW1GpUmaq3F",
      "name": "Ava Max",
      "image": "https://i.scdn.co/image/ab6761610000f178eeb78278ee29fb6bfb9010f7"
@@ -1396,19 +1391,14 @@
      "image": "https://i.scdn.co/image/ab6761610000f17827874e04725994e5ae5d21c3"
     },
     {
-     "id": "4iHNK0tOyZPYnBU7nGAgpQ",
-     "name": "Mariah Carey",
-     "image": "https://i.scdn.co/image/ab6761610000f17821453384a10b1f8e18877f63"
+     "id": "4S9EykWXhStSc15wEx8QFK",
+     "name": "Céline Dion",
+     "image": "https://i.scdn.co/image/ab6761610000f178fe81f2540f9fa7564dd5e05c"
     },
     {
      "id": "5cj0lLjcoR7YOSnhnX0Po5",
      "name": "Doja Cat",
      "image": "https://i.scdn.co/image/ab6761610000f1788a0644455ebfa7d3976f5101"
-    },
-    {
-     "id": "5rSXSAkZ67PYJSvpUpkOr7",
-     "name": "Backstreet Boys",
-     "image": "https://i.scdn.co/image/ab6761610000f1787b3634864a78ab6bd1d77c36"
     },
     {
      "id": "6MDME20pz9RveH9rEXvrOM",
@@ -1430,13 +1420,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02b07c28bb3192bdfb585fb438"
     },
     {
-     "id": "6fNhZRFEkBfgW39W3wKARJ",
-     "name": "Pompeii",
-     "artist": "Bastille",
-     "album": "Bad Blood",
-     "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
-    },
-    {
      "id": "2CPqh63wRVscbceKcPxwvv",
      "name": "The Ocean (feat. Shy Martin)",
      "artist": "Mike Perry, shy martin",
@@ -1449,6 +1432,13 @@
      "artist": "Joachim Pastor",
      "album": "Reykjavik",
      "image": "https://i.scdn.co/image/ab67616d00001e022e4389a130d66f1f968384b8"
+    },
+    {
+     "id": "6fNhZRFEkBfgW39W3wKARJ",
+     "name": "Pompeii",
+     "artist": "Bastille",
+     "album": "Bad Blood",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b89cf022db28fa31376e0ed8"
     },
     {
      "id": "6fxVffaTuwjgEk5h9QyRjy",
@@ -1514,11 +1504,25 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02452eab95b1147fd8376f2006"
     },
     {
+     "id": "3eOeuofLjOgjOCs7eWuvZ0",
+     "name": "Cool Kids",
+     "artist": "Echosmith",
+     "album": "Talking Dreams",
+     "image": "https://i.scdn.co/image/ab67616d00001e02b098cbfb14e8cc251451ca19"
+    },
+    {
      "id": "7qiZfU4dY1lWllzX7mPBI3",
      "name": "Shape of You",
      "artist": "Ed Sheeran",
      "album": "÷ (Deluxe)",
      "image": "https://i.scdn.co/image/ab67616d00001e02ba5db46f4b838ef6027e6f96"
+    },
+    {
+     "id": "1I8tHoNBFTuoJAlh4hfVVE",
+     "name": "Firestone",
+     "artist": "Kygo, Conrad Sewell",
+     "album": "Cloud Nine",
+     "image": "https://i.scdn.co/image/ab67616d00001e027247979b8bc6027bf97043ef"
     },
     {
      "id": "1eOJAiCKFuMda0fPRvjcuc",
@@ -1563,11 +1567,11 @@
      "image": "https://i.scdn.co/image/ab67616d00001e023b3b24d7997db331a6e841d3"
     },
     {
-     "id": "3eOeuofLjOgjOCs7eWuvZ0",
-     "name": "Cool Kids",
-     "artist": "Echosmith",
-     "album": "Talking Dreams",
-     "image": "https://i.scdn.co/image/ab67616d00001e02b098cbfb14e8cc251451ca19"
+     "id": "1SN1vSPsr4V4tIUTR3s8YW",
+     "name": "Fast Car",
+     "artist": "Jonas Blue, Dakota",
+     "album": "Blue",
+     "image": "https://i.scdn.co/image/ab67616d00001e025b6bcc59c3562a6f362344c6"
     },
     {
      "id": "3eR23VReFzcdmS7TYCrhCe",
@@ -1619,6 +1623,13 @@
      "image": "https://i.scdn.co/image/ab67616d00001e026823e3a4f0a685140701fcf2"
     },
     {
+     "id": "12LOYGBr0T0IqyuhEILYFh",
+     "name": "La clé des champs",
+     "artist": "NTO",
+     "album": "La clé des champs",
+     "image": "https://i.scdn.co/image/ab67616d00001e025e04fccc811e35cf8d8f4c61"
+    },
+    {
      "id": "1Slwb6dOYkBlWal1PGtnNg",
      "name": "Thinking out Loud",
      "artist": "Ed Sheeran",
@@ -1631,6 +1642,13 @@
      "artist": "Ed Sheeran",
      "album": "The Hobbit: The Desolation of Smaug (Original Motion Picture Soundtrack)",
      "image": "https://i.scdn.co/image/ab67616d00001e02b5b40c88bb9cdd8d872ce774"
+    },
+    {
+     "id": "3FZEv9JddkjHNFiMVxJYpS",
+     "name": "Carry Me (feat. Julia Michaels)",
+     "artist": "Kygo, Julia Michaels",
+     "album": "Cloud Nine",
+     "image": "https://i.scdn.co/image/ab67616d00001e027247979b8bc6027bf97043ef"
     },
     {
      "id": "4dTVgHZFPlaq9nPbLVVLSG",
@@ -1654,13 +1672,6 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02da0751d4a35b6af93fb3e01d"
     },
     {
-     "id": "1SN1vSPsr4V4tIUTR3s8YW",
-     "name": "Fast Car",
-     "artist": "Jonas Blue, Dakota",
-     "album": "Blue",
-     "image": "https://i.scdn.co/image/ab67616d00001e025b6bcc59c3562a6f362344c6"
-    },
-    {
      "id": "0YPDp1KIxVLTdh3vnvk6wd",
      "name": "C'mon C'mon",
      "artist": "The Von Bondies",
@@ -1675,9 +1686,30 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02a992179a520d2eb38fa41e64"
     },
     {
-     "id": "1I8tHoNBFTuoJAlh4hfVVE",
-     "name": "Firestone",
-     "artist": "Kygo, Conrad Sewell",
+     "id": "1LeItUMezKA1HdCHxYICed",
+     "name": "Say My Name",
+     "artist": "ODESZA, Zyra",
+     "album": "In Return",
+     "image": "https://i.scdn.co/image/ab67616d00001e02dbd801e562b7a9474ce8bae2"
+    },
+    {
+     "id": "3c8iiZGfEammKJuWTErE5x",
+     "name": "Ain't Nobody (Loves Me Better) (feat. Jasmine Thompson)",
+     "artist": "felix jaehn, Jasmine Thompson",
+     "album": "I",
+     "image": "https://i.scdn.co/image/ab67616d00001e029713f1939e377cf85a2a5b16"
+    },
+    {
+     "id": "4zLBcDtvYNVtF9fnG6lme3",
+     "name": "Sun Goes Down (feat. Jasmine Thompson) - Radio Mix",
+     "artist": "Robin Schulz, Jasmine Thompson",
+     "album": "Prayer",
+     "image": "https://i.scdn.co/image/ab67616d00001e02ec67f6776573462a1ad9ee2d"
+    },
+    {
+     "id": "5masKPHeAOVNgxdLebIcK7",
+     "name": "Stole the Show",
+     "artist": "Kygo, Parson James",
      "album": "Cloud Nine",
      "image": "https://i.scdn.co/image/ab67616d00001e027247979b8bc6027bf97043ef"
     },
@@ -1696,11 +1728,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e0259d2079e141301ab89b6cbc5"
     },
     {
-     "id": "12LOYGBr0T0IqyuhEILYFh",
-     "name": "La clé des champs",
-     "artist": "NTO",
-     "album": "La clé des champs",
-     "image": "https://i.scdn.co/image/ab67616d00001e025e04fccc811e35cf8d8f4c61"
+     "id": "7vFoFDWqTX0mHzLfrF1Cfy",
+     "name": "Cheerleader (Felix Jaehn Remix) - Radio Edit",
+     "artist": "OMI, felix jaehn",
+     "album": "Me 4 U",
+     "image": "https://i.scdn.co/image/ab67616d00001e0285ca00029c70d6b5b8372e96"
+    },
+    {
+     "id": "0GSU6yLOJqO10ziQuBLWOE",
+     "name": "One Day (Vandaag) - Radio Edit",
+     "artist": "Bakermat",
+     "album": "One Day (Vandaag) [Radio Edit]",
+     "image": "https://i.scdn.co/image/ab67616d00001e0244b7277d2d6247722b26e2a3"
     },
     {
      "id": "13I9qqQBL23ZPxFCUO967w",
@@ -1710,67 +1749,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e028270e49a0de52091e0d8eb94"
     },
     {
-     "id": "41NzE22njxaczRSqCjoN55",
-     "name": "Young, Wild \u0026 Free",
-     "artist": "Axero",
-     "album": "Young, Wild \u0026 Free",
-     "image": "https://i.scdn.co/image/ab67616d00001e024076a1825a2f23dbef82303a"
+     "id": "1A8j067qyiNwQnZT0bzUpZ",
+     "name": "This Girl (Kungs Vs. Cookin' On 3 Burners)",
+     "artist": "Kungs, Cookin' On 3 Burners",
+     "album": "Layers",
+     "image": "https://i.scdn.co/image/ab67616d00001e02af72d0856c5527dc97f3ea08"
     },
     {
-     "id": "54RpL1P9FxOzZDE3N2XyMN",
-     "name": "偶然",
-     "artist": "Bibi Zhou",
-     "album": "黑·择·明",
-     "image": "https://i.scdn.co/image/ab67616d00001e0259120a6b8be0a60a4bbf82cd"
-    },
-    {
-     "id": "698ItKASDavgwZ3WjaWjtz",
-     "name": "Faded",
-     "artist": "Alan Walker",
-     "album": "Different World",
-     "image": "https://i.scdn.co/image/ab67616d00001e02a108e07c661f9fc54de9c43a"
-    },
-    {
-     "id": "6cQay9EHT7Rc2iLxBrOhIh",
-     "name": "Le bonheur",
-     "artist": "Joyce Jonathan",
-     "album": "Une place pour moi",
-     "image": "https://i.scdn.co/image/ab67616d00001e02d2398a64e4801a8feab7643a"
-    },
-    {
-     "id": "70eFcWOvlMObDhURTqT4Fv",
-     "name": "Beautiful People (feat. Khalid)",
-     "artist": "Ed Sheeran, Khalid",
-     "album": "No.6 Collaborations Project",
-     "image": "https://i.scdn.co/image/ab67616d00001e02f528fc2d5d8b26e4e3413715"
-    },
-    {
-     "id": "7jMHa752w5Wvpe3PzC1zJD",
-     "name": "Secrets - 2026 Remastered",
-     "artist": "OneRepublic",
-     "album": "Waking Up (2026 Remastered)",
-     "image": "https://i.scdn.co/image/ab67616d00001e026823e3a4f0a685140701fcf2"
-    },
-    {
-     "id": "3IQF4xCQUPicbA4hWfTxPo",
-     "name": "I Lived",
-     "artist": "OneRepublic",
-     "album": "Native",
-     "image": "https://i.scdn.co/image/ab67616d00001e029e2f95ae77cf436017ada9cb"
-    },
-    {
-     "id": "5L6oF6wViaQkaGI7c6QIv4",
-     "name": "笔记",
-     "artist": "Bibi Zhou",
-     "album": "2005超级女声终极PK",
-     "image": "https://i.scdn.co/image/ab67616d00001e028d365c88c9bdaec3720bda12"
-    },
-    {
-     "id": "1ySawdDRh3NEy0kNFzacOp",
-     "name": "Sugar (feat. Francesco Yates)",
-     "artist": "Robin Schulz, Francesco Yates",
-     "album": "Sugar",
-     "image": "https://i.scdn.co/image/ab67616d00001e0242f9cd115743fccf6b8a531d"
+     "id": "2uTPHrN8zqYnHUb6Wuz1FC",
+     "name": "Salzburg",
+     "artist": "Worakls",
+     "album": "Salzburg",
+     "image": "https://i.scdn.co/image/ab67616d00001e02f0d2eecafed94ea2d784dfcf"
     }
    ]
   }
