@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-27T05:00:22Z",
+ "updated_at": "2026-11-27T14:00:23Z",
  "ranges": {
   "long_term": {
    "artists": [
@@ -1311,9 +1311,9 @@
      "image": "https://i.scdn.co/image/ab6761610000f178954fa7ee5108a613c3f27edc"
     },
     {
-     "id": "04gDigrS5kc9YWfZHwBETP",
-     "name": "Maroon 5",
-     "image": "https://i.scdn.co/image/ab6761610000f178f8349dfb619a7f842242de77"
+     "id": "0jnsk9HBra6NMjO2oANoPY",
+     "name": "Flo Rida",
+     "image": "https://i.scdn.co/image/ab6761610000f178655ca8f3196953554b479452"
     },
     {
      "id": "3AQRLZ9PuTAozP28Skbq8V",
@@ -1331,9 +1331,9 @@
      "image": "https://i.scdn.co/image/ab6761610000f178572a8eae56feae217f618078"
     },
     {
-     "id": "0jnsk9HBra6NMjO2oANoPY",
-     "name": "Flo Rida",
-     "image": "https://i.scdn.co/image/ab6761610000f178655ca8f3196953554b479452"
+     "id": "04gDigrS5kc9YWfZHwBETP",
+     "name": "Maroon 5",
+     "image": "https://i.scdn.co/image/ab6761610000f178f8349dfb619a7f842242de77"
     },
     {
      "id": "4npEfmQ6YuiwW1GpUmaq3F",
@@ -1518,18 +1518,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02ba5db46f4b838ef6027e6f96"
     },
     {
-     "id": "1I8tHoNBFTuoJAlh4hfVVE",
-     "name": "Firestone",
-     "artist": "Kygo, Conrad Sewell",
-     "album": "Cloud Nine",
-     "image": "https://i.scdn.co/image/ab67616d00001e027247979b8bc6027bf97043ef"
-    },
-    {
      "id": "1eOJAiCKFuMda0fPRvjcuc",
      "name": "Hold My Hand",
      "artist": "Jess Glynne",
      "album": "I Cry When I Laugh",
      "image": "https://i.scdn.co/image/ab67616d00001e0239588f221861ee72b40b755c"
+    },
+    {
+     "id": "1I8tHoNBFTuoJAlh4hfVVE",
+     "name": "Firestone",
+     "artist": "Kygo, Conrad Sewell",
+     "album": "Cloud Nine",
+     "image": "https://i.scdn.co/image/ab67616d00001e027247979b8bc6027bf97043ef"
     },
     {
      "id": "213x4gsFDm04hSqIUkg88w",
@@ -1679,18 +1679,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e02b6e7a71effc5eee34843ec12"
     },
     {
+     "id": "5MhMXTuVODDF234VDvSxQx",
+     "name": "Awake",
+     "artist": "Tycho",
+     "album": "Awake",
+     "image": "https://i.scdn.co/image/ab67616d00001e02016e76981b3dfd695b90ff52"
+    },
+    {
      "id": "7gUpO6td4OOnu0Lf9vhcIV",
      "name": "Lights - Single Version",
      "artist": "Ellie Goulding",
      "album": "Lights",
      "image": "https://i.scdn.co/image/ab67616d00001e02a992179a520d2eb38fa41e64"
-    },
-    {
-     "id": "1LeItUMezKA1HdCHxYICed",
-     "name": "Say My Name",
-     "artist": "ODESZA, Zyra",
-     "album": "In Return",
-     "image": "https://i.scdn.co/image/ab67616d00001e02dbd801e562b7a9474ce8bae2"
     },
     {
      "id": "3c8iiZGfEammKJuWTErE5x",
@@ -1700,18 +1700,18 @@
      "image": "https://i.scdn.co/image/ab67616d00001e029713f1939e377cf85a2a5b16"
     },
     {
+     "id": "1LeItUMezKA1HdCHxYICed",
+     "name": "Say My Name",
+     "artist": "ODESZA, Zyra",
+     "album": "In Return",
+     "image": "https://i.scdn.co/image/ab67616d00001e02dbd801e562b7a9474ce8bae2"
+    },
+    {
      "id": "4zLBcDtvYNVtF9fnG6lme3",
      "name": "Sun Goes Down (feat. Jasmine Thompson) - Radio Mix",
      "artist": "Robin Schulz, Jasmine Thompson",
      "album": "Prayer",
      "image": "https://i.scdn.co/image/ab67616d00001e02ec67f6776573462a1ad9ee2d"
-    },
-    {
-     "id": "5masKPHeAOVNgxdLebIcK7",
-     "name": "Stole the Show",
-     "artist": "Kygo, Parson James",
-     "album": "Cloud Nine",
-     "image": "https://i.scdn.co/image/ab67616d00001e027247979b8bc6027bf97043ef"
     },
     {
      "id": "1kKYjjfNYxE0YYgLa7vgVY",
