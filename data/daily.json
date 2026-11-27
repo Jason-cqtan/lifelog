@@ -5053,5 +5053,6 @@
 {"date":"2026-11-25","source":"duolingo","metric":"xp","value":40},
 {"date":"2026-11-25","source":"garmin","metric":"step_goal","value":8450},
 {"date":"2026-11-25","source":"garmin","metric":"steps","value":10965},
-{"date":"2026-11-25","source":"github","metric":"contributions","value":2}
+{"date":"2026-11-25","source":"github","metric":"contributions","value":2},
+{"date":"2026-11-26","source":"duolingo","metric":"streak_protected","value":1}
 ]
